@@ -8,6 +8,6 @@ MathJax in HTML and Sphinx.
  * "DocOnce source": "math_test.do.txt.html"
  * "LaTeX/PDF": "math_test.pdf"
  * "HTML": "math_test_html.html"
- * "Sphinx": "html/index.html"
+ * "Sphinx": "html/math_test.html"
  * "HTML generated via Pandoc and Markdown": "math_test_pandoc.html"
  * "Jupyter Notebook": "math_test.ipynb"

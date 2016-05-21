@@ -33,6 +33,32 @@ p { text-indent: 0px; }
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 p.caption { width: 80%; font-style: normal; text-align: left; }
 hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+.alert-text-small   { font-size: 80%;  }
+.alert-text-large   { font-size: 130%; }
+.alert-text-normal  { font-size: 90%;  }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid #bababa;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: #555;
+  background-color: #f8f8f8;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -63,9 +89,8 @@ MathJax.Hub.Config({
 <!-- newcommands.tex -->
 $$
 \renewcommand{\u}{\pmb{u}}
-\newcommand{\xbm}{\boldsymbol{x}}
-\newcommand{\normalvecbm}{\boldsymbol{n}}
 \newcommand{\ubm}{\boldsymbol{u}}
+\newcommand{\f}{\boldsymbol{f}}
 \newcommand{\x}{\pmb{x}}
 \newcommand{\normalvec}{\pmb{n}}
 $$
@@ -94,13 +119,31 @@ $$
 <center>[2] <b>University of Oslo</b></center>
 <br>
 <p>
-<center><h4>May 18, 2016</h4></center> <!-- date -->
+<center><h4>May 21, 2016</h4></center> <!-- date -->
 <br>
 <p>
-This document is translated to the format <b>html</b>. The purpose is to
+<b>Summary.</b> The purpose of this document is to
 test LaTeX math in DocOnce with various output formats.
+Most LaTeX math constructions are renedered correctly by MathJax
+in plain HTML, but some combinations of constructions may fail.
+Unfortunately, only a subset of what works in html MathJax also works in
+sphinx MathJax. The same is true for markdown MathJax expresions
+(e.g., Jupyter notebooks).
+Tests and examples are provided to illustrate what may go wrong.
 
 <p>
+The recommendation for writing math that translates to MathJax in
+html, sphinx, and markdown is to stick to the environments
+<code>\[ ... \]</code>, <code>equation</code>, <code>equation*</code>, <code>align</code>, <code>align*</code>, <code>alignat</code>,
+and <code>alignat*</code> only. Test the math with sphinx output; if it works in that
+format, it should work elsewhere too.
+
+<p>
+The current version of the document is translated from DocOnce source
+to the format <b>html</b>.
+
+<p>
+
 <b>Test 1: Inline math.</b>
 We can get an inline equation
 <code>$u(t)=e^{-at}$</code> rendered as \( u(t)=e^{-at} \).
@@ -207,8 +250,8 @@ We can refer to the last equations as the system \eqref{eq2b}-\eqref{eq3b}.
 <b>Test 5: Multiple, aligned equations without label.</b>
 In LaTeX,
 equations within an <code>align</code> environment is automatically given numbers.
-To ensure that an HTML document with MathJax gets the same equation numbers
-as its LaTeX companion, DocOnce generates labels in equations where
+To ensure that an html document with MathJax gets the same equation numbers
+as its latex/pdflatex companion, DocOnce generates labels in equations where
 there is no label prescribed. For example,
 
 <p>
@@ -238,7 +281,7 @@ label<span style="color: #008000">{_</span>auto6<span style="color: #008000">}</
 !et
 </pre></div>
 <p>
-and the HTML output gets the two equation numbered.
+and the html output gets the two equation numbered.
 
 $$
 \begin{align}
@@ -265,7 +308,7 @@ u(0,t) <span style="color: #008000">&amp;</span>= u<span style="color: #008000">
 !et
 </pre></div>
 <p>
-The result becomes
+The result in html becomes
 
 $$
 \begin{align}
@@ -318,7 +361,7 @@ v(t) - 1 <span style="color: #008000">&amp;</span>=<span style="color: #008000">
 !et
 </pre></div>
 <p>
-and results in
+which results in
 
 $$
 \begin{eqnarray*}
@@ -329,7 +372,7 @@ $$
 
 <p>
 <b>Test 8: Multiple, eqnarrayed equations with label.</b>
-Here use <code>eqnarray</code> with labels:
+Here we use <code>eqnarray</code> with labels:
 
 <p>
 
@@ -344,7 +387,7 @@ label<span style="color: #008000">{</span>eq3c<span style="color: #008000">}</sp
 !et
 </pre></div>
 <p>
-and results in
+which results in
 
 $$
 \begin{eqnarray}
@@ -388,7 +431,7 @@ and we can hopefully refer to the Trapezoidal rule
 as the formula \eqref{multiline:eq1}.
 
 <p>
-<b>Test 10: Splitting equations using <code>split</code>.</b>
+<b>Test 10: Splitting equations using a split environment.</b>
 Although <code>align</code> can be used to split too long equations, a more obvious
 command is <code>split</code>:
 
@@ -421,24 +464,121 @@ $$
 
 <p>
 <b>Test 11: Newcommands and boldface bm vs pmb.</b>
-We have
+First we use the plain old pmb package for bold math. The formula
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>!bt
+\[ \frac{\partial\u}{\partial t} +
+\u\cdot\nabla\u = \nu\nabla^2\u -
+\frac{1}{\varrho}\nabla p,\]
+!et
+</pre></div>
+<p>
+and the inline expression <code>$\nabla\u (\x)\cdot\normalvec$</code>
+(with suitable newcommands using pmb)
+get rendered as
+
+$$ \frac{\partial\u}{\partial t} +
+\u\cdot\nabla\u = \nu\nabla^2\u -
+\frac{1}{\varrho}\nabla p,$$
+
+and \( \nabla\u (\x)\cdot\normalvec \).
+
+<p>
+Somewhat nicer fonts appear with the more modern <code>\bm</code> command:
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>!bt
+\[ \frac{\partial\ubm}{\partial t} +
+\ubm\cdot\nabla\ubm = \nu\nabla^2\ubm -
+\frac{1}{\varrho}\nabla p,\]
+!et
+</pre></div>
+<p>
+(backslash <code>ubm</code> is a newcommand for bold math \( u \)), for which we get
+
+$$ \frac{\partial\ubm}{\partial t} +
+\ubm\cdot\nabla\ubm = \nu\nabla^2\ubm -
+\frac{1}{\varrho}\nabla p.$$
+
+Moreover,
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>$\nabla\boldsymbol{u}(\boldsymbol{x})\cdot\boldsymbol{n}$
+</pre></div>
+<p>
+becomes \( \nabla\boldsymbol{u}(\boldsymbol{x})\cdot\boldsymbol{n} \).
+
+<p>
+<div class="alert alert-block alert-warning alert-text-normal">
+<b>Warning.</b>
+<p>
+Note: for the html format, <code>\bm</code> was substituted by DocOnce
+to <code>\boldsymbol</code>.
+</div>
+
+
+<p>
+<b>Problematic equations.</b>
+Finally, we collect some problematic formulas in MathJax. They all work
+fine in LaTeX.
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>!bt
+\[ {\color{blue}\frac{\partial\u}{\partial t}} +
+\nabla\cdot\nabla\u = \nu\nabla^2\u -
+\frac{1}{\varrho}\nabla p,\]
+!et
+</pre></div>
+<p>
+results in
 
 $$ {\color{blue}\frac{\partial\u}{\partial t}} +
 \nabla\cdot\nabla\u = \nu\nabla^2\u -
 \frac{1}{\varrho}\nabla p,$$
 
-and \( \nabla\u (\x)\cdot\normalvec \)
-with plain old pmb. Here are the same formulas using <code>\bm</code>:
-
-$$ {\color{blue}\frac{\partial\ubm}{\partial t}} +
-\nabla\cdot\nabla\ubm = \nu\nabla^2\ubm -
-\frac{1}{\varrho}\nabla p,$$
-
-and \( \nabla\ubm (\xbm)\cdot\normalvecbm \).
+but correct rendering in sphinx requires omitting the <code>\color</code> command.
 
 <p>
-Note: for the html format, <code>\bm</code> was substituted by DocOnce
-to <code>\boldsymbol</code>.
+Sometimes one must be extra careful with the LaTeX syntax to get sphinx MathJax
+to render a formula correctly. Consider the combination of a bar over a
+bold math symbol:
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>!bt
+\[ \bar\f = f_c^{-1}\f,\]
+!et
+</pre></div>
+<p>
+which for html output results in
+
+$$ \bar\f = f_c^{-1}\f.$$
+
+With sphinx, this formula is not rendered.
+However, using curly braces for the bar,
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>!bt
+\[ \bar{\f} = f_c^{-1}\f,\]
+!et
+</pre></div>
+<p>
+makes the output correct also for sphinx:
+
+$$ \bar{\f} = f_c^{-1}\f,$$
+
 
 <!-- ------------------- end of main content --------------- -->
 

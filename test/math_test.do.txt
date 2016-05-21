@@ -2,9 +2,25 @@ TITLE: How various formats can deal with LaTeX math
 AUTHOR: Hans Petter Langtangen at Simula Research Laboratory & University of Oslo
 DATE: today
 
-
-This document is translated to the format _${FORMAT}_. The purpose is to
+__Summary.__
+The purpose of this document is to
 test LaTeX math in DocOnce with various output formats.
+Most LaTeX math constructions are renedered correctly by MathJax
+in plain HTML, but some combinations of constructions may fail.
+Unfortunately, only a subset of what works in html MathJax also works in
+sphinx MathJax. The same is true for markdown MathJax expresions
+(e.g., Jupyter notebooks).
+Tests and examples are provided to illustrate what may go wrong.
+
+The recommendation for writing math that translates to MathJax in
+html, sphinx, and markdown is to stick to the environments
+`\[ ... \]`, `equation`, `equation*`, `align`, `align*`, `alignat`,
+and `alignat*` only. Test the math with sphinx output; if it works in that
+format, it should work elsewhere too.
+
+The current version of the document is translated from DocOnce source
+to the format _${FORMAT}_.
+
 
 __Test 1: Inline math.__ We can get an inline equation
 `$u(t)=e^{-at}$` rendered as $u(t)=e^{-at}$.
@@ -88,13 +104,14 @@ label{eq3b}
 We can refer to the last equations as the system (ref{eq2b})-(ref{eq3b}).
 
 # #if FORMAT == "sphinx"
-!bwarning Warning: align/alignat environments with labels are anti-aligned!
-Actually, *Sphinx does not support the align environment with labels*,
+!bwarning Note: align/alignat environments with labels are anti-aligned in sphinx!
+Actually, *sphinx does not support the align environment with labels*,
 such as we write above,
 but DocOnce splits in this case the equations into separate, single equations
 with labels. Hence the user can write one code with align and labels
-and have to work in LaTeX, HTML, and Sphinx. The generated Sphinx code
-in the present case is
+and have it automatically
+to work in latex, html, sphinx, notebooks, and other formats.
+The generated sphinx code in the present case is
 
 !bc rst
 .. math::
@@ -112,7 +129,8 @@ in the present case is
 !ewarning
 
 If DocOnce had not rewritten the equation it would be rendered in
-${FORMAT} as
+${FORMAT} as nicely aligned equations without numbers (i.e., as if
+we had used the `align*` environment):
 
 ## NOTE: These math blocks, not inside !bt-!et directives will result
 ## in error messages from DocOnce. But if we neglect them, the code works
@@ -129,14 +147,14 @@ ${FORMAT} as
 # #endif
 
 # #if FORMAT == "pandoc"
-!bwarning Fixes are needed for DocOnce to Pandoc to HTML
-Original Pandoc-extended Markdown transformed to HTML via Pandoc
+!bwarning Fixes are needed for DocOnce to Pandoc to html
+Original Pandoc-extended Markdown transformed to html via Pandoc
 does not work with labels and multiple equations. `doconce md2html`
 fixes the trouble by adding full support for MathJax and avoiding
 that eqref references become empty.
 
 One can write with align and labels in the DocOnce document and get excellent
-output in LaTeX, HTML, Sphinx, and Markdown-based HTML. Without
+output in latex, html, sphinx, and Markdown-based html. Without
 `doconce md2html` one must accept that labeles have very limited support
 compared to more advanced MathJax.
 !ewarning
@@ -145,8 +163,8 @@ compared to more advanced MathJax.
 
 __Test 5: Multiple, aligned equations without label.__ In LaTeX,
 equations within an `align` environment is automatically given numbers.
-To ensure that an HTML document with MathJax gets the same equation numbers
-as its LaTeX companion, DocOnce generates labels in equations where
+To ensure that an html document with MathJax gets the same equation numbers
+as its latex/pdflatex companion, DocOnce generates labels in equations where
 there is no label prescribed. For example,
 
 !bc latexcod
@@ -170,7 +188,12 @@ label{_auto6}
 \end{align}
 |et
 !ec
-and the HTML output gets the two equation numbered.
+and the html output gets the two equation numbered.
+# #if FORMAT == "sphinx"
+Note that in sphinx the alignment is removed and separate `equation`
+environments are used to get numbered equations in equation systems, cf. the
+box above.
+# #endif
 
 !bt
 \begin{align}
@@ -191,7 +214,7 @@ u(0,t) &= u_0(x), & x\in [0,L]
 \end{align}
 |et
 !ec
-The result becomes
+The result in ${FORMAT} becomes
 
 !bt
 \begin{align}
@@ -200,6 +223,10 @@ The result becomes
 u(0,t) &= u_0(x), & x\in [0,L]
 \end{align}
 !et
+# #if FORMAT == "sphinx"
+In ${FORMAT}, all alignments are removed, so this double use of `&`
+results in ugly typesetting!
+# #endif
 
 A better solution is usually to use an `alignat` environment:
 
@@ -221,6 +248,7 @@ with the rendered result
 u(0,t) &= u_0(x), & x\in [0,L]
 \end{alignat}
 !et
+
 # #if FORMAT in ("sphinx", "ipynb", "pandoc")
 !bwarning align/alignat environments with equation numbers are anti-aligned!
 In the `sphinx`, `ipynb`, and `pandoc` output formats, DocOnce rewrites
@@ -233,8 +261,20 @@ manual rewrite in terms of separate `equation` environments, and stick to
 !ewarning
 # #endif
 
+# #if FORMAT == "sphinx"
+With `alignat*` in ${FORMAT}, the equations above are typeset nicely as
+
+!bt
+\begin{alignat*}{2}
+\frac{\partial u}{\partial t} &= \nabla^2 u, & x\in (0,L),
+\ t\in (0,T]\\
+u(0,t) &= u_0(x), & x\in [0,L]
+\end{alignat*}
+!et
+# #endif
+
 # #if FORMAT in ("pandoc", "ipynb")
-If we did not do the rewrite of the above equation it would be
+If DocOnce had not do rewritten of the above equations, they would be
 rendered in ${FORMAT} as
 
 $$
@@ -245,8 +285,8 @@ u(0,t) &= u_0(x), & x\in [0,L]
 \end{alignat}
 $$
 # #elif FORMAT in ("sphinx")
-If we did not do the rewrite of the above equation it would be
-rendered in Sphinx as
+Note that if DocOnce had not rewritten of the above equations, they would be
+rendered similarly in ${FORMAT} as
 
 .. math::
 
@@ -256,7 +296,7 @@ rendered in Sphinx as
         u(0,t) &= u_0(x), & x\in [0,L]
         \end{alignat}
 
-Clearly, Sphinx is not capable of rendering this.
+That is, the equation numbers are gone.
 # #endif
 
 
@@ -274,7 +314,7 @@ v(t) - 1 &=& \frac{du}{dt}
 \end{eqnarray*}
 |et
 !ec
-and results in
+which results in
 
 !bt
 \begin{eqnarray*}
@@ -284,7 +324,7 @@ v(t) - 1 &=& \frac{du}{dt}
 !et
 
 __Test 8: Multiple, eqnarrayed equations with label.__
-Here use `eqnarray` with labels:
+Here we use `eqnarray` with labels:
 
 !bc latexcod
 |bt
@@ -296,7 +336,7 @@ label{eq3c}
 \end{eqnarray}
 |et
 !ec
-and results in
+which results in
 
 !bt
 \begin{eqnarray}
@@ -307,32 +347,10 @@ v(t) - 1 &=& \frac{du}{dt} label{eq3c}
 Can we refer to the last equations as the system (ref{eq2c})-(ref{eq3c})
 in the ${FORMAT} format?
 # #if FORMAT == "sphinx"
-No, unfortunately not.
-Note: DocOnce takes the `eqnarray` environment
-with labels and replaces it automatically
-by the Sphinx code
-
-!bc rst
-.. math::
-
-        u(t) &=  e^{-at} \\
-        v(t)  &=  \frac{du}{dt}
-!ec
-That is why the equation numbers are gone and that eqnarray seemingly
-works. MathJax does not support eqnarray with labels so Sphinx would
-probably fail to show them (unless one tries PNG images or other
-math engines?). The rule of thumb is to avoid equarray.
-
-With no rewrite of `eqnarray` environments for sphinx, the above equation
-would be rendered as
-
-.. math::
-
-        \begin{eqnarray}
-        u(t)&=& e^{-at} \label{eq2c}\\
-        v(t) - 1 &=& \frac{du}{dt} \label{eq3c}
-        \end{eqnarray}
-
+No, unfortunately not. Sphinx cannot deal with equation numbers in
+`eqnarray` environments and typeset them as if they were `eqnarray*`.
+But MathJax supports `eqnarray` with labels.
+The rule of thumb is to use `align` and not `eqnarray`!
 # #endif
 
 __Test 9: The `multiline` environment with label and number.__
@@ -360,8 +378,14 @@ label{multiline:eq1}
 !et
 and we can hopefully refer to the Trapezoidal rule
 as the formula (ref{multiline:eq1}).
+# #if FORMAT == "sphinx"
+The equation number is here placed on the first line, while in MathJax
+(html) and latex the number is placed between the two lines, which is
+more correct. The best cross-format solution is to use `align` and
+`\nonumber` for the first equation.
+# #endif
 
-__Test 10: Splitting equations using `split`.__
+__Test 10: Splitting equations using a split environment.__
 Although `align` can be used to split too long equations, a more obvious
 command is `split`:
 
@@ -389,24 +413,104 @@ f(a+(j+1)h)) \\
 !et
 
 __Test 11: Newcommands and boldface bm vs pmb.__
-We have
+First we use the plain old pmb package for bold math. The formula
+
+!bc
+|bt
+\[ \frac{\partial\u}{\partial t} +
+\u\cdot\nabla\u = \nu\nabla^2\u -
+\frac{1}{\varrho}\nabla p,\]
+|et
+!ec
+and the inline expression `$\nabla\u (\x)\cdot\normalvec$`
+(with suitable newcommands using pmb)
+get rendered as
+
+!bt
+\[ \frac{\partial\u}{\partial t} +
+\u\cdot\nabla\u = \nu\nabla^2\u -
+\frac{1}{\varrho}\nabla p,\]
+!et
+and $\nabla\u (\x)\cdot\normalvec$.
+# #if FORMAT == "sphinx"
+DocOnce replaces newcommands by the actual latex code when requesting
+the sphinx output format.
+# #endif
+
+Somewhat nicer fonts appear with the more modern `\bm` command:
+
+!bc
+|bt
+\[ \frac{\partial\ubm}{\partial t} +
+\ubm\cdot\nabla\ubm = \nu\nabla^2\ubm -
+\frac{1}{\varrho}\nabla p,\]
+|et
+!ec
+(backslash `ubm` is a newcommand for bold math $u$), for which we get
+
+!bt
+\[ \frac{\partial\ubm}{\partial t} +
+\ubm\cdot\nabla\ubm = \nu\nabla^2\ubm -
+\frac{1}{\varrho}\nabla p.\]
+!et
+Moreover,
+
+!bc
+$\nabla\bm{u}(\bm{x})\cdot\bm{n}$
+!ec
+becomes $\nabla\bm{u}(\bm{x})\cdot\bm{n}$.
+
+# #if FORMAT in ("html", "sphinx", "pandoc", "ipynb")
+!bwarning
+Note: for the ${FORMAT} format, `\bm` was substituted by DocOnce
+to `\boldsymbol`.
+!ewarning
+# #endif
+
+__Problematic equations.__
+Finally, we collect some problematic formulas in MathJax. They all work
+fine in LaTeX.
+
+!bc
+|bt
+\[ {\color{blue}\frac{\partial\u}{\partial t}} +
+\nabla\cdot\nabla\u = \nu\nabla^2\u -
+\frac{1}{\varrho}\nabla p,\]
+|et
+!ec
+results in
 
 !bt
 \[ {\color{blue}\frac{\partial\u}{\partial t}} +
 \nabla\cdot\nabla\u = \nu\nabla^2\u -
 \frac{1}{\varrho}\nabla p,\]
 !et
-and $\nabla\u (\x)\cdot\normalvec$
-with plain old pmb. Here are the same formulas using `\bm`:
+but correct rendering in sphinx requires omitting the `\color` command.
+
+Sometimes one must be extra careful with the LaTeX syntax to get sphinx MathJax
+to render a formula correctly. Consider the combination of a bar over a
+bold math symbol:
+
+!bc
+|bt
+\[ \bar\f = f_c^{-1}\f,\]
+|et
+!ec
+which for ${FORMAT} output results in
 
 !bt
-\[ {\color{blue}\frac{\partial\ubm}{\partial t}} +
-\nabla\cdot\nabla\ubm = \nu\nabla^2\ubm -
-\frac{1}{\varrho}\nabla p,\]
+\[ \bar\f = f_c^{-1}\f.\]
 !et
-and $\nabla\ubm (\xbm)\cdot\normalvecbm$.
+With sphinx, this formula is not rendered.
+However, using curly braces for the bar,
 
-# #if FORMAT in ("html", "sphinx", "pandoc", "ipynb")
-Note: for the ${FORMAT} format, `\bm` was substituted by DocOnce
-to `\boldsymbol`.
-# #endif
+!bc
+|bt
+\[ \bar{\f} = f_c^{-1}\f,\]
+|et
+!ec
+makes the output correct also for sphinx:
+
+!bt
+\[ \bar{\f} = f_c^{-1}\f,\]
+!et

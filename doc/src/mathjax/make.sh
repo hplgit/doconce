@@ -24,9 +24,9 @@ options="--no_abort"
 
 system doconce format sphinx $name $options
 #system doconce sphinx_dir theme=fenics_minimal1 $name
-system doconce sphinx_dir theme=fenics $name
+system doconce sphinx_dir theme=cbc $name
 system python automake_sphinx.py
-exit
+
 system doconce format pdflatex $name --no_abort --latex_code_style=pyg $options
 system pdflatex -shell-escape $name
 pdflatex -shell-escape $name
