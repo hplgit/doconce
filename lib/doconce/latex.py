@@ -518,11 +518,12 @@ def latex_code(filestr, code_blocks, code_block_types,
     # background colors in code that don't match background of admon)
     code_envir_transform = option('latex_admon_envir_map=', None)
     admon_envir_mapping = {}
-    if code_envir_transform.isdigit():
-        admon_envir_mapping = {'all': code_envir_transform}
-    else:
-        # Individual mapping for each possible envir
-        admon_envir_mapping = dict([pair.split('-') for pair in code_envir_transform.split(',')])
+    if code_envir_transform is not None:
+        if code_envir_transform.isdigit():
+            admon_envir_mapping = {'all': code_envir_transform}
+        else:
+            # Individual mapping for each possible envir
+            admon_envir_mapping = dict([pair.split('-') for pair in code_envir_transform.split(',')])
     lines = filestr.splitlines()
     inside_admon = False
     admons = 'notice', 'summary', 'warning', 'question', 'block'
@@ -534,21 +535,22 @@ def latex_code(filestr, code_blocks, code_block_types,
                 inside_admon = False
 
         # Map envir if inside admon
-        if _CODE_BLOCK in lines[i]:
-            _envir = lines[i].split()[-1]
-            _block_no = int(lines[i].split()[0])
-            if _CODE_BLOCK not in _envir:  # has environment?
-                if 'all' in admon_envir_mapping:
-                    new_envir = _envir + admon_envir_mapping['all']
-                    lines[i] = lines[i].replace(_envir, new_envir)
-                    code_block_types[_block_no] = new_envir
-                else:
-                    if _envir not in admon_envir_mapping:
-                        print '*** error: requested %s to be replaced by something else inside admons, but\n    envir %s is not defined as part of --latex_admon_envir_map=...'
-                        _abort()
-                    new_envir = admon_envir_mapping[_envir]
-                    lines[i] = lines[i].replace(_envir, new_envir)
-                    code_block_types[_block_no] = new_envir
+        if admon_envir_mapping and inside_admon:
+            if _CODE_BLOCK in lines[i]:
+                _envir = lines[i].split()[-1]
+                _block_no = int(lines[i].split()[0])
+                if _CODE_BLOCK not in _envir:  # has environment?
+                    if 'all' in admon_envir_mapping:
+                        new_envir = _envir + admon_envir_mapping['all']
+                        lines[i] = lines[i].replace(_envir, new_envir)
+                        code_block_types[_block_no] = new_envir
+                    else:
+                        if _envir not in admon_envir_mapping:
+                            print '*** error: requested %s to be replaced by something else inside admons, but\n    envir %s is not defined as part of --latex_admon_envir_map=...' % (_envir, _envir)
+                            _abort()
+                        new_envir = admon_envir_mapping[_envir]
+                        lines[i] = lines[i].replace(_envir, new_envir)
+                        code_block_types[_block_no] = new_envir
 
         # Add Online Python Tutor URL before code blocks with pyoptpro code
         if _CODE_BLOCK in lines[i]:
@@ -2309,29 +2311,6 @@ def latex_%(_admon)s(text_block, format, title='%(_Admon)s', text_size='normal')
         title = ''
     if title == 'Block':  # block admon has no default title
         title = ''
-
-    # Map code environments to new names (option) if we want to, e.g.,
-    # remove background colors from code inside admons. The code below
-    # is only used if doconce ptex2tex (or ptext2tex) is also used,
-    # but even then the substitution is already done in latex_code.
-    # if --latex_code_style=... is used, all code envirs are already
-    # substituted when we reach this stage.
-    code_envir_transform = option('latex_admon_envir_map=', None)
-    if code_envir_transform is not None:
-        envirs = re.findall(r'^\\b([A-Za-z0-9_]+)$', text_block, flags=re.MULTILINE)
-        envirs = list(set(envirs))  # remove multiple items
-        if code_envir_transform.isdigit():
-            admon_envir_mapping = {}
-            # Just append the digit(s)
-            for envir in envirs:
-                admon_envir_mapping[envir] = envir + code_envir_transform
-        else:
-            # Individual mapping for each possible envir
-            admon_envir_mapping = dict([pair.split('-') for pair in code_envir_transform.split(',')])
-        for envir in envirs:
-            # \bpypro -> \bpypro2 or \bpypro -> \bpyyellow
-            text_block = re.sub(r'\\(b|e)%%s' %% envir,
-            r'\\\g<1>%%s' %% admon_envir_mapping.get(envir, envir), text_block)
 
     latex_admon = option('latex_admon=', 'mdfbox')
     if option('latex_title_layout=', '') == 'beamer':

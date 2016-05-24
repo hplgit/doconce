@@ -154,7 +154,7 @@ MathJax.Hub.Config({
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <br>
 <p>
-<center><h4>May 17, 2016</h4></center> <!-- date -->
+<center><h4>May 24, 2016</h4></center> <!-- date -->
 <br>
 
 <h2>Table of contents</h2>
@@ -951,16 +951,18 @@ follow the rules below.
 <ul>
  <li> AMS LaTeX mathematics is supported, also for the <code>html</code>, <code>sphinx</code>,
    and <code>ipynb</code> formats.</li>
- <li> Only <em>five</em> equation environments can be used: <code>\[ ... \]</code>,
-   <code>equation*</code>, <code>equation</code>, <code>align*</code>, and <code>align</code>.
-   (DocOnce performs extensions to <code>sphinx</code>, <code>ipynb</code>,
+ <li> If you want LaTeX math blocks to work with <code>latex</code>, <code>html</code>, <code>sphinx</code>,
+   <code>markdown</code>, and <code>ipynb</code>, it is recommended to use only
+   the following equation environments: <code>\[ ... \]</code>,
+   <code>equation*</code>, <code>equation</code>, <code>align*</code>, <code>align</code>. <code>alignat*</code>, <code>alignat</code>.
+   Other environments, such as <code>split</code>, <code>multiline</code>, <code>gather</code> are
+   supported in modern MathJax in HTML and Sphinx, but may face
+   rendering problems (to a larger extent than <code>equation</code> and <code>align</code>).
+   DocOnce performs extensions to <code>sphinx</code>, <code>ipynb</code>,
    and other formats such that
-   labels in <code>align</code> environments work well.)
-   This may feel restrictive to LaTeX writers who are used to
-   <code>split</code>, <code>aligned</code>, <code>alignat</code>, and other environments - you must rewrite to
-   <code>align</code> and use a label for each equation, or use <code>\nonumber\\</code>
-   if a line should be without equation number (<code>align</code> with two <code>&</code> for
-   alignments on each line works).</li>
+   labels in <code>align</code> and <code>alignat</code> environments work well.
+   If you face problems with fancy LaTeX equation environments in
+   web formats, try rewriting with plain <code>align</code>, <code>nonumber</code>, etc.</li>
  <li> Do not use comments inside equations.</li>
  <li> Newcommands in mathematical formulas are allowed, but not in
    the running text. Newcommands must be defined in files with names

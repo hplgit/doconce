@@ -481,6 +481,16 @@ to be about as large as the text, there is at present two options:
 The results are very similar so there is no demand for `ptex2tex`.
 !enotice
 
+===== Using different code styles inside admonitions =====
+
+Sometimes the use of colored background for code does not look right
+inside admonitions -- you may want something less eye catching.
+DocOnce has support for providing an alternative
+environment, say `pycod2` for `pycod`, inside admons.
+See the DocOnce manual and the section called
+*Typesetting of solutions to exercises* for a detailed case
+how this can be done.
+
 ===== Wrapping code environments with user-customized environments =====
 label{latexcode:userdef}
 

@@ -1162,7 +1162,7 @@ def has_custom_pygments_lexer(name):
             errwarn('    ipython is not supported for syntax highlighting!')
             errwarn('    install:')
             errwarn('    git clone https://hplbit@bitbucket.org/hplbit/pygments-ipython-console.git; cd pygments-ipython-console; sudo python setup.py install')
-            errwarn(e)
+            errwarn(str(e))
             return False
     if name == 'doconce':
         try:

@@ -10,7 +10,7 @@ DocOnce Quick Reference
 =======================
 
 :Authors: Hans Petter Langtangen
-:Date: May 17, 2016
+:Date: May 24, 2016
 
 **WARNING: This quick reference is very incomplete!**
 
@@ -710,16 +710,18 @@ follow the rules below.
  * AMS LaTeX mathematics is supported, also for the ``html``, ``sphinx``,
    and ``ipynb`` formats.
 
- * Only *five* equation environments can be used: ``\[ ... \]``,
-   ``equation*``, ``equation``, ``align*``, and ``align``.
-   (DocOnce performs extensions to ``sphinx``, ``ipynb``,
+ * If you want LaTeX math blocks to work with ``latex``, ``html``, ``sphinx``,
+   ``markdown``, and ``ipynb``, it is recommended to use only
+   the following equation environments: ``\[ ... \]``,
+   ``equation*``, ``equation``, ``align*``, ``align``. ``alignat*``, ``alignat``.
+   Other environments, such as ``split``, ``multiline``, ``gather`` are
+   supported in modern MathJax in HTML and Sphinx, but may face
+   rendering problems (to a larger extent than ``equation`` and ``align``).
+   DocOnce performs extensions to ``sphinx``, ``ipynb``,
    and other formats such that
-   labels in ``align`` environments work well.)
-   This may feel restrictive to LaTeX writers who are used to
-   ``split``, ``aligned``, ``alignat``, and other environments - you must rewrite to
-   ``align`` and use a label for each equation, or use ``\nonumber\\``
-   if a line should be without equation number (``align`` with two ``&`` for
-   alignments on each line works).
+   labels in ``align`` and ``alignat`` environments work well.
+   If you face problems with fancy LaTeX equation environments in
+   web formats, try rewriting with plain ``align``, ``nonumber``, etc.
 
  * Do not use comments inside equations.
 

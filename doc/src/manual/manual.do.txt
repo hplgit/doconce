@@ -2764,22 +2764,89 @@ Equations in solutions can then be given their own numbers (here, `11.5`
 could be chapter 11, section 5). One can use a Mako variable to automatically
 assign appropriate numbers in the `tag` command.
 
-===== Typesetting of solutions =====
+===== Typesetting of solutions to exercises =====
+label{manual:exercises:solutions:typesetting}
 
 There is an option `--exercise_solution=` option for controling the
 typesetting of solutions. Two values are legal: `paragraph` means that
 the solution just gets a paragraph heading, while `admon` means that
 the solution is typeset within a notice admonition environment (`!bnotice`).
-The latter may look nicer in LaTeX to better divide the visual impression
-between the text of the exercise and the (large) text of its solution.
 
 Sometimes the standard admons are not so suitable for typesetting
-solutions because they may have a background color, or they may be to
+solutions because they may have a background color, or they may be too
 eye catching. Here is a trick for LaTeX output where we 1) change the
-admon environment to be used for solutions to the question admon, 2)
-change the parameters in the question admon so there is no background
-and a thinner frame, 3) typeset code inside solution environment with
-simple verbatim font and no colors.
+admon environment in solutions from notice to question type, 2) change
+the parameters in the question admon so there is no catchy background
+color and also a thinner frame, 3) typeset code inside solution
+environment without any background color. These modifications can be
+done by editing the `mydoc.tex` file in the compilation script (if
+`mydoc` is the name of the document).
+
+We can identify all begin and end of question admons in solutions
+because both are tagged with the title (`Solution`). Looking at the
+`mydoc.tex` file, we can therefore accomplish change number 1 by the
+replacements
+
+!bc shcod
+doconce replace 'notice_mdfboxadmon}[Solution.]' \
+    'question_mdfboxadmon}[Solution.]' mydoc.tex
+doconce replace 'end{notice_mdfboxadmon} % title: Solution.' \
+    'end{question_mdfboxadmon} % title: Solution.' mydoc.tex
+!ec
+
+Change number 2 is done with a regular expression edit that replaces
+the complete definition of question admons:
+
+!bc shcod
+doconce subst -s '% "question" admon.+?question_mdfboxmdframed\}' \
+    '% "question" admon
+\colorlet{mdfbox_question_background}{gray!5}
+\\newmdenv[        % edited for solution admons in exercises
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=white,
+  linecolor=black,
+  linewidth=1pt,       % frame thickness
+  frametitlebackgroundcolor=blue!5,
+  frametitlerule=true,
+  frametitlefont=\\normalfont\\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{question_mdfboxmdframed}' mydoc.tex
+!ec
+
+Change number 3 involves mapping `pycod` and `pypro` environments inside
+admons to `pycod2` and `pypro2` and define these environments by the
+simpler listing style `greenblue`, which does not have any background
+color. Mapping of an environment to another variant inside admons
+is described in *LaTeX code Environments Inside Admonitions* in
+Section ref{manual:admon}. For this purpose one employs the `--latex_admon_envir_map=` option.
+
+Here is a possible command (that employs a blue background for
+all boxes, except `pypro` that gets a frame to indicate ``program'' and
+`sys` and `dat` that get a completely different typesetting):
+
+!bc shcod
+doconce format pdflatex mydoc \
+  "--latex_code_style=default:lst[style=blue1_bluegreen]@
+  pypro:lst[style=blue1bar_bluegreen]@
+  pypro2:lst[style=greenblue]@
+  pycod2:lst[style=greenblue]@
+  dat:lst[style=gray]@
+  sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},
+  framesep=2.5mm,framerule=0.7pt,fontsize=\fontsize{9pt}{9pt}]" \
+  --exercise_solution=admon --latex_admon_envir_map=2
+!ec
+(Note that we had to split the `--latex_code_style=` option over
+several lines -- everything should be on one line in the compilation script!)
+
+The current example shows how we can tailor DocOnce output to a level
+far beyond what DocOnce itself can output.
 
 # #ifdef EXTRA
 ===== Where to Put Exercises =====
@@ -3779,6 +3846,7 @@ if feature in element:
 
 !split
 ===== Admonitions =====
+label{manual:admon}
 
 idx{admonitions}
 idx{warning admon}

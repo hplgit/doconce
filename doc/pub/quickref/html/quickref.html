@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">May 17, 2016</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">May 24, 2016</td>
 </tr>
 </tbody>
 </table>
@@ -715,16 +715,18 @@ follow the rules below.</p>
 <div><ul class="simple">
 <li>AMS LaTeX mathematics is supported, also for the <code class="docutils literal"><span class="pre">html</span></code>, <code class="docutils literal"><span class="pre">sphinx</span></code>,
 and <code class="docutils literal"><span class="pre">ipynb</span></code> formats.</li>
-<li>Only <em>five</em> equation environments can be used: <code class="docutils literal"><span class="pre">\[</span> <span class="pre">...</span> <span class="pre">\]</span></code>,
-<code class="docutils literal"><span class="pre">equation*</span></code>, <code class="docutils literal"><span class="pre">equation</span></code>, <code class="docutils literal"><span class="pre">align*</span></code>, and <code class="docutils literal"><span class="pre">align</span></code>.
-(DocOnce performs extensions to <code class="docutils literal"><span class="pre">sphinx</span></code>, <code class="docutils literal"><span class="pre">ipynb</span></code>,
+<li>If you want LaTeX math blocks to work with <code class="docutils literal"><span class="pre">latex</span></code>, <code class="docutils literal"><span class="pre">html</span></code>, <code class="docutils literal"><span class="pre">sphinx</span></code>,
+<code class="docutils literal"><span class="pre">markdown</span></code>, and <code class="docutils literal"><span class="pre">ipynb</span></code>, it is recommended to use only
+the following equation environments: <code class="docutils literal"><span class="pre">\[</span> <span class="pre">...</span> <span class="pre">\]</span></code>,
+<code class="docutils literal"><span class="pre">equation*</span></code>, <code class="docutils literal"><span class="pre">equation</span></code>, <code class="docutils literal"><span class="pre">align*</span></code>, <code class="docutils literal"><span class="pre">align</span></code>. <code class="docutils literal"><span class="pre">alignat*</span></code>, <code class="docutils literal"><span class="pre">alignat</span></code>.
+Other environments, such as <code class="docutils literal"><span class="pre">split</span></code>, <code class="docutils literal"><span class="pre">multiline</span></code>, <code class="docutils literal"><span class="pre">gather</span></code> are
+supported in modern MathJax in HTML and Sphinx, but may face
+rendering problems (to a larger extent than <code class="docutils literal"><span class="pre">equation</span></code> and <code class="docutils literal"><span class="pre">align</span></code>).
+DocOnce performs extensions to <code class="docutils literal"><span class="pre">sphinx</span></code>, <code class="docutils literal"><span class="pre">ipynb</span></code>,
 and other formats such that
-labels in <code class="docutils literal"><span class="pre">align</span></code> environments work well.)
-This may feel restrictive to LaTeX writers who are used to
-<code class="docutils literal"><span class="pre">split</span></code>, <code class="docutils literal"><span class="pre">aligned</span></code>, <code class="docutils literal"><span class="pre">alignat</span></code>, and other environments - you must rewrite to
-<code class="docutils literal"><span class="pre">align</span></code> and use a label for each equation, or use <code class="docutils literal"><span class="pre">\nonumber\\</span></code>
-if a line should be without equation number (<code class="docutils literal"><span class="pre">align</span></code> with two <code class="docutils literal"><span class="pre">&amp;</span></code> for
-alignments on each line works).</li>
+labels in <code class="docutils literal"><span class="pre">align</span></code> and <code class="docutils literal"><span class="pre">alignat</span></code> environments work well.
+If you face problems with fancy LaTeX equation environments in
+web formats, try rewriting with plain <code class="docutils literal"><span class="pre">align</span></code>, <code class="docutils literal"><span class="pre">nonumber</span></code>, etc.</li>
 <li>Do not use comments inside equations.</li>
 <li>Newcommands in mathematical formulas are allowed, but not in
 the running text. Newcommands must be defined in files with names
