@@ -236,6 +236,10 @@ the result of running `mako` is available in
 `tmp_mako__mydoc.do.txt`. By examining these files one can see exactly
 what the preprocessors have done.
 
+The command-line arguments `--no_preprocess` and `--no_mako` turn off
+running `preprocess` and `mako`, respectively.
+
+
 === Variable Substition with Preprocessors ===
 
 A variable `VAR=value` given on the command line (or `-DVar=value`) can
@@ -256,10 +260,9 @@ label{do2any:inlinecomments}
 
 idx{inline comments}
 
-The command-line arguments `--no_preprocess` and `--no_mako` turn off
-running `preprocess` and `mako`, respectively.
+Inline comments (inside square brackets)
+in the text are removed from the output by
 
-Inline comments in the text are removed from the output by
 !bc sys
 Terminal> doconce format latex mydoc --skip_inline_comments
 !ec
@@ -342,9 +345,15 @@ Other useful options are
    (e.g., sections become subsections or chapters).
  * `--tables2csv` translates each table to a CSV file.
  * `--short_title=X` sets a short title `X` for the document.
+ * `--toc_depth=X`: controls the depth of the table of contents
+   in documents. Default value of `X` is 3, meaning chapters,
+   sections, and subsections. `X` as 0 gives the table of contents as a
+   nested list in Bootstrap styles.
 
 Many more options, depending on the output format, are listed in the
-following sections.
+following sections. A list of all options is otbained by running
+`doconce format --help` (or preferably
+`doconce format --help | less` since the output is extensive).
 
 ======= HTML =======
 label{do2any:html}
@@ -484,9 +493,9 @@ the DocOnce file (i.e., the DocOnce source is in `basename.do.txt`).
 
 An HTML version of a DocOnce document is often made in different styles,
 calling for a need to rename the HTML output file. This is conveniently
-done by the `--html_output=basename` option, where `basename` is the
+done by the `--html_output=mydoc` option, where `mydoc` is the
 filestem of the associated HTML files. The
-`.basename_html_file_collection` file lists all the needed files
+`.mydoc_html_file_collection` file lists all the needed files
 for the HTML document. Here is an example on making three versions of
 the HTML document: `mydoc_bloodish.html`, `mydoc_solarized`, and
 `mydoc_vagrant`.
@@ -521,7 +530,9 @@ The type of URL is set with the `--html_raw_github_url=...` option:
 
 ===== Other HTML options =====
 
-Options for Bootstrap styles:
+The Bootstrap family of styles have become very popular since they
+provide responsive pages for phones and small tablets.
+There are several specific options for Bootstrap styles:
 
  * `--html_code_style=on,off,inherit,transparent`: control the style of
    inline verbatim code `code` tags. With `off`, `inherit`, or `transparent`
@@ -554,10 +565,6 @@ Other options:
    by comma and valid names are `email`, `facebook`, `google+`,
    `linkedin`, `twitter`, and `print`. The URL `http://...` must be
    the URL where the document is published.
- * `--toc_depth=X`: controls the depth of the table of contents
-   in documents. Default value of `X` is 3, meaning chapters,
-   sections, and subsections. `X` as 0 gives the table of contents as a
-   nested list in Bootstrap styles.
  * `--html_toc_indent=X`: indent sections/subsections `X` spaces in the table
    of contents.
  * `--html_body_font=`: specify font for text body. The value `?` lists
@@ -692,6 +699,7 @@ an iPad you can to that by the following steps.
 
 # #endif
 
+[[[
 
 ======= Pandoc and Markdown =======
 label{do2any:pandoc}
@@ -1283,9 +1291,11 @@ idx{output format!ePub}
 
 PDF (as generated from LaTeX above) can be read on most devices today.
 However, for Kindle and other devices specialized for e-books you
-need to convert to their format. The "Calibre": "http://calibre-ebook.com/"
+need to convert to ePub or MOBI. The "Calibre": "http://calibre-ebook.com/"
 program can produce epub, mobi, and other e-book formats from PDF,
-see a "description": "http://www.dedoimedo.com/computers/latex-lyx-e-books.html".
+see a "description": "http://www.dedoimedo.com/computers/latex-lyx-e-books.html". Unfortunately, Calibre cannot deal satisfactory with LaTeX math so
+the usefulness for DocOnce writers is limited.
+See Section ref{mathtext} for more information on how to generate ePub.
 
 ===== Microsoft Word or LibreOffice =====
 label{do2any:MS:ooffice}

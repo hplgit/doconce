@@ -2764,6 +2764,23 @@ Equations in solutions can then be given their own numbers (here, `11.5`
 could be chapter 11, section 5). One can use a Mako variable to automatically
 assign appropriate numbers in the `tag` command.
 
+===== Typesetting of solutions =====
+
+There is an option `--exercise_solution=` option for controling the
+typesetting of solutions. Two values are legal: `paragraph` means that
+the solution just gets a paragraph heading, while `admon` means that
+the solution is typeset within a notice admonition environment (`!bnotice`).
+The latter may look nicer in LaTeX to better divide the visual impression
+between the text of the exercise and the (large) text of its solution.
+
+Sometimes the standard admons are not so suitable for typesetting
+solutions because they may have a background color, or they may be to
+eye catching. Here is a trick for LaTeX output where we 1) change the
+admon environment to be used for solutions to the question admon, 2)
+change the parameters in the question admon so there is no background
+and a thinner frame, 3) typeset code inside solution environment with
+simple verbatim font and no colors.
+
 # #ifdef EXTRA
 ===== Where to Put Exercises =====
 
@@ -3523,6 +3540,11 @@ topic appear in URL:
 to XML and XHTML and can be a good starting point for further
 conversion to ePub, but the plain `latexml` fails miserably on LaTeX
 documents generated from DocOnce (the present manual to be precise).
+
+Sphinx is seemingly good support for compiling the document to
+the ePub and MOBI formats, but this author has not yet tried it out.
+One should definitely test Sphinx along with `ebookmaker.py` (see next
+paragraph) if the ePub or MOBI is a requested format.
 
 What has been successfully used to convert DocOnce documents with
 mathematics and code to ePub is

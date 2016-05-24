@@ -6,7 +6,7 @@ from common import plain_exercise, table_analysis, \
      online_python_tutor, envir_delimiter_lines, safe_join, \
      insert_code_and_tex, is_file_or_url, chapter_pattern
 from misc import option, _abort, replace_code_command
-from doconce import errwarn
+from doconce import errwarn, debugpr
 additional_packages = ''  # comma-sep. list of packages for \usepackage{}
 
 include_numbering_of_exercises = True
@@ -219,7 +219,9 @@ def interpret_latex_code_style():
                 _abort()
             envir, spec = part.split(':')
             if envir not in legal_envirs:
-                errwarn('*** warning: not registered code environment "%s"' % envir)
+                if option('latex_admon_envir_map=', None) is None:
+                    errwarn('*** warning: not registered code environment "%s"' % envir)
+                # else: user may have provided the code style envir definition
             pkg, bg, style = interpret(spec)
             d[envir] = dict(package=pkg, background=bg, style=style)
     if 'default' not in d:
@@ -291,8 +293,8 @@ identifierstyle=\color{darkorange},
 keywordstyle=\color{black},
 commentstyle=\color{darkgreen},
 stringstyle=\color{myteal},
-%identifierstyle=\color{blue}\bfseries,
 identifierstyle=\color{darkblue},
+%identifierstyle=\color{blue}\bfseries,
 }
 """,
        yellow2_fb=r"""
@@ -512,9 +514,43 @@ def latex_code(filestr, code_blocks, code_block_types,
         tex_blocks[i] = re.sub(r'([^\\])label', r'\g<1>\\label',
                                tex_blocks[i])
 
+    # Can map code envirs inside admons to new tyepes (e.g. to remove
+    # background colors in code that don't match background of admon)
+    code_envir_transform = option('latex_admon_envir_map=', None)
+    admon_envir_mapping = {}
+    if code_envir_transform.isdigit():
+        admon_envir_mapping = {'all': code_envir_transform}
+    else:
+        # Individual mapping for each possible envir
+        admon_envir_mapping = dict([pair.split('-') for pair in code_envir_transform.split(',')])
     lines = filestr.splitlines()
-    # Add Online Python Tutor URL before code blocks with pyoptpro code
+    inside_admon = False
+    admons = 'notice', 'summary', 'warning', 'question', 'block'
     for i in range(len(lines)):
+        for admon in admons:
+            if lines[i].startswith('!b' + admon):
+                inside_admon = True
+            if lines[i].startswith('!e' + admon):
+                inside_admon = False
+
+        # Map envir if inside admon
+        if _CODE_BLOCK in lines[i]:
+            _envir = lines[i].split()[-1]
+            _block_no = int(lines[i].split()[0])
+            if _CODE_BLOCK not in _envir:  # has environment?
+                if 'all' in admon_envir_mapping:
+                    new_envir = _envir + admon_envir_mapping['all']
+                    lines[i] = lines[i].replace(_envir, new_envir)
+                    code_block_types[_block_no] = new_envir
+                else:
+                    if _envir not in admon_envir_mapping:
+                        print '*** error: requested %s to be replaced by something else inside admons, but\n    envir %s is not defined as part of --latex_admon_envir_map=...'
+                        _abort()
+                    new_envir = admon_envir_mapping[_envir]
+                    lines[i] = lines[i].replace(_envir, new_envir)
+                    code_block_types[_block_no] = new_envir
+
+        # Add Online Python Tutor URL before code blocks with pyoptpro code
         if _CODE_BLOCK in lines[i]:
             words = lines[i].split()
             n = int(words[0])
@@ -526,13 +562,18 @@ def latex_code(filestr, code_blocks, code_block_types,
                 lines[i] = lines[i].replace(' pyoptpro', ' pypro') + post + '\n'
 
     filestr = safe_join(lines, '\n')
-    filestr = insert_code_and_tex(filestr, code_blocks, tex_blocks, format)
-
-    filestr = re.sub(r'^!bt\n', '', filestr, flags=re.MULTILINE)
-    filestr = re.sub(r'!et\n', '', filestr)
 
     # Check for misspellings
     envirs = 'pro pypro cypro cpppro cpro fpro plpro shpro mpro cod pycod cycod cppcod ccod fcod plcod shcod mcod htmlcod htmlpro latexcod latexpro rstcod rstpro xmlcod xmlpro cppans pyans fans bashans swigans uflans sni dat dsni csv txt sys slin ipy rpy plin ver warn rule summ ccq cc ccl pyshell pyoptpro pyscpro ipy do'.split()
+    # Add user's potential new envirs inside admons
+    new_envirs = []
+    for envir in envirs:
+        if envir in admon_envir_mapping:
+            new_envirs.append(admon_envir_mapping[envir])
+        if 'all' in admon_envir_mapping:
+            new_envirs.append(envir + admon_envir_mapping['all'])
+    envirs += new_envirs
+    # Add all possible pygments envirs
     from common import has_custom_pygments_lexer, get_legal_pygments_lexers
     if 'ipy' in code_block_types:
         has_custom_pygments_lexer('ipy')
@@ -541,12 +582,15 @@ def latex_code(filestr, code_blocks, code_block_types,
     envirs += get_legal_pygments_lexers()
     for envir in code_block_types:
         if envir and not envir.endswith('hid'):
-            if envir[-1].isdigit():
-                # strip off digit that can occur inside admons if the
-                # option --latex_admon_envir_map=X is used
-                envir = envir[:-1]
             if envir not in envirs:
                 errwarn('Warning: found "!bc %s", but %s is not a standard predefined code environment' % (envir, envir))
+
+    filestr = insert_code_and_tex(filestr, code_blocks, tex_blocks, format)
+    if code_envir_transform is not None:
+        debugpr('file after inserting code/tex blocks, but before translating environments', filestr)
+
+    filestr = re.sub(r'^!bt\n', '', filestr, flags=re.MULTILINE)
+    filestr = re.sub(r'!et\n', '', filestr)
 
     # --- Final fixes for latex format ---
 
@@ -2266,22 +2310,28 @@ def latex_%(_admon)s(text_block, format, title='%(_Admon)s', text_size='normal')
     if title == 'Block':  # block admon has no default title
         title = ''
 
+    # Map code environments to new names (option) if we want to, e.g.,
+    # remove background colors from code inside admons. The code below
+    # is only used if doconce ptex2tex (or ptext2tex) is also used,
+    # but even then the substitution is already done in latex_code.
+    # if --latex_code_style=... is used, all code envirs are already
+    # substituted when we reach this stage.
     code_envir_transform = option('latex_admon_envir_map=', None)
-    if code_envir_transform:
+    if code_envir_transform is not None:
         envirs = re.findall(r'^\\b([A-Za-z0-9_]+)$', text_block, flags=re.MULTILINE)
         envirs = list(set(envirs))  # remove multiple items
         if code_envir_transform.isdigit():
-            _envir_mapping = {}
+            admon_envir_mapping = {}
             # Just append the digit(s)
             for envir in envirs:
-                _envir_mapping[envir] = envir + code_envir_transform
+                admon_envir_mapping[envir] = envir + code_envir_transform
         else:
             # Individual mapping for each possible envir
-            _envir_mapping = dict([pair.split('-') for pair in code_envir_transform.split(',')])
+            admon_envir_mapping = dict([pair.split('-') for pair in code_envir_transform.split(',')])
         for envir in envirs:
+            # \bpypro -> \bpypro2 or \bpypro -> \bpyyellow
             text_block = re.sub(r'\\(b|e)%%s' %% envir,
-            r'\\\g<1>%%s' %% _envir_mapping.get(envir, envir), text_block)
-
+            r'\\\g<1>%%s' %% admon_envir_mapping.get(envir, envir), text_block)
 
     latex_admon = option('latex_admon=', 'mdfbox')
     if option('latex_title_layout=', '') == 'beamer':
@@ -2361,7 +2411,7 @@ def latex_%(_admon)s(text_block, format, title='%(_Admon)s', text_size='normal')
         text = r'''
 \begin{%(_admon)s_%%(latex_admon)sadmon}[%%(title)s]
 %%(text_block)s
-\end{%(_admon)s_%%(latex_admon)sadmon}
+\end{%(_admon)s_%%(latex_admon)sadmon} %%%% title: %%(title)s
 
 ''' %% vars()
         figname = get_admon_figname(latex_admon, '%(_admon)s')

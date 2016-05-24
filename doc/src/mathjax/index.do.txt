@@ -10,4 +10,4 @@ MathJax in HTML and Sphinx.
  * "HTML": "math_test_html.html"
  * "Sphinx": "html/math_test.html"
  * "HTML generated via Pandoc and Markdown": "math_test_pandoc.html"
- * "Jupyter Notebook": "math_test.ipynb"
+ * "Jupyter Notebook": "https://github.com/hplgit/doconce/blob/master/doc/pub/mathjax/math_test.ipynb"

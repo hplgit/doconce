@@ -437,7 +437,7 @@ DocOnce replaces newcommands by the actual latex code when requesting
 the sphinx output format.
 # #endif
 
-Somewhat nicer fonts appear with the more modern `\bm` command:
+Somewhat nicer fonts may appear with the more modern `\bm` command:
 
 !bc
 |bt
