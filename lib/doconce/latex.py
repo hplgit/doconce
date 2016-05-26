@@ -1208,17 +1208,27 @@ def latex_figure(m):
     else:
         # drop caption and place figure inline
         result = r"""
+
+\vspace{6mm}
+
 \begin{center}  %% inline figure
   %s
 \end{center}
+
+\vspace{6mm}
+
 """ % (includeline)
         # Use this instead (without centering):
         result = r"""
 
+\vspace{6mm}
+
 %% inline figure
 %s
 
-""" % (includeline)
+\vspace{6mm}
+
+""" % (includeline) # <linebreak> will be substituted later
     return result
 
 def latex_movie(m):
