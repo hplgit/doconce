@@ -500,13 +500,7 @@ before each code snippet with a section-based counter, the filename
 and some title for the code. Then we want double lines before and
 after the code snippet:
 
-<linebreak>
-<linebreak>
-
 FIGURE: [fig/userdef_code_envir, width=500 frac=0.7]
-
-<linebreak>
-<linebreak>
 
 This is fairly easy: we define a *user-defined environment* in
 DocOnce, here called `code` and provide a Python module that translates

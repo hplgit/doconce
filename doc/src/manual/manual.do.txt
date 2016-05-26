@@ -18,11 +18,8 @@ idx{doconce}
 
 DocOnce has been used as writing platform for several books:
 
-<linebreak>
-
 FIGURE: [fig/doconce_books, width=600 frac=0.8]
 
-<linebreak>
 # #endif
 
 !split
@@ -2845,8 +2842,21 @@ doconce format pdflatex mydoc \
 (Note that we had to split the `--latex_code_style=` option over
 several lines -- everything should be on one line in the compilation script!)
 
+The `--latex_admon_envir_map=2` option renames an environment like `pycod`
+inside an admon to `pycod2`, and the `--latex_code_style=` option defines
+the new `pycod2` environment to be bluegray syntax highlighting, but no
+background color. Note that this applies to all question admons, but
+usually there are few question admons, so very often this will be
+a specific typesetting for solutions to exercises.
+
+Note that when you use `--exercise_solution=admon` and
+`--latex_admon=mdfbox` (default), you cannot have figures with
+captions inside the admons, i.e., inside `!bsol` and `!esol` in
+the present problem setting. Only *inline figures* will work.
+Write these as `FIGURE:` the usual way, but drop the caption.
+
 The current example shows how we can tailor DocOnce output to a level
-far beyond what DocOnce itself can output.
+far beyond what DocOnce itself can output!
 
 # #ifdef EXTRA
 ===== Where to Put Exercises =====
@@ -4337,13 +4347,7 @@ A complete example showing how one can create tailored environments
 for computer code, using `--latex_code_style`,
 in particular the following one (with a caption),
 
-<linebreak>
-<linebreak>
-
 FIGURE: [fig/userdef_code_envir.png, width=400 frac=0.5]
-
-<linebreak>
-<linebreak>
 
 # #if FORMAT in ("latex", "pdflatex")
 \noindent

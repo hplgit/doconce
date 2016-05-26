@@ -1569,7 +1569,10 @@ def html_figure(m):
        return s
     else:
        # Just insert image file when no caption
-       return '<center><p>%s</p></center>' % image
+       #s = '<center><p>%s</p></center>' % image # without <linebreak>
+       # with two <linebreak>:
+       s = '<br /><br /><center><p>%s</p></center><br /><br />' % image
+       return s
 
 
 def html_footnotes(filestr, format, pattern_def, pattern_footnote):
