@@ -26,26 +26,8 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/sidebar.js"></script>
-
-        <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
-        <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
-
-        <script>sagecell.makeSagecell({inputLocation: ".sage"});</script>
-
-        <style type="text/css">
-                .sagecell .CodeMirror-scroll {
-                        overflow-y: hidden;
-                        overflow-x: auto;
-                }
-                .sagecell .CodeMirror {
-                        height: auto;
-                }
-        </style>
-
-    
     <link rel="top" title="How various formats can deal with LaTeX math" href="index.html" />
-    <link rel="prev" title="How various formats can deal with LaTeX math" href="index.html" />
- 
+    <link rel="prev" title="How various formats can deal with LaTeX math" href="index.html" /> 
   
        <style type="text/css">
          div.admonition {
@@ -82,7 +64,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">May 21, 2016</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">May 25, 2016</td>
 </tr>
 </tbody>
 </table>
@@ -188,18 +170,38 @@ The generated sphinx code in the present case is</p>
 sphinx as nicely aligned equations without numbers (i.e., as if
 we had used the <code class="docutils literal"><span class="pre">align*</span></code> environment):</p>
 <div class="math">
-\[\begin{split}\begin{align}
-u(t)&amp;=e^{-at}
-\\\
-v(t) - 1 &amp;= \frac{du}{dt}
-\
-\end{align}\end{split}\]</div>
-<p><strong>Test 5: Multiple, aligned equations without label.</strong>
-In LaTeX,
-equations within an <code class="docutils literal"><span class="pre">align</span></code> environment is automatically given numbers.
+\[\begin{equation}
+u(t)=e^{-at}
+\\]</div>
+<p>end{equation}</p>
+<div class="math">
+\[ \begin{align}\begin{aligned}        v(t) - 1 = \frac{du}{dt}
+        \\\__Test 5: Multiple, aligned equations without label.__ In LaTeX,
+equations within an `align` environment is automatically given numbers.
 To ensure that an html document with MathJax gets the same equation numbers
 as its latex/pdflatex companion, DocOnce generates labels in equations where
-there is no label prescribed. For example,</p>
+there is no label prescribed. For example,
+!bc latexcod
+!bt\\\begin{split}u(t)&amp;=e^{-at}
+\\
+v(t) - 1 &amp;= \frac{du}{dt}\end{split}\\!et
+!ec
+is edited to something like
+!bc latexcod
+!bt\\\begin{split}u(t)&amp;=e^{-at}
+\\
+v(t) - 1 &amp;= \frac{du}{dt}\end{split}\\
+!et
+!ec
+and the html output gets the two equation numbered.
+Note that in sphinx the alignment is removed and separate `equation`
+environments are used to get numbered equations in equation systems, cf. the
+box above.
+!bt\\u(t)=e^{-at}\end{aligned}\end{align} \]</div>
+<div class="math" id="equation-_auto1">
+<span class="eqno">(5)</span>\[     v(t) - 1 = \frac{du}{dt}\]</div>
+<p><strong>Test 6: Multiple, aligned equations with multiple alignments.</strong>
+The <code class="docutils literal"><span class="pre">align</span></code> environment can be used with two <code class="docutils literal"><span class="pre">&amp;</span></code> alignment characters, e.g.,</p>
 <div class="highlight-latex"><div class="highlight"><pre><span></span>!bt
 <span class="k">\begin</span><span class="nb">{</span>align<span class="nb">}</span>
 u(t)<span class="nb">&amp;</span>=e<span class="nb">^{</span>-at<span class="nb">}</span>
@@ -209,7 +211,15 @@ v(t) - 1 <span class="nb">&amp;</span>= <span class="k">\frac</span><span class=
 !et
 </pre></div>
 </div>
-<p>is edited to something like</p>
+<p>The result in sphinx becomes</p>
+<div class="math" id="equation-_auto2">
+<span class="eqno">(6)</span>\[     \frac{\partial u}{\partial t} = \nabla^2 u,  x\in (0,L),
+     \ t\in (0,T]\]</div>
+<div class="math" id="equation-_auto3">
+<span class="eqno">(7)</span>\[     u(0,t) = u_0(x),  x\in [0,L]\]</div>
+<p>In sphinx, all alignments are removed, so this double use of <code class="docutils literal"><span class="pre">&amp;</span></code>
+results in ugly typesetting!</p>
+<p>A better solution is usually to use an <code class="docutils literal"><span class="pre">alignat</span></code> environment:</p>
 <div class="highlight-latex"><div class="highlight"><pre><span></span>!bt
 <span class="k">\begin</span><span class="nb">{</span>align<span class="nb">}</span>
 u(t)<span class="nb">&amp;</span>=e<span class="nb">^{</span>-at<span class="nb">}</span>
@@ -220,49 +230,12 @@ label<span class="nb">{_</span>auto6<span class="nb">}</span>
 !et
 </pre></div>
 </div>
-<p>and the html output gets the two equation numbered.
-Note that in sphinx the alignment is removed and separate <code class="docutils literal"><span class="pre">equation</span></code>
-environments are used to get numbered equations in equation systems, cf. the
-box above.</p>
-<div class="math" id="equation-_auto1">
-<span class="eqno">(5)</span>\[     u(t)=e^{-at}\]</div>
-<div class="math" id="equation-_auto2">
-<span class="eqno">(6)</span>\[     v(t) - 1 = \frac{du}{dt}\]</div>
-<p><strong>Test 6: Multiple, aligned equations with multiple alignments.</strong>
-The <code class="docutils literal"><span class="pre">align</span></code> environment can be used with two <code class="docutils literal"><span class="pre">&amp;</span></code> alignment characters, e.g.,</p>
-<div class="highlight-latex"><div class="highlight"><pre><span></span>!bt
-<span class="k">\begin</span><span class="nb">{</span>align<span class="nb">}</span>
-<span class="k">\frac</span><span class="nb">{</span><span class="k">\partial</span> u<span class="nb">}{</span><span class="k">\partial</span> t<span class="nb">}</span> <span class="nb">&amp;</span>= <span class="k">\nabla</span><span class="nb">^</span>2 u, <span class="nb">&amp;</span> x<span class="k">\in</span> (0,L),
-<span class="k">\ </span>t<span class="k">\in</span> (0,T]<span class="k">\\</span>
-u(0,t) <span class="nb">&amp;</span>= u<span class="nb">_</span>0(x), <span class="nb">&amp;</span> x<span class="k">\in</span> [0,L]
-<span class="k">\end</span><span class="nb">{</span>align<span class="nb">}</span>
-!et
-</pre></div>
-</div>
-<p>The result in sphinx becomes</p>
-<div class="math" id="equation-_auto3">
-<span class="eqno">(7)</span>\[     \frac{\partial u}{\partial t} = \nabla^2 u,  x\in (0,L),
-     \ t\in (0,T]\]</div>
-<div class="math" id="equation-_auto4">
-<span class="eqno">(8)</span>\[     u(0,t) = u_0(x),  x\in [0,L]\]</div>
-<p>In sphinx, all alignments are removed, so this double use of <code class="docutils literal"><span class="pre">&amp;</span></code>
-results in ugly typesetting!</p>
-<p>A better solution is usually to use an <code class="docutils literal"><span class="pre">alignat</span></code> environment:</p>
-<div class="highlight-latex"><div class="highlight"><pre><span></span>!bt
-<span class="k">\begin</span><span class="nb">{</span>alignat<span class="nb">}{</span>2<span class="nb">}</span>
-<span class="k">\frac</span><span class="nb">{</span><span class="k">\partial</span> u<span class="nb">}{</span><span class="k">\partial</span> t<span class="nb">}</span> <span class="nb">&amp;</span>= <span class="k">\nabla</span><span class="nb">^</span>2 u, <span class="nb">&amp;</span> x<span class="k">\in</span> (0,L),
-<span class="k">\ </span>t<span class="k">\in</span> (0,T]<span class="k">\\</span>
-u(0,t) <span class="nb">&amp;</span>= u<span class="nb">_</span>0(x), <span class="nb">&amp;</span> x<span class="k">\in</span> [0,L]
-<span class="k">\end</span><span class="nb">{</span>alignat<span class="nb">}</span>
-!et
-</pre></div>
-</div>
 <p>with the rendered result</p>
-<div class="math" id="equation-_auto5">
-<span class="eqno">(9)</span>\[     \frac{\partial u}{\partial t} = \nabla^2 u,  x\in (0,L),
+<div class="math" id="equation-_auto4">
+<span class="eqno">(8)</span>\[     \frac{\partial u}{\partial t} = \nabla^2 u,  x\in (0,L),
      \ t\in (0,T]\]</div>
-<div class="math" id="equation-_auto6">
-<span class="eqno">(10)</span>\[     u(0,t) = u_0(x),  x\in [0,L]\]</div>
+<div class="math" id="equation-_auto5">
+<span class="eqno">(9)</span>\[     u(0,t) = u_0(x),  x\in [0,L]\]</div>
 <div class="admonition-align-alignat-environments-with-equation-numbers-are-anti-aligned admonition">
 <p class="first admonition-title">align/alignat environments with equation numbers are anti-aligned</p>
 <p class="last">In the <code class="docutils literal"><span class="pre">sphinx</span></code>, <code class="docutils literal"><span class="pre">ipynb</span></code>, and <code class="docutils literal"><span class="pre">pandoc</span></code> output formats, DocOnce rewrites
@@ -283,36 +256,30 @@ u(0,t) &amp;= u_0(x), &amp; x\in [0,L]
 <p>Note that if DocOnce had not rewritten of the above equations, they would be
 rendered similarly in sphinx as</p>
 <div class="math">
-\[\begin{split}\begin{alignat}{2}
-\frac{\partial u}{\partial t} &amp;= \nabla^2 u, &amp; x\in (0,L),
-\ t\in (0,T]\\
-u(0,t) &amp;= u_0(x), &amp; x\in [0,L]
-\end{alignat}\end{split}\]</div>
-<p>That is, the equation numbers are gone.</p>
-<p><strong>Test 7: Multiple, aligned eqnarray equations without label.</strong>
-Let us
-try the old <code class="docutils literal"><span class="pre">eqnarray*</span></code> environment.</p>
-<div class="highlight-latex"><div class="highlight"><pre><span></span>!bt
-<span class="k">\begin</span><span class="nb">{</span>eqnarray*<span class="nb">}</span>
-u(t)<span class="nb">&amp;</span>=<span class="nb">&amp;</span> e<span class="nb">^{</span>-at<span class="nb">}</span><span class="k">\\</span>
-v(t) - 1 <span class="nb">&amp;</span>=<span class="nb">&amp;</span> <span class="k">\frac</span><span class="nb">{</span>du<span class="nb">}{</span>dt<span class="nb">}</span>
-<span class="k">\end</span><span class="nb">{</span>eqnarray*<span class="nb">}</span>
-!et
-</pre></div>
-</div>
-<p>which results in</p>
-<div class="math">
-\[\begin{split}u(t) &amp;=  e^{-at}\\
-v(t) - 1  &amp;=  \frac{du}{dt}\end{split}\]</div>
+\[\begin{equation}
+\frac{\partial u}{\partial t} = \nabla^2 u,  x\in (0,L),
+\ t\in (0,T]\]</div>
+<p>end{equation}</p>
+<div class="math" id="equation-_auto6">
+<span class="eqno">(10)</span>\[ \begin{align}\begin{aligned}             u(0,t) = u_0(x),  x\in [0,L]\\
+     That is, the equation numbers are gone.
+     __Test 7: Multiple, aligned eqnarray equations without label.__ Let us
+     try the old `eqnarray*` environment.
+     !bc latexcod
+     !bt\\\begin{split}     u(t) &amp;=  e^{-at}\\
+     v(t) - 1  &amp;=  \frac{du}{dt}\end{split}\\     !et
+     !ec
+     which results in
+     !bt\\\begin{split}     u(t) &amp;=  e^{-at}\\
+     v(t) - 1  &amp;=  \frac{du}{dt}\end{split}\end{aligned}\end{align} \]</div>
 <p><strong>Test 8: Multiple, eqnarrayed equations with label.</strong>
 Here we use <code class="docutils literal"><span class="pre">eqnarray</span></code> with labels:</p>
 <div class="highlight-latex"><div class="highlight"><pre><span></span>!bt
-<span class="k">\begin</span><span class="nb">{</span>eqnarray<span class="nb">}</span>
-u(t)<span class="nb">&amp;</span>=<span class="nb">&amp;</span> e<span class="nb">^{</span>-at<span class="nb">}</span>
-label<span class="nb">{</span>eq2c<span class="nb">}</span><span class="k">\\</span>
-v(t) - 1 <span class="nb">&amp;</span>=<span class="nb">&amp;</span> <span class="k">\frac</span><span class="nb">{</span>du<span class="nb">}{</span>dt<span class="nb">}</span>
-label<span class="nb">{</span>eq3c<span class="nb">}</span>
-<span class="k">\end</span><span class="nb">{</span>eqnarray<span class="nb">}</span>
+<span class="k">\begin</span><span class="nb">{</span>align<span class="nb">}</span>
+<span class="k">\frac</span><span class="nb">{</span><span class="k">\partial</span> u<span class="nb">}{</span><span class="k">\partial</span> t<span class="nb">}</span> <span class="nb">&amp;</span>= <span class="k">\nabla</span><span class="nb">^</span>2 u, <span class="nb">&amp;</span> x<span class="k">\in</span> (0,L),
+<span class="k">\ </span>t<span class="k">\in</span> (0,T]<span class="k">\\</span>
+u(0,t) <span class="nb">&amp;</span>= u<span class="nb">_</span>0(x), <span class="nb">&amp;</span> x<span class="k">\in</span> [0,L]
+<span class="k">\end</span><span class="nb">{</span>align<span class="nb">}</span>
 !et
 </pre></div>
 </div>
@@ -329,12 +296,11 @@ The rule of thumb is to use <code class="docutils literal"><span class="pre">ali
 <p><strong>Test 9: The ``multiline`` environment with label and number.</strong>
 The LaTeX code</p>
 <div class="highlight-latex"><div class="highlight"><pre><span></span>!bt
-<span class="k">\begin</span><span class="nb">{</span>multline<span class="nb">}</span>
-<span class="k">\int</span><span class="nb">_</span>a<span class="nb">^</span>b f(x)dx = <span class="k">\sum</span><span class="nb">_{</span>j=0<span class="nb">}^{</span>n<span class="nb">}</span> <span class="k">\frac</span><span class="nb">{</span>1<span class="nb">}{</span>2<span class="nb">}</span> h(f(a+jh) +
-f(a+(j+1)h)) <span class="k">\\</span>
-=<span class="k">\frac</span><span class="nb">{</span>h<span class="nb">}{</span>2<span class="nb">}</span>f(a) + <span class="k">\frac</span><span class="nb">{</span>h<span class="nb">}{</span>2<span class="nb">}</span>f(b) + <span class="k">\sum</span><span class="nb">_{</span>j=1<span class="nb">}^</span>n f(a+jh)
-label<span class="nb">{</span>multiline:eq1<span class="nb">}</span>
-<span class="k">\end</span><span class="nb">{</span>multline<span class="nb">}</span>
+<span class="k">\begin</span><span class="nb">{</span>alignat<span class="nb">}{</span>2<span class="nb">}</span>
+<span class="k">\frac</span><span class="nb">{</span><span class="k">\partial</span> u<span class="nb">}{</span><span class="k">\partial</span> t<span class="nb">}</span> <span class="nb">&amp;</span>= <span class="k">\nabla</span><span class="nb">^</span>2 u, <span class="nb">&amp;</span> x<span class="k">\in</span> (0,L),
+<span class="k">\ </span>t<span class="k">\in</span> (0,T]<span class="k">\\</span>
+u(0,t) <span class="nb">&amp;</span>= u<span class="nb">_</span>0(x), <span class="nb">&amp;</span> x<span class="k">\in</span> [0,L]
+<span class="k">\end</span><span class="nb">{</span>alignat<span class="nb">}</span>
 !et
 </pre></div>
 </div>
@@ -344,8 +310,8 @@ label<span class="nb">{</span>multiline:eq1<span class="nb">}</span>
      f(a+(j+1)h)) \\
      =\frac{h}{2}f(a) + \frac{h}{2}f(b) + \sum_{j=1}^n f(a+jh)\end{split}\]</div>
 <p>and we can hopefully refer to the Trapezoidal rule
-as the formula <a href="#equation-multiline:eq1">(11)</a>.
-The equation number is here placed on the first line, while in MathJax
+as the formula <a href="#equation-multiline:eq1">(11)</a>.</p>
+<p>The equation number is here placed on the first line, while in MathJax
 (html) and latex the number is placed between the two lines, which is
 more correct. The best cross-format solution is to use <code class="docutils literal"><span class="pre">align</span></code> and
 <code class="docutils literal"><span class="pre">\nonumber</span></code> for the first equation.</p>
@@ -353,13 +319,10 @@ more correct. The best cross-format solution is to use <code class="docutils lit
 Although <code class="docutils literal"><span class="pre">align</span></code> can be used to split too long equations, a more obvious
 command is <code class="docutils literal"><span class="pre">split</span></code>:</p>
 <div class="highlight-latex"><div class="highlight"><pre><span></span>!bt
-<span class="k">\begin</span><span class="nb">{</span>equation<span class="nb">}</span>
-<span class="k">\begin</span><span class="nb">{</span>split<span class="nb">}</span>
-<span class="k">\int</span><span class="nb">_</span>a<span class="nb">^</span>b f(x)dx = <span class="k">\sum</span><span class="nb">_{</span>j=0<span class="nb">}^{</span>n<span class="nb">}</span> <span class="k">\frac</span><span class="nb">{</span>1<span class="nb">}{</span>2<span class="nb">}</span> h(f(a+jh) +
-f(a+(j+1)h)) <span class="k">\\</span>
-=<span class="k">\frac</span><span class="nb">{</span>h<span class="nb">}{</span>2<span class="nb">}</span>f(a) + <span class="k">\frac</span><span class="nb">{</span>h<span class="nb">}{</span>2<span class="nb">}</span>f(b) + <span class="k">\sum</span><span class="nb">_{</span>j=1<span class="nb">}^</span>n f(a+jh)
-<span class="k">\end</span><span class="nb">{</span>split<span class="nb">}</span>
-<span class="k">\end</span><span class="nb">{</span>equation<span class="nb">}</span>
+<span class="k">\begin</span><span class="nb">{</span>eqnarray*<span class="nb">}</span>
+u(t)<span class="nb">&amp;</span>=<span class="nb">&amp;</span> e<span class="nb">^{</span>-at<span class="nb">}</span><span class="k">\\</span>
+v(t) - 1 <span class="nb">&amp;</span>=<span class="nb">&amp;</span> <span class="k">\frac</span><span class="nb">{</span>du<span class="nb">}{</span>dt<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>eqnarray*<span class="nb">}</span>
 !et
 </pre></div>
 </div>
@@ -370,10 +333,13 @@ f(a+(j+1)h)) <span class="k">\\</span>
      =\frac{h}{2}f(a) + \frac{h}{2}f(b) + \sum_{j=1}^n f(a+jh)\end{split}\]</div>
 <p><strong>Test 11: Newcommands and boldface bm vs pmb.</strong>
 First we use the plain old pmb package for bold math. The formula</p>
-<div class="highlight-text"><div class="highlight"><pre><span></span>!bt
-\[ \frac{\partial\u}{\partial t} +
-\u\cdot\nabla\u = \nu\nabla^2\u -
-\frac{1}{\varrho}\nabla p,\]
+<div class="highlight-latex"><div class="highlight"><pre><span></span>!bt
+<span class="k">\begin</span><span class="nb">{</span>eqnarray<span class="nb">}</span>
+u(t)<span class="nb">&amp;</span>=<span class="nb">&amp;</span> e<span class="nb">^{</span>-at<span class="nb">}</span>
+label<span class="nb">{</span>eq2c<span class="nb">}</span><span class="k">\\</span>
+v(t) - 1 <span class="nb">&amp;</span>=<span class="nb">&amp;</span> <span class="k">\frac</span><span class="nb">{</span>du<span class="nb">}{</span>dt<span class="nb">}</span>
+label<span class="nb">{</span>eq3c<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>eqnarray<span class="nb">}</span>
 !et
 </pre></div>
 </div>
@@ -388,10 +354,13 @@ get rendered as</p>
 DocOnce replaces newcommands by the actual latex code when requesting
 the sphinx output format.</p>
 <p>Somewhat nicer fonts may appear with the more modern <code class="docutils literal"><span class="pre">\bm</span></code> command:</p>
-<div class="highlight-text"><div class="highlight"><pre><span></span>!bt
-\[ \frac{\partial\ubm}{\partial t} +
-\ubm\cdot\nabla\ubm = \nu\nabla^2\ubm -
-\frac{1}{\varrho}\nabla p,\]
+<div class="highlight-latex"><div class="highlight"><pre><span></span>!bt
+<span class="k">\begin</span><span class="nb">{</span>multline<span class="nb">}</span>
+<span class="k">\int</span><span class="nb">_</span>a<span class="nb">^</span>b f(x)dx = <span class="k">\sum</span><span class="nb">_{</span>j=0<span class="nb">}^{</span>n<span class="nb">}</span> <span class="k">\frac</span><span class="nb">{</span>1<span class="nb">}{</span>2<span class="nb">}</span> h(f(a+jh) +
+f(a+(j+1)h)) <span class="k">\\</span>
+=<span class="k">\frac</span><span class="nb">{</span>h<span class="nb">}{</span>2<span class="nb">}</span>f(a) + <span class="k">\frac</span><span class="nb">{</span>h<span class="nb">}{</span>2<span class="nb">}</span>f(b) + <span class="k">\sum</span><span class="nb">_{</span>j=1<span class="nb">}^</span>n f(a+jh)
+label<span class="nb">{</span>multiline:eq1<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>multline<span class="nb">}</span>
 !et
 </pre></div>
 </div>
@@ -401,7 +370,15 @@ the sphinx output format.</p>
 \boldsymbol{u}\cdot\nabla\boldsymbol{u} = \nu\nabla^2\boldsymbol{u} -
 \frac{1}{\varrho}\nabla p.\]</div>
 <p>Moreover,</p>
-<div class="highlight-text"><div class="highlight"><pre><span></span>$\nabla\boldsymbol{u}(\boldsymbol{x})\cdot\boldsymbol{n}$
+<div class="highlight-text"><div class="highlight"><pre><span></span>!bt
+\begin{equation}
+\begin{split}
+\int_a^b f(x)dx = \sum_{j=0}^{n} \frac{1}{2} h(f(a+jh) +
+f(a+(j+1)h)) \\
+=\frac{h}{2}f(a) + \frac{h}{2}f(b) + \sum_{j=1}^n f(a+jh)
+\end{split}
+\end{equation}
+!et
 </pre></div>
 </div>
 <p>becomes <span class="math">\(\nabla\boldsymbol{u}(\boldsymbol{x})\cdot\boldsymbol{n}\)</span>.</p>
@@ -413,10 +390,10 @@ to <code class="docutils literal"><span class="pre">\boldsymbol</span></code>.</
 <p><strong>Problematic equations.</strong>
 Finally, we collect some problematic formulas in MathJax. They all work
 fine in LaTeX.</p>
-<div class="highlight-text"><div class="highlight"><pre><span></span>!bt
-\[ {\color{blue}\frac{\partial\u}{\partial t}} +
-\nabla\cdot\nabla\u = \nu\nabla^2\u -
-\frac{1}{\varrho}\nabla p,\]
+<div class="highlight-latex"><div class="highlight"><pre><span></span>!bt
+<span class="sb">\[</span><span class="nb"> </span><span class="nv">\frac</span><span class="nb">{</span><span class="nv">\partial\u</span><span class="nb">}{</span><span class="nv">\partial</span><span class="nb"> t} </span><span class="o">+</span><span class="nb"></span>
+<span class="nv">\u\cdot\nabla\u</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="nv">\nu\nabla</span><span class="nb">^</span><span class="m">2</span><span class="nv">\u</span><span class="nb"> </span><span class="o">-</span><span class="nb"></span>
+<span class="nv">\frac</span><span class="nb">{</span><span class="m">1</span><span class="nb">}{</span><span class="nv">\varrho</span><span class="nb">}</span><span class="nv">\nabla</span><span class="nb"> p,</span><span class="s">\]</span>
 !et
 </pre></div>
 </div>
@@ -429,24 +406,124 @@ fine in LaTeX.</p>
 <p>Sometimes one must be extra careful with the LaTeX syntax to get sphinx MathJax
 to render a formula correctly. Consider the combination of a bar over a
 bold math symbol:</p>
-<div class="highlight-text"><div class="highlight"><pre><span></span>!bt
-\[ \bar\f = f_c^{-1}\f,\]
+<div class="highlight-latex"><div class="highlight"><pre><span></span>!bt
+<span class="sb">\[</span><span class="nb"> </span><span class="nv">\frac</span><span class="nb">{</span><span class="nv">\partial\ubm</span><span class="nb">}{</span><span class="nv">\partial</span><span class="nb"> t} </span><span class="o">+</span><span class="nb"></span>
+<span class="nv">\ubm\cdot\nabla\ubm</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="nv">\nu\nabla</span><span class="nb">^</span><span class="m">2</span><span class="nv">\ubm</span><span class="nb"> </span><span class="o">-</span><span class="nb"></span>
+<span class="nv">\frac</span><span class="nb">{</span><span class="m">1</span><span class="nb">}{</span><span class="nv">\varrho</span><span class="nb">}</span><span class="nv">\nabla</span><span class="nb"> p,</span><span class="s">\]</span>
 !et
 </pre></div>
 </div>
 <p>which for sphinx output results in</p>
 <div class="math">
 \[\bar\boldsymbol{f} = f_c^{-1}\boldsymbol{f}.\]</div>
-<p>With sphinx, this formula is not rendered.
-However, using curly braces for the bar,</p>
-<div class="highlight-text"><div class="highlight"><pre><span></span>!bt
-\[ \bar{\f} = f_c^{-1}\f,\]
-!et
+<p>With sphinx, this formula is not rendered. However, using curly braces for the bar,</p>
+<div class="highlight-latex"><div class="highlight"><pre><span></span><span class="s">$</span><span class="nv">\nabla\boldsymbol</span><span class="nb">{u}</span><span class="o">(</span><span class="nv">\boldsymbol</span><span class="nb">{x}</span><span class="o">)</span><span class="nv">\cdot\boldsymbol</span><span class="nb">{n}</span><span class="s">$</span>
 </pre></div>
 </div>
 <p>makes the output correct also for sphinx:</p>
 <div class="math">
 \[\bar{\boldsymbol{f}} = f_c^{-1}\boldsymbol{f},\]</div>
+<p><strong>Matrix Environment.</strong>
+Nested environments with labled pmatrix environments cause wired representation in ipynb and html.</p>
+<div class="highlight-latex"><div class="highlight"><pre><span></span>!bt
+<span class="sb">\[</span><span class="nb"> {</span><span class="nv">\color</span><span class="nb">{blue}</span><span class="nv">\frac</span><span class="nb">{</span><span class="nv">\partial\u</span><span class="nb">}{</span><span class="nv">\partial</span><span class="nb"> t}} </span><span class="o">+</span><span class="nb"></span>
+<span class="nv">\nabla\cdot\nabla\u</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="nv">\nu\nabla</span><span class="nb">^</span><span class="m">2</span><span class="nv">\u</span><span class="nb"> </span><span class="o">-</span><span class="nb"></span>
+<span class="nv">\frac</span><span class="nb">{</span><span class="m">1</span><span class="nb">}{</span><span class="nv">\varrho</span><span class="nb">}</span><span class="nv">\nabla</span><span class="nb"> p,</span><span class="s">\]</span>
+!et
+</pre></div>
+</div>
+<p>which becomes</p>
+<div class="math" id="equation-_auto8">
+<span class="eqno">(13)</span>\[     \begin{pmatrix}
+     G_2 + G_3  -G_3  -G_2  0\]</div>
+<div class="math" id="equation-_auto9">
+<span class="eqno">(14)</span>\[     -G_3  G_3 + G_4  0  -G_4\]</div>
+<div class="math" id="equation-_auto10">
+<span class="eqno">(15)</span>\[     -G_2  0  G_1 + G_2  0\]</div>
+<div class="math" id="equation-_auto11">
+<span class="eqno">(16)</span>\[     0  -G_4  0  G_4
+     \end{pmatrix}
+     =
+     \begin{pmatrix}
+     v_1\]</div>
+<div class="math" id="equation-_auto12">
+<span class="eqno">(17)</span>\[     v_2\]</div>
+<div class="math" id="equation-_auto13">
+<span class="eqno">(18)</span>\[     v_3\]</div>
+<div class="math" id="equation-_auto14">
+<span class="eqno">(19)</span>\[     v_4
+     \end{pmatrix}
+     + \cdots\]</div>
+<div class="math" id="equation-_auto15">
+<span class="eqno">(20)</span>\[     \begin{pmatrix}
+     C_5 + C_6  -C_6  0  0\]</div>
+<div class="math" id="equation-_auto16">
+<span class="eqno">(21)</span>\[     -C_6  C_6  0  0\]</div>
+<div class="math" id="equation-_auto17">
+<span class="eqno">(22)</span>\[     0  0  0  0\]</div>
+<div class="math" id="equation-_auto18">
+<span class="eqno">(23)</span>\[     0  0  0  0
+     \end{pmatrix}
+     \frac{d}{dt} =
+     \begin{pmatrix}
+     v_1\]</div>
+<div class="math" id="equation-_auto19">
+<span class="eqno">(24)</span>\[     v_2\]</div>
+<div class="math" id="equation-_auto20">
+<span class="eqno">(25)</span>\[     v_3\]</div>
+<div class="math" id="equation-_auto21">
+<span class="eqno">(26)</span>\[     v_4
+     \end{pmatrix} =
+     \begin{pmatrix}
+     0\]</div>
+<div class="math" id="equation-_auto22">
+<span class="eqno">(27)</span>\[     0\]</div>
+<div class="math" id="equation-_auto23">
+<span class="eqno">(28)</span>\[     0\]</div>
+<div class="math" id="equation-_auto24">
+<span class="eqno">(29)</span>\[     -i_0
+     \end{pmatrix}\]</div>
+<p>The same matrices without labels seem to translate better:</p>
+<div class="highlight-latex"><div class="highlight"><pre><span></span>!bt
+<span class="sb">\[</span><span class="nb"> </span><span class="nv">\bar\f</span><span class="nb"> </span><span class="o">=</span><span class="nb"> f_c^{</span><span class="o">-</span><span class="m">1</span><span class="nb">}</span><span class="nv">\f</span><span class="nb">,</span><span class="s">\]</span>
+!et
+</pre></div>
+</div>
+<p>which becomes</p>
+<div class="math">
+\[\begin{split}\begin{pmatrix}
+G_2 + G_3 &amp; -G_3 &amp; -G_2 &amp; 0 \\
+-G_3 &amp; G_3 + G_4 &amp; 0 &amp; -G_4 \\
+-G_2 &amp; 0 &amp; G_1 + G_2 &amp; 0 \\
+0 &amp; -G_4 &amp; 0 &amp; G_4
+\end{pmatrix}
+&amp;=
+\begin{pmatrix}
+v_1 \\
+v_2 \\
+v_3 \\
+v_4
+\end{pmatrix}
++ \cdots \\
+\begin{pmatrix}
+C_5 + C_6 &amp; -C_6 &amp; 0 &amp; 0 \\
+-C_6 &amp; C_6 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0
+\end{pmatrix}
+\frac{d}{dt} &amp;=
+\begin{pmatrix}
+v_1 \\
+v_2 \\
+v_3 \\
+v_4
+\end{pmatrix} =
+\begin{pmatrix}
+0 \\
+0 \\
+0 \\
+-i_0
+\end{pmatrix}\end{split}\]</div>
 </div>
 
 

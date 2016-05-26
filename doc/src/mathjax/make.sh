@@ -27,13 +27,13 @@ system doconce format sphinx $name $options
 system doconce sphinx_dir theme=cbc $name
 system python automake_sphinx.py
 
-system doconce format pdflatex $name --no_abort --latex_code_style=pyg $options
+system doconce format pdflatex $name --latex_code_style=pyg $options
 system pdflatex -shell-escape $name
 pdflatex -shell-escape $name
 
 system doconce format html $name --html_output=${name}_html $options
 
-system doconce format ipynb $name $options
+system doconce format ipynb $name --encoding=utf-8 $options
 
 system doconce format pandoc $name $options
 # Do not use pandoc directly because it does not support MathJax sufficiently well

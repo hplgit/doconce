@@ -1,0 +1,258 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Math Test for Use with Slides</title>
+    
+    <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Math Test for Use with Slides" href="index.html" />
+    <link rel="prev" title="Math Test for Use with Slides" href="index.html" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  
+       <style type="text/css">
+         div.admonition {
+           background-color: whiteSmoke;
+           border: 1px solid #bababa;
+         }
+       </style>
+      </head>
+    
+  <body role="document">
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Math Test for Use with Slides"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Math Test for Use with Slides</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="math-test-for-use-with-slides">
+<h1>Math Test for Use with Slides<a class="headerlink" href="#math-test-for-use-with-slides" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Mirco Meiners</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">May 26, 2016</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="network-analysis">
+<h2>Network Analysis<a class="headerlink" href="#network-analysis" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-notice admonition">
+<p class="first admonition-title">Notice</p>
+<p class="last">This presentation is a test vehicle for MathJax test to be used in different types of slides.
+As electrical engineer one needs to do network analysis very often. Such analysis are represented
+by ordenary differential equations or state-space models.</p>
+</div>
+<div class="section" id="network-analysis-of-periodic-signals">
+<h3>Network Analysis of Periodic Signals<a class="headerlink" href="#network-analysis-of-periodic-signals" title="Permalink to this headline">¶</a></h3>
+<p>Node 0:</p>
+<div class="math">
+\[\begin{split}-i_0 - i_1 - i_5 &amp;= 0 \\
+-G_1(v_3-v_0) - C_5 {\frac{d }{d t}}(v_1-v_0) &amp;= i_0\end{split}\]</div>
+<p>Node 1:</p>
+<div class="math">
+\[\begin{split}-i_2 + i_3 + i_5 + i_6 &amp;= 0 \\
+-G_2(v_3-v_1) + G_3(v_1-v_3) + C_5 {\frac{d }{d t}}(v_1-v_0) + C_6 {\frac{d }{d t}}(v_1-v_6) &amp;= 0\end{split}\]</div>
+</div>
+<div class="section" id="ode-system">
+<h3>ODE System<a class="headerlink" href="#ode-system" title="Permalink to this headline">¶</a></h3>
+<div class="math">
+\[\begin{split}\begin{pmatrix}
+G_2 + G_3 &amp; -G_3 &amp; -G_2 &amp; 0 \\
+-G_3 &amp; G_3 + G_4 &amp; 0 &amp; -G_4 \\
+-G_2 &amp; 0 &amp; G_1 + G_2 &amp; 0 \\
+0 &amp; -G_4 &amp; 0 &amp; G_4
+\end{pmatrix}
+\begin{pmatrix}
+v_1 \\
+v_2 \\
+v_3 \\
+v_4
+\end{pmatrix}
+&amp;+ \cdots \\
+\begin{pmatrix}
+C_5 + C_6 &amp; -C_6 &amp; 0 &amp; 0 \\
+-C_6 &amp; C_6 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0
+\end{pmatrix}
+\frac{d}{dt}
+\begin{pmatrix}
+v_1 \\
+v_2 \\
+v_3 \\
+v_4
+\end{pmatrix} &amp;=
+\begin{pmatrix}
+0 \\
+0 \\
+0 \\
+-i_0
+\end{pmatrix}\end{split}\]</div>
+</div>
+<div class="section" id="compact-description">
+<h3>Compact Description<a class="headerlink" href="#compact-description" title="Permalink to this headline">¶</a></h3>
+<div class="math">
+\[\begin{split}\mathbf{A} \mathbf{x} + \mathbf{B} \dot{\mathbf{x}} &amp;= \mathbf{b} \\
+\dot{\mathbf{x}} &amp;= -\mathbf{B}^{-1}\mathbf{A}\mathbf{x} + \mathbf{B}^{-1}\mathbf{b}(t) \\
+&amp;= \mathbf{T}\mathbf{x} + \mathbf{g}(t)\end{split}\]</div>
+</div>
+<div class="section" id="kirchhoff-s-voltage-law">
+<h3>Kirchhoff&#8217;s Voltage Law<a class="headerlink" href="#kirchhoff-s-voltage-law" title="Permalink to this headline">¶</a></h3>
+<p>Choice of independent currents <span class="math">\(I_M\)</span>: <span class="math">\(I_1, I_4, I_7, I_8\)</span></p>
+<p>State-space analysis in laplace domain:</p>
+<div class="math">
+\[\begin{split}\begin{pmatrix}
+I_2 \\
+I_3 \\
+I_5 \\
+I_6 \\
+I_9 \\
+I_{10}
+\end{pmatrix}
+&amp;=
+\begin{pmatrix}
+-1 &amp; -1 &amp; -1 &amp; 0 \\
+-1 &amp; 0 &amp; -1 &amp; 0 \\
+0 &amp; -1 &amp; -1 &amp; 0 \\
+0 &amp; -1 &amp; -1 &amp; 0 \\
+0 &amp; 1 &amp; 1 &amp; -1 \\
+0 &amp; 0 &amp; 1 &amp; -1 \\
+\end{pmatrix}
+\begin{pmatrix}
+I_1 \\
+I_4 \\
+I_7 \\
+I_8
+\end{pmatrix}\end{split}\]</div>
+</div>
+<div class="section" id="loop-equation">
+<h3>Loop Equation<a class="headerlink" href="#loop-equation" title="Permalink to this headline">¶</a></h3>
+<div class="math">
+\[\begin{split}I_1 Z_1 - I_2 Z_2 - I_3 Z_3 &amp;= 0 \\
+U_4 + I_4 Z_4 + I_9 + Z_9 - I_6 Z_6 - I_5 Z_5 - I_2 Z_2 &amp;= 0 \\
+I_7 Z_7 + I_{10} Z_{10} + I_9 Z_9 - I_6 Z_6 - I_5 Z_5 - I_2 Z_2 -I_3 Z_3 &amp;= 0 \\
+U_8 + I_8 Z_8 - I_9 Z_9 - I_{10} Z_{10} &amp;= 0\end{split}\]</div>
+</div>
+<div class="section" id="sorting-and-preperation-for-linear-equation-system">
+<h3>Sorting and Preperation for Linear Equation System<a class="headerlink" href="#sorting-and-preperation-for-linear-equation-system" title="Permalink to this headline">¶</a></h3>
+<div class="math">
+\[\begin{split}\begin{pmatrix}
+\sum Z_{1,3} &amp; Z_2 &amp; \sum Z_{2,3} &amp; 0 \\
+Z_2 &amp; \sum Z_{2,4,5,6,9} &amp; \sum Z_{2,5,6,9,10} &amp; -Z_9 \\
+\sum Z_{2,3} &amp; \sum Z_{2,5,6,9,10} &amp; \sum Z_{2,3,5,6,7,9,10} &amp;
+\sum -Z_{9,10} \\
+0 &amp; -Z_9 &amp; \sum -Z_{9,10} &amp; \sum Z_{8,9,10}
+\end{pmatrix}
+\begin{pmatrix}
+I_1 \\
+I_4 \\
+I_7 \\
+I_8
+\end{pmatrix}
+&amp;=
+\begin{pmatrix}
+0 \\
+-U_4 \\
+0 \\
+-U_8
+\end{pmatrix}\end{split}\]</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Math Test for Use with Slides</a><ul>
+<li><a class="reference internal" href="#network-analysis">Network Analysis</a><ul>
+<li><a class="reference internal" href="#network-analysis-of-periodic-signals">Network Analysis of Periodic Signals</a></li>
+<li><a class="reference internal" href="#ode-system">ODE System</a></li>
+<li><a class="reference internal" href="#compact-description">Compact Description</a></li>
+<li><a class="reference internal" href="#kirchhoff-s-voltage-law">Kirchhoff&#8217;s Voltage Law</a></li>
+<li><a class="reference internal" href="#loop-equation">Loop Equation</a></li>
+<li><a class="reference internal" href="#sorting-and-preperation-for-linear-equation-system">Sorting and Preperation for Linear Equation System</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Math Test for Use with Slides</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Math Test for Use with Slides"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Math Test for Use with Slides</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2016, Mirco Meiners.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.1.
+    </div>
+  </body>
+</html>

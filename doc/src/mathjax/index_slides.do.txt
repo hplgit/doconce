@@ -1,0 +1,13 @@
+TITLE: Demo of MathJax support for Slides
+AUTHOR: Mirco Meiners at Hochschule Bremen - City University of Applied Sciences
+DATE: today
+
+Demonstrate how well various LaTeX equation environments work with
+MathJax in DocOnce slide mode.
+
+ * "DocOnce source": "math_test_slides.do.txt.html"
+ * "LaTeX/Beamer": "math_test_slides-beamer.pdf"
+ * "HTML Reveal": "math_test_slides-reveal.html"
+ * "Sphinx": "html/math_test_slides.html"
+ * "HTML Remark": "math_test_slides-remark.html"
+ * "Jupyter Notebook": "https://github.com/hplgit/doconce/blob/master/doc/pub/mathjax/math_test_slides.ipynb"

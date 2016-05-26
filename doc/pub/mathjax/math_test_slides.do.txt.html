@@ -1,0 +1,162 @@
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #000080; font-weight: bold">TITLE: Math Test for Use with Slides</span>
+<span style="color: #000080; font-weight: bold">AUTHOR:</span> Mirco Meiners at Hochschule Bremen - City University of Applied Sciences
+<span style="color: #000080; font-weight: bold">DATE:</span> today
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">======= Network Analysis =======</span>
+<span style="color: #8B008B; font-weight: bold">!bblock</span>
+This presentation is a test vehicle for MathJax test to be used in different types of slides.
+As electrical engineer one needs to do network analysis very often. Such analysis are represented
+by ordenary differential equations or state-space models.
+<span style="color: #8B008B; font-weight: bold">!eblock</span>
+
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">===== Network Analysis of Periodic Signals =====</span>
+
+Node 0:
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align*}</span>
+-i_0 - i_1 - i_5 &amp;= 0 \\
+-G_1(v_3-v_0) - C_5 {\frac{d }{d t}}(v_1-v_0) &amp;= i_0
+<span style="color: #658b00">\end{align*}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+
+Node 1:
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align*}</span>
+-i_2 + i_3 + i_5 + i_6 &amp;= 0 \\
+-G_2(v_3-v_1) + G_3(v_1-v_3) + C_5 {\frac{d }{d t}}(v_1-v_0) + C_6 {\frac{d }{d t}}(v_1-v_6) &amp;= 0
+<span style="color: #658b00">\end{align*}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">===== ODE System =====</span>
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align*}</span>
+<span style="color: #658b00">\begin{pmatrix}</span>
+G_2 + G_3 &amp; -G_3 &amp; -G_2 &amp; 0 \\
+-G_3 &amp; G_3 + G_4 &amp; 0 &amp; -G_4 \\
+-G_2 &amp; 0 &amp; G_1 + G_2 &amp; 0 \\
+0 &amp; -G_4 &amp; 0 &amp; G_4
+<span style="color: #658b00">\end{pmatrix}</span>
+<span style="color: #658b00">\begin{pmatrix}</span>
+v_1 \\
+v_2 \\
+v_3 \\
+v_4
+<span style="color: #658b00">\end{pmatrix}</span>
+&amp;+ \cdots \\ 
+<span style="color: #658b00">\begin{pmatrix}</span>
+C_5 + C_6 &amp; -C_6 &amp; 0 &amp; 0 \\
+-C_6 &amp; C_6 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0
+<span style="color: #658b00">\end{pmatrix}</span>
+\frac{d}{dt}
+<span style="color: #658b00">\begin{pmatrix}</span>
+v_1 \\
+v_2 \\
+v_3 \\
+v_4
+<span style="color: #658b00">\end{pmatrix}</span> &amp;=
+<span style="color: #658b00">\begin{pmatrix}</span>
+0 \\
+0 \\
+0 \\
+-i_0
+<span style="color: #658b00">\end{pmatrix}</span>
+<span style="color: #658b00">\end{align*}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">===== Compact Description =====</span>
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align*}</span>
+\mathbf{A} \mathbf{x} + \mathbf{B} \dot{\mathbf{x}} &amp;= \mathbf{b} \\
+\dot{\mathbf{x}} &amp;= -\mathbf{B}^{-1}\mathbf{A}\mathbf{x} + \mathbf{B}^{-1}\mathbf{b}(t) \\
+&amp;= \mathbf{T}\mathbf{x} + \mathbf{g}(t)
+<span style="color: #658b00">\end{align*}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">===== Kirchhoff&#39;s Voltage Law =====</span>
+
+Choice of independent currents $I_M$: $I_1, I_4, I_7, I_8$
+
+State-space analysis in laplace domain:
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align*}</span>
+<span style="color: #658b00">\begin{pmatrix}</span>
+I_2 \\
+I_3 \\
+I_5 \\
+I_6 \\
+I_9 \\
+I_{10}
+<span style="color: #658b00">\end{pmatrix}</span>
+&amp;=
+<span style="color: #658b00">\begin{pmatrix}</span>
+-1 &amp; -1 &amp; -1 &amp; 0 \\
+-1 &amp; 0 &amp; -1 &amp; 0 \\
+0 &amp; -1 &amp; -1 &amp; 0 \\
+0 &amp; -1 &amp; -1 &amp; 0 \\
+0 &amp; 1 &amp; 1 &amp; -1 \\
+0 &amp; 0 &amp; 1 &amp; -1 \\
+<span style="color: #658b00">\end{pmatrix}</span>
+<span style="color: #658b00">\begin{pmatrix}</span>
+I_1 \\
+I_4 \\
+I_7 \\
+I_8
+<span style="color: #658b00">\end{pmatrix}</span>
+<span style="color: #658b00">\end{align*}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">===== Loop Equation =====</span>
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align*}</span>
+I_1 Z_1 - I_2 Z_2 - I_3 Z_3 &amp;= 0 \\
+U_4 + I_4 Z_4 + I_9 + Z_9 - I_6 Z_6 - I_5 Z_5 - I_2 Z_2 &amp;= 0 \\
+I_7 Z_7 + I_{10} Z_{10} + I_9 Z_9 - I_6 Z_6 - I_5 Z_5 - I_2 Z_2 -I_3 Z_3 &amp;= 0 \\
+U_8 + I_8 Z_8 - I_9 Z_9 - I_{10} Z_{10} &amp;= 0
+<span style="color: #658b00">\end{align*}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">===== Sorting and Preperation for Linear Equation System =====</span>
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align*}</span>
+<span style="color: #658b00">\begin{pmatrix}</span>
+\sum Z_{1,3} &amp; Z_2 &amp; \sum Z_{2,3} &amp; 0 \\
+Z_2 &amp; \sum Z_{2,4,5,6,9} &amp; \sum Z_{2,5,6,9,10} &amp; -Z_9 \\
+\sum Z_{2,3} &amp; \sum Z_{2,5,6,9,10} &amp; \sum Z_{2,3,5,6,7,9,10} &amp;
+\sum -Z_{9,10} \\
+0 &amp; -Z_9 &amp; \sum -Z_{9,10} &amp; \sum Z_{8,9,10}
+<span style="color: #658b00">\end{pmatrix}</span>
+<span style="color: #658b00">\begin{pmatrix}</span>
+I_1 \\
+I_4 \\
+I_7 \\
+I_8
+<span style="color: #658b00">\end{pmatrix}</span>
+&amp;=
+<span style="color: #658b00">\begin{pmatrix}</span>
+0 \\
+-U_4 \\
+0 \\
+-U_8
+<span style="color: #658b00">\end{pmatrix}</span>
+<span style="color: #658b00">\end{align*}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+</pre></div>

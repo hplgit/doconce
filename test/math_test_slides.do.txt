@@ -1,0 +1,161 @@
+TITLE: Math Test for Use with Slides
+AUTHOR: Mirco Meiners at Hochschule Bremen - City University of Applied Sciences
+DATE: today
+
+!split
+======= Network Analysis =======
+!bblock
+This presentation is a test vehicle for MathJax test to be used in different types of slides.
+As electrical engineer one needs to do network analysis very often. Such analysis are represented
+by ordenary differential equations or state-space models.
+!eblock
+
+
+!split
+===== Network Analysis of Periodic Signals =====
+
+Node 0:
+
+!bt
+\begin{align*}
+-i_0 - i_1 - i_5 &= 0 \\
+-G_1(v_3-v_0) - C_5 {\frac{d }{d t}}(v_1-v_0) &= i_0
+\end{align*}
+!et
+
+Node 1:
+
+!bt
+\begin{align*}
+-i_2 + i_3 + i_5 + i_6 &= 0 \\
+-G_2(v_3-v_1) + G_3(v_1-v_3) + C_5 {\frac{d }{d t}}(v_1-v_0) + C_6 {\frac{d }{d t}}(v_1-v_6) &= 0
+\end{align*}
+!et
+
+
+!split
+===== ODE System =====
+
+!bt
+\begin{align*}
+\begin{pmatrix}
+G_2 + G_3 & -G_3 & -G_2 & 0 \\
+-G_3 & G_3 + G_4 & 0 & -G_4 \\
+-G_2 & 0 & G_1 + G_2 & 0 \\
+0 & -G_4 & 0 & G_4
+\end{pmatrix}
+\begin{pmatrix}
+v_1 \\
+v_2 \\
+v_3 \\
+v_4
+\end{pmatrix}
+&+ \cdots \\ 
+\begin{pmatrix}
+C_5 + C_6 & -C_6 & 0 & 0 \\
+-C_6 & C_6 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0
+\end{pmatrix}
+\frac{d}{dt}
+\begin{pmatrix}
+v_1 \\
+v_2 \\
+v_3 \\
+v_4
+\end{pmatrix} &=
+\begin{pmatrix}
+0 \\
+0 \\
+0 \\
+-i_0
+\end{pmatrix}
+\end{align*}
+!et
+
+
+!split
+===== Compact Description =====
+!bt
+\begin{align*}
+\mathbf{A} \mathbf{x} + \mathbf{B} \dot{\mathbf{x}} &= \mathbf{b} \\
+\dot{\mathbf{x}} &= -\mathbf{B}^{-1}\mathbf{A}\mathbf{x} + \mathbf{B}^{-1}\mathbf{b}(t) \\
+&= \mathbf{T}\mathbf{x} + \mathbf{g}(t)
+\end{align*}
+!et
+
+
+!split
+===== Kirchhoff's Voltage Law =====
+
+Choice of independent currents $I_M$: $I_1, I_4, I_7, I_8$
+
+State-space analysis in laplace domain:
+
+!bt
+\begin{align*}
+\begin{pmatrix}
+I_2 \\
+I_3 \\
+I_5 \\
+I_6 \\
+I_9 \\
+I_{10}
+\end{pmatrix}
+&=
+\begin{pmatrix}
+-1 & -1 & -1 & 0 \\
+-1 & 0 & -1 & 0 \\
+0 & -1 & -1 & 0 \\
+0 & -1 & -1 & 0 \\
+0 & 1 & 1 & -1 \\
+0 & 0 & 1 & -1 \\
+\end{pmatrix}
+\begin{pmatrix}
+I_1 \\
+I_4 \\
+I_7 \\
+I_8
+\end{pmatrix}
+\end{align*}
+!et
+
+!split
+===== Loop Equation =====
+
+!bt
+\begin{align*}
+I_1 Z_1 - I_2 Z_2 - I_3 Z_3 &= 0 \\
+U_4 + I_4 Z_4 + I_9 + Z_9 - I_6 Z_6 - I_5 Z_5 - I_2 Z_2 &= 0 \\
+I_7 Z_7 + I_{10} Z_{10} + I_9 Z_9 - I_6 Z_6 - I_5 Z_5 - I_2 Z_2 -I_3 Z_3 &= 0 \\
+U_8 + I_8 Z_8 - I_9 Z_9 - I_{10} Z_{10} &= 0
+\end{align*}
+!et
+
+!split
+===== Sorting and Preperation for Linear Equation System =====
+
+!bt
+\begin{align*}
+\begin{pmatrix}
+\sum Z_{1,3} & Z_2 & \sum Z_{2,3} & 0 \\
+Z_2 & \sum Z_{2,4,5,6,9} & \sum Z_{2,5,6,9,10} & -Z_9 \\
+\sum Z_{2,3} & \sum Z_{2,5,6,9,10} & \sum Z_{2,3,5,6,7,9,10} &
+\sum -Z_{9,10} \\
+0 & -Z_9 & \sum -Z_{9,10} & \sum Z_{8,9,10}
+\end{pmatrix}
+\begin{pmatrix}
+I_1 \\
+I_4 \\
+I_7 \\
+I_8
+\end{pmatrix}
+&=
+\begin{pmatrix}
+0 \\
+-U_4 \\
+0 \\
+-U_8
+\end{pmatrix}
+\end{align*}
+!et

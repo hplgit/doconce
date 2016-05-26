@@ -119,7 +119,7 @@ $$
 <center>[2] <b>University of Oslo</b></center>
 <br>
 <p>
-<center><h4>May 21, 2016</h4></center> <!-- date -->
+<center><h4>May 25, 2016</h4></center> <!-- date -->
 <br>
 <p>
 <b>Summary.</b> The purpose of this document is to
@@ -468,11 +468,11 @@ First we use the plain old pmb package for bold math. The formula
 
 <p>
 
-<!-- code=text typeset with pygments style "default" -->
+<!-- code=latex (!bc latexcod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>!bt
-\[ \frac{\partial\u}{\partial t} +
-\u\cdot\nabla\u = \nu\nabla^2\u -
-\frac{1}{\varrho}\nabla p,\]
+<span style="color: #BA2121">\[</span><span style="color: #008000"> </span><span style="color: #19177C">\frac</span><span style="color: #008000">{</span><span style="color: #19177C">\partial\u</span><span style="color: #008000">}{</span><span style="color: #19177C">\partial</span><span style="color: #008000"> t} </span><span style="color: #666666">+</span><span style="color: #008000"></span>
+<span style="color: #19177C">\u\cdot\nabla\u</span><span style="color: #008000"> </span><span style="color: #666666">=</span><span style="color: #008000"> </span><span style="color: #19177C">\nu\nabla</span><span style="color: #008000">^</span><span style="color: #666666">2</span><span style="color: #19177C">\u</span><span style="color: #008000"> </span><span style="color: #666666">-</span><span style="color: #008000"></span>
+<span style="color: #19177C">\frac</span><span style="color: #008000">{</span><span style="color: #666666">1</span><span style="color: #008000">}{</span><span style="color: #19177C">\varrho</span><span style="color: #008000">}</span><span style="color: #19177C">\nabla</span><span style="color: #008000"> p,</span><span style="color: #BA2121">\]</span>
 !et
 </pre></div>
 <p>
@@ -491,11 +491,11 @@ Somewhat nicer fonts may appear with the more modern <code>\bm</code> command:
 
 <p>
 
-<!-- code=text typeset with pygments style "default" -->
+<!-- code=latex (!bc latexcod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>!bt
-\[ \frac{\partial\ubm}{\partial t} +
-\ubm\cdot\nabla\ubm = \nu\nabla^2\ubm -
-\frac{1}{\varrho}\nabla p,\]
+<span style="color: #BA2121">\[</span><span style="color: #008000"> </span><span style="color: #19177C">\frac</span><span style="color: #008000">{</span><span style="color: #19177C">\partial\ubm</span><span style="color: #008000">}{</span><span style="color: #19177C">\partial</span><span style="color: #008000"> t} </span><span style="color: #666666">+</span><span style="color: #008000"></span>
+<span style="color: #19177C">\ubm\cdot\nabla\ubm</span><span style="color: #008000"> </span><span style="color: #666666">=</span><span style="color: #008000"> </span><span style="color: #19177C">\nu\nabla</span><span style="color: #008000">^</span><span style="color: #666666">2</span><span style="color: #19177C">\ubm</span><span style="color: #008000"> </span><span style="color: #666666">-</span><span style="color: #008000"></span>
+<span style="color: #19177C">\frac</span><span style="color: #008000">{</span><span style="color: #666666">1</span><span style="color: #008000">}{</span><span style="color: #19177C">\varrho</span><span style="color: #008000">}</span><span style="color: #19177C">\nabla</span><span style="color: #008000"> p,</span><span style="color: #BA2121">\]</span>
 !et
 </pre></div>
 <p>
@@ -531,11 +531,11 @@ fine in LaTeX.
 
 <p>
 
-<!-- code=text typeset with pygments style "default" -->
+<!-- code=latex (!bc latexcod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>!bt
-\[ {\color{blue}\frac{\partial\u}{\partial t}} +
-\nabla\cdot\nabla\u = \nu\nabla^2\u -
-\frac{1}{\varrho}\nabla p,\]
+<span style="color: #BA2121">\[</span><span style="color: #008000"> {</span><span style="color: #19177C">\color</span><span style="color: #008000">{blue}</span><span style="color: #19177C">\frac</span><span style="color: #008000">{</span><span style="color: #19177C">\partial\u</span><span style="color: #008000">}{</span><span style="color: #19177C">\partial</span><span style="color: #008000"> t}} </span><span style="color: #666666">+</span><span style="color: #008000"></span>
+<span style="color: #19177C">\nabla\cdot\nabla\u</span><span style="color: #008000"> </span><span style="color: #666666">=</span><span style="color: #008000"> </span><span style="color: #19177C">\nu\nabla</span><span style="color: #008000">^</span><span style="color: #666666">2</span><span style="color: #19177C">\u</span><span style="color: #008000"> </span><span style="color: #666666">-</span><span style="color: #008000"></span>
+<span style="color: #19177C">\frac</span><span style="color: #008000">{</span><span style="color: #666666">1</span><span style="color: #008000">}{</span><span style="color: #19177C">\varrho</span><span style="color: #008000">}</span><span style="color: #19177C">\nabla</span><span style="color: #008000"> p,</span><span style="color: #BA2121">\]</span>
 !et
 </pre></div>
 <p>
@@ -545,6 +545,7 @@ $$ {\color{blue}\frac{\partial\u}{\partial t}} +
 \nabla\cdot\nabla\u = \nu\nabla^2\u -
 \frac{1}{\varrho}\nabla p,$$
 
+<p>
 but correct rendering in sphinx requires omitting the <code>\color</code> command.
 
 <p>
@@ -554,9 +555,9 @@ bold math symbol:
 
 <p>
 
-<!-- code=text typeset with pygments style "default" -->
+<!-- code=latex (!bc latexcod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>!bt
-\[ \bar\f = f_c^{-1}\f,\]
+<span style="color: #BA2121">\[</span><span style="color: #008000"> </span><span style="color: #19177C">\bar\f</span><span style="color: #008000"> </span><span style="color: #666666">=</span><span style="color: #008000"> f_c^{</span><span style="color: #666666">-1</span><span style="color: #008000">}</span><span style="color: #19177C">\f</span><span style="color: #008000">,</span><span style="color: #BA2121">\]</span>
 !et
 </pre></div>
 <p>
@@ -564,20 +565,192 @@ which for html output results in
 
 $$ \bar\f = f_c^{-1}\f.$$
 
-With sphinx, this formula is not rendered.
-However, using curly braces for the bar,
+<p>
+With sphinx, this formula is not rendered. However, using curly braces for the bar,
 
 <p>
 
-<!-- code=text typeset with pygments style "default" -->
+<!-- code=latex (!bc latexcod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>!bt
-\[ \bar{\f} = f_c^{-1}\f,\]
+<span style="color: #BA2121">\[</span><span style="color: #008000"> </span><span style="color: #19177C">\bar</span><span style="color: #008000">{</span><span style="color: #19177C">\f</span><span style="color: #008000">} </span><span style="color: #666666">=</span><span style="color: #008000"> f_c^{</span><span style="color: #666666">-1</span><span style="color: #008000">}</span><span style="color: #19177C">\f</span><span style="color: #008000">,</span><span style="color: #BA2121">\]</span>
 !et
 </pre></div>
 <p>
 makes the output correct also for sphinx:
 
 $$ \bar{\f} = f_c^{-1}\f,$$
+
+<p>
+<b>Matrix Environment.</b>
+Nested environments with labled pmatrix environments cause wired representation in ipynb and html.
+
+<p>
+
+<!-- code=latex (!bc latexcod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>!bt
+<span style="color: #008000; font-weight: bold">\begin</span><span style="color: #008000">{</span>align<span style="color: #008000">}</span>
+<span style="color: #008000; font-weight: bold">\begin</span><span style="color: #008000">{</span>pmatrix<span style="color: #008000">}</span>
+G<span style="color: #008000">_</span>2 + G<span style="color: #008000">_</span>3 <span style="color: #008000">&amp;</span> -G<span style="color: #008000">_</span>3 <span style="color: #008000">&amp;</span> -G<span style="color: #008000">_</span>2 <span style="color: #008000">&amp;</span> 0 <span style="color: #008000; font-weight: bold">\\</span> 
+-G<span style="color: #008000">_</span>3 <span style="color: #008000">&amp;</span> G<span style="color: #008000">_</span>3 + G<span style="color: #008000">_</span>4 <span style="color: #008000">&amp;</span> 0 <span style="color: #008000">&amp;</span> -G<span style="color: #008000">_</span>4 <span style="color: #008000; font-weight: bold">\\</span> 
+-G<span style="color: #008000">_</span>2 <span style="color: #008000">&amp;</span> 0 <span style="color: #008000">&amp;</span> G<span style="color: #008000">_</span>1 + G<span style="color: #008000">_</span>2 <span style="color: #008000">&amp;</span> 0 <span style="color: #008000; font-weight: bold">\\</span> 
+0 <span style="color: #008000">&amp;</span> -G<span style="color: #008000">_</span>4 <span style="color: #008000">&amp;</span> 0 <span style="color: #008000">&amp;</span> G<span style="color: #008000">_</span>4
+<span style="color: #008000; font-weight: bold">\end</span><span style="color: #008000">{</span>pmatrix<span style="color: #008000">}</span>
+<span style="color: #008000">&amp;</span>=
+<span style="color: #008000; font-weight: bold">\begin</span><span style="color: #008000">{</span>pmatrix<span style="color: #008000">}</span>
+v<span style="color: #008000">_</span>1 <span style="color: #008000; font-weight: bold">\\</span> 
+v<span style="color: #008000">_</span>2 <span style="color: #008000; font-weight: bold">\\</span> 
+v<span style="color: #008000">_</span>3 <span style="color: #008000; font-weight: bold">\\</span> 
+v<span style="color: #008000">_</span>4
+<span style="color: #008000; font-weight: bold">\end</span><span style="color: #008000">{</span>pmatrix<span style="color: #008000">}</span>
++ <span style="color: #008000; font-weight: bold">\cdots</span> <span style="color: #008000; font-weight: bold">\\</span> 
+<span style="color: #008000; font-weight: bold">\begin</span><span style="color: #008000">{</span>pmatrix<span style="color: #008000">}</span>
+C<span style="color: #008000">_</span>5 + C<span style="color: #008000">_</span>6 <span style="color: #008000">&amp;</span> -C<span style="color: #008000">_</span>6 <span style="color: #008000">&amp;</span> 0 <span style="color: #008000">&amp;</span> 0 <span style="color: #008000; font-weight: bold">\\</span> 
+-C<span style="color: #008000">_</span>6 <span style="color: #008000">&amp;</span> C<span style="color: #008000">_</span>6 <span style="color: #008000">&amp;</span> 0 <span style="color: #008000">&amp;</span> 0 <span style="color: #008000; font-weight: bold">\\</span> 
+0 <span style="color: #008000">&amp;</span> 0 <span style="color: #008000">&amp;</span> 0 <span style="color: #008000">&amp;</span> 0 <span style="color: #008000; font-weight: bold">\\</span> 
+0 <span style="color: #008000">&amp;</span> 0 <span style="color: #008000">&amp;</span> 0 <span style="color: #008000">&amp;</span> 0
+<span style="color: #008000; font-weight: bold">\end</span><span style="color: #008000">{</span>pmatrix<span style="color: #008000">}</span>
+<span style="color: #008000; font-weight: bold">\frac</span><span style="color: #008000">{</span>d<span style="color: #008000">}{</span>dt<span style="color: #008000">}</span> <span style="color: #008000">&amp;</span>=
+<span style="color: #008000; font-weight: bold">\begin</span><span style="color: #008000">{</span>pmatrix<span style="color: #008000">}</span>
+v<span style="color: #008000">_</span>1 <span style="color: #008000; font-weight: bold">\\</span> 
+v<span style="color: #008000">_</span>2 <span style="color: #008000; font-weight: bold">\\</span> 
+v<span style="color: #008000">_</span>3 <span style="color: #008000; font-weight: bold">\\</span> 
+v<span style="color: #008000">_</span>4
+<span style="color: #008000; font-weight: bold">\end</span><span style="color: #008000">{</span>pmatrix<span style="color: #008000">}</span> =
+<span style="color: #008000; font-weight: bold">\begin</span><span style="color: #008000">{</span>pmatrix<span style="color: #008000">}</span>
+0 <span style="color: #008000; font-weight: bold">\\</span> 
+0 <span style="color: #008000; font-weight: bold">\\</span> 
+0 <span style="color: #008000; font-weight: bold">\\</span> 
+-i<span style="color: #008000">_</span>0
+<span style="color: #008000; font-weight: bold">\end</span><span style="color: #008000">{</span>pmatrix<span style="color: #008000">}</span>
+<span style="color: #008000; font-weight: bold">\end</span><span style="color: #008000">{</span>align<span style="color: #008000">}</span>
+!et
+</pre></div>
+<p>
+which becomes
+
+$$
+\begin{align}
+\begin{pmatrix}
+G_2 + G_3 & -G_3 & -G_2 & 0 \\ 
+-G_3 & G_3 + G_4 & 0 & -G_4 \\ 
+-G_2 & 0 & G_1 + G_2 & 0 \\ 
+0 & -G_4 & 0 & G_4
+\end{pmatrix}
+&=
+\begin{pmatrix}
+v_1 \\ 
+v_2 \\ 
+v_3 \\ 
+v_4
+\end{pmatrix}
++ \cdots  \label{_auto6}
+\\ 
+\begin{pmatrix}
+C_5 + C_6 & -C_6 & 0 & 0 \\ 
+-C_6 & C_6 & 0 & 0 \\ 
+0 & 0 & 0 & 0 \\ 
+0 & 0 & 0 & 0
+\end{pmatrix}
+\frac{d}{dt} &=
+\begin{pmatrix}
+v_1 \\ 
+v_2 \\ 
+v_3 \\ 
+v_4
+\end{pmatrix} =
+\begin{pmatrix}
+0 \\ 
+0 \\ 
+0 \\ 
+-i_0
+\end{pmatrix}
+\label{_auto7}
+\end{align}$$
+
+<p>
+The same matrices without labels seem to translate better:
+
+<p>
+
+<!-- code=latex (!bc latexcod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>!bt
+<span style="color: #008000; font-weight: bold">\begin</span><span style="color: #008000">{</span>align*<span style="color: #008000">}</span>
+<span style="color: #008000; font-weight: bold">\begin</span><span style="color: #008000">{</span>pmatrix<span style="color: #008000">}</span>
+G<span style="color: #008000">_</span>2 + G<span style="color: #008000">_</span>3 <span style="color: #008000">&amp;</span> -G<span style="color: #008000">_</span>3 <span style="color: #008000">&amp;</span> -G<span style="color: #008000">_</span>2 <span style="color: #008000">&amp;</span> 0 <span style="color: #008000; font-weight: bold">\\</span> 
+-G<span style="color: #008000">_</span>3 <span style="color: #008000">&amp;</span> G<span style="color: #008000">_</span>3 + G<span style="color: #008000">_</span>4 <span style="color: #008000">&amp;</span> 0 <span style="color: #008000">&amp;</span> -G<span style="color: #008000">_</span>4 <span style="color: #008000; font-weight: bold">\\</span> 
+-G<span style="color: #008000">_</span>2 <span style="color: #008000">&amp;</span> 0 <span style="color: #008000">&amp;</span> G<span style="color: #008000">_</span>1 + G<span style="color: #008000">_</span>2 <span style="color: #008000">&amp;</span> 0 <span style="color: #008000; font-weight: bold">\\</span> 
+0 <span style="color: #008000">&amp;</span> -G<span style="color: #008000">_</span>4 <span style="color: #008000">&amp;</span> 0 <span style="color: #008000">&amp;</span> G<span style="color: #008000">_</span>4
+<span style="color: #008000; font-weight: bold">\end</span><span style="color: #008000">{</span>pmatrix<span style="color: #008000">}</span>
+<span style="color: #008000">&amp;</span>=
+<span style="color: #008000; font-weight: bold">\begin</span><span style="color: #008000">{</span>pmatrix<span style="color: #008000">}</span>
+v<span style="color: #008000">_</span>1 <span style="color: #008000; font-weight: bold">\\</span> 
+v<span style="color: #008000">_</span>2 <span style="color: #008000; font-weight: bold">\\</span> 
+v<span style="color: #008000">_</span>3 <span style="color: #008000; font-weight: bold">\\</span> 
+v<span style="color: #008000">_</span>4
+<span style="color: #008000; font-weight: bold">\end</span><span style="color: #008000">{</span>pmatrix<span style="color: #008000">}</span>
++ <span style="color: #008000; font-weight: bold">\cdots</span> <span style="color: #008000; font-weight: bold">\\</span> 
+<span style="color: #008000; font-weight: bold">\begin</span><span style="color: #008000">{</span>pmatrix<span style="color: #008000">}</span>
+C<span style="color: #008000">_</span>5 + C<span style="color: #008000">_</span>6 <span style="color: #008000">&amp;</span> -C<span style="color: #008000">_</span>6 <span style="color: #008000">&amp;</span> 0 <span style="color: #008000">&amp;</span> 0 <span style="color: #008000; font-weight: bold">\\</span> 
+-C<span style="color: #008000">_</span>6 <span style="color: #008000">&amp;</span> C<span style="color: #008000">_</span>6 <span style="color: #008000">&amp;</span> 0 <span style="color: #008000">&amp;</span> 0 <span style="color: #008000; font-weight: bold">\\</span> 
+0 <span style="color: #008000">&amp;</span> 0 <span style="color: #008000">&amp;</span> 0 <span style="color: #008000">&amp;</span> 0 <span style="color: #008000; font-weight: bold">\\</span> 
+0 <span style="color: #008000">&amp;</span> 0 <span style="color: #008000">&amp;</span> 0 <span style="color: #008000">&amp;</span> 0
+<span style="color: #008000; font-weight: bold">\end</span><span style="color: #008000">{</span>pmatrix<span style="color: #008000">}</span>
+<span style="color: #008000; font-weight: bold">\frac</span><span style="color: #008000">{</span>d<span style="color: #008000">}{</span>dt<span style="color: #008000">}</span> <span style="color: #008000">&amp;</span>=
+<span style="color: #008000; font-weight: bold">\begin</span><span style="color: #008000">{</span>pmatrix<span style="color: #008000">}</span>
+v<span style="color: #008000">_</span>1 <span style="color: #008000; font-weight: bold">\\</span> 
+v<span style="color: #008000">_</span>2 <span style="color: #008000; font-weight: bold">\\</span> 
+v<span style="color: #008000">_</span>3 <span style="color: #008000; font-weight: bold">\\</span> 
+v<span style="color: #008000">_</span>4
+<span style="color: #008000; font-weight: bold">\end</span><span style="color: #008000">{</span>pmatrix<span style="color: #008000">}</span> =
+<span style="color: #008000; font-weight: bold">\begin</span><span style="color: #008000">{</span>pmatrix<span style="color: #008000">}</span>
+0 <span style="color: #008000; font-weight: bold">\\</span> 
+0 <span style="color: #008000; font-weight: bold">\\</span> 
+0 <span style="color: #008000; font-weight: bold">\\</span> 
+-i<span style="color: #008000">_</span>0
+<span style="color: #008000; font-weight: bold">\end</span><span style="color: #008000">{</span>pmatrix<span style="color: #008000">}</span>
+<span style="color: #008000; font-weight: bold">\end</span><span style="color: #008000">{</span>align*<span style="color: #008000">}</span>
+!et
+</pre></div>
+<p>
+which becomes
+
+$$
+\begin{align*}
+\begin{pmatrix}
+G_2 + G_3 & -G_3 & -G_2 & 0 \\ 
+-G_3 & G_3 + G_4 & 0 & -G_4 \\ 
+-G_2 & 0 & G_1 + G_2 & 0 \\ 
+0 & -G_4 & 0 & G_4
+\end{pmatrix}
+&=
+\begin{pmatrix}
+v_1 \\ 
+v_2 \\ 
+v_3 \\ 
+v_4
+\end{pmatrix}
++ \cdots \\ 
+\begin{pmatrix}
+C_5 + C_6 & -C_6 & 0 & 0 \\ 
+-C_6 & C_6 & 0 & 0 \\ 
+0 & 0 & 0 & 0 \\ 
+0 & 0 & 0 & 0
+\end{pmatrix}
+\frac{d}{dt} &=
+\begin{pmatrix}
+v_1 \\ 
+v_2 \\ 
+v_3 \\ 
+v_4
+\end{pmatrix} =
+\begin{pmatrix}
+0 \\ 
+0 \\ 
+0 \\ 
+-i_0
+\end{pmatrix}
+\end{align*}
+$$
 
 
 <!-- ------------------- end of main content --------------- -->
