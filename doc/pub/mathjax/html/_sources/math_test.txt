@@ -4,34 +4,40 @@
 .. Document title:
 
 How various formats can deal with LaTeX math
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: May 25, 2016
+:Date: May 27, 2016
 
-*Summary.* The purpose of this document is to
-test LaTeX math in DocOnce with various output formats.
-Most LaTeX math constructions are renedered correctly by MathJax
-in plain HTML, but some combinations of constructions may fail.
-Unfortunately, only a subset of what works in html MathJax also works in
-sphinx MathJax. The same is true for markdown MathJax expresions
-(e.g., Jupyter notebooks).
-Tests and examples are provided to illustrate what may go wrong.
+*Summary.* The purpose of this document is to test LaTeX math in DocOnce with
+various output formats.  Most LaTeX math constructions are renedered
+correctly by MathJax in plain HTML, but some combinations of
+constructions may fail.  Unfortunately, only a subset of what works in
+html MathJax also works in sphinx MathJax. The same is true for
+markdown MathJax expresions (e.g., Jupyter notebooks).  Tests and
+examples are provided to illustrate what may go wrong.
 
 The recommendation for writing math that translates to MathJax in
-html, sphinx, and markdown is to stick to the environments
-``\[ ... \]``, ``equation``, ``equation*``, ``align``, ``align*``, ``alignat``,
-and ``alignat*`` only. Test the math with sphinx output; if it works in that
+html, sphinx, and markdown is to stick to the environments ``\[
+... \]``, ``equation``, ``equation*``, ``align``, ``align*``, ``alignat``, and
+``alignat*`` only. Test the math with sphinx output; if it works in that
 format, it should work elsewhere too.
 
 The current version of the document is translated from DocOnce source
 to the format **sphinx**.
 
-**Test 1: Inline math.**
+Test of equation environments
+=============================
+
+Test 1: Inline math
+-------------------
+
 We can get an inline equation
 ``$u(t)=e^{-at}$`` rendered as :math:`u(t)=e^{-at}`.
 
-**Test 2: A single equation with label.**
+Test 2: A single equation with label
+------------------------------------
+
 An equation with number,
 
 .. code-block:: latex
@@ -44,6 +50,7 @@ looks like
 
 .. math::
    :label: eq1a
+
          u(t)=e^{-at} 
 
 Maybe this multi-line version is what we actually prefer to write:
@@ -61,16 +68,19 @@ The result is the same:
 
 .. math::
    :label: eq1b
+
         
         u(t)=e^{-at} 
         
 
 We can refer to this equation through its label ``eq1b``: :eq:`eq1b`.
 
-**Test 3: Multiple, aligned equations without label and number.**
-MathJax has
-historically had some problems with rendering many LaTeX math environments,
-but the ``align*`` and ``align`` environments have always worked.
+Test 3: Multiple, aligned equations without label and number  ==
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+MathJax has historically had some problems with rendering many LaTeX
+math environments, but the ``align*`` and ``align`` environments have
+always worked.
 
 .. code-block:: latex
 
@@ -84,14 +94,15 @@ but the ``align*`` and ``align`` environments have always worked.
 Result:
 
 .. math::
-        
+        \begin{align*}
         u(t)&=e^{-at}\\ 
         v(t) - 1 &= \frac{du}{dt}
-        
+        \end{align*}
 
-**Test 4: Multiple, aligned equations with label.**
-Here, we
-use ``align`` with user-prescribed labels:
+Test 4: Multiple, aligned equations with label
+----------------------------------------------
+
+Here, we use ``align`` with user-prescribed labels:
 
 .. code-block:: latex
 
@@ -108,6 +119,7 @@ Result:
 
 .. math::
    :label: eq2b
+
         
         u(t)=e^{-at}
         
@@ -115,6 +127,7 @@ Result:
 
 .. math::
    :label: eq3b
+
           
         v(t) - 1 = \frac{du}{dt}
         
@@ -155,59 +168,21 @@ we had used the ``align*`` environment):
 
 .. math::
 
-        \begin{equation}
-        u(t)=e^{-at}
+        \begin{align}
+        u(t)&=e^{-at}
+        \\\ 
+        v(t) - 1 &= \frac{du}{dt}
         \
-\end{equation}
+        \end{align}
 
-.. math::
-          
-                v(t) - 1 = \frac{du}{dt}
-                \
-                
-        __Test 5: Multiple, aligned equations without label.__ In LaTeX,
-        equations within an `align` environment is automatically given numbers.
-        To ensure that an html document with MathJax gets the same equation numbers
-        as its latex/pdflatex companion, DocOnce generates labels in equations where
-        there is no label prescribed. For example,
-        !bc latexcod
-        !bt
-        
-        u(t)&=e^{-at}
-        \\ 
-        v(t) - 1 &= \frac{du}{dt}
-        
-        !et
-        !ec
-        is edited to something like
-        !bc latexcod
-        !bt
-        
-        u(t)&=e^{-at}
-        \\ 
-        v(t) - 1 &= \frac{du}{dt}
-        
-        
-        !et
-        !ec
-        and the html output gets the two equation numbered.
-        Note that in sphinx the alignment is removed and separate `equation`
-        environments are used to get numbered equations in equation systems, cf. the
-        box above.
-        !bt
-        
-        u(t)=e^{-at}
-        
+Test 5: Multiple, aligned equations without label
+-------------------------------------------------
 
-.. math::
-   :label: _auto1
-          
-        v(t) - 1 = \frac{du}{dt}
-        
-        
-
-**Test 6: Multiple, aligned equations with multiple alignments.**
-The ``align`` environment can be used with two ``&`` alignment characters, e.g.,
+In LaTeX, equations within an ``align`` environment is automatically
+given numbers.  To ensure that an html document with MathJax gets the
+same equation numbers as its latex/pdflatex companion, DocOnce
+generates labels in equations where there is no label prescribed. For
+example,
 
 .. code-block:: latex
 
@@ -219,10 +194,60 @@ The ``align`` environment can be used with two ``&`` alignment characters, e.g.,
     \end{align}
     !et
 
-The result in sphinx becomes
+is edited to something like
+
+.. code-block:: latex
+
+    !bt
+    \begin{align}
+    u(t)&=e^{-at}
+    label{_auto5}\\ 
+    v(t) - 1 &= \frac{du}{dt}
+    label{_auto6}
+    \end{align}
+    !et
+
+and the html output gets the two equation numbered.
+Note that in sphinx the alignment is removed and separate ``equation``
+environments are used to get numbered equations in equation systems, cf. the
+box above.
+
+.. math::
+   :label: _auto1
+
+        
+        u(t)=e^{-at}
+        
+        
 
 .. math::
    :label: _auto2
+
+          
+        v(t) - 1 = \frac{du}{dt}
+        
+        
+
+Test 6: Multiple, aligned equations with multiple alignments
+------------------------------------------------------------
+
+The ``align`` environment can be used with two ``&`` alignment characters, e.g.,
+
+.. code-block:: latex
+
+    !bt
+    \begin{align}
+    \frac{\partial u}{\partial t} &= \nabla^2 u, & x\in (0,L),
+    \ t\in (0,T]\\ 
+    u(0,t) &= u_0(x), & x\in [0,L]
+    \end{align}
+    !et
+
+The result in sphinx becomes
+
+.. math::
+   :label: _auto3
+
         
         \frac{\partial u}{\partial t} = \nabla^2 u,  x\in (0,L),
         \ t\in (0,T]
@@ -230,7 +255,8 @@ The result in sphinx becomes
         
 
 .. math::
-   :label: _auto3
+   :label: _auto4
+
           
         u(0,t) = u_0(x),  x\in [0,L]
         
@@ -244,18 +270,18 @@ A better solution is usually to use an ``alignat`` environment:
 .. code-block:: latex
 
     !bt
-    \begin{align}
-    u(t)&=e^{-at}
-    label{_auto5}\\ 
-    v(t) - 1 &= \frac{du}{dt}
-    label{_auto6}
-    \end{align}
+    \begin{alignat}{2}
+    \frac{\partial u}{\partial t} &= \nabla^2 u, & x\in (0,L),
+    \ t\in (0,T]\\ 
+    u(0,t) &= u_0(x), & x\in [0,L]
+    \end{alignat}
     !et
 
 with the rendered result
 
 .. math::
-   :label: _auto4
+   :label: _auto5
+
         
         \frac{\partial u}{\partial t} = \nabla^2 u,  x\in (0,L),
         \ t\in (0,T]
@@ -263,7 +289,8 @@ with the rendered result
         
 
 .. math::
-   :label: _auto5
+   :label: _auto6
+
           
         u(0,t) = u_0(x),  x\in [0,L]
         
@@ -297,98 +324,18 @@ rendered similarly in sphinx as
 
 .. math::
 
-        \begin{equation}
-        \frac{\partial u}{\partial t} = \nabla^2 u,  x\in (0,L),
-        \ t\in (0,T]
-\end{equation}
+        \begin{alignat}{2}
+        \frac{\partial u}{\partial t} &= \nabla^2 u, & x\in (0,L),
+        \ t\in (0,T]\\ 
+        u(0,t) &= u_0(x), & x\in [0,L]
+        \end{alignat}
 
-.. math::
-   :label: _auto6
-          
-                u(0,t) = u_0(x),  x\in [0,L]
-        
-        
-        That is, the equation numbers are gone.
-        __Test 7: Multiple, aligned eqnarray equations without label.__ Let us
-        try the old `eqnarray*` environment.
-        !bc latexcod
-        !bt
-        
-        u(t) &=  e^{-at}\\ 
-        v(t) - 1  &=  \frac{du}{dt}
-        
-        !et
-        !ec
-        which results in
-        !bt
-        
-        u(t) &=  e^{-at}\\ 
-        v(t) - 1  &=  \frac{du}{dt}
-        
+That is, the equation numbers are gone.
 
-**Test 8: Multiple, eqnarrayed equations with label.**
-Here we use ``eqnarray`` with labels:
+Test 7: Multiple, aligned eqnarray equations without label
+----------------------------------------------------------
 
-.. code-block:: latex
-
-    !bt
-    \begin{align}
-    \frac{\partial u}{\partial t} &= \nabla^2 u, & x\in (0,L),
-    \ t\in (0,T]\\ 
-    u(0,t) &= u_0(x), & x\in [0,L]
-    \end{align}
-    !et
-
-which results in
-
-.. math::
-        
-        u(t) &=  e^{-at} \\ 
-        v(t) - 1  &=  \frac{du}{dt} 
-        
-
-Can we refer to the last equations as the system :eq:`eq2c`-:eq:`eq3c`
-in the sphinx format?
-No, unfortunately not. Sphinx cannot deal with equation numbers in
-``eqnarray`` environments and typeset them as if they were ``eqnarray*``.
-But MathJax supports ``eqnarray`` with labels.
-The rule of thumb is to use ``align`` and not ``eqnarray``!
-
-**Test 9: The ``multiline`` environment with label and number.**
-The LaTeX code
-
-.. code-block:: latex
-
-    !bt
-    \begin{alignat}{2}
-    \frac{\partial u}{\partial t} &= \nabla^2 u, & x\in (0,L),
-    \ t\in (0,T]\\ 
-    u(0,t) &= u_0(x), & x\in [0,L]
-    \end{alignat}
-    !et
-
-gets rendered as
-
-.. math::
-   :label: multiline:eq1
-        
-        \int_a^b f(x)dx = \sum_{j=0}^{n} \frac{1}{2} h(f(a+jh) +
-        f(a+(j+1)h)) \\ 
-        =\frac{h}{2}f(a) + \frac{h}{2}f(b) + \sum_{j=1}^n f(a+jh)
-        
-        
-
-and we can hopefully refer to the Trapezoidal rule
-as the formula :eq:`multiline:eq1`.
-
-The equation number is here placed on the first line, while in MathJax
-(html) and latex the number is placed between the two lines, which is
-more correct. The best cross-format solution is to use ``align`` and
-``\nonumber`` for the first equation.
-
-**Test 10: Splitting equations using a split environment.**
-Although ``align`` can be used to split too long equations, a more obvious
-command is ``split``:
+Let us try the old ``eqnarray*`` environment.
 
 .. code-block:: latex
 
@@ -399,21 +346,18 @@ command is ``split``:
     \end{eqnarray*}
     !et
 
-The result becomes
+which results in
 
 .. math::
-   :label: _auto7
-        
-        
-        \int_a^b f(x)dx = \sum_{j=0}^{n} \frac{1}{2} h(f(a+jh) +
-        f(a+(j+1)h)) \\ 
-        =\frac{h}{2}f(a) + \frac{h}{2}f(b) + \sum_{j=1}^n f(a+jh)
-        
-        
-        
+        \begin{eqnarray*}
+        u(t) &=  e^{-at}\\ 
+        v(t) - 1  &=  \frac{du}{dt}
+        \end{eqnarray*}
 
-**Test 11: Newcommands and boldface bm vs pmb.**
-First we use the plain old pmb package for bold math. The formula
+Test 8: Multiple, eqnarrayed equations with label
+-------------------------------------------------
+
+Here we use ``eqnarray`` with labels:
 
 .. code-block:: latex
 
@@ -424,6 +368,103 @@ First we use the plain old pmb package for bold math. The formula
     v(t) - 1 &=& \frac{du}{dt}
     label{eq3c}
     \end{eqnarray}
+    !et
+
+which results in
+
+.. math::
+        \begin{eqnarray}
+        u(t) &=  e^{-at} \\ 
+        v(t) - 1  &=  \frac{du}{dt} 
+        \end{eqnarray}
+
+Can we refer to the last equations as the system :eq:`eq2c`-:eq:`eq3c`
+in the sphinx format?
+No, unfortunately not. Sphinx cannot deal with equation numbers in
+``eqnarray`` environments and typeset them as if they were ``eqnarray*``.
+But MathJax supports ``eqnarray`` with labels.
+The rule of thumb is to use ``align`` and not ``eqnarray``!
+
+Test 9: The ``multiline`` environment with label and number
+-----------------------------------------------------------
+
+The LaTeX code
+
+.. code-block:: latex
+
+    !bt
+    \begin{multline}
+    \int_a^b f(x)dx = \sum_{j=0}^{n} \frac{1}{2} h(f(a+jh) +
+    f(a+(j+1)h)) \\ 
+    =\frac{h}{2}f(a) + \frac{h}{2}f(b) + \sum_{j=1}^n f(a+jh)
+    label{multiline:eq1}
+    \end{multline}
+    !et
+
+gets rendered as
+
+.. math::
+   :label: multiline:eq1
+
+        
+        \int_a^b f(x)dx = \sum_{j=0}^{n} \frac{1}{2} h(f(a+jh) +
+        f(a+(j+1)h)) \\ 
+        =\frac{h}{2}f(a) + \frac{h}{2}f(b) + \sum_{j=1}^n f(a+jh)
+        
+        
+
+and we can hopefully refer to the Trapezoidal rule
+as the formula :eq:`multiline:eq1`.
+
+This equation will not render in sphinx unless we remove the ``multiline``
+environment, which means that it was typeset here without any multiline
+information.
+The best cross-format solution is to use ``align`` and
+``\nonumber`` in the first equation!
+
+Test 10: Splitting equations using a split environment
+------------------------------------------------------
+
+Although ``align`` can be used to split too long equations, a more obvious
+command is ``split``:
+
+.. code-block:: latex
+
+    !bt
+    \begin{equation}
+    \begin{split}
+    \int_a^b f(x)dx = \sum_{j=0}^{n} \frac{1}{2} h(f(a+jh) +
+    f(a+(j+1)h)) \\ 
+    =\frac{h}{2}f(a) + \frac{h}{2}f(b) + \sum_{j=1}^n f(a+jh)
+    \end{split}
+    \end{equation}
+    !et
+
+The result becomes
+
+.. math::
+   :label: _auto7
+
+        
+        \begin{split}
+        \int_a^b f(x)dx = \sum_{j=0}^{n} \frac{1}{2} h(f(a+jh) +
+        f(a+(j+1)h)) \\ 
+        =\frac{h}{2}f(a) + \frac{h}{2}f(b) + \sum_{j=1}^n f(a+jh)
+        \end{split}
+        
+        
+
+Test 11: Newcommands and boldface bm vs pmb
+-------------------------------------------
+
+First we use the plain old pmb package for bold math. The formula
+
+.. code-block:: latex
+
+    !bt
+    \[ \frac{\partial\u}{\partial t} +
+    \u\cdot\nabla\u = \nu\nabla^2\u -
+    \frac{1}{\varrho}\nabla p,\]
     !et
 
 and the inline expression ``$\nabla\pmb{u} (\pmb{x})\cdot\pmb{n}$``
@@ -444,12 +485,9 @@ Somewhat nicer fonts may appear with the more modern ``\bm`` command:
 .. code-block:: latex
 
     !bt
-    \begin{multline}
-    \int_a^b f(x)dx = \sum_{j=0}^{n} \frac{1}{2} h(f(a+jh) +
-    f(a+(j+1)h)) \\ 
-    =\frac{h}{2}f(a) + \frac{h}{2}f(b) + \sum_{j=1}^n f(a+jh)
-    label{multiline:eq1}
-    \end{multline}
+    \[ \frac{\partial\ubm}{\partial t} +
+    \ubm\cdot\nabla\ubm = \nu\nabla^2\ubm -
+    \frac{1}{\varrho}\nabla p,\]
     !et
 
 (backslash ``ubm`` is a newcommand for bold math :math:`u`), for which we get
@@ -463,15 +501,7 @@ Moreover,
 
 .. code-block:: text
 
-    !bt
-    \begin{equation}
-    \begin{split}
-    \int_a^b f(x)dx = \sum_{j=0}^{n} \frac{1}{2} h(f(a+jh) +
-    f(a+(j+1)h)) \\ 
-    =\frac{h}{2}f(a) + \frac{h}{2}f(b) + \sum_{j=1}^n f(a+jh)
-    \end{split}
-    \end{equation}
-    !et
+    $\nabla\boldsymbol{u}(\boldsymbol{x})\cdot\boldsymbol{n}$
 
 becomes :math:`\nabla\boldsymbol{u}(\boldsymbol{x})\cdot\boldsymbol{n}`.
 
@@ -483,15 +513,22 @@ becomes :math:`\nabla\boldsymbol{u}(\boldsymbol{x})\cdot\boldsymbol{n}`.
 
 
 
-**Problematic equations.**
+Problematic equations
+=====================
+
 Finally, we collect some problematic formulas in MathJax. They all work
 fine in LaTeX.
+
+Colored terms in equations
+--------------------------
+
+The LaTeX code
 
 .. code-block:: latex
 
     !bt
-    \[ \frac{\partial\u}{\partial t} +
-    \u\cdot\nabla\u = \nu\nabla^2\u -
+    \[ {\color{blue}\frac{\partial\u}{\partial t}} +
+    \nabla\cdot\nabla\u = \nu\nabla^2\u -
     \frac{1}{\varrho}\nabla p,\]
     !et
 
@@ -502,7 +539,15 @@ results in
         \nabla\cdot\nabla\pmb{u} = \nu\nabla^2\pmb{u} -
         \frac{1}{\varrho}\nabla p,
 
-but correct rendering in sphinx requires omitting the ``\color`` command.
+but correct rendering in sphinx requires omitting the ``\color`` command:
+
+.. math::
+         {\frac{\partial\pmb{u}}{\partial t} +
+        \nabla\cdot\nabla\pmb{u} = \nu\nabla^2\pmb{u} -
+        \frac{1}{\varrho}\nabla p,
+
+Bar over symbols
+----------------
 
 Sometimes one must be extra careful with the LaTeX syntax to get sphinx MathJax
 to render a formula correctly. Consider the combination of a bar over a
@@ -511,9 +556,7 @@ bold math symbol:
 .. code-block:: latex
 
     !bt
-    \[ \frac{\partial\ubm}{\partial t} +
-    \ubm\cdot\nabla\ubm = \nu\nabla^2\ubm -
-    \frac{1}{\varrho}\nabla p,\]
+    \[ \bar\f = f_c^{-1}\f,\]
     !et
 
 which for sphinx output results in
@@ -525,173 +568,157 @@ With sphinx, this formula is not rendered. However, using curly braces for the b
 
 .. code-block:: latex
 
-    $\nabla\boldsymbol{u}(\boldsymbol{x})\cdot\boldsymbol{n}$
+    !bt
+    \[ \bar{\f} = f_c^{-1}\f,\]
+    !et
 
 makes the output correct also for sphinx:
 
 .. math::
          \bar{\boldsymbol{f}} = f_c^{-1}\boldsymbol{f},
 
-**Matrix Environment.**
-Nested environments with labled pmatrix environments cause wired representation in ipynb and html.
+Matrix formulas
+---------------
+
+Here is an ``align`` environment with a label and the ``pmatrix``
+environment for matrices and vectors in LaTeX.
 
 .. code-block:: latex
 
     !bt
-    \[ {\color{blue}\frac{\partial\u}{\partial t}} +
-    \nabla\cdot\nabla\u = \nu\nabla^2\u -
-    \frac{1}{\varrho}\nabla p,\]
+    \begin{align}
+    \begin{pmatrix}
+    G_2 + G_3 & -G_3 & -G_2 & 0 \\ 
+    -G_3 & G_3 + G_4 & 0 & -G_4 \\ 
+    -G_2 & 0 & G_1 + G_2 & 0 \\ 
+    0 & -G_4 & 0 & G_4
+    \end{pmatrix}
+    &=
+    \begin{pmatrix}
+    v_1 \\ 
+    v_2 \\ 
+    v_3 \\ 
+    v_4
+    \end{pmatrix}
+    + \cdots
+    label{mymatrixeq}\\ 
+    \begin{pmatrix}
+    C_5 + C_6 & -C_6 & 0 & 0 \\ 
+    -C_6 & C_6 & 0 & 0 \\ 
+    0 & 0 & 0 & 0 \\ 
+    0 & 0 & 0 & 0
+    \end{pmatrix}
+    \frac{d}{dt} &=
+    \begin{pmatrix}
+    v_1 \\ 
+    v_2 \\ 
+    v_3 \\ 
+    v_4
+    \end{pmatrix} =
+    \begin{pmatrix}
+    0 \\ 
+    0 \\ 
+    0 \\ 
+    -i_0
+    \end{pmatrix}
+    \end{align}
     !et
 
 which becomes
 
 .. math::
-   :label: _auto8
+   :label: mymatrixeq
+
         
         \begin{pmatrix}
-        G_2 + G_3  -G_3  -G_2  0 
-        
-        
-
-.. math::
-   :label: _auto9
-          
-        -G_3  G_3 + G_4  0  -G_4 
-        
-        
-
-.. math::
-   :label: _auto10
-          
-        -G_2  0  G_1 + G_2  0 
-        
-        
-
-.. math::
-   :label: _auto11
-          
-        0  -G_4  0  G_4
+        G_2 + G_3 & -G_3 & -G_2 & 0 \\ 
+        -G_3 & G_3 + G_4 & 0 & -G_4 \\ 
+        -G_2 & 0 & G_1 + G_2 & 0 \\ 
+        0 & -G_4 & 0 & G_4
         \end{pmatrix}
         =
         \begin{pmatrix}
-        v_1 
-        
-        
-
-.. math::
-   :label: _auto12
-          
-        v_2 
-        
-        
-
-.. math::
-   :label: _auto13
-          
-        v_3 
-        
-        
-
-.. math::
-   :label: _auto14
-          
+        v_1 \\ 
+        v_2 \\ 
+        v_3 \\ 
         v_4
         \end{pmatrix}
-        + \cdots 
+        + \cdots
         
         
 
 .. math::
-   :label: _auto15
+   :label: _auto8
+
           
         \begin{pmatrix}
-        C_5 + C_6  -C_6  0  0 
-        
-        
-
-.. math::
-   :label: _auto16
-          
-        -C_6  C_6  0  0 
-        
-        
-
-.. math::
-   :label: _auto17
-          
-        0  0  0  0 
-        
-        
-
-.. math::
-   :label: _auto18
-          
-        0  0  0  0
+        C_5 + C_6 & -C_6 & 0 & 0 \\ 
+        -C_6 & C_6 & 0 & 0 \\ 
+        0 & 0 & 0 & 0 \\ 
+        0 & 0 & 0 & 0
         \end{pmatrix}
         \frac{d}{dt} =
         \begin{pmatrix}
-        v_1 
-        
-        
-
-.. math::
-   :label: _auto19
-          
-        v_2 
-        
-        
-
-.. math::
-   :label: _auto20
-          
-        v_3 
-        
-        
-
-.. math::
-   :label: _auto21
-          
+        v_1 \\ 
+        v_2 \\ 
+        v_3 \\ 
         v_4
         \end{pmatrix} =
         \begin{pmatrix}
-        0 
-        
-        
-
-.. math::
-   :label: _auto22
-          
-        0 
-        
-        
-
-.. math::
-   :label: _auto23
-          
-        0 
-        
-        
-
-.. math::
-   :label: _auto24
-          
+        0 \\ 
+        0 \\ 
+        0 \\ 
         -i_0
         \end{pmatrix}
         
         
 
-The same matrices without labels seem to translate better:
+The same matrices without labels in an ``align*`` environment:
 
 .. code-block:: latex
 
     !bt
-    \[ \bar\f = f_c^{-1}\f,\]
+    \begin{align*}
+    \begin{pmatrix}
+    G_2 + G_3 & -G_3 & -G_2 & 0 \\ 
+    -G_3 & G_3 + G_4 & 0 & -G_4 \\ 
+    -G_2 & 0 & G_1 + G_2 & 0 \\ 
+    0 & -G_4 & 0 & G_4
+    \end{pmatrix}
+    &=
+    \begin{pmatrix}
+    v_1 \\ 
+    v_2 \\ 
+    v_3 \\ 
+    v_4
+    \end{pmatrix}
+    + \cdots \\ 
+    \begin{pmatrix}
+    C_5 + C_6 & -C_6 & 0 & 0 \\ 
+    -C_6 & C_6 & 0 & 0 \\ 
+    0 & 0 & 0 & 0 \\ 
+    0 & 0 & 0 & 0
+    \end{pmatrix}
+    \frac{d}{dt} &=
+    \begin{pmatrix}
+    v_1 \\ 
+    v_2 \\ 
+    v_3 \\ 
+    v_4
+    \end{pmatrix} =
+    \begin{pmatrix}
+    0 \\ 
+    0 \\ 
+    0 \\ 
+    -i_0
+    \end{pmatrix}
+    \end{align*}
     !et
 
-which becomes
+The rendered result becomes
 
 .. math::
-        
+        \begin{align*}
         \begin{pmatrix}
         G_2 + G_3 & -G_3 & -G_2 & 0 \\ 
         -G_3 & G_3 + G_4 & 0 & -G_4 \\ 
@@ -725,6 +752,6 @@ which becomes
         0 \\ 
         -i_0
         \end{pmatrix}
-        
+        \end{align*}
 
 

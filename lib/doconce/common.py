@@ -384,12 +384,13 @@ def align2equations(filestr, format):
 
     # sphinx: just replace align, pandoc/ipynb: replace align and align*
     # technique: add } if sphinx
-    postfixes = ['}', 'at}'] if format == 'sphinx' else ['}', '*}', 'at}', 'at*}']
+    postfixes = ['}', 'at}'] if format in ('sphinx', 'ipynb') else ['}', '*}', 'at}', 'at*}']
 
     lines = filestr.splitlines()
     inside_align = False
     inside_code = False
     inside_math = False
+    inside_matrix = False
     for postfix in postfixes:
         for i in range(len(lines)):
             if lines[i].startswith('!bc'):
@@ -400,6 +401,10 @@ def align2equations(filestr, format):
                 inside_math = True
             if lines[i].startswith('!et'):
                 inside_math = False
+            if 'begin{pmatrix}' in lines[i] or 'begin{array}' in lines[i]:
+                inside_matrix = True
+            if 'end{pmatrix}' in lines[i] or 'end{array}' in lines[i]:
+                inside_matrix = False
             if not inside_math:
                 # Rewrite only math inside !bt-!et
                 continue
@@ -408,18 +413,19 @@ def align2equations(filestr, format):
                 inside_align = True
                 lines[i] = lines[i].replace(
                 r'\begin{align%s' % postfix, r'\begin{equation%s' % postfix)
-                # Wrong replacements a la begin{equationat*}{2}, fix below
-            if inside_align and '\\\\' in lines[i]:
+                # Wrong replacements a la begin{equationat*}{2} are fixed below
+            # Not a problem anymore:
+            #if inside_align and ('begin{array}' in lines[i] or
+            #                     'begin{pmatrix}' in lines[i]):
+            #    errwarn('*** error: with %s output, align environments' % format)
+            #    errwarn('    cannot have arrays/matrices with & and \\\\')
+            #    errwarn('    rewrite with single equations (not align)!')
+            #    errwarn('\n'.join(lines[i-4:i+5]).replace('{equation', '{align'))
+            #    _abort()
+            if inside_align and (not inside_matrix) and '\\\\' in lines[i]:
                 lines[i] = lines[i].replace(
                 '\\\\', '\n' + r'\end{equation%s' % postfix + '\n!et\n\n!bt\n' + r'\begin{equation%s ' % postfix)
-            if inside_align and ('begin{array}' in lines[i] or
-                                 'begin{bmatrix}' in lines[i]):
-                errwarn('*** error: with %s output, align environments' % format)
-                errwarn('    cannot have arrays/matrices with & and \\\\')
-                errwarn('    rewrite with single equations (not align)!')
-                errwarn('\n'.join(lines[i-4:i+5]).replace('{equation', '{align'))
-                _abort()
-            if inside_align and '&' in lines[i]:
+            if inside_align and (not inside_matrix) and '&' in lines[i]:
                 lines[i] = lines[i].replace('&', '')
             if r'\end{align%s' % postfix in lines[i]:
                 inside_align = False

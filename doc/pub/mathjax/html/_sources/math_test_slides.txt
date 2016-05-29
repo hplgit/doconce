@@ -7,7 +7,7 @@ Math Test for Use with Slides
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Mirco Meiners
-:Date: May 26, 2016
+:Date: May 27, 2016
 
 .. !split
 
@@ -29,24 +29,24 @@ Network Analysis of Periodic Signals
 Node 0:
 
 .. math::
-        
+        \begin{align*}
         -i_0 - i_1 - i_5 &= 0 \\
         -G_1(v_3-v_0) - C_5 {\frac{d }{d t}}(v_1-v_0) &= i_0
-        
+        \end{align*}
 
 Node 1:
 
 .. math::
-        
+        \begin{align*}
         -i_2 + i_3 + i_5 + i_6 &= 0 \\
         -G_2(v_3-v_1) + G_3(v_1-v_3) + C_5 {\frac{d }{d t}}(v_1-v_0) + C_6 {\frac{d }{d t}}(v_1-v_6) &= 0
-        
+        \end{align*}
 
 ODE System
 ----------
 
 .. math::
-        
+        \begin{align*}
         \begin{pmatrix}
         G_2 + G_3 & -G_3 & -G_2 & 0 \\
         -G_3 & G_3 + G_4 & 0 & -G_4 \\
@@ -79,17 +79,17 @@ ODE System
         0 \\
         -i_0
         \end{pmatrix}
-        
+        \end{align*}
 
 Compact Description
 -------------------
 
 .. math::
-        
+        \begin{align*}
         \mathbf{A} \mathbf{x} + \mathbf{B} \dot{\mathbf{x}} &= \mathbf{b} \\
         \dot{\mathbf{x}} &= -\mathbf{B}^{-1}\mathbf{A}\mathbf{x} + \mathbf{B}^{-1}\mathbf{b}(t) \\
         &= \mathbf{T}\mathbf{x} + \mathbf{g}(t)
-        
+        \end{align*}
 
 Kirchhoff's Voltage Law
 -----------------------
@@ -99,7 +99,7 @@ Choice of independent currents :math:`I_M`: :math:`I_1, I_4, I_7, I_8`
 State-space analysis in laplace domain:
 
 .. math::
-        
+        \begin{align*}
         \begin{pmatrix}
         I_2 \\
         I_3 \\
@@ -123,24 +123,24 @@ State-space analysis in laplace domain:
         I_7 \\
         I_8
         \end{pmatrix}
-        
+        \end{align*}
 
 Loop Equation
 -------------
 
 .. math::
-        
+        \begin{align*}
         I_1 Z_1 - I_2 Z_2 - I_3 Z_3 &= 0 \\
         U_4 + I_4 Z_4 + I_9 + Z_9 - I_6 Z_6 - I_5 Z_5 - I_2 Z_2 &= 0 \\
         I_7 Z_7 + I_{10} Z_{10} + I_9 Z_9 - I_6 Z_6 - I_5 Z_5 - I_2 Z_2 -I_3 Z_3 &= 0 \\
         U_8 + I_8 Z_8 - I_9 Z_9 - I_{10} Z_{10} &= 0
-        
+        \end{align*}
 
 Sorting and Preperation for Linear Equation System
 --------------------------------------------------
 
 .. math::
-        
+        \begin{align*}
         \begin{pmatrix}
         \sum Z_{1,3} & Z_2 & \sum Z_{2,3} & 0 \\
         Z_2 & \sum Z_{2,4,5,6,9} & \sum Z_{2,5,6,9,10} & -Z_9 \\
@@ -161,6 +161,6 @@ Sorting and Preperation for Linear Equation System
         0 \\
         -U_8
         \end{pmatrix}
-        
+        \end{align*}
 
 

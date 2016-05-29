@@ -86,7 +86,7 @@
 </ol>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body"><p class="first last">May 25, 2016</p>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body"><p class="first last">May 27, 2016</p>
 </td>
 </tr>
 </tbody>
@@ -149,8 +149,8 @@ The box is more aimed at framing a law or an equation.</p>
 </div></blockquote>
 <p>Now test a box with equation only (note that this line continues the
 box, it is not a new paragraph):</p>
-<div class="math" id="equation-_auto1 f(x) = \sin(x)e^{1-x}">
-<span class="eqno">(1)</span>\[\]</div>
+<div class="math" id="equation-_auto1">
+<span class="eqno">(1)</span>\[      f(x) = \sin(x)e^{1-x}\]</div>
 <p>Let&#8217;s begin a new paragraph and show a box with code only:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">some_code</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>
@@ -224,8 +224,10 @@ and is useful when you want some admons with icon and some without.</p>
 <p>Ah, we are soon close to the end (with illegal font size specification!).
 But first a bit of math where we define <span class="math">\(\theta\)</span> and <span class="math">\(\boldsymbol{r}\)</span>:</p>
 <div class="last math">
-\[\begin{split}\theta &amp;= q^2,\\
-\boldsymbol{r} &amp;= \varrho\boldsymbol{i}\end{split}\]</div>
+\[\begin{split}\begin{align*}
+\theta &amp;= q^2,\\
+\boldsymbol{r} &amp;= \varrho\boldsymbol{i}
+\end{align*}\end{split}\]</div>
 </div>
 <div class="admonition-point1 admonition">
 <p class="first admonition-title">Point1</p>
@@ -278,10 +280,12 @@ page in the hope that some admonitions will experience a page break,
 which the LaTeX environment should handle with ease.</p>
 <p>Let us start with some equations:</p>
 <div class="math">
-\[\begin{split}\frac{Du}{dt} &amp;= 0
+\[\begin{split}\begin{align*}
+\frac{Du}{dt} &amp;= 0
 \\
 \frac{1}{2} &amp;= {1/2}\\
-\frac{1}{2}\pmb{x} &amp;= \pmb{n}\end{split}\]</div>
+\frac{1}{2}\pmb{x} &amp;= \pmb{n}
+\end{align*}\end{split}\]</div>
 <p>The implementation of such complicated equations in computer
 code is task that this &#8220;Going deeper&#8221; environment targets.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">Dudt</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>

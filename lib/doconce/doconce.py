@@ -5025,7 +5025,7 @@ def format_driver():
 
     names = supported_format_names()
     if format not in names:
-        errwarn('%s is not among the supported formats:\n%s' % (format, names))
+        print '%s is not among the supported formats:\n%s' % (format, names)
         _abort()
 
     encoding = option('encoding=', default='')

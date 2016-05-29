@@ -10,7 +10,7 @@ DocOnce Quick Reference
 =======================
 
 :Authors: Hans Petter Langtangen
-:Date: May 25, 2016
+:Date: May 27, 2016
 
 **WARNING: This quick reference is very incomplete!**
 
@@ -658,10 +658,10 @@ and
 This LaTeX code gets rendered as
 
 .. math::
-        
+        \begin{align*}
         \nabla\cdot \pmb{u} &= 0,\\ 
         \nabla\times \pmb{u} &= 0.
-        
+        \end{align*}
 
 Here is a single equation:
 

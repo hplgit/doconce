@@ -67,7 +67,50 @@ div { text-align: justify; text-justify: inter-word; }
 </head>
 
 <!-- tocinfo
-{'highest level': 4, 'sections': []}
+{'highest level': 1,
+ 'sections': [('Test of equation environments', 1, None, '___sec0'),
+              ('Test 1: Inline math', 2, None, '___sec1'),
+              ('Test 2: A single equation with label', 2, None, '___sec2'),
+              ('Test 3: Multiple, aligned equations without label and number',
+               3,
+               None,
+               '___sec3'),
+              ('Test 4: Multiple, aligned equations with label',
+               2,
+               None,
+               '___sec4'),
+              ('Test 5: Multiple, aligned equations without label',
+               2,
+               None,
+               '___sec5'),
+              ('Test 6: Multiple, aligned equations with multiple alignments',
+               2,
+               None,
+               '___sec6'),
+              ('Test 7: Multiple, aligned eqnarray equations without label',
+               2,
+               None,
+               '___sec7'),
+              ('Test 8: Multiple, eqnarrayed equations with label',
+               2,
+               None,
+               '___sec8'),
+              ('Test 9: The `multiline` environment with label and number',
+               2,
+               None,
+               '___sec9'),
+              ('Test 10: Splitting equations using a split environment',
+               2,
+               None,
+               '___sec10'),
+              ('Test 11: Newcommands and boldface bm vs pmb',
+               2,
+               None,
+               '___sec11'),
+              ('Problematic equations', 1, None, '___sec12'),
+              ('Colored terms in equations', 2, None, '___sec13'),
+              ('Bar over symbols', 2, None, '___sec14'),
+              ('Matrix formulas', 2, None, '___sec15')]}
 end of tocinfo -->
 
 <body>
@@ -119,37 +162,39 @@ $$
 <center>[2] <b>University of Oslo</b></center>
 <br>
 <p>
-<center><h4>May 25, 2016</h4></center> <!-- date -->
+<center><h4>May 27, 2016</h4></center> <!-- date -->
 <br>
 <p>
-<b>Summary.</b> The purpose of this document is to
-test LaTeX math in DocOnce with various output formats.
-Most LaTeX math constructions are renedered correctly by MathJax
-in plain HTML, but some combinations of constructions may fail.
-Unfortunately, only a subset of what works in html MathJax also works in
-sphinx MathJax. The same is true for markdown MathJax expresions
-(e.g., Jupyter notebooks).
-Tests and examples are provided to illustrate what may go wrong.
+<b>Summary.</b> The purpose of this document is to test LaTeX math in DocOnce with
+various output formats.  Most LaTeX math constructions are renedered
+correctly by MathJax in plain HTML, but some combinations of
+constructions may fail.  Unfortunately, only a subset of what works in
+html MathJax also works in sphinx MathJax. The same is true for
+markdown MathJax expresions (e.g., Jupyter notebooks).  Tests and
+examples are provided to illustrate what may go wrong.
 
 <p>
 The recommendation for writing math that translates to MathJax in
-html, sphinx, and markdown is to stick to the environments
-<code>\[ ... \]</code>, <code>equation</code>, <code>equation*</code>, <code>align</code>, <code>align*</code>, <code>alignat</code>,
-and <code>alignat*</code> only. Test the math with sphinx output; if it works in that
+html, sphinx, and markdown is to stick to the environments <code>\[
+... \]</code>, <code>equation</code>, <code>equation*</code>, <code>align</code>, <code>align*</code>, <code>alignat</code>, and
+<code>alignat*</code> only. Test the math with sphinx output; if it works in that
 format, it should work elsewhere too.
 
 <p>
 The current version of the document is translated from DocOnce source
 to the format <b>html</b>.
 
-<p>
+<h1 id="___sec0">Test of equation environments </h1>
 
-<b>Test 1: Inline math.</b>
+<h2 id="___sec1">Test 1: Inline math </h2>
+
+<p>
 We can get an inline equation
 <code>$u(t)=e^{-at}$</code> rendered as \( u(t)=e^{-at} \).
 
+<h2 id="___sec2">Test 2: A single equation with label </h2>
+
 <p>
-<b>Test 2: A single equation with label.</b>
 An equation with number,
 
 <p>
@@ -189,11 +234,12 @@ $$
 
 We can refer to this equation through its label <code>eq1b</code>: \eqref{eq1b}.
 
+<h3 id="___sec3">Test 3: Multiple, aligned equations without label and number ==</h3>
+
 <p>
-<b>Test 3: Multiple, aligned equations without label and number.</b>
-MathJax has
-historically had some problems with rendering many LaTeX math environments,
-but the <code>align*</code> and <code>align</code> environments have always worked.
+MathJax has historically had some problems with rendering many LaTeX
+math environments, but the <code>align*</code> and <code>align</code> environments have
+always worked.
 
 <p>
 
@@ -215,10 +261,10 @@ v(t) - 1 &= \frac{du}{dt}
 \end{align*}
 $$
 
+<h2 id="___sec4">Test 4: Multiple, aligned equations with label </h2>
+
 <p>
-<b>Test 4: Multiple, aligned equations with label.</b>
-Here, we
-use <code>align</code> with user-prescribed labels:
+Here, we use <code>align</code> with user-prescribed labels:
 
 <p>
 
@@ -246,13 +292,14 @@ $$
 
 We can refer to the last equations as the system \eqref{eq2b}-\eqref{eq3b}.
 
+<h2 id="___sec5">Test 5: Multiple, aligned equations without label </h2>
+
 <p>
-<b>Test 5: Multiple, aligned equations without label.</b>
-In LaTeX,
-equations within an <code>align</code> environment is automatically given numbers.
-To ensure that an html document with MathJax gets the same equation numbers
-as its latex/pdflatex companion, DocOnce generates labels in equations where
-there is no label prescribed. For example,
+In LaTeX, equations within an <code>align</code> environment is automatically
+given numbers.  To ensure that an html document with MathJax gets the
+same equation numbers as its latex/pdflatex companion, DocOnce
+generates labels in equations where there is no label prescribed. For
+example,
 
 <p>
 
@@ -292,8 +339,9 @@ v(t) - 1 &= \frac{du}{dt}
 \end{align}
 $$
 
+<h2 id="___sec6">Test 6: Multiple, aligned equations with multiple alignments </h2>
+
 <p>
-<b>Test 6: Multiple, aligned equations with multiple alignments.</b>
 The <code>align</code> environment can be used with two <code>&</code> alignment characters, e.g.,
 
 <p>
@@ -345,10 +393,10 @@ u(0,t) &= u_0(x), & x\in [0,L]
 \end{alignat}
 $$
 
+<h2 id="___sec7">Test 7: Multiple, aligned eqnarray equations without label </h2>
+
 <p>
-<b>Test 7: Multiple, aligned eqnarray equations without label.</b>
-Let us
-try the old <code>eqnarray*</code> environment.
+Let us try the old <code>eqnarray*</code> environment.
 
 <p>
 
@@ -370,8 +418,9 @@ v(t) - 1 &=& \frac{du}{dt}
 \end{eqnarray*}
 $$
 
+<h2 id="___sec8">Test 8: Multiple, eqnarrayed equations with label </h2>
+
 <p>
-<b>Test 8: Multiple, eqnarrayed equations with label.</b>
 Here we use <code>eqnarray</code> with labels:
 
 <p>
@@ -399,8 +448,9 @@ $$
 Can we refer to the last equations as the system \eqref{eq2c}-\eqref{eq3c}
 in the html format?
 
+<h2 id="___sec9">Test 9: The <code>multiline</code> environment with label and number </h2>
+
 <p>
-<b>Test 9: The <code>multiline</code> environment with label and number.</b>
 The LaTeX code
 
 <p>
@@ -430,8 +480,9 @@ $$
 and we can hopefully refer to the Trapezoidal rule
 as the formula \eqref{multiline:eq1}.
 
+<h2 id="___sec10">Test 10: Splitting equations using a split environment </h2>
+
 <p>
-<b>Test 10: Splitting equations using a split environment.</b>
 Although <code>align</code> can be used to split too long equations, a more obvious
 command is <code>split</code>:
 
@@ -462,8 +513,9 @@ f(a+(j+1)h)) \\
 \end{equation}
 $$
 
+<h2 id="___sec11">Test 11: Newcommands and boldface bm vs pmb </h2>
+
 <p>
-<b>Test 11: Newcommands and boldface bm vs pmb.</b>
 First we use the plain old pmb package for bold math. The formula
 
 <p>
@@ -524,10 +576,16 @@ to <code>\boldsymbol</code>.
 </div>
 
 
+<h1 id="___sec12">Problematic equations </h1>
+
 <p>
-<b>Problematic equations.</b>
 Finally, we collect some problematic formulas in MathJax. They all work
 fine in LaTeX.
+
+<h2 id="___sec13">Colored terms in equations </h2>
+
+<p>
+The LaTeX code
 
 <p>
 
@@ -545,8 +603,7 @@ $$ {\color{blue}\frac{\partial\u}{\partial t}} +
 \nabla\cdot\nabla\u = \nu\nabla^2\u -
 \frac{1}{\varrho}\nabla p,$$
 
-<p>
-but correct rendering in sphinx requires omitting the <code>\color</code> command.
+<h2 id="___sec14">Bar over symbols </h2>
 
 <p>
 Sometimes one must be extra careful with the LaTeX syntax to get sphinx MathJax
@@ -580,9 +637,11 @@ makes the output correct also for sphinx:
 
 $$ \bar{\f} = f_c^{-1}\f,$$
 
+<h2 id="___sec15">Matrix formulas </h2>
+
 <p>
-<b>Matrix Environment.</b>
-Nested environments with labled pmatrix environments cause wired representation in ipynb and html.
+Here is an <code>align</code> environment with a label and the <code>pmatrix</code>
+environment for matrices and vectors in LaTeX.
 
 <p>
 
@@ -602,7 +661,8 @@ v<span style="color: #008000">_</span>2 <span style="color: #008000; font-weight
 v<span style="color: #008000">_</span>3 <span style="color: #008000; font-weight: bold">\\</span> 
 v<span style="color: #008000">_</span>4
 <span style="color: #008000; font-weight: bold">\end</span><span style="color: #008000">{</span>pmatrix<span style="color: #008000">}</span>
-+ <span style="color: #008000; font-weight: bold">\cdots</span> <span style="color: #008000; font-weight: bold">\\</span> 
++ <span style="color: #008000; font-weight: bold">\cdots</span>
+label<span style="color: #008000">{</span>mymatrixeq<span style="color: #008000">}</span><span style="color: #008000; font-weight: bold">\\</span> 
 <span style="color: #008000; font-weight: bold">\begin</span><span style="color: #008000">{</span>pmatrix<span style="color: #008000">}</span>
 C<span style="color: #008000">_</span>5 + C<span style="color: #008000">_</span>6 <span style="color: #008000">&amp;</span> -C<span style="color: #008000">_</span>6 <span style="color: #008000">&amp;</span> 0 <span style="color: #008000">&amp;</span> 0 <span style="color: #008000; font-weight: bold">\\</span> 
 -C<span style="color: #008000">_</span>6 <span style="color: #008000">&amp;</span> C<span style="color: #008000">_</span>6 <span style="color: #008000">&amp;</span> 0 <span style="color: #008000">&amp;</span> 0 <span style="color: #008000; font-weight: bold">\\</span> 
@@ -643,8 +703,8 @@ v_2 \\
 v_3 \\ 
 v_4
 \end{pmatrix}
-+ \cdots  \label{_auto6}
-\\ 
++ \cdots
+\label{mymatrixeq}\\ 
 \begin{pmatrix}
 C_5 + C_6 & -C_6 & 0 & 0 \\ 
 -C_6 & C_6 & 0 & 0 \\ 
@@ -664,11 +724,10 @@ v_4
 0 \\ 
 -i_0
 \end{pmatrix}
-\label{_auto7}
 \end{align}$$
 
 <p>
-The same matrices without labels seem to translate better:
+The same matrices without labels in an <code>align*</code> environment:
 
 <p>
 
@@ -712,7 +771,7 @@ v<span style="color: #008000">_</span>4
 !et
 </pre></div>
 <p>
-which becomes
+The rendered result becomes
 
 $$
 \begin{align*}

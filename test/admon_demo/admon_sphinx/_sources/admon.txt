@@ -7,7 +7,7 @@ Testing admons
 %%%%%%%%%%%%%%
 
 :Authors: H. P. Langtangen
-:Date: May 25, 2016
+:Date: May 27, 2016
 
 .. !split
 
@@ -103,6 +103,7 @@ box, it is not a new paragraph):
 
 .. math::
    :label: _auto1
+
          f(x) = \sin(x)e^{1-x}
 
 
@@ -221,9 +222,10 @@ applies the generic title "Notice:" for the Sphinx format:
    But first a bit of math where we define :math:`\theta` and :math:`\boldsymbol{r}`:
    
    .. math::
-           
+           \begin{align*}
            \theta &= q^2,\\
            \boldsymbol{r} &= \varrho\boldsymbol{i}
+           \end{align*}
 
 
 
@@ -306,12 +308,12 @@ text, math and code.
    Let us start with some equations:
    
    .. math::
-           
+           \begin{align*}
            \frac{Du}{dt} &= 0
            \\
            \frac{1}{2} &= {1/2}\\
            \frac{1}{2}\pmb{x} &= \pmb{n}
-           
+           \end{align*}
    
    The implementation of such complicated equations in computer
    code is task that this "Going deeper" environment targets.

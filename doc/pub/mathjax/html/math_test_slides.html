@@ -24,8 +24,26 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+        <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
+
+        <script>sagecell.makeSagecell({inputLocation: ".sage"});</script>
+
+        <style type="text/css">
+                .sagecell .CodeMirror-scroll {
+                        overflow-y: hidden;
+                        overflow-x: auto;
+                }
+                .sagecell .CodeMirror {
+                        height: auto;
+                }
+        </style>
+
+    
     <link rel="top" title="Math Test for Use with Slides" href="index.html" />
     <link rel="prev" title="Math Test for Use with Slides" href="index.html" />
+
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <!--[if lte IE 6]>
@@ -69,7 +87,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Mirco Meiners</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">May 26, 2016</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">May 27, 2016</td>
 </tr>
 </tbody>
 </table>
@@ -85,17 +103,22 @@ by ordenary differential equations or state-space models.</p>
 <h3>Network Analysis of Periodic Signals<a class="headerlink" href="#network-analysis-of-periodic-signals" title="Permalink to this headline">¶</a></h3>
 <p>Node 0:</p>
 <div class="math">
-\[\begin{split}-i_0 - i_1 - i_5 &amp;= 0 \\
--G_1(v_3-v_0) - C_5 {\frac{d }{d t}}(v_1-v_0) &amp;= i_0\end{split}\]</div>
+\[\begin{split}\begin{align*}
+-i_0 - i_1 - i_5 &amp;= 0 \\
+-G_1(v_3-v_0) - C_5 {\frac{d }{d t}}(v_1-v_0) &amp;= i_0
+\end{align*}\end{split}\]</div>
 <p>Node 1:</p>
 <div class="math">
-\[\begin{split}-i_2 + i_3 + i_5 + i_6 &amp;= 0 \\
--G_2(v_3-v_1) + G_3(v_1-v_3) + C_5 {\frac{d }{d t}}(v_1-v_0) + C_6 {\frac{d }{d t}}(v_1-v_6) &amp;= 0\end{split}\]</div>
+\[\begin{split}\begin{align*}
+-i_2 + i_3 + i_5 + i_6 &amp;= 0 \\
+-G_2(v_3-v_1) + G_3(v_1-v_3) + C_5 {\frac{d }{d t}}(v_1-v_0) + C_6 {\frac{d }{d t}}(v_1-v_6) &amp;= 0
+\end{align*}\end{split}\]</div>
 </div>
 <div class="section" id="ode-system">
 <h3>ODE System<a class="headerlink" href="#ode-system" title="Permalink to this headline">¶</a></h3>
 <div class="math">
-\[\begin{split}\begin{pmatrix}
+\[\begin{split}\begin{align*}
+\begin{pmatrix}
 G_2 + G_3 &amp; -G_3 &amp; -G_2 &amp; 0 \\
 -G_3 &amp; G_3 + G_4 &amp; 0 &amp; -G_4 \\
 -G_2 &amp; 0 &amp; G_1 + G_2 &amp; 0 \\
@@ -126,21 +149,25 @@ v_4
 0 \\
 0 \\
 -i_0
-\end{pmatrix}\end{split}\]</div>
+\end{pmatrix}
+\end{align*}\end{split}\]</div>
 </div>
 <div class="section" id="compact-description">
 <h3>Compact Description<a class="headerlink" href="#compact-description" title="Permalink to this headline">¶</a></h3>
 <div class="math">
-\[\begin{split}\mathbf{A} \mathbf{x} + \mathbf{B} \dot{\mathbf{x}} &amp;= \mathbf{b} \\
+\[\begin{split}\begin{align*}
+\mathbf{A} \mathbf{x} + \mathbf{B} \dot{\mathbf{x}} &amp;= \mathbf{b} \\
 \dot{\mathbf{x}} &amp;= -\mathbf{B}^{-1}\mathbf{A}\mathbf{x} + \mathbf{B}^{-1}\mathbf{b}(t) \\
-&amp;= \mathbf{T}\mathbf{x} + \mathbf{g}(t)\end{split}\]</div>
+&amp;= \mathbf{T}\mathbf{x} + \mathbf{g}(t)
+\end{align*}\end{split}\]</div>
 </div>
 <div class="section" id="kirchhoff-s-voltage-law">
 <h3>Kirchhoff&#8217;s Voltage Law<a class="headerlink" href="#kirchhoff-s-voltage-law" title="Permalink to this headline">¶</a></h3>
 <p>Choice of independent currents <span class="math">\(I_M\)</span>: <span class="math">\(I_1, I_4, I_7, I_8\)</span></p>
 <p>State-space analysis in laplace domain:</p>
 <div class="math">
-\[\begin{split}\begin{pmatrix}
+\[\begin{split}\begin{align*}
+\begin{pmatrix}
 I_2 \\
 I_3 \\
 I_5 \\
@@ -162,20 +189,24 @@ I_1 \\
 I_4 \\
 I_7 \\
 I_8
-\end{pmatrix}\end{split}\]</div>
+\end{pmatrix}
+\end{align*}\end{split}\]</div>
 </div>
 <div class="section" id="loop-equation">
 <h3>Loop Equation<a class="headerlink" href="#loop-equation" title="Permalink to this headline">¶</a></h3>
 <div class="math">
-\[\begin{split}I_1 Z_1 - I_2 Z_2 - I_3 Z_3 &amp;= 0 \\
+\[\begin{split}\begin{align*}
+I_1 Z_1 - I_2 Z_2 - I_3 Z_3 &amp;= 0 \\
 U_4 + I_4 Z_4 + I_9 + Z_9 - I_6 Z_6 - I_5 Z_5 - I_2 Z_2 &amp;= 0 \\
 I_7 Z_7 + I_{10} Z_{10} + I_9 Z_9 - I_6 Z_6 - I_5 Z_5 - I_2 Z_2 -I_3 Z_3 &amp;= 0 \\
-U_8 + I_8 Z_8 - I_9 Z_9 - I_{10} Z_{10} &amp;= 0\end{split}\]</div>
+U_8 + I_8 Z_8 - I_9 Z_9 - I_{10} Z_{10} &amp;= 0
+\end{align*}\end{split}\]</div>
 </div>
 <div class="section" id="sorting-and-preperation-for-linear-equation-system">
 <h3>Sorting and Preperation for Linear Equation System<a class="headerlink" href="#sorting-and-preperation-for-linear-equation-system" title="Permalink to this headline">¶</a></h3>
 <div class="math">
-\[\begin{split}\begin{pmatrix}
+\[\begin{split}\begin{align*}
+\begin{pmatrix}
 \sum Z_{1,3} &amp; Z_2 &amp; \sum Z_{2,3} &amp; 0 \\
 Z_2 &amp; \sum Z_{2,4,5,6,9} &amp; \sum Z_{2,5,6,9,10} &amp; -Z_9 \\
 \sum Z_{2,3} &amp; \sum Z_{2,5,6,9,10} &amp; \sum Z_{2,3,5,6,7,9,10} &amp;
@@ -194,7 +225,8 @@ I_8
 -U_4 \\
 0 \\
 -U_8
-\end{pmatrix}\end{split}\]</div>
+\end{pmatrix}
+\end{align*}\end{split}\]</div>
 </div>
 </div>
 </div>

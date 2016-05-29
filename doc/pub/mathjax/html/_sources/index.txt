@@ -2,12 +2,12 @@
 .. Master file automatically created by doconce sphinx_dir
 
 
-Math Test for Use with Slides
-=============================
+How various formats can deal with LaTeX math
+============================================
 
 Contents:
 
 .. toctree::
    :maxdepth: 2
 
-   math_test_slides
+   math_test

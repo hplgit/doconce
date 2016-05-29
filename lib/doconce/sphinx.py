@@ -272,28 +272,29 @@ def sphinx_code(filestr, code_blocks, code_block_types,
         tex_blocks[i] = re.sub(label_regex, '', tex_blocks[i])
 
         # fix latex constructions that do not work with sphinx math
+        # (just remove them)
         commands = [r'\begin{equation}',
                     r'\end{equation}',
                     r'\begin{equation*}',
                     r'\end{equation*}',
-                    r'\begin{eqnarray}',
-                    r'\end{eqnarray}',
-                    r'\begin{eqnarray*}',
-                    r'\end{eqnarray*}',
-                    r'\begin{align}',
-                    r'\end{align}',
-                    r'\begin{align*}',
-                    r'\end{align*}',
+                    #r'\begin{eqnarray}',
+                    #r'\end{eqnarray}',
+                    #r'\begin{eqnarray*}',
+                    #r'\end{eqnarray*}',
+                    #r'\begin{align}',
+                    #r'\end{align}',
+                    #r'\begin{align*}',
+                    #r'\end{align*}',
                     r'\begin{multline}',
                     r'\end{multline}',
                     r'\begin{multline*}',
                     r'\end{multline*}',
-                    r'\begin{split}',
-                    r'\end{split}',
-                    r'\begin{gather}',
-                    r'\end{gather}',
-                    r'\begin{gather*}',
-                    r'\end{gather*}',
+                    #r'\begin{split}',
+                    #r'\end{split}',
+                    #r'\begin{gather}',
+                    #r'\end{gather}',
+                    #r'\begin{gather*}',
+                    #r'\end{gather*}',
                     r'\[',
                     r'\]',
                     # some common abbreviations (newcommands):
@@ -306,14 +307,13 @@ def sphinx_code(filestr, code_blocks, code_block_types,
                     r'\baln',
                     r'\ealn',
                     r'\beq',
-                    r'\eeq',  # the simplest, contained in others, must come last!
+                    r'\eeq',  # the simplest name, contained in others, must come last!
                     ]
         for command in commands:
             tex_blocks[i] = tex_blocks[i].replace(command, '')
+        # &=& -> &=
         tex_blocks[i] = re.sub('&\s*=\s*&', ' &= ', tex_blocks[i])
         # provide warnings for problematic environments
-        #if '{alignat' in tex_blocks[i]:
-        #    errwarn('*** warning: the "alignat" environment will give errors in Sphinx:\n\n' + tex_blocks[i] + '\n')
 
     # Replace all references to equations that have labels in math environments:
     for label in math_labels:
@@ -477,8 +477,12 @@ found in line:
     filestr = re.sub(r'^!ec *\n', '\n', filestr, flags=re.MULTILINE)
     #filestr = re.sub(r'^!ec\n', '\n', filestr, flags=re.MULTILINE)
     #filestr = re.sub(r'^!ec\n', '', filestr, flags=re.MULTILINE)
+
     filestr = re.sub(r'^!bt *\n', '\n.. math::\n', filestr, flags=re.MULTILINE)
     filestr = re.sub(r'^!et *\n', '\n', filestr, flags=re.MULTILINE)
+    # Fix lacking blank line after :label:
+    filestr = re.sub(r'^(   :label: .+?)(\n *[^ ]+)', r'\g<1>\n\n\g<2>',
+                     filestr, flags=re.MULTILINE)
 
     # Insert counters for runestone blocks
     if option('runestone'):

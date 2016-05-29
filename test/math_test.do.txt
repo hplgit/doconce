@@ -3,29 +3,33 @@ AUTHOR: Hans Petter Langtangen at Simula Research Laboratory & University of Osl
 DATE: today
 
 __Summary.__
-The purpose of this document is to
-test LaTeX math in DocOnce with various output formats.
-Most LaTeX math constructions are renedered correctly by MathJax
-in plain HTML, but some combinations of constructions may fail.
-Unfortunately, only a subset of what works in html MathJax also works in
-sphinx MathJax. The same is true for markdown MathJax expresions
-(e.g., Jupyter notebooks).
-Tests and examples are provided to illustrate what may go wrong.
+The purpose of this document is to test LaTeX math in DocOnce with
+various output formats.  Most LaTeX math constructions are renedered
+correctly by MathJax in plain HTML, but some combinations of
+constructions may fail.  Unfortunately, only a subset of what works in
+html MathJax also works in sphinx MathJax. The same is true for
+markdown MathJax expresions (e.g., Jupyter notebooks).  Tests and
+examples are provided to illustrate what may go wrong.
 
 The recommendation for writing math that translates to MathJax in
-html, sphinx, and markdown is to stick to the environments
-`\[ ... \]`, `equation`, `equation*`, `align`, `align*`, `alignat`,
-and `alignat*` only. Test the math with sphinx output; if it works in that
+html, sphinx, and markdown is to stick to the environments `\[
+... \]`, `equation`, `equation*`, `align`, `align*`, `alignat`, and
+`alignat*` only. Test the math with sphinx output; if it works in that
 format, it should work elsewhere too.
 
 The current version of the document is translated from DocOnce source
 to the format _${FORMAT}_.
 
+======= Test of equation environments =======
 
-__Test 1: Inline math.__ We can get an inline equation
+===== Test 1: Inline math =====
+
+We can get an inline equation
 `$u(t)=e^{-at}$` rendered as $u(t)=e^{-at}$.
 
-__Test 2: A single equation with label.__ An equation with number,
+===== Test 2: A single equation with label =====
+
+An equation with number,
 
 !bc latexcod
 |bt
@@ -57,9 +61,11 @@ u(t)=e^{-at} label{eq1b}
 We can refer to this equation through its label `eq1b`: (ref{eq1b}).
 
 
-__Test 3: Multiple, aligned equations without label and number.__ MathJax has
-historically had some problems with rendering many LaTeX math environments,
-but the `align*` and `align` environments have always worked.
+===== Test 3: Multiple, aligned equations without label and number =====
+
+MathJax has historically had some problems with rendering many LaTeX
+math environments, but the `align*` and `align` environments have
+always worked.
 
 !bc latexcod
 |bt
@@ -78,8 +84,9 @@ v(t) - 1 &= \frac{du}{dt}
 \end{align*}
 !et
 
-__Test 4: Multiple, aligned equations with label.__ Here, we
-use `align` with user-prescribed labels:
+===== Test 4: Multiple, aligned equations with label =====
+
+Here, we use `align` with user-prescribed labels:
 
 !bc latexcod
 |bt
@@ -161,11 +168,13 @@ compared to more advanced MathJax.
 # #endif
 
 
-__Test 5: Multiple, aligned equations without label.__ In LaTeX,
-equations within an `align` environment is automatically given numbers.
-To ensure that an html document with MathJax gets the same equation numbers
-as its latex/pdflatex companion, DocOnce generates labels in equations where
-there is no label prescribed. For example,
+===== Test 5: Multiple, aligned equations without label =====
+
+In LaTeX, equations within an `align` environment is automatically
+given numbers.  To ensure that an html document with MathJax gets the
+same equation numbers as its latex/pdflatex companion, DocOnce
+generates labels in equations where there is no label prescribed. For
+example,
 
 !bc latexcod
 |bt
@@ -202,7 +211,8 @@ v(t) - 1 &= \frac{du}{dt}
 \end{align}
 !et
 
-__Test 6: Multiple, aligned equations with multiple alignments.__
+===== Test 6: Multiple, aligned equations with multiple alignments =====
+
 The `align` environment can be used with two `&` alignment characters, e.g.,
 
 !bc latexcod
@@ -274,7 +284,7 @@ u(0,t) &= u_0(x), & x\in [0,L]
 # #endif
 
 # #if FORMAT in ("pandoc", "ipynb")
-If DocOnce had not do rewritten of the above equations, they would be
+If DocOnce had not rewritten the above equations, they would be
 rendered in ${FORMAT} as
 
 $$
@@ -302,9 +312,9 @@ That is, the equation numbers are gone.
 
 
 
+===== Test 7: Multiple, aligned eqnarray equations without label =====
 
-__Test 7: Multiple, aligned eqnarray equations without label.__ Let us
-try the old `eqnarray*` environment.
+Let us try the old `eqnarray*` environment.
 
 !bc latexcod
 |bt
@@ -323,7 +333,8 @@ v(t) - 1 &=& \frac{du}{dt}
 \end{eqnarray*}
 !et
 
-__Test 8: Multiple, eqnarrayed equations with label.__
+===== Test 8: Multiple, eqnarrayed equations with label =====
+
 Here we use `eqnarray` with labels:
 
 !bc latexcod
@@ -353,7 +364,8 @@ But MathJax supports `eqnarray` with labels.
 The rule of thumb is to use `align` and not `eqnarray`!
 # #endif
 
-__Test 9: The `multiline` environment with label and number.__
+===== Test 9: The `multiline` environment with label and number =====
+
 The LaTeX code
 
 !bc latexcod
@@ -366,7 +378,6 @@ label{multiline:eq1}
 \end{multline}
 |et
 !ec
-
 gets rendered as
 
 !bt
@@ -381,13 +392,15 @@ and we can hopefully refer to the Trapezoidal rule
 as the formula (ref{multiline:eq1}).
 
 # #if FORMAT == "sphinx"
-The equation number is here placed on the first line, while in MathJax
-(html) and latex the number is placed between the two lines, which is
-more correct. The best cross-format solution is to use `align` and
-`\nonumber` for the first equation.
+This equation will not render in sphinx unless we remove the `multiline`
+environment, which means that it was typeset here without any multiline
+information.
+The best cross-format solution is to use `align` instead of `multiline`
+with `\nonumber` in the first equation!
 # #endif
 
-__Test 10: Splitting equations using a split environment.__
+===== Test 10: Splitting equations using a split environment =====
+
 Although `align` can be used to split too long equations, a more obvious
 command is `split`:
 
@@ -415,7 +428,8 @@ f(a+(j+1)h)) \\
 \end{equation}
 !et
 
-__Test 11: Newcommands and boldface bm vs pmb.__
+===== Test 11: Newcommands and boldface bm vs pmb =====
+
 First we use the plain old pmb package for bold math. The formula
 
 !bc latexcod
@@ -471,10 +485,14 @@ to `\boldsymbol`.
 # #endif
 
 
+======= Problematic equations =======
 
-__Problematic equations.__
 Finally, we collect some problematic formulas in MathJax. They all work
 fine in LaTeX.
+
+===== Colored terms in equations =====
+
+The LaTeX code
 
 !bc latexcod
 |bt
@@ -491,8 +509,17 @@ results in
 \nabla\cdot\nabla\u = \nu\nabla^2\u -
 \frac{1}{\varrho}\nabla p,\]
 !et
+# #if FORMAT in ('sphinx', 'ipynb')
+but correct rendering in ${FORMAT} requires omitting the `\color` command:
 
-but correct rendering in sphinx requires omitting the `\color` command.
+!bt
+\[ {\frac{\partial\u}{\partial t} +
+\nabla\cdot\nabla\u = \nu\nabla^2\u -
+\frac{1}{\varrho}\nabla p,\]
+!et
+# #endif
+
+===== Bar over symbols =====
 
 Sometimes one must be extra careful with the LaTeX syntax to get sphinx MathJax
 to render a formula correctly. Consider the combination of a bar over a
@@ -525,8 +552,10 @@ makes the output correct also for sphinx:
 !et
 
 
-__Matrix Environment.__
-Nested environments with labled pmatrix environments cause wired representation in ipynb and html.
+===== Matrix formulas =====
+
+Here is an `align` environment with a label and the `pmatrix`
+environment for matrices and vectors in LaTeX.
 
 !bc latexcod
 |bt
@@ -544,7 +573,8 @@ v_2 \\
 v_3 \\
 v_4
 \end{pmatrix}
-+ \cdots \\ 
++ \cdots
+label{mymatrixeq}\\
 \begin{pmatrix}
 C_5 + C_6 & -C_6 & 0 & 0 \\
 -C_6 & C_6 & 0 & 0 \\
@@ -585,7 +615,8 @@ v_2 \\
 v_3 \\
 v_4
 \end{pmatrix}
-+ \cdots \\ 
++ \cdots
+label{mymatrixeq}\\
 \begin{pmatrix}
 C_5 + C_6 & -C_6 & 0 & 0 \\
 -C_6 & C_6 & 0 & 0 \\
@@ -607,8 +638,11 @@ v_4
 \end{pmatrix}
 \end{align}
 !et
+# #if FORMAT == 'ipynb'
+The first equation do not render correctly in ipynb.
+# #endif
 
-The same matrices without labels seem to translate better:
+The same matrices without labels in an `align*` environment:
 
 !bc latexcod
 |bt
@@ -626,7 +660,7 @@ v_2 \\
 v_3 \\
 v_4
 \end{pmatrix}
-+ \cdots \\ 
++ \cdots \\
 \begin{pmatrix}
 C_5 + C_6 & -C_6 & 0 & 0 \\
 -C_6 & C_6 & 0 & 0 \\
@@ -650,7 +684,7 @@ v_4
 |et
 !ec
 
-which becomes
+The rendered result becomes
 
 !bt
 \begin{align*}
@@ -667,7 +701,7 @@ v_2 \\
 v_3 \\
 v_4
 \end{pmatrix}
-+ \cdots \\ 
++ \cdots \\
 \begin{pmatrix}
 C_5 + C_6 & -C_6 & 0 & 0 \\
 -C_6 & C_6 & 0 & 0 \\

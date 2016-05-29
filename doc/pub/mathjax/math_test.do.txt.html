@@ -3,29 +3,33 @@
 <span style="color: #000080; font-weight: bold">DATE:</span> today
 
 <span style="color: #800080; font-weight: bold">__Summary.__</span>
-The purpose of this document is to
-test LaTeX math in DocOnce with various output formats.
-Most LaTeX math constructions are renedered correctly by MathJax
-in plain HTML, but some combinations of constructions may fail.
-Unfortunately, only a subset of what works in html MathJax also works in
-sphinx MathJax. The same is true for markdown MathJax expresions
-(e.g., Jupyter notebooks).
-Tests and examples are provided to illustrate what may go wrong.
+The purpose of this document is to test LaTeX math in DocOnce with
+various output formats.  Most LaTeX math constructions are renedered
+correctly by MathJax in plain HTML, but some combinations of
+constructions may fail.  Unfortunately, only a subset of what works in
+html MathJax also works in sphinx MathJax. The same is true for
+markdown MathJax expresions (e.g., Jupyter notebooks).  Tests and
+examples are provided to illustrate what may go wrong.
 
 The recommendation for writing math that translates to MathJax in
-html, sphinx, and markdown is to stick to the environments
-<span style="color: #CD5555">`\[ ... \]`</span>, `equation`, `equation*`, `align`, `align*`, `alignat`,
-and `alignat*` only. Test the math with sphinx output; if it works in that
+html, sphinx, and markdown is to stick to the environments `\[
+... \]`, `equation`, `equation*`, `align`, `align*`, `alignat`, and
+<span style="color: #CD5555">`alignat*`</span> only. Test the math with sphinx output; if it works in that
 format, it should work elsewhere too.
 
 The current version of the document is translated from DocOnce source
 to the format _${FORMAT}_.
 
+<span style="color: #000080; font-weight: bold">======= Test of equation environments =======</span>
 
-<span style="color: #800080; font-weight: bold">__Test 1: Inline math.__</span> We can get an inline equation
+<span style="color: #000080; font-weight: bold">===== Test 1: Inline math =====</span>
+
+We can get an inline equation
 <span style="color: #CD5555">`$u(t)=e^{-at}$`</span> rendered as $u(t)=e^{-at}$.
 
-<span style="color: #800080; font-weight: bold">__Test 2: A single equation with label.__</span> An equation with number,
+<span style="color: #000080; font-weight: bold">===== Test 2: A single equation with label =====</span>
+
+An equation with number,
 
 <span style="color: #8B008B; font-weight: bold">!bc</span> latexcod
 |bt
@@ -57,9 +61,11 @@ u(t)=e^{-at} label{eq1b}
 We can refer to this equation through its label `eq1b`: (ref{eq1b}).
 
 
-<span style="color: #800080; font-weight: bold">__Test 3: Multiple, aligned equations without label and number.__</span> MathJax has
-historically had some problems with rendering many LaTeX math environments,
-but the `align*` and `align` environments have always worked.
+<span style="color: #000080; font-weight: bold">=== Test 3: Multiple, aligned equations without label and number =====</span>
+
+MathJax has historically had some problems with rendering many LaTeX
+math environments, but the `align*` and `align` environments have
+always worked.
 
 <span style="color: #8B008B; font-weight: bold">!bc</span> latexcod
 |bt
@@ -78,8 +84,9 @@ v(t) - 1 &amp;= \frac{du}{dt}
 <span style="color: #658b00">\end{align*}</span>
 <span style="color: #8B008B; font-weight: bold">!et</span>
 
-<span style="color: #800080; font-weight: bold">__Test 4: Multiple, aligned equations with label.__</span> Here, we
-use `align` with user-prescribed labels:
+<span style="color: #000080; font-weight: bold">===== Test 4: Multiple, aligned equations with label =====</span>
+
+Here, we use `align` with user-prescribed labels:
 
 <span style="color: #8B008B; font-weight: bold">!bc</span> latexcod
 |bt
@@ -161,11 +168,13 @@ compared to more advanced MathJax.
 <span style="color: #228B22"># #endif</span>
 
 
-<span style="color: #800080; font-weight: bold">__Test 5: Multiple, aligned equations without label.__</span> In LaTeX,
-equations within an `align` environment is automatically given numbers.
-To ensure that an html document with MathJax gets the same equation numbers
-as its latex/pdflatex companion, DocOnce generates labels in equations where
-there is no label prescribed. For example,
+<span style="color: #000080; font-weight: bold">===== Test 5: Multiple, aligned equations without label =====</span>
+
+In LaTeX, equations within an `align` environment is automatically
+given numbers.  To ensure that an html document with MathJax gets the
+same equation numbers as its latex/pdflatex companion, DocOnce
+generates labels in equations where there is no label prescribed. For
+example,
 
 <span style="color: #8B008B; font-weight: bold">!bc</span> latexcod
 |bt
@@ -202,7 +211,8 @@ v(t) - 1 &amp;= \frac{du}{dt}
 <span style="color: #658b00">\end{align}</span>
 <span style="color: #8B008B; font-weight: bold">!et</span>
 
-<span style="color: #800080; font-weight: bold">__Test 6: Multiple, aligned equations with multiple alignments.__</span>
+<span style="color: #000080; font-weight: bold">===== Test 6: Multiple, aligned equations with multiple alignments =====</span>
+
 The `align` environment can be used with two `&amp;` alignment characters, e.g.,
 
 <span style="color: #8B008B; font-weight: bold">!bc</span> latexcod
@@ -274,7 +284,7 @@ u(0,t) &amp;= u_0(x), &amp; x\in [0,L]
 <span style="color: #228B22"># #endif</span>
 
 <span style="color: #228B22"># #if FORMAT in (&quot;pandoc&quot;, &quot;ipynb&quot;)</span>
-If DocOnce had not do rewritten of the above equations, they would be
+If DocOnce had not rewritten the above equations, they would be
 rendered in ${FORMAT} as
 
 $$
@@ -302,9 +312,9 @@ That is, the equation numbers are gone.
 
 
 
+<span style="color: #000080; font-weight: bold">===== Test 7: Multiple, aligned eqnarray equations without label =====</span>
 
-<span style="color: #800080; font-weight: bold">__Test 7: Multiple, aligned eqnarray equations without label.__</span> Let us
-try the old `eqnarray*` environment.
+Let us try the old `eqnarray*` environment.
 
 <span style="color: #8B008B; font-weight: bold">!bc</span> latexcod
 |bt
@@ -323,7 +333,8 @@ v(t) - 1 &amp;=&amp; \frac{du}{dt}
 <span style="color: #658b00">\end{eqnarray*}</span>
 <span style="color: #8B008B; font-weight: bold">!et</span>
 
-<span style="color: #800080; font-weight: bold">__Test 8: Multiple, eqnarrayed equations with label.__</span>
+<span style="color: #000080; font-weight: bold">===== Test 8: Multiple, eqnarrayed equations with label =====</span>
+
 Here we use `eqnarray` with labels:
 
 <span style="color: #8B008B; font-weight: bold">!bc</span> latexcod
@@ -353,7 +364,8 @@ But MathJax supports `eqnarray` with labels.
 The rule of thumb is to use `align` and not `eqnarray`!
 <span style="color: #228B22"># #endif</span>
 
-<span style="color: #800080; font-weight: bold">__Test 9: The `multiline` environment with label and number.__</span>
+<span style="color: #000080; font-weight: bold">===== Test 9: The `multiline` environment with label and number =====</span>
+
 The LaTeX code
 
 <span style="color: #8B008B; font-weight: bold">!bc</span> latexcod
@@ -366,7 +378,6 @@ f(a+(j+1)h)) \\
 <span style="color: #658b00">\end{multline}</span>
 |et
 <span style="color: #8B008B; font-weight: bold">!ec</span>
-
 gets rendered as
 
 <span style="color: #8B008B; font-weight: bold">!bt</span>
@@ -381,13 +392,15 @@ and we can hopefully refer to the Trapezoidal rule
 as the formula (ref{multiline:eq1}).
 
 <span style="color: #228B22"># #if FORMAT == &quot;sphinx&quot;</span>
-The equation number is here placed on the first line, while in MathJax
-(html) and latex the number is placed between the two lines, which is
-more correct. The best cross-format solution is to use `align` and
-<span style="color: #CD5555">`\nonumber`</span> for the first equation.
+This equation will not render in sphinx unless we remove the `multiline`
+environment, which means that it was typeset here without any multiline
+information.
+The best cross-format solution is to use `align` and
+<span style="color: #CD5555">`\nonumber`</span> in the first equation!
 <span style="color: #228B22"># #endif</span>
 
-<span style="color: #800080; font-weight: bold">__Test 10: Splitting equations using a split environment.__</span>
+<span style="color: #000080; font-weight: bold">===== Test 10: Splitting equations using a split environment =====</span>
+
 Although `align` can be used to split too long equations, a more obvious
 command is `split`:
 
@@ -415,7 +428,8 @@ f(a+(j+1)h)) \\
 <span style="color: #658b00">\end{equation}</span>
 <span style="color: #8B008B; font-weight: bold">!et</span>
 
-<span style="color: #800080; font-weight: bold">__Test 11: Newcommands and boldface bm vs pmb.__</span>
+<span style="color: #000080; font-weight: bold">===== Test 11: Newcommands and boldface bm vs pmb =====</span>
+
 First we use the plain old pmb package for bold math. The formula
 
 <span style="color: #8B008B; font-weight: bold">!bc</span> latexcod
@@ -471,10 +485,14 @@ to `\boldsymbol`.
 <span style="color: #228B22"># #endif</span>
 
 
+<span style="color: #000080; font-weight: bold">======= Problematic equations =======</span>
 
-<span style="color: #800080; font-weight: bold">__Problematic equations.__</span>
 Finally, we collect some problematic formulas in MathJax. They all work
 fine in LaTeX.
+
+<span style="color: #000080; font-weight: bold">===== Colored terms in equations =====</span>
+
+The LaTeX code
 
 <span style="color: #8B008B; font-weight: bold">!bc</span> latexcod
 |bt
@@ -491,8 +509,17 @@ results in
 \nabla\cdot\nabla\u = \nu\nabla^2\u -
 \frac{1}{\varrho}\nabla p,\]
 <span style="color: #8B008B; font-weight: bold">!et</span>
+<span style="color: #228B22"># #if FORMAT in (&#39;sphinx&#39;, &#39;ipynb&#39;)</span>
+but correct rendering in ${FORMAT} requires omitting the `\color` command:
 
-but correct rendering in sphinx requires omitting the `\color` command.
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+\[ {\frac{\partial\u}{\partial t} +
+\nabla\cdot\nabla\u = \nu\nabla^2\u -
+\frac{1}{\varrho}\nabla p,\]
+<span style="color: #8B008B; font-weight: bold">!et</span>
+<span style="color: #228B22"># #endif</span>
+
+<span style="color: #000080; font-weight: bold">===== Bar over symbols =====</span>
 
 Sometimes one must be extra careful with the LaTeX syntax to get sphinx MathJax
 to render a formula correctly. Consider the combination of a bar over a
@@ -525,8 +552,10 @@ makes the output correct also for sphinx:
 <span style="color: #8B008B; font-weight: bold">!et</span>
 
 
-<span style="color: #800080; font-weight: bold">__Matrix Environment.__</span>
-Nested environments with labled pmatrix environments cause wired representation in ipynb and html.
+<span style="color: #000080; font-weight: bold">===== Matrix formulas =====</span>
+
+Here is an `align` environment with a label and the `pmatrix`
+environment for matrices and vectors in LaTeX.
 
 <span style="color: #8B008B; font-weight: bold">!bc</span> latexcod
 |bt
@@ -544,7 +573,8 @@ v_2 \\
 v_3 \\
 v_4
 <span style="color: #658b00">\end{pmatrix}</span>
-+ \cdots \\ 
++ \cdots
+<span style="color: #658b00">label{mymatrixeq}</span>\\
 <span style="color: #658b00">\begin{pmatrix}</span>
 C_5 + C_6 &amp; -C_6 &amp; 0 &amp; 0 \\
 -C_6 &amp; C_6 &amp; 0 &amp; 0 \\
@@ -585,7 +615,8 @@ v_2 \\
 v_3 \\
 v_4
 <span style="color: #658b00">\end{pmatrix}</span>
-+ \cdots \\ 
++ \cdots
+<span style="color: #658b00">label{mymatrixeq}</span>\\
 <span style="color: #658b00">\begin{pmatrix}</span>
 C_5 + C_6 &amp; -C_6 &amp; 0 &amp; 0 \\
 -C_6 &amp; C_6 &amp; 0 &amp; 0 \\
@@ -607,8 +638,11 @@ v_4
 <span style="color: #658b00">\end{pmatrix}</span>
 <span style="color: #658b00">\end{align}</span>
 <span style="color: #8B008B; font-weight: bold">!et</span>
+<span style="color: #228B22"># #if FORMAT == &#39;ipynb&#39;</span>
+The first equation do not render correctly in ipynb.
+<span style="color: #228B22"># #endif</span>
 
-The same matrices without labels seem to translate better:
+The same matrices without labels in an `align*` environment:
 
 <span style="color: #8B008B; font-weight: bold">!bc</span> latexcod
 |bt
@@ -626,7 +660,7 @@ v_2 \\
 v_3 \\
 v_4
 <span style="color: #658b00">\end{pmatrix}</span>
-+ \cdots \\ 
++ \cdots \\
 <span style="color: #658b00">\begin{pmatrix}</span>
 C_5 + C_6 &amp; -C_6 &amp; 0 &amp; 0 \\
 -C_6 &amp; C_6 &amp; 0 &amp; 0 \\
@@ -650,7 +684,7 @@ v_4
 |et
 <span style="color: #8B008B; font-weight: bold">!ec</span>
 
-which becomes
+The rendered result becomes
 
 <span style="color: #8B008B; font-weight: bold">!bt</span>
 <span style="color: #658b00">\begin{align*}</span>
@@ -667,7 +701,7 @@ v_2 \\
 v_3 \\
 v_4
 <span style="color: #658b00">\end{pmatrix}</span>
-+ \cdots \\ 
++ \cdots \\
 <span style="color: #658b00">\begin{pmatrix}</span>
 C_5 + C_6 &amp; -C_6 &amp; 0 &amp; 0 \\
 -C_6 &amp; C_6 &amp; 0 &amp; 0 \\
