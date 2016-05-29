@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">May 27, 2016</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">May 29, 2016</td>
 </tr>
 </tbody>
 </table>
@@ -131,8 +131,9 @@ label<span class="nb">{</span>eq1b<span class="nb">}</span>
 <div class="math" id="equation-eq1b">
 <span class="eqno">(2)</span>\[     u(t)=e^{-at}\]</div>
 <p>We can refer to this equation through its label <code class="docutils literal"><span class="pre">eq1b</span></code>: <a href="#equation-eq1b">(2)</a>.</p>
+</div>
 <div class="section" id="test-3-multiple-aligned-equations-without-label-and-number">
-<h4>Test 3: Multiple, aligned equations without label and number  ==<a class="headerlink" href="#test-3-multiple-aligned-equations-without-label-and-number" title="Permalink to this headline">¶</a></h4>
+<h3>Test 3: Multiple, aligned equations without label and number<a class="headerlink" href="#test-3-multiple-aligned-equations-without-label-and-number" title="Permalink to this headline">¶</a></h3>
 <p>MathJax has historically had some problems with rendering many LaTeX
 math environments, but the <code class="docutils literal"><span class="pre">align*</span></code> and <code class="docutils literal"><span class="pre">align</span></code> environments have
 always worked.</p>
@@ -150,7 +151,6 @@ v(t) - 1 <span class="nb">&amp;</span>= <span class="k">\frac</span><span class=
 u(t)&amp;=e^{-at}\\
 v(t) - 1 &amp;= \frac{du}{dt}
 \end{align*}\end{split}\]</div>
-</div>
 </div>
 <div class="section" id="test-4-multiple-aligned-equations-with-label">
 <h3>Test 4: Multiple, aligned equations with label<a class="headerlink" href="#test-4-multiple-aligned-equations-with-label" title="Permalink to this headline">¶</a></h3>
@@ -370,8 +370,8 @@ as the formula <a href="#equation-multiline:eq1">(11)</a>.</p>
 <p>This equation will not render in sphinx unless we remove the <code class="docutils literal"><span class="pre">multiline</span></code>
 environment, which means that it was typeset here without any multiline
 information.
-The best cross-format solution is to use <code class="docutils literal"><span class="pre">align</span></code> and
-<code class="docutils literal"><span class="pre">\nonumber</span></code> in the first equation!</p>
+The best cross-format solution is to use <code class="docutils literal"><span class="pre">align</span></code> instead of <code class="docutils literal"><span class="pre">multiline</span></code>
+with <code class="docutils literal"><span class="pre">\nonumber</span></code> in the first equation!</p>
 </div>
 <div class="section" id="test-10-splitting-equations-using-a-split-environment">
 <h3>Test 10: Splitting equations using a split environment<a class="headerlink" href="#test-10-splitting-equations-using-a-split-environment" title="Permalink to this headline">¶</a></h3>
@@ -444,7 +444,8 @@ to <code class="docutils literal"><span class="pre">\boldsymbol</span></code>.</
 <div class="section" id="problematic-equations">
 <h2>Problematic equations<a class="headerlink" href="#problematic-equations" title="Permalink to this headline">¶</a></h2>
 <p>Finally, we collect some problematic formulas in MathJax. They all work
-fine in LaTeX.</p>
+fine in LaTeX. Most of them look fine in html too, but some fail in
+sphinx, ipynb, or markdown.</p>
 <div class="section" id="colored-terms-in-equations">
 <h3>Colored terms in equations<a class="headerlink" href="#colored-terms-in-equations" title="Permalink to this headline">¶</a></h3>
 <p>The LaTeX code</p>
@@ -666,10 +667,8 @@ v_4
 <li><a class="reference internal" href="#">How various formats can deal with LaTeX math</a><ul>
 <li><a class="reference internal" href="#test-of-equation-environments">Test of equation environments</a><ul>
 <li><a class="reference internal" href="#test-1-inline-math">Test 1: Inline math</a></li>
-<li><a class="reference internal" href="#test-2-a-single-equation-with-label">Test 2: A single equation with label</a><ul>
-<li><a class="reference internal" href="#test-3-multiple-aligned-equations-without-label-and-number">Test 3: Multiple, aligned equations without label and number  ==</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#test-2-a-single-equation-with-label">Test 2: A single equation with label</a></li>
+<li><a class="reference internal" href="#test-3-multiple-aligned-equations-without-label-and-number">Test 3: Multiple, aligned equations without label and number</a></li>
 <li><a class="reference internal" href="#test-4-multiple-aligned-equations-with-label">Test 4: Multiple, aligned equations with label</a></li>
 <li><a class="reference internal" href="#test-5-multiple-aligned-equations-without-label">Test 5: Multiple, aligned equations without label</a></li>
 <li><a class="reference internal" href="#test-6-multiple-aligned-equations-with-multiple-alignments">Test 6: Multiple, aligned equations with multiple alignments</a></li>

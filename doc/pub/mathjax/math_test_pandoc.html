@@ -5,7 +5,7 @@
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
   <meta name="author" content="Hans Petter Langtangen at Simula Research Laboratory and University of Oslo" />
-  <meta name="date" content="2016-05-27" />
+  <meta name="date" content="2016-05-29" />
   <title>How various formats can deal with LaTeX math</title>
   <style type="text/css">code{white-space: pre;}</style>
   
@@ -23,7 +23,7 @@ MathJax.Hub.Config({
 <div id="header">
 <h1 class="title">How various formats can deal with LaTeX math</h1>
 <h2 class="author"><strong>Hans Petter Langtangen</strong> at Simula Research Laboratory and University of Oslo</h2>
-<h3 class="date">May 27, 2016</h3>
+<h3 class="date">May 29, 2016</h3>
 </div>
 <p><em>Summary.</em> The purpose of this document is to test LaTeX math in DocOnce with various output formats. Most LaTeX math constructions are renedered correctly by MathJax in plain HTML, but some combinations of constructions may fail. Unfortunately, only a subset of what works in html MathJax also works in sphinx MathJax. The same is true for markdown MathJax expresions (e.g., Jupyter notebooks). Tests and examples are provided to illustrate what may go wrong.</p>
 <p>The recommendation for writing math that translates to MathJax in html, sphinx, and markdown is to stick to the environments <code>\[ ... \]</code>, <code>equation</code>, <code>equation*</code>, <code>align</code>, <code>align*</code>, <code>alignat</code>, and <code>alignat*</code> only. Test the math with sphinx output; if it works in that format, it should work elsewhere too.</p>
@@ -52,7 +52,7 @@ u(t)=e^{-at}
 u(t)=e^{-at} \label{eq1b}
 \end{equation}
 \]</span> We can refer to this equation through its label <code>eq1b</code>: \eqref{eq1b}.</p>
-<h4 id="test-3-multiple-aligned-equations-without-label-and-number">Test 3: Multiple, aligned equations without label and number ==</h4>
+<h3 id="test-3-multiple-aligned-equations-without-label-and-number">Test 3: Multiple, aligned equations without label and number</h3>
 <p>MathJax has historically had some problems with rendering many LaTeX math environments, but the <code>align*</code> and <code>align</code> environments have always worked.</p>
 <pre><code>!bt
 \begin{align*}
@@ -272,7 +272,7 @@ f(a+(j+1)h)) \\
 <p>becomes <span class="math">\(\nabla\boldsymbol{u}(\boldsymbol{x})\cdot\boldsymbol{n}\)</span>.</p>
 <p><em>Warning.</em> Note: for the pandoc format, <code>\bm</code> was substituted by DocOnce to <code>\boldsymbol</code>.</p>
 <h2 id="problematic-equations">Problematic equations</h2>
-<p>Finally, we collect some problematic formulas in MathJax. They all work fine in LaTeX.</p>
+<p>Finally, we collect some problematic formulas in MathJax. They all work fine in LaTeX. Most of them look fine in html too, but some fail in sphinx, ipynb, or markdown.</p>
 <h3 id="colored-terms-in-equations">Colored terms in equations</h3>
 <p>The LaTeX code</p>
 <pre><code>!bt

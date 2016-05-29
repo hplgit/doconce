@@ -72,7 +72,7 @@ div { text-align: justify; text-justify: inter-word; }
               ('Test 1: Inline math', 2, None, '___sec1'),
               ('Test 2: A single equation with label', 2, None, '___sec2'),
               ('Test 3: Multiple, aligned equations without label and number',
-               3,
+               2,
                None,
                '___sec3'),
               ('Test 4: Multiple, aligned equations with label',
@@ -162,7 +162,7 @@ $$
 <center>[2] <b>University of Oslo</b></center>
 <br>
 <p>
-<center><h4>May 27, 2016</h4></center> <!-- date -->
+<center><h4>May 29, 2016</h4></center> <!-- date -->
 <br>
 <p>
 <b>Summary.</b> The purpose of this document is to test LaTeX math in DocOnce with
@@ -234,7 +234,7 @@ $$
 
 We can refer to this equation through its label <code>eq1b</code>: \eqref{eq1b}.
 
-<h3 id="___sec3">Test 3: Multiple, aligned equations without label and number ==</h3>
+<h2 id="___sec3">Test 3: Multiple, aligned equations without label and number </h2>
 
 <p>
 MathJax has historically had some problems with rendering many LaTeX
@@ -580,7 +580,8 @@ to <code>\boldsymbol</code>.
 
 <p>
 Finally, we collect some problematic formulas in MathJax. They all work
-fine in LaTeX.
+fine in LaTeX. Most of them look fine in html too, but some fail in
+sphinx, ipynb, or markdown.
 
 <h2 id="___sec13">Colored terms in equations </h2>
 

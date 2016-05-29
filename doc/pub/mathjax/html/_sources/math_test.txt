@@ -7,7 +7,7 @@ How various formats can deal with LaTeX math
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: May 27, 2016
+:Date: May 29, 2016
 
 *Summary.* The purpose of this document is to test LaTeX math in DocOnce with
 various output formats.  Most LaTeX math constructions are renedered
@@ -75,8 +75,8 @@ The result is the same:
 
 We can refer to this equation through its label ``eq1b``: :eq:`eq1b`.
 
-Test 3: Multiple, aligned equations without label and number  ==
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Test 3: Multiple, aligned equations without label and number
+------------------------------------------------------------
 
 MathJax has historically had some problems with rendering many LaTeX
 math environments, but the ``align*`` and ``align`` environments have
@@ -419,8 +419,8 @@ as the formula :eq:`multiline:eq1`.
 This equation will not render in sphinx unless we remove the ``multiline``
 environment, which means that it was typeset here without any multiline
 information.
-The best cross-format solution is to use ``align`` and
-``\nonumber`` in the first equation!
+The best cross-format solution is to use ``align`` instead of ``multiline``
+with ``\nonumber`` in the first equation!
 
 Test 10: Splitting equations using a split environment
 ------------------------------------------------------
@@ -517,7 +517,8 @@ Problematic equations
 =====================
 
 Finally, we collect some problematic formulas in MathJax. They all work
-fine in LaTeX.
+fine in LaTeX. Most of them look fine in html too, but some fail in
+sphinx, ipynb, or markdown.
 
 Colored terms in equations
 --------------------------

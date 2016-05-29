@@ -61,7 +61,7 @@ u(t)=e^{-at} label{eq1b}
 We can refer to this equation through its label `eq1b`: (ref{eq1b}).
 
 
-<span style="color: #000080; font-weight: bold">=== Test 3: Multiple, aligned equations without label and number =====</span>
+<span style="color: #000080; font-weight: bold">===== Test 3: Multiple, aligned equations without label and number =====</span>
 
 MathJax has historically had some problems with rendering many LaTeX
 math environments, but the `align*` and `align` environments have
@@ -395,8 +395,8 @@ as the formula (ref{multiline:eq1}).
 This equation will not render in sphinx unless we remove the `multiline`
 environment, which means that it was typeset here without any multiline
 information.
-The best cross-format solution is to use `align` and
-<span style="color: #CD5555">`\nonumber`</span> in the first equation!
+The best cross-format solution is to use `align` instead of `multiline`
+with `\nonumber` in the first equation!
 <span style="color: #228B22"># #endif</span>
 
 <span style="color: #000080; font-weight: bold">===== Test 10: Splitting equations using a split environment =====</span>
@@ -488,7 +488,8 @@ to `\boldsymbol`.
 <span style="color: #000080; font-weight: bold">======= Problematic equations =======</span>
 
 Finally, we collect some problematic formulas in MathJax. They all work
-fine in LaTeX.
+fine in LaTeX. Most of them look fine in html too, but some fail in
+sphinx, ipynb, or markdown.
 
 <span style="color: #000080; font-weight: bold">===== Colored terms in equations =====</span>
 

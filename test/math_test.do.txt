@@ -488,7 +488,8 @@ to `\boldsymbol`.
 ======= Problematic equations =======
 
 Finally, we collect some problematic formulas in MathJax. They all work
-fine in LaTeX.
+fine in LaTeX. Most of them look fine in html too, but some fail in
+sphinx, ipynb, or markdown.
 
 ===== Colored terms in equations =====
 
