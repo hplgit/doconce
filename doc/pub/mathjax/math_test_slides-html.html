@@ -1,0 +1,305 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Math Test for Use with Slides">
+
+<title>Math Test for Use with Slides</title>
+
+
+<style type="text/css">
+/* blueish style */
+
+/* Color definitions:  http://www.december.com/html/spec/color0.html
+   CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+
+body {
+  margin-top: 1.0em;
+  background-color: #ffffff;
+  font-family: Helvetica, Arial, FreeSans, san-serif;
+  color: #000000;
+}
+h1 { font-size: 1.8em; color: #1e36ce; }
+h2 { font-size: 1.6em; color: #1e36ce; }
+h3 { font-size: 1.4em; color: #1e36ce; }
+a { color: #1e36ce; text-decoration:none; }
+tt { font-family: "Courier New", Courier; }
+/* pre style removed because it will interfer with pygments */
+p { text-indent: 0px; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+.alert-text-small   { font-size: 80%;  }
+.alert-text-large   { font-size: 130%; }
+.alert-text-normal  { font-size: 90%;  }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid #bababa;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: #555;
+  background-color: #f8f8f8;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+
+div { text-align: justify; text-justify: inter-word; }
+</style>
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [('Network Analysis', 1, None, '___sec0'),
+              ('Network Analysis of Periodic Signals', 2, None, '___sec1'),
+              ('ODE System', 2, None, '___sec2'),
+              ('Compact Description', 2, None, '___sec3'),
+              ("Kirchhoff's Voltage Law", 2, None, '___sec4'),
+              ('Loop Equation', 2, None, '___sec5'),
+              ('Sorting and Preperation for Linear Equation System',
+               2,
+               None,
+               '___sec6')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+<!-- ------------------- main content ---------------------- -->
+
+
+
+<center><h1>Math Test for Use with Slides</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Mirco Meiners -->
+
+<center>
+<b>Mirco Meiners</b> 
+</center>
+
+<p>
+<!-- institution -->
+
+<center><b>Hochschule Bremen - City University of Applied Sciences</b></center>
+<br>
+<p>
+<center><h4>May 29, 2016</h4></center> <!-- date -->
+<br>
+<p>
+<!-- !split -->
+
+<h1 id="___sec0">Network Analysis </h1>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+This presentation is a test vehicle for MathJax test to be used in different types of slides.
+As electrical engineer one needs to do network analysis very often. Such analysis are represented
+by ordenary differential equations or state-space models.
+</div>
+
+
+<p>
+<!-- !split -->
+
+<h2 id="___sec1">Network Analysis of Periodic Signals </h2>
+
+<p>
+Node 0:
+
+$$
+\begin{align*}
+-i_0 - i_1 - i_5 &= 0 \\
+-G_1(v_3-v_0) - C_5 {\frac{d }{d t}}(v_1-v_0) &= i_0
+\end{align*}
+$$
+
+<p>
+Node 1:
+
+$$
+\begin{align*}
+-i_2 + i_3 + i_5 + i_6 &= 0 \\
+-G_2(v_3-v_1) + G_3(v_1-v_3) + C_5 {\frac{d }{d t}}(v_1-v_0) + C_6 {\frac{d }{d t}}(v_1-v_6) &= 0
+\end{align*}
+$$
+
+<p>
+<!-- !split -->
+
+<h2 id="___sec2">ODE System </h2>
+
+$$
+\begin{align*}
+\begin{pmatrix}
+G_2 + G_3 & -G_3 & -G_2 & 0 \\
+-G_3 & G_3 + G_4 & 0 & -G_4 \\
+-G_2 & 0 & G_1 + G_2 & 0 \\
+0 & -G_4 & 0 & G_4
+\end{pmatrix}
+\begin{pmatrix}
+v_1 \\
+v_2 \\
+v_3 \\
+v_4
+\end{pmatrix}
+&+ \cdots \\ 
+\begin{pmatrix}
+C_5 + C_6 & -C_6 & 0 & 0 \\
+-C_6 & C_6 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0
+\end{pmatrix}
+\frac{d}{dt}
+\begin{pmatrix}
+v_1 \\
+v_2 \\
+v_3 \\
+v_4
+\end{pmatrix} &=
+\begin{pmatrix}
+0 \\
+0 \\
+0 \\
+-i_0
+\end{pmatrix}
+\end{align*}
+$$
+
+<p>
+<!-- !split -->
+
+<h2 id="___sec3">Compact Description </h2>
+$$
+\begin{align*}
+\mathbf{A} \mathbf{x} + \mathbf{B} \dot{\mathbf{x}} &= \mathbf{b} \\
+\dot{\mathbf{x}} &= -\mathbf{B}^{-1}\mathbf{A}\mathbf{x} + \mathbf{B}^{-1}\mathbf{b}(t) \\
+&= \mathbf{T}\mathbf{x} + \mathbf{g}(t)
+\end{align*}
+$$
+
+<p>
+<!-- !split -->
+
+<h2 id="___sec4">Kirchhoff's Voltage Law </h2>
+
+<p>
+Choice of independent currents \( I_M \): \( I_1, I_4, I_7, I_8 \)
+
+<p>
+State-space analysis in laplace domain:
+
+$$
+\begin{align*}
+\begin{pmatrix}
+I_2 \\
+I_3 \\
+I_5 \\
+I_6 \\
+I_9 \\
+I_{10}
+\end{pmatrix}
+&=
+\begin{pmatrix}
+-1 & -1 & -1 & 0 \\
+-1 & 0 & -1 & 0 \\
+0 & -1 & -1 & 0 \\
+0 & -1 & -1 & 0 \\
+0 & 1 & 1 & -1 \\
+0 & 0 & 1 & -1 \\
+\end{pmatrix}
+\begin{pmatrix}
+I_1 \\
+I_4 \\
+I_7 \\
+I_8
+\end{pmatrix}
+\end{align*}
+$$
+
+<p>
+<!-- !split -->
+
+<h2 id="___sec5">Loop Equation </h2>
+
+$$
+\begin{align*}
+I_1 Z_1 - I_2 Z_2 - I_3 Z_3 &= 0 \\
+U_4 + I_4 Z_4 + I_9 + Z_9 - I_6 Z_6 - I_5 Z_5 - I_2 Z_2 &= 0 \\
+I_7 Z_7 + I_{10} Z_{10} + I_9 Z_9 - I_6 Z_6 - I_5 Z_5 - I_2 Z_2 -I_3 Z_3 &= 0 \\
+U_8 + I_8 Z_8 - I_9 Z_9 - I_{10} Z_{10} &= 0
+\end{align*}
+$$
+
+<p>
+<!-- !split -->
+
+<h2 id="___sec6">Sorting and Preperation for Linear Equation System </h2>
+
+$$
+\begin{align*}
+\begin{pmatrix}
+\sum Z_{1,3} & Z_2 & \sum Z_{2,3} & 0 \\
+Z_2 & \sum Z_{2,4,5,6,9} & \sum Z_{2,5,6,9,10} & -Z_9 \\
+\sum Z_{2,3} & \sum Z_{2,5,6,9,10} & \sum Z_{2,3,5,6,7,9,10} &
+\sum -Z_{9,10} \\
+0 & -Z_9 & \sum -Z_{9,10} & \sum Z_{8,9,10}
+\end{pmatrix}
+\begin{pmatrix}
+I_1 \\
+I_4 \\
+I_7 \\
+I_8
+\end{pmatrix}
+&=
+\begin{pmatrix}
+0 \\
+-U_4 \\
+0 \\
+-U_8
+\end{pmatrix}
+\end{align*}
+$$
+
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+

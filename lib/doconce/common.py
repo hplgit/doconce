@@ -379,12 +379,13 @@ def online_python_tutor(code, return_tp='iframe'):
 
 def align2equations(filestr, format):
     """Turn align environments into separate equation environments."""
-    if '{align}' not in filestr and '{alignat}' not in filestr:
+    if '{align' not in filestr:
         return filestr
 
-    # sphinx: just replace align, pandoc/ipynb: replace align and align*
-    # technique: add } if sphinx
-    postfixes = ['}', 'at}'] if format in ('sphinx', 'ipynb') else ['}', '*}', 'at}', 'at*}']
+    # sphinx/ipynb: just replace align, alignat, not align* and alignat*
+    postfixes = ['}', 'at}'] if format in ('sphinx', 'ipynb') \
+                else ['}', '*}', 'at}', 'at*}']
+    # apply to "{align" + postfixes[i]
 
     lines = filestr.splitlines()
     inside_align = False

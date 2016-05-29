@@ -4185,9 +4185,9 @@ def doconce2format(filestr, format):
     filestr = bm2boldsymbol(filestr, format)
 
     # Hack for transforming align envirs to separate equations
-    if format in ("sphinx", "pandoc", "ipynb"):
+    if format in ("sphinx", "ipynb") or option('align2equations'):
         filestr = align2equations(filestr, format)
-        debugpr('The file after {align} envirs are rewritten as separate equations:', filestr)
+        debugpr('The file after {align} or {alignat} envirs are rewritten as separate equations:', filestr)
 
     # If ipynb is to make use of Image or movie objects, this results in
     # a living cell and hence a verbatim block, and figures/movies must be

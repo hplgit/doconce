@@ -7,7 +7,7 @@ Math Test for Use with Slides
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Mirco Meiners
-:Date: May 27, 2016
+:Date: May 29, 2016
 
 .. !split
 

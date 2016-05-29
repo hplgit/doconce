@@ -36,6 +36,9 @@ AUTHOR: Kaare Dump at BSU & Some Company Ltd. {copyright,2005-present|CC BY-NC}
 The --CC_license= option has no effect if the license does not start with CC, e.g.,
 AUTHOR: Kaare Dump at BSU {copyright|Released under the MIT license.}
 """),
+    ('--align2equations', """Rewrite align/alignat math environments to separate equation environments.
+Sometimes needed for proper MathJax rendering (e.g., remark slides).
+Sphinx requires such rewrite and will do it regardless of this option."""),
     ('--exercise_numbering=',
      """absolute: exercises numbered as 1, 2, ... (default)
 chapter: exercises numbered as 1.1, 1.2, ... , 3.1, 3.2, ..., B.1, B.2, etc.

@@ -153,19 +153,6 @@ we had used the `align*` environment):
         \end{align}
 # #endif
 
-# #if FORMAT == "pandoc"
-!bwarning Fixes are needed for DocOnce to Pandoc to html
-Original Pandoc-extended Markdown transformed to html via Pandoc
-does not work with labels and multiple equations. `doconce md2html`
-fixes the trouble by adding full support for MathJax and avoiding
-that eqref references become empty.
-
-One can write with align and labels in the DocOnce document and get excellent
-output in latex, html, sphinx, and Markdown-based html. Without
-`doconce md2html` one must accept that labeles have very limited support
-compared to more advanced MathJax.
-!ewarning
-# #endif
 
 
 ===== Test 5: Multiple, aligned equations without label =====
@@ -197,7 +184,7 @@ label{_auto6}
 \end{align}
 |et
 !ec
-and the html output gets the two equation numbered.
+and the output gets the two equation numbered.
 # #if FORMAT == "sphinx"
 Note that in sphinx the alignment is removed and separate `equation`
 environments are used to get numbered equations in equation systems, cf. the
@@ -259,7 +246,7 @@ u(0,t) &= u_0(x), & x\in [0,L]
 \end{alignat}
 !et
 
-# #if FORMAT in ("sphinx", "ipynb", "pandoc")
+# #if FORMAT in ("sphinx", "ipynb")
 !bwarning align/alignat environments with equation numbers are anti-aligned!
 In the `sphinx`, `ipynb`, and `pandoc` output formats, DocOnce rewrites
 the equations in an `alignat` environment as individual equations in
@@ -514,7 +501,7 @@ results in
 but correct rendering in ${FORMAT} requires omitting the `\color` command:
 
 !bt
-\[ {\frac{\partial\u}{\partial t} +
+\[ \frac{\partial\u}{\partial t} +
 \nabla\cdot\nabla\u = \nu\nabla^2\u -
 \frac{1}{\varrho}\nabla p,\]
 !et

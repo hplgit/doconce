@@ -61,12 +61,12 @@ v(t) - 1 &amp;= \frac{du}{dt}
 \end{align*}
 !et</code></pre>
 <p>Result:</p>
-<p>$$</p>
-<p>u(t)=e^{-at}</p>
-<p>$$</p>
-<p>$$</p>
-<p>v(t) - 1 = </p>
-<p>$$</p>
+<p><span class="math">\[
+\begin{align*}
+u(t)&amp;=e^{-at}\\ 
+v(t) - 1 &amp;= \frac{du}{dt}
+\end{align*}
+\]</span></p>
 <h3 id="test-4-multiple-aligned-equations-with-label">Test 4: Multiple, aligned equations with label</h3>
 <p>Here, we use <code>align</code> with user-prescribed labels:</p>
 <pre><code>!bt
@@ -79,19 +79,13 @@ v(t) - 1 &amp;= \frac{du}{dt}
 !et</code></pre>
 <p>Result:</p>
 <p><span class="math">\[
-\begin{equation}
-u(t)=e^{-at}
-\label{eq2b}
-\end{equation}
-\]</span></p>
-<p><span class="math">\[
-\begin{equation}  
-v(t) - 1 = \frac{du}{dt}
+\begin{align}
+u(t)&amp;=e^{-at}
+\label{eq2b}\\ 
+v(t) - 1 &amp;= \frac{du}{dt}
 \label{eq3b}
-\end{equation}
+\end{align}
 \]</span> We can refer to the last equations as the system \eqref{eq2b}-\eqref{eq3b}.</p>
-<p><em>Fixes are needed for DocOnce to Pandoc to html.</em> Original Pandoc-extended Markdown transformed to html via Pandoc does not work with labels and multiple equations. <code>doconce md2html</code> fixes the trouble by adding full support for MathJax and avoiding that eqref references become empty.</p>
-<p>One can write with align and labels in the DocOnce document and get excellent output in latex, html, sphinx, and Markdown-based html. Without <code>doconce md2html</code> one must accept that labeles have very limited support compared to more advanced MathJax.</p>
 <h3 id="test-5-multiple-aligned-equations-without-label">Test 5: Multiple, aligned equations without label</h3>
 <p>In LaTeX, equations within an <code>align</code> environment is automatically given numbers. To ensure that an html document with MathJax gets the same equation numbers as its latex/pdflatex companion, DocOnce generates labels in equations where there is no label prescribed. For example,</p>
 <pre><code>!bt
@@ -110,16 +104,12 @@ v(t) - 1 &amp;= \frac{du}{dt}
 \label{_auto6}
 \end{align}
 !et</code></pre>
-<p>and the html output gets the two equation numbered.</p>
+<p>and the output gets the two equation numbered.</p>
 <p><span class="math">\[
-\begin{equation}
-u(t)=e^{-at}
-\end{equation}
-\]</span></p>
-<p><span class="math">\[
-\begin{equation}  
-v(t) - 1 = \frac{du}{dt}
-\end{equation}
+\begin{align}
+u(t)&amp;=e^{-at}\\ 
+v(t) - 1 &amp;= \frac{du}{dt}
+\end{align}
 \]</span></p>
 <h3 id="test-6-multiple-aligned-equations-with-multiple-alignments">Test 6: Multiple, aligned equations with multiple alignments</h3>
 <p>The <code>align</code> environment can be used with two <code>&amp;</code> alignment characters, e.g.,</p>
@@ -132,15 +122,11 @@ u(0,t) &amp;= u_0(x), &amp; x\in [0,L]
 !et</code></pre>
 <p>The result in pandoc becomes</p>
 <p><span class="math">\[
-\begin{equation}
-\frac{\partial u}{\partial t} = \nabla^2 u,  x\in (0,L),
-\ t\in (0,T]
-\end{equation}
-\]</span></p>
-<p><span class="math">\[
-\begin{equation}  
-u(0,t) = u_0(x),  x\in [0,L]
-\end{equation}
+\begin{align}
+\frac{\partial u}{\partial t} &amp;= \nabla^2 u, &amp; x\in (0,L),
+\ t\in (0,T]\\ 
+u(0,t) &amp;= u_0(x), &amp; x\in [0,L]
+\end{align}
 \]</span></p>
 <p>A better solution is usually to use an <code>alignat</code> environment:</p>
 <pre><code>!bt
@@ -152,17 +138,12 @@ u(0,t) &amp;= u_0(x), &amp; x\in [0,L]
 !et</code></pre>
 <p>with the rendered result</p>
 <p><span class="math">\[
-\begin{equation}
-\frac{\partial u}{\partial t} = \nabla^2 u,  x\in (0,L),
-\ t\in (0,T]
-\end{equation}
+\begin{alignat}{2}
+\frac{\partial u}{\partial t} &amp;= \nabla^2 u, &amp; x\in (0,L),
+\ t\in (0,T]\\ 
+u(0,t) &amp;= u_0(x), &amp; x\in [0,L]
+\end{alignat}
 \]</span></p>
-<p><span class="math">\[
-\begin{equation}  
-u(0,t) = u_0(x),  x\in [0,L]
-\end{equation}
-\]</span></p>
-<p><em>align/alignat environments with equation numbers are anti-aligned!</em> In the <code>sphinx</code>, <code>ipynb</code>, and <code>pandoc</code> output formats, DocOnce rewrites the equations in an <code>alignat</code> environment as individual equations in <code>equation</code> environments (or more precisely, <code>sphinx</code> can work with <code>alignat*</code> so only numbered <code>alignat</code> equations get rewritten as individual equations). If the alignment is somewhat important, try the best with a manual rewrite in terms of separate <code>equation</code> environments, and stick to <code>align*</code> and <code>alignat*</code> in <code>sphinx</code>.</p>
 <p>If DocOnce had not rewritten the above equations, they would be rendered in pandoc as</p>
 <p><span class="math">\[
 \begin{alignat}{2}
@@ -345,14 +326,14 @@ v_4
 !et</code></pre>
 <p>which becomes</p>
 <p><span class="math">\[
-\begin{equation}
+\begin{align}
 \begin{pmatrix}
 G_2 + G_3 &amp; -G_3 &amp; -G_2 &amp; 0 \\ 
 -G_3 &amp; G_3 + G_4 &amp; 0 &amp; -G_4 \\ 
 -G_2 &amp; 0 &amp; G_1 + G_2 &amp; 0 \\ 
 0 &amp; -G_4 &amp; 0 &amp; G_4
 \end{pmatrix}
-=
+&amp;=
 \begin{pmatrix}
 v_1 \\ 
 v_2 \\ 
@@ -360,18 +341,14 @@ v_3 \\
 v_4
 \end{pmatrix}
 + \cdots
-\label{mymatrixeq}
-\end{equation}
-\]</span></p>
-<p><span class="math">\[
-\begin{equation}  
+\label{mymatrixeq}\\ 
 \begin{pmatrix}
 C_5 + C_6 &amp; -C_6 &amp; 0 &amp; 0 \\ 
 -C_6 &amp; C_6 &amp; 0 &amp; 0 \\ 
 0 &amp; 0 &amp; 0 &amp; 0 \\ 
 0 &amp; 0 &amp; 0 &amp; 0
 \end{pmatrix}
-\frac{d}{dt} =
+\frac{d}{dt} &amp;=
 \begin{pmatrix}
 v_1 \\ 
 v_2 \\ 
@@ -384,7 +361,7 @@ v_4
 0 \\ 
 -i_0
 \end{pmatrix}
-\end{equation}
+\end{align}
 \]</span></p>
 <p>The same matrices without labels in an <code>align*</code> environment:</p>
 <pre><code>!bt
@@ -425,20 +402,42 @@ v_4
 \end{align*}
 !et</code></pre>
 <p>The rendered result becomes</p>
-<p>$$</p>
-
-=
-
-<ul>
-<li></li>
-</ul>
-<p>$$</p>
-<p>$$</p>
-
- =
-
-=
-
-<p>$$</p>
+<p><span class="math">\[
+\begin{align*}
+\begin{pmatrix}
+G_2 + G_3 &amp; -G_3 &amp; -G_2 &amp; 0 \\ 
+-G_3 &amp; G_3 + G_4 &amp; 0 &amp; -G_4 \\ 
+-G_2 &amp; 0 &amp; G_1 + G_2 &amp; 0 \\ 
+0 &amp; -G_4 &amp; 0 &amp; G_4
+\end{pmatrix}
+&amp;=
+\begin{pmatrix}
+v_1 \\ 
+v_2 \\ 
+v_3 \\ 
+v_4
+\end{pmatrix}
++ \cdots \\ 
+\begin{pmatrix}
+C_5 + C_6 &amp; -C_6 &amp; 0 &amp; 0 \\ 
+-C_6 &amp; C_6 &amp; 0 &amp; 0 \\ 
+0 &amp; 0 &amp; 0 &amp; 0 \\ 
+0 &amp; 0 &amp; 0 &amp; 0
+\end{pmatrix}
+\frac{d}{dt} &amp;=
+\begin{pmatrix}
+v_1 \\ 
+v_2 \\ 
+v_3 \\ 
+v_4
+\end{pmatrix} =
+\begin{pmatrix}
+0 \\ 
+0 \\ 
+0 \\ 
+-i_0
+\end{pmatrix}
+\end{align*}
+\]</span></p>
 </body>
 </html>

@@ -153,19 +153,6 @@ we had used the `align*` environment):
         \end{align}
 <span style="color: #228B22"># #endif</span>
 
-<span style="color: #228B22"># #if FORMAT == &quot;pandoc&quot;</span>
-<span style="color: #8B008B; font-weight: bold">!bwarning</span> Fixes are needed for DocOnce to Pandoc to html
-Original Pandoc-extended Markdown transformed to html via Pandoc
-does not work with labels and multiple equations. `doconce md2html`
-fixes the trouble by adding full support for MathJax and avoiding
-that eqref references become empty.
-
-One can write with align and labels in the DocOnce document and get excellent
-output in latex, html, sphinx, and Markdown-based html. Without
-<span style="color: #CD5555">`doconce md2html`</span> one must accept that labeles have very limited support
-compared to more advanced MathJax.
-<span style="color: #8B008B; font-weight: bold">!ewarning</span>
-<span style="color: #228B22"># #endif</span>
 
 
 <span style="color: #000080; font-weight: bold">===== Test 5: Multiple, aligned equations without label =====</span>
@@ -197,7 +184,7 @@ v(t) - 1 &amp;= \frac{du}{dt}
 <span style="color: #658b00">\end{align}</span>
 |et
 <span style="color: #8B008B; font-weight: bold">!ec</span>
-and the html output gets the two equation numbered.
+and the output gets the two equation numbered.
 <span style="color: #228B22"># #if FORMAT == &quot;sphinx&quot;</span>
 Note that in sphinx the alignment is removed and separate `equation`
 environments are used to get numbered equations in equation systems, cf. the
@@ -259,7 +246,7 @@ u(0,t) &amp;= u_0(x), &amp; x\in [0,L]
 <span style="color: #658b00">\end{alignat}</span>
 <span style="color: #8B008B; font-weight: bold">!et</span>
 
-<span style="color: #228B22"># #if FORMAT in (&quot;sphinx&quot;, &quot;ipynb&quot;, &quot;pandoc&quot;)</span>
+<span style="color: #228B22"># #if FORMAT in (&quot;sphinx&quot;, &quot;ipynb&quot;)</span>
 <span style="color: #8B008B; font-weight: bold">!bwarning</span> align/alignat environments with equation numbers are anti-aligned!
 In the `sphinx`, `ipynb`, and `pandoc` output formats, DocOnce rewrites
 the equations in an `alignat` environment as individual equations in
@@ -514,7 +501,7 @@ results in
 but correct rendering in ${FORMAT} requires omitting the `\color` command:
 
 <span style="color: #8B008B; font-weight: bold">!bt</span>
-\[ {\frac{\partial\u}{\partial t} +
+\[ \frac{\partial\u}{\partial t} +
 \nabla\cdot\nabla\u = \nu\nabla^2\u -
 \frac{1}{\varrho}\nabla p,\]
 <span style="color: #8B008B; font-weight: bold">!et</span>

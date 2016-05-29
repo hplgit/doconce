@@ -11,3 +11,4 @@ MathJax in DocOnce slide mode.
  * "Sphinx": "html/math_test_slides.html"
  * "HTML Remark": "math_test_slides-remark.html"
  * "Jupyter Notebook": "https://github.com/hplgit/doconce/blob/master/doc/pub/mathjax/math_test_slides.ipynb"
+ * "Plain HTML": "math_test_slides-html.html"
