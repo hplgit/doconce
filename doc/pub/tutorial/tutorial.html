@@ -7,7 +7,7 @@ Automatically generated HTML file from DocOnce source
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="DocOnce Tutorial: Document Once, Include Anywhere">
-<meta name="keywords" content="key equation,$\u$ conservation,installation">
+<meta name="keywords" content="key equation,$\u$ conservation">
 
 <title>DocOnce Tutorial: Document Once, Include Anywhere</title>
 
@@ -65,25 +65,7 @@ code { color: inherit; background-color: transparent; }
               ('Preprocessors', 2, None, '___sec14'),
               ('Output Formats', 2, None, '___sec15'),
               ('Slides', 2, None, '___sec16'),
-              ('Demos', 1, None, '___sec17'),
-              ('Installation of DocOnce and its Dependencies',
-               1,
-               'install:doconce',
-               'install:doconce'),
-              ('DocOnce', 2, None, '___sec19'),
-              ('Dependencies', 2, None, '___sec20'),
-              ('Python v2.7', 3, None, '___sec21'),
-              ('Preprocessors', 3, None, '___sec22'),
-              ('Bibliography', 3, None, '___sec23'),
-              ('Image file handling', 3, None, '___sec24'),
-              ('Spellcheck', 3, None, '___sec25'),
-              ('Ptex2tex for LaTeX Output', 3, None, '___sec26'),
-              ('Pygments and the Minted Code Style', 3, None, '___sec27'),
-              ('LaTeX packages', 3, None, '___sec28'),
-              ('Sphinx or reStructuredText Output', 3, None, '___sec29'),
-              ('Markdown and Pandoc Output', 3, None, '___sec30'),
-              ('Epydoc Output', 3, None, '___sec31'),
-              ('Analyzing file differences', 3, None, '___sec32')]}
+              ('Demos', 1, None, '___sec17')]}
 end of tocinfo -->
 
 <body>
@@ -139,21 +121,6 @@ MathJax.Hub.Config({
      <!-- navigation toc: --> <li><a href="#___sec15" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Output Formats</a></li>
      <!-- navigation toc: --> <li><a href="#___sec16" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Slides</a></li>
      <!-- navigation toc: --> <li><a href="#___sec17" style="font-size: 80%;"><b>Demos</b></a></li>
-     <!-- navigation toc: --> <li><a href="#install:doconce" style="font-size: 80%;"><b>Installation of DocOnce and its Dependencies</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;DocOnce</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec20" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Dependencies</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec21" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Python v2.7</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec22" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Preprocessors</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec23" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bibliography</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec24" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Image file handling</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec25" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Spellcheck</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec26" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ptex2tex for LaTeX Output</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec27" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pygments and the Minted Code Style</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec28" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LaTeX packages</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec29" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sphinx or reStructuredText Output</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec30" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Markdown and Pandoc Output</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec31" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Epydoc Output</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec32" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Analyzing file differences</a></li>
 
         </ul>
       </li>
@@ -814,12 +781,11 @@ next compilation of the document is up-to-date.
 
 <p>
 <b>Inclusion of files.</b>
-Another DocOnce document or any file
-can be included by writing <code># #include &quot;mynote.do.txt&quot;</code>
-at the beginning of a line.  DocOnce documents have
-extension <code>do.txt</code>. The <code>do</code> part stands for doconce, while the
-trailing <code>.txt</code> denotes a text document so that editors gives you
-plain text editing capabilities.
+Another DocOnce document or any file can be
+included by writing <code># #include &quot;mynote.do.txt&quot;</code> at the beginning of a
+line.  DocOnce documents have extension <code>do.txt</code>. The <code>do</code> part stands
+for <code>doconce</code>, while the trailing <code>.txt</code> denotes a text document so
+that editors gives you plain text editing capabilities.
 
 <h2 id="newcommands">Macros (Newcommands), Cross-References, Index, and Bibliography</h2>
 
@@ -827,13 +793,14 @@ plain text editing capabilities.
 DocOnce supports a type of macros via a LaTeX-style <em>newcommand</em>
 construction.  The newcommands are defined in files with names
 <code>newcommands*.tex</code>, using standard LaTeX syntax. Only newcommands
-for use inside math environments are supported.
+for use inside LaTeX math environments are supported. (But you can
+define any type of macros through Mako functions!)
 
 <p>
 Labels, corss-references, citations, and support of an index and
 bibliography are much inspired by LaTeX syntax, but DocOnce features
 no backslashes. Use labels for sections and equations only, and
-preceed the reference by "Section" or "Chapter", or in case of
+preceed the reference by &quot;Section&quot; or &quot;Chapter&quot;, or in case of
 an equation, surround the reference by parenthesis.
 
 <p>
@@ -879,8 +846,7 @@ be automatically converted to the simple Publish format.
 
 <p>
 For further details on functionality and
-syntax we refer to the <code>doc/manual/manual.do.txt</code> file
-in the DocOnce source and a <a href="http://hplgit.github.io/doconce/doc/pub/manual/html/" target="_self">Sphinx version</a> of this document.
+syntax we refer to the <a href="http://hplgit.github.io/doconce/doc/pub/manual/html/" target="_self">DocOnce manual</a>.
 
 <h1 id="doconce2formats">From DocOnce to Other Formats</h1>
 
@@ -963,8 +929,8 @@ a subsection heading (5 <code>=</code>), preceded by <code>!split</code> to indi
 new slide. Section headings are used to mark parts of the presentation.
 The slides are compiled as any other DocOnce file, but there is usually
 a second step where the text is modified to become a proper slide text
-in the chosen output format. We refer to the manual for details and
-the
+in the chosen output format. We refer to the manual for details
+and the <a href="http://hplgit.github.io/doconce/doc/pub/slides/demo/index.html" target="_self">DocOnce slide demo</a>.
 
 <p>
 Several popular slide formats are supported:
@@ -979,7 +945,28 @@ Several popular slide formats are supported:
 <h1 id="___sec17">Demos </h1>
 
 <p>
+Our <a href="http://hplgit.github.io/teamods/writing_reports/index.html" target="_self">short scientific report</a> is a good
+starting point for seeing how DocOnce documents are written and get a
+demonstration of the vast choice of output formats and settings that
+are available.
+
+<p>
+There is also a demo of different <a href="http://hplgit.github.io/doconce/doc/pub/slides/demo/index.html" target="_self">slide formats</a>.
+
+<p>
+DocOnce has support for <em>responsive</em> HTML documents with design and
+functionality based on Bootstrap styles.  A <a href="http://hplgit.github.io/doconce/doc/pub/bootstrap/index.html" target="_self">Bootstrap demo</a>
+illustrates the many possibilities for colors and layouts.
+
+<p>
+DocOnce also has support for exercises in <a href="http://hplgit.github.io/doconce/doc/pub/quiz/quiz.html" target="_self">quiz format</a>. Pure quiz
+files can be <em>automatically uploaded</em> to <a href="https://getkahoot.com" target="_self">Kahoot!</a> online quiz games operated through smart
+phones (with the aid of <a href="https://github.com/hplgit/quiztools" target="_self">quiztools</a> for DocOnce to Kahoot!
+translation).
+
+<p>
 The current text is generated from a DocOnce format stored in the file
+
 <p>
 
 <!-- code=text typeset with pygments style "default" -->
@@ -988,467 +975,7 @@ The current text is generated from a DocOnce format stored in the file
 <p>
 The file <code>make.sh</code> in the <code>tutorial</code> directory of the
 DocOnce source code contains a demo of how to produce a variety of
-formats.  The source of this tutorial, <code>tutorial.do.txt</code> is the
-starting point.  Running <code>make.sh</code> and studying the various generated
-files and comparing them with the original <code>tutorial.do.txt</code> file,
-gives a quick introduction to how DocOnce is used in a real case.
-
-<p>
-A <a href="http://hplgit.github.io/teamods/writing_reports/index.html" target="_self">short scientific report</a> demonstrates
-the vast choice of output formats and settings that are available.
-
-<p>
-There is also a demo of different <a href="http://hplgit.github.io/doconce/doc/pub/slides/demo/index.html" target="_self">slide formats</a>.
-
-<h1 id="install:doconce">Installation of DocOnce and its Dependencies</h1>
-
-<p>
-Below, we explain the manual installation of all software that may be
-needed when working with DocOnce documents.
-The impatient way to install everything that is needed is to use
-Anaconda Python and the <code>conda</code> program:
-
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>Terminal&gt; conda install --channel johannr doconce
-</pre></div>
-<p>
-The <code>conda</code> package is available for Mac and Linux only.
-
-<p>
-If you do not want to use Anaconda and are
-on a Debian-based Linux
-computer (running, e.g., Ubuntu), you can instead run the Bash script
-<a href="https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/install_doconce.sh" target="_self"><tt>install_doconce.sh</tt></a> or the equivalent Python script
-<a href="https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/install_doconce.py" target="_self"><tt>install_doconce.py</tt></a>.
-These scripts gives a comprehensive installation. Some users will prefer to
-install just what is needed for them, and this is explained below.
-
-<p>
-<div class="alert alert-block alert-danger alert-text-normal"><b>Version control systems are needed!</b>
-The coming installation instructions require that the version control systems
-Subversion, Mercurial, and Git are installed on your computer.
-</div>
-
-
-<p>
-<div class="alert alert-block alert-success alert-text-normal"><b>What about Mac and Windows?</b>
-DocOnce is primarily tested on GNU/Debian Linux systems, but also to
-a minor extent on Mac OS X. Experience with Windows is limited.
-Since most packages are Python-based and can be installed via <code>pip install</code>
-no problems should arise on Mac and Windows. However, some of the
-image processing tools and spell checking apply Unix-specific software.
-</div>
-
-
-<p>
-You can omit reading the next sections if you rely on <code>conda</code> or
-<code>apt-get install</code> commands in the Bash script for installing DocOnce.
-
-<h2 id="___sec19">DocOnce </h2>
-
-<p>
-DocOnce itself is pure Python code hosted at <a href="https://github.com/hplgit/doconce" target="_self"><tt>https://github.com/hplgit/doconce</tt></a>.
-Installation can be done via
-
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>sudo pip install -e git+https://github.com/hplgit/doconce#egg=doconce
-# or if doconce is already installed
-sudo pip install -e git+https://github.com/hplgit/doconce#egg=doconce --upgrade
-</pre></div>
-<p>
-However, the recommended approach is to have a copy of the source on
-the local computer and run <code>setup.py</code>:
-
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>git clone git@github.com:hplgit/doconce.git
-cd doconce
-sudo python setup.py install
-cd ..
-</pre></div>
-<p>
-Since DocOnce is frequently updated, it becomes necessary to ensure
-that you work with the most recent version:
-
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>cd doconce
-git pull origin master
-sudo python setup.py install
-</pre></div>
-
-<h2 id="___sec20">Dependencies </h2>
-
-<p>
-Producing HTML documents, plain text, pandoc-extended Markdown,
-and wikis can be done without installing any other
-software. However, if you want other formats as output
-(LaTeX, Sphinx, reStructuredText) and assisting utilities such
-as preprocesors, spellcheck, file differences, bibliographies,
-and so on, a lot of extra software must be installed.
-
-<h3 id="___sec21">Python v2.7 </h3>
-
-<p>
-First you need Python version 2.7 and the <code>pip</code> installation program.
-Unless you already have these, we recommend to install a comprehensive
-Python bundle like <a href="https://store.continuum.io/cshop/anaconda/" target="_self">Anaconda</a>.
-
-<p>
-You do not need more software if you avoid using preprocessors, there
-is no bibliography, and you stick to the output formats LaTeX and HTML
-(you need of course LaTeX installed to process <code>.tex</code> files).
-
-<h3 id="___sec22">Preprocessors </h3>
-
-<p>
-If you make use of the <a href="https://github.com/hplgit/preprocess" target="_self">Preprocess</a>
-preprocessor, this program must be installed:
-
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>pip install -e \
-   git+https://github.com/hplgit/preprocess#egg=preprocess --upgrade
-</pre></div>
-<p>
-A much more advanced alternative to Preprocess is
-<a href="http://www.makotemplates.org" target="_self">Mako</a>. Its installation is done by
-
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>pip install Mako
-</pre></div>
-<p>
-It is recommended to install both Preprocess and Mako.
-
-<p>
-Note that neither Preprocess nor Mako is run if you do not have
-preprocessor directives in your DocOnce source. That is, you only need
-this extra software if you make active use of preprocessors.
-
-<h3 id="___sec23">Bibliography </h3>
-
-<p>
-The Python package <a href="https://bitbucket.org/logg/publish" target="_self">Publish</a> is needed if you use a bibliography
-in your document (<code>cite</code> commands and a <code>BIBFILE:</code> specification).
-The installation is done by
-
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>pip install -e hg+https://bitbucket.org/logg/publish#egg=publish
-</pre></div>
-
-<h3 id="___sec24">Image file handling </h3>
-
-<p>
-Different output formats require different formats of image files.
-For example, PDF or PNG is used for <code>pdflatex</code>,
-PostScript for
-<code>latex</code>, while HTML needs JPEG, GIF, or PNG formats.  DocOnce
-calls up programs from the ImageMagick suite for converting image
-files to a proper format if needed. The <a href="http://www.imagemagick.org/script/index.php" target="_self">ImageMagick suite</a> can be installed on all
-major platforms.  On Debian Linux (including Ubuntu) systems one can
-simply write
-
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>sudo apt-get install imagemagick
-</pre></div>
-<p>
-The convenience program <code>doconce combine_images</code>, for combining several
-images into one, will use <code>montage</code> and <code>convert</code> from ImageMagick and
-the <code>pdftk</code>, <code>pdfnup</code>, and <code>pdfcrop</code> programs from the <code>texlive-extra-utils</code>
-Debian package. The latter gets installed by
-
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>sudo apt-get install texlive-extra-utils
-</pre></div>
-<p>
-Automatic image conversion from EPS to PDF calls up <code>epstopdf</code>, which
-can be installed by
-
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>sudo apt-get install texlive-font-utils
-</pre></div>
-
-<h3 id="___sec25">Spellcheck </h3>
-
-<p>
-The utility <code>doconce spellcheck</code> applies the <code>ispell</code> program for
-spellcheck. On Debian (including Ubuntu) it is installed by
-
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>sudo apt-get install ispell
-</pre></div>
-
-<h3 id="___sec26">Ptex2tex for LaTeX Output </h3>
-
-<p>
-Originally, DocOnce relied on the <a href="http://code.google.com/p/ptex2tex" target="_self">ptex2tex</a> program for very flexible choice of typesetting of
-verbatim code blocks. A simplified version, <code>doconce ptex2tex</code>, is bundled
-with DocOnce. However, even greater flexibility is now offered by the
-<code>--latex_code_style=</code> option to <code>doconce format</code> so unless you already are
-a <code>ptex2tex</code> user, it is recommended to forget about <code>ptex2tex</code> and
-just use the <code>--latex_code_style=</code> option.
-
-<p>
-The stand-alone <code>ptex2tex</code> program is installed by
-
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>svn checkout http://ptex2tex.googlecode.com/svn/trunk/ ptex2tex
-cd ptex2tex
-sudo python setup.py install
-</pre></div>
-<p>
-It may happen that you need additional style files, you can run
-a script, <code>cp2texmf.sh</code>:
-
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>cd latex
-sh cp2texmf.sh  # copy stylefiles to ~/texmf directory
-cd ../..
-</pre></div>
-<p>
-This script copies some special stylefiles that
-that <code>ptex2tex</code> potentially makes use of. Some more standard stylefiles
-are also needed. These are installed by
-
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>sudo apt-get install texlive
-</pre></div>
-<p>
-on Debian Linux (including Ubuntu) systems. TeXShop on Mac comes with
-the necessary stylefiles (if not, they can be found by googling and installed
-manually in the <code>~/texmf/tex/latex/misc</code> directory).
-
-<p>
-Note that the <code>doconce ptex2tex</code> command, which needs no installation
-beyond DocOnce itself, can be used as a simpler alternative to the <code>ptex2tex</code>
-program.
-
-<h3 id="___sec27">Pygments and the Minted Code Style </h3>
-
-<p>
-The <em>minted</em> LaTeX style is
-popular for typesetting code.
-This style requires the package <a href="http://pygments.org" target="_self">Pygments</a>
-to be installed. On Debian Linux, the simplest approach is to
-install <code>sphinx</code>:
-
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>pip install sphinx
-</pre></div>
-<p>
-All use of the minted style requires the <code>-shell-escape</code> command-line
-argument when running LaTeX, i.e., <code>pdflatex -shell-escape</code>.
-
-<p>
-Inline comments apply the <code>todonotes</code> LaTeX package if the option
-<code>--latex_todonotes</code> is given.  The <code>todonotes</code> package requires
-several other packages: <code>xcolor</code>, <code>ifthen</code>, <code>xkeyval</code>, <code>tikz</code>, <code>calc</code>,
-<code>graphicx</code>, and <code>setspace</code>. The relevant Debian packages for
-installing all this are listed below.
-
-<h3 id="___sec28">LaTeX packages </h3>
-
-<p>
-Many LaTeX packages are potentially needed, depending on various
-constructions in the text and command-line options used when compling DocOnce to
-LaTeX. The
-standard packages always required are <code>relsize</code>, <code>makeidx</code>,
-<code>setspace</code>, <code>color</code>, <code>amsmath</code>, <code>amsfonts</code>, <code>xcolor</code>, <code>bm</code>,
-<code>microtype</code>, <code>inputenc</code>, and <code>hyperref</code>.
-Optional packages that might be included in the <code>.tex</code> output are <code>minted</code>,
-<code>listings</code>, <code>fancyvrb</code>, <code>xunicode</code>, <code>inputenc</code>, <code>helvet</code>, <code>mathpazo</code>, <code>wrapfig</code>,
-<code>calc</code>, <code>ifthen</code>, <code>xkeyval</code>, <code>tikz</code>, <code>graphicx</code>, <code>setspace</code>, <code>shadow</code>,
-<code>disable</code>, <code>todonotes</code>, <code>lineno</code>, <code>xr</code>, <code>framed</code>, <code>mdframe</code>,
-<code>movie15</code>, <code>a4paper</code>, and <code>a6paper</code>.
-
-<p>
-Relevant Debian packages that gives you all of these LaTeX packages are
-
-<p>
-
-<!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>texlive
-texlive-extra-utils
-texlive-latex-extra
-texlive-font-utils
-</pre></div>
-<p>
-Alternatively, one may pull in <code>texlive-full</code> to get all available
-style files.
-
-<p>
-If you want to use the <em>anslistings</em> code environment with <code>ptex2tex</code>
-(<code>.ptex2tex.cfg</code> styles <code>Python_ANS</code>, <code>Python_ANSt</code>, <code>Cpp_ANS</code>, etc.) or
-<code>doconce ptex2tex</code> (<code>envir=ans</code> or <code>envir=ans:nt</code>), you need the
-<code>anslistings.sty</code> file. It can be obtained from
-the <a href="https://code.google.com/p/ptex2tex/source/browse/trunk/latex/styles/with_license/anslistings.sty" target="_self">ptex2tex source</a>. The same code style is in
-&quot;modern DocOnce&quot; just implemented by the command-line option
-
-<p>
-
-<!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>&quot;--latex_code_style=default:lst[style=yellow2_fb]&quot;
-</pre></div>
-
-<h3 id="___sec29">Sphinx or reStructuredText Output </h3>
-
-<p>
-Output to <code>sphinx</code> or <code>rst</code> requires the
-<a href="http://sphinx.pocoo.org" target="_self">Sphinx software</a>,
-installed by
-
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>pip install sphinx --upgrade
-</pre></div>
-<p>
-DocOnce comes with many Sphinx themes that are not part of the
-standard Sphinx source distribution:
-
-<ul>
- <li> cloud and redcloud: <a href="https://bitbucket.org/ecollins/cloud_sptheme" target="_self"><tt>https://bitbucket.org/ecollins/cloud_sptheme</tt></a></li>
- <li> bootstrap: <a href="https://github.com/ryan-roemer/sphinx-bootstrap-theme" target="_self"><tt>https://github.com/ryan-roemer/sphinx-bootstrap-theme</tt></a></li>
- <li> solarized: <a href="https://bitbucket.org/miiton/sphinxjp.themes.solarized" target="_self"><tt>https://bitbucket.org/miiton/sphinxjp.themes.solarized</tt></a></li>
- <li> impressjs: <a href="https://github.com/shkumagai/sphinxjp.themes.impressjs" target="_self"><tt>https://github.com/shkumagai/sphinxjp.themes.impressjs</tt></a></li>
- <li> sagecellserver: <a href="https://github.com/kriskda/sphinx-sagecell" target="_self"><tt>https://github.com/kriskda/sphinx-sagecell</tt></a></li>
-</ul>
-
-Appropriate installation commands for these themes are
-
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>pip install -e hg+https://bitbucket.org/ecollins/cloud_sptheme#egg=cloud_sptheme
-pip install -e git+https://github.com/ryan-roemer/sphinx-bootstrap-theme#egg=sphinx-bootstrap-theme
-pip install -e hg+https://bitbucket.org/miiton/sphinxjp.themes.solarized#egg=sphinxjp.themes.solarized
-pip install -e git+https://github.com/shkumagai/sphinxjp.themes.impressjs#egg=sphinxjp.themes.impressjs
-pip install -e git+https://github.com/kriskda/sphinx-sagecell#egg=sphinx-sagecell
-</pre></div>
-<p>
-It can also be handy to have special typesetting of IPython sessions:
-
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>pip install -e git+https://bitbucket.org/hplbit/pygments-ipython-console#egg=pygments-ipython-console
-</pre></div>
-<p>
-To make OpenOffice or LibreOffice documents from <code>rst</code> output, you
-will need more software, typically the following on a Debian system:
-
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>sudo apt-get install unoconv libreoffice libreoffice-dmaths
-</pre></div>
-<p>
-<!-- There is a possibility to create PDF files from reST documents -->
-<!-- using ReportLab instead of LaTeX. The enabling software is -->
-<!-- <a href="http://code.google.com/p/rst2pdf" target="_self">rst2pdf</a>. Either download the tarball -->
-<!-- or clone the svn repository, go to the <code>rst2pdf</code> directory and -->
-<!-- run the usual <code>sudo python setup.py install</code>. -->
-
-<h3 id="___sec30">Markdown and Pandoc Output </h3>
-
-<p>
-The DocOnce format <code>pandoc</code> outputs the document in various Markdown
-versions: the Pandoc
-extended Markdown format (which via the <code>pandoc</code> program can be
-translated to a range of other formats), strict Markdown, and
-GitHub-flavored Markdown. Installation of <a href="http://johnmacfarlane.net/pandoc/" target="_self">Pandoc</a>, written in Haskell, is most
-easily done by
-
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>sudo apt-get install pandoc
-</pre></div>
-<p>
-on Debian (Ubuntu) systems.
-
-<h3 id="___sec31">Epydoc Output </h3>
-
-<p>
-When the output format is <code>epydoc</code> one needs that program too, installed
-by
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>svn co https://epydoc.svn.sourceforge.net/svnroot/epydoc/trunk/epydoc epydoc
-cd epydoc
-sudo make install
-cd ..
-</pre></div>
-<p>
-<b>Remark.</b>
-Several of the packages above installed from source code
-are also available in Debian-based system through the
-<code>apt-get install</code> command. However, we recommend installation directly
-from the version control system repository as there might be important
-updates and bug fixes. For <code>svn</code> directories, go to the directory,
-run <code>svn update</code>, and then <code>sudo python setup.py install</code>. For
-Mercurial (<code>hg</code>) directories, go to the directory, run
-<code>hg pull; hg update</code>, and then <code>sudo python setup.py install</code>.
-
-<h3 id="___sec32">Analyzing file differences </h3>
-
-<p>
-The <code>doconce diff file1 file prog</code> command for illustrating differences between
-two files <code>file1</code> and <code>file2</code> using the program <code>prog</code> requires <code>prog</code>
-to be installed. By default, <code>prog</code> is <code>difflib</code> which comes with Python
-and is always present if you have DocOnce installed. Another choice, <code>diff</code>,
-should be available on all Unix/Linux systems. Other choices, their
-URL, and their <code>sudo apt-get install</code> command on Debian (Ubuntu) systems
-appear in the table below.
-
-<p>
-
-<div class="row">
-  <div class="col-xs-12">
-    <table class="table table-striped table-hover table-condensed">
-<thead>
-<tr><td align="center"><b>        Program        </b></td> <td align="center"><b>                                                                   URL                                                                   </b></td> <td align="center"><b>                                  Debian/Ubuntu install                                   </b></td> </tr>
-</thead>
-<tbody>
-<tr><td align="left">   <code>pdiff</code>         </td> <td align="left">   <a href="http://www.gnu.org/software/a2ps/" target="_self">a2ps</a> <a href="http://www.gnu.org/software/wdiff/" target="_self">wdiff</a>    </td> <td align="left">   <code>sudo apt-get install a2ps wdiff texlive-latex-extra texlive-latex-recommended</code>    </td> </tr>
-<tr><td align="left">   <code>latexdiff</code>     </td> <td align="left">   <a href="http://www.ctan.org/pkg/latexdiff" target="_self">latexdiff</a>                                                                     </td> <td align="left">   <code>sudo apt-get install latexdiff</code>                                                   </td> </tr>
-<tr><td align="left">   <code>kdiff3</code>        </td> <td align="left">   <a href="http://kdiff3.sourceforge.net/" target="_self">kdiff3</a>                                                                           </td> <td align="left">   <code>sudo apt-get install kdiff3</code>                                                      </td> </tr>
-<tr><td align="left">   <code>diffuse</code>       </td> <td align="left">   <a href="http://diffuse.sourceforge.net/" target="_self">diffuse</a>                                                                         </td> <td align="left">   <code>sudo apt-get install diffuse</code>                                                     </td> </tr>
-<tr><td align="left">   <code>xxdiff</code>        </td> <td align="left">   <a href="http://xxdiff.sourceforge.net/local/" target="_self">xxdiff</a>                                                                     </td> <td align="left">   <code>sudo apt-get install xxdiff</code>                                                      </td> </tr>
-<tr><td align="left">   <code>meld</code>          </td> <td align="left">   <a href="http://meldmerge.org/" target="_self">meld</a>                                                                                      </td> <td align="left">   <code>sudo apt-get install meld</code>                                                        </td> </tr>
-<tr><td align="left">   <code>tkdiff.tcl</code>    </td> <td align="left">   <a href="https://sourceforge.net/projects/tkdiff/" target="_self">tkdiff</a>                                                                 </td> <td align="left">   not in Debian                                                                                 </td> </tr>
-</tbody>
-    </table>
-  </div> <!-- col-xs-12 -->
-</div> <!-- cell row -->
+formats.
 
 <!-- ------------------- end of main content --------------- -->
 

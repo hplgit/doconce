@@ -580,5 +580,3 @@ doc/tutorial/tutorial.do.txt
 The file `make.sh` in the `tutorial` directory of the
 DocOnce source code contains a demo of how to produce a variety of
 formats.
-
-# #include "../manual/install.do.txt"

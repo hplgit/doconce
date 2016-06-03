@@ -65,7 +65,7 @@ def define(FILENAME_EXTENSION,
 
     # The big difference between pdflatex and latex is the image formats
     FIGURE_EXT['pdflatex'] = {
-        'search': ('.pgf', '.pdf', '.png', '.jpg', '.jpeg'),
+        'search': ('.pgf', '.tikz', '.pdf', '.png', '.jpg', '.jpeg'),
         'convert': ('.pdf', '.png', '.jpg')}
 
     # The rest is copy

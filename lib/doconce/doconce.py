@@ -1336,8 +1336,12 @@ def insert_code_from_file(filestr, format):
                 errwarn(' lines %d-%d' % (from_line, to_line), newline=False)
             codefile.close()
 
-            #if format == 'latex' or format == 'pdflatex' or format == 'sphinx':
-            # Insert a cod or pro directive for ptex2tex and sphinx.
+            # Need a fix if utf-8 code in file
+            try:
+                "!bc %spro\n%s\n!ec" % (filetype, code)
+            except UnicodeDecodeError as e:
+                code = code.decode('utf-8')
+
             if code_envir in ('None', 'off', 'none'):
                 # no need to embed code in anything
                 errwarn(' (no format, just include)')

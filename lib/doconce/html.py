@@ -1085,10 +1085,11 @@ function show_hide_code%d(){
 
     # Replace old-fashion <a name=""></a> anchors with id=""
     filestr = re.sub(r'<h(\d)(.*?)>(.+?) <a name="(.+?)"></a>',
-                     r'<h\g<1>\g<2> id="\g<4>">\g<3>', filestr)
+                     r'<h\g<1>\g<2> id="\g<4>" class="anchor">\g<3>', filestr)
+    # (use class="anchor" such that we can easily tailor position of
+    # headings in e.g. bootstrap)
     filestr = re.sub(r'<a name="(.+?)"></a>',
                      r'<div id="\g<1>"></div>', filestr)
-
 
     # Add MathJax script if math is present (math is defined right above)
     if math and MATH_TYPESETTING == 'MathJax':
@@ -2838,6 +2839,15 @@ pre { color: inherit; background-color: transparent; }
    height: auto;
    max-height: 400px;
    overflow-x: hidden;
+}
+
+/* Position anchors of headings a bit higher so jumping to headlines
+behaves correctly */
+h1.anchor, h2.anchor, h3.anchor, h4.anchor {
+    display: block;
+    position: relative;
+    top: -100px;
+    visibility: hidden;
 }
 """
         if '!bquiz' in filestr:

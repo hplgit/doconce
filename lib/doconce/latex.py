@@ -853,10 +853,14 @@ def latex_code(filestr, code_blocks, code_block_types,
     filestr = re.sub(r'(section|chapter)\{(Preface.*)\}',
                      r'\g<1>*{\g<2>}' + contentsline, filestr)
 
-    # Add pgf package if we have pgf files
+    # Add pgf package if we have pgf or tikz files
     if re.search(r'input\{.+\.pgf\}', filestr):
         filestr = re.sub(r'usepackage(.*?){graphicx}',
                          'usepackage\g<1>{graphicx}\n\\usepackage{pgf}',
+                         filestr)
+    if re.search(r'input\{.+\.tikz\}', filestr):
+        filestr = re.sub(r'usepackage(.*?){graphicx}',
+                         'usepackage\g<1>{graphicx}\n\\usepackage{tikz}',
                          filestr)
 
     # Fix % and # in link texts (-> \%, \# - % is otherwise a comment...)
@@ -1099,7 +1103,7 @@ def latex_figure(m):
     tufte_fig_envir = 'figure'
 
     if figure_method == 'includegraphics':
-        if filename_ext == '.pgf':
+        if filename_ext == '.pgf' or '.tikz':
             includeline = r'\input{%s}' % filename
         else:
             if latex_style == 'tufte-book':

@@ -647,12 +647,11 @@ avoiding copying information!) and once the software is updated, the
 next compilation of the document is up-to-date.
 
 **Inclusion of files.**
-Another DocOnce document or any file
-can be included by writing ``# #include "mynote.do.txt"``
-at the beginning of a line.  DocOnce documents have
-extension ``do.txt``. The ``do`` part stands for doconce, while the
-trailing ``.txt`` denotes a text document so that editors gives you
-plain text editing capabilities.
+Another DocOnce document or any file can be
+included by writing ``# #include "mynote.do.txt"`` at the beginning of a
+line.  DocOnce documents have extension ``do.txt``. The ``do`` part stands
+for ``doconce``, while the trailing ``.txt`` denotes a text document so
+that editors gives you plain text editing capabilities.
 
 .. _newcommands:
 
@@ -662,7 +661,8 @@ Macros (Newcommands), Cross-References, Index, and Bibliography
 DocOnce supports a type of macros via a LaTeX-style *newcommand*
 construction.  The newcommands are defined in files with names
 ``newcommands*.tex``, using standard LaTeX syntax. Only newcommands
-for use inside math environments are supported.
+for use inside LaTeX math environments are supported. (But you can
+define any type of macros through Mako functions!)
 
 Labels, corss-references, citations, and support of an index and
 bibliography are much inspired by LaTeX syntax, but DocOnce features
@@ -709,8 +709,7 @@ this tool has more functionality than BibTeX, but any BibTeX database can
 be automatically converted to the simple Publish format.
 
 For further details on functionality and
-syntax we refer to the ``doc/manual/manual.do.txt`` file
-in the DocOnce source and a `Sphinx version <http://hplgit.github.io/doconce/doc/pub/manual/html/>`__ of this document.
+syntax we refer to the `DocOnce manual <http://hplgit.github.io/doconce/doc/pub/manual/html/>`__.
 
 .. !split
 
@@ -740,8 +739,8 @@ tailoring the compilation. Run ``doconce format --help`` to see a list
 of all options. Those that start with ``--html_`` are specific for the
 HTML output format.
 
-Preprocessors          (1)
---------------------------
+Preprocessors
+-------------
 
 A DocOnce compilation has three stages:
 
@@ -797,8 +796,8 @@ a subsection heading (5 ``=``), preceded by ``!split`` to indicate a
 new slide. Section headings are used to mark parts of the presentation.
 The slides are compiled as any other DocOnce file, but there is usually
 a second step where the text is modified to become a proper slide text
-in the chosen output format. We refer to the manual for details and
-the
+in the chosen output format. We refer to the manual for details
+and the `DocOnce slide demo <http://hplgit.github.io/doconce/doc/pub/slides/demo/index.html>`__.
 
 Several popular slide formats are supported:
 
@@ -815,6 +814,22 @@ Several popular slide formats are supported:
 Demos
 =====
 
+Our `short scientific report <http://hplgit.github.io/teamods/writing_reports/index.html>`__ is a good
+starting point for seeing how DocOnce documents are written and get a
+demonstration of the vast choice of output formats and settings that
+are available.
+
+There is also a demo of different `slide formats <http://hplgit.github.io/doconce/doc/pub/slides/demo/index.html>`__.
+
+DocOnce has support for *responsive* HTML documents with design and
+functionality based on Bootstrap styles.  A `Bootstrap demo <http://hplgit.github.io/doconce/doc/pub/bootstrap/index.html>`__
+illustrates the many possibilities for colors and layouts.
+
+DocOnce also has support for exercises in `quiz format <http://hplgit.github.io/doconce/doc/pub/quiz/quiz.html>`__. Pure quiz
+files can be *automatically uploaded* to `Kahoot! <https://getkahoot.com>`__ online quiz games operated through smart
+phones (with the aid of `quiztools <https://github.com/hplgit/quiztools>`__ for DocOnce to Kahoot!
+translation).
+
 The current text is generated from a DocOnce format stored in the file
 
 .. code-block:: text
@@ -823,415 +838,4 @@ The current text is generated from a DocOnce format stored in the file
 
 The file ``make.sh`` in the ``tutorial`` directory of the
 DocOnce source code contains a demo of how to produce a variety of
-formats.  The source of this tutorial, ``tutorial.do.txt`` is the
-starting point.  Running ``make.sh`` and studying the various generated
-files and comparing them with the original ``tutorial.do.txt`` file,
-gives a quick introduction to how DocOnce is used in a real case.
-
-A `short scientific report <http://hplgit.github.io/teamods/writing_reports/index.html>`__ demonstrates
-the vast choice of output formats and settings that are available.
-
-There is also a demo of different `slide formats <http://hplgit.github.io/doconce/doc/pub/slides/demo/index.html>`__.
-
-.. !split
-
-.. _install:doconce:
-
-Installation of DocOnce and its Dependencies
-============================================
-
-.. index:: installation
-
-Below, we explain the manual installation of all software that may be
-needed when working with DocOnce documents.
-The impatient way to install everything that is needed is to use
-Anaconda Python and the ``conda`` program:
-
-.. code-block:: text
-
-    Terminal> conda install --channel johannr doconce
-
-The ``conda`` package is available for Mac and Linux only.
-
-If you do not want to use Anaconda and are
-on a Debian-based Linux
-computer (running, e.g., Ubuntu), you can instead run the Bash script
-`install_doconce.sh <https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/install_doconce.sh>`__ or the equivalent Python script
-`install_doconce.py <https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/install_doconce.py>`__.
-These scripts gives a comprehensive installation. Some users will prefer to
-install just what is needed for them, and this is explained below.
-
-
-.. admonition:: Version control systems are needed
-
-   The coming installation instructions require that the version control systems
-   Subversion, Mercurial, and Git are installed on your computer.
-
-
-
-
-
-.. admonition:: What about Mac and Windows
-
-   DocOnce is primarily tested on GNU/Debian Linux systems, but also to
-   a minor extent on Mac OS X. Experience with Windows is limited.
-   Since most packages are Python-based and can be installed via ``pip install``
-   no problems should arise on Mac and Windows. However, some of the
-   image processing tools and spell checking apply Unix-specific software.
-
-
-
-
-You can omit reading the next sections if you rely on ``conda`` or
-``apt-get install`` commands in the Bash script for installing DocOnce.
-
-DocOnce
--------
-
-DocOnce itself is pure Python code hosted at `<https://github.com/hplgit/doconce>`_.
-Installation can be done via
-
-.. code-block:: text
-
-    sudo pip install -e git+https://github.com/hplgit/doconce#egg=doconce
-    # or if doconce is already installed
-    sudo pip install -e git+https://github.com/hplgit/doconce#egg=doconce --upgrade
-
-However, the recommended approach is to have a copy of the source on
-the local computer and run ``setup.py``:
-
-.. code-block:: text
-
-    git clone git@github.com:hplgit/doconce.git
-    cd doconce
-    sudo python setup.py install
-    cd ..
-
-Since DocOnce is frequently updated, it becomes necessary to ensure
-that you work with the most recent version:
-
-.. code-block:: text
-
-    cd doconce
-    git pull origin master
-    sudo python setup.py install
-
-Dependencies
-------------
-
-Producing HTML documents, plain text, pandoc-extended Markdown,
-and wikis can be done without installing any other
-software. However, if you want other formats as output
-(LaTeX, Sphinx, reStructuredText) and assisting utilities such
-as preprocesors, spellcheck, file differences, bibliographies,
-and so on, a lot of extra software must be installed.
-
-Python v2.7
-~~~~~~~~~~~
-
-First you need Python version 2.7 and the ``pip`` installation program.
-Unless you already have these, we recommend to install a comprehensive
-Python bundle like `Anaconda <https://store.continuum.io/cshop/anaconda/>`__.
-
-You do not need more software if you avoid using preprocessors, there
-is no bibliography, and you stick to the output formats LaTeX and HTML
-(you need of course LaTeX installed to process ``.tex`` files).
-
-Preprocessors          (2)
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-If you make use of the `Preprocess <https://github.com/hplgit/preprocess>`__
-preprocessor, this program must be installed:
-
-.. code-block:: text
-
-    pip install -e \
-       git+https://github.com/hplgit/preprocess#egg=preprocess --upgrade
-
-A much more advanced alternative to Preprocess is
-`Mako <http://www.makotemplates.org>`__. Its installation is done by
-
-.. code-block:: text
-
-    pip install Mako
-
-It is recommended to install both Preprocess and Mako.
-
-Note that neither Preprocess nor Mako is run if you do not have
-preprocessor directives in your DocOnce source. That is, you only need
-this extra software if you make active use of preprocessors.
-
-Bibliography
-~~~~~~~~~~~~
-
-The Python package `Publish <https://bitbucket.org/logg/publish>`__ is needed if you use a bibliography
-in your document (``cite`` commands and a ``BIBFILE:`` specification).
-The installation is done by
-
-.. code-block:: text
-
-    pip install -e hg+https://bitbucket.org/logg/publish#egg=publish
-
-Image file handling
-~~~~~~~~~~~~~~~~~~~
-
-Different output formats require different formats of image files.
-For example, PDF or PNG is used for ``pdflatex``,
-PostScript for
-``latex``, while HTML needs JPEG, GIF, or PNG formats.  DocOnce
-calls up programs from the ImageMagick suite for converting image
-files to a proper format if needed. The `ImageMagick suite <http://www.imagemagick.org/script/index.php>`__ can be installed on all
-major platforms.  On Debian Linux (including Ubuntu) systems one can
-simply write
-
-.. code-block:: text
-
-    sudo apt-get install imagemagick
-
-The convenience program ``doconce combine_images``, for combining several
-images into one, will use ``montage`` and ``convert`` from ImageMagick and
-the ``pdftk``, ``pdfnup``, and ``pdfcrop`` programs from the ``texlive-extra-utils``
-Debian package. The latter gets installed by
-
-.. code-block:: text
-
-    sudo apt-get install texlive-extra-utils
-
-Automatic image conversion from EPS to PDF calls up ``epstopdf``, which
-can be installed by
-
-.. code-block:: text
-
-    sudo apt-get install texlive-font-utils
-
-Spellcheck
-~~~~~~~~~~
-
-The utility ``doconce spellcheck`` applies the ``ispell`` program for
-spellcheck. On Debian (including Ubuntu) it is installed by
-
-.. code-block:: text
-
-    sudo apt-get install ispell
-
-Ptex2tex for LaTeX Output
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Originally, DocOnce relied on the `ptex2tex <http://code.google.com/p/ptex2tex>`__ program for very flexible choice of typesetting of
-verbatim code blocks. A simplified version, ``doconce ptex2tex``, is bundled
-with DocOnce. However, even greater flexibility is now offered by the
-``--latex_code_style=`` option to ``doconce format`` so unless you already are
-a ``ptex2tex`` user, it is recommended to forget about ``ptex2tex`` and
-just use the ``--latex_code_style=`` option.
-
-The stand-alone ``ptex2tex`` program is installed by
-
-.. code-block:: text
-
-    svn checkout http://ptex2tex.googlecode.com/svn/trunk/ ptex2tex
-    cd ptex2tex
-    sudo python setup.py install
-
-It may happen that you need additional style files, you can run
-a script, ``cp2texmf.sh``:
-
-.. code-block:: text
-
-    cd latex
-    sh cp2texmf.sh  # copy stylefiles to ~/texmf directory
-    cd ../..
-
-This script copies some special stylefiles that
-that ``ptex2tex`` potentially makes use of. Some more standard stylefiles
-are also needed. These are installed by
-
-.. code-block:: text
-
-    sudo apt-get install texlive
-
-on Debian Linux (including Ubuntu) systems. TeXShop on Mac comes with
-the necessary stylefiles (if not, they can be found by googling and installed
-manually in the ``~/texmf/tex/latex/misc`` directory).
-
-Note that the ``doconce ptex2tex`` command, which needs no installation
-beyond DocOnce itself, can be used as a simpler alternative to the ``ptex2tex``
-program.
-
-Pygments and the Minted Code Style
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The *minted* LaTeX style is
-popular for typesetting code.
-This style requires the package `Pygments <http://pygments.org>`__
-to be installed. On Debian Linux, the simplest approach is to
-install ``sphinx``:
-
-.. code-block:: text
-
-    pip install sphinx
-
-All use of the minted style requires the ``-shell-escape`` command-line
-argument when running LaTeX, i.e., ``pdflatex -shell-escape``.
-
-Inline comments apply the ``todonotes`` LaTeX package if the option
-``--latex_todonotes`` is given.  The ``todonotes`` package requires
-several other packages: ``xcolor``, ``ifthen``, ``xkeyval``, ``tikz``, ``calc``,
-``graphicx``, and ``setspace``. The relevant Debian packages for
-installing all this are listed below.
-
-LaTeX packages
-~~~~~~~~~~~~~~
-
-Many LaTeX packages are potentially needed, depending on various
-constructions in the text and command-line options used when compling DocOnce to
-LaTeX. The
-standard packages always required are ``relsize``, ``makeidx``,
-``setspace``, ``color``, ``amsmath``, ``amsfonts``, ``xcolor``, ``bm``,
-``microtype``, ``inputenc``, and ``hyperref``.
-Optional packages that might be included in the ``.tex`` output are ``minted``,
-``listings``, ``fancyvrb``, ``xunicode``, ``inputenc``, ``helvet``, ``mathpazo``, ``wrapfig``,
-``calc``, ``ifthen``, ``xkeyval``, ``tikz``, ``graphicx``, ``setspace``, ``shadow``,
-``disable``, ``todonotes``, ``lineno``, ``xr``, ``framed``, ``mdframe``,
-``movie15``, ``a4paper``, and ``a6paper``.
-
-Relevant Debian packages that gives you all of these LaTeX packages are
-
-.. code-block:: text
-
-    texlive
-    texlive-extra-utils
-    texlive-latex-extra
-    texlive-font-utils
-
-Alternatively, one may pull in ``texlive-full`` to get all available
-style files.
-
-If you want to use the *anslistings* code environment with ``ptex2tex``
-(``.ptex2tex.cfg`` styles ``Python_ANS``, ``Python_ANSt``, ``Cpp_ANS``, etc.) or
-``doconce ptex2tex`` (``envir=ans`` or ``envir=ans:nt``), you need the
-``anslistings.sty`` file. It can be obtained from
-the `ptex2tex source <https://code.google.com/p/ptex2tex/source/browse/trunk/latex/styles/with_license/anslistings.sty>`__. The same code style is in
-"modern DocOnce" just implemented by the command-line option
-
-.. code-block:: text
-
-    "--latex_code_style=default:lst[style=yellow2_fb]"
-
-Sphinx or reStructuredText Output
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Output to ``sphinx`` or ``rst`` requires the
-`Sphinx software <http://sphinx.pocoo.org>`__,
-installed by
-
-.. code-block:: text
-
-    pip install sphinx --upgrade
-
-DocOnce comes with many Sphinx themes that are not part of the
-standard Sphinx source distribution:
-
- * cloud and redcloud: `<https://bitbucket.org/ecollins/cloud_sptheme>`_
-
- * bootstrap: `<https://github.com/ryan-roemer/sphinx-bootstrap-theme>`_
-
- * solarized: `<https://bitbucket.org/miiton/sphinxjp.themes.solarized>`_
-
- * impressjs: `<https://github.com/shkumagai/sphinxjp.themes.impressjs>`_
-
- * sagecellserver: `<https://github.com/kriskda/sphinx-sagecell>`_
-
-Appropriate installation commands for these themes are
-
-.. code-block:: text
-
-    pip install -e hg+https://bitbucket.org/ecollins/cloud_sptheme#egg=cloud_sptheme
-    pip install -e git+https://github.com/ryan-roemer/sphinx-bootstrap-theme#egg=sphinx-bootstrap-theme
-    pip install -e hg+https://bitbucket.org/miiton/sphinxjp.themes.solarized#egg=sphinxjp.themes.solarized
-    pip install -e git+https://github.com/shkumagai/sphinxjp.themes.impressjs#egg=sphinxjp.themes.impressjs
-    pip install -e git+https://github.com/kriskda/sphinx-sagecell#egg=sphinx-sagecell
-
-It can also be handy to have special typesetting of IPython sessions:
-
-.. code-block:: text
-
-    pip install -e git+https://bitbucket.org/hplbit/pygments-ipython-console#egg=pygments-ipython-console
-
-To make OpenOffice or LibreOffice documents from ``rst`` output, you
-will need more software, typically the following on a Debian system:
-
-.. code-block:: text
-
-    sudo apt-get install unoconv libreoffice libreoffice-dmaths
-
-.. There is a possibility to create PDF files from reST documents
-
-.. using ReportLab instead of LaTeX. The enabling software is
-
-.. `rst2pdf <http://code.google.com/p/rst2pdf>`__. Either download the tarball
-
-.. or clone the svn repository, go to the ``rst2pdf`` directory and
-
-.. run the usual ``sudo python setup.py install``.
-
-Markdown and Pandoc Output
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The DocOnce format ``pandoc`` outputs the document in various Markdown
-versions: the Pandoc
-extended Markdown format (which via the ``pandoc`` program can be
-translated to a range of other formats), strict Markdown, and
-GitHub-flavored Markdown. Installation of `Pandoc <http://johnmacfarlane.net/pandoc/>`__, written in Haskell, is most
-easily done by
-
-.. code-block:: text
-
-    sudo apt-get install pandoc
-
-on Debian (Ubuntu) systems.
-
-Epydoc Output
-~~~~~~~~~~~~~
-
-When the output format is ``epydoc`` one needs that program too, installed
-by
-
-.. code-block:: text
-
-    svn co https://epydoc.svn.sourceforge.net/svnroot/epydoc/trunk/epydoc epydoc
-    cd epydoc
-    sudo make install
-    cd ..
-
-**Remark.**
-Several of the packages above installed from source code
-are also available in Debian-based system through the
-``apt-get install`` command. However, we recommend installation directly
-from the version control system repository as there might be important
-updates and bug fixes. For ``svn`` directories, go to the directory,
-run ``svn update``, and then ``sudo python setup.py install``. For
-Mercurial (``hg``) directories, go to the directory, run
-``hg pull; hg update``, and then ``sudo python setup.py install``.
-
-Analyzing file differences
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The ``doconce diff file1 file prog`` command for illustrating differences between
-two files ``file1`` and ``file2`` using the program ``prog`` requires ``prog``
-to be installed. By default, ``prog`` is ``difflib`` which comes with Python
-and is always present if you have DocOnce installed. Another choice, ``diff``,
-should be available on all Unix/Linux systems. Other choices, their
-URL, and their ``sudo apt-get install`` command on Debian (Ubuntu) systems
-appear in the table below.
-
-==============  ===========================================================================================  =================================================================================  
-   Program                                                  URL                                                                            Debian/Ubuntu install                                
-==============  ===========================================================================================  =================================================================================  
-``pdiff``       `a2ps <http://www.gnu.org/software/a2ps/>`__ `wdiff <http://www.gnu.org/software/wdiff/>`__  ``sudo apt-get install a2ps wdiff texlive-latex-extra texlive-latex-recommended``  
-``latexdiff``   `latexdiff <http://www.ctan.org/pkg/latexdiff>`__                                            ``sudo apt-get install latexdiff``                                                 
-``kdiff3``      `kdiff3 <http://kdiff3.sourceforge.net/>`__                                                  ``sudo apt-get install kdiff3``                                                    
-``diffuse``     `diffuse <http://diffuse.sourceforge.net/>`__                                                ``sudo apt-get install diffuse``                                                   
-``xxdiff``      `xxdiff <http://xxdiff.sourceforge.net/local/>`__                                            ``sudo apt-get install xxdiff``                                                    
-``meld``        `meld <http://meldmerge.org/>`__                                                             ``sudo apt-get install meld``                                                      
-``tkdiff.tcl``  `tkdiff <https://sourceforge.net/projects/tkdiff/>`__                                        not in Debian                                                                      
-==============  ===========================================================================================  =================================================================================  
+formats.
