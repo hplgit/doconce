@@ -2,8 +2,8 @@
 .. Master file automatically created by doconce sphinx_dir
 
 
-DocOnce: Document Once, Include Anywhere
-========================================
+DocOnce Tutorial: Document Once, Include Anywhere
+=================================================
 
 Contents:
 

@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>DocOnce: Document Once, Include Anywhere &mdash; DocOnce: Document Once, Include Anywhere</title>
+    <title>DocOnce Tutorial: Document Once, Include Anywhere &mdash; DocOnce Tutorial: Document Once, Include Anywhere</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -43,8 +43,8 @@
         </style>
 
     
-    <link rel="top" title="DocOnce: Document Once, Include Anywhere" href="index.html" />
-    <link rel="prev" title="DocOnce: Document Once, Include Anywhere" href="index.html" />
+    <link rel="top" title="DocOnce Tutorial: Document Once, Include Anywhere" href="index.html" />
+    <link rel="prev" title="DocOnce Tutorial: Document Once, Include Anywhere" href="index.html" />
  
   </head>
   <body role="document">
@@ -55,9 +55,9 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="index.html" title="DocOnce: Document Once, Include Anywhere"
+          <a href="index.html" title="DocOnce Tutorial: Document Once, Include Anywhere"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">DocOnce: Document Once, Include Anywhere</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">DocOnce Tutorial: Document Once, Include Anywhere</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -66,67 +66,57 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="doconce-document-once-include-anywhere">
-<h1>DocOnce: Document Once, Include Anywhere<a class="headerlink" href="#doconce-document-once-include-anywhere" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="doconce-tutorial-document-once-include-anywhere">
+<h1>DocOnce Tutorial: Document Once, Include Anywhere<a class="headerlink" href="#doconce-tutorial-document-once-include-anywhere" title="Permalink to this headline">¶</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Nov 10, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jun 3, 2016</td>
 </tr>
 </tbody>
 </table>
 <div class="section" id="some-doconce-features">
 <h2>Some DocOnce Features<a class="headerlink" href="#some-doconce-features" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><ul>
-<li><p class="first">Strong support for texts with much math and code.</p>
-</li>
-<li><p class="first">Same source can produce a variety of output formats:</p>
-<ul class="simple">
+<div><ul class="simple">
+<li>Strong support for texts with much math and code.</li>
+<li>Same source can produce a variety of output formats:<ul>
 <li><a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/_static/report_4printing.pdf">traditional LaTeX B/W documents for printing</a></li>
 <li><a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/_static/report.pdf">color LaTeX PDF documents</a></li>
 <li><a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/_static/report_4phone.pdf">color LaTeX PDF documents for viewing on small phones</a></li>
 <li><a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal1/report.html">Sphinx HTML documents with 20+ different designs</a></li>
-<li><a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/_static/report.html">Plain HTML</a>, <a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/_static/report_bootstrap_bluegray.html">Boostrap HTML</a>, or with a <a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/_static/report_vagrant.html">template</a>, or with <a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/_static/report_github_minimal.html">another template</a>, or <a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/_static/report_solarized3_light.html">solarized</a></li>
+<li><a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/_static/report.html">Plain HTML</a>, <a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/_static/report_bootstrap_bluegray.html">Boostrap HTML</a>, or with a <a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/_static/report_vagrant.html">template</a>, or with <a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/_static/report_github_minimal.html">another template</a>, or <a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/_static/report_solarized3_light.html">solarized HTML</a></li>
 <li>HTML for <a class="reference external" href="http://doconce-report-demo.blogspot.no/">Google</a> or <a class="reference external" href="http://doconcereportdemo.wordpress.com/">Wordpress</a> blog posts</li>
 <li><a class="reference external" href="http://doconcedemo.shoutwiki.com/wiki/DocOnce_demo_page">MediaWiki</a> (Wikipedia, Wikibooks, etc)</li>
-<li>Markdown</li>
-<li>IPython notebook</li>
-</ul>
-<p>Other formats include plain untagged text (for email),
+<li>Markdown for further processing by Pandoc to a lot of formats</li>
+<li><a class="reference external" href="http://nbviewer.ipython.org/url/hplgit.github.com/teamods/writing_reports/_static/report.ipynb">IPython notebook</a></li>
+<li>Other formats include plain untagged text (for email),
 Creole wiki (for Bitbucket wikis), Google wiki (for Googlecode),
-reStructuredText, and Epytext.</p>
+and reStructuredText.</li>
+</ul>
 </li>
-<li><p class="first">There is an exercise environment with many advanced features
+<li>There is an exercise environment with many advanced features
 such as subexercises and solutions. The document can be compiled
-with or without solutions.</p>
-</li>
-<li><p class="first">With a preprocessor, Preprocess or Mako, one can include other
+with or without solutions.</li>
+<li>With a preprocessor, Preprocess or Mako, one can include other
 documents (files), large portions of text can be defined in or out
 of the text. Mako enables use of variables, functions, if-tests,
 and loops to parameterize the text and generate various versions of
-the text for different purposes.</p>
-</li>
-<li><p class="first">Computer code can be copied directly from parts of source code files.</p>
-</li>
-<li><p class="first">Figures and movies with captions, simple tables,
+the text for different purposes.</li>
+<li>Computer code can be copied directly from parts of source code files.</li>
+<li>Figures and movies with captions, simple tables,
 URLs with links, index list, labels and references are supported.
-YouTube and Vimeo videos are automatically embedded in web documents.</p>
-</li>
-<li><p class="first">Running text can quickly be edited to slide formats (reveal.js and deck.js,
-based on HTML5+CSS3).</p>
-</li>
-<li><p class="first">Special exercise environments with support for hints, answers,
-subexercises, etc.</p>
-</li>
-<li><p class="first">Automatic inline embedding of YouTube and Vimeo movies.</p>
-</li>
-<li><p class="first">Good support for admonitions in various LaTeX and HTML styles
-for warnings, questions, hints, remarks, summaries, etc.</p>
-</li>
+YouTube and Vimeo videos are automatically embedded in web documents.</li>
+<li>Running text can quickly be edited to slide formats (reveal.js and deck.js,
+based on HTML5+CSS3).</li>
+<li>Special exercise environments with support for hints, answers,
+subexercises, etc.</li>
+<li>Automatic inline embedding of YouTube and Vimeo movies.</li>
+<li>Good support for admonitions in various LaTeX and HTML styles
+for warnings, questions, hints, remarks, summaries, etc.</li>
 </ul>
 </div></blockquote>
 </div>
@@ -186,23 +176,186 @@ sensitive to whitespace and require a monospace font.</p>
 <p>LaTeX is ideal for articles, thesis, and books, but the PDF files does
 not look fresh and modern on tablets and phones or big computer
 screens. For the latter type of media you need HTML-based documents
-with strong support for nice layouts. Tools like
-Sphinx, Markdown, or plain HTML with Bootstrap are then more
-appropriate than LaTeX, but involves a very different syntax.
-DocOnce lets you write one text in one place and then generate
-the most appropriate language for the media you want to target.
-DocOnce also
-has many extra features for supporting large documents with much code and
-mathematics, not found in any of other publishing tool.</p>
+with strong support for nice layouts. Tools like Sphinx, Markdown, or
+plain HTML with Bootstrap are then more appropriate than LaTeX, but
+involves a very different syntax.  DocOnce lets you write one text in
+one place and then generate the most appropriate language for the
+media you want to target.  DocOnce also has many extra features for
+supporting large documents with much code and mathematics, not found
+in any of other publishing tool.</p>
+</div>
+<div class="section" id="writing-guidelines-especially-for-latex-users">
+<span id="manual-latex-guide"></span><h3>Writing Guidelines (Especially for LaTeX Users!)<a class="headerlink" href="#writing-guidelines-especially-for-latex-users" title="Permalink to this headline">¶</a></h3>
+<p>LaTeX writers often have their own writing habits with use of their
+own favorite LaTeX packages. DocOnce is a much simpler format and
+corresponds to writing in quite plain LaTeX and making the ascii text
+look nice (be careful with the use of white space!). This means that
+although DocOnce has borrowed a lot from LaTeX, there are a few points
+LaTeX writers should pay attention to. Experience shows that these
+points are so important that we list them <em>before</em> we list typical
+DocOnce syntax!</p>
+<p>Any LaTeX syntax in mathematical formulas is accepted when DocOnce
+translates the text to LaTeX, but if output in the <code class="docutils literal"><span class="pre">sphinx</span></code>, <code class="docutils literal"><span class="pre">pandoc</span></code>,
+<code class="docutils literal"><span class="pre">mwiki</span></code>, <code class="docutils literal"><span class="pre">html</span></code>, or <code class="docutils literal"><span class="pre">ipynb</span></code> formats is also important, one should
+follow the rules below.</p>
+<blockquote>
+<div><ul class="simple">
+<li>AMS LaTeX mathematics is supported, also for the <code class="docutils literal"><span class="pre">html</span></code>, <code class="docutils literal"><span class="pre">sphinx</span></code>,
+and <code class="docutils literal"><span class="pre">ipynb</span></code> formats.</li>
+<li>If you want LaTeX math blocks to work with <code class="docutils literal"><span class="pre">latex</span></code>, <code class="docutils literal"><span class="pre">html</span></code>, <code class="docutils literal"><span class="pre">sphinx</span></code>,
+<code class="docutils literal"><span class="pre">markdown</span></code>, and <code class="docutils literal"><span class="pre">ipynb</span></code>, it is recommended to use only
+the following equation environments: <code class="docutils literal"><span class="pre">\[</span> <span class="pre">...</span> <span class="pre">\]</span></code>,
+<code class="docutils literal"><span class="pre">equation*</span></code>, <code class="docutils literal"><span class="pre">equation</span></code>, <code class="docutils literal"><span class="pre">align*</span></code>, <code class="docutils literal"><span class="pre">align</span></code>. <code class="docutils literal"><span class="pre">alignat*</span></code>, <code class="docutils literal"><span class="pre">alignat</span></code>.
+Other environments, such as <code class="docutils literal"><span class="pre">split</span></code>, <code class="docutils literal"><span class="pre">multiline</span></code>, <code class="docutils literal"><span class="pre">gather</span></code> are
+supported in modern MathJax in HTML and Sphinx, but may face
+rendering problems (to a larger extent than <code class="docutils literal"><span class="pre">equation</span></code> and <code class="docutils literal"><span class="pre">align</span></code>).
+DocOnce performs extensions to <code class="docutils literal"><span class="pre">sphinx</span></code>, <code class="docutils literal"><span class="pre">ipynb</span></code>,
+and other formats such that
+labels in <code class="docutils literal"><span class="pre">align</span></code> and <code class="docutils literal"><span class="pre">alignat</span></code> environments work well.
+If you face problems with fancy LaTeX equation environments in
+web formats, try rewriting with plain <code class="docutils literal"><span class="pre">align</span></code>, <code class="docutils literal"><span class="pre">nonumber</span></code>, etc.</li>
+<li>Do not use comments inside equations.</li>
+<li>Newcommands in mathematical formulas are allowed, but not in
+the running text. Newcommands must be defined in files with names
+<code class="docutils literal"><span class="pre">newcommands*.tex</span></code>. Use <code class="docutils literal"><span class="pre">\newcommands</span></code> and not <code class="docutils literal"><span class="pre">\def</span></code>.
+Each newcommand must be defined on a single line.
+Use Mako functions if you need macros in the running text.</li>
+<li>Use labels and refer to them
+for sections, figures, movies, and equations only.
+MediaWiki (<code class="docutils literal"><span class="pre">mwiki</span></code>) does not support references to equations.</li>
+<li>Spaces are not allowed in labels.</li>
+<li>There is just one <code class="docutils literal"><span class="pre">ref</span></code> command (no <code class="docutils literal"><span class="pre">\eqref</span></code> for equations) and references to
+equations must use parentheses. Never use the tilde ``&nbsp;`` (non-breaking
+space) character before references to figures, sections, etc., but
+tilde is allowed for references to equations.</li>
+<li>Never use <code class="docutils literal"><span class="pre">\pageref</span></code> as pages are not a concept in web documents
+(there is only a <code class="docutils literal"><span class="pre">ref</span></code> command in DocOnce and it refers to labels).</li>
+<li>Only figures and movies are floating elements in DocOnce, all other elements
+(code, tables, algorithms) must appear <em>inline</em> without numbers or labels
+for reference <a class="footnote-reference" href="#exception" id="id2">[2]</a> (refer to inline elements by a section label).
+The reason is that floating elements are in general
+not used in web documents, but we made an exception with figures
+and movies.</li>
+<li>Keep figure captions shorts as they are used as references in the
+Sphinx format. Avoid inline mathematics since Sphinx will strip it
+away in the figure reference.
+(Many writing styles encourage rich captions that
+explains everything about the figure, but this will work well
+only in the HTML and LaTeX formats.)</li>
+<li>You cannot use <code class="docutils literal"><span class="pre">subfigure</span></code> to combine several image files in one
+figure, but you can combine the files to one file using
+the <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">combine_images</span></code> tool. Refer to individual image files
+in the caption or text by (e.g.) &#8220;left&#8221; and &#8220;right&#8221;, or
+&#8220;upper left&#8221;, &#8220;lower right&#8221;, etc.</li>
+<li>Footnotes can be used as usual in LaTeX, but some HTML formats are not
+able to display mathematics or inline verbatim or other formatted
+code (emphasis, boldface, color) in footnotes - have that in mind.</li>
+<li>Use plain <code class="docutils literal"><span class="pre">cite</span></code> for references (e.g., <code class="docutils literal"><span class="pre">\citeauthor</span></code> has no counterpart
+in DocOnce). The bibliography must be prepared in the Publish format,
+but import from (clean) BibTeX is possible.</li>
+<li>Use <code class="docutils literal"><span class="pre">idx</span></code> for index entries, but put the definitions between paragraphs,
+not inside them (required by Sphinx).</li>
+<li>Use the <code class="docutils literal"><span class="pre">\bm</span></code> command (from the <code class="docutils literal"><span class="pre">bm</span></code> package, always included by DocOnce)
+for boldface in mathematics.</li>
+<li>Make sure all ordinary text starts in column 1 on each line. Equations
+can be indented. The <code class="docutils literal"><span class="pre">\begin{}</span></code> and <code class="docutils literal"><span class="pre">\end{}</span></code> directives should start
+in column 1.</li>
+<li>If you depend on various LaTeX environments for your writings, you have
+to give up these, or implement <em>user-defined environments</em> in DocOnce.
+For instance, examples are normally typeset as subsections in DocOnce,
+but can also utilize a user-defined example environment.
+Learn about the exercise support in DocOnce for typesetting
+exercises, problems, and projects.</li>
+<li>Learn about the preprocessors Preprocess and Mako - these are smart
+tools for, e.g., commenting out/in large portions of text and creating
+macros.</li>
+<li>Use <em>generalized referenes</em> when referring to companion documents
+that may later become part of this document (or migrated out of this document).</li>
+<li>Follow <a class="reference external" href="https://github.com/hplgit/setup4book-doconce">recommendations for DocOnce books</a> if you plan to write a book.</li>
+</ul>
+</div></blockquote>
+<table class="docutils footnote" frame="void" id="exception" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>There is an exception: by using <em>user-defined environments</em>
+within <code class="docutils literal"><span class="pre">!bu-name</span></code> and <code class="docutils literal"><span class="pre">!eu-name</span></code> directives, it is possible to
+label any type of text and refer to it. For example, one can have
+environments for examples, tables, code snippets, theorems, lemmas, etc.
+One can also use Mako functions to implement enviroments.</td></tr>
+</tbody>
+</table>
+<div class="admonition-use-the-preprocessor-to-tailor-output admonition">
+<p class="first admonition-title">Use the preprocessor to tailor output</p>
+<p class="last">If you really need special LaTeX constructs in the LaTeX output
+from DocOnce, you may use use preprocessor if-tests on
+the format (typically <code class="docutils literal"><span class="pre">#if</span> <span class="pre">FORMAT</span> <span class="pre">in</span> <span class="pre">(&quot;latex&quot;,</span> <span class="pre">&quot;pdflatex&quot;)</span></code>) to
+include such special LaTeX code. With an else clause you can easily
+create corresponding constructions for other formats. This way
+of using Preprocess or Mako
+allows advanced LaTeX features, or HTML features for the HTML formats,
+and thereby fine tuning of the resulting
+document. More tuning can be done by automatic editing of the
+output file (e.g., <code class="docutils literal"><span class="pre">.tex</span></code> or <code class="docutils literal"><span class="pre">.html</span></code>) produced by DocOnce using
+your own scripts or the <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">replace</span></code> and <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">subst</span></code> commands.</p>
+</div>
+<div class="admonition-autotranslation-of-latex-to-doconce admonition">
+<p class="first admonition-title">Autotranslation of LaTeX to DocOnce</p>
+<p>The tool <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">latex2doconce</span></code> may help you translating LaTeX files
+to DocOnce syntax. However, if you use computer code in floating
+list environments, special packages for typesetting algorithms,
+example environments, <code class="docutils literal"><span class="pre">subfigure</span></code> in figures,
+or a lot of newcommands in the running text, there will be need for
+a lot of manual edits and adjustments.</p>
+<p>For examples, figure environments can be translated by the program
+<code class="docutils literal"><span class="pre">doconce</span> <span class="pre">latex2doconce</span></code> only if the label is inside the caption and
+the figure is typeset like</p>
+<div class="highlight-latex"><div class="highlight"><pre><span></span><span class="k">\begin</span><span class="nb">{</span>figure<span class="nb">}</span>
+  <span class="k">\centering</span>
+  <span class="k">\includegraphics</span><span class="na">[width=0.55\linewidth]</span><span class="nb">{</span>figs/myfig.pdf<span class="nb">}</span>
+  <span class="k">\caption</span><span class="nb">{</span>This is a figure. <span class="k">\labe</span><span class="nb">{</span>myfig<span class="nb">}}</span>
+<span class="k">\end</span><span class="nb">{</span>figure<span class="nb">}</span>
+</pre></div>
+</div>
+<p>If the LaTeX is consistent with respect to placement of the label, a
+simple script can autoedit the label inside the caption, but many
+LaTeX writers put the label at different places in different figures,
+and then it becomes more difficult to autoedit figures and translate
+them to the DocOnce <code class="docutils literal"><span class="pre">FIGURE:</span></code> syntax.</p>
+<p>Tables are hard to interpret and translate, because the headings and
+caption can be typeset in many different ways. The type of table
+that is recognized looks like</p>
+<div class="highlight-latex"><div class="highlight"><pre><span></span><span class="k">\begin</span><span class="nb">{</span>table<span class="nb">}</span>
+<span class="k">\caption</span><span class="nb">{</span>Here goes the caption.<span class="nb">}</span>
+<span class="k">\begin</span><span class="nb">{</span>tabular<span class="nb">}{</span>lr<span class="nb">}</span>
+<span class="k">\hline</span>
+<span class="k">\multicolumn</span><span class="nb">{</span>1<span class="nb">}{</span>c<span class="nb">}{</span><span class="s">$</span><span class="nb">v_</span><span class="m">0</span><span class="s">$</span><span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\multicolumn</span><span class="nb">{</span>1<span class="nb">}{</span>c<span class="nb">}{</span><span class="s">$</span><span class="nb">f_R</span><span class="o">(</span><span class="nb">v_</span><span class="m">0</span><span class="o">)</span><span class="s">$</span><span class="nb">}</span><span class="k">\\</span>
+<span class="k">\hline</span>
+1.2 <span class="nb">&amp;</span> 4.2<span class="k">\\</span>
+1.1 <span class="nb">&amp;</span> 4.0<span class="k">\\</span>
+0.9 <span class="nb">&amp;</span> 3.7
+<span class="k">\hline</span>
+<span class="k">\end</span><span class="nb">{</span>tabular<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>table<span class="nb">}</span>
+</pre></div>
+</div>
+<p>Recall that table captions do not make sense in DocOnce since tables
+must be inlined and explained in the surrounding text.</p>
+<p class="last">Footnotes are also problematic for <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">latex2doconce</span></code> since DocOnce
+footnotes must have the explanation outside the paragraph where the
+footnote is used. This calls for manual work. The translator from
+LaTeX to DocOnce will insert <code class="docutils literal"><span class="pre">_PROBLEM_</span></code> and mark footnotes. One
+solution is to avoid footnotes in the LaTeX document if fully automatic
+translation is desired.</p>
+</div>
 </div>
 <div class="section" id="basic-syntax">
 <h3>Basic Syntax<a class="headerlink" href="#basic-syntax" title="Permalink to this headline">¶</a></h3>
 <p>Here is an example of some simple text written in the DocOnce format:</p>
-<div class="highlight-text"><div class="highlight"><pre>======= First a Section Heading with 7 = Characters =======
+<div class="highlight-text"><div class="highlight"><pre><span></span>======= First a Section Heading =======
 
-===== Then a Subsection Heading with 5 = Characters =====
+===== Then a Subsection Heading =====
 
-=== Finally a Subsubection Heading with 3 = Characters ===
+=== Finally a Subsubection Heading ===
 
 You can also have paragraphs with a paragraph heading surrounded
 by double underscores are the beginning of a line.
@@ -286,12 +439,12 @@ left-adjusted).
 <p>The DocOnce text above results in the following little document:</p>
 </div>
 </div>
-<div class="section" id="first-a-section-heading-with-7-characters">
-<h2>First a Section Heading with 7 = Characters<a class="headerlink" href="#first-a-section-heading-with-7-characters" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="then-a-subsection-heading-with-5-characters">
-<h3>Then a Subsection Heading with 5 = Characters<a class="headerlink" href="#then-a-subsection-heading-with-5-characters" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="finally-a-subsubection-heading-with-3-characters">
-<h4>Finally a Subsubection Heading with 3 = Characters<a class="headerlink" href="#finally-a-subsubection-heading-with-3-characters" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="first-a-section-heading">
+<h2>First a Section Heading<a class="headerlink" href="#first-a-section-heading" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="then-a-subsection-heading">
+<h3>Then a Subsection Heading<a class="headerlink" href="#then-a-subsection-heading" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="finally-a-subsubection-heading">
+<h4>Finally a Subsubection Heading<a class="headerlink" href="#finally-a-subsubection-heading" title="Permalink to this headline">¶</a></h4>
 <p>You can also have paragraphs with a paragraph heading surrounded
 by double underscores are the beginning of a line.</p>
 <p><strong>This is a paragraph heading.</strong>
@@ -347,11 +500,11 @@ strongly recommend using Git for version control and running <code class="docuti
 on the appropriate versions, or you can click on differences at
 GitHub if the files are hosted there.)</p>
 <p><strong>Footnotes.</strong>
-Adding a footnote <a class="footnote-reference" href="#footnote" id="id2">[2]</a> is also possible.</p>
+Adding a footnote <a class="footnote-reference" href="#footnote" id="id3">[3]</a> is also possible.</p>
 <table class="docutils footnote" frame="void" id="footnote" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>The syntax for footnotes is borrowed from Extended Markdown.</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td>The syntax for footnotes is borrowed from Extended Markdown.</td></tr>
 </tbody>
 </table>
 <p><strong>Tables.</strong>
@@ -389,12 +542,12 @@ for aligning the headings and the columns (center, right, left).</p>
 <div class="section" id="mathematics">
 <h3>Mathematics<a class="headerlink" href="#mathematics" title="Permalink to this headline">¶</a></h3>
 <p>Inline mathematics, such as <span class="math">\(\nu = \sin(x)\)</span> is written exactly as in LaTeX:</p>
-<div class="highlight-text"><div class="highlight"><pre>$\nu = \sin(x)$
+<div class="highlight-text"><div class="highlight"><pre><span></span>$\nu = \sin(x)$
 </pre></div>
 </div>
 <p>Blocks of mathematics are typeset with raw LaTeX, inside
 <code class="docutils literal"><span class="pre">!bt</span></code> and <code class="docutils literal"><span class="pre">!et</span></code> (begin TeX, end TeX) directives:</p>
-<div class="highlight-text"><div class="highlight"><pre>!bt
+<div class="highlight-text"><div class="highlight"><pre><span></span>!bt
 \begin{align}
 {\partial u\over\partial t} &amp;= \nabla^2 u + f,
 label{myeq1}\\
@@ -414,26 +567,6 @@ for LaTeX mathematics
 and <code class="docutils literal"><span class="pre">mwiki</span></code>). Simpler
 formats have to just list the raw
 LaTeX syntax.</p>
-<p>LaTeX writers who adopt DocOnce need to pay attention to the following:</p>
-<blockquote>
-<div><ul class="simple">
-<li>AMS LaTeX mathematics is supported, also for the <code class="docutils literal"><span class="pre">html</span></code>, <code class="docutils literal"><span class="pre">sphinx</span></code>,
-and <code class="docutils literal"><span class="pre">ipynb</span></code> formats.</li>
-<li>Only five equation environments can be used: <code class="docutils literal"><span class="pre">\[</span> <span class="pre">...</span> <span class="pre">\]</span></code>,
-<code class="docutils literal"><span class="pre">equation*</span></code>, <code class="docutils literal"><span class="pre">equation</span></code>, <code class="docutils literal"><span class="pre">align*</span></code>, and <code class="docutils literal"><span class="pre">align</span></code>.</li>
-<li>Newcommands in mathematical formulas are allowed (but not in
-the running text). Newcommands must be defined in files with names
-<code class="docutils literal"><span class="pre">newcommands*.tex</span></code>.</li>
-<li>MediaWiki (<code class="docutils literal"><span class="pre">mwiki</span></code>) does not support references to equations.
-DocOnce has extended Markdown, Sphinx, and HTML to better support
-equation referencing (across web pages for example).</li>
-<li>Only figures are floating elements in DocOnce, all other elements
-(code, tables, algorithms) are <em>inline</em> without numbers or labels
-for reference. The reason is that floating elements are in general
-not used in web documents, but we made an exception with figures
-and movies.</li>
-</ul>
-</div></blockquote>
 <div class="admonition-remark admonition">
 <p class="first admonition-title">Remark</p>
 <p class="last">Although DocOnce allows user-defined styles in the preamble of LaTeX output,
@@ -452,7 +585,7 @@ tables, and
 <h3>Computer Code<a class="headerlink" href="#computer-code" title="Permalink to this headline">¶</a></h3>
 <p>You can have blocks of computer code, starting and ending with
 <code class="docutils literal"><span class="pre">!bc</span></code> and <code class="docutils literal"><span class="pre">!ec</span></code> instructions, respectively.</p>
-<div class="highlight-text"><div class="highlight"><pre>!bc pycod
+<div class="highlight-text"><div class="highlight"><pre><span></span>!bc pycod
 from math import sin, pi
 def myfunc(x):
     return sin(pi*x)
@@ -463,7 +596,7 @@ I = integrate.trapezoidal(myfunc, 0, pi, 100)
 </pre></div>
 </div>
 <p>Such blocks are formatted as</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sin</span><span class="p">,</span> <span class="n">pi</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sin</span><span class="p">,</span> <span class="n">pi</span>
 <span class="k">def</span> <span class="nf">myfunc</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">sin</span><span class="p">(</span><span class="n">pi</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
 
@@ -481,7 +614,7 @@ a complete program that will run as it stands. There is support for
 code in C, C++, Fortran, Java, Python, Perl, Ruby, JavaScript, HTML, and LaTeX,</p>
 <p>One can also copy computer code directly from files, either the
 complete file or specified parts, e.g,</p>
-<div class="highlight-text"><div class="highlight"><pre>@@@CODE src/myprog.py fromto: def regression\(@import mymod
+<div class="highlight-text"><div class="highlight"><pre><span></span>@@@CODE src/myprog.py fromto: def regression\(@import mymod
 </pre></div>
 </div>
 <p>The copying is based on regular expressions and not on line numbers, which
@@ -511,7 +644,7 @@ no backslashes. Use labels for sections and equations only, and
 preceed the reference by &#8220;Section&#8221; or &#8220;Chapter&#8221;, or in case of
 an equation, surround the reference by parenthesis.</p>
 <p>Here is an example:</p>
-<div class="highlight-text"><div class="highlight"><pre>===== My Section =====
+<div class="highlight-text"><div class="highlight"><pre><span></span>===== My Section =====
 label{sec:mysec}
 
 idx{key equation} idx{$\u$ conservation}
@@ -560,7 +693,7 @@ possibilities.</p>
 <p>Suppose you have some DocOnce text in <code class="docutils literal"><span class="pre">mydoc.do.txt</span></code>. Here is how you
 compile that document to an HTML file <code class="docutils literal"><span class="pre">mydoc.html</span></code>, which can be viewed
 in a web browser:</p>
-<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format html mydoc --html_style=bootswatch_journal
+<div class="highlight-text"><div class="highlight"><pre><span></span>Terminal&gt; doconce format html mydoc --html_style=bootswatch_journal
 </pre></div>
 </div>
 <p>There are lots of styles for HTML files, and <code class="docutils literal"><span class="pre">bootswatch_journal</span></code> is
@@ -636,7 +769,7 @@ the</p>
 <div class="section" id="demos">
 <h2>Demos<a class="headerlink" href="#demos" title="Permalink to this headline">¶</a></h2>
 <p>The current text is generated from a DocOnce format stored in the file</p>
-<div class="highlight-text"><div class="highlight"><pre>doc/tutorial/tutorial.do.txt
+<div class="highlight-text"><div class="highlight"><pre><span></span>doc/tutorial/tutorial.do.txt
 </pre></div>
 </div>
 <p>The file <code class="docutils literal"><span class="pre">make.sh</span></code> in the <code class="docutils literal"><span class="pre">tutorial</span></code> directory of the
@@ -655,7 +788,7 @@ the vast choice of output formats and settings that are available.</p>
 needed when working with DocOnce documents.
 The impatient way to install everything that is needed is to use
 Anaconda Python and the <code class="docutils literal"><span class="pre">conda</span></code> program:</p>
-<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; conda install --channel johannr doconce
+<div class="highlight-text"><div class="highlight"><pre><span></span>Terminal&gt; conda install --channel johannr doconce
 </pre></div>
 </div>
 <p>The <code class="docutils literal"><span class="pre">conda</span></code> package is available for Mac and Linux only.</p>
@@ -685,14 +818,14 @@ image processing tools and spell checking apply Unix-specific software.</p>
 <h3>DocOnce<a class="headerlink" href="#doconce" title="Permalink to this headline">¶</a></h3>
 <p>DocOnce itself is pure Python code hosted at <a class="reference external" href="https://github.com/hplgit/doconce">https://github.com/hplgit/doconce</a>.
 Installation can be done via</p>
-<div class="highlight-text"><div class="highlight"><pre>sudo pip install -e git+https://github.com/hplgit/doconce#egg=doconce
+<div class="highlight-text"><div class="highlight"><pre><span></span>sudo pip install -e git+https://github.com/hplgit/doconce#egg=doconce
 # or if doconce is already installed
 sudo pip install -e git+https://github.com/hplgit/doconce#egg=doconce --upgrade
 </pre></div>
 </div>
 <p>However, the recommended approach is to have a copy of the source on
 the local computer and run <code class="docutils literal"><span class="pre">setup.py</span></code>:</p>
-<div class="highlight-text"><div class="highlight"><pre>git clone git@github.com:hplgit/doconce.git
+<div class="highlight-text"><div class="highlight"><pre><span></span>git clone git@github.com:hplgit/doconce.git
 cd doconce
 sudo python setup.py install
 cd ..
@@ -700,7 +833,7 @@ cd ..
 </div>
 <p>Since DocOnce is frequently updated, it becomes necessary to ensure
 that you work with the most recent version:</p>
-<div class="highlight-text"><div class="highlight"><pre>cd doconce
+<div class="highlight-text"><div class="highlight"><pre><span></span>cd doconce
 git pull origin master
 sudo python setup.py install
 </pre></div>
@@ -727,13 +860,13 @@ is no bibliography, and you stick to the output formats LaTeX and HTML
 <h4>Preprocessors          (2)<a class="headerlink" href="#preprocessors-2" title="Permalink to this headline">¶</a></h4>
 <p>If you make use of the <a class="reference external" href="https://github.com/hplgit/preprocess">Preprocess</a>
 preprocessor, this program must be installed:</p>
-<div class="highlight-text"><div class="highlight"><pre>pip install -e \
+<div class="highlight-text"><div class="highlight"><pre><span></span>pip install -e \
    git+https://github.com/hplgit/preprocess#egg=preprocess --upgrade
 </pre></div>
 </div>
 <p>A much more advanced alternative to Preprocess is
 <a class="reference external" href="http://www.makotemplates.org">Mako</a>. Its installation is done by</p>
-<div class="highlight-text"><div class="highlight"><pre>pip install Mako
+<div class="highlight-text"><div class="highlight"><pre><span></span>pip install Mako
 </pre></div>
 </div>
 <p>It is recommended to install both Preprocess and Mako.</p>
@@ -746,7 +879,7 @@ this extra software if you make active use of preprocessors.</p>
 <p>The Python package <a class="reference external" href="https://bitbucket.org/logg/publish">Publish</a> is needed if you use a bibliography
 in your document (<code class="docutils literal"><span class="pre">cite</span></code> commands and a <code class="docutils literal"><span class="pre">BIBFILE:</span></code> specification).
 The installation is done by</p>
-<div class="highlight-text"><div class="highlight"><pre>pip install -e hg+https://bitbucket.org/logg/publish#egg=publish
+<div class="highlight-text"><div class="highlight"><pre><span></span>pip install -e hg+https://bitbucket.org/logg/publish#egg=publish
 </pre></div>
 </div>
 </div>
@@ -760,19 +893,19 @@ calls up programs from the ImageMagick suite for converting image
 files to a proper format if needed. The <a class="reference external" href="http://www.imagemagick.org/script/index.php">ImageMagick suite</a> can be installed on all
 major platforms.  On Debian Linux (including Ubuntu) systems one can
 simply write</p>
-<div class="highlight-text"><div class="highlight"><pre>sudo apt-get install imagemagick
+<div class="highlight-text"><div class="highlight"><pre><span></span>sudo apt-get install imagemagick
 </pre></div>
 </div>
 <p>The convenience program <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">combine_images</span></code>, for combining several
 images into one, will use <code class="docutils literal"><span class="pre">montage</span></code> and <code class="docutils literal"><span class="pre">convert</span></code> from ImageMagick and
 the <code class="docutils literal"><span class="pre">pdftk</span></code>, <code class="docutils literal"><span class="pre">pdfnup</span></code>, and <code class="docutils literal"><span class="pre">pdfcrop</span></code> programs from the <code class="docutils literal"><span class="pre">texlive-extra-utils</span></code>
 Debian package. The latter gets installed by</p>
-<div class="highlight-text"><div class="highlight"><pre>sudo apt-get install texlive-extra-utils
+<div class="highlight-text"><div class="highlight"><pre><span></span>sudo apt-get install texlive-extra-utils
 </pre></div>
 </div>
 <p>Automatic image conversion from EPS to PDF calls up <code class="docutils literal"><span class="pre">epstopdf</span></code>, which
 can be installed by</p>
-<div class="highlight-text"><div class="highlight"><pre>sudo apt-get install texlive-font-utils
+<div class="highlight-text"><div class="highlight"><pre><span></span>sudo apt-get install texlive-font-utils
 </pre></div>
 </div>
 </div>
@@ -780,7 +913,7 @@ can be installed by</p>
 <h4>Spellcheck<a class="headerlink" href="#spellcheck" title="Permalink to this headline">¶</a></h4>
 <p>The utility <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">spellcheck</span></code> applies the <code class="docutils literal"><span class="pre">ispell</span></code> program for
 spellcheck. On Debian (including Ubuntu) it is installed by</p>
-<div class="highlight-text"><div class="highlight"><pre>sudo apt-get install ispell
+<div class="highlight-text"><div class="highlight"><pre><span></span>sudo apt-get install ispell
 </pre></div>
 </div>
 </div>
@@ -793,14 +926,14 @@ with DocOnce. However, even greater flexibility is now offered by the
 a <code class="docutils literal"><span class="pre">ptex2tex</span></code> user, it is recommended to forget about <code class="docutils literal"><span class="pre">ptex2tex</span></code> and
 just use the <code class="docutils literal"><span class="pre">--latex_code_style=</span></code> option.</p>
 <p>The stand-alone <code class="docutils literal"><span class="pre">ptex2tex</span></code> program is installed by</p>
-<div class="highlight-text"><div class="highlight"><pre>svn checkout http://ptex2tex.googlecode.com/svn/trunk/ ptex2tex
+<div class="highlight-text"><div class="highlight"><pre><span></span>svn checkout http://ptex2tex.googlecode.com/svn/trunk/ ptex2tex
 cd ptex2tex
 sudo python setup.py install
 </pre></div>
 </div>
 <p>It may happen that you need additional style files, you can run
 a script, <code class="docutils literal"><span class="pre">cp2texmf.sh</span></code>:</p>
-<div class="highlight-text"><div class="highlight"><pre>cd latex
+<div class="highlight-text"><div class="highlight"><pre><span></span>cd latex
 sh cp2texmf.sh  # copy stylefiles to ~/texmf directory
 cd ../..
 </pre></div>
@@ -808,7 +941,7 @@ cd ../..
 <p>This script copies some special stylefiles that
 that <code class="docutils literal"><span class="pre">ptex2tex</span></code> potentially makes use of. Some more standard stylefiles
 are also needed. These are installed by</p>
-<div class="highlight-text"><div class="highlight"><pre>sudo apt-get install texlive
+<div class="highlight-text"><div class="highlight"><pre><span></span>sudo apt-get install texlive
 </pre></div>
 </div>
 <p>on Debian Linux (including Ubuntu) systems. TeXShop on Mac comes with
@@ -825,7 +958,7 @@ popular for typesetting code.
 This style requires the package <a class="reference external" href="http://pygments.org">Pygments</a>
 to be installed. On Debian Linux, the simplest approach is to
 install <code class="docutils literal"><span class="pre">sphinx</span></code>:</p>
-<div class="highlight-text"><div class="highlight"><pre>pip install sphinx
+<div class="highlight-text"><div class="highlight"><pre><span></span>pip install sphinx
 </pre></div>
 </div>
 <p>All use of the minted style requires the <code class="docutils literal"><span class="pre">-shell-escape</span></code> command-line
@@ -850,7 +983,7 @@ Optional packages that might be included in the <code class="docutils literal"><
 <code class="docutils literal"><span class="pre">disable</span></code>, <code class="docutils literal"><span class="pre">todonotes</span></code>, <code class="docutils literal"><span class="pre">lineno</span></code>, <code class="docutils literal"><span class="pre">xr</span></code>, <code class="docutils literal"><span class="pre">framed</span></code>, <code class="docutils literal"><span class="pre">mdframe</span></code>,
 <code class="docutils literal"><span class="pre">movie15</span></code>, <code class="docutils literal"><span class="pre">a4paper</span></code>, and <code class="docutils literal"><span class="pre">a6paper</span></code>.</p>
 <p>Relevant Debian packages that gives you all of these LaTeX packages are</p>
-<div class="highlight-text"><div class="highlight"><pre>texlive
+<div class="highlight-text"><div class="highlight"><pre><span></span>texlive
 texlive-extra-utils
 texlive-latex-extra
 texlive-font-utils
@@ -864,7 +997,7 @@ style files.</p>
 <code class="docutils literal"><span class="pre">anslistings.sty</span></code> file. It can be obtained from
 the <a class="reference external" href="https://code.google.com/p/ptex2tex/source/browse/trunk/latex/styles/with_license/anslistings.sty">ptex2tex source</a>. The same code style is in
 &#8220;modern DocOnce&#8221; just implemented by the command-line option</p>
-<div class="highlight-text"><div class="highlight"><pre>&quot;--latex_code_style=default:lst[style=yellow2_fb]&quot;
+<div class="highlight-text"><div class="highlight"><pre><span></span>&quot;--latex_code_style=default:lst[style=yellow2_fb]&quot;
 </pre></div>
 </div>
 </div>
@@ -873,7 +1006,7 @@ the <a class="reference external" href="https://code.google.com/p/ptex2tex/sourc
 <p>Output to <code class="docutils literal"><span class="pre">sphinx</span></code> or <code class="docutils literal"><span class="pre">rst</span></code> requires the
 <a class="reference external" href="http://sphinx.pocoo.org">Sphinx software</a>,
 installed by</p>
-<div class="highlight-text"><div class="highlight"><pre>pip install sphinx --upgrade
+<div class="highlight-text"><div class="highlight"><pre><span></span>pip install sphinx --upgrade
 </pre></div>
 </div>
 <p>DocOnce comes with many Sphinx themes that are not part of the
@@ -888,7 +1021,7 @@ standard Sphinx source distribution:</p>
 </ul>
 </div></blockquote>
 <p>Appropriate installation commands for these themes are</p>
-<div class="highlight-text"><div class="highlight"><pre>pip install -e hg+https://bitbucket.org/ecollins/cloud_sptheme#egg=cloud_sptheme
+<div class="highlight-text"><div class="highlight"><pre><span></span>pip install -e hg+https://bitbucket.org/ecollins/cloud_sptheme#egg=cloud_sptheme
 pip install -e git+https://github.com/ryan-roemer/sphinx-bootstrap-theme#egg=sphinx-bootstrap-theme
 pip install -e hg+https://bitbucket.org/miiton/sphinxjp.themes.solarized#egg=sphinxjp.themes.solarized
 pip install -e git+https://github.com/shkumagai/sphinxjp.themes.impressjs#egg=sphinxjp.themes.impressjs
@@ -896,12 +1029,12 @@ pip install -e git+https://github.com/kriskda/sphinx-sagecell#egg=sphinx-sagecel
 </pre></div>
 </div>
 <p>It can also be handy to have special typesetting of IPython sessions:</p>
-<div class="highlight-text"><div class="highlight"><pre>pip install -e git+https://bitbucket.org/hplbit/pygments-ipython-console#egg=pygments-ipython-console
+<div class="highlight-text"><div class="highlight"><pre><span></span>pip install -e git+https://bitbucket.org/hplbit/pygments-ipython-console#egg=pygments-ipython-console
 </pre></div>
 </div>
 <p>To make OpenOffice or LibreOffice documents from <code class="docutils literal"><span class="pre">rst</span></code> output, you
 will need more software, typically the following on a Debian system:</p>
-<div class="highlight-text"><div class="highlight"><pre>sudo apt-get install unovonv libreoffice libreoffice-dmaths
+<div class="highlight-text"><div class="highlight"><pre><span></span>sudo apt-get install unoconv libreoffice libreoffice-dmaths
 </pre></div>
 </div>
 </div>
@@ -913,7 +1046,7 @@ extended Markdown format (which via the <code class="docutils literal"><span cla
 translated to a range of other formats), strict Markdown, and
 GitHub-flavored Markdown. Installation of <a class="reference external" href="http://johnmacfarlane.net/pandoc/">Pandoc</a>, written in Haskell, is most
 easily done by</p>
-<div class="highlight-text"><div class="highlight"><pre>sudo apt-get install pandoc
+<div class="highlight-text"><div class="highlight"><pre><span></span>sudo apt-get install pandoc
 </pre></div>
 </div>
 <p>on Debian (Ubuntu) systems.</p>
@@ -922,7 +1055,7 @@ easily done by</p>
 <h4>Epydoc Output<a class="headerlink" href="#epydoc-output" title="Permalink to this headline">¶</a></h4>
 <p>When the output format is <code class="docutils literal"><span class="pre">epydoc</span></code> one needs that program too, installed
 by</p>
-<div class="highlight-text"><div class="highlight"><pre>svn co https://epydoc.svn.sourceforge.net/svnroot/epydoc/trunk/epydoc epydoc
+<div class="highlight-text"><div class="highlight"><pre><span></span>svn co https://epydoc.svn.sourceforge.net/svnroot/epydoc/trunk/epydoc epydoc
 cd epydoc
 sudo make install
 cd ..
@@ -1008,16 +1141,17 @@ appear in the table below.</p>
             </center>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">DocOnce: Document Once, Include Anywhere</a><ul>
+<li><a class="reference internal" href="#">DocOnce Tutorial: Document Once, Include Anywhere</a><ul>
 <li><a class="reference internal" href="#some-doconce-features">Some DocOnce Features</a></li>
 <li><a class="reference internal" href="#what-does-doconce-look-like">What Does DocOnce Look Like?</a><ul>
 <li><a class="reference internal" href="#what-can-doconce-be-used-for">What Can DocOnce Be Used For?</a></li>
+<li><a class="reference internal" href="#writing-guidelines-especially-for-latex-users">Writing Guidelines (Especially for LaTeX Users!)</a></li>
 <li><a class="reference internal" href="#basic-syntax">Basic Syntax</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#first-a-section-heading-with-7-characters">First a Section Heading with 7 = Characters</a><ul>
-<li><a class="reference internal" href="#then-a-subsection-heading-with-5-characters">Then a Subsection Heading with 5 = Characters</a><ul>
-<li><a class="reference internal" href="#finally-a-subsubection-heading-with-3-characters">Finally a Subsubection Heading with 3 = Characters</a></li>
+<li><a class="reference internal" href="#first-a-section-heading">First a Section Heading</a><ul>
+<li><a class="reference internal" href="#then-a-subsection-heading">Then a Subsection Heading</a><ul>
+<li><a class="reference internal" href="#finally-a-subsubection-heading">Finally a Subsubection Heading</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#a-subsection-with-sample-text">A Subsection with Sample Text</a></li>
@@ -1059,7 +1193,7 @@ appear in the table below.</p>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="index.html"
-                        title="previous chapter">DocOnce: Document Once, Include Anywhere</a></p>
+                        title="previous chapter">DocOnce Tutorial: Document Once, Include Anywhere</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -1075,9 +1209,6 @@ appear in the table below.</p>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -1091,9 +1222,9 @@ appear in the table below.</p>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="index.html" title="DocOnce: Document Once, Include Anywhere"
+          <a href="index.html" title="DocOnce Tutorial: Document Once, Include Anywhere"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">DocOnce: Document Once, Include Anywhere</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">DocOnce Tutorial: Document Once, Include Anywhere</a> &raquo;</li> 
       </ul>
     </div>
 <div class="wrapper">
@@ -1101,7 +1232,7 @@ appear in the table below.</p>
     <a href="http://cbc.simula.no"><img src="_static/cbc_banner.png" width="100%"><a>
     <br />
     <br />
-      &copy;2015, Hans Petter Langtangen.
+      &copy;2016, Hans Petter Langtangen.
   </div>
 </div>
 

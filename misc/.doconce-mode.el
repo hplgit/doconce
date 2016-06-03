@@ -163,7 +163,7 @@ text...
 
 
 ;;###autoload
-(define-generic-mode doconce
+(define-generic-mode DocOnce
   '(("%<doc>" . "%</doc>"))              ; (mako) comment characters
   '("bwarning" "ewarning" "bquote" "equote" "bnotice" "enotice" "bsummary" "esummary" "bquestion" "equestion" "bblock" "eblock" "bbox" "ebox" "bsubex" "esubex" "bhint" "ehint" "bsol" "esol" "bans" "eans" "bremarks" "eremarks" "bpop" "epop" "bslidecell" "eslidecell" "idx") ; keywords (!bt used below does not work well)
   '(("\\(^!bc[^§]+?!ec\\)" (1 'do-code-face))
@@ -187,4 +187,4 @@ We have comments, keywords, a special face for dates, and recognize .hello files
 
 (defun doconce-special-setup ()
   "Some custom setup stuff done here by mode writer."
-  (message "You've just enabled the doconce mode."))
+  (message "You've just enabled the DocOnce mode."))

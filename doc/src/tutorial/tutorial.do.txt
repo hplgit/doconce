@@ -1,6 +1,6 @@
 ## Missing: FIGURE, MOVIE, Exercise, environments
 
-TITLE: DocOnce: Document Once, Include Anywhere
+TITLE: DocOnce Tutorial: Document Once, Include Anywhere
 AUTHOR: Hans Petter Langtangen {copyright} at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
 DATE: today
 
@@ -28,47 +28,36 @@ If any of these questions are of interest, you should keep on reading.
 ======= Some DocOnce Features =======
 
  * Strong support for texts with much math and code.
-
  * Same source can produce a variety of output formats:
-
    * "traditional LaTeX B/W documents for printing": "http://hplgit.github.com/teamods/writing_reports/_static/report_4printing.pdf"
    * "color LaTeX PDF documents": "http://hplgit.github.com/teamods/writing_reports/_static/report.pdf"
    * "color LaTeX PDF documents for viewing on small phones": "http://hplgit.github.com/teamods/writing_reports/_static/report_4phone.pdf"
    * "Sphinx HTML documents with 20+ different designs": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal1/report.html"
-   * "Plain HTML": "http://hplgit.github.com/teamods/writing_reports/_static/report.html", "Boostrap HTML": "http://hplgit.github.com/teamods/writing_reports/_static/report_bootstrap_bluegray.html", or with a "template": "http://hplgit.github.com/teamods/writing_reports/_static/report_vagrant.html", or with "another template": "http://hplgit.github.com/teamods/writing_reports/_static/report_github_minimal.html", or "solarized": "http://hplgit.github.com/teamods/writing_reports/_static/report_solarized3_light.html"
+   * "Plain HTML": "http://hplgit.github.com/teamods/writing_reports/_static/report.html", "Boostrap HTML": "http://hplgit.github.com/teamods/writing_reports/_static/report_bootstrap_bluegray.html", or with a "template": "http://hplgit.github.com/teamods/writing_reports/_static/report_vagrant.html", or with "another template": "http://hplgit.github.com/teamods/writing_reports/_static/report_github_minimal.html", or "solarized HTML": "http://hplgit.github.com/teamods/writing_reports/_static/report_solarized3_light.html"
    * HTML for "Google": "http://doconce-report-demo.blogspot.no/" or "Wordpress": "http://doconcereportdemo.wordpress.com/" blog posts
    * "MediaWiki": "http://doconcedemo.shoutwiki.com/wiki/DocOnce_demo_page" (Wikipedia, Wikibooks, etc)
-   * Markdown
-   * IPython notebook
-
-   Other formats include plain untagged text (for email),
-   Creole wiki (for Bitbucket wikis), Google wiki (for Googlecode),
-   reStructuredText, and Epytext.
-
+   * Markdown for further processing by Pandoc to a lot of formats
+   * "IPython notebook": "http://nbviewer.ipython.org/url/hplgit.github.com/teamods/writing_reports/_static/report.ipynb"
+   * Other formats include plain untagged text (for email),
+     Creole wiki (for Bitbucket wikis), Google wiki (for Googlecode),
+     and reStructuredText.
  * There is an exercise environment with many advanced features
    such as subexercises and solutions. The document can be compiled
    with or without solutions.
-
  * With a preprocessor, Preprocess or Mako, one can include other
    documents (files), large portions of text can be defined in or out
    of the text. Mako enables use of variables, functions, if-tests,
    and loops to parameterize the text and generate various versions of
    the text for different purposes.
-
  * Computer code can be copied directly from parts of source code files.
-
  * Figures and movies with captions, simple tables,
    URLs with links, index list, labels and references are supported.
    YouTube and Vimeo videos are automatically embedded in web documents.
-
  * Running text can quickly be edited to slide formats (reveal.js and deck.js,
    based on HTML5+CSS3).
-
  * Special exercise environments with support for hints, answers,
    subexercises, etc.
-
  * Automatic inline embedding of YouTube and Vimeo movies.
-
  * Good support for admonitions in various LaTeX and HTML styles
    for warnings, questions, hints, remarks, summaries, etc.
 
@@ -82,33 +71,24 @@ the formating. Here are some examples.
 
   * Bullet lists automatically arise from lines starting with `*`,
     or `o` if the list is to be enumerated.
-
   * *Emphasized words* are surrounded by `*`. _Words in boldface_
     are surrounded by underscores.
-
   * Words from computer code are enclosed in backticks and
     then typeset `verbatim (in a monospace font)`.
-
   * Section headings are recognized by special
     decorating characters `=` before and after the heading, e.g.,
     `===== Here is a subsection heading =====`.
-
   * The abstract of a document starts with *Abstract* as paragraph
     heading, and all text up to the next heading makes up the abstract,
-
   * Blocks of computer code are surrounded by
     `!bc` (begin code) and `!ec` (end code) tags on separate lines.
     Blocks of computer code can also be imported from source files.
-
   * Blocks of LaTeX mathematics are surrounded by
     `!bt` (begin TeX) and `!et` (end TeX) tags on separate lines.
     Inline mathematics is surrounded by dollar signs: `$a=b$`.
-
   * Comment lines start with `#` and are not visible in the output document.
-
   * Comments to authors can be inserted throughout the text with a
     syntax like `[name: comment...]` and made visible or invisible as desired.
-
   * Title, author, date, figures, and movies are written on one line,
     starting with a keyword: `TITLE:`, `AUTHOR:`, `DATE:`, `FIGURE:`,
     and `MOVIE:`.
@@ -132,25 +112,26 @@ sensitive to whitespace and require a monospace font.
 LaTeX is ideal for articles, thesis, and books, but the PDF files does
 not look fresh and modern on tablets and phones or big computer
 screens. For the latter type of media you need HTML-based documents
-with strong support for nice layouts. Tools like
-Sphinx, Markdown, or plain HTML with Bootstrap are then more
-appropriate than LaTeX, but involves a very different syntax.
-DocOnce lets you write one text in one place and then generate
-the most appropriate language for the media you want to target.
-DocOnce also
-has many extra features for supporting large documents with much code and
-mathematics, not found in any of other publishing tool.
+with strong support for nice layouts. Tools like Sphinx, Markdown, or
+plain HTML with Bootstrap are then more appropriate than LaTeX, but
+involves a very different syntax.  DocOnce lets you write one text in
+one place and then generate the most appropriate language for the
+media you want to target.  DocOnce also has many extra features for
+supporting large documents with much code and mathematics, not found
+in any of other publishing tool.
+
+# #include "../manual/guidelines.do.txt"
 
 ===== Basic Syntax =====
 
 Here is an example of some simple text written in the DocOnce format:
 
 !bc
-======= First a Section Heading with 7 = Characters =======
+======= First a Section Heading =======
 
-===== Then a Subsection Heading with 5 = Characters =====
+===== Then a Subsection Heading =====
 
-=== Finally a Subsubection Heading with 3 = Characters ===
+=== Finally a Subsubection Heading ===
 
 You can also have paragraphs with a paragraph heading surrounded
 by double underscores are the beginning of a line.
@@ -234,11 +215,11 @@ left-adjusted).
 The DocOnce text above results in the following little document:
 
 
-======= First a Section Heading with 7 = Characters =======
+======= First a Section Heading =======
 
-===== Then a Subsection Heading with 5 = Characters =====
+===== Then a Subsection Heading =====
 
-=== Finally a Subsubection Heading with 3 = Characters ===
+=== Finally a Subsubection Heading ===
 
 You can also have paragraphs with a paragraph heading surrounded
 by double underscores are the beginning of a line.
@@ -358,24 +339,6 @@ and `mwiki`). Simpler
 formats have to just list the raw
 LaTeX syntax.
 
-LaTeX writers who adopt DocOnce need to pay attention to the following:
-
- * AMS LaTeX mathematics is supported, also for the `html`, `sphinx`,
-   and `ipynb` formats.
- * Only five equation environments can be used: `\[ ... \]`,
-   `equation*`, `equation`, `align*`, and `align`.
- * Newcommands in mathematical formulas are allowed (but not in
-   the running text). Newcommands must be defined in files with names
-   `newcommands*.tex`.
- * MediaWiki (`mwiki`) does not support references to equations.
-   DocOnce has extended Markdown, Sphinx, and HTML to better support
-   equation referencing (across web pages for example).
- * Only figures are floating elements in DocOnce, all other elements
-   (code, tables, algorithms) are *inline* without numbers or labels
-   for reference. The reason is that floating elements are in general
-   not used in web documents, but we made an exception with figures
-   and movies.
-
 !bwarning Remark
 Although DocOnce allows user-defined styles in the preamble of LaTeX output,
 HTML-based output cannot make use of such styles. If-else constructs for
@@ -441,13 +404,11 @@ duplicated in the documentation (important for the principle of
 avoiding copying information!) and once the software is updated, the
 next compilation of the document is up-to-date.
 
-__Inclusion of files.__
-Another DocOnce document or any file
-can be included by writing `# #include "mynote.do.txt"`
-at the beginning of a line.  DocOnce documents have
-extension `do.txt`. The `do` part stands for doconce, while the
-trailing `.txt` denotes a text document so that editors gives you
-plain text editing capabilities.
+__Inclusion of files.__ Another DocOnce document or any file can be
+included by writing `# #include "mynote.do.txt"` at the beginning of a
+line.  DocOnce documents have extension `do.txt`. The `do` part stands
+for `doconce`, while the trailing `.txt` denotes a text document so
+that editors gives you plain text editing capabilities.
 
 
 ===== Macros (Newcommands), Cross-References, Index, and Bibliography =====
@@ -456,12 +417,13 @@ label{newcommands}
 DocOnce supports a type of macros via a LaTeX-style *newcommand*
 construction.  The newcommands are defined in files with names
 `newcommands*.tex`, using standard LaTeX syntax. Only newcommands
-for use inside math environments are supported.
+for use inside LaTeX math environments are supported. (But you can
+define any type of macros through Mako functions!)
 
 Labels, corss-references, citations, and support of an index and
 bibliography are much inspired by LaTeX syntax, but DocOnce features
 no backslashes. Use labels for sections and equations only, and
-preceed the reference by "Section" or "Chapter", or in case of
+preceed the reference by ``Section'' or ``Chapter'', or in case of
 an equation, surround the reference by parenthesis.
 
 Here is an example:
@@ -504,8 +466,7 @@ this tool has more functionality than BibTeX, but any BibTeX database can
 be automatically converted to the simple Publish format.
 
 For further details on functionality and
-syntax we refer to the `doc/manual/manual.do.txt` file
-in the DocOnce source and a "Sphinx version": "http://hplgit.github.io/doconce/doc/pub/manual/html/" of this document.
+syntax we refer to the "DocOnce manual": "http://hplgit.github.io/doconce/doc/pub/manual/html/".
 
 
 ======= From DocOnce to Other Formats =======
@@ -576,8 +537,8 @@ a subsection heading (5 `=`), preceded by `!split` to indicate a
 new slide. Section headings are used to mark parts of the presentation.
 The slides are compiled as any other DocOnce file, but there is usually
 a second step where the text is modified to become a proper slide text
-in the chosen output format. We refer to the manual for details and
-the
+in the chosen output format. We refer to the manual for details
+and the "DocOnce slide demo": "http://hplgit.github.io/doconce/doc/pub/slides/demo/index.html".
 
 Several popular slide formats are supported:
 
@@ -589,22 +550,35 @@ Several popular slide formats are supported:
 
 ======= Demos =======
 
+Our "short scientific report":
+"http://hplgit.github.io/teamods/writing_reports/index.html" is a good
+starting point for seeing how DocOnce documents are written and get a
+demonstration of the vast choice of output formats and settings that
+are available.
+
+There is also a demo of different "slide formats":
+"http://hplgit.github.io/doconce/doc/pub/slides/demo/index.html".
+
+DocOnce has support for *responsive* HTML documents with design and
+functionality based on Bootstrap styles.  A "Bootstrap demo":
+"http://hplgit.github.io/doconce/doc/pub/bootstrap/index.html"
+illustrates the many possibilities for colors and layouts.
+
+DocOnce also has support for exercises in "quiz format":
+"http://hplgit.github.io/doconce/doc/pub/quiz/quiz.html". Pure quiz
+files can be *automatically uploaded* to "Kahoot!":
+"https://getkahoot.com" online quiz games operated through smart
+phones (with the aid of "quiztools":
+"https://github.com/hplgit/quiztools" for DocOnce to Kahoot!
+translation).
+
 The current text is generated from a DocOnce format stored in the file
+
 !bc
 doc/tutorial/tutorial.do.txt
 !ec
 The file `make.sh` in the `tutorial` directory of the
 DocOnce source code contains a demo of how to produce a variety of
-formats.  The source of this tutorial, `tutorial.do.txt` is the
-starting point.  Running `make.sh` and studying the various generated
-files and comparing them with the original `tutorial.do.txt` file,
-gives a quick introduction to how DocOnce is used in a real case.
-
-A "short scientific report":
-"http://hplgit.github.io/teamods/writing_reports/index.html" demonstrates
-the vast choice of output formats and settings that are available.
-
-There is also a demo of different "slide formats":
-"http://hplgit.github.io/doconce/doc/pub/slides/demo/index.html".
+formats.
 
 # #include "../manual/install.do.txt"
