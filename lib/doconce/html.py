@@ -1091,14 +1091,10 @@ function show_hide_code%d(){
 
     # Replace old-fashion <a name=""></a> anchors with id=""
     if option('html_style=', '').startswith('boots'):
-        pass
-        # This adding of :_id destoys label search and use in misc.py
-        #filestr = re.sub(r'<h(\d)(.*?)>(.+?) <a name="(.+?)"></a>',
-        #             r'<a name="\g<4>" class="anchor"></a>\n<h\g<1>\g<2> id="\g<4>:_id">\g<3>', filestr)
+        filestr = re.sub(r'<h(\d)(.*?)>(.+?) <a name="(.+?)"></a>',
+                     r'<h\g<1>\g<2> id="\g<4>" class="anchor">\g<3>', filestr)
         # (use class="anchor" such that we can easily set the position of
         # headings in e.g. bootstrap CSS; use :_id to make h1/h2 identifier different)
-        # NOTE: This edit with :_id at the end of the id tag may have
-        # side effects! It had in misc.py file splitting.
     filestr = re.sub(r'<h(\d)(.*?)>(.+?) <a name="(.+?)"></a>',
                      r'<h\g<1>\g<2> id="\g<4>">\g<3>', filestr)
     filestr = re.sub(r'<a name="([^"]+)"></a>',
@@ -2854,13 +2850,13 @@ pre { color: inherit; background-color: transparent; }
    overflow-x: hidden;
 }
 
-/* Position anchors of headings a bit higher so jumping to headlines
-behaves correctly  - does not work yet and is therefore not used */
-a.anchor {
-    display: block;
-    position: relative;
-    top: -100px;
-    visibility: hidden;
+/* Adds an invisible element before each target to offset for the navigation
+   bar */
+.anchor::before {
+  content:"";
+  display:block;
+  height:50px; /* fixed header height*/
+  margin:-50px 0 0; /* negative fixed header height */
 }
 """
         if '!bquiz' in filestr:

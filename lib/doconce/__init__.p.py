@@ -6,7 +6,7 @@
 
 __version__ = '1.2'
 version = __version__
-__author__ = 'Hans Petter Langtangen', 'Johannes H. Ring'
+__author__ = 'Hans Petter Langtangen', 'Johannes H. Ring', 'Kristian Gregorius Hustad'
 author = __author__
 
 __acknowledgments__ = ''

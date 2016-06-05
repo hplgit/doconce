@@ -25,13 +25,13 @@ Automatically generated HTML file from DocOnce source
    overflow-x: hidden;
 }
 
-/* Position anchors of headings a bit higher so jumping to headlines
-behaves correctly */
-a.anchor {
-    display: block;
-    position: relative;
-    top: -100px;
-    visibility: hidden;
+/* Adds an invisible element before each target to offset for the navigation
+   bar */
+.anchor::before {
+  content:"";
+  display:block;
+  height:50px; /* fixed header height*/
+  margin:-50px 0 0; /* negative fixed header height */
 }
 </style>
 
@@ -210,7 +210,7 @@ mathematics and code.
 <p>
 </div> <!-- end jumbotron -->
 
-<h2 id="___sec0">Supported Formats </h2>
+<h2 id="___sec0" class="anchor">Supported Formats </h2>
 
 <p>
 DocOnce currently translates files to the following formats:
@@ -243,7 +243,7 @@ so you <em>must</em> use a text editor with monospace font.
 </div>
 
 
-<h2 id="___sec1">Emacs syntax support </h2>
+<h2 id="___sec1" class="anchor">Emacs syntax support </h2>
 
 <p>
 The file <a href="https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el" target="_self">.doconce-mode.el</a>
@@ -285,7 +285,7 @@ provides a lot of shortcuts for setting up many elements in a document:
   </div> <!-- col-xs-8 -->
 </div> <!-- cell row -->
 
-<h2 id="___sec2">Title, Authors, and Date </h2>
+<h2 id="___sec2" class="anchor">Title, Authors, and Date </h2>
 
 <p>
 A typical example of giving a title, a set of authors, a date,
@@ -324,7 +324,7 @@ current date is wanted, e.g., <code>Feb 22, 2016</code>.
 <p>
 The table of contents is removed by writing <code>TOC: off</code>.
 
-<h2 id="___sec3">Copyright </h2>
+<h2 id="___sec3" class="anchor">Copyright </h2>
 
 <p>
 <!-- Recall to ident AUTHOR commands to avoid interpretation -->
@@ -363,7 +363,7 @@ For example,
 is a very common copyright for the present year with the Attribution license.
 The copyright must be identical for all authors and institutions.
 
-<h2 id="quick:sections">Section Types</h2>
+<h2 id="quick:sections" class="anchor">Section Types</h2>
 
 <p>
 
@@ -399,7 +399,7 @@ A recommended convention is that an exercise is tied to the text,
 a problem can stand on its own, and a project is a comprehensive
 problem.
 
-<h2 id="___sec5">Inline Formatting </h2>
+<h2 id="___sec5" class="anchor">Inline Formatting </h2>
 
 <p>
 Words surrounded by <code>*</code> are emphasized: <code>*emphasized words*</code> becomes
@@ -502,7 +502,7 @@ emoji specifications to images, while all other formats leave the
 textual specification in the document. The command-line option
 <code>--no_emoji</code> removes all emojis from the output document.
 
-<h2 id="___sec6">Lists </h2>
+<h2 id="___sec6" class="anchor">Lists </h2>
 
 <p>
 There are three types of lists: <em>bullet lists</em>, where each item starts
@@ -606,7 +606,7 @@ Indented lines may give strange output in some formats.
 </div>
 
 
-<h2 id="___sec7">Comment lines </h2>
+<h2 id="___sec7" class="anchor">Comment lines </h2>
 
 <p>
 Lines starting with <code>#</code> are treated as comments in the document and
@@ -630,7 +630,7 @@ When using the Mako preprocessor one can also place comments in
 the DocOnce source file that will be removed by Mako before
 DocOnce starts processing the file.
 
-<h2 id="___sec8">Inline comments </h2>
+<h2 id="___sec8" class="anchor">Inline comments </h2>
 
 <p>
 Inline comments meant as messages or notes, to authors during development
@@ -747,7 +747,7 @@ To implement these edits, run
 </code></pre>
 <!-- end verbatim block -->
 
-<h2 id="___sec9">Verbatim/Computer Code </h2>
+<h2 id="___sec9" class="anchor">Verbatim/Computer Code </h2>
 
 <p>
 Inline verbatim code is typeset within back-ticks, as in
@@ -863,7 +863,7 @@ Important warnings:
    paragraphs with headings.</li>
 </ul>
 
-<h2 id="___sec10">LaTeX Mathematics </h2>
+<h2 id="___sec10" class="anchor">LaTeX Mathematics </h2>
 
 <p>
 DocOnce supports inline mathematics and blocks of mathematics, using
@@ -943,7 +943,7 @@ will be much more flexible and powerful).
 <p>
 <!-- include with mako must be in this root tree, so we need a link, see make.sh -->
 
-<h2 id="manual:latex:guide">Writing Guidelines (Especially for LaTeX Users!)</h2>
+<h2 id="manual:latex:guide" class="anchor">Writing Guidelines (Especially for LaTeX Users!)</h2>
 
 <p>
 LaTeX writers often have their own writing habits with use of their
@@ -1118,7 +1118,7 @@ translation is desired.
 </div>
 
 
-<h2 id="___sec12">Hyperlinks </h2>
+<h2 id="___sec12" class="anchor">Hyperlinks </h2>
 
 <p>
 Links use either a link text or the raw URL:
@@ -1138,7 +1138,7 @@ or just &quot;send mail&quot;: &quot;mailto:hpl@simula.no&quot;.
 </code></pre>
 <!-- end verbatim block -->
 
-<h2 id="___sec13">Figures and Movies </h2>
+<h2 id="___sec13" class="anchor">Figures and Movies </h2>
 
 <p>
 Figures and movies have almost equal syntax:
@@ -1212,7 +1212,7 @@ The latter results in
 
 <em>Vimeo movie.</em>
 
-<h2 id="___sec14">Tables </h2>
+<h2 id="___sec14" class="anchor">Tables </h2>
 
 <p>
 The table in the section <a href="#quick:sections">Section Types</a> was written with this
@@ -1278,7 +1278,7 @@ Now we can do <code># #include &quot;mydata_table.do.txt&quot;</code> in the Doc
 source file or simply copy the table in <code>mydata_table.do.txt</code>
 into the DocOnce file.
 
-<h2 id="___sec15">Labels and References </h2>
+<h2 id="___sec15" class="anchor">Labels and References </h2>
 
 <p>
 The notion of labels and references (as well as bibliography and index)
@@ -1307,7 +1307,7 @@ Use labels for sections and equations only, and preceed the reference
 by "Section" or "Chapter", or in case of an equation, surround the
 reference by parenthesis.
 
-<h2 id="___sec16">Citations and Bibliography </h2>
+<h2 id="___sec16" class="anchor">Citations and Bibliography </h2>
 
 <p>
 Single citations are written as
@@ -1335,7 +1335,7 @@ BibTeX <code>.bib</code> files can easily be combined to a Publish database
 (which DocOnce needs to create bibliographies in other formats
 than LaTeX).
 
-<h2 id="___sec17">Generalized References </h2>
+<h2 id="___sec17" class="anchor">Generalized References </h2>
 
 <p>
 There is a <em>generalized referencing</em> feature in DocOnce that allows
@@ -1375,7 +1375,7 @@ LaTeX package <code>xr</code> is used to handle the labels in the external
 documents.  If none of the two situations above applies, the
 <code>external</code> text will be the output.
 
-<h2 id="___sec18">Index of Keywords </h2>
+<h2 id="___sec18" class="anchor">Index of Keywords </h2>
 
 <p>
 DocOnce supports creating an index of keywords. A certain keyword
@@ -1392,7 +1392,7 @@ gives the doconce source code an indication of the content in the
 forthcoming text. The index is only produced for the <code>latex</code>,
 <code>pdflatex</code>, <code>rst</code>, and <code>sphinx</code> formats.
 
-<h2 id="___sec19">Capabilities of The Program <code>doconce</code> </h2>
+<h2 id="___sec19" class="anchor">Capabilities of The Program <code>doconce</code> </h2>
 
 <p>
 The <code>doconce</code> program can be used for a number of purposes besides
@@ -1580,7 +1580,7 @@ doconce latex_exercise_toc myfile
 </code></pre>
 <!-- end verbatim block -->
 
-<h2 id="___sec20">Exercises </h2>
+<h2 id="___sec20" class="anchor">Exercises </h2>
 
 <p>
 DocOnce supports <em>Exercise</em>, <em>Problem</em>, <em>Project</em>, and <em>Example</em>.
@@ -1696,7 +1696,7 @@ The command-line arguments <code>--without_answers</code> and <code>--without_so
 turn off output of answers and solutions, respectively, except for
 examples.
 
-<h2 id="___sec21">Environments </h2>
+<h2 id="___sec21" class="anchor">Environments </h2>
 
 <p>
 DocOnce environments start with <code>!benvirname</code> and end with <code>!eenvirname</code>,
@@ -1722,7 +1722,7 @@ the environments:
 In addition, the user can define new environments <code>!bc-name</code> as
 explained in the <a href="http://hplgit.github.io/doconce/doc/pub/manual/manual.html#manual:userdef:envir" target="_self">manual</a>.
 
-<h2 id="___sec22">Preprocessing </h2>
+<h2 id="___sec22" class="anchor">Preprocessing </h2>
 
 <p>
 DocOnce documents may utilize a preprocessor, either <code>preprocess</code> and/or
@@ -1776,7 +1776,7 @@ An <a href="http://hplgit.github.com/bioinf-py/" target="_self">example document
 some illustrations on how to utilize <code>mako</code> (clone the GitHub project and
 examine the DocOnce source and the <code>doc/src/make.sh</code> script).
 
-<h2 id="___sec23">Resources </h2>
+<h2 id="___sec23" class="anchor">Resources </h2>
 
 <ul>
  <li> Excellent "Sphinx Tutorial" by C. Reller: "http://people.ee.ethz.ch/~creller/web/tricks/reST.html"</li>

@@ -25,13 +25,13 @@ Automatically generated HTML file from DocOnce source
    overflow-x: hidden;
 }
 
-/* Position anchors of headings a bit higher so jumping to headlines
-behaves correctly */
-a.anchor {
-    display: block;
-    position: relative;
-    top: -100px;
-    visibility: hidden;
+/* Adds an invisible element before each target to offset for the navigation
+   bar */
+.anchor::before {
+  content:"";
+  display:block;
+  height:50px; /* fixed header height*/
+  margin:-50px 0 0; /* negative fixed header height */
 }
 </style>
 
@@ -128,11 +128,11 @@ MathJax.Hub.Config({
 
 <!-- !split -->
 
-<h1 id="___sec0">Introduction </h1>
+<h1 id="___sec0" class="anchor">Introduction </h1>
 First some ordinary text to compare font sizes in admonitions
 and the surrounding text.
 
-<h2 id="___sec1">Code </h2>
+<h2 id="___sec1" class="anchor">Code </h2>
 
 <p>
 Need some code outside admons for color and font comparisons:
@@ -153,7 +153,7 @@ And some plain text verbatim:
 x=1.1 y=0.3 z=0.1
 </pre></div>
 
-<h2 id="___sec2">Quotes and boxes </h2>
+<h2 id="___sec2" class="anchor">Quotes and boxes </h2>
 
 <p>
 Here is a plain quote environment.
@@ -233,7 +233,7 @@ Let's begin a new paragraph and show a box with code only:
 <!-- end box -->
 
 
-<h2 id="___sec3">Admonitions </h2>
+<h2 id="___sec3" class="anchor">Admonitions </h2>
 
 <p>
 Let us start with a plain warning environment.
@@ -452,7 +452,7 @@ And here comes some text with bad news.
 </div>
 
 
-<h2 id="___sec4">Going deeper environments </h2>
+<h2 id="___sec4" class="anchor">Going deeper environments </h2>
 
 <p>
 Here is a long notice environment with a custom title and much
@@ -552,7 +552,7 @@ And then we add a figure too.
 </div>
 
 
-<h2 id="___sec5">The end </h2>
+<h2 id="___sec5" class="anchor">The end </h2>
 
 <p>
 A bit of text before the summary, which we now call "Concluding remarks,
