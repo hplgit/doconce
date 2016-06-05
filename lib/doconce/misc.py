@@ -115,7 +115,9 @@ document is embedded. (Often preferred to run with --no_title)"""),
     ('--html_code_style=',
      """off, inherit, or transparent: enable normal inline verbatim font
 where foreground and background color is inherited from the
-surroundnings (e.g., to avoid the red Boostrap color).
+surroundnings. off, inherit and transparent are just synonyms for
+inheriting color from the text and make the background color transparent
+(use e.g. --html_code_style=inherit to avoid the red Boostrap color).
 Default: on (use the css-specified typesetting of <pre> tags).
 NOTE: the naming "html_code_style" is not optimal: it has nothing
 to do with code block style, but the <code> tag for inline verbatim text
@@ -3221,7 +3223,7 @@ def doconce_split_html(header, parts, footer, basename, filename, slides=False):
 
 
     # Fix internal links to point to the right splitted file
-    name_pattern = r' id="([^"]+?)">'
+    name_pattern = r' id="([^"]+?)"[ >]'
     parts_name = [re.findall(name_pattern, ''.join(part)) for part in parts]
     parts_name.append(re.findall(name_pattern, ''.join(header)))
     parts_name.append(re.findall(name_pattern, ''.join(footer)))

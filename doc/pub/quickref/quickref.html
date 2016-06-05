@@ -24,6 +24,15 @@ Automatically generated HTML file from DocOnce source
    max-height: 400px;
    overflow-x: hidden;
 }
+
+/* Position anchors of headings a bit higher so jumping to headlines
+behaves correctly */
+a.anchor {
+    display: block;
+    position: relative;
+    top: -100px;
+    visibility: hidden;
+}
 </style>
 
 
@@ -154,7 +163,7 @@ MathJax.Hub.Config({
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <br>
 <p>
-<center><h4>May 27, 2016</h4></center> <!-- date -->
+<center><h4>Jun 5, 2016</h4></center> <!-- date -->
 <br>
 
 <h2>Table of contents</h2>
@@ -939,8 +948,12 @@ will be much more flexible and powerful).
 <p>
 LaTeX writers often have their own writing habits with use of their
 own favorite LaTeX packages. DocOnce is a much simpler format and
-corresponds to writing in quite plain LaTeX and making the ascii
-text look nice (pay much attention to white spaec!).
+corresponds to writing in quite plain LaTeX and making the ascii text
+look nice (be careful with the use of white space!). This means that
+although DocOnce has borrowed a lot from LaTeX, there are a few points
+LaTeX writers should pay attention to. Experience shows that these
+points are so important that we list them <em>before</em> we list typical
+DocOnce syntax!
 
 <p>
 Any LaTeX syntax in mathematical formulas is accepted when DocOnce
@@ -1055,10 +1068,9 @@ or a lot of newcommands in the running text, there will be need for
 a lot of manual edits and adjustments.
 
 <p>
-For examples, figure environments
-can be translated by the program
-<code>doconce latex2doconce</code> only if the label is inside
-the caption and the figure is typeset like
+For examples, figure environments can be translated by the program
+<code>doconce latex2doconce</code> only if the label is inside the caption and
+the figure is typeset like
 
 <p>
 <!-- begin verbatim block  latexcod-->
@@ -1069,11 +1081,11 @@ the caption and the figure is typeset like
 \end{figure}
 </code></pre>
 <!-- end verbatim block -->
-If the LaTeX is consistent with respect to placement of
-the label, a simple script can autoedit the label inside the caption,
-but many LaTeX writers put the label at different places in different
-figures, and then it becomes more difficult to autoedit figures and
-translate them to the DocOnce <code>FIGURE:</code> syntax.
+If the LaTeX is consistent with respect to placement of the label, a
+simple script can autoedit the label inside the caption, but many
+LaTeX writers put the label at different places in different figures,
+and then it becomes more difficult to autoedit figures and translate
+them to the DocOnce <code>FIGURE:</code> syntax.
 
 <p>
 Tables are hard to interpret and translate, because the headings and

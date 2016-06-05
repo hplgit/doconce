@@ -1103,7 +1103,7 @@ def latex_figure(m):
     tufte_fig_envir = 'figure'
 
     if figure_method == 'includegraphics':
-        if filename_ext == '.pgf' or '.tikz':
+        if filename_ext == '.pgf' or filename_ext == '.tikz':
             includeline = r'\input{%s}' % filename
         else:
             if latex_style == 'tufte-book':

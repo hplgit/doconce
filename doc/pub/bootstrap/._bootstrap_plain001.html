@@ -24,6 +24,15 @@ Automatically generated HTML file from DocOnce source
    max-height: 400px;
    overflow-x: hidden;
 }
+
+/* Position anchors of headings a bit higher so jumping to headlines
+behaves correctly */
+h1.anchor, h2.anchor, h3.anchor, h4.anchor {
+    display: block;
+    position: relative;
+    top: -100px;
+    visibility: hidden;
+}
 </style>
 
 
@@ -89,10 +98,10 @@ MathJax.Hub.Config({
      <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Navigation</a></li>
      <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Themes</a></li>
      <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
-     <!-- navigation toc: --> <li><a href="._bootstrap_plain002.html#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
-     <!-- navigation toc: --> <li><a href="._bootstrap_plain002.html#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Principles of grid structures</a></li>
-     <!-- navigation toc: --> <li><a href="._bootstrap_plain002.html#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Example on a 1x3 grid structure</a></li>
-     <!-- navigation toc: --> <li><a href="._bootstrap_plain002.html#___sec7" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Variation of the previous grid structure using admons</a></li>
+     <!-- navigation toc: --> <li><a href="#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Principles of grid structures</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Example on a 1x3 grid structure</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec7" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Variation of the previous grid structure using admons</a></li>
 
         </ul>
       </li>
@@ -108,9 +117,9 @@ MathJax.Hub.Config({
 <a name="part0001"></a>
 <!-- !split -->
 
-<center><h1 id="___sec0">More details on writing DocOnce documents with Bootstrap layout </h1></center> <!-- chapter heading -->
+<center><h1 id="___sec0" class="anchor">More details on writing DocOnce documents with Bootstrap layout </h1></center> <!-- chapter heading -->
 
-<h1 id="___sec1">Navigation </h1>
+<h1 id="___sec1" class="anchor">Navigation </h1>
 
 <p>
 A multiple-page document is as usual created by inserting <code>!split</code> at
@@ -124,7 +133,7 @@ page number is seen.
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format html mydoc --html_style=bootstrap_bluegray
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>Terminal&gt; doconce format html mydoc --html_style=bootstrap_bluegray
 Terminal&gt; doconce split_html mydoc --pagination
 </pre></div>
 <p>
@@ -136,7 +145,7 @@ to make the pull down menu shorter than the page height. The
 navigation bar on top can be turned off by the option
 <code>--html_bootstrap_navbar=off</code> to the <code>doconce format</code> command.
 
-<h1 id="___sec2">Themes </h1>
+<h1 id="___sec2" class="anchor">Themes </h1>
 
 <p>
 DocOnce supports the following themes from the Bootstrap family:
@@ -229,7 +238,7 @@ can have an optional title, and some admonition styles will also
 include an icon image. In addition, there is a block admonition
 without any icon, but with an optional title.</p>
 
-<h1 id="___sec3">Demonstrations of admons </h1>
+<h1 id="___sec3" class="anchor">Demonstrations of admons </h1>
 
 <p>
 The Bootstrap/Bootswatch styles support two kinds of admons:
@@ -244,7 +253,7 @@ Typical commands for producing Bootstrap or Bootswatch layouts are
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format html mydoc --html_style=bootstrap
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>Terminal&gt; doconce format html mydoc --html_style=bootstrap
 Terminal&gt; doconce format html mydoc --html_style=bootswatch
 Terminal&gt; doconce format html mydoc --html_style=bootstrap --admon_style=bootstrap_panel
 Terminal&gt; doconce format html mydoc --html_style=bootswatch_superhero --admon_style=bootstrap_panel
@@ -263,7 +272,7 @@ Below are some examples on admons.
 <p>
 
 <!-- code=ipy (!bc ipy) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 
 <span style="color: #000080; font-weight: bold">In [2]: </span>x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, <span style="color: #666666">4*</span>np<span style="color: #666666">.</span>pi, <span style="color: #666666">11</span>)
 

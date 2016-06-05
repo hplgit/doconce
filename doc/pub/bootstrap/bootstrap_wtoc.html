@@ -137,7 +137,7 @@ documents. To get the <code>journal</code> Bootswatch style, for instance, run
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format html mydoc --html_style=bootswatch_journal
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>Terminal&gt; doconce format html mydoc --html_style=bootswatch_journal
 </pre></div>
 <p>
 The title, optionally with authors, date, table of contents, abstract
@@ -165,9 +165,9 @@ font).
 
 <!-- !split -->
 
-<center><h1 id="___sec0">More details on writing DocOnce documents with Bootstrap layout </h1></center> <!-- chapter heading -->
+<center><h1 id="___sec0" class="anchor">More details on writing DocOnce documents with Bootstrap layout </h1></center> <!-- chapter heading -->
 
-<h1 id="___sec1">Navigation </h1>
+<h1 id="___sec1" class="anchor">Navigation </h1>
 
 <p>
 A multiple-page document is as usual created by inserting <code>!split</code> at
@@ -181,7 +181,7 @@ page number is seen.
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format html mydoc --html_style=bootstrap_bluegray
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>Terminal&gt; doconce format html mydoc --html_style=bootstrap_bluegray
 Terminal&gt; doconce split_html mydoc --pagination
 </pre></div>
 <p>
@@ -193,7 +193,7 @@ to make the pull down menu shorter than the page height. The
 navigation bar on top can be turned off by the option
 <code>--html_bootstrap_navbar=off</code> to the <code>doconce format</code> command.
 
-<h1 id="___sec2">Themes </h1>
+<h1 id="___sec2" class="anchor">Themes </h1>
 
 <p>
 DocOnce supports the following themes from the Bootstrap family:
@@ -286,7 +286,7 @@ can have an optional title, and some admonition styles will also
 include an icon image. In addition, there is a block admonition
 without any icon, but with an optional title.</p>
 
-<h1 id="___sec3">Demonstrations of admons </h1>
+<h1 id="___sec3" class="anchor">Demonstrations of admons </h1>
 
 <p>
 The Bootstrap/Bootswatch styles support two kinds of admons:
@@ -301,7 +301,7 @@ Typical commands for producing Bootstrap or Bootswatch layouts are
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format html mydoc --html_style=bootstrap
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>Terminal&gt; doconce format html mydoc --html_style=bootstrap
 Terminal&gt; doconce format html mydoc --html_style=bootswatch
 Terminal&gt; doconce format html mydoc --html_style=bootstrap --admon_style=bootstrap_panel
 Terminal&gt; doconce format html mydoc --html_style=bootswatch_superhero --admon_style=bootstrap_panel
@@ -320,7 +320,7 @@ Below are some examples on admons.
 <p>
 
 <!-- code=ipy (!bc ipy) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 
 <span style="color: #000080; font-weight: bold">In [2]: </span>x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, <span style="color: #666666">4*</span>np<span style="color: #666666">.</span>pi, <span style="color: #666666">11</span>)
 
@@ -406,9 +406,9 @@ Tables often get a fancy typesetting:
 <p>
 <!-- !split -->
 
-<h1 id="sec:examples">Horizontal alignment of document elements</h1>
+<h1 id="sec:examples" class="anchor">Horizontal alignment of document elements</h1>
 
-<h2 id="___sec5">Principles of grid structures </h2>
+<h2 id="___sec5" class="anchor">Principles of grid structures </h2>
 
 <p>
 The HTML page can feature a grid structure of cells, defined by
@@ -417,7 +417,7 @@ the following syntax in case of a 1x3 grid:
 <p>
 
 <!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"># begin-grid-area
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span># begin-grid-area
 
 !bslidecell 00
 ...
@@ -458,7 +458,7 @@ be lost because it appears outside the slidecell environments:
 <p>
 
 <!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"># begin-grid-area
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span># begin-grid-area
 
 !bslidecell 00
 ...
@@ -499,7 +499,7 @@ of this grid, we simply change <code>00</code> by <code>02</code> and <code>02</
 </div>
 
 
-<h2 id="___sec6">Example on a 1x3 grid structure </h2>
+<h2 id="___sec6" class="anchor">Example on a 1x3 grid structure </h2>
 
 <p>
 <div class="row"> <!-- begin cell row -->
@@ -523,7 +523,7 @@ The Python implementation reads
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> exp, sin
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> exp, sin
 
 <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
     <span style="color: #008000; font-weight: bold">return</span> exp(<span style="color: #666666">-</span>a<span style="color: #666666">*</span>x)<span style="color: #666666">*</span>sin(w<span style="color: #666666">*</span>x)
@@ -543,7 +543,7 @@ With a main program
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a <span style="color: #666666">=</span> <span style="color: #666666">1</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>a <span style="color: #666666">=</span> <span style="color: #666666">1</span>
 <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> pi
 w <span style="color: #666666">=</span> pi
 <span style="color: #008000; font-weight: bold">print</span> f(<span style="color: #666666">0</span>)
@@ -554,14 +554,14 @@ we can run the program:
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python prog.py
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>Terminal&gt; python prog.py
 0
 </pre></div>
 <p>
 </div> <!-- column col-sm-4 -->
 </div> <!-- end cell row -->
 
-<h2 id="___sec7">Variation of the previous grid structure using admons </h2>
+<h2 id="___sec7" class="anchor">Variation of the previous grid structure using admons </h2>
 
 <p>
 <!-- Note: panels are realized as admons, using --admon_style=bootstrap_panel -->
@@ -601,7 +601,7 @@ The Python implementation reads
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> exp, sin
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> exp, sin
 
 <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
     <span style="color: #008000; font-weight: bold">return</span> exp(<span style="color: #666666">-</span>a<span style="color: #666666">*</span>x)<span style="color: #666666">*</span>sin(w<span style="color: #666666">*</span>x)
@@ -627,7 +627,7 @@ With a main program
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a <span style="color: #666666">=</span> <span style="color: #666666">1</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>a <span style="color: #666666">=</span> <span style="color: #666666">1</span>
 <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> pi
 w <span style="color: #666666">=</span> pi
 <span style="color: #008000; font-weight: bold">print</span> f(<span style="color: #666666">0</span>)
@@ -638,7 +638,7 @@ we can run the program:
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python prog.py
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>Terminal&gt; python prog.py
 0
 </pre></div>
 <p>

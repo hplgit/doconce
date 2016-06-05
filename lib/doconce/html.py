@@ -584,9 +584,10 @@ display: inline;
         s += '</center>\n'
     return s
 
-def toc2html(font_size=80, bootstrap=True,
+def toc2html(html_style, bootstrap=True,
              max_headings=17): # max no of headings in pull down menu
     global tocinfo  # computed elsewhere
+
     # level_depth: how many levels that are represented in the toc
     level_depth = int(option('toc_depth=', '-1'))
     if level_depth == -1:  # Use -1 to indicate that doconce decides
@@ -622,6 +623,11 @@ def toc2html(font_size=80, bootstrap=True,
     else:
         level_max = level_min + level_depth - 1
 
+    # font types (bootstrap pull-down Contents menu)
+    style = 'font-size: 80%;'
+    if html_style in ['bootswatch_yeti', 'bootswatch_lumen', 'bootswatch_slate', 'bootswatch_superhero']:
+        style = 'font-size: 14px; padding: 4px 15px;'
+
     ul_class = ' class="nav"' if bootstrap else ''
     toc_html = ''
     uls = 0  # no of active <ul> sublists
@@ -636,7 +642,7 @@ def toc2html(font_size=80, bootstrap=True,
         btitle = title = title.strip()
         if level_depth >= 2 and level == level_min:
             btitle = '<b>%s</b>' % btitle  # bold for highest level
-        toc_html += '     <!-- navigation toc: --> <li><a href="#%s" style="font-size: %d%%;">%s%s</a></li>\n' % (href, font_size, spaces, btitle)
+        toc_html += '     <!-- navigation toc: --> <li><a href="#%s" style="%s">%s%s</a></li>\n' % (href, style, spaces, btitle)
         if nested_list and i < len(tocinfo['sections'])-1 and \
                tocinfo['sections'][i+1][1] < level:
             toc_html += '     </ul>\n'
@@ -1084,11 +1090,18 @@ function show_hide_code%d(){
     # --- Final fixes for html format ---
 
     # Replace old-fashion <a name=""></a> anchors with id=""
+    if option('html_style=', '').startswith('boots'):
+        pass
+        # This adding of :_id destoys label search and use in misc.py
+        #filestr = re.sub(r'<h(\d)(.*?)>(.+?) <a name="(.+?)"></a>',
+        #             r'<a name="\g<4>" class="anchor"></a>\n<h\g<1>\g<2> id="\g<4>:_id">\g<3>', filestr)
+        # (use class="anchor" such that we can easily set the position of
+        # headings in e.g. bootstrap CSS; use :_id to make h1/h2 identifier different)
+        # NOTE: This edit with :_id at the end of the id tag may have
+        # side effects! It had in misc.py file splitting.
     filestr = re.sub(r'<h(\d)(.*?)>(.+?) <a name="(.+?)"></a>',
-                     r'<h\g<1>\g<2> id="\g<4>" class="anchor">\g<3>', filestr)
-    # (use class="anchor" such that we can easily tailor position of
-    # headings in e.g. bootstrap)
-    filestr = re.sub(r'<a name="(.+?)"></a>',
+                     r'<h\g<1>\g<2> id="\g<4>">\g<3>', filestr)
+    filestr = re.sub(r'<a name="([^"]+)"></a>',
                      r'<div id="\g<1>"></div>', filestr)
 
     # Add MathJax script if math is present (math is defined right above)
@@ -1174,9 +1187,9 @@ function show_hide_code%d(){
     # Make toc for navigation
     toc_html = ''
     if html_style.startswith('boots'):
-        toc_html = toc2html(bootstrap=True, max_headings=10000)
+        toc_html = toc2html(html_style, bootstrap=True, max_headings=10000)
     elif html_style in ('solarized',):
-        toc_html = toc2html(bootstrap=False)
+        toc_html = toc2html(html_style, bootstrap=False)
     # toc_html lacks formatting, run some basic formatting here
     tags = 'emphasize', 'bold', 'math', 'verbatim', 'colortext'
     # drop URLs in headings?
@@ -2843,7 +2856,7 @@ pre { color: inherit; background-color: transparent; }
 
 /* Position anchors of headings a bit higher so jumping to headlines
 behaves correctly */
-h1.anchor, h2.anchor, h3.anchor, h4.anchor {
+a.anchor {
     display: block;
     position: relative;
     top: -100px;

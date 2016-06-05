@@ -10,7 +10,7 @@ DocOnce Quick Reference
 =======================
 
 :Authors: Hans Petter Langtangen
-:Date: May 27, 2016
+:Date: Jun 5, 2016
 
 **WARNING: This quick reference is very incomplete!**
 
@@ -699,8 +699,12 @@ Writing Guidelines (Especially for LaTeX Users!)
 
 LaTeX writers often have their own writing habits with use of their
 own favorite LaTeX packages. DocOnce is a much simpler format and
-corresponds to writing in quite plain LaTeX and making the ascii
-text look nice (pay much attention to white spaec!).
+corresponds to writing in quite plain LaTeX and making the ascii text
+look nice (be careful with the use of white space!). This means that
+although DocOnce has borrowed a lot from LaTeX, there are a few points
+LaTeX writers should pay attention to. Experience shows that these
+points are so important that we list them *before* we list typical
+DocOnce syntax!
 
 Any LaTeX syntax in mathematical formulas is accepted when DocOnce
 translates the text to LaTeX, but if output in the ``sphinx``, ``pandoc``,
@@ -833,10 +837,9 @@ follow the rules below.
    or a lot of newcommands in the running text, there will be need for
    a lot of manual edits and adjustments.
    
-   For examples, figure environments
-   can be translated by the program
-   ``doconce latex2doconce`` only if the label is inside
-   the caption and the figure is typeset like
+   For examples, figure environments can be translated by the program
+   ``doconce latex2doconce`` only if the label is inside the caption and
+   the figure is typeset like
    
    .. code-block:: latex
    
@@ -846,11 +849,11 @@ follow the rules below.
          \caption{This is a figure. \labe{myfig}}
        \end{figure}
    
-   If the LaTeX is consistent with respect to placement of
-   the label, a simple script can autoedit the label inside the caption,
-   but many LaTeX writers put the label at different places in different
-   figures, and then it becomes more difficult to autoedit figures and
-   translate them to the DocOnce ``FIGURE:`` syntax.
+   If the LaTeX is consistent with respect to placement of the label, a
+   simple script can autoedit the label inside the caption, but many
+   LaTeX writers put the label at different places in different figures,
+   and then it becomes more difficult to autoedit figures and translate
+   them to the DocOnce ``FIGURE:`` syntax.
    
    Tables are hard to interpret and translate, because the headings and
    caption can be typeset in many different ways. The type of table

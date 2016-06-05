@@ -24,6 +24,15 @@ Automatically generated HTML file from DocOnce source
    max-height: 400px;
    overflow-x: hidden;
 }
+
+/* Position anchors of headings a bit higher so jumping to headlines
+behaves correctly */
+h1.anchor, h2.anchor, h3.anchor, h4.anchor {
+    display: block;
+    position: relative;
+    top: -100px;
+    visibility: hidden;
+}
 </style>
 
 
@@ -85,10 +94,10 @@ MathJax.Hub.Config({
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="._bootstrap_plain001.html#___sec0" style="font-size: 80%;"><b>More details on writing DocOnce documents with Bootstrap layout</b></a></li>
-     <!-- navigation toc: --> <li><a href="._bootstrap_plain001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Navigation</a></li>
-     <!-- navigation toc: --> <li><a href="._bootstrap_plain001.html#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Themes</a></li>
-     <!-- navigation toc: --> <li><a href="._bootstrap_plain001.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;"><b>More details on writing DocOnce documents with Bootstrap layout</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Navigation</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Themes</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
      <!-- navigation toc: --> <li><a href="#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
      <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Principles of grid structures</a></li>
      <!-- navigation toc: --> <li><a href="#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Example on a 1x3 grid structure</a></li>
@@ -108,9 +117,9 @@ MathJax.Hub.Config({
 <a name="part0002"></a>
 <!-- !split -->
 
-<h1 id="sec:examples">Horizontal alignment of document elements</h1>
+<h1 id="sec:examples" class="anchor">Horizontal alignment of document elements</h1>
 
-<h2 id="___sec5">Principles of grid structures </h2>
+<h2 id="___sec5" class="anchor">Principles of grid structures </h2>
 
 <p>
 The HTML page can feature a grid structure of cells, defined by
@@ -119,7 +128,7 @@ the following syntax in case of a 1x3 grid:
 <p>
 
 <!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"># begin-grid-area
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span># begin-grid-area
 
 !bslidecell 00
 ...
@@ -160,7 +169,7 @@ be lost because it appears outside the slidecell environments:
 <p>
 
 <!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"># begin-grid-area
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span># begin-grid-area
 
 !bslidecell 00
 ...
@@ -201,7 +210,7 @@ of this grid, we simply change <code>00</code> by <code>02</code> and <code>02</
 </div>
 
 
-<h2 id="___sec6">Example on a 1x3 grid structure </h2>
+<h2 id="___sec6" class="anchor">Example on a 1x3 grid structure </h2>
 
 <p>
 <div class="row"> <!-- begin cell row -->
@@ -225,7 +234,7 @@ The Python implementation reads
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> exp, sin
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> exp, sin
 
 <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
     <span style="color: #008000; font-weight: bold">return</span> exp(<span style="color: #666666">-</span>a<span style="color: #666666">*</span>x)<span style="color: #666666">*</span>sin(w<span style="color: #666666">*</span>x)
@@ -245,7 +254,7 @@ With a main program
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a <span style="color: #666666">=</span> <span style="color: #666666">1</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>a <span style="color: #666666">=</span> <span style="color: #666666">1</span>
 <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> pi
 w <span style="color: #666666">=</span> pi
 <span style="color: #008000; font-weight: bold">print</span> f(<span style="color: #666666">0</span>)
@@ -256,14 +265,14 @@ we can run the program:
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python prog.py
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>Terminal&gt; python prog.py
 0
 </pre></div>
 <p>
 </div> <!-- column col-sm-4 -->
 </div> <!-- end cell row -->
 
-<h2 id="___sec7">Variation of the previous grid structure using admons </h2>
+<h2 id="___sec7" class="anchor">Variation of the previous grid structure using admons </h2>
 
 <p>
 <!-- Note: panels are realized as admons, using --admon_style=bootstrap_panel -->
@@ -303,7 +312,7 @@ The Python implementation reads
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> exp, sin
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> exp, sin
 
 <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
     <span style="color: #008000; font-weight: bold">return</span> exp(<span style="color: #666666">-</span>a<span style="color: #666666">*</span>x)<span style="color: #666666">*</span>sin(w<span style="color: #666666">*</span>x)
@@ -329,7 +338,7 @@ With a main program
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a <span style="color: #666666">=</span> <span style="color: #666666">1</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>a <span style="color: #666666">=</span> <span style="color: #666666">1</span>
 <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> pi
 w <span style="color: #666666">=</span> pi
 <span style="color: #008000; font-weight: bold">print</span> f(<span style="color: #666666">0</span>)
@@ -340,7 +349,7 @@ we can run the program:
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python prog.py
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>Terminal&gt; python prog.py
 0
 </pre></div>
 <p>
