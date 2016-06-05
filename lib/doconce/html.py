@@ -2855,7 +2855,7 @@ pre { color: inherit; background-color: transparent; }
 }
 
 /* Position anchors of headings a bit higher so jumping to headlines
-behaves correctly */
+behaves correctly  - does not work yet and is therefore not used */
 a.anchor {
     display: block;
     position: relative;
