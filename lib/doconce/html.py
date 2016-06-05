@@ -2859,6 +2859,15 @@ pre { color: inherit; background-color: transparent; }
   margin:-50px 0 0; /* negative fixed header height */
 }
 """
+        if html_style.endswith('yeti'):
+            style_changes += """
+/* decrease vertical padding and increase font size */
+.dropdown-menu>li>a {
+  padding:4px 15px;
+  font-size: 14px;
+}
+"""
+
         if '!bquiz' in filestr:
         # Style for buttons for collapsing paragraphs
             style_changes += """
