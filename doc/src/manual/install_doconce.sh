@@ -83,7 +83,8 @@ pip_install -e git+https://github.com/ryan-roemer/sphinx-bootstrap-theme#egg=sph
 pip_install -e hg+https://bitbucket.org/miiton/sphinxjp.themes.solarized#egg=sphinxjp.themes.solarized
 pip_install -e git+https://github.com/shkumagai/sphinxjp.themes.impressjs#egg=sphinxjp.themes.impressjs
 pip_install -e git+https://github.com/kriskda/sphinx-sagecell#egg=sphinx-sagecell
-pip_install tinkerer
+# tinkerer has several themes: minimal5, modern5, flat, dark, responsive
+pip_install tinkerer --upgrade
 
 # Runestone sphinx books
 pip_install sphinxcontrib-paverutils
@@ -100,7 +101,7 @@ pip_install html5lib
 
 # ptex2tex is not needed if --latex_code_style= option is used
 cd srclib
-svn checkout http://ptex2tex.googlecode.com/svn/trunk/ ptex2tex
+git clone git@github.com:hplgit/ptex2tex.git
 cd ptex2tex
 sudo python setup.py install
 cd latex

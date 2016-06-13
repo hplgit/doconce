@@ -8,6 +8,35 @@ except ImportError:
     # citations is then lost)
     OrderedDict = dict
 
+# Support for non-English languages (not really implemented yet)
+global locale_dict
+locale_dict = dict(
+    language='English',  # language to be used
+    English={
+        'locale': 'us_US',
+        'toc': 'Table of contents',
+        'figure': 'Figure',
+        'movie': 'Movie',
+        'list of': 'List of',
+        'exercise': 'Exercise',
+        'project': 'Project',
+        'problem': 'Problem',
+        'example': 'Example',
+        # admons, solution, answer, hint, remarks
+        },
+    Norwegian={
+        'locale': 'no_NO',
+        'toc': 'Innholdsfortegnelse',
+        'figure': 'Figur',
+        'movie': 'Film',
+        'list of': 'Liste over',
+        'exercise': 'Oppgave',
+        'project': 'Prosjekt',
+        'problem': 'Problem',
+        'example': 'Eksempel',
+        },
+    )
+
 def debugpr(heading='', text=''):
     """Add `heading` and `text` to the log/debug file."""
     if option('debug'):
@@ -3762,8 +3791,17 @@ def inline_tag_subst(filestr, format):
     m = re.search(r'^(DATE:\s*[Tt]oday)', filestr, re.MULTILINE)
     if m:
         origstr = m.group(1)
-        w = time.asctime().split()
-        date = w[1] + ' ' + w[2] + ', ' + w[4]
+
+        # Find curent date
+        if locale_dict['language'] == 'English':
+            w = time.asctime().split()
+            date = w[1] + ' ' + w[2] + ', ' + w[4]
+        else:
+            import locale
+            locale.setlocale(locale.LC_TIME,
+                             locale_dict[local_dict['language']]['locale'])
+            date = time.strftime('%a, %d %b, %Y')
+
         # Add copyright right under the date if present
         if format not in ('html', 'latex', 'pdflatex', 'sphinx'):
             from common import get_copyfile_info

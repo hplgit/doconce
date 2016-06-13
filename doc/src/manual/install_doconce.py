@@ -91,7 +91,8 @@ system('sudo pip install -e git+https://github.com/ryan-roemer/sphinx-bootstrap-
 system('sudo pip install -e hg+https://bitbucket.org/miiton/sphinxjp.themes.solarized#egg=sphinxjp.themes.solarized')
 system('sudo pip install -e git+https://github.com/shkumagai/sphinxjp.themes.impressjs#egg=sphinxjp.themes.impressjs')
 system('sudo pip install -e git+https://github.com/kriskda/sphinx-sagecell#egg=sphinx-sagecell')
-system('sudo pip install tinkerer')
+# tinkerer has several themes: minimal5, modern5, flat, dark, responsive
+system('sudo pip install tinkerer --upgrade')
 
 # Runestone sphinx books
 system('sudo pip install sphinxcontrib-paverutils')
@@ -110,7 +111,7 @@ system('sudo pip install html5lib')
 
 cmd = """
 cd srclib
-svn checkout http://ptex2tex.googlecode.com/svn/trunk/ ptex2tex
+git clone git@github.com:hplgit/ptex2tex.git
 cd ptex2tex
 sudo python setup.py install
 cd latex

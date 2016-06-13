@@ -866,7 +866,7 @@ def doconce_exercise_output(
     # at the beginning of the translation process.
 
     latex_style = option('latex_style=', 'std')
-    solution_style = option('exercise_solution=', 'paragraph')
+    solution_style = option('exercise_solution=', 'paragraph') # admon, quote
 
     # Store solutions in a separate string
     has_solutions = False
@@ -1024,6 +1024,9 @@ def doconce_exercise_output(
                     elif solution_style == 'admon':
                         s   += '\n!bnotice Solution.\n\n'
                         sol += '\n!bnotice Solution.\n\n'
+                    elif solution_style == 'quote':
+                        s   += '\n!bquote\n' + solution_header + '\n'
+                        sol += '\n!bquote\n' + solution_header + '\n'
                     # Make sure we have a sentence after the heading
                     if solution_header.endswith('===') and \
                         re.search(r'^\d+ %s' % _CODE_BLOCK,
@@ -1036,6 +1039,9 @@ def doconce_exercise_output(
                     if solution_style == 'admon':
                         s   += '!enotice\n\n'
                         sol += '!enotice\n\n'
+                    elif solution_style == 'quote':
+                        s   += '!equote\n\n'
+                        sol += '!equote\n\n'
                     if exer['type'] != 'Example':
                         s += '\n# ' + envir_delimiter_lines['sol'][1] + '\n'
 
@@ -1067,6 +1073,9 @@ def doconce_exercise_output(
         elif solution_style == 'admon':
             s   += '\n!bnotice Solution.\n\n'
             sol += '\n!bnotice Solution.\n\n'
+        elif solution_style == 'quote':
+            s   += '\n!bquote\n' + solution_header + '\n'
+            sol += '\n!bquote\n' + solution_header + '\n'
         # Make sure we have a sentence after the heading if real heading
         if solution_header.endswith('===') and \
             re.search(r'^\d+ %s' % _CODE_BLOCK, exer['solution'].lstrip()):
@@ -1078,6 +1087,9 @@ def doconce_exercise_output(
         if solution_style == 'admon':
             s   += '!enotice\n\n'
             sol += '!enotice\n\n'
+        elif solution_style == 'quote':
+            s   += '!equote\n\n'
+            sol += '!equote\n\n'
         if exer['type'] != 'Example':
             s += '\n# ' + envir_delimiter_lines['sol'][1] + '\n'
 

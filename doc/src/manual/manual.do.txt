@@ -2765,10 +2765,17 @@ assign appropriate numbers in the `tag` command.
 label{manual:exercises:solutions:typesetting}
 
 There is an option `--exercise_solution=` option for controling the
-typesetting of solutions. Two values are legal: `paragraph` means that
-the solution just gets a paragraph heading, while `admon` means that
-the solution is typeset within a notice admonition environment (`!bnotice`).
+typesetting of solutions. Three values are legal: `paragraph` means that
+the solution just gets a paragraph heading, `admon` means that
+the solution is typeset within a notice admonition environment (`!bnotice`),
+while `quote` means typesetting within a quote environment.
 
+__Suggestion for HTML Bootstrap.__
+If your choice is `--exercise_solution=admon`, and you want the
+Boostrap HTML output format, use `--html_admon=bootstrap_panel`.  It
+makes the solutions stand out nicely in the text.
+
+__Suggestion for LaTeX.__
 Sometimes the standard admons are not so suitable for typesetting
 solutions because they may have a background color, or they may be too
 eye catching. Here is a trick for LaTeX output where we 1) change the

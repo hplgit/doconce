@@ -5,7 +5,7 @@ from common import table_analysis, plain_exercise, insert_code_and_tex, \
      get_legal_pygments_lexers, has_custom_pygments_lexer, emoji_url, \
      fix_ref_section_chapter
 from misc import option, _abort
-from doconce import errwarn
+from doconce import errwarn, locale_dict
 
 box_shadow = 'box-shadow: 8px 8px 5px #888888;'
 #box_shadow = 'box-shadow: 0px 0px 10px #888888'
@@ -1184,6 +1184,8 @@ function show_hide_code%d(){
     toc_html = ''
     if html_style.startswith('boots'):
         toc_html = toc2html(html_style, bootstrap=True, max_headings=10000)
+        # Fix
+        toc_html = re.sub(r'id="table_of_contents">', 'id="table_of_contents" class="anchor">', toc_html)
     elif html_style in ('solarized',):
         toc_html = toc2html(html_style, bootstrap=False)
     # toc_html lacks formatting, run some basic formatting here
@@ -2151,9 +2153,14 @@ def html_toc(sections):
     toc_depth = int(option('toc_depth=', 2))
 
     extended_sections = []  # extended list for toc in HTML file
+    toc = locale_dict[locale_dict['language']]['toc']
+    # If this function is called, we have and want a TOC!
+    extended_sections.append(
+        (toc, level_min, 'table_of_contents', 'table_of_contents'))
     #hr = '<hr>'
     hr = ''
-    s = '<h2>Table of contents</h2>\n\n%s\n<p>\n' % hr
+    s = '<h1 id="table_of_contents">%s</h2>\n\n%s\n<p>\n' % (toc, hr)
+    # (we add class="anchor" in the calling code the above heading, if necessary)
     for i in range(len(sections)):
         title, level, label = sections[i]
         href = label if label is not None else '___sec%d' % i
