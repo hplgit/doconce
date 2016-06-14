@@ -124,7 +124,7 @@ def xml_figure(m):
     text += '\n</figure>\n'
     return text
 
-def xml_toc(sections):
+def xml_toc(sections, filestr):
     return 'XML TOC not implemented yet'
 
 def xml_table(table):

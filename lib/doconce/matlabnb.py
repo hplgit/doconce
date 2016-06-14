@@ -157,7 +157,7 @@ def matlabnb_index_bib(filestr, index, citations, pubfile, pubdata):
 
     return filestr
 
-def matlabnb_toc(sections):
+def matlabnb_toc(sections, filestr):
     # Find minimum section level
     tp_min = 4
     for title, tp, label in sections:

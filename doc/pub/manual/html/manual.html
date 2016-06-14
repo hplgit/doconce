@@ -799,7 +799,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">May 24, 2016</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jun 14, 2016</td>
 </tr>
 </tbody>
 </table>
@@ -892,14 +892,8 @@ by clever use of the programmable Mako preprocessor used by DocOnce
 and by automatic editing of the generated output (e.g., via regular
 expressions).</p>
 <p>DocOnce has been used as writing platform for several books:</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <div class="figure">
 <a class="reference internal image-reference" href="_images/doconce_books.jpg"><img alt="_images/doconce_books.jpg" src="_images/doconce_books.jpg" style="width: 600px;" /></a>
-</div>
-<div class="line-block">
-<div class="line"><br /></div>
 </div>
 <div class="section" id="demos-and-documentation">
 <h3>Demos and Documentation<a class="headerlink" href="#demos-and-documentation" title="Permalink to this headline">¶</a></h3>
@@ -4758,10 +4752,16 @@ assign appropriate numbers in the <code class="docutils literal"><span class="pr
 <div class="section" id="typesetting-of-solutions-to-exercises">
 <span id="manual-exercises-solutions-typesetting"></span><h3>Typesetting of solutions to exercises<a class="headerlink" href="#typesetting-of-solutions-to-exercises" title="Permalink to this headline">¶</a></h3>
 <p>There is an option <code class="docutils literal"><span class="pre">--exercise_solution=</span></code> option for controling the
-typesetting of solutions. Two values are legal: <code class="docutils literal"><span class="pre">paragraph</span></code> means that
-the solution just gets a paragraph heading, while <code class="docutils literal"><span class="pre">admon</span></code> means that
-the solution is typeset within a notice admonition environment (<code class="docutils literal"><span class="pre">!bnotice</span></code>).</p>
-<p>Sometimes the standard admons are not so suitable for typesetting
+typesetting of solutions. Three values are legal: <code class="docutils literal"><span class="pre">paragraph</span></code> means that
+the solution just gets a paragraph heading, <code class="docutils literal"><span class="pre">admon</span></code> means that
+the solution is typeset within a notice admonition environment (<code class="docutils literal"><span class="pre">!bnotice</span></code>),
+while <code class="docutils literal"><span class="pre">quote</span></code> means typesetting within a quote environment.</p>
+<p><strong>Suggestion for HTML Bootstrap.</strong>
+If your choice is <code class="docutils literal"><span class="pre">--exercise_solution=admon</span></code>, and you want the
+Boostrap HTML output format, use <code class="docutils literal"><span class="pre">--html_admon=bootstrap_panel</span></code>.  It
+makes the solutions stand out nicely in the text.</p>
+<p><strong>Suggestion for LaTeX.</strong>
+Sometimes the standard admons are not so suitable for typesetting
 solutions because they may have a background color, or they may be too
 eye catching. Here is a trick for LaTeX output where we 1) change the
 admon environment in solutions from notice to question type, 2) change
@@ -4826,8 +4826,19 @@ all boxes, except <code class="docutils literal"><span class="pre">pypro</span><
 </div>
 <p>(Note that we had to split the <code class="docutils literal"><span class="pre">--latex_code_style=</span></code> option over
 several lines - everything should be on one line in the compilation script!)</p>
+<p>The <code class="docutils literal"><span class="pre">--latex_admon_envir_map=2</span></code> option renames an environment like <code class="docutils literal"><span class="pre">pycod</span></code>
+inside an admon to <code class="docutils literal"><span class="pre">pycod2</span></code>, and the <code class="docutils literal"><span class="pre">--latex_code_style=</span></code> option defines
+the new <code class="docutils literal"><span class="pre">pycod2</span></code> environment to be bluegray syntax highlighting, but no
+background color. Note that this applies to all question admons, but
+usually there are few question admons, so very often this will be
+a specific typesetting for solutions to exercises.</p>
+<p>Note that when you use <code class="docutils literal"><span class="pre">--exercise_solution=admon</span></code> and
+<code class="docutils literal"><span class="pre">--latex_admon=mdfbox</span></code> (default), you cannot have figures with
+captions inside the admons, i.e., inside <code class="docutils literal"><span class="pre">!bsol</span></code> and <code class="docutils literal"><span class="pre">!esol</span></code> in
+the present problem setting. Only <em>inline figures</em> will work.
+Write these as <code class="docutils literal"><span class="pre">FIGURE:</span></code> the usual way, but drop the caption.</p>
 <p>The current example shows how we can tailor DocOnce output to a level
-far beyond what DocOnce itself can output.</p>
+far beyond what DocOnce itself can output!</p>
 </div>
 <div class="section" id="extracting-selected-exercises-in-a-separate-document">
 <h3>Extracting Selected Exercises in a Separate Document<a class="headerlink" href="#extracting-selected-exercises-in-a-separate-document" title="Permalink to this headline">¶</a></h3>
@@ -5389,6 +5400,48 @@ in the <code class="docutils literal"><span class="pre">&#64;&#64;&#64;CODE</spa
 <p>will be included. If source files have a header with author, email, etc.,
 one can remove this header by the option <code class="docutils literal"><span class="pre">'--code_skip_until=#</span> <span class="pre">---'</span></code>.
 The lines up to and including (the first) <code class="docutils literal"><span class="pre">#</span> <span class="pre">---</span></code> will then be excluded.</p>
+<div class="admonition-the-regular-expressions-in-code-commands-are-non-greedy admonition">
+<p class="first admonition-title">The regular expressions in <code class="docutils literal"><span class="pre">CODE</span></code> commands are non-greedy</p>
+<p>The copying of code from file will search for the first occurrence of
+the &#8220;from&#8221; regular expression and then continue up to the first
+occurrence of the &#8220;to&#8221; expression. This means a non-greedy regular
+expression. A to make the expression greedy is
+to insert a comment statement as the &#8220;to&#8221; expression to make a
+special end of the snippet to be copied. For example, you have the
+code</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">compute</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">x</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">new</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">compute</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">x</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">new</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">compute</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>and you want to copy from the first <code class="docutils literal"><span class="pre">compute</span></code> and include the second,
+but not the following <code class="docutils literal"><span class="pre">print</span> <span class="pre">x</span></code> statement, i.e.,</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">compute</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">x</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">new</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">compute</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">fromto:</span> <span class="pre">compute&#64;compute</span></code> will not work. The way to do this is to insert
+a comment statement after the desired &#8220;to&#8221; expression:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">compute</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">x</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">new</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">compute</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="c1"># dummy comment</span>
+<span class="k">print</span> <span class="n">x</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">new</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">compute</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="last">The regular expressions are then <code class="docutils literal"><span class="pre">fromto:</span> <span class="pre">compute&#64;#</span> <span class="pre">dummy</span> <span class="pre">comment</span></code>
+(&#8220;from&#8221; and &#8220;to&#8221; are
+actually plain text here - no use of special regular expressions).</p>
+</div>
 </div>
 <div class="section" id="removing-indentation-in-copied-code">
 <h4>Removing indentation in copied code<a class="headerlink" href="#removing-indentation-in-copied-code" title="Permalink to this headline">¶</a></h4>
@@ -5639,8 +5692,12 @@ read in the formats that cannot render LaTeX.</p>
 <span id="manual-latex-guide"></span><h3>Writing Guidelines (Especially for LaTeX Users!)<a class="headerlink" href="#writing-guidelines-especially-for-latex-users" title="Permalink to this headline">¶</a></h3>
 <p>LaTeX writers often have their own writing habits with use of their
 own favorite LaTeX packages. DocOnce is a much simpler format and
-corresponds to writing in quite plain LaTeX and making the ascii
-text look nice (pay much attention to white spaec!).</p>
+corresponds to writing in quite plain LaTeX and making the ascii text
+look nice (be careful with the use of white space!). This means that
+although DocOnce has borrowed a lot from LaTeX, there are a few points
+LaTeX writers should pay attention to. Experience shows that these
+points are so important that we list them <em>before</em> we list typical
+DocOnce syntax!</p>
 <p>Any LaTeX syntax in mathematical formulas is accepted when DocOnce
 translates the text to LaTeX, but if output in the <code class="docutils literal"><span class="pre">sphinx</span></code>, <code class="docutils literal"><span class="pre">pandoc</span></code>,
 <code class="docutils literal"><span class="pre">mwiki</span></code>, <code class="docutils literal"><span class="pre">html</span></code>, or <code class="docutils literal"><span class="pre">ipynb</span></code> formats is also important, one should
@@ -5753,10 +5810,9 @@ list environments, special packages for typesetting algorithms,
 example environments, <code class="docutils literal"><span class="pre">subfigure</span></code> in figures,
 or a lot of newcommands in the running text, there will be need for
 a lot of manual edits and adjustments.</p>
-<p>For examples, figure environments
-can be translated by the program
-<code class="docutils literal"><span class="pre">doconce</span> <span class="pre">latex2doconce</span></code> only if the label is inside
-the caption and the figure is typeset like</p>
+<p>For examples, figure environments can be translated by the program
+<code class="docutils literal"><span class="pre">doconce</span> <span class="pre">latex2doconce</span></code> only if the label is inside the caption and
+the figure is typeset like</p>
 <div class="highlight-latex"><div class="highlight"><pre><span></span><span class="k">\begin</span><span class="nb">{</span>figure<span class="nb">}</span>
   <span class="k">\centering</span>
   <span class="k">\includegraphics</span><span class="na">[width=0.55\linewidth]</span><span class="nb">{</span>figs/myfig.pdf<span class="nb">}</span>
@@ -5764,11 +5820,11 @@ the caption and the figure is typeset like</p>
 <span class="k">\end</span><span class="nb">{</span>figure<span class="nb">}</span>
 </pre></div>
 </div>
-<p>If the LaTeX is consistent with respect to placement of
-the label, a simple script can autoedit the label inside the caption,
-but many LaTeX writers put the label at different places in different
-figures, and then it becomes more difficult to autoedit figures and
-translate them to the DocOnce <code class="docutils literal"><span class="pre">FIGURE:</span></code> syntax.</p>
+<p>If the LaTeX is consistent with respect to placement of the label, a
+simple script can autoedit the label inside the caption, but many
+LaTeX writers put the label at different places in different figures,
+and then it becomes more difficult to autoedit figures and translate
+them to the DocOnce <code class="docutils literal"><span class="pre">FIGURE:</span></code> syntax.</p>
 <p>Tables are hard to interpret and translate, because the headings and
 caption can be typeset in many different ways. The type of table
 that is recognized looks like</p>
@@ -6275,16 +6331,8 @@ before the functions it refers to.</p>
 <p>A complete example showing how one can create tailored environments
 for computer code, using <code class="docutils literal"><span class="pre">--latex_code_style</span></code>,
 in particular the following one (with a caption),</p>
-<div class="line-block">
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
 <div class="figure">
 <a class="reference internal image-reference" href="_images/userdef_code_envir.png"><img alt="_images/userdef_code_envir.png" src="_images/userdef_code_envir.png" style="width: 400px;" /></a>
-</div>
-<div class="line-block">
-<div class="line"><br /></div>
-<div class="line"><br /></div>
 </div>
 <p>appears at the end of the document
 <a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/latexcode/demo.html">Demonstration of DocOnce support for LaTeX code block environments</a>.</p>
@@ -9694,6 +9742,13 @@ AUTHOR: Kaare Dump at BSU {copyright|Released under the MIT license.}
 
 
 
+--align2equations
+
+Rewrite align/alignat math environments to separate equation environments.
+Sometimes needed for proper MathJax rendering (e.g., remark slides).
+Sphinx requires such rewrite and will do it regardless of this option.
+
+
 --exercise_numbering=...
 
 absolute: exercises numbered as 1, 2, ... (default)
@@ -9850,7 +9905,9 @@ Often used with HTML templates.
 
 off, inherit, or transparent: enable normal inline verbatim font
 where foreground and background color is inherited from the
-surroundnings (e.g., to avoid the red Boostrap color).
+surroundnings. off, inherit and transparent are just synonyms for
+inheriting color from the text and make the background color transparent
+(use e.g. --html_code_style=inherit to avoid the red Boostrap color).
 Default: on (use the css-specified typesetting of &lt;pre&gt; tags).
 NOTE: the naming &quot;html_code_style&quot; is not optimal: it has nothing
 to do with code block style, but the &lt;code&gt; tag for inline verbatim text
@@ -10501,7 +10558,7 @@ Leave out hints from exercises.
 
 --exercise_solution=...
 
-Typesetting of solutions: paragraph or admon.
+Typesetting of solutions: paragraph, admon, or quote.
 
 
 --wordpress

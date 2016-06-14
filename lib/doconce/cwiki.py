@@ -205,7 +205,7 @@ def define(FILENAME_EXTENSION,
     from plaintext import plain_index_bib
     EXERCISE['cwiki'] = plain_exercise
     INDEX_BIB['cwiki'] = plain_index_bib
-    TOC['cwiki'] = lambda s: '<<TableOfContents>>'
+    TOC['cwiki'] = lambda s, f: '<<TableOfContents>>'
     QUIZ['cwiki'] = plain_quiz
     # document start:
     INTRO['cwiki'] = ''

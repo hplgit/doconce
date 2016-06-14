@@ -504,7 +504,7 @@ def define(FILENAME_EXTENSION,
     TABLE['pandoc'] = pandoc_table
     INDEX_BIB['pandoc'] = pandoc_index_bib
     EXERCISE['pandoc'] = plain_exercise
-    TOC['pandoc'] = lambda s: '# Table of contents: Run pandoc with --toc option'
+    TOC['pandoc'] = lambda s, f: '# Table of contents: Run pandoc with --toc option'
     QUIZ['pandoc'] = pandoc_quiz
     FIGURE_EXT['pandoc'] = {
         'search': ('.png', '.gif', '.jpg', '.jpeg', '.tif', '.tiff', '.pdf'),

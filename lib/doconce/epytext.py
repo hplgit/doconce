@@ -95,7 +95,7 @@ def define(FILENAME_EXTENSION,
         'class variable': '@cvar',
         'module variable': '@var',
         }
-    TOC['epytext'] = lambda x: '\n'  # no toc for epydoc
+    TOC['epytext'] = lambda x, f: '\n'  # no toc for epydoc
     from plaintext import plain_quiz
     QUIZ['epytext'] = plain_quiz
 

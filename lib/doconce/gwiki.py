@@ -258,7 +258,7 @@ def define(FILENAME_EXTENSION,
     from plaintext import plain_index_bib
     EXERCISE['gwiki'] = plain_exercise
     INDEX_BIB['gwiki'] = plain_index_bib
-    TOC['gwiki'] = lambda s: '<wiki: toc max_depth="2" />'
+    TOC['gwiki'] = lambda s, f: '<wiki: toc max_depth="2" />'
     QUIZ['gwiki'] = plain_quiz
     # document start:
     INTRO['gwiki'] = ''

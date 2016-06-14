@@ -718,7 +718,7 @@ def define(FILENAME_EXTENSION,
 
     TABLE['rst'] = rst_table
     EXERCISE['rst'] = plain_exercise
-    TOC['rst'] = lambda s: '.. contents:: Table of Contents\n   :depth: 2'
+    TOC['rst'] = lambda s, f: '.. contents:: Table of Contents\n   :depth: 2'
     QUIZ['rst'] = rst_quiz
     INTRO['rst'] = """\
 .. Automatically generated reStructuredText file from DocOnce source

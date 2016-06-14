@@ -438,7 +438,7 @@ def define(FILENAME_EXTENSION,
     from plaintext import plain_index_bib
     EXERCISE['mwiki'] = plain_exercise
     INDEX_BIB['mwiki'] = plain_index_bib
-    TOC['mwiki'] = lambda s: '<<<TOC>>>'  # __TOC__ will be wrongly translated to paragraph headline and needs a fix
+    TOC['mwiki'] = lambda s, f: '<<<TOC>>>'  # __TOC__ will be wrongly translated to paragraph headline and needs a fix
     QUIZ['mwiki'] = plain_quiz
 
     # document start:

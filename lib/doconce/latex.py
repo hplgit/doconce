@@ -2853,7 +2853,7 @@ def define(FILENAME_EXTENSION,
 \mainmatter
 """
 
-    TOC['latex'] = lambda s: toc_part
+    TOC['latex'] = lambda s, f: toc_part
     QUIZ['latex'] = latex_quiz
 
     preamble = ''

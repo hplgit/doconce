@@ -3423,6 +3423,7 @@ example above, we copy code from the line matching `subroutine test`
 matching `C END1` (C followed by 5 blanks and then the text END1). The
 final line with the ``to'' text is not included in the verbatim block.
 
+
 One can also specify the code environment explicitly rather than relying
 on the file extension:
 
@@ -3513,6 +3514,51 @@ http://some.place.net/src/myfile.py
 will be included. If source files have a header with author, email, etc.,
 one can remove this header by the option `'--code_skip_until=# ---'`.
 The lines up to and including (the first) `# ---` will then be excluded.
+
+!bwarning The regular expressions in `CODE` commands are non-greedy!
+The copying of code from file will search for the first occurrence of
+the ``from'' regular expression and then continue up to the first
+occurrence of the ``to'' expression. This means a non-greedy regular
+expression. A to make the expression greedy is
+to insert a comment statement as the ``to'' expression to make a
+special end of the snippet to be copied. For example, you have the
+code
+
+!bc pycod
+compute(x)
+print x
+x = new(x)
+compute(x)
+print x
+x = new(x)
+compute(x)
+!ec
+and you want to copy from the first `compute` and include the second,
+but not the following `print x` statement, i.e.,
+
+!bc pycod
+compute(x)
+print x
+x = new(x)
+compute(x)
+!ec
+`fromto: compute@compute` will not work. The way to do this is to insert
+a comment statement after the desired ``to'' expression:
+
+!bc pycod
+compute(x)
+print x
+x = new(x)
+compute(x)
+# dummy comment
+print x
+x = new(x)
+compute(x)
+!ec
+The regular expressions are then `fromto: compute@# dummy comment`
+(``from'' and ``to'' are
+actually plain text here -- no use of special regular expressions).
+!ewarning
 
 === Removing indentation in copied code ===
 

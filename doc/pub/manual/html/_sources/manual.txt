@@ -21,7 +21,7 @@ DocOnce Description
 %%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: May 24, 2016
+:Date: Jun 14, 2016
 
 .. lines beginning with # are doconce comment lines
 
@@ -134,12 +134,8 @@ expressions).
 
 DocOnce has been used as writing platform for several books:
 
-| 
-
 .. figure:: doconce_books.jpg
    :width: 600
-
-| 
 
 .. Here are some comment lines that do not affect any formatting
 
@@ -4744,10 +4740,17 @@ Typesetting of solutions to exercises
 -------------------------------------
 
 There is an option ``--exercise_solution=`` option for controling the
-typesetting of solutions. Two values are legal: ``paragraph`` means that
-the solution just gets a paragraph heading, while ``admon`` means that
-the solution is typeset within a notice admonition environment (``!bnotice``).
+typesetting of solutions. Three values are legal: ``paragraph`` means that
+the solution just gets a paragraph heading, ``admon`` means that
+the solution is typeset within a notice admonition environment (``!bnotice``),
+while ``quote`` means typesetting within a quote environment.
 
+**Suggestion for HTML Bootstrap.**
+If your choice is ``--exercise_solution=admon``, and you want the
+Boostrap HTML output format, use ``--html_admon=bootstrap_panel``.  It
+makes the solutions stand out nicely in the text.
+
+**Suggestion for LaTeX.**
 Sometimes the standard admons are not so suitable for typesetting
 solutions because they may have a background color, or they may be too
 eye catching. Here is a trick for LaTeX output where we 1) change the
@@ -4822,8 +4825,21 @@ all boxes, except ``pypro`` that gets a frame to indicate "program" and
 (Note that we had to split the ``--latex_code_style=`` option over
 several lines - everything should be on one line in the compilation script!)
 
+The ``--latex_admon_envir_map=2`` option renames an environment like ``pycod``
+inside an admon to ``pycod2``, and the ``--latex_code_style=`` option defines
+the new ``pycod2`` environment to be bluegray syntax highlighting, but no
+background color. Note that this applies to all question admons, but
+usually there are few question admons, so very often this will be
+a specific typesetting for solutions to exercises.
+
+Note that when you use ``--exercise_solution=admon`` and
+``--latex_admon=mdfbox`` (default), you cannot have figures with
+captions inside the admons, i.e., inside ``!bsol`` and ``!esol`` in
+the present problem setting. Only *inline figures* will work.
+Write these as ``FIGURE:`` the usual way, but drop the caption.
+
 The current example shows how we can tailor DocOnce output to a level
-far beyond what DocOnce itself can output.
+far beyond what DocOnce itself can output!
 
 Extracting Selected Exercises in a Separate Document
 ----------------------------------------------------
@@ -5553,6 +5569,58 @@ will be included. If source files have a header with author, email, etc.,
 one can remove this header by the option ``'--code_skip_until=# ---'``.
 The lines up to and including (the first) ``# ---`` will then be excluded.
 
+
+.. admonition:: The regular expressions in ``CODE`` commands are non-greedy
+
+   The copying of code from file will search for the first occurrence of
+   the "from" regular expression and then continue up to the first
+   occurrence of the "to" expression. This means a non-greedy regular
+   expression. A to make the expression greedy is
+   to insert a comment statement as the "to" expression to make a
+   special end of the snippet to be copied. For example, you have the
+   code
+   
+   .. code-block:: python
+   
+       compute(x)
+       print x
+       x = new(x)
+       compute(x)
+       print x
+       x = new(x)
+       compute(x)
+   
+   and you want to copy from the first ``compute`` and include the second,
+   but not the following ``print x`` statement, i.e.,
+   
+   .. code-block:: python
+   
+       compute(x)
+       print x
+       x = new(x)
+       compute(x)
+   
+   ``fromto: compute@compute`` will not work. The way to do this is to insert
+   a comment statement after the desired "to" expression:
+   
+   .. code-block:: python
+   
+       compute(x)
+       print x
+       x = new(x)
+       compute(x)
+       # dummy comment
+       print x
+       x = new(x)
+       compute(x)
+   
+   The regular expressions are then ``fromto: compute@# dummy comment``
+   ("from" and "to" are
+   actually plain text here - no use of special regular expressions).
+
+
+
+
 Removing indentation in copied code
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -5598,6 +5666,7 @@ Here is the result:
 
 .. math::
    :label: myeq1
+
         
         {\partial u\over\partial t} = \nabla^2 u + f,
         
@@ -5605,6 +5674,7 @@ Here is the result:
 
 .. math::
    :label: myeq2
+
          
         {\partial v\over\partial t} = \nabla\cdot(q(u)\nabla v) + g.
         
@@ -5877,8 +5947,12 @@ Writing Guidelines (Especially for LaTeX Users!)
 
 LaTeX writers often have their own writing habits with use of their
 own favorite LaTeX packages. DocOnce is a much simpler format and
-corresponds to writing in quite plain LaTeX and making the ascii
-text look nice (pay much attention to white spaec!).
+corresponds to writing in quite plain LaTeX and making the ascii text
+look nice (be careful with the use of white space!). This means that
+although DocOnce has borrowed a lot from LaTeX, there are a few points
+LaTeX writers should pay attention to. Experience shows that these
+points are so important that we list them *before* we list typical
+DocOnce syntax!
 
 Any LaTeX syntax in mathematical formulas is accepted when DocOnce
 translates the text to LaTeX, but if output in the ``sphinx``, ``pandoc``,
@@ -6011,10 +6085,9 @@ follow the rules below.
    or a lot of newcommands in the running text, there will be need for
    a lot of manual edits and adjustments.
    
-   For examples, figure environments
-   can be translated by the program
-   ``doconce latex2doconce`` only if the label is inside
-   the caption and the figure is typeset like
+   For examples, figure environments can be translated by the program
+   ``doconce latex2doconce`` only if the label is inside the caption and
+   the figure is typeset like
    
    .. code-block:: latex
    
@@ -6024,11 +6097,11 @@ follow the rules below.
          \caption{This is a figure. \labe{myfig}}
        \end{figure}
    
-   If the LaTeX is consistent with respect to placement of
-   the label, a simple script can autoedit the label inside the caption,
-   but many LaTeX writers put the label at different places in different
-   figures, and then it becomes more difficult to autoedit figures and
-   translate them to the DocOnce ``FIGURE:`` syntax.
+   If the LaTeX is consistent with respect to placement of the label, a
+   simple script can autoedit the label inside the caption, but many
+   LaTeX writers put the label at different places in different figures,
+   and then it becomes more difficult to autoedit figures and translate
+   them to the DocOnce ``FIGURE:`` syntax.
    
    Tables are hard to interpret and translate, because the headings and
    caption can be typeset in many different ways. The type of table
@@ -6671,14 +6744,8 @@ A complete example showing how one can create tailored environments
 for computer code, using ``--latex_code_style``,
 in particular the following one (with a caption),
 
-| 
-| 
-
 .. figure:: userdef_code_envir.png
    :width: 400
-
-| 
-| 
 
 appears at the end of the document
 `Demonstration of DocOnce support for LaTeX code block environments <http://hplgit.github.io/doconce/doc/pub/latexcode/demo.html>`__.
@@ -10935,6 +11002,13 @@ here for convenience.
     
     
     
+    --align2equations
+    
+    Rewrite align/alignat math environments to separate equation environments.
+    Sometimes needed for proper MathJax rendering (e.g., remark slides).
+    Sphinx requires such rewrite and will do it regardless of this option.
+    
+    
     --exercise_numbering=...
     
     absolute: exercises numbered as 1, 2, ... (default)
@@ -11091,7 +11165,9 @@ here for convenience.
     
     off, inherit, or transparent: enable normal inline verbatim font
     where foreground and background color is inherited from the
-    surroundnings (e.g., to avoid the red Boostrap color).
+    surroundnings. off, inherit and transparent are just synonyms for
+    inheriting color from the text and make the background color transparent
+    (use e.g. --html_code_style=inherit to avoid the red Boostrap color).
     Default: on (use the css-specified typesetting of <pre> tags).
     NOTE: the naming "html_code_style" is not optimal: it has nothing
     to do with code block style, but the <code> tag for inline verbatim text
@@ -11742,7 +11818,7 @@ here for convenience.
     
     --exercise_solution=...
     
-    Typesetting of solutions: paragraph or admon.
+    Typesetting of solutions: paragraph, admon, or quote.
     
     
     --wordpress

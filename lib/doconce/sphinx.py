@@ -766,7 +766,7 @@ def define(FILENAME_EXTENSION,
         'module variable': ':var',
         }
 
-    TOC['sphinx'] = lambda s: ''  # Sphinx automatically generates a toc
+    TOC['sphinx'] = lambda s, f: ''  # Sphinx automatically generates a toc
     QUIZ['sphinx'] = sphinx_quiz
 
 

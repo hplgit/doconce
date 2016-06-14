@@ -585,7 +585,8 @@ display: inline;
     return s
 
 def toc2html(html_style, bootstrap=True,
-             max_headings=17): # max no of headings in pull down menu
+             max_headings=17, # max no of headings in pull down menu
+             ):
     global tocinfo  # computed elsewhere
 
     # level_depth: how many levels that are represented in the toc
@@ -1293,7 +1294,7 @@ function show_hide_code%d(){
     else:
         filestr = filestr.replace(' <!-- chapter heading -->', ' <hr>')
     if html_style.startswith('boots'):
-        # Insert toc
+        # Insert toc if toc
         if '***TABLE_OF_CONTENTS***' in filestr:
             filestr = filestr.replace('***TABLE_OF_CONTENTS***', toc_html)
         jumbotron = option('html_bootstrap_jumbotron=', 'on')
@@ -2143,7 +2144,7 @@ def html_index_bib(filestr, index, citations, pubfile, pubdata):
 global tocinfo
 tocinfo = None
 
-def html_toc(sections):
+def html_toc(sections, filestr):
     # Find minimum section level
     level_min = 4
     for title, level, label in sections:
@@ -2154,9 +2155,11 @@ def html_toc(sections):
 
     extended_sections = []  # extended list for toc in HTML file
     toc = locale_dict[locale_dict['language']]['toc']
-    # If this function is called, we have and want a TOC!
-    extended_sections.append(
-        (toc, level_min, 'table_of_contents', 'table_of_contents'))
+    # This function is always called, only extend headings if a TOC is wanted
+    m = re.search(r'^TOC: +[Oo]n', filestr, flags=re.MULTILINE)
+    if m:
+        extended_sections.append(
+            (toc, level_min, 'table_of_contents', 'table_of_contents'))
     #hr = '<hr>'
     hr = ''
     s = '<h1 id="table_of_contents">%s</h2>\n\n%s\n<p>\n' % (toc, hr)
@@ -2849,6 +2852,21 @@ code { color: inherit; background-color: transparent; }
 pre { color: inherit; background-color: transparent; }
 """
     if html_style.startswith('boots'):
+        height = 50  # fixed header hight in pixels, varies with style
+        if 'bootswatch' in html_style:
+            _style = html_style.split('_')[-1]
+            if _style in ('simplex', 'superhero'):
+                height = 40
+            elif _style in ('yeti',):
+                height = 45
+            elif _style in ('cerulean', 'cosmo', 'lumen', 'spacelab', 'united', 'slate', 'cyborg', 'amelia'):
+                height = 45
+            elif _style.startswith('journal') or _style in ('flatly', 'darkly'):
+                height = 60
+            elif _style in ('readable',):
+                height = 64
+        if html_style.startswith('bootstrap'):
+            height = 50
         style_changes += """
 /* Add scrollbar to dropdown menus in bootstrap navigation bar */
 .dropdown-menu {
@@ -2862,10 +2880,10 @@ pre { color: inherit; background-color: transparent; }
 .anchor::before {
   content:"";
   display:block;
-  height:50px; /* fixed header height*/
+  height:%spx;      /* fixed header height for style %s */
   margin:-50px 0 0; /* negative fixed header height */
 }
-"""
+""" % (height, html_style)
         if '!bquiz' in filestr:
         # Style for buttons for collapsing paragraphs
             style_changes += """
