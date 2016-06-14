@@ -14,6 +14,10 @@ DocOnce is a modestly tagged (Markdown-like) markup language targeting scientifi
 
 Here are some of the most recent features in DocOnce:
 
+ * Lots of automatic adjustments of the Bootstrap styles: if it looks good
+   in one style, just switch to any other Bootstrap style and
+   it will look good there
+   two (the generated code tweaks parameters in the various styles).
  * The `doconce format` command may issue a lot of warnings and concerns,
    which are usually lost in the very long output from translating
    DocOnce to some output format. Now all the warnings, errors, and comments
