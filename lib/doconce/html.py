@@ -2881,9 +2881,9 @@ pre { color: inherit; background-color: transparent; }
   content:"";
   display:block;
   height:%spx;      /* fixed header height for style %s */
-  margin:-50px 0 0; /* negative fixed header height */
+  margin:-%spx 0 0; /* negative fixed header height */
 }
-""" % (height, html_style)
+""" % (height, html_style, height)
         if '!bquiz' in filestr:
         # Style for buttons for collapsing paragraphs
             style_changes += """
