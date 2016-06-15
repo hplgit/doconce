@@ -2860,7 +2860,7 @@ pre { color: inherit; background-color: transparent; }
             elif _style in ('yeti',):
                 height = 45
             elif _style in ('cerulean', 'cosmo', 'lumen', 'spacelab', 'united', 'slate', 'cyborg', 'amelia'):
-                height = 45
+                height = 50
             elif _style.startswith('journal') or _style in ('flatly', 'darkly'):
                 height = 60
             elif _style in ('readable',):
