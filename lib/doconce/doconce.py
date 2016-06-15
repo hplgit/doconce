@@ -736,7 +736,7 @@ def syntax_check(filestr, format):
         for m in m_:
             if m:
                 errwarn('*** error: reference to equation label "%s" is without parentheses' % eq_label)
-                errwarn('    the equation reference should be type set as (ref{%s})' % eq_label)
+                errwarn('    the equation reference should be typeset as (ref{%s})' % eq_label)
                 errwarn('... ' + filestr[m.start()-20:m.start()] + ' ' + filestr[m.start():m.end()+30] + ' ...')
                 found_problem = True
     if found_problem:
