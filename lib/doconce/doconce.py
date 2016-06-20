@@ -5174,7 +5174,7 @@ def doconce_format(format, dotext, compile=False,
     try:
         output = subprocess.check_output(cmd, shell=True,
                                          stderr=subprocess.STDOUT)
-    except subprocess.CalledProcessError:
+    except subprocess.CalledProcessError as e:
         errwarn('Execution of "%s" failed!\n' % cmd)
         raise DocOnceSyntaxError('Could not run %s.\nOutput:\n%s' %
                                  (cmd, e.output))
