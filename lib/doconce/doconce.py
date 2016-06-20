@@ -3281,7 +3281,7 @@ def interpret_authors(filestr, format):
                         if m1:
                             pattern = r'\d\d\d\d'
                             date = m1.group(1)
-                            m2 = research(pattern, date)
+                            m2 = re.search(pattern, date)
                             if m2:
                                 year = m2.group()
                         if year is None:
@@ -5166,7 +5166,7 @@ def doconce_format(format, dotext, compile=False,
     try:
         output = subprocess.check_output(cmd, shell=True,
                                          stderr=subprocess.STDOUT)
-    except subprocess.CalledProcessError:
+    except subprocess.CalledProcessError as e:
         errwarn('Execution of "%s" failed!\n' % cmd)
         raise DocOnceSyntaxError('Could not run %s.\nOutput:\n%s' %
                                  (cmd, e.output))
