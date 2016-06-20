@@ -1780,7 +1780,7 @@ We also test mdash---used as alternative to hyphen without spaces around,
 or in quotes:
 
 !bquote
-Fun is fun.--- Unknown.
+*Fun is fun*.---Unknown.
 !equote
 
 The ndash should also be tested -- as in the Hanson--Nilson equations

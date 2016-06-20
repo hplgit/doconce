@@ -568,6 +568,13 @@ see the "`examples`": "src/examples/index.html" directory.
 The back-ticks must be removed, or the text can be reformulated as
 in the line above it.
 
+===== Inline comment does not handle verbatim or emphasis right =====
+
+Inline comments lead (in LaTeX output formats) to shortened titles for
+a table of inline comments, and the shortening is done naively: the
+title can cut a verbatim expression in the middle. There is no other
+way around that to rewrite the inline comment. (The title consists of
+the first 50 characters or so of the text.
 
 ===== Inline verbatim code or boldface is not detected when used with a footnote =====
 

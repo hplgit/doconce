@@ -1620,13 +1620,13 @@ there are no spaces around the em-dash, and 2) origin of quotes,
 where there is no space between the end of the quote and the m-dash:
 
 !bquote
-*Premature optimization is the root of all evil.*--- Donald Knuth.
+*Premature optimization is the root of all evil.*---Donald Knuth.
 !equote
 The associated DocOnce source reads
 
 !bc do
 |bquote
-*Premature optimization is the root of all evil.*--- Donald Knuth.
+*Premature optimization is the root of all evil.*---Donald Knuth.
 |equote
 !ec
 
