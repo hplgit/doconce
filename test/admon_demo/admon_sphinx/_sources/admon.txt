@@ -7,7 +7,7 @@ Testing admons
 %%%%%%%%%%%%%%
 
 :Authors: H. P. Langtangen
-:Date: Jun 14, 2016
+:Date: Jun 20, 2016
 
 .. !split
 

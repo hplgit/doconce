@@ -443,14 +443,6 @@ def syntax_check(filestr, format):
     figure, section, etc. (or other non-equation) references"""  % len(m))
         _abort()
 
-    # mdash with spaces
-    pattern = r'(---\s\w|\w\s---)'
-    m = re.search(pattern, filestr)
-    if m:
-        print '*** error: mdash (---) cannot have spaces around it'
-        errwarn(filestr[m.start()-20:m.start()+20])
-        _abort()
-
     # URLs with just one /
     m = re.findall(r'https?:/[A-Za-z].+', filestr)
     if m:
@@ -727,6 +719,14 @@ def syntax_check(filestr, format):
     # Remove tex and code blocks
     filestr, code_blocks, code_block_types, tex_blocks = \
              remove_code_and_tex(filestr, format)
+
+    # mdash with spaces
+    pattern = r'(---\s\w|\w\s---)'
+    m = re.search(pattern, filestr)
+    if m:
+        print '*** error: mdash (---) cannot have spaces around it'
+        errwarn(filestr[m.start()-20:m.start()+20])
+        _abort()
 
     # Check that all references to equations have parenthesis
     eq_labels = []
