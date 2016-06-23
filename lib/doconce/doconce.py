@@ -4256,6 +4256,12 @@ def doconce2format(filestr, format):
                              INLINE_TAGS_SUBST[format]['movie'],
                              filestr, flags=re.MULTILINE)
 
+    # Next step: IBPLOT commands for inline interactive plots
+    from html import embed_IBPLOTs
+    has_ibplot = 'IBPLOT' in filestr and option('IBPLOT')
+    if has_ibplot:
+        filestr = embed_IBPLOTs(filestr, format)
+        debugpr('The file after inserting interactive IBPLOT curve plots:', filestr)
 
     # Next step: deal with user-defined environments
     if '!bu-' in filestr:

@@ -18,6 +18,7 @@ skip_inline_comments = False
 draft = False
 #CC_license = 
 align2equations = False
+IBPLOT = False
 #exercise_numbering = 
 exercises_in_zip = False
 #exercises_in_zip_filename = 

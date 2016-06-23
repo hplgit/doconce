@@ -657,6 +657,171 @@ def toc2html(html_style, bootstrap=True,
         _abort()
     return toc_html
 
+class CreateApp():
+    """Class for interactive Bokeh plots."""
+    def __init__(self, plot_info):
+        from numpy import linspace
+        from bokeh.models.widgets import Slider, TextInput
+        from bokeh.models import ColumnDataSource, HBox, VBoxForm
+
+        N = 200
+        colors = ['red', 'green', 'indigo', 'orange', 'blue', 'grey', 'purple']
+        possible_inputs = ['x_axis_label', 'xrange', 'yrange', 'sliderDict', 'title', 'number_of_graphs']
+
+        y = None
+        self.curve = plot_info[0]
+        x_axis_label = None
+        y_axis_label = None
+        xrange = (0, 10)
+        yrange = (0, 10)
+        sliderDict = None
+        title = None
+        number_of_graphs = None
+        legend = None
+        reverseAxes = False
+
+        self.source = []
+        self.sliderList = []
+
+        for n in range(1,len(plot_info)):
+            # Update inputs
+
+            exec(plot_info[n].strip())
+
+        self.x = linspace(xrange[0], xrange[1], N)
+        self.reverseAxes = reverseAxes
+        if sliderDict != None:
+            self.parameters = sliderDict.keys()
+
+            for n, param in enumerate(self.parameters):
+                exec("sliderInstance = Slider(" + sliderDict[param] + ")") # Todo: Fix so exec is not needed
+                exec("self.sliderList.append(sliderInstance)") # Todo: Fix so exec is not needed
+                # get first value of param
+                exec(param + " = "  + 'self.sliderList[n].value') # Todo: Fix so exec is not needed
+
+        # Set up plot
+        from bokeh.plotting import Figure
+        self.plot = Figure(
+            plot_height=400, plot_width=400, title=title,
+            tools="crosshair,pan,reset,resize,save,wheel_zoom",
+            x_range=xrange, y_range=yrange)
+        self.plot.xaxis.axis_label = x_axis_label
+        self.plot.yaxis.axis_label = y_axis_label
+        # generate the first curve:
+        x = self.x
+        exec(plot_info[0]) #  execute y = f(x, params)
+
+        if type(y) is list:
+            if legend == None:
+                legend = [legend]*len(y)
+            for n in range(len(y)):
+
+                if self.reverseAxes:
+                    x_plot = y[n]
+                    y_plot = self.x
+                else:
+                    x_plot = self.x
+                    y_plot = y[n]
+                self.source.append(
+                    ColumnDataSource(data=dict(x=x_plot, y=y_plot)))
+                self.plot.line(
+                    'x', 'y',
+                    source=self.source[n], line_width=3,
+                    line_color=colors[n], legend=legend[n])
+        else:
+            if self.reverseAxes:
+                x_plot = y
+                y_plot = self.x
+            else:
+                x_plot = self.x
+                y_plot = y
+            self.source.append(
+                ColumnDataSource(data=dict(x=x_plot, y=y_plot)))
+            self.plot.line(
+                'x', 'y',
+                source=self.source[0], line_width=3, legend=legend)
+
+    def update_data(self, attrname, old, new):
+        # Get the current slider values
+        y = None
+        x = self.x
+        for n, param in enumerate(self.parameters):
+            exec(param + " = "  + 'self.sliderList[n].value')
+        # generate the new curve:
+        exec(self.curve) #  execute y = f(x, params)
+
+        if type(y) is list:
+            for n in range(len(y)):
+                if self.reverseAxes:
+                    x_plot = y[n]
+                    y_plot = self.x
+                else:
+                    x_plot = self.x
+                    y_plot = y[n]
+                self.source[n].data = dict(x=x_plot, y=y_plot)
+        else:
+            if self.reverseAxes:
+                x_plot = y
+                y_plot = x
+            else:
+                x_plot = x
+                y_plot = y
+            self.source[0].data = dict(x=x_plot, y=y_plot)
+
+
+def embed_IBPLOTs(filestr, format):
+    """
+    Replace all IBPLOT tags by proper script and bokeh code.
+    Written by Fredrik Eikeland Fossan with edits by H. P. Langtangen.
+    """
+    from bokeh.document import Document
+    from bokeh.client import push_session
+    from bokeh.embed import autoload_server
+    from bokeh.models import HBox, VBoxForm
+
+    document = Document()
+    session = push_session(document)
+
+    # Find all IBPLOT tags and store them
+    IBPLOT_tags = []
+    IBPLOT_lines = []
+    for line in filestr.splitlines():
+        if line.startswith('IBPLOT:'):
+            plot_info = line[8:-1].split(';')
+
+            new_plot_info = []
+            n = 0
+            for element in plot_info:
+                if element[0]==' ':
+                    element = element[1:]
+                if element[-1]==' ':
+                    element = element[:-1]
+                if element[-1] == ']' and n == len(plot_info) -1:
+                    element = element[:-1]
+                new_plot_info.append(element)
+                n += 1
+            IBPLOT_tags.append(new_plot_info)
+            IBPLOT_lines.append(line)
+
+    appLayoutList = []
+    for app_info in IBPLOT_tags:
+        app = CreateApp(app_info)
+        for w in app.sliderList:
+            w.on_change('value', app.update_data)
+        inputs = VBoxForm(children=app.sliderList)
+        layout = HBox(children=[inputs, app.plot], width=800)
+        document.add_root(layout)
+        appLayoutList.append(layout)
+
+    # Replace each IBPLOT tag by proper HTML code
+    app_no = 0
+    for tags, line in zip(IBPLOT_tags, IBPLOT_lines):
+        text = autoload_server(appLayoutList[app_no], session_id=session.id)
+        if format == 'html':
+            filestr = filestr.replace(line, '<!--\n%s\n-->\n' % line + text)
+        else:
+            filestr = filestr.replace(line, '')
+    return filestr
 
 def embed_newcommands(filestr):
     from expand_newcommands import process_newcommand
