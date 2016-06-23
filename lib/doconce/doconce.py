@@ -721,8 +721,8 @@ def syntax_check(filestr, format):
              remove_code_and_tex(filestr, format)
 
     # mdash with spaces
-    pattern = r'(---\s\w|\w\s---)'
-    m = re.search(pattern, filestr)
+    pattern = r'^[^#](---\s\w|\w\s---)'
+    m = re.search(pattern, filestr, flags=re.MULTILINE)
     if m:
         print '*** error: mdash (---) cannot have spaces around it'
         errwarn(filestr[m.start()-20:m.start()+20])
@@ -4889,9 +4889,20 @@ fix the lines as described or remove the mako statements.
 *** error: potential problem with the math formula
            $%s$
     since ${ can confuse Mako - rewrite %s""" % (formula, suggestion))
-                if formula.startswith('${\cal'):
-                    errwarn(r'Here: use \mathcal{...} instead of {\cal ...}')
+                if formula.startswith('{\\cal'):
+                    errwarn(r'Here: use \mathcal{...} in %s instead of {\cal ...}' % formula)
                 _abort()
+
+        # Find mako variables with missing right brace (common...)
+        pattern = r'\$\{[A-Za-z_][A-Za-z_0-9]*[", .;]' # ${variable ends in no }
+        variables = re.findall(pattern, filestr)
+        if variables:
+            errwarn('*** error: mako variable with missing right brace:\n' +
+                    '\n'.join(variables))
+            m = re.search(pattern, filestr)
+            if m:
+                print '    first occurrence:\n', filestr[m.start()-10:m.start()+20]
+            _abort()
 
         if preprocessor is not None:  # already found preprocess commands?
             # The output is in resultfile, mako is run on that
@@ -4948,7 +4959,7 @@ On Debian (incl. Ubuntu) systems, you can alternatively do
                             strict_undefined=strict_undefined)
         except Exception as e:
             errwarn('*** mako error: ' + str(type(e)).split("'")[1])
-            errwarn('   ', e)
+            errwarn('   ' + str(e))
             if "'ascii'" in str(e):
                 errwarn('    reason: doconce file contains non-ascii characters')
                 errwarn('    rerun with --encoding=utf-8 (or similar):')

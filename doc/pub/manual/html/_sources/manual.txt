@@ -21,7 +21,7 @@ DocOnce Description
 %%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Jun 14, 2016
+:Date: Jun 22, 2016
 
 .. lines beginning with # are doconce comment lines
 
@@ -3434,7 +3434,7 @@ where there is no space between the end of the quote and the m-dash:
 
 ..
 
-    *Premature optimization is the root of all evil.*--- Donald Knuth.
+    *Premature optimization is the root of all evil.*---Donald Knuth.
 
 
 The associated DocOnce source reads
@@ -3442,7 +3442,7 @@ The associated DocOnce source reads
 .. code-block:: doconce
 
     !bquote
-    *Premature optimization is the root of all evil.*--- Donald Knuth.
+    *Premature optimization is the root of all evil.*---Donald Knuth.
     !equote
 
 Ampersand
@@ -5236,7 +5236,7 @@ Here is a plain code block:
 
 .. code-block:: doconce
 
-    !bc
+    !bc dat
     % Could be a comment line in some file
     % And some data
     1.003 1.025
@@ -5253,6 +5253,16 @@ which gets rendered as
     1.003 1.025
     2.204 1.730
     3.001 1.198
+
+
+.. admonition:: Tip: let code lines be shorter than 67 characters
+
+   Most output formats from DocOnce will get nice-looking code
+   environments if you keep the length of lines in source code
+   below or equal to 67 characters.
+
+
+
 
 Typesetting Styles
 ~~~~~~~~~~~~~~~~~~

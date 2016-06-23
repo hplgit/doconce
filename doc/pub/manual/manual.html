@@ -33,8 +33,8 @@ code { color: inherit; background-color: transparent; }
 .anchor::before {
   content:"";
   display:block;
-  height:50px; /* fixed header height*/
-  margin:-50px 0 0; /* negative fixed header height */
+  height:64px;      /* fixed header height for style bootswatch_readable */
+  margin:-64px 0 0; /* negative fixed header height */
 }
 
 /*
@@ -756,7 +756,7 @@ $$
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <br>
 <p>
-<center><h4>Jun 14, 2016</h4></center> <!-- date -->
+<center><h4>Jun 22, 2016</h4></center> <!-- date -->
 <br>
 <p>
 <!-- lines beginning with # are doconce comment lines -->
@@ -4408,7 +4408,7 @@ where there is no space between the end of the quote and the m-dash:
 
 <p>
 <blockquote>
-    *Premature optimization is the root of all evil.*&mdash; Donald Knuth.
+    <em>Premature optimization is the root of all evil.</em>&mdash;Donald Knuth.
 </blockquote>
 
 The associated DocOnce source reads
@@ -4417,7 +4417,7 @@ The associated DocOnce source reads
 
 <!-- code=doconce (!bc do) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>!bquote
-*Premature optimization is the root of all evil.*--- Donald Knuth.
+*Premature optimization is the root of all evil.*---Donald Knuth.
 !equote
 </pre></div>
 
@@ -6367,7 +6367,7 @@ Here is a plain code block:
 <p>
 
 <!-- code=doconce (!bc do) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>!bc
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>!bc dat
 % Could be a comment line in some file
 % And some data
 1.003 1.025
@@ -6387,6 +6387,13 @@ which gets rendered as
 2.204 1.730
 3.001 1.198
 </pre></div>
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>Tip: let code lines be shorter than 67 characters.</b>
+Most output formats from DocOnce will get nice-looking code
+environments if you keep the length of lines in source code
+below or equal to 67 characters.
+</div>
+
 
 <h3 id="___sec81" class="anchor">Typesetting Styles </h3>
 

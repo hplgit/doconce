@@ -3231,7 +3231,7 @@ directly after a section/paragraph heading or a table.
 Here is a plain code block:
 
 !bc do
-|bc
+|bc dat
 % Could be a comment line in some file
 % And some data
 1.003 1.025
@@ -3248,6 +3248,12 @@ which gets rendered as
 2.204 1.730
 3.001 1.198
 !ec
+
+!bnotice Tip: let code lines be shorter than 67 characters
+Most output formats from DocOnce will get nice-looking code
+environments if you keep the length of lines in source code
+below or equal to 67 characters.
+!enotice
 
 === Typesetting Styles ===
 

@@ -799,7 +799,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jun 14, 2016</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jun 22, 2016</td>
 </tr>
 </tbody>
 </table>
@@ -3740,10 +3740,10 @@ as alternative to a hyphen with space around in a sentence&#8212;except that
 there are no spaces around the em-dash, and 2) origin of quotes,
 where there is no space between the end of the quote and the m-dash:</p>
 <blockquote>
-<div><em>Premature optimization is the root of all evil.</em>&#8212; Donald Knuth.</div></blockquote>
+<div><em>Premature optimization is the root of all evil.</em>&#8212;Donald Knuth.</div></blockquote>
 <p>The associated DocOnce source reads</p>
 <div class="highlight-doconce"><div class="highlight"><pre><span></span><span class="k">!bquote</span>
-*Premature optimization is the root of all evil.*--- Donald Knuth.
+*Premature optimization is the root of all evil.*---Donald Knuth.
 <span class="k">!equote</span>
 </pre></div>
 </div>
@@ -5131,7 +5131,7 @@ line</em>.  Before such a code block there must be a plain sentence
 ASCII-type formats is desired). For example, a code block cannot come
 directly after a section/paragraph heading or a table.</p>
 <p>Here is a plain code block:</p>
-<div class="highlight-doconce"><div class="highlight"><pre><span></span><span class="k">!bc</span>
+<div class="highlight-doconce"><div class="highlight"><pre><span></span><span class="k">!bc</span> dat
 % Could be a comment line in some file
 % And some data
 1.003 1.025
@@ -5147,6 +5147,12 @@ directly after a section/paragraph heading or a table.</p>
 2.204 1.730
 3.001 1.198
 </pre></div>
+</div>
+<div class="admonition-tip-let-code-lines-be-shorter-than-67-characters admonition">
+<p class="first admonition-title">Tip: let code lines be shorter than 67 characters</p>
+<p class="last">Most output formats from DocOnce will get nice-looking code
+environments if you keep the length of lines in source code
+below or equal to 67 characters.</p>
 </div>
 <div class="section" id="typesetting-styles">
 <h4>Typesetting Styles<a class="headerlink" href="#typesetting-styles" title="Permalink to this headline">¶</a></h4>
