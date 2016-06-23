@@ -2147,7 +2147,7 @@ There are comment lines with
 
 .. code-block:: text
 
-    --- begin preamble ---d
+    --- begin preamble ---
 
 and
 

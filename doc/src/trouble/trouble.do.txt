@@ -1938,7 +1938,7 @@ elsewhere). Such automatic edits are useful if they are few.
 There are comment lines with
 
 !bc
---- begin preamble ---d
+--- begin preamble ---
 !ec
 and
 
