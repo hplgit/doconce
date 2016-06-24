@@ -4019,8 +4019,9 @@ def file2file(in_filename, format, basename):
 
     if in_filename.endswith('.py') or in_filename.endswith('.py.do.txt'):
         filestr = doconce2format4docstrings(filestr, format)
+        bg_session = None
     else:
-        filestr = doconce2format(filestr, format)
+        filestr, bg_session = doconce2format(filestr, format)
 
     out_filename = basename + FILENAME_EXTENSION[format]
 
@@ -4051,7 +4052,7 @@ def file2file(in_filename, format, basename):
         """
 
     f.close()
-    return out_filename
+    return out_filename, bg_session
 
 
 def doconce2format4docstrings(filestr, format):
@@ -4258,11 +4259,12 @@ def doconce2format(filestr, format):
 
     # Next step: IBPLOT commands for inline interactive plots
     from html import embed_IBPLOTs
+    bg_session = None
     has_ibplot = 'IBPLOT' in filestr and option('IBPLOT')
     if has_ibplot:
-        filestr = embed_IBPLOTs(filestr, format)
+        filestr, bg_session = embed_IBPLOTs(filestr, format)
+        #bg_session.loop_until_closed()
         debugpr('The file after inserting interactive IBPLOT curve plots:', filestr)
-
     # Next step: deal with user-defined environments
     if '!bu-' in filestr:
         filestr = typeset_userdef_envirs(filestr, format)
@@ -4612,7 +4614,7 @@ def doconce2format(filestr, format):
         errwarn('\n\n...doconce format used %.1f s to translate the document (%d lines)\n' % (cpu, filestr.count('\n')))
         time.sleep(1)
 
-    return filestr
+    return filestr, bg_session
 
 
 def preprocess(filename, format, preprocessor_options=[]):
@@ -5156,13 +5158,13 @@ def format_driver():
                             if not arg.startswith('--')]
     filename_preprocessed = preprocess(filename, format,
                                        preprocessor_options)
-    out_filename = file2file(filename_preprocessed, format, basename)
+    out_filename, bg_session = file2file(filename_preprocessed, format, basename)
 
     if filename_preprocessed.startswith('__') and not option('debug'):
         os.remove(filename_preprocessed)  # clean up
     #errwarn('----- successful run: %s filtered to %s\n' % (filename, out_filename))
     errwarn('output in ' + os.path.join(dirname, out_filename))
-
+    return bg_session
 
 class DocOnceSyntaxError(Exception):
     pass
