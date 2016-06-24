@@ -95,7 +95,8 @@ def format():
             print 'Could not import doconce from directory\n', os.getcwd()
             sys.exit(1)
 
-    doconce.doconce.format_driver()
+    bg_session = doconce.doconce.format_driver()
+    return bg_session
 
 
 
@@ -1685,7 +1686,7 @@ def main():
     found = False
     if command in commands:
         found = True
-        eval(command + '()')
+        retval = eval(command + '()')
     if not found:
         if command in ('html', 'latex', 'sphinx', 'rst', 'plain', 'gwiki', \
            'mwiki', 'epydoc', 'pandoc'):
@@ -1694,5 +1695,9 @@ def main():
         else:
             print 'command "%s" is not legal, must be among\n' % command
             print ', '.join(commands)
+    return retval
 
-main()
+bg_session = main()
+if bg_session is not None:
+    print '...running bokeh bg_session.loop_until_closed() in the background'
+    bg_session.loop_until_closed()

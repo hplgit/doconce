@@ -821,7 +821,10 @@ def embed_IBPLOTs(filestr, format):
             filestr = filestr.replace(line, '<!--\n%s\n-->\n' % line + text)
         else:
             filestr = filestr.replace(line, '')
-    return filestr
+        app_no += 1
+
+    document.add_root(layout)
+    return filestr, session
 
 def embed_newcommands(filestr):
     from expand_newcommands import process_newcommand
