@@ -311,7 +311,7 @@ def makedocstr(parent_class, subclass_method):
     docstr = parent_method.__doc__
     if subclass_method.__doc__ is not None and \
            subclass_method is not parent_method:
-        docstr += subclass_func.__doc__
+        docstr += subclass_method.__doc__
     return docstr
 
 
@@ -674,6 +674,7 @@ class DocWriter:
         #self.history = (self.method_name, args, kwargs)
         for writer in self.writers:
             s = getattr(writer, self.method_name)(*args, **kwargs)
+        # unfinished method
 
     '''
     Alternative to attaching separate global functions:

@@ -664,7 +664,7 @@ def xml_format_books(paper):
     values.append(_xml_get_authors_string(paper["author"]))
     values.append(_xml_format_title(paper))
     if "edition" in paper:
-        values.append(_xml_format_edtion(paper))
+        values.append(_xml_format_edition(paper))
     if "series" in paper:
         values.append(_xml_format_bookseries(paper))
     if "publisher" in paper:
