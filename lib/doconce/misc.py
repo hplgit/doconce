@@ -6803,6 +6803,7 @@ def _spellcheck_all(**kwargs):
         else:
             for name in tmp_misspelled:
                 print 'See', name, 'for misspellings in', name.replace('tmp_misspelled_', '')[:-1]
+        print 'Search tmp_stripped_*.do.txt for the misspellings'
         dictfile = kwargs.get('dictionary', '.dict4spell.txt')
         print 'When all misspellings are acceptable, cp new_dictionary.txt~',\
               dictfile, '\n'

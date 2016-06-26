@@ -4260,7 +4260,7 @@ def doconce2format(filestr, format):
     # Next step: IBPLOT commands for inline interactive plots
     from html import embed_IBPLOTs
     bg_session = None
-    has_ibplot = 'IBPLOT' in filestr and option('IBPLOT')
+    has_ibplot = 'IBPLOT' in filestr # and option('IBPLOT')
     if has_ibplot:
         filestr, bg_session = embed_IBPLOTs(filestr, format)
         #bg_session.loop_until_closed()
