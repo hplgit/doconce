@@ -1,4 +1,4 @@
-import os, sys, shutil, re, glob, time, subprocess
+import os, sys, shutil, re, glob, time, subprocess, codecs
 from doconce import errwarn
 
 _part_filename = '._%s%03d'
@@ -932,11 +932,11 @@ def latin2html():
 
 # replace is taken from scitools
 def _usage_find_nonascii_chars():
-    print 'Usage: doconce find_non_ascii_chars file1 file2 ...'
+    print 'Usage: doconce find_nonascii_chars file1 file2 ...'
 
 def find_nonascii_chars():
     if len(sys.argv) <= 1:
-        usage_find_nonascii_chars()
+        _usage_find_nonascii_chars()
         sys.exit(0)
 
     filenames = wildcard_notation(sys.argv[1:])
@@ -2601,7 +2601,7 @@ def html_colorbullets():
     images of balls with colors.
     """
     if len(sys.argv) <= 1:
-        _usage_html_collorbullets()
+        _usage_html_colorbullets()
         sys.exit(0)
 
     red_bullet = 'bullet_red2.png'
@@ -2992,7 +2992,7 @@ def tablify(parts, format="html"):
                             print '   ',
                             for s, c in enumerate(row):
                                 column, width = c
-                                print ' %d%d: ' (r, s),
+                                print ' %d%d: ' % (r, s),
                                 if width is not None:
                                     print 'no width'
                                 else:
@@ -8613,7 +8613,7 @@ def _usage_ipynb2doconce():
 
 def ipynb2doconce():
     if len(sys.argv) < 2:
-        _usage_ipynb()
+        _usage_ipynb2doconce()
         sys.exit(0)
 
     cell_delimiter = '--cell_delimiter' in sys.argv

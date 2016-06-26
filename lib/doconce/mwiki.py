@@ -32,7 +32,7 @@ go back.
 """
 
 
-import re, os, commands, sys
+import re, os, commands, sys, subprocess
 from common import default_movie, plain_exercise, insert_code_and_tex
 from plaintext import plain_quiz
 from misc import _abort

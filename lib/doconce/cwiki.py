@@ -4,7 +4,7 @@ See http://www.wikicreole.org/wiki/Creole1.0 for syntax.
 """
 # Simple edit of gwiki.py
 
-import re, os, sys
+import re, os, sys, subprocess
 from common import default_movie, plain_exercise, insert_code_and_tex
 from plaintext import plain_quiz
 from misc import _abort
