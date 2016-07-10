@@ -787,14 +787,20 @@ def embed_IBPLOTs(filestr, format):
     IBPLOT_lines = []
     for line in filestr.splitlines():
         if line.startswith('IBPLOT:'):
-            plot_info = line[8:-1].split(';')
+            try:
+                plot_info = line[8:-1].split(';')
+            except Exception:
+                plot_info = []
+            if not plot_info:
+                errwarn('*** error: inline plot specification\n    %s\ncould not be split wrt ;' % line)
+                _abort()
 
             new_plot_info = []
             n = 0
             for element in plot_info:
-                if element[0]==' ':
+                if element[0] ==' ':
                     element = element[1:]
-                if element[-1]==' ':
+                if element[-1] ==' ':
                     element = element[:-1]
                 if element[-1] == ']' and n == len(plot_info) -1:
                     element = element[:-1]

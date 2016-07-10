@@ -3937,7 +3937,11 @@ styles are available through a "demo": "http://hplgit.github.io/doconce/doc/pub/
 The following admonition environments are available:
 `block`, `warning`, `notice`, `question`, and `summary`.
 The box is defined by begin and end tags such as `!bnotice` and `!enotice`.
-The title of the box is fully customizable.
+The title of the box is fully customizable. This means that if you want
+different types of boxes, e.g. a *detour* box and a *tip* box, you can just
+open introduce the convention that detour applies the summary box and
+starts with 'Detour:' in the title, while the notice box is used for
+tip boxes and as a title starting with 'Tip:'.
 
 Here are a few examples:
 

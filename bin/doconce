@@ -492,12 +492,16 @@ EOF
             os.mkdir('_themes')
         shutil.copy(theme_dir, os.path.join('_themes', theme_dir))
 
+
     if conf_py is not None:
         shutil.copy(os.path.join(os.pardir, conf_py), 'conf.py')
-        # Check if title, author, or copyright are given
+
+        # Edit the file appropriately if title, author, or copyright are given
         with open('conf.py', 'r') as f:
             conf_text = f.read()
 
+        # Make conf.py ready for latex, man pages, texinfo, epub etc
+        # with current doc info
         pattern = r'latex_documents = \[.*?\]'
         replacement = r"latex_documents = [('index', 'doc.tex', project, u'%s',  'manual'),]" % author
         conf_text = re.sub(pattern, replacement, conf_text,
@@ -529,6 +533,7 @@ EOF
             conf_text = re.sub(pattern, "short_title = u'%s'" % short_title,
                                conf_text, flags=re.MULTILINE)
 
+        # Fix copyright issues
         pattern = r'''copyright *= *u?['"](.*?)['"]'''
         m = re.search(pattern, conf_text)
         if m:
@@ -542,6 +547,7 @@ EOF
         with open('conf.py', 'w') as f:
             f.write(conf_text)
 
+    # Make a script that can generate all available sphinx themes
     f = open('make_themes.sh', 'w')
     f.write("""#!/bin/sh
 # Make all themes given on the command line (or if no themes are
@@ -569,6 +575,7 @@ echo "for i in sphinx-*; do google-chrome $i/index.html; done"
     f.close()
     os.chmod('make_themes.sh', 0755)
 
+    # Make index.rst main file for the document
     f = open('index.rst', 'w')
     if parts:
         files = parts
@@ -617,6 +624,10 @@ Index
 """)
     f.close()
     os.chdir(os.pardir)
+
+    # Make the automake_sphinx.py compilation file for automatically
+    # preparing the sphinx document, copying various files, and running make
+
     f = open('automake_sphinx.py', 'w')
     f.write('''\
 #!/usr/bin/env python
@@ -952,6 +963,9 @@ or just run it by
 def make_conf_py(themes, theme, title, short_title, copyright_,
                  logo, favicon, intersphinx):
     f = open('conf.py', 'r');  text = f.read();  f.close()
+
+    # Compensate bug July 2016 in Sphinx
+    text = text.replace('# import os', 'import os')
 
     # sphinx-quickstart sets copyright to authors with current year,
     # we customize this
