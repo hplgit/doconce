@@ -1698,6 +1698,7 @@ def main():
 
     # Treat wrong command name
     found = False
+    retval = None
     if command in commands:
         found = True
         retval = eval(command + '()')
