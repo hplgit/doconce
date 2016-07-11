@@ -6,7 +6,7 @@ here.
 """
 import re, sys, urllib, os
 from misc import option, _abort
-from doconce import errwarn
+from doconce import errwarn, locale_dict
 
 format = None   # latex, pdflatex, html, plain, etc
 
@@ -868,6 +868,15 @@ def doconce_exercise_output(
     latex_style = option('latex_style=', 'std')
     solution_style = option('exercise_solution=', 'paragraph') # admon, quote
 
+    language = locale_dict['language']
+    Solution = locale_dict[language]['Solution']
+    if solution_header == '__Solution.__':
+        solution_header = locale_dict[language]['__Solution.__']
+    if answer_header == '__Answer.__':
+        answer_header = locale_dict[language]['__Answer.__']
+    if hint_header == '__Hint.__':
+        hint_header = locale_dict[language]['__Hint.__']
+
     # Store solutions in a separate string
     has_solutions = False
     if exer['solution']:
@@ -1022,8 +1031,8 @@ def doconce_exercise_output(
                     if solution_style == 'paragraph':
                         s += solution_header + '\n'
                     elif solution_style == 'admon':
-                        s   += '\n!bnotice Solution.\n\n'
-                        sol += '\n!bnotice Solution.\n\n'
+                        s   += '\n!bnotice %s.\n\n' % Solution
+                        sol += '\n!bnotice %s.\n\n' % Solution
                     elif solution_style == 'quote':
                         s   += '\n!bquote\n' + solution_header + '\n'
                         sol += '\n!bquote\n' + solution_header + '\n'
@@ -1071,8 +1080,8 @@ def doconce_exercise_output(
         if solution_style == 'paragraph':
             s += solution_header + '\n'
         elif solution_style == 'admon':
-            s   += '\n!bnotice Solution.\n\n'
-            sol += '\n!bnotice Solution.\n\n'
+            s   += '\n!bnotice %s.\n\n' % Solution
+            sol += '\n!bnotice %s.\n\n' % Solution
         elif solution_style == 'quote':
             s   += '\n!bquote\n' + solution_header + '\n'
             sol += '\n!bquote\n' + solution_header + '\n'
@@ -1237,6 +1246,9 @@ inline_tag_after = r"""(?=$|[.,?!;:)\s])"""
 _linked_files = '''\s*"(?P<url>([^"]+?\.html?|[^"]+?\.html?\#[^"]+?|[^"]+?\.txt|[^"]+?\.tex|[^"]+?\.pdf|[^"]+?\.f|[^"]+?\.c|[^"]+?\.cpp|[^"]+?\.cxx|[^"]+?\.py|[^"]+?\.ipynb|[^"]+?\.java|[^"]+?\.pl|[^"]+?\.sh|[^"]+?\.csh|[^"]+?\.zsh|[^"]+?\.ksh|[^"]+?\.tar\.gz|[^"]+?\.tar|[^"]+?\.zip|[^"]+?\.f77|[^"]+?\.f90|[^"]+?\.f95|[^"]+?\.png|[^"]+?\.jpe?g|[^"]+?\.gif|[^"]+?\.pdf|[^"]+?\.flv|[^"]+?\.webm|[^"]+?\.ogg|[^"]+?\.mp4|[^"]+?\.mpe?g|[^"]+?\.e?ps|_static-?[^/]*/[^"]+?))"'''
 #_linked_files = '''\s*"(?P<url>([^"]+?))"'''  # any file is accepted
 
+abstract_names = '|'.join([locale_dict[locale_dict['language']][p]
+                           for p in ['Abstract', 'Summary', 'Preface']])
+
 INLINE_TAGS = {
     # math: text inside $ signs, as in $a = b$, with space before the
     # first $ and space, comma, period, colon, semicolon, or question
@@ -1309,7 +1321,7 @@ INLINE_TAGS = {
     # it before DATE (not recommended for papers)
     # 'abstract' is in doconce.py processed before chapter, section, etc
     'abstract':  # needs re.DOTALL | re.MULTILINE
-    r"""^\s*__(?P<type>Abstract|Summary|Preface).__\s*(?P<text>.+?)(?P<rest>TOC:|\\tableofcontents|Table of [Cc]ontents|DATE:|% --- begin date|\\date\{|<!-- date|__[A-Z].+[.?:]__|^={3,9})""",
+    r"""^\s*__(?P<type>%s).__\s*(?P<text>.+?)(?P<rest>TOC:|\\tableofcontents|Table of [Cc]ontents|DATE:|%% --- begin date|\\date\{|<!-- date|__[A-Z].+[.?:]__|^={3,9})""" % abstract_names,  # Abstract|Summary|Preface
 
     'keywords':
     r'^__Keywords.__\s+(?P<subst>.+)\s*$',

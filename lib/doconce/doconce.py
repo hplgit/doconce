@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 global dofile_basename
 
 import re, os, sys, shutil, subprocess, pprint, time, glob, codecs
@@ -14,26 +15,69 @@ locale_dict = dict(
     language='English',  # language to be used
     English={
         'locale': 'us_US',
+        'latex package': 'english',
         'toc': 'Table of contents',
-        'figure': 'Figure',
-        'movie': 'Movie',
+        'Figure': 'Figure',
+        'Movie': 'Movie',
         'list of': 'List of',
+        'and': 'and',
         'exercise': 'Exercise',
         'project': 'Project',
         'problem': 'Problem',
         'example': 'Example',
-        # admons, solution, answer, hint, remarks
+        'projects': 'Projects',
+        'problems': 'Problems',
+        'examples': 'Examples',
+        'Preface': 'Preface',
+        'Abstract': 'Abstract',
+        'Summary': 'Summary',
+        # Admons
+        'summary': 'summary',
+        'hint': 'hint',
+        'question': 'question',
+        'notice': 'notice',
+        'warning': 'warning',
+        # box, quote are silent wrt title
+        'remarks': 'remarks', # In exercises
+        # Exercise headings
+        'Solution': 'solution',
+        '__Solution.__': '__Solution.__',
+        '__Answer.__': '__Answer.__',
+        '__Hint.__': '__Hint.__',
+        # At the end (in Sphinx)
+        'index': 'Index',
+        # References
         },
     Norwegian={
         'locale': 'no_NO',
+        'latex package': 'norsk',
         'toc': 'Innholdsfortegnelse',
         'figure': 'Figur',
         'movie': 'Film',
         'list of': 'Liste over',
+        'and': 'og',
         'exercise': 'Oppgave',
         'project': 'Prosjekt',
         'problem': 'Problem',
         'example': 'Eksempel',
+        'exercises': 'Oppgaver',
+        'projects': 'Prosjekter',
+        'problems': 'Problemer',
+        'examples': 'Eksempeler',
+        'Preface': 'Forord',
+        'Abstract': 'Sammendrag',
+        'Summary': 'Sammendrag',
+        'summary': 'sammendrag',
+        'hint': 'Hint',
+        'question': 'spørsmål',
+        'notice': 'observer',
+        'warning': 'advarsel',
+        'remarks': 'bemerkning',
+        'index': 'Stikkordsliste',
+        'Solution': 'Løsning',  # In exercises
+        '__Solution.__': '__Løsning.__',
+        '__Answer.__': '__Løsning.__',
+        '__Hint.__': '__Hint.__',
         },
     )
 
@@ -4177,6 +4221,13 @@ def doconce2format(filestr, format):
     # Next step: standardize newlines
     filestr = re.sub(r'(\r\n|\r|\n)', '\n', filestr)
 
+    # Next step: set language
+    global locale_dict
+    locale_dict['language'] = option('language=', 'English')
+    if locale_dict['language'] not in locale_dict:
+        print '*** error: language "%s" not supported in locale_dict' % locale_dict['language']
+        _abort()
+
     # Check that all eqrefs have labels in tex blocks (\label{})
     if option('labelcheck=', 'off') == 'on':
         num_problems = 0
@@ -4593,6 +4644,9 @@ def doconce2format(filestr, format):
             # soup can be used to rewrite the entire doc
             filestr = soup.prettify()
 
+    # Next step: do some language specific substitutions
+    for word in ['Figure', 'Movie']:
+        filestr = filestr.replace(word, locale_dict[locale_dict['language']][word])
 
     # Next step: remove exercise solution/answers, notes, etc
     # (Note: must be done after code and tex blocks are inserted!

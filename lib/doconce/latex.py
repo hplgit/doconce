@@ -6,7 +6,7 @@ from common import plain_exercise, table_analysis, \
      online_python_tutor, envir_delimiter_lines, safe_join, \
      insert_code_and_tex, is_file_or_url, chapter_pattern
 from misc import option, _abort, replace_code_command
-from doconce import errwarn, debugpr
+from doconce import errwarn, debugpr, locale_dict
 additional_packages = ''  # comma-sep. list of packages for \usepackage{}
 
 include_numbering_of_exercises = True
@@ -618,8 +618,10 @@ def latex_code(filestr, code_blocks, code_block_types,
         # with the beamer block envir. (This is more robus for the admon
         # title than previous solution where we redefined all admon envirs
         # to be block envirs.)
+
+        # Generate admon automatically name by name
         admons = 'notice', 'summary', 'warning', 'question', 'block'
-        Admons = [admon[0].upper() + admon[1:] for admon in admons]
+        #Admons = [admon[0].upper() + admon[1:] for admon in admons]
         for admon in admons:
             # First admons without title
             pattern = r'!b%s *\n' % admon
@@ -761,6 +763,13 @@ def latex_code(filestr, code_blocks, code_block_types,
                     types_of_exer[-1] = 'and ' + types_of_exer[-1]
                     types_of_exer = ', '.join(types_of_exer)
                 heading = "List of %s" % types_of_exer
+                # Translate
+                lang = locale_dict['language']
+                phrases = 'list of', 'exercises', 'projects', 'and', 'problems'
+                for phrase in phrases:
+                    if phrase in locale_dict['language']:
+                        heading = heading.replace(phrase, locale_dict[lang][phrase])
+
                 # Insert definition of \listofexercises
                 if r'\tableofcontents' in filestr:
                     # Here we take fragments normally found in a stylefile
@@ -2317,7 +2326,7 @@ def get_admon_figname(admon_tp, admon_name):
 
 admons = 'notice', 'summary', 'warning', 'question', 'block'
 for _admon in admons:
-    _Admon = _admon.capitalize()
+    _Admon = locale_dict[locale_dict['language']].get(_admon, _admon).capitalize()
     _title_period = '' if option('latex_admon_title_no_period') else '.'
     text = r"""
 def latex_%(_admon)s(text_block, format, title='%(_Admon)s', text_size='normal'):
@@ -3075,6 +3084,10 @@ justified,
     INTRO['latex'] += r"""
 \listfiles               %  print all files needed to compile this document
 """
+    # Specify language to be used in \documentclass
+    if locale_dict[locale_dict['language']]['latex package'] != 'english':
+        INTRO['latex'] = INTRO['latex'].replace('documentclass[', 'documentclass[' + locale_dict[locale_dict['language']]['latex package'] + ',')
+
     if latex_papersize == 'a4':
         INTRO['latex'] += r"""
 \usepackage[a4paper]{geometry}
@@ -3401,6 +3414,7 @@ justified,
 \usepackage{ucs}
 %\usepackage[utf8x]{inputenc}
 """
+
     if latex_font == 'helvetica':
         INTRO['latex'] += r"""
 % Set helvetica as the default font family:
@@ -4258,7 +4272,7 @@ justified,
                 break
     else:
         has_exer = True
-        # Remove subsection numbering[[[
+        # Remove subsection numbering
     if has_exer:
         if latex_style not in ("Springer_T2", "Springer_T4"):
             INTRO['latex'] += r"""

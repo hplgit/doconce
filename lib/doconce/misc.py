@@ -17,6 +17,8 @@ of intermediate results"""),
 0: X=15
 1: X=5
 2: 0.5"""),
+    ('--language=', """Native language to be used: English (default), Norwegian,
+"""),
     ('--preprocess_include_subst', """Turns on variable substitutions in # #include paths when running Preprocess:
     preprocess -i -DMYDIR=rn1
 will lead to the string "MYDIR" being replaced by the value "rn1"

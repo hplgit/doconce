@@ -2519,7 +2519,7 @@ if html_admon_style is None:
         html_admon_style = 'gray'
 
 for _admon in admons:
-    _Admon = _admon.capitalize()  # upper first char
+    _Admon = locale_dict[locale_dict['language']].get(_admon, _admon).capitalize()  # upper first char
     # Below we could use
     # <img src="data:image/png;base64,iVBORw0KGgoAAAANSUh..."/>
     # for embedding images in the html code rather than just including them
