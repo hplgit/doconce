@@ -1116,8 +1116,8 @@ def doconce_exercise_output(
         #s += '\n' + '*Filename*: `%s`' % exer['file'] + '.\n'
 
     if exer['closing_remarks']:
-        s += '\n# Closing remarks for this %s\n\n=== Remarks ===\n\n' % \
-             exer['type'] + exer['closing_remarks'] + '\n\n'
+        s += '\n# Closing remarks for this %s\n\n=== %s ===\n\n' % \
+             (exer['type'], locale_dict[locale_dict['language']]['remarks'].capitalize()) + exer['closing_remarks'] + '\n\n'
 
     if exer['solution_file']:
         if len(exer['solution_file']) == 1:

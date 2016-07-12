@@ -459,6 +459,10 @@ def latex_code(filestr, code_blocks, code_block_types,
     # and it might lead to strange results for the apostrophe!
     #NO: filestr = re.sub(r"""'([^']+?)'""", r"""`\g<1>'""", filestr)
 
+    # Specify language to be used in \documentclass
+    if locale_dict[locale_dict['language']]['latex package'] != 'english':
+        filestr = re.sub(r'(\\documentclass\[%?\n?)', r'\g<1>%s,' % locale_dict[locale_dict['language']]['latex package'], filestr)
+
     # References to external documents (done before !bc blocks in
     # case such blocks explain the syntax of the external doc. feature)
     pattern = r'^%\s*[Ee]xternaldocuments?:\s*(.+)$'
@@ -3084,10 +3088,6 @@ justified,
     INTRO['latex'] += r"""
 \listfiles               %  print all files needed to compile this document
 """
-    # Specify language to be used in \documentclass
-    if locale_dict[locale_dict['language']]['latex package'] != 'english':
-        INTRO['latex'] = INTRO['latex'].replace('documentclass[', 'documentclass[' + locale_dict[locale_dict['language']]['latex package'] + ',')
-
     if latex_papersize == 'a4':
         INTRO['latex'] += r"""
 \usepackage[a4paper]{geometry}
@@ -3120,6 +3120,10 @@ justified,
 \usepackage{epsfig,makeidx,color,setspace,amsmath,amsfonts,amssymb}
 \usepackage[table]{xcolor}
 \usepackage{bm}
+"""
+    if option('language=', 'English') != 'English':
+        INTRO['latex'] += r"""
+\usepackage{babel}
 """
 
     #if 'FIGURE' in filestr: # let us always have this, neeeded in admons too

@@ -14,20 +14,21 @@ global locale_dict
 locale_dict = dict(
     language='English',  # language to be used
     English={
-        'locale': 'us_US',
+        'locale': 'us_US.UTF-8',
         'latex package': 'english',
         'toc': 'Table of contents',
+        'Contents': 'Contents',
         'Figure': 'Figure',
         'Movie': 'Movie',
         'list of': 'List of',
         'and': 'and',
-        'exercise': 'Exercise',
-        'project': 'Project',
-        'problem': 'Problem',
-        'example': 'Example',
-        'projects': 'Projects',
-        'problems': 'Problems',
-        'examples': 'Examples',
+        'Exercise': 'Exercise',
+        'Project': 'Project',
+        'Problem': 'Problem',
+        'Example': 'Example',
+        'Projects': 'Projects',
+        'Problems': 'Problems',
+        'Examples': 'Examples',
         'Preface': 'Preface',
         'Abstract': 'Abstract',
         'Summary': 'Summary',
@@ -49,34 +50,35 @@ locale_dict = dict(
         # References
         },
     Norwegian={
-        'locale': 'no_NO',
+        'locale': 'nb_NO.UTF-8',
         'latex package': 'norsk',
         'toc': 'Innholdsfortegnelse',
-        'figure': 'Figur',
-        'movie': 'Film',
+        'Contents': 'Innholdsfortegnelse',
+        'Figure': 'Figur',
+        'Movie': 'Video',
         'list of': 'Liste over',
         'and': 'og',
-        'exercise': 'Oppgave',
-        'project': 'Prosjekt',
-        'problem': 'Problem',
-        'example': 'Eksempel',
-        'exercises': 'Oppgaver',
-        'projects': 'Prosjekter',
-        'problems': 'Problemer',
-        'examples': 'Eksempeler',
+        'Exercise': 'Oppgave',
+        'Project': 'Prosjekt',
+        'Problem': 'Problem',
+        'Example': 'Eksempel',
+        'Exercises': 'oppgaver',
+        'Projects': 'prosjekter',
+        'Problems': 'problemer',
+        'Examples': 'eksempeler',
         'Preface': 'Forord',
         'Abstract': 'Sammendrag',
         'Summary': 'Sammendrag',
         'summary': 'sammendrag',
         'hint': 'Hint',
-        'question': 'spørsmål',
+        'question': 'spørsmål'.decode('utf-8'),
         'notice': 'observer',
         'warning': 'advarsel',
         'remarks': 'bemerkning',
         'index': 'Stikkordsliste',
-        'Solution': 'Løsning',  # In exercises
-        '__Solution.__': '__Løsning.__',
-        '__Answer.__': '__Løsning.__',
+        'Solution': 'Løsning'.decode('utf-8'),  # In exercises
+        '__Solution.__': '__Løsning.__'.decode('utf-8'),
+        '__Answer.__': '__Kortsvar.__',
         '__Hint.__': '__Hint.__',
         },
     )
@@ -2501,6 +2503,9 @@ def typeset_envirs(filestr, format):
                     if text_size not in ('small', 'large'):
                         errwarn('*** warning: wrong text size "%s" specified in %s environment!' % (text_size, envir))
                         errwarn('    must be "large" or "small" - will be set to normal')
+                if option('language=', 'English') != 'English' and title == '':
+                    title = locale_dict[locale_dict['language']].get(envir, envir).capitalize() + '.'
+
                 if title == '':
                     # Rely on the format's default title
                     return ENVIRS[format][envir](m.group(2), format, text_size=text_size)
@@ -2521,7 +2526,7 @@ def typeset_envirs(filestr, format):
                     m2 = re.search('^\s*\((.+?)\)', title)
 
                     if title == '' and envir != 'block':
-                        title = envir.capitalize() + '.'
+                        title = locale_dict[locale_dict['language']].get(envir, envir).capitalize() + '.'
                     elif title.lower() == 'none':
                         title == ''
                     elif m2:
@@ -3851,8 +3856,8 @@ def inline_tag_subst(filestr, format):
         else:
             import locale
             locale.setlocale(locale.LC_TIME,
-                             locale_dict[local_dict['language']]['locale'])
-            date = time.strftime('%a, %d %b, %Y')
+                             locale_dict[locale_dict['language']]['locale'])
+            date = time.strftime('%A, %d. %b, %Y')
 
         # Add copyright right under the date if present
         if format not in ('html', 'latex', 'pdflatex', 'sphinx'):
@@ -4227,6 +4232,8 @@ def doconce2format(filestr, format):
     if locale_dict['language'] not in locale_dict:
         print '*** error: language "%s" not supported in locale_dict' % locale_dict['language']
         _abort()
+    else:
+        errwarn('*** locale set to ' + locale_dict['language'])
 
     # Check that all eqrefs have labels in tex blocks (\label{})
     if option('labelcheck=', 'off') == 'on':
@@ -4644,8 +4651,9 @@ def doconce2format(filestr, format):
             # soup can be used to rewrite the entire doc
             filestr = soup.prettify()
 
-    # Next step: do some language specific substitutions
-    for word in ['Figure', 'Movie']:
+    # Next step: do some language specific substitutions in headings
+    # (assume correct native language in running text)
+    for word in ['Figure', 'Movie', 'Exercise', 'Project', 'Problem']:
         filestr = filestr.replace(word, locale_dict[locale_dict['language']][word])
 
     # Next step: remove exercise solution/answers, notes, etc

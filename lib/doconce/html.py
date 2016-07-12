@@ -1470,7 +1470,12 @@ function show_hide_code%d(){
     if html_style.startswith('boots'):
         # Insert toc if toc
         if '***TABLE_OF_CONTENTS***' in filestr:
-            filestr = filestr.replace('***TABLE_OF_CONTENTS***', toc_html)
+            try:
+                filestr = filestr.replace('***TABLE_OF_CONTENTS***', toc_html)
+            except UnicodeDecodeError:
+                filestr = filestr.replace('***TABLE_OF_CONTENTS***',
+                                          toc_html.decode('utf-8'))
+
         jumbotron = option('html_bootstrap_jumbotron=', 'on')
         if jumbotron != 'off':
             # Fix jumbotron for title, author, date, toc, abstract, intro
@@ -2104,8 +2109,9 @@ def html_author(authors_and_institutions, auth2index,
 
 
 def html_abstract(m):
-    r'<b>\g<type>.</b> \g<text>\n\g<rest>'
+    # m is r'<b>\g<type>.</b> \g<text>\n\g<rest>'
     type = m.group('type')
+    type = locale_dict[locale_dict['language']].get(type, type)
     text = m.group('text')
     rest = m.group('rest')
     if type.lower() == 'preface':
@@ -2519,7 +2525,10 @@ if html_admon_style is None:
         html_admon_style = 'gray'
 
 for _admon in admons:
+    # _Admon is constructed at import time, used as default title, but
+    # will always be in English because of the early construction
     _Admon = locale_dict[locale_dict['language']].get(_admon, _admon).capitalize()  # upper first char
+
     # Below we could use
     # <img src="data:image/png;base64,iVBORw0KGgoAAAANSUh..."/>
     # for embedding images in the html code rather than just including them
@@ -3123,6 +3132,7 @@ body { %s; }
     <a class="navbar-brand" href="%s">%s</a>
   </div>
 """ % (url, link)
+                contents = locale_dict[locale_dict['language']]['Contents']
                 bootstrap_title_bar = """
 <!-- Bootstrap navigation bar -->
 <div class="navbar navbar-default navbar-fixed-top">
@@ -3138,7 +3148,7 @@ body { %s; }
   <div class="navbar-collapse collapse navbar-responsive-collapse">
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">%s <b class="caret"></b></a>
         <ul class="dropdown-menu">
 ***TABLE_OF_CONTENTS***
         </ul>
@@ -3147,7 +3157,7 @@ body { %s; }
   </div>
 </div>
 </div> <!-- end of navigation bar -->
-""" % (outfilename, title, code_custom_links)
+""" % (outfilename, title, code_custom_links, contents)
 
 
     keywords = re.findall(r'idx\{(.+?)\}', filestr)
