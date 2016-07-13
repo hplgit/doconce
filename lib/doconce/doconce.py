@@ -81,6 +81,42 @@ locale_dict = dict(
         '__Answer.__': '__Kortsvar.__',
         '__Hint.__': '__Hint.__',
         },
+    English={
+        'locale': 'de_DE.UTF-8',
+        'latex package': 'german',
+        'toc': 'Inahltsverzeichnis',
+        'Contents': 'Inhalt',
+        'Figure': 'Abbildung',
+        'Movie': 'Film',
+        'list of': 'Liste von',
+        'and': 'und',
+        'Exercise': 'Übung'.decode('utf-8'),
+        'Project': 'Projekt',
+        'Problem': 'Problem',
+        'Example': 'Beispiel',
+        'Projects': 'Projekte',
+        'Problems': 'Probleme',
+        'Examples': 'Beispiele',
+        'Preface': 'Vorwort',
+        'Abstract': 'Abstract',
+        'Summary': 'Zusammenfassung',
+        # Admons
+        'summary': 'Zusammenfassung',
+        'hint': 'Hinweis',
+        'question': 'Frage',
+        'notice': 'Notiz',
+        'warning': 'Warnung',
+        # box, quote are silent wrt title
+        'remarks': 'Bemerkung', # In exercises
+        # Exercise headings
+        'Solution': 'Lösung'.decode('utf-8'),
+        '__Solution.__': '__Lösung.__'.decode('utf-8'),
+        '__Answer.__': '__Antwort.__',
+        '__Hint.__': '__Hinweis.__',
+        # At the end (in Sphinx)
+        'index': 'Index',
+        # References
+        },
     )
 
 def debugpr(heading='', text=''):
