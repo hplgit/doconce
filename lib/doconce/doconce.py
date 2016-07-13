@@ -81,7 +81,7 @@ locale_dict = dict(
         '__Answer.__': '__Kortsvar.__',
         '__Hint.__': '__Hint.__',
         },
-    English={
+    German={
         'locale': 'de_DE.UTF-8',
         'latex package': 'german',
         'toc': 'Inahltsverzeichnis',
