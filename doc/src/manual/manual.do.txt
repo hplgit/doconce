@@ -5340,6 +5340,12 @@ the different shortcuts and see how handy they are in learning
 DocOnce and saving much typing!
 
 
+===== Atom Syntax Highlighting for DocOnce =====
+label{atom}
+
+There is a package for the "Atom editor" : "https://atom.io/" available at URL: "https://atom.io/packages/language-doconce" which provides syntax highlighting for DocOnce.
+
+
 !split
 ======= Mako Programming =======
 label{manual:mako}
