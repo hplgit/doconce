@@ -26,8 +26,26 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/sidebar.js"></script>
+
+        <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+        <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
+
+        <script>sagecell.makeSagecell({inputLocation: ".sage"});</script>
+
+        <style type="text/css">
+                .sagecell .CodeMirror-scroll {
+                        overflow-y: hidden;
+                        overflow-x: auto;
+                }
+                .sagecell .CodeMirror {
+                        height: auto;
+                }
+        </style>
+
+    
     <link rel="top" title="DocOnce med norsk" href="index.html" />
-    <link rel="prev" title="DocOnce med norsk" href="index.html" /> 
+    <link rel="prev" title="DocOnce med norsk" href="index.html" />
+ 
   
        <style type="text/css">
          div.admonition {
@@ -64,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Ø. Å. Lægreid</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">fredag, 15. jul, 2016</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">fredag, 15. juli, 2016</td>
 </tr>
 </tbody>
 </table>
@@ -119,11 +137,31 @@ Oppgaven kan regnes ut ved hjelp av en kalkulator.</p>
 </div>
 <div class="section" id="andre-overskrift-vi-ser-film-og-bilde">
 <h2>Andre overskrift: Vi ser film og bilde<a class="headerlink" href="#andre-overskrift-vi-ser-film-og-bilde" title="Permalink to this headline">¶</a></h2>
-<iframe width="420" height="315" src="http://www.youtube.com/embed/_O7iUiftbKU" frameborder="0" allowfullscreen></iframe>
+<iframe width="420" height="315" src="http://www.youtube.com/embed/bp3mCgrdMxU" frameborder="0" allowfullscreen></iframe>
 
-<p><em>YouTube film.</em></p><div class="figure" id="id2">
+<p><em>YouTube film.</em></p><div class="figure" id="id3">
 <a class="reference internal image-reference" href="https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png"><img alt="https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png" src="https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png" style="width: 500px;" /></a>
 <p class="caption"><span class="caption-text">Her er en figur av en funksjon</span></p>
+</div>
+</div>
+<div class="section" id="tredje-overskrift-vi-programmerer-pa-norsk">
+<h2>Tredje overskrift: Vi programmerer på norsk<a class="headerlink" href="#tredje-overskrift-vi-programmerer-pa-norsk" title="Permalink to this headline">¶</a></h2>
+<p>Noen holder seg innenfor ASCII-tabellens grenser når de programmerer, andre foretrekker å programmere på norsk ettersom stort sett går greit <a class="footnote-reference" href="#presisering" id="id2">[1]</a> med æøå i koden.</p>
+<table class="docutils footnote" frame="void" id="presisering" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td>Dette er en sannhet med store modifikasjoner</td></tr>
+</tbody>
+</table>
+<p>De tre ekstra vokalene gir rom for mange korte ord i det norske språk.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="c1"># vi må bruke utf-8 for å kunne ha æøå i koden</span>
+<span class="k">for</span> <span class="n">norsk_bokstav</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;æ&#39;</span><span class="p">,</span> <span class="s1">&#39;ø&#39;</span><span class="p">,</span> <span class="s1">&#39;å&#39;</span><span class="p">]:</span>
+    <span class="k">print</span> <span class="s2">&quot;kl</span><span class="si">%s</span><span class="s2">r&quot;</span> <span class="o">%</span> <span class="n">norsk_bokstav</span>
+    <span class="k">print</span> <span class="s2">&quot;s</span><span class="si">%s</span><span class="s2">r&quot;</span> <span class="o">%</span> <span class="n">norsk_bokstav</span>
+    <span class="k">print</span> <span class="s2">&quot;t</span><span class="si">%s</span><span class="s2">r&quot;</span> <span class="o">%</span> <span class="n">norsk_bokstav</span>
+</pre></div>
 </div>
 </div>
 <div class="section" id="litteraturliste">
@@ -163,6 +201,7 @@ Oppgaven kan regnes ut ved hjelp av en kalkulator.</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#andre-overskrift-vi-ser-film-og-bilde">Andre overskrift: Vi ser film og bilde</a></li>
+<li><a class="reference internal" href="#tredje-overskrift-vi-programmerer-pa-norsk">Tredje overskrift: Vi programmerer på norsk</a></li>
 <li><a class="reference internal" href="#litteraturliste">Litteraturliste</a></li>
 </ul>
 </li>
@@ -181,8 +220,8 @@ Oppgaven kan regnes ut ved hjelp av en kalkulator.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>

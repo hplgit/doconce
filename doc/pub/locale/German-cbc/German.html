@@ -26,8 +26,26 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/sidebar.js"></script>
+
+        <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+        <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
+
+        <script>sagecell.makeSagecell({inputLocation: ".sage"});</script>
+
+        <style type="text/css">
+                .sagecell .CodeMirror-scroll {
+                        overflow-y: hidden;
+                        overflow-x: auto;
+                }
+                .sagecell .CodeMirror {
+                        height: auto;
+                }
+        </style>
+
+    
     <link rel="top" title="DocOnce mit Deutsch" href="index.html" />
-    <link rel="prev" title="DocOnce mit Deutsch" href="index.html" /> 
+    <link rel="prev" title="DocOnce mit Deutsch" href="index.html" />
+ 
   
        <style type="text/css">
          div.admonition {
@@ -127,7 +145,7 @@ Die Aufgabe kann mit einem Taschenrechner berechnet werden.</p>
 </div>
 <div class="section" id="andern-uberschrift-wir-sehen-film-und-bild">
 <h2>Ändern Überschrift: Wir sehen Film und Bild<a class="headerlink" href="#andern-uberschrift-wir-sehen-film-und-bild" title="Permalink to this headline">¶</a></h2>
-<iframe width="420" height="315" src="http://www.youtube.com/embed/_O7iUiftbKU" frameborder="0" allowfullscreen></iframe>
+<iframe width="420" height="315" src="http://www.youtube.com/embed/bp3mCgrdMxU" frameborder="0" allowfullscreen></iframe>
 
 <p><em>YouTube film.</em></p><div class="figure" id="id2">
 <a class="reference internal image-reference" href="https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png"><img alt="https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png" src="https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png" style="width: 500px;" /></a>
@@ -190,8 +208,8 @@ pp. 133-198,
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>

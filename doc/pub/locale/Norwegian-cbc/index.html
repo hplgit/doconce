@@ -26,8 +26,26 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/sidebar.js"></script>
+
+        <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+        <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
+
+        <script>sagecell.makeSagecell({inputLocation: ".sage"});</script>
+
+        <style type="text/css">
+                .sagecell .CodeMirror-scroll {
+                        overflow-y: hidden;
+                        overflow-x: auto;
+                }
+                .sagecell .CodeMirror {
+                        height: auto;
+                }
+        </style>
+
+    
     <link rel="top" title="DocOnce med norsk" href="#" />
-    <link rel="next" title="DocOnce med norsk" href="Norwegian.html" /> 
+    <link rel="next" title="DocOnce med norsk" href="Norwegian.html" />
+ 
   
        <style type="text/css">
          div.admonition {
@@ -64,6 +82,7 @@
 <li class="toctree-l1"><a class="reference internal" href="Norwegian.html">DocOnce med norsk</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="Norwegian.html#forste-overskrift-vi-regner-litt">Første overskrift: Vi regner litt</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Norwegian.html#andre-overskrift-vi-ser-film-og-bilde">Andre overskrift: Vi ser film og bilde</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Norwegian.html#tredje-overskrift-vi-programmerer-pa-norsk">Tredje overskrift: Vi programmerer på norsk</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Norwegian.html#litteraturliste">Litteraturliste</a></li>
 </ul>
 </li>
@@ -107,8 +126,8 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
