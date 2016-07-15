@@ -1009,10 +1009,10 @@ def doconce_exercise_output(
                 if subex['file']:
                     if len(subex['file']) == 1:
                         Filename = locale_dict[language]['Filename']
-                        s += '%s: `%s`' % (Filname, subex['file'][0]) + '.\n'
+                        s += '%s: `%s`' % (Filename, subex['file'][0]) + '.\n'
                     else:
                         Filenames = locale_dict[language]['Filenames']
-                        s += '%s: %s' % (Fienames, ', '.join(
+                        s += '%s: %s' % (Filenames, ', '.join(
                             ['`%s`' % f for f in subex['file']]) + '.\n')
 
                 if subex['answer']:

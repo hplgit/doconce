@@ -852,9 +852,11 @@ def latex_code(filestr, code_blocks, code_block_types,
                      filestr)
 
     # Avoid Filename: as a new paragraph with indentation
-    filestr = re.sub(r'^(Filenames?): +?\\code\{',
-                     r'\\noindent \g<1>: \code{', filestr,
-                     flags=re.MULTILINE)
+    for filename in 'Filename', 'Filenames':
+        locale_fn = locale_dict[locale_dict['language']][filename]
+        filestr = re.sub(r'^(%s): +?\\code\{' % locale_fn,
+                         r'\\noindent \g<1>: \code{', filestr,
+                         flags=re.MULTILINE)
 
     # Preface is normally an unnumbered section or chapter
     # (add \addcontentsline only if book style with chapters
