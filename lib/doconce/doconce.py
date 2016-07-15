@@ -4374,10 +4374,11 @@ def doconce2format(filestr, format):
                              filestr, flags=re.MULTILINE)
 
     # Next step: IBPLOT commands for inline interactive plots
-    from html import embed_IBPLOTs
     bg_session = None
-    has_ibplot = 'IBPLOT' in filestr # and option('IBPLOT')
+    m = re.search('^IBPLOT: *\[', filestr, flags=re.MULTILINE)
+    has_ibplot = True if m else False
     if has_ibplot:
+        from html import embed_IBPLOTs
         filestr, bg_session = embed_IBPLOTs(filestr, format)
         #bg_session.loop_until_closed()
         debugpr('The file after inserting interactive IBPLOT curve plots:', filestr)

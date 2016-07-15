@@ -21,7 +21,7 @@ DocOnce Description
 %%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Jun 22, 2016
+:Date: Jul 15, 2016
 
 .. lines beginning with # are doconce comment lines
 
@@ -6211,7 +6211,11 @@ Examples on Admonition Types
 The following admonition environments are available:
 ``block``, ``warning``, ``notice``, ``question``, and ``summary``.
 The box is defined by begin and end tags such as ``!bnotice`` and ``!enotice``.
-The title of the box is fully customizable.
+The title of the box is fully customizable. This means that if you want
+different types of boxes, e.g. a *detour* box and a *tip* box, you can just
+open introduce the convention that detour applies the summary box and
+starts with 'Detour:' in the title, while the notice box is used for
+tip boxes and as a title starting with 'Tip:'.
 
 Here are a few examples:
 
@@ -7612,6 +7616,24 @@ The cycle is
 
 .. !split
 
+Support for non-English
+=======================
+
+DocOnce can handle documents in other languages than English. At the time
+of this writing there is support for Norwegian and German.
+
+A demo directory with files is `locale <https://github.com/hplgit/doconce/tree/master/doc/src/locale>`__. For example, ``norsk.do.txt`` contains a simple document
+in Norwegian. To compile, one must supply the options
+``--encoding=utf-8 --language=Norwegian``:
+
+.. code-block:: text
+
+    Terminal> doconce format html norsk \
+              --html_style=bootstrap_FlatUI \
+              --encoding=utf-8 --language=Norwegian
+
+.. !split
+
 Misc
 ====
 
@@ -7761,6 +7783,13 @@ Ctrl+c help    print this table
 Typing ``Ctrl+c help`` prints the above table in Emacs. Try out
 the different shortcuts and see how handy they are in learning
 DocOnce and saving much typing!
+
+.. _atom:
+
+Atom Syntax Highlighting for DocOnce
+------------------------------------
+
+There is a package for the `Atom editor <https://atom.io/>`__ available at `<https://atom.io/packages/language-doconce>`_ which provides syntax highlighting for DocOnce.
 
 .. !split
 
@@ -9216,7 +9245,7 @@ There are several specific options for Bootstrap styles:
    and govern the size of the document title. Default is ``on``, while
    ``h2`` means a jumbotron with ``h2`` (section) size of the title
    (normally the jumbotron has huge heading fonts so some jumbotrons
-    look better with ``h2`` typesetting of the document title).
+   look better with ``h2`` typesetting of the document title).
 
  * ``--html_quiz_button_text=X``: set a text on the answer button for
    Bootstrap-style quizzes. Without this option a small icon is used.
@@ -10975,6 +11004,12 @@ here for convenience.
     2: 0.5
     
     
+    --language=...
+    
+    Native language to be used: English (default), Norwegian,
+    
+    
+    
     --preprocess_include_subst
     
     Turns on variable substitutions in # #include paths when running Preprocess:
@@ -11017,6 +11052,11 @@ here for convenience.
     Rewrite align/alignat math environments to separate equation environments.
     Sometimes needed for proper MathJax rendering (e.g., remark slides).
     Sphinx requires such rewrite and will do it regardless of this option.
+    
+    
+    --IBPLOT
+    
+    automagic translation of IBPLOT commands.
     
     
     --exercise_numbering=...
