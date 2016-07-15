@@ -7,7 +7,7 @@ DocOnce med norsk
 %%%%%%%%%%%%%%%%%
 
 :Authors: Ø. Å. Lægreid
-:Date: torsdag, 14. juli, 2016
+:Date: fredag, 15. jul, 2016
 
 .. index:: sammendrag
 

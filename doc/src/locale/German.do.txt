@@ -2,19 +2,19 @@ TITLE: DocOnce mit Deutsch
 AUTHOR: K. F. Rauß at Einige Orte GmbH & Nord Gemeine
 DATE: today
 
-idx{zusammenfassung}
+idx{Zusammenfassung}
 
 __Abstract.__
-Dieses Dokument Tests DocOnce mit deutscher Unterstützung cite{Deutsh_Sprache}.
+Dieses Dokument tested DocOnce mit deutscher Unterstützung cite{Deutsh_Sprache}.
 
 TOC: on
 
 ======= Erste Überschrift: Wir erwarten wenig =======
 
-idx{rechnung}
+idx{Rechnung}
 
 !bquote
-Die heutige Erwärmung ist $0 + 0$. Es ist nicht viel Heizung bekommt ...
+Die heutige Erwärmung ist $0 + 0$. Es ist nicht viel Wärme zu erwarten ...
 !equote
 
 !bnotice
@@ -79,7 +79,9 @@ Wir schauen auf die berühmteste Gleichung der Welt.
 
 MOVIE: [http://www.youtube.com/watch?v=_O7iUiftbKU, width=420 height=315] YouTube film.
 
-FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png, width=500 frac=0.8] Hier ist eine Figur einer Funktion.
+FIGURE:
+[https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png,
+width=500 frac=0.8] Hier ist eine Abbildung einer Funktion.
 
 ======= Bibliographie =======
 

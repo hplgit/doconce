@@ -17,7 +17,7 @@ cat > index.html <<EOF
 <h1>Demo of native language support in DocOnce</h1>
 EOF
 
-languages="English Norwegian German"
+languages="English German Norwegian"
 for language in $languages; do
 options="--encoding=utf-8 --language=$language"
 name=$language

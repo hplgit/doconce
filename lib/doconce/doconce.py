@@ -52,7 +52,7 @@ locale_dict = dict(
         'Filenames': 'Filenames',
         },
     Norwegian={
-        'locale': 'nb_NO.UTF-8',
+        'locale': 'no_NO.UTF-8',
         'latex package': 'norsk',
         'toc': 'Innholdsfortegnelse',
         'Contents': 'Innhold',

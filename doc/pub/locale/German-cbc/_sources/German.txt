@@ -7,21 +7,21 @@ DocOnce mit Deutsch
 %%%%%%%%%%%%%%%%%%%
 
 :Authors: K. F. Rauß
-:Date: Donnerstag, 14. Jul, 2016
+:Date: Freitag, 15. Jul, 2016
 
-.. index:: zusammenfassung
+.. index:: Zusammenfassung
 
-*Abstract.* Dieses Dokument Tests DocOnce mit deutscher Unterstützung [Ref1]_.
+*Abstract.* Dieses Dokument tested DocOnce mit deutscher Unterstützung [Ref1]_.
 
 Erste Überschrift: Wir erwarten wenig
 =====================================
 
-.. index:: rechnung
+.. index:: Rechnung
 
 
 ..
 
-    Die heutige Erwärmung ist :math:`0 + 0`. Es ist nicht viel Heizung bekommt ...
+    Die heutige Erwärmung ist :math:`0 + 0`. Es ist nicht viel Wärme zu erwarten ...
 
 
 
@@ -141,7 +141,7 @@ Wir schauen auf die berühmteste Gleichung der Welt.
 .. figure:: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
    :width: 500
 
-   Hier ist eine Figur einer Funktion
+   Hier ist eine Abbildung einer Funktion
 
 Bibliographie
 =============
