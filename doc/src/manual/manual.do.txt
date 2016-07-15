@@ -4875,7 +4875,6 @@ performed by the `doconce slides_beamer` command and does not result
 in individual files like `split_rst` and `split_html` do.
 
 
-
 !split
 ======= Writing Slides =======
 
@@ -5182,6 +5181,22 @@ The cycle is
  * `doconce ptex2tex` or `ptex2tex` for translating `mydoc.p.tex` to `mydoc.tex`
  * `doconce slides_beamer mydoc.tex` to produce a Beamer version `mydoc.tex`
  * standard pdfLaTeX compilation of `mydoc.tex`
+
+!split
+======= Support for non-English =======
+
+DocOnce can handle documents in other languages than English. At the time
+of this writing there is support for Norwegian and German.
+
+A demo directory with files is "`locale`": "https://github.com/hplgit/doconce/tree/master/doc/src/locale". For example, `norsk.do.txt` contains a simple document
+in Norwegian. To compile, one must supply the options
+`--encoding=utf-8 --language=Norwegian`:
+
+!bc sys
+Terminal> doconce format html norsk \
+          --html_style=bootstrap_FlatUI \
+          --encoding=utf-8 --language=Norwegian
+!ec
 
 !split
 ======= Misc =======

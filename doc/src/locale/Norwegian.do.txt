@@ -1,64 +1,91 @@
-TITLE: Eksempel på ikke-engelsk tekst
-AUTHOR: Åsgeir Ødegården (pseudonym!)
-# DATE: tody will be in English, so we write it out in Norwegian
-DATE: 12. juli, 2015
+TITLE: DocOnce med norsk
+AUTHOR: Ø. Å. Lægreid at Noensteds ASA & Nord Kommune
+DATE: today
 
-__Summary.__
-Dette er et kort notat på norsk for å demonstrere at DokEngang (DocOnce) kan
-håndtere andre språk enn engelsk.
+idx{sammendrag}
+
+# Abstract, Summary eller Preface blir til Abtrakt, Sammendrag eller
+# Forord.
+
+__Abstract.__
+Dette dokumentet tester DocOnce med norsk støtte cite{norsk_tekst}.
 
 TOC: on
 
-======= Introduksjon =======
-label{sec:intro}
+======= Første overskrift: Vi regner litt =======
 
-idx{språkformer}
-idx{norsk}
-idx{nynorsk}
-idx{bokmål}
+idx{regning}
 
-Norsk er egentlig to språk, *bokmål* og *nynorsk*. "Bokmål":
-"https://no.wikipedia.org/wiki/Bokmål" er forfatterens språk og det de
-fleste (85-90%) skriver i Norge, men "nynorsk":
-"https://no.wikipedia.org/wiki/Nynorsk" er ikke særlig
-forskjellig, spesielt ikke sett med utlendingers øyne.
-Avstanden mellom norsk og nynorsk er mindre enn mellom
-norsk og svensk. Voksne nordmenn har sjelden problemer med å forstå
-skriftlig og muntlig svensk, og alle nordmenn forstår bokmål like lett
-som nynorsk. Likevel skal alle offentlige dokumenter foreligge på begge
-språk~(!). Dansk ligger veldig nære bokmål, men
-uttales ganske annerledes.
+!bquote
+Dagens oppvarming er $0 + 0$. Det blir ikke mye oppvarming...
+!equote
 
-===== Demonstrasjon av populære DokEngang elementer =====
-
-Dette er et underkapittel av seksjon ref{sec:intro}.
-
-# Admons
-
-!bnotice Formålet med dette dokumentet
-Dette skrivet skal bare demonstrere norsk tekst, så vi trenger ikke tvære
-ut innholdet. Det er nok å demonstrere at figurtekster og andre spesielle
-elementer virker med UTF-8 tegnsett. La oss refere her til
-figur ref{fig1} slik man referer til en figur på norsk.
-Vi gjør også en referanse til litteraturen cite{norsk_tekst}.
+!bnotice
+Faktisk er $1 + 1 = 2$. Dette resultatet kan benyttes uten begrunnelse.
 !enotice
 
-idx{figur}
+!bquestion
+Hva blir $1 - 1$?
+!equestion
 
-# Figures
+!bsummary
+Addisjon og subtraksjon er inverse operasjoner.
+!esummary
 
-FIGURE: [../manual/fig/wave1D, width=500 frac=0.7] Figurtekst på norsk går bra. label{fig1}
+idx{admon demo}
 
-===== Exercise: Hallo verden. =====
-label{exercise:halloverden}
-"Hallo verden":"http://en.wikipedia.org/wiki/Hello_world_program" er
-en vanlig måte å teste ut ny teknologi på. I denne oppgaven skal du
-lage ditt første html-hallo-verden-program.
+# Admon med tittel overskrifter default Observer, Sammendrag osv.
+!bnotice Boks med tittel!
+Her kommer norsk tekst...
+!enotice
 
-Du skal lage siden `index.html`, som lagres i en egen mappe. Her skal
-du bruke så mye av det du har lært fra første avsnittet. Tittelen på
-siden skal være "Hallo verden!". Innholdet bestemmer du selv. Husk å
-lage oppgaven i en egen mappe.
+
+# Merk at oppgaver må ha engelsk nøkkelord som åpning i tittel, altså
+# Problem, Exercise eller Project
+
+===== Problem: Legg sammen to tall =====
+file=legg_sammen
+idx{addisjon}
+
+Regn ut $1+2$.
+
+!bsol
+Ganske enkelt tell fingre: en finger, to fingre, tell opp til tre fingre
+tilsammen.
+!esol
+
+!bans
+3.
+!eans
+
+===== Project: Multipliser to tall =====
+file=multipliser
+
+Regn ut $3\cdot 4$.
+
+!bhint
+Oppgaven kan regnes ut ved hjelp av en kalkulator.
+!ehint
+
+!bremarks
+Faktisk er $3\cdot 4 = 4\cdot 3$.
+!eremarks
+
+===== Enda mer avansert matematikk =====
+
+Vi ser på verdens mest berømte likning.
+
+!bbox
+!bt
+\[ E = mc^2 \]
+!et
+!ebox
+
+======= Andre overskrift: Vi ser film og bilde =======
+
+MOVIE: [http://www.youtube.com/watch?v=_O7iUiftbKU, width=420 height=315] YouTube film.
+
+FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png, width=500 frac=0.8] Her er en figur av en funksjon.
 
 ======= Litteraturliste =======
 

@@ -1470,11 +1470,17 @@ function show_hide_code%d(){
     if html_style.startswith('boots'):
         # Insert toc if toc
         if '***TABLE_OF_CONTENTS***' in filestr:
+            contents = locale_dict[locale_dict['language']]['Contents']
             try:
-                filestr = filestr.replace('***TABLE_OF_CONTENTS***', toc_html)
+                filestr = filestr.replace('***TABLE_OF_CONTENTS***',
+                                          toc_html)
+                filestr = filestr.replace('***CONTENTS_PULL_DOWN_MENU***',
+                                          contents)
             except UnicodeDecodeError:
                 filestr = filestr.replace('***TABLE_OF_CONTENTS***',
                                           toc_html.decode('utf-8'))
+                filestr = filestr.replace('***CONTENTS_PULL_DOWN_MENU***',
+                                          contents.decode('utf-8'))
 
         jumbotron = option('html_bootstrap_jumbotron=', 'on')
         if jumbotron != 'off':
@@ -3132,7 +3138,7 @@ body { %s; }
     <a class="navbar-brand" href="%s">%s</a>
   </div>
 """ % (url, link)
-                contents = locale_dict[locale_dict['language']]['Contents']
+
                 bootstrap_title_bar = """
 <!-- Bootstrap navigation bar -->
 <div class="navbar navbar-default navbar-fixed-top">
@@ -3148,7 +3154,7 @@ body { %s; }
   <div class="navbar-collapse collapse navbar-responsive-collapse">
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">%s <b class="caret"></b></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">***CONTENTS_PULL_DOWN_MENU*** <b class="caret"></b></a>
         <ul class="dropdown-menu">
 ***TABLE_OF_CONTENTS***
         </ul>
@@ -3157,7 +3163,7 @@ body { %s; }
   </div>
 </div>
 </div> <!-- end of navigation bar -->
-""" % (outfilename, title, code_custom_links, contents)
+""" % (outfilename, title, code_custom_links)
 
 
     keywords = re.findall(r'idx\{(.+?)\}', filestr)

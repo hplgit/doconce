@@ -1,4 +1,3 @@
 #!/bin/sh
 doconce clean
-rm -rf automake_sphinx.py Trash
-
+rm -rf downloaded_figures *-cbc index.html Trash *.bib

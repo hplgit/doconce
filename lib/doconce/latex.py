@@ -2222,29 +2222,6 @@ def latex_exercise(exer):
            include_numbering=include_numbering_of_exercises,
            include_type=include_numbering_of_exercises)
 
-def latex_exercise_old(exer):
-    # NOTE: this is the old exercise handler!!
-    s = ''  # result string
-
-    # Reuse plain_exercise (std doconce formatting) where possible
-    # and just make a few adjustments
-
-    s += exer['heading'] + ' ' + exer['title'] + ' ' + exer['heading'] + '\n'
-    if 'label' in exer:
-        s += 'label{%s}' % exer['label'] + '\n'
-    s += '\n' + exer['text'] + '\n'
-    for hint_no in sorted(exer['hint']):
-        s += exer['hint'][hint_no] + '\n'
-        #s += '\n' + exer['hint'][hint_no] + '\n'
-    if 'file' in exer:
-        #s += '\n' + r'\noindent' + '\nFilename: ' + r'\code{%s}' % exer['file'] + '\n'
-        s += 'Filename: ' + r'\code{%s}' % exer['file'] + '.\n'
-    if 'comments' in exer:
-        s += '\n' + exer['comments']
-    if 'solution' in exer:
-        pass
-    # Old: need to return three values now...
-    return s
 
 def latex_box(block, format, text_size='normal'):
     if 'begin{figure}' in block:

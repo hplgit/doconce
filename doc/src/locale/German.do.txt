@@ -1,0 +1,86 @@
+TITLE: DocOnce mit Deutsch
+AUTHOR: K. F. Rauß at Einige Orte GmbH & Nord Gemeine
+DATE: today
+
+idx{zusammenfassung}
+
+__Abstract.__
+Dieses Dokument Tests DocOnce mit deutscher Unterstützung cite{Deutsh_Sprache}.
+
+TOC: on
+
+======= Erste Überschrift: Wir erwarten wenig =======
+
+idx{rechnung}
+
+!bquote
+Die heutige Erwärmung ist $0 + 0$. Es ist nicht viel Heizung bekommt ...
+!equote
+
+!bnotice
+In der Tat, $1 + 1 = 2$.
+Dieses Ergebnis kann ohne Angabe von Gründen verwendet werden.
+!enotice
+
+!bquestion
+Was wird $1-1$ sein?
+!equestion
+
+!bsummary
+Addition und Subtraktion sind inverse Operationen.
+!esummary
+
+idx{admon demo}
+
+!bnotice Box mit dem Titel!
+Hier kommt der deutsche Text ...
+!enotice
+
+
+===== Problem: Fügen Sie die beiden Zahlen =====
+file=zusammenstellen
+idx{Zusatz}
+
+Berechnen $1 + 2$.
+
+!bsol
+Sie sagen einfach Finger: mit einem Finger, zwei Finger,
+zählen bis zu drei Fingern alltogether.
+!esol
+
+!bans
+3.
+!eans
+
+===== Project: Multiplizieren Sie zwei Zahlen =====
+file=multipliziere
+
+Berechnen $3\cdot 4$.
+
+!bhint
+Die Aufgabe kann mit einem Taschenrechner berechnet werden.
+!ehint
+
+!bremarks
+In der Tat, $3\cdot 4 = 4\cdot 3$.
+!eremarks
+
+===== Noch höhere Mathematik =====
+
+Wir schauen auf die berühmteste Gleichung der Welt.
+
+!bbox
+!bt
+\[ E = mc^2 \]
+!et
+!ebox
+
+======= Ändern Überschrift: Wir sehen Film und Bild =======
+
+MOVIE: [http://www.youtube.com/watch?v=_O7iUiftbKU, width=420 height=315] YouTube film.
+
+FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png, width=500 frac=0.8] Hier ist eine Figur einer Funktion.
+
+======= Bibliographie =======
+
+BIBFILE: papers.pub
