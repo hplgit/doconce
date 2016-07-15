@@ -88,7 +88,7 @@ locale_dict = dict(
     German={
         'locale': 'de_DE.UTF-8',
         'latex package': 'german',
-        'toc': 'Inahltsverzeichnis',
+        'toc': 'Inhaltsverzeichnis',
         'Contents': 'Inhalt',
         'Figure': 'Abbildung',
         'Movie': 'Film',
