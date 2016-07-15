@@ -42,12 +42,12 @@ cat >> index.html <<EOF
 EOF
 
 # LaTeX PDF
-system doconce format pdflatex $name --latex_code_style=vrb $options
-pdflatex $name
+system doconce format pdflatex $name --latex_code_style=pyg-blue1 $options
+pdflatex -shell-escape $name
 makeindex $name
 bibtex $name
-pdflatex $name
-pdflatex $name
+pdflatex -shell-escape $name
+pdflatex -shell-escape $name
 
 cat >> index.html <<EOF
 <li><p><a href="$language.pdf" target="_blank">PDF</a></p></li>

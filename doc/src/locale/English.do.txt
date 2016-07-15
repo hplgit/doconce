@@ -76,7 +76,7 @@ We look at the world's most famous equation.
 
 ======= Second heading: We look at video and picture =======
 
-MOVIE: [http://www.youtube.com/watch?v=_O7iUiftbKU, width=420 height=315] YouTube film.
+MOVIE: [http://www.youtube.com/watch?v=bp3mCgrdMxU, width=420 height=315] YouTube film.
 
 FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png, width=500 frac=0.8] Here is a sketch of a function.
 

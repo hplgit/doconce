@@ -83,9 +83,27 @@ Vi ser på verdens mest berømte likning.
 
 ======= Andre overskrift: Vi ser film og bilde =======
 
-MOVIE: [http://www.youtube.com/watch?v=_O7iUiftbKU, width=420 height=315] YouTube film.
+MOVIE: [http://www.youtube.com/watch?v=bp3mCgrdMxU, width=420 height=315] YouTube film.
 
 FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png, width=500 frac=0.8] Her er en figur av en funksjon.
+
+======= Tredje overskrift: Vi programmerer på norsk =======
+
+Noen holder seg innenfor ASCII-tabellens grenser når de programmerer, andre foretrekker å programmere på norsk ettersom stort sett går greit[^presisering] med æøå i koden.
+
+[^presisering]: Dette er en sannhet med store modifikasjoner
+
+De tre ekstra vokalene gir rom for mange korte ord i det norske språk.
+
+!bc pycod
+# -*- coding: utf-8 -*-
+
+# vi må bruke utf-8 for å kunne ha æøå i koden
+for norsk_bokstav in ['æ', 'ø', 'å']:
+    print "kl%sr" % norsk_bokstav
+    print "s%sr" % norsk_bokstav
+    print "t%sr" % norsk_bokstav
+!ec
 
 ======= Litteraturliste =======
 
