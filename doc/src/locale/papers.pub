@@ -2,7 +2,24 @@
 ** Litt om ting som må skrives på norsk
    key:       norsk_tekst
    author:    Å. Ø. Ærlundsen, O. Æ. Sørlie
+   year:      2016
    status:    published
-   note:      \emph{http://doconce.test.net}
    url:       http://doconce.test.net
+   entrytype: misc
+** Something about things that have to be written in English
+   key:       english_text
+   author:    J. Doe, K. Loe
+   status:    published
+   url:       http://doconce.test.net
+   entrytype: misc
+* articles
+** Einige {Dinge}, die in deutscher {Sprache} abgefasst sein müssen
+   key:       Deutsh_Sprache
+   author:    K. F. Rauß
+   journal:   Archiv für wissenschaftliche Arbeiten
+   number:    14
+   volum:     3
+   pages:     133-198
+   year:      1984
+   status:    published
    entrytype: misc

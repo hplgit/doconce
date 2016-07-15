@@ -4875,7 +4875,6 @@ performed by the `doconce slides_beamer` command and does not result
 in individual files like `split_rst` and `split_html` do.
 
 
-
 !split
 ======= Writing Slides =======
 
@@ -5184,6 +5183,22 @@ The cycle is
  * standard pdfLaTeX compilation of `mydoc.tex`
 
 !split
+======= Support for non-English =======
+
+DocOnce can handle documents in other languages than English. At the time
+of this writing there is support for Norwegian and German.
+
+A demo directory with files is "`locale`": "https://github.com/hplgit/doconce/tree/master/doc/src/locale". For example, `norsk.do.txt` contains a simple document
+in Norwegian. To compile, one must supply the options
+`--encoding=utf-8 --language=Norwegian`:
+
+!bc sys
+Terminal> doconce format html norsk \
+          --html_style=bootstrap_FlatUI \
+          --encoding=utf-8 --language=Norwegian
+!ec
+
+!split
 ======= Misc =======
 
 ===== Missing Features =====
@@ -5323,6 +5338,12 @@ many keyboard shortcuts are defined:
 Typing `Ctrl+c help` prints the above table in Emacs. Try out
 the different shortcuts and see how handy they are in learning
 DocOnce and saving much typing!
+
+
+===== Atom Syntax Highlighting for DocOnce =====
+label{atom}
+
+There is a package for the "Atom editor" : "https://atom.io/" available at URL: "https://atom.io/packages/language-doconce" which provides syntax highlighting for DocOnce.
 
 
 !split

@@ -1,0 +1,65 @@
+TITLE: Eksempel på ikke-engelsk tekst
+AUTHOR: Åsgeir Ødegården (pseudonym!)
+# DATE: tody will be in English, so we write it out in Norwegian
+DATE: 12. juli, 2015
+
+__Summary.__
+Dette er et kort notat på norsk for å demonstrere at DokEngang (DocOnce) kan
+håndtere andre språk enn engelsk.
+
+TOC: on
+
+======= Introduksjon =======
+label{sec:intro}
+
+idx{språkformer}
+idx{norsk}
+idx{nynorsk}
+idx{bokmål}
+
+Norsk er egentlig to språk, *bokmål* og *nynorsk*. "Bokmål":
+"https://no.wikipedia.org/wiki/Bokmål" er forfatterens språk og det de
+fleste (85-90%) skriver i Norge, men "nynorsk":
+"https://no.wikipedia.org/wiki/Nynorsk" er ikke særlig
+forskjellig, spesielt ikke sett med utlendingers øyne.
+Avstanden mellom norsk og nynorsk er mindre enn mellom
+norsk og svensk. Voksne nordmenn har sjelden problemer med å forstå
+skriftlig og muntlig svensk, og alle nordmenn forstår bokmål like lett
+som nynorsk. Likevel skal alle offentlige dokumenter foreligge på begge
+språk~(!). Dansk ligger veldig nære bokmål, men
+uttales ganske annerledes.
+
+===== Demonstrasjon av populære DokEngang elementer =====
+
+Dette er et underkapittel av seksjon ref{sec:intro}.
+
+# Admons
+
+!bnotice Formålet med dette dokumentet
+Dette skrivet skal bare demonstrere norsk tekst, så vi trenger ikke tvære
+ut innholdet. Det er nok å demonstrere at figurtekster og andre spesielle
+elementer virker med UTF-8 tegnsett. La oss refere her til
+figur ref{fig1} slik man referer til en figur på norsk.
+Vi gjør også en referanse til litteraturen cite{norsk_tekst}.
+!enotice
+
+idx{figur}
+
+# Figures
+
+FIGURE: [../manual/fig/wave1D, width=500 frac=0.7] Figurtekst på norsk går bra. label{fig1}
+
+===== Exercise: Hallo verden. =====
+label{exercise:halloverden}
+"Hallo verden":"http://en.wikipedia.org/wiki/Hello_world_program" er
+en vanlig måte å teste ut ny teknologi på. I denne oppgaven skal du
+lage ditt første html-hallo-verden-program.
+
+Du skal lage siden `index.html`, som lagres i en egen mappe. Her skal
+du bruke så mye av det du har lært fra første avsnittet. Tittelen på
+siden skal være "Hallo verden!". Innholdet bestemmer du selv. Husk å
+lage oppgaven i en egen mappe.
+
+======= Litteraturliste =======
+
+BIBFILE: papers.pub

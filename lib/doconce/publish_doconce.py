@@ -303,6 +303,10 @@ def _doconce_format_arxiv(arxiv):
 
 def _doconce_format_url(url):
     "Format URL"
+    if url.startswith('\\url{'):
+        url = url[5:-1]
+    if url.startswith('\\emph{'):
+        url = url[6:-1]
     return 'URL: "%s"' % (url)
 
 def _doconce_join(values):

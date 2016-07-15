@@ -1008,10 +1008,12 @@ def doconce_exercise_output(
 
                 if subex['file']:
                     if len(subex['file']) == 1:
-                        s += 'Filename: `%s`' % subex['file'][0] + '.\n'
+                        Filename = locale_dict[language]['Filename']
+                        s += '%s: `%s`' % (Filname, subex['file'][0]) + '.\n'
                     else:
-                        s += 'Filenames: %s' % \
-                             ', '.join(['`%s`' % f for f in subex['file']]) + '.\n'
+                        Filenames = locale_dict[language]['Filenames']
+                        s += '%s: %s' % (Fienames, ', '.join(
+                            ['`%s`' % f for f in subex['file']]) + '.\n')
 
                 if subex['answer']:
                     s += '\n'
@@ -1108,13 +1110,13 @@ def doconce_exercise_output(
             # otherwise let it proceed at the end of the exercise text.
             s += '\n'
         if len(exer['file']) == 1:
-            s += 'Filename: `%s`' % exer['file'][0] + '.\n'
+            Filename = locale_dict[language]['Filename']
+            s += '%s: `%s`' % (Filename, exer['file'][0]) + '.\n'
         else:
-            s += 'Filenames: %s' % \
-                 ', '.join(['`%s`' % f for f in exer['file']]) + '.\n'
-        #s += '*Filename*: `%s`' % exer['file'] + '.\n'
-        #s += '\n' + '*Filename*: `%s`' % exer['file'] + '.\n'
-
+            Filenames = locale_dict[language]['Filenames']
+            s += '%s: %s' % (Filenames,
+                             ', '.join(['`%s`' %
+                                        f for f in exer['file']]) + '.\n')
     if exer['closing_remarks']:
         s += '\n# Closing remarks for this %s\n\n=== %s ===\n\n' % \
              (exer['type'], locale_dict[locale_dict['language']]['remarks'].capitalize()) + exer['closing_remarks'] + '\n\n'

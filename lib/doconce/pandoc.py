@@ -329,6 +329,8 @@ def pandoc_ref_and_label(section_label2title, format, filestr):
     # right link text. html.py has probably most solutions.
     filestr = re.sub(r'([Ff]igure|[Mm]ovie)\s+ref\{(.+?)\}', '[\g<1>](#\g<2>)',
                      filestr)
+    # Remaining ref{}
+    filestr = re.sub(r'ref\{(.+?)\}', '[\g<1>](#\g<1>)', filestr)
     return filestr
 
 

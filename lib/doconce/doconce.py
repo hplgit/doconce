@@ -48,12 +48,14 @@ locale_dict = dict(
         # At the end (in Sphinx)
         'index': 'Index',
         # References
+        'Filename': 'Filename',
+        'Filenames': 'Filenames',
         },
     Norwegian={
         'locale': 'nb_NO.UTF-8',
         'latex package': 'norsk',
         'toc': 'Innholdsfortegnelse',
-        'Contents': 'Innholdsfortegnelse',
+        'Contents': 'Innhold',
         'Figure': 'Figur',
         'Movie': 'Video',
         'list of': 'Liste over',
@@ -80,6 +82,8 @@ locale_dict = dict(
         '__Solution.__': '__Løsning.__'.decode('utf-8'),
         '__Answer.__': '__Kortsvar.__',
         '__Hint.__': '__Hint.__',
+        'Filename': 'Filnavn',
+        'Filenames': 'Filnavn',
         },
     German={
         'locale': 'de_DE.UTF-8',
@@ -116,6 +120,8 @@ locale_dict = dict(
         # At the end (in Sphinx)
         'index': 'Index',
         # References
+        'Filename': 'Dateiname',
+        'Filenames': 'Dateiname',
         },
     )
 
@@ -1862,8 +1868,14 @@ def exercises(filestr, format, code_blocks, tex_blocks):
             exer_end = False
             exer = {}
 
-    filestr = '\n'.join(newlines)
-    solutions = '\n'.join(solutions)
+    try:
+        filestr = '\n'.join(newlines)
+        solutions = '\n'.join(solutions)
+    except UnicodeDecodeError:
+        print '****** DOES THIS OCCUR AT ALL??? ******'
+        filestr = '\n'.join([n.decode('utf-8') for n in newlines if isinstance(n, str)])
+        solutions = '\n'.join([n.decode('utf-8') for n in solutions if isinstance(n, str)])
+
 
     if option('without_solutions') and option('solutions_at_end'):
         from common import chapter_pattern
@@ -2546,7 +2558,11 @@ def typeset_envirs(filestr, format):
                     # Rely on the format's default title
                     return ENVIRS[format][envir](m.group(2), format, text_size=text_size)
                 else:
-                    return ENVIRS[format][envir](m.group(2), format, title, text_size=text_size)
+                    if envir in ('box', 'quote'):
+                        # no title
+                        return ENVIRS[format][envir](m.group(2), format, text_size=text_size)
+                    else:
+                        return ENVIRS[format][envir](m.group(2), format, title, text_size=text_size)
         else:
             # subst functions for default handling in primitive formats
             # that do not support the current environment
@@ -3891,8 +3907,14 @@ def inline_tag_subst(filestr, format):
             date = w[1] + ' ' + w[2] + ', ' + w[4]
         else:
             import locale
-            locale.setlocale(locale.LC_TIME,
-                             locale_dict[locale_dict['language']]['locale'])
+            try:
+                locale.setlocale(locale.LC_TIME,
+                                 locale_dict[locale_dict['language']]['locale'])
+            except locale.Error, e:
+                errwarn('*** error: ' + str(e))
+                errwarn('    locale=%s must be installed' % (locale_dict[locale_dict['language']]['locale']))
+                errwarn('    sudo locale-gen de_DE.UTF-8; sudo update-locale')
+                _abort()
             date = time.strftime('%A, %d. %b, %Y')
 
         # Add copyright right under the date if present
