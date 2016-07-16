@@ -3926,7 +3926,10 @@ def inline_tag_subst(filestr, format):
                     date += '\n\nMade with DocOnce\n\n'
                 else:
                     date += '\n\nCopyright ' + cr_text + '\n\n'
-        filestr = filestr.replace(origstr, 'DATE: ' + date)
+        try:
+            filestr = filestr.replace(origstr, 'DATE: ' + date)
+        except UnicodeDecodeError:
+            filestr = filestr.replace(origstr, 'DATE: ' + date.decode('utf-8'))
 
     # Hack for not typesetting ampersands inside inline verbatim text
     groups = re.findall(INLINE_TAGS['verbatim'], filestr, flags=re.MULTILINE)
