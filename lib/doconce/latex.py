@@ -4332,7 +4332,8 @@ justified,
 % \subex{} is defined in t2do.sty or t4do.sty
 """
 
-    INTRO['latex'] += r"""
+    if chapters:
+        INTRO['latex'] += r"""
 % Redefine double page clear to make it a blank page without headers
 % (from BYUTextbook)
 \makeatletter
