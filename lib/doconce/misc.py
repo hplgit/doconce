@@ -255,7 +255,7 @@ Koma_Script: Koma Script style,
 siamltex: SIAM's standard LaTeX style for papers,
 siamltexmm: SIAM's extended (blue) multimedia style for papers."""),
     ('--latex_font=',
-     """LaTeX font choice: helvetica, palatino, std (Computer Modern, default)."""),
+     """LaTeX font choice: helvetica, palatino, utopia, std (Computer Modern, default)."""),
     ('--latex_code_style=', """Typesetting of code blocks.
 pyg: use pygments (minted), style is set with --minted_latex_style=
 lst: use lstlistings

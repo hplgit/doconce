@@ -2307,6 +2307,7 @@ def get_admon_figname(admon_tp, admon_name):
         else:
             return None
 
+# Generate Python functions for admons
 admons = 'notice', 'summary', 'warning', 'question', 'block'
 for _admon in admons:
     _Admon = locale_dict[locale_dict['language']].get(_admon, _admon).capitalize()
@@ -2318,7 +2319,13 @@ def latex_%(_admon)s(text_block, format, title='%(_Admon)s', text_size='normal')
     if title == 'Block':  # block admon has no default title
         title = ''
 
+    # Allow specific style for this admon %(_admon)s: (for future!
+    # so far we lack declarations of individual admon styles)
+    ##latex_admon = option('latex_%(_admon)s_admon=', None)
+    ##if latex_admon is None:  # not admon-dep; specified a common one?
+    ##    latex_admon = option('latex_admon=', 'mdfbox')
     latex_admon = option('latex_admon=', 'mdfbox')
+
     if option('latex_title_layout=', '') == 'beamer':
         latex_admon = 'paragraph'  # block environ will be used anyway
 
@@ -2392,7 +2399,7 @@ def latex_%(_admon)s(text_block, format, title='%(_Admon)s', text_size='normal')
 
 ''' %% (title_mdframed, text_block_graybox2)
 
-    if latex_admon in ('colors1', 'colors2', 'mdfbox', 'grayicon', 'yellowicon', 'tcb'):
+    if latex_admon in ('colors1', 'colors2', 'mdfbox', 'grayicon', 'yellowicon', 'tcb', 'vbar'):
         text = r'''
 \begin{%(_admon)s_%%(latex_admon)sadmon}[%%(title)s]
 %%(text_block)s
@@ -3410,7 +3417,13 @@ justified,
 \usepackage[sc]{mathpazo}    % Palatino fonts
 \linespread{1.05}            % Palatino needs extra line spread to look nice
 """
-    if latex_style not in ('Springer_lnup', 'Springer_sv'):
+    elif latex_font == 'utopia':
+        INTRO['latex'] += r"""
+% Set utopia as the default font family:
+\usepackage{fourier}
+"""
+        # make sure no lmodern!
+    if latex_style not in ('Springer_lnup', 'Springer_sv') and latex_font != 'utopia':
         INTRO['latex'] += r"""
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 """
@@ -3740,7 +3753,7 @@ justified,
             except SyntaxError:
                 # eval(latex_admon_color) did not work, treat it as valid color
                 latex_admon_colors = [[a, latex_admon_color] for a in admons]
-        admon_styles = 'colors1', 'colors2', 'mdfbox', 'graybox2', 'grayicon', 'yellowicon', 'tcb'
+        admon_styles = 'colors1', 'colors2', 'mdfbox', 'graybox2', 'grayicon', 'yellowicon', 'tcb', 'vbar'
         admon_color = {style: {} for style in admon_styles}
 
         # Set default admon colors.
@@ -3764,6 +3777,7 @@ justified,
                 admon_color['grayicon'][admon] = gray3
                 admon_color['yellowicon'][admon] = yellow1
                 admon_color['tcb'][admon] = gray4
+                admon_color['vbar'][admon] = gray4
         else:
             for admon, latex_admon_color in latex_admon_colors:
                 # use latex_admon_color for everything
@@ -3798,6 +3812,24 @@ justified,
             packages = r"""\usepackage[most]{tcolorbox}
 
 """
+        elif latex_admon in ('vbar',):
+            packages = r"""
+% The changebar package allows colored bars along the text
+% edge for vbar admons.  However,
+% it also puts bars next to footnotes, which is undesired
+% for this class, so we "undo" that functionality with the
+% following hack
+% (taken from the BYUTextbook class)
+\makeatletter
+\let\textbookcls@footnotetext\@footnotetext
+\let\textbookcls@mpfootnotetext\@mpfootnotetext
+\makeatother
+\usepackage[leftbars,color]{changebar}
+\makeatletter
+\let\@footnotetext\textbookcls@footnotetext
+\let\@mpfootnotetext\textbookcls@mpfootnotetext
+\makeatother
+"""
         else: # mdfbox
             packages = r'\usepackage[framemethod=TikZ]{mdframed}'
         INTRO['latex'] += '\n' + packages + '\n\n% --- begin definitions of admonition environments ---\n'
@@ -3811,8 +3843,8 @@ justified,
                 else:
                     admon_color[style][admon] = r'\colorlet{%(latex_admon)s_%(admon)s_background}{%(color)s}' % vars()
 
+        # First define environments independent of admon type
         if latex_admon == 'graybox2':
-            # First define environments independent of admon type
 
             INTRO['latex'] += r"""
 % Admonition style "graybox2" is a gray or colored box with a square
@@ -4005,6 +4037,27 @@ justified,
   title=#2,
   #1}
 """ % vars()
+            elif latex_admon == 'vbar':
+                INTRO['latex'] += r"""
+%% Admonition style "vbar" is a vertial colored bar in the left margin
+%% which indents the text (taken from the BYUTextbook class)
+%% COMPILES, BUT DOES NOT WORK YET! Use changebar package and debug...
+%% "%(admon)s" admon
+%(define_bgcolor)s
+
+\setlength{\changebarsep}{-3pt}
+\setlength{\changebarwidth}{2pt}
+
+\newenvironment{%(admon)s_vbaradmon}[1]
+    {\cbcolor{%(latex_admon)s_%(admon)s_background}\par \vspace{10pt}
+     \cbstart
+    \begin{enumerate}\item[]
+     \noindent\textbf{#1}
+     \par\vspace{5pt}\small\noindent
+    } {\end{enumerate} \cbend\par \vspace{10pt}}
+
+""" % vars()
+
             elif latex_admon == 'mdfbox':
                 # mdfbox, the most flexible/custom admon construction
                 INTRO['latex'] += r"""
@@ -4109,6 +4162,7 @@ justified,
 \renewcommand{\headrulewidth}{1pt}
 \renewcommand{\headrule}{{\color{gray!50}%
 \hrule width\headwidth height\headrulewidth \vskip-\headrulewidth}}
+% replace \rightmark and \thepage by bfseries everwyhere to get bold headings
 \fancyhead[LE,RO]{{\color{seccolor}\nouppercase{\rightmark}}} %section
 \fancyhead[RE,LO]{{\color{seccolor}\thepage}}
 """
@@ -4136,7 +4190,8 @@ justified,
 % on even (E) pages,
 % chapter name to the right (R) and page number to the right (L)
 % on odd (O) pages (requires twoside option in documentclass)
-% (switch twoside to onside in documentclass to just have odd pages)"""
+% (switch twoside to onside in documentclass to just have odd pages)
+% replace \rightmark and \thepage by bfseries everwyhere to get bold headings"""
             if 'twoside,' in INTRO['latex']:
                 INTRO['latex'] += r"""
 \fancyhead[LE]{{\color{seccolor}\nouppercase{\rightmark}}} % section
@@ -4277,7 +4332,23 @@ justified,
 % \subex{} is defined in t2do.sty or t4do.sty
 """
 
-
+    INTRO['latex'] += r"""
+% Redefine double page clear to make it a blank page without headers
+% (from BYUTextbook)
+\makeatletter
+\def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
+\hbox{}
+\thispagestyle{empty}
+\newpage
+\if@twocolumn\hbox{}\newpage\fi\fi\fi}
+\makeatother
+% These commands fiddle with the space left for page numbers in the TOC
+% (from BYUTextbook)
+\makeatletter
+\renewcommand{\@pnumwidth}{2em}
+\renewcommand{\@tocrmarg}{2.85em}
+\makeatother
+"""
     if chapters and latex_style not in ("Koma_Script", "Springer_T2", "Springer_T4", "Springer_lnup", "Springer_sv"):
         # Follow advice from fancyhdr: redefine \cleardoublepage
         # see http://www.tex.ac.uk/cgi-bin/texfaq2html?label=reallyblank
