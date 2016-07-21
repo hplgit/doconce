@@ -12,12 +12,16 @@ DocOnce is a modestly tagged (Markdown-like) markup language targeting scientifi
 
 ===== News =====
 
-Here are some of the most recent features in DocOnce:
+Here are some of the most recent features and enhancements in DocOnce:
 
  * Thanks to support from Mirco Meiners and Kristian Gregorius Hustad,
    DocOnce now supports documents in foreign languages, at the moment
    Norwegian and German. (Expect the code to still be a bit unstable as
    these features are being tested and used.)
+ * It is easy to overlook the many warnings and non-fatal errors from
+   DocOnce when compiling a document. Now all comments from DocOnce for
+   a document `mydoc.do.txt` are collected in `mydoc.dlog` for
+   careful inspection.
  * Lots of automatic adjustments of the Bootstrap styles: if it looks good
    in one style, just switch to any other Bootstrap style and
    it will look good there

@@ -69,6 +69,7 @@ part of the command doconce sphinx_dir."""),
     ('--no_header_footer',
      'Do not include header and footer in (LaTeX and HTML) documents.'),
     ('--no_emoji', 'Remove all emojis.'),
+    ('--siunits', 'Allow siunitx MathJax/LaTeX package for support of SI units in various formats'),
     ('--allow_refs_to_external_docs', 'Do not abort translation if ref{...} to labels not defined in this document.'),
     ('--runestone',
      'Make a RunestoneInteractive version of a Sphinx document.'),
@@ -7564,6 +7565,7 @@ MathJax.Hub.Config({
 });
 </script>
 \g<1>"""
+    # Nothing is done with --siunits option and siunitx package...
     text = re.sub(pattern, replacement, text)
     text = text.replace('EQREF{', '\\eqref{')
 

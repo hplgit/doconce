@@ -3204,6 +3204,9 @@ justified,
 
             INTRO['latex'] += '\n\n'
 
+    if option('siunits'):
+        INTRO['latex'] += '\n' + r'\usepackage{siunitx}  % SI units support' + '\n'
+
     m = re.search('^(!bc|@@@CODE|@@@CMD)', filestr, flags=re.MULTILINE)
     if m:
         if latex_code_style is None:
@@ -4346,8 +4349,8 @@ justified,
 % These commands fiddle with the space left for page numbers in the TOC
 % (from BYUTextbook)
 \makeatletter
-\renewcommand{\@pnumwidth}{2em}
-\renewcommand{\@tocrmarg}{2.85em}
+%\renewcommand{\@pnumwidth}{2em}
+%\renewcommand{\@tocrmarg}{2.85em}
 \makeatother
 """
     if chapters and latex_style not in ("Koma_Script", "Springer_T2", "Springer_T4", "Springer_lnup", "Springer_sv"):

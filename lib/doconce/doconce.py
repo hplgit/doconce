@@ -1860,7 +1860,7 @@ def exercises(filestr, format, code_blocks, tex_blocks):
                     msg = '\n*** %s: %s' % (exer['type'], exer['title'])
                     if 'label' in exer:
                         msg += '\n    label{%s}' % exer['label']
-                    msg += '\n    should be Exercise since it has refs to other parts of the document:\n    ' + ', '.join(external_refs)
+                    msg += '\n    should be Exercise since it has refs to other parts (?) of the document:\n    ' + ', '.join(external_refs)
                     errwarn(msg)
 
             # Be ready for next iteration
@@ -4294,7 +4294,8 @@ def doconce2format(filestr, format):
         print '*** error: language "%s" not supported in locale_dict' % locale_dict['language']
         _abort()
     else:
-        errwarn('*** locale set to ' + locale_dict['language'])
+        if locale_dict['language'] != 'English':
+            errwarn('*** locale set to ' + locale_dict['language'])
 
     # Check that all eqrefs have labels in tex blocks (\label{})
     if option('labelcheck=', 'off') == 'on':

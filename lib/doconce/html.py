@@ -658,7 +658,10 @@ def toc2html(html_style, bootstrap=True,
     return toc_html
 
 class CreateApp():
-    """Class for interactive Bokeh plots."""
+    """
+    Class for interactive Bokeh plots.
+    Written by Fredrik Eikeland Fossan <fredrik.e.fossan@ntnu.no>.
+    """
     def __init__(self, plot_info):
         from numpy import linspace
         from bokeh.models.widgets import Slider, TextInput
@@ -669,6 +672,24 @@ class CreateApp():
         possible_inputs = ['x_axis_label', 'xrange', 'yrange', 'sliderDict', 'title', 'number_of_graphs']
 
         y = None
+        # Formula given or just Python function?
+        if ".py" in plot_info[0]:
+            # Python module with compute function
+            compute = None
+            msg = "from " + plot_info[0][0:-3] + " import compute"
+            errwarn('...exec: ' + msg)
+            exec(msg)
+            import inspect
+            arg_names = inspect.getargspec(compute).args
+            argString = ""
+            for n, arg in enumerate(arg_names):
+                argString = argString + arg
+                if n != len(arg_names) - 1:
+                    argString = argString + ", "
+            computeString = "y = compute(" + argString + ")"
+            self.computeString = computeString
+            self.compute = compute
+
         self.curve = plot_info[0]
         x_axis_label = None
         y_axis_label = None
@@ -701,6 +722,7 @@ class CreateApp():
 
         # Set up plot
         from bokeh.plotting import Figure
+        assert len(xrange) == 2; assert len(yrange) == 2
         self.plot = Figure(
             plot_height=400, plot_width=400, title=title,
             tools="crosshair,pan,reset,resize,save,wheel_zoom",
@@ -709,7 +731,13 @@ class CreateApp():
         self.plot.yaxis.axis_label = y_axis_label
         # generate the first curve:
         x = self.x
-        exec(plot_info[0]) #  execute y = f(x, params)
+        if ".py" in plot_info[0]:
+            exec(self.computeString)
+            errwarn('...exec: ' + self.computeString)
+        else:
+            exec(plot_info[0]) #  execute y = f(x, params)
+            errwarn('...exec: ' + plot_info[0])
+        #print 'XXX', y  # nan for womersley test!
 
         if type(y) is list:
             if legend == None:
@@ -748,7 +776,13 @@ class CreateApp():
         for n, param in enumerate(self.parameters):
             exec(param + " = "  + 'self.sliderList[n].value')
         # generate the new curve:
-        exec(self.curve) #  execute y = f(x, params)
+        if ".py" in self.curve:
+            compute = self.compute
+            exec(self.computeString) #  execute y = compute(x, params)
+            errwarn('...exec: ' + self.computeString)
+        else:
+            exec(self.curve) #  execute y = f(x, params)
+            errwarn('...exec: ' + self.curve)
 
         if type(y) is list:
             for n in range(len(y)):
@@ -787,6 +821,7 @@ def embed_IBPLOTs(filestr, format):
     IBPLOT_lines = []
     for line in filestr.splitlines():
         if line.startswith('IBPLOT:'):
+            errwarn('*** found IBPLOT command\n    ' + line)
             try:
                 plot_info = line[8:-1].split(';')
             except Exception:
@@ -798,6 +833,8 @@ def embed_IBPLOTs(filestr, format):
             new_plot_info = []
             n = 0
             for element in plot_info:
+                if not element:
+                    continue
                 if element[0] ==' ':
                     element = element[1:]
                 if element[-1] ==' ':
@@ -857,20 +894,26 @@ def embed_newcommands(filestr):
 
 def mathjax_header(filestr):
     newcommands = embed_newcommands(filestr)
+    if option('siunits'):
+        siunitx1 = '\nMathJax.Ajax.config.path["Contrib"] = "https://cdn.mathjax.org/mathjax/contrib";'
+        siunitx2 = ', "[Contrib]/siunitx/unpacked/siunitx.js"'
+    else:
+        siunitx1 = siunitx2 = ''
+
     mathjax_script_tag = """
 
-<script type="text/x-mathjax-config">
+<script type="text/x-mathjax-config">%s
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "AMS"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"%s]
   }
 });
 </script>
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-"""
+""" (siunitx1, siunitx2)
     #<meta tag is valid only in html head anyway, so this was removed:
     #<!-- Fix slow MathJax rendering in IE8 -->
     #<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
