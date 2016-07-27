@@ -21,7 +21,7 @@ DocOnce Description
 %%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Jul 15, 2016
+:Date: Jul 26, 2016
 
 .. lines beginning with # are doconce comment lines
 
@@ -3425,11 +3425,16 @@ Em-dash
 
 .. index:: em-dash
 
-The ``latex``, ``pdflatex``, ``sphinx``, and ``html`` formats support em-dash,
-indicated by three hyphens: ``---``. The em-dash has two applications: 1)
-as alternative to a hyphen with space around in a sentence---except that
-there are no spaces around the em-dash, and 2) origin of quotes,
-where there is no space between the end of the quote and the m-dash:
+The ``latex``, ``pdflatex``, ``sphinx``, ``html``, ``pandoc``, and
+``ipynb`` formats support em-dash,
+indicated by three hyphens: ``---``. Other formats print just the
+three hyphens.
+The em-dash has two applications:
+
+ * as alternative to an ordinary single hyphen (with space around) in a sentence---except that there are no spaces around the em-dash (this is common, cf.
+
+`Wikipedia <https://en.wikipedia.org/wiki/Dash>`__), and
+ * origin of quotes (where there is no space between the end of the quote and the m-dash):
 
 
 ..
@@ -3444,6 +3449,30 @@ The associated DocOnce source reads
     !bquote
     *Premature optimization is the root of all evil.*---Donald Knuth.
     !equote
+
+En-dash
+-------
+
+.. index:: n-dash
+
+.. index:: em-dash
+
+The en-dash constists of two hyphens, as in ``--``, and can be used instead
+of a single hyphen to get a slightly longer hyphen (LaTeX writers are
+especially used to this). Common applications are
+
+ * hyphen in compound words as the Navier - Stokes equations (here written as ``Navier - Stokes``)
+
+ * hyphen in number ranges like 1 - 9
+
+ * hyphen around a sentence in sentence: To be precise - but not to detailed - we should ... (here the hyphen is written as ``--``), as an alternative to em-dash (see section above)
+
+The ``latex``, ``pdflatex``, ``sphinx``, ``html``, ``pandoc``, and
+``ipynb`` formats support en-dash (basically this means that HTML output
+has ``&ndash`` and LaTeX output is not altered). Other formats just show
+the raw double hyphen.
+
+.. The m- and n-dashes are processed in doconce.py
 
 Ampersand
 ---------
@@ -4085,8 +4114,8 @@ Generalized References to LaTeX Documents
 It is difficult in the ``[external]`` part of the generalized reference to
 refer to equation numbers in an external document. If one wants to refer
 to a LaTeX document, say a textbook, from some HTML or notebook, then
-one can use the ``refaux`` reference and an ``.aux`` as explained at the
-end of the previous section. Here is one example:
+one can use the ``refaux`` reference and an ``.aux`` file as explained at the
+end of the previous section on *Cross-Referencing*. Here is one example:
 
 .. code-block:: doconce
 
@@ -4126,8 +4155,8 @@ For example,
     "Setting up the model": "http://some.where.net/doc#model"
     in cite{Langtangen_2045}], we realize that...
 
-Tool for Generating Generalizedd References
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Tool for Generating Generalized References
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The ``doconce ref_external`` command will read all the labels in the
 external documents listed in the ``Externaldocuments:`` comment
@@ -11121,6 +11150,11 @@ here for convenience.
     Remove all emojis.
     
     
+    --siunits
+    
+    Allow siunitx MathJax/LaTeX package for support of SI units in various formats
+    
+    
     --allow_refs_to_external_docs
     
     Do not abort translation if ref{...} to labels not defined in this document.
@@ -11453,7 +11487,7 @@ here for convenience.
     
     --latex_font=...
     
-    LaTeX font choice: helvetica, palatino, std (Computer Modern, default).
+    LaTeX font choice: helvetica, palatino, utopia, std (Computer Modern, default).
     
     
     --latex_code_style=...

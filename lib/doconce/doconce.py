@@ -808,7 +808,7 @@ def syntax_check(filestr, format):
     filestr, code_blocks, code_block_types, tex_blocks = \
              remove_code_and_tex(filestr, format)
 
-    # mdash with spaces
+    # mdash with spaces is not allowed---must be like this---in a sentence.
     pattern = r'^[^#](---\s\w|\w\s---)'
     m = re.search(pattern, filestr, flags=re.MULTILINE)
     if m:
