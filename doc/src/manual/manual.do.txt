@@ -1619,8 +1619,7 @@ indicated by three hyphens: `---`. Other formats print just the
 three hyphens.
 The em-dash has two applications:
 
- * as alternative to an ordinary single hyphen (with space around) in a sentence---except that there are no spaces around the em-dash (this is common, cf.
-"Wikipedia": "https://en.wikipedia.org/wiki/Dash"), and
+ * as alternative to an ordinary single hyphen (with space around) in a sentence---except that there are no spaces around the em-dash (this is common, cf. "Wikipedia": "https://en.wikipedia.org/wiki/Dash"), and
  * origin of quotes (where there is no space between the end of the quote and the m-dash):
 
 !bquote
@@ -2470,6 +2469,10 @@ the index keywords should be placed above the heading.
 The keywords in the index are automatically placed in a meta
 tag in `html` output such that search engines can make use of the them.
 
+SIAM has developed a very useful document on "how to create an
+effective index": "http://www.siam.org/books/authors/indexguidelines.pdf"
+in a book.
+
 
 ===== Emojis =====
 idx{emojis}
@@ -2480,9 +2483,10 @@ whitespace (blank or newline) before and after.
 The available emoji names are shown at URL: "http://www.emoji-cheat-sheet.com".
 Here is an example: :sweat_smile:
 
-DocOnce supports emojis for the `html` and `pdflatex` formats. All other
-formats will just print the raw emoji name (like `:sweat_smile:`).
-The command-line option `--no_emoji` removes all emojis from the output.
+DocOnce supports emojis for the `html`, `pdflatex`, and `pandoc` formats.
+All other formats will just print the raw emoji name (like `:sweat_smile:`).
+The command-line option `--no_emoji` removes all emojis from the output so
+you can get serious in a second.
 
 
 

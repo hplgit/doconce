@@ -193,7 +193,8 @@ dest=../../pub/manual
 cp -r demo/html demo/manual.pdf demo/manual.html demo/._manual*.html demo/fig demo/mov $dest
 
 dest=../../../../doconce.wiki
-cp demo/manual.rst $dest/manual_rst.rst
+# rst is inferior to md
+#cp demo/manual.rst $dest/manual_rst.rst
 # mediawiki at github is too bad - very ugly result
 #cp demo/manual.mwiki $dest/manual_mediawiki.mediawiki
-cp demo/manual.md $dest/manual_markdown.md
+cp demo/manual.md $dest

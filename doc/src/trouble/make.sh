@@ -26,10 +26,13 @@ python automake_sphinx.py
 
 doconce format rst ${name}  $opt
 
+doconce format pandoc ${name} --github_md --strict_markdown_output $opt
+
 dest=../../pub/${name}
 cp -r ${name}.pdf ${name}.html $dest
 rm -rf $dest/html
 mv -f sphinx-rootdir/_build/html $dest/
 git add $dest/html
+
 dest=../../../../doconce.wiki
-cp -r ${name}.rst $dest
+cp -r ${name}.md $dest

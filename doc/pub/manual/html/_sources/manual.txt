@@ -21,7 +21,7 @@ DocOnce Description
 %%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Jul 26, 2016
+:Date: Jul 27, 2016
 
 .. lines beginning with # are doconce comment lines
 
@@ -3431,9 +3431,8 @@ indicated by three hyphens: ``---``. Other formats print just the
 three hyphens.
 The em-dash has two applications:
 
- * as alternative to an ordinary single hyphen (with space around) in a sentence---except that there are no spaces around the em-dash (this is common, cf.
+ * as alternative to an ordinary single hyphen (with space around) in a sentence---except that there are no spaces around the em-dash (this is common, cf. `Wikipedia <https://en.wikipedia.org/wiki/Dash>`__), and
 
-`Wikipedia <https://en.wikipedia.org/wiki/Dash>`__), and
  * origin of quotes (where there is no space between the end of the quote and the m-dash):
 
 
