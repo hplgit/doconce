@@ -32,6 +32,9 @@ bibtex $name
 pdflatex -shell-escape $name
 pdflatex -shell-escape $name
 
+# Index page
+system doconce format html index --html_style=bootstrap $options
+
 # Publish
 dest=../../pub/pgf_tikz
 cp *.html *.pdf $dest
