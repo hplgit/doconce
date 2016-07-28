@@ -1,0 +1,196 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Testing PGF and TikZ support in DocOnce">
+
+<title>Testing PGF and TikZ support in DocOnce</title>
+
+<!-- Bootstrap style: bootstrap_bluegray -->
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_bootstrap/css/bootstrap_bluegray.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+<style type="text/css">
+
+/* Add scrollbar to dropdown menus in bootstrap navigation bar */
+.dropdown-menu {
+   height: auto;
+   max-height: 400px;
+   overflow-x: hidden;
+}
+
+/* Adds an invisible element before each target to offset for the navigation
+   bar */
+.anchor::before {
+  content:"";
+  display:block;
+  height:50px;      /* fixed header height for style bootstrap_bluegray */
+  margin:-50px 0 0; /* negative fixed header height */
+}
+</style>
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(u'A modest beginning', 1, None, '___sec0'),
+              (u'More advanced figures', 1, None, '___sec1'),
+              (u'Plotting functions', 1, None, '___sec2')]}
+end of tocinfo -->
+
+<body>
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="pgf_tikz.html">Testing PGF and TikZ support in DocOnce</a>
+  </div>
+
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;">A modest beginning</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">More advanced figures</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">Plotting functions</a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<!-- ------------------- main content ---------------------- -->
+
+
+
+<div class="jumbotron">
+<center><h1>Testing PGF and TikZ support in DocOnce</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Kristian Gregorius Hustad -->
+
+<center>
+<b>Kristian Gregorius Hustad</b>  (<tt>krihus at ifi.uio.no</tt>)
+</center>
+
+<p>
+<!-- institution(s) -->
+
+<br>
+<p>
+<center><h4>Jul 28, 2016</h4></center> <!-- date -->
+<br>
+<p>
+</div> <!-- end jumbotron -->
+
+<h1 id="___sec0" class="anchor">A modest beginning </h1>
+
+<p>
+<center> <!-- figure label: --> <div id="line"></div> <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 1:  This shape is commonly referred to a <em>straight line</em>.  <!-- caption label: line --> </p></center>
+<p><img src="fig/line.tikz" align="bottom" ></p>
+</center>
+
+<p>
+Lines such as the one in figure <a href="#line">1</a> can be combined to form other shapes.
+
+<p>
+<center> <!-- figure label: --> <div id="square"></div> <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 2:  This square is formed by four straight lines.  <!-- caption label: square --> </p></center>
+<p><img src="fig/square.tikz" align="bottom" ></p>
+</center>
+
+<p>
+A grid can also be made from straight lines.
+
+<p>
+<center>  <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 3:  This is a grid with 5 x 5 cells </p></center>
+<p><img src="fig/grid.tikz" align="bottom" ></p>
+</center>
+
+<p>
+A fig/circle.tikz, however, cannot be formed by a finite number of straight lines.
+
+<p>
+<center>  <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 4:  This circle is drawn in blue with a dashed line. </p></center>
+<p><img src="fig/circle.tikz" align="bottom" ></p>
+</center>
+
+<h1 id="___sec1" class="anchor">More advanced figures </h1>
+
+<p>
+<center>  <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 5:  A maze can be drawn by combining the elements above. </p></center>
+<p><img src="fig/maze.tikz" align="bottom" ></p>
+</center>
+
+<p>
+<center>  <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 6:  TikZ is quite well suited to draw graphs. </p></center>
+<p><img src="fig/graph.tikz" align="bottom" ></p>
+</center>
+
+<h1 id="___sec2" class="anchor">Plotting functions </h1>
+
+<p>
+TikZ can be used to plot functions. The next figure will be inlined.
+
+<p>
+<br /><br /><center><p><img src="fig/plot1.tikz" align="bottom" ></p></center><br /><br />
+
+<p>
+<center>  <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 7:  The functions can even be labeled! </p></center>
+<p><img src="fig/plot2.tikz" align="bottom" ></p>
+</center>
+
+<p>
+
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+</body>
+</html>
+    
+

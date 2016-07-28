@@ -1,0 +1,3 @@
+\begin{tikzpicture}
+\draw (0,0) rectangle (4,4);
+\end{tikzpicture}
