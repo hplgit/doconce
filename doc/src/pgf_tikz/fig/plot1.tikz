@@ -1,0 +1,7 @@
+\begin{tikzpicture}[yscale=1.5]
+\draw [help lines, <->]  (0,0) -- (6.5,0);
+\draw [help lines, ->] (0,-1.1) -- (0,1.1);
+\draw [green,domain=0:2*pi] plot (\x, {(sin(\x r)* ln(\x+1))/2});
+\draw [red,domain=0:pi] plot (\x, {sin(\x r)});
+\draw [blue, domain=pi:2*pi] plot (\x, {cos(\x r)*exp(\x/exp(2*pi))});
+\end{tikzpicture}

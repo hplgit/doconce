@@ -1,0 +1,39 @@
+TITLE: Testing PGF and TikZ support in DocOnce
+AUTHOR: Kristian Gregorius Hustad Email: krihus@ifi.uio.no
+DATE: today
+
+
+======= A modest beginning =======
+
+FIGURE: [line] This shape is commonly referred to a *straight line*. label{line}
+
+Lines such as the one in figure ref{line} can be combined to form other shapes.
+
+FIGURE: [square] This square is formed by four straight lines. label{square}
+
+A grid can also be made from straight lines.
+
+FIGURE: [grid] This is a grid with 5 x 5 cells
+
+A circle, however, cannot be formed by a finite number of straight lines.
+
+FIGURE: [circle] This circle is drawn in blue with a dashed line.
+
+
+======= More advanced figures =======
+
+FIGURE: [maze] A maze can be drawn by combining the elements above.
+
+FIGURE: [graph] TikZ is quite well suited to draw graphs.
+
+
+======= Plotting functions =======
+
+TikZ can be used to plot functions. The next figure will be inlined.
+
+FIGURE: [plot1]
+
+FIGURE: [plot2] The functions can even be labeled!
+
+
+
