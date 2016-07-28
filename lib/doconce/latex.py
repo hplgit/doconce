@@ -1119,7 +1119,7 @@ def latex_figure(m):
 
     if figure_method == 'includegraphics':
         if filename_ext == '.pgf' or filename_ext == '.tikz':
-            includeline = r'\input{%s}' % filename
+            includeline = r'\centering \input{%s}' % filename
         else:
             if latex_style == 'tufte-book':
                 if frac <= tufte_frac_limit4marginfig:
