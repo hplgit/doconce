@@ -1,0 +1,12 @@
+\begin{tikzpicture}[scale=2]
+    \tikzstyle{vertex}=[circle,fill=black!10]
+    \tikzstyle{selected vertex} = [vertex, fill=red!50]
+    \tikzstyle{selected edge} = [draw,line width=1pt,-,red!100]
+    \tikzstyle{edge} = [-,black,line width=1pt]
+
+    \node[vertex] (v1) at (1,1) 				{1};
+    \node[selected vertex] (v2) at (2,1) 		{2};
+    \node[vertex] (v3) at (3,1)					{3};
+    \draw[edge] (v1) -- (v2);
+    \draw[selected edge] (v2) -- (v3);
+\end{tikzpicture}
