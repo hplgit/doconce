@@ -7,7 +7,7 @@ Testing PGF and TikZ support in DocOnce
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Kristian Gregorius Hustad (krihus at ifi.uio.no)
-:Date: Jul 28, 2016
+:Date: Jul 29, 2016
 
 A modest beginning
 ==================
@@ -32,7 +32,7 @@ A grid can also be made from straight lines.
 
    This is a grid with 5 x 5 cells
 
-A fig/circle.tikz, however, cannot be formed by a finite number of straight lines.
+A circle, however, cannot be formed by a finite number of straight lines.
 
 .. figure:: circle.tikz
 

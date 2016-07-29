@@ -2571,7 +2571,7 @@ def typeset_envirs(filestr, format):
                 def subst(m):
                     return indent_lines(m.group(1), format, ' '*4) + '\n'
             elif envir in admons + ('hint', 'remarks'):
-                # Just a plan paragraph with paragraph heading
+                # Just a plain paragraph with paragraph heading
                 def subst(m):
                     title = m.group(1).strip()
                     # Text size specified in parenthesis?
@@ -2585,7 +2585,7 @@ def typeset_envirs(filestr, format):
                         text_size = m2.group(1).lower()
                         title = title.replace('(%s)' % text_size, '').strip()
                     elif title and title[-1] not in ('.', ':', '!', '?'):
-                        # Make sure the title ends with puncuation
+                        # Make sure the title ends with puncuation if not .:!?
                         title += '.'
                     # Recall that this formatting is called very late
                     # so native format must be used
@@ -2883,8 +2883,9 @@ def handle_figures(filestr, format):
         for figfile in figfiles:
             if not figfile.startswith('http'):
                 newname = os.path.join(figure_prefix, figfile)
-                filestr = re.sub(r'%s([,\]])' % figfile,
-                                 '%s\g<1>' % newname, filestr)
+                filestr = re.sub(r'^FIGURE: *\[%s([,\]])' % figfile,
+                                 'FIGURE: [%s\g<1>' % newname, filestr,
+                                 flags=re.MULTILINE)
     # Prefix movies also
     movie_pattern = INLINE_TAGS['movie']
     movie_files = [filename.strip()
@@ -2897,8 +2898,9 @@ def handle_figures(filestr, format):
         for movfile in movie_files:
             if not movfile.startswith('http'):
                 newname = os.path.join(movie_prefix, movfile)
-                filestr = re.sub(r'%s([,\]])' % movfile,
-                                 '%s\g<1>' % newname, filestr)
+                filestr = re.sub(r'^MOVIE: *\[%s([,\]])' % movfile,
+                                 'MOVIE: [%s\g<1>' % newname, filestr,
+                                 flags=re.MULTILINE)
 
     # Find new filenames
     figfiles = [filename.strip()

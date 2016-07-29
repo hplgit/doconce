@@ -19,7 +19,7 @@ system doconce format html $name --html_style=bootstrap_bluegray $options
 
 # Sphinx
 system doconce format sphinx $name $options
-theme=alabaster
+theme=alabastere
 theme=cbc
 system doconce sphinx_dir theme=$theme dirname=${theme} $name
 python automake_sphinx.py
@@ -38,6 +38,7 @@ system doconce format html index --html_style=bootstrap $options
 # Publish
 dest=../../pub/pgf_tikz
 cp *.html *.pdf $dest
+cp -r fig $dest
 rm -rf $dest/*-${theme}
 
 cp -r ${theme}/_build/html $dest/${theme}
