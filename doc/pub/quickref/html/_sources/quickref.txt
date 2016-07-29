@@ -10,7 +10,7 @@ DocOnce Quick Reference
 =======================
 
 :Authors: Hans Petter Langtangen
-:Date: Jul 24, 2016
+:Date: Jul 29, 2016
 
 **WARNING: This quick reference is very incomplete!**
 
@@ -230,8 +230,8 @@ preferably after the paragraph where the footnote appears:
 
 .. code-block:: text
 
-    Differentiating[^diff2] (ref{eq1}) leads
-    to a new and simpler equation.
+    Differentiating[^diff2] this equation leads
+    to a new and much simpler equation.
     
     [^diff2]: More precisely, we apply the divergence
     $\nabla\cdot$ on both sides.
@@ -269,6 +269,10 @@ The em-dash is used - without spaces - as alternative to hyphen with
 space around in sentences---this way, or in quotes:
 *Premature optimization is the root of all evil.*--- Donald Knuth.
 
+The en-dash consists of two hyphens, either with blanks on both sides - for
+something in the middle of a sentenc - or in number ranges like 240 - 249.
+LaTeX writes are used to and fond of en-dash.
+
 An ampersand, as in Guns & Roses or Texas A&M, is written as a
 plain ``&`` *with space(s) on both sides*. Single upper case letters on each
 side of ``&``, as in ``Texas A & M``, remove the spaces and result in
@@ -279,10 +283,11 @@ after ``&`` will result in wrong typesetting of the ampersand in the ``html``,
 
 Emojis, as defined in `<http://www.emoji-cheat-sheet.com>`_, can be
 inserted in the text, as (e.g.) ``:dizzy_face:`` with blank or newline
-before or after. Only the ``pdflatex`` and ``html`` output formats translate
-emoji specifications to images, while all other formats leave the
-textual specification in the document. The command-line option
-``--no_emoji`` removes all emojis from the output document.
+before or after :dizzy_face: Only the ``pdflatex``, ``html``, and ``pandoc`` output
+formats translate emoji specifications to images, while all other
+formats leave the textual specification in the document. The
+command-line option ``--no_emoji`` removes all emojis from the output
+document.
 
 Lists
 -----

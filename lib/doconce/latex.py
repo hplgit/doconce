@@ -2738,7 +2738,7 @@ def define(FILENAME_EXTENSION,
         'subsection':    r'\subsection{\g<subst>}',
         #'subsubsection': '\n' + r'\subsubsection{\g<subst>}' + '\n',
         'subsubsection': latex_subsubsection,
-        'paragraph':     r'\paragraph{\g<subst>}\n',
+        'paragraph':     r'\paragraph{\g<subst>}' + '\n',
         #'abstract':      '\n\n' + r'\\begin{abstract}' + '\n' + r'\g<text>' + '\n' + r'\end{abstract}' + '\n\n' + r'\g<rest>', # not necessary with separate \n
         #'abstract':      r'\n\n\\begin{abstract}\n\g<text>\n\end{abstract}\n\n\g<rest>',
         'abstract':      latex_abstract,

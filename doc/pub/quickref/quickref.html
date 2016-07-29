@@ -168,7 +168,7 @@ MathJax.Hub.Config({
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <br>
 <p>
-<center><h4>Jul 24, 2016</h4></center> <!-- date -->
+<center><h4>Jul 29, 2016</h4></center> <!-- date -->
 <br>
 <p>
 </div> <!-- end jumbotron -->
@@ -437,8 +437,8 @@ preferably after the paragraph where the footnote appears:
 
 <p>
 <!-- begin verbatim block -->
-<pre><code>Differentiating[^diff2] \eqref{eq1} leads
-to a new and simpler equation.
+<pre><code>Differentiating[^diff2] this equation leads
+to a new and much simpler equation.
 
 [^diff2]: More precisely, we apply the divergence
 $\nabla\cdot$ on both sides.
@@ -490,6 +490,11 @@ space around in sentences&mdash;this way, or in quotes:
 <em>Premature optimization is the root of all evil.</em>&mdash; Donald Knuth.
 
 <p>
+The en-dash consists of two hyphens, either with blanks on both sides &ndash; for
+something in the middle of a sentenc &ndash; or in number ranges like 240&ndash;249.
+LaTeX writes are used to and fond of en-dash.
+
+<p>
 An ampersand, as in Guns &amp; Roses or Texas A&amp;M, is written as a
 plain <code>&</code> <em>with space(s) on both sides</em>. Single upper case letters on each
 side of <code>&</code>, as in <code>Texas A & M</code>, remove the spaces and result in
@@ -501,10 +506,11 @@ after <code>&</code> will result in wrong typesetting of the ampersand in the <c
 <p>
 Emojis, as defined in <a href="http://www.emoji-cheat-sheet.com" target="_self"><tt>http://www.emoji-cheat-sheet.com</tt></a>, can be
 inserted in the text, as (e.g.) <code>:dizzy_face:</code> with blank or newline
-before or after. Only the <code>pdflatex</code> and <code>html</code> output formats translate
-emoji specifications to images, while all other formats leave the
-textual specification in the document. The command-line option
-<code>--no_emoji</code> removes all emojis from the output document.
+before or after <img src="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/emoji/png/dizzy_face.png" width="22px" height="22px" align="center"> Only the <code>pdflatex</code>, <code>html</code>, and <code>pandoc</code> output
+formats translate emoji specifications to images, while all other
+formats leave the textual specification in the document. The
+command-line option <code>--no_emoji</code> removes all emojis from the output
+document.
 
 <h2 id="___sec6" class="anchor">Lists </h2>
 

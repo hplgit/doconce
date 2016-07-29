@@ -1,7 +1,7 @@
 #TITLE (actually governed by the filename): Testing admons
 
 By '''H. P. Langtangen'''
-==== Jul 24, 2016 ====
+==== Jul 29, 2016 ====
 
 Copyright 2016, H. P. Langtangen. Made with DocOnce
 
@@ -87,6 +87,15 @@ box, it is not a new paragraph):
 | textstyle = font-size: 90%;
 | text = '''''' :<math>
 f(x) = \sin(x)e^{1-x} </math>
+}}
+
+
+
+
+{{mbox
+| type = notice
+| textstyle = font-size: 90%;
+| text = '''Hint.''' Newton's method requires a good start vector to converge fast.
 }}
 
 

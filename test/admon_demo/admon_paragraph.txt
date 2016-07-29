@@ -3,7 +3,7 @@ Testing admons
 
 H. P. Langtangen
 
-Date: Jul 24, 2016
+Date: Jul 29, 2016
 
 Copyright 2016, H. P. Langtangen. Made with DocOnce
 
@@ -72,6 +72,13 @@ box, it is not a new paragraph):
 |---------------------------------------------------------------|
 |         \begin{equation} f(x) = \sin(x)e^{1-x} \end{equation} |
 |---------------------------------------------------------------|
+
+
+
+Hint ------------------------------------------------------------|
+|                                                                |
+| Newton's method requires a good start vector to converge fast. |
+|----------------------------------------------------------------|
 
 
 Let's begin a new paragraph and show a box with code only:
