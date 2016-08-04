@@ -7,55 +7,57 @@ Testing PGF and TikZ support in DocOnce
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Kristian Gregorius Hustad (krihus at ifi.uio.no)
-:Date: Jul 28, 2016
+:Date: Aug 5, 2016
 
 A modest beginning
 ==================
 
 .. _line:
 
-.. figure:: line.tikz
+.. figure:: line.png
 
-   This shape is commonly referred to a *straight line*
+   This shape is commonly referred to as a *straight line*
 
 Lines such as the one in figure :ref:`line` can be combined to form other shapes.
 
 .. _square:
 
-.. figure:: square.tikz
+.. figure:: square.png
 
    *This square is formed by four straight lines*
 
 A grid can also be made from straight lines.
 
-.. figure:: grid.tikz
+.. figure:: grid.png
 
-   This is a grid with 6 x 6 cells
+   This is a grid with 5 x 5 cells
 
-A fig/circle.tikz, however, cannot be formed by a finite number of straight lines.
+A circle, however, cannot be formed by a finite number of straight lines.
 
-.. figure:: circle.tikz
+.. figure:: circle.png
 
-   This circle is blue, since blue is a nice colour
+   This circle is drawn in blue with a dashed line
+
+[**kgh 1**: filenames identical to words in the texts have been known to cause problems]
 
 More advanced figures
 =====================
 
-.. figure:: maze.tikz
+.. figure:: maze.png
 
    A maze can be drawn by combining the elements above
 
-.. figure:: graph.tikz
+.. figure:: graph.png
 
    TikZ is quite well suited to draw graphs
 
 Plotting functions
 ==================
 
-.. figure:: plot1.tikz
+TikZ can be used to plot functions. The next figure will be inlined.
 
-   TikZ can be used to plot functions
+.. figure:: plot1.png
 
-.. figure:: plot2.tikz
+.. figure:: plot2.png
 
    The functions can even be labeled!

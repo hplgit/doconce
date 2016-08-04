@@ -41,4 +41,4 @@ cp *.html *.pdf $dest
 cp -r fig $dest
 rm -rf $dest/*-${theme}
 
-cp -r ${theme}/_build/html $dest/${theme}
+cp -r ${theme}/_build/html/* $dest/${theme}

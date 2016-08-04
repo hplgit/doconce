@@ -1,3 +1,0 @@
-\begin{tikzpicture}
-\draw[blue,thick,dashed] (0,0) circle (2cm);
-\end{tikzpicture}
