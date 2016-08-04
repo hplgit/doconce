@@ -4,7 +4,7 @@ DocOnce format to other formats.  Some convenience functions used in
 translation modules (latex.py, html.py, etc.) are also included in
 here.
 """
-import re, sys, urllib, os
+import re, sys, urllib, os, shutil, subprocess#, xml.etree.ElementTree
 from misc import option, _abort
 from doconce import errwarn, locale_dict
 
@@ -1207,6 +1207,119 @@ def has_custom_pygments_lexer(name):
             errwarn(e)
             return False
     return True
+
+
+def tikz2img(tikz_file, encoding='utf8', tikz_libs=None):
+    dvisvgm_template = r"""
+\documentclass[dvisvgm]{minimal}
+
+\usepackage[%s]{inputenc}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{tikz}
+
+%% TikZ libraries
+%s
+
+\begin{document}
+\noindent
+\input{%s}
+\end{document}
+"""
+
+    # handle tikz libraries
+    if tikz_libs is None:
+        tikz_libs = ""
+    elif isinstance(tikz_libs, list):
+        #tikz_libs = '\n'.join([r"\usetikzlibrary{%s}" % s for s in tikz_libs])
+        tikz_libs = r"\usetikzlibrary{%s}" % (', '.join(tikz_libs))
+    else:
+        # Error
+        raise Exception("TikZ libraries is not a list!")
+
+    # create temporary directory
+    fig_dir = os.path.dirname(tikz_file)
+    tmp_dir = os.path.join(fig_dir, 'tmp_tikz_rendering')
+    if not os.path.isdir(tmp_dir):
+        os.mkdir(tmp_dir)
+
+    # filenames
+    tikz_basefile = os.path.basename(tikz_file)
+    tikz_basefile_wo_ext = os.path.splitext(tikz_basefile)[0]
+    tex_file = os.path.join(tmp_dir, tikz_basefile_wo_ext + ".tex")
+    dvi_file = os.path.join(tmp_dir, tikz_basefile_wo_ext + ".dvi")
+    svg_file = os.path.join(fig_dir, tikz_basefile_wo_ext + ".svg")
+    png_file = os.path.join(fig_dir, tikz_basefile_wo_ext + ".png")
+
+
+    # wrap tikz in TeX file
+    tex_content = dvisvgm_template % (encoding, tikz_libs, tikz_file)
+    #print tex_content
+
+    with open(tex_file, 'w') as f:
+        f.write(tex_content)
+
+
+
+    # TeX --> DVI
+    #print "TeX --> DVI"
+    p = subprocess.Popen(['latex', '-output-directory='+tmp_dir,
+                        '-interaction=nonstopmode',
+                        tex_file],
+              stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    out, err = p.communicate()
+    if p.poll() != 0:
+        errwarn('*** error: failed to compile LaTeX document with TikZ file\n'
+              + '    (this is likely means that the tikz-figure is invalid)')
+        return True
+
+    # DVI --> SVG
+    #print "DVI --> SVG"
+    p = subprocess.Popen(['dvisvgm', '--bbox=min',
+                          '-o', svg_file,
+                          '--no-fonts',
+                          '-R',
+                          dvi_file],
+              stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    out, err = p.communicate()
+    if p.poll() != 0:
+        errwarn('*** error: failed to convert TikZ figure from DVI to SVG')
+        return True
+
+
+    # minor fixes to SVG file
+    # should remove viewBox, height and width to improve browser compatibility
+    """
+    tree = xml.etree.ElementTree.parse(svg_file)
+    root = tree.getroot()
+    updated_svg = False
+    for attribute in ['viewBox', 'height', 'width']:
+        if attribute in root.attrib:
+            del root.attrib[attribute]
+            updated_svg = True
+    if updated_svg: # no need to write the same file back
+        tree.write(svg_file)
+    """
+    # SVG --> PNG
+    #print "SVG --> PNG"
+    p = subprocess.Popen(['inkscape', '--without-gui',
+                           '--export-area-drawing', # cropping
+                           '--export-dpi=300',
+                           '--export-background=#ffffff', # white background
+                           '--export-background-opacity=1.0',
+                           '--export-png='+png_file,
+                           svg_file],
+              stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    out, err = p.communicate()
+    if p.poll() != 0:
+        errwarn('*** error: failed to convert TikZ figure from SVG to PNG')
+        return True
+
+    # clean up files
+    shutil.rmtree(tmp_dir)
+
+    return False    # not a failure
+
 
 BLANKLINE = {}
 FILENAME_EXTENSION = {}

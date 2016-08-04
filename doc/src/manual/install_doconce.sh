@@ -99,7 +99,7 @@ pip_install -e git+https://github.com/hplgit/pygments-doconce#egg=pygments-docon
 pip_install beautifulsoup4
 pip_install html5lib
 
-# ptex2tex is not needed if --latex_code_style= option is used
+# ptex2tex is not needed if the --latex_code_style= option is used
 cd srclib
 git clone git@github.com:hplgit/ptex2tex.git
 cd ptex2tex
@@ -122,6 +122,7 @@ apt_install auctex
 
 # Image manipulation
 apt_install imagemagick
+apt_install inkscape
 apt_install netpbm
 apt_install mjpegtools
 apt_install pdftk

@@ -2996,6 +2996,13 @@ def handle_figures(filestr, format):
                         elif ext == '.pdf' and e.endswith('ps'):
                             cmd = 'pdf2ps %s %s' % \
                                   (figfile, converted_file)
+                        elif ext == '.tikz':    # TODO pgf handling
+                            failure = tikz2img(figfile)
+                            if '.svg' in search_extensions: # format supports svg
+                                converted_file = basepath + '.svg'
+                            else:   # use png
+                                converted_file = basepath + '.png'
+                            cmd = 'echo'
                         else:
                             if not os.path.isfile(converted_file):
                                 cmd = 'convert %s %s' % (figfile, converted_file)

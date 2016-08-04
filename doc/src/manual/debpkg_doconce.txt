@@ -95,6 +95,7 @@ auctex
 
 # Image manipulation
 imagemagick
+inkscape
 netpbm mjpegtools pdftk giftrans
 gv evince smpeg-plaympeg mplayer totem
 libav-tools

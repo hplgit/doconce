@@ -107,7 +107,7 @@ system('sudo pip install -e git+https://github.com/hplgit/pygments-doconce#egg=p
 system('sudo pip install beautifulsoup4')
 system('sudo pip install html5lib')
 
-# ptex2tex is not needed if --latex_code_style= option is used
+# ptex2tex is not needed if the --latex_code_style= option is used
 
 cmd = """
 cd srclib
@@ -134,6 +134,7 @@ system('sudo apt-get -y install auctex')
 
 # Image manipulation
 system('sudo apt-get -y install imagemagick')
+system('sudo apt-get -y install inkscape')
 system('sudo apt-get -y install netpbm')
 system('sudo apt-get -y install mjpegtools')
 system('sudo apt-get -y install pdftk')
