@@ -5,7 +5,7 @@ DATE: today
 
 ======= A modest beginning =======
 
-FIGURE: [line] This shape is commonly referred to a *straight line*. label{line}
+FIGURE: [line] This shape is commonly referred to as a *straight line*. label{line}
 
 Lines such as the one in figure ref{line} can be combined to form other shapes.
 
@@ -19,6 +19,7 @@ A circle, however, cannot be formed by a finite number of straight lines.
 
 FIGURE: [circle] This circle is drawn in blue with a dashed line.
 
+[kgh: filenames identical to words in the texts have been known to cause problems]
 
 ======= More advanced figures =======
 
