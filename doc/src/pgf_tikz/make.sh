@@ -15,11 +15,11 @@ name="pgf_tikz"
 options="--encoding=utf-8 --figure_prefix=fig"
 
 # HTML
-system doconce format html $name --html_style=bootstrap_bluegray $options
+system doconce format html $name --html_style=bootstrap_bluegray --html_links_in_new_window $options
 
 # Sphinx
-system doconce format sphinx $name $options
-theme=alabastere
+system doconce format sphinx $name --html_links_in_new_window $options
+theme=alabaster
 theme=cbc
 system doconce sphinx_dir theme=$theme dirname=${theme} $name
 python automake_sphinx.py

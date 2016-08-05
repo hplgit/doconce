@@ -26,8 +26,26 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/sidebar.js"></script>
+
+        <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+        <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
+
+        <script>sagecell.makeSagecell({inputLocation: ".sage"});</script>
+
+        <style type="text/css">
+                .sagecell .CodeMirror-scroll {
+                        overflow-y: hidden;
+                        overflow-x: auto;
+                }
+                .sagecell .CodeMirror {
+                        height: auto;
+                }
+        </style>
+
+    
     <link rel="top" title="Testing PGF and TikZ support in DocOnce" href="index.html" />
-    <link rel="prev" title="Testing PGF and TikZ support in DocOnce" href="index.html" /> 
+    <link rel="prev" title="Testing PGF and TikZ support in DocOnce" href="index.html" />
+ 
   
        <style type="text/css">
          div.admonition {
@@ -68,38 +86,63 @@
 </tr>
 </tbody>
 </table>
+<p><em>Summary.</em> Quick demo of how to make figures with TikZ in DocOnce.</p>
+<div class="section" id="ideas">
+<h2>Ideas<a class="headerlink" href="#ideas" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://www.math.uni-leipzig.de/~hellmund/LaTeX/pgf-tut.pdf">TikZ</a>
+is a very strong tool for making figures in LaTeX. DocOnce supports such
+figures: if a figure file <code class="docutils literal"><span class="pre">myfig</span></code> exists in a version <code class="docutils literal"><span class="pre">myfig.tikz</span></code>,
+DocOnce will, in case of <code class="docutils literal"><span class="pre">latex</span></code> or <code class="docutils literal"><span class="pre">pdflatex</span></code> output, utilize the
+<code class="docutils literal"><span class="pre">myfig.tikz</span></code> figure directly. The problem is what do to with other
+output formats. In HTML formats (<code class="docutils literal"><span class="pre">html</span></code> and <code class="docutils literal"><span class="pre">sphinx</span></code>),
+one can use a corresponding SVG version of the figure,
+and for more primitive formats, one needs a plain PNG
+version. A utility script, <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">tikz2fig</span></code> (?), can be used
+to convert a TikZ figure to SVG or PNG format:</p>
+<div class="highlight-text"><div class="highlight"><pre><span></span>Terminal&gt; doconce tikz2fig myfig.tikz
+</pre></div>
+</div>
+<p>The result is <code class="docutils literal"><span class="pre">myfig.svg</span></code> and <code class="docutils literal"><span class="pre">myfig.png</span></code> to be stored along with <code class="docutils literal"><span class="pre">myfig.tikz</span></code>.</p>
+</div>
 <div class="section" id="a-modest-beginning">
 <h2>A modest beginning<a class="headerlink" href="#a-modest-beginning" title="Permalink to this headline">¶</a></h2>
 <div class="figure" id="id1">
 <span id="line"></span><img alt="_images/line.png" src="_images/line.png" />
 <p class="caption"><span class="caption-text">This shape is commonly referred to as a <em>straight line</em></span></p>
 </div>
-<p>Lines such as the one in figure <a class="reference internal" href="#line"><span class="std std-ref">This shape is commonly referred to as a straight line</span></a> can be combined to form other shapes.</p>
+<p>The most fundamental shape is the line in Figure <a class="reference internal" href="#line"><span class="std std-ref">This shape is commonly referred to as a straight line</span></a>. See the
+<a class="reference external" href="https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/line.tikz">source code</a>
+for how this TikZ figure is defined in LaTeX.  Such lines can be
+combined to form other shapes, e.g., a <a class="reference external" href="https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/square.tikz">square</a>
+as in Figure <a class="reference internal" href="#square"><span class="std std-ref">This square is formed by four straight lines</span></a>.</p>
 <div class="figure" id="id2">
 <span id="square"></span><img alt="_images/square.png" src="_images/square.png" />
 <p class="caption"><span class="caption-text"><em>This square is formed by four straight lines</em></span></p>
 </div>
-<p>A grid can also be made from straight lines.</p>
+<p>A <a class="reference external" href="https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/grid.tikz">grid</a>
+can also be made from straight lines.</p>
 <div class="figure" id="id3">
 <img alt="_images/grid.png" src="_images/grid.png" />
 <p class="caption"><span class="caption-text">This is a grid with 5 x 5 cells</span></p>
 </div>
-<p>A circle, however, cannot be formed by a finite number of straight lines.</p>
+<p>A circle, however, cannot be formed by a finite number of straight lines.
+It requires <a class="reference external" href="https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/circle.tikz">special code</a>.</p>
 <div class="figure" id="id4">
 <img alt="_images/circle.png" src="_images/circle.png" />
 <p class="caption"><span class="caption-text">This circle is drawn in blue with a dashed line</span></p>
 </div>
-<p>[<strong>kgh 1</strong>: filenames identical to words in the texts have been known to cause problems]</p>
+<p>[<strong>kgh 1</strong>: filenames identical to words in the texts have been known to cause problems]
+[<strong>hpl 2</strong>: Not anymore?]</p>
 </div>
 <div class="section" id="more-advanced-figures">
 <h2>More advanced figures<a class="headerlink" href="#more-advanced-figures" title="Permalink to this headline">¶</a></h2>
 <div class="figure" id="id5">
 <img alt="_images/maze.png" src="_images/maze.png" />
-<p class="caption"><span class="caption-text">A maze can be drawn by combining the elements above</span></p>
+<p class="caption"><span class="caption-text">A <a class="reference external" href="https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/maze.tikz">maze</a> can be drawn by combining the elements above</span></p>
 </div>
 <div class="figure" id="id6">
 <img alt="_images/graph.png" src="_images/graph.png" />
-<p class="caption"><span class="caption-text">TikZ is quite well suited to draw graphs</span></p>
+<p class="caption"><span class="caption-text">TikZ is quite well suited to draw <a class="reference external" href="https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/graph.tikz">graphs</a></span></p>
 </div>
 </div>
 <div class="section" id="plotting-functions">
@@ -108,10 +151,12 @@
 <div class="figure">
 <img alt="_images/plot1.png" src="_images/plot1.png" />
 </div>
+<p>See the <a class="reference external" href="https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/plot1.tikz">source code</a> for how you make this figure.</p>
 <div class="figure" id="id7">
 <img alt="_images/plot2.png" src="_images/plot2.png" />
 <p class="caption"><span class="caption-text">The functions can even be labeled!</span></p>
 </div>
+<p>All details are in the <a class="reference external" href="https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/plot2.tikz">source code</a>.</p>
 </div>
 </div>
 
@@ -129,6 +174,7 @@
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Testing PGF and TikZ support in DocOnce</a><ul>
+<li><a class="reference internal" href="#ideas">Ideas</a></li>
 <li><a class="reference internal" href="#a-modest-beginning">A modest beginning</a></li>
 <li><a class="reference internal" href="#more-advanced-figures">More advanced figures</a></li>
 <li><a class="reference internal" href="#plotting-functions">Plotting functions</a></li>
@@ -149,8 +195,8 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>

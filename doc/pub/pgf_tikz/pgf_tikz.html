@@ -41,9 +41,10 @@ Automatically generated HTML file from DocOnce source
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(u'A modest beginning', 1, None, '___sec0'),
-              (u'More advanced figures', 1, None, '___sec1'),
-              (u'Plotting functions', 1, None, '___sec2')]}
+ 'sections': [(u'Ideas', 1, None, '___sec0'),
+              (u'A modest beginning', 1, None, '___sec1'),
+              (u'More advanced figures', 1, None, '___sec2'),
+              (u'Plotting functions', 1, None, '___sec3')]}
 end of tocinfo -->
 
 <body>
@@ -65,9 +66,10 @@ end of tocinfo -->
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;">A modest beginning</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">More advanced figures</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">Plotting functions</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;">Ideas</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">A modest beginning</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">More advanced figures</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">Plotting functions</a></li>
 
         </ul>
       </li>
@@ -102,45 +104,76 @@ end of tocinfo -->
 <center><h4>Aug 5, 2016</h4></center> <!-- date -->
 <br>
 <p>
+<b>Summary.</b> Quick demo of how to make figures with TikZ in DocOnce.
+
+<p>
 </div> <!-- end jumbotron -->
 
-<h1 id="___sec0" class="anchor">A modest beginning </h1>
+<h1 id="___sec0" class="anchor">Ideas </h1>
+
+<p>
+<a href="http://www.math.uni-leipzig.de/~hellmund/LaTeX/pgf-tut.pdf" target="_self">TikZ</a>
+is a very strong tool for making figures in LaTeX. DocOnce supports such
+figures: if a figure file <code>myfig</code> exists in a version <code>myfig.tikz</code>,
+DocOnce will, in case of <code>latex</code> or <code>pdflatex</code> output, utilize the
+<code>myfig.tikz</code> figure directly. The problem is what do to with other
+output formats. In HTML formats (<code>html</code> and <code>sphinx</code>),
+one can use a corresponding SVG version of the figure,
+and for more primitive formats, one needs a plain PNG
+version. A utility script, <code>doconce tikz2fig</code> (?), can be used
+to convert a TikZ figure to SVG or PNG format:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>Terminal&gt; doconce tikz2fig myfig.tikz
+</pre></div>
+<p>
+The result is <code>myfig.svg</code> and <code>myfig.png</code> to be stored along with <code>myfig.tikz</code>.
+
+<h1 id="___sec1" class="anchor">A modest beginning </h1>
 
 <p>
 <center> <!-- figure label: --> <div id="line"></div> <!-- FIGURE -->
 <hr class="figure">
 <center><p class="caption">Figure 1:  This shape is commonly referred to as a <em>straight line</em>.  <!-- caption label: line --> </p></center>
-<p><img src="fig/line.png" align="bottom" ></p>
+<p><img src="fig/line.svg" align="bottom" ></p>
 </center>
 
 <p>
-Lines such as the one in figure <a href="#line">1</a> can be combined to form other shapes.
+The most fundamental shape is the line in Figure <a href="#line">1</a>. See the
+<a href="https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/line.tikz" target="_self">source code</a>
+for how this TikZ figure is defined in LaTeX.  Such lines can be
+combined to form other shapes, e.g., a <a href="https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/square.tikz" target="_self">square</a>
+as in Figure <a href="#square">2</a>.
 
 <p>
 <center> <!-- figure label: --> <div id="square"></div> <!-- FIGURE -->
 <hr class="figure">
 <center><p class="caption">Figure 2:  This square is formed by four straight lines.  <!-- caption label: square --> </p></center>
-<p><img src="fig/square.png" align="bottom" ></p>
+<p><img src="fig/square.svg" align="bottom" ></p>
 </center>
 
 <p>
-A grid can also be made from straight lines.
+A <a href="https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/grid.tikz" target="_self">grid</a>
+can also be made from straight lines.
 
 <p>
 <center>  <!-- FIGURE -->
 <hr class="figure">
 <center><p class="caption">Figure 3:  This is a grid with 5 x 5 cells </p></center>
-<p><img src="fig/grid.png" align="bottom" ></p>
+<p><img src="fig/grid.svg" align="bottom" ></p>
 </center>
 
 <p>
 A circle, however, cannot be formed by a finite number of straight lines.
+It requires <a href="https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/circle.tikz" target="_self">special code</a>.
 
 <p>
 <center>  <!-- FIGURE -->
 <hr class="figure">
 <center><p class="caption">Figure 4:  This circle is drawn in blue with a dashed line. </p></center>
-<p><img src="fig/circle.png" align="bottom" ></p>
+<p><img src="fig/circle.svg" align="bottom" ></p>
 </center>
 
 <p>
@@ -149,38 +182,47 @@ A circle, however, cannot be formed by a finite number of straight lines.
 <font color="red">(<b>kgh 1</b>: filenames identical to words in the texts have been known to cause problems)</font>
 <!-- end inline comment -->
 
-<h1 id="___sec1" class="anchor">More advanced figures </h1>
+
+<!-- begin inline comment -->
+<font color="red">(<b>hpl 2</b>: Not anymore?)</font>
+<!-- end inline comment -->
+
+<h1 id="___sec2" class="anchor">More advanced figures </h1>
 
 <p>
 <center>  <!-- FIGURE -->
 <hr class="figure">
-<center><p class="caption">Figure 5:  A maze can be drawn by combining the elements above. </p></center>
-<p><img src="fig/maze.png" align="bottom" ></p>
+<center><p class="caption">Figure 5:  A <a href="https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/maze.tikz" target="_self">maze</a> can be drawn by combining the elements above. </p></center>
+<p><img src="fig/maze.svg" align="bottom" ></p>
 </center>
 
 <p>
 <center>  <!-- FIGURE -->
 <hr class="figure">
-<center><p class="caption">Figure 6:  TikZ is quite well suited to draw graphs. </p></center>
-<p><img src="fig/graph.png" align="bottom" ></p>
+<center><p class="caption">Figure 6:  TikZ is quite well suited to draw <a href="https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/graph.tikz" target="_self">graphs</a>. </p></center>
+<p><img src="fig/graph.svg" align="bottom" ></p>
 </center>
 
-<h1 id="___sec2" class="anchor">Plotting functions </h1>
+<h1 id="___sec3" class="anchor">Plotting functions </h1>
 
 <p>
 TikZ can be used to plot functions. The next figure will be inlined.
 
 <p>
-<br /><br /><center><p><img src="fig/plot1.png" align="bottom" ></p></center><br /><br />
+<br /><br /><center><p><img src="fig/plot1.svg" align="bottom" ></p></center><br /><br />
+
+<p>
+See the <a href="https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/plot1.tikz" target="_self">source code</a> for how you make this figure.
 
 <p>
 <center>  <!-- FIGURE -->
 <hr class="figure">
 <center><p class="caption">Figure 7:  The functions can even be labeled! </p></center>
-<p><img src="fig/plot2.png" align="bottom" ></p>
+<p><img src="fig/plot2.svg" align="bottom" ></p>
 </center>
 
 <p>
+All details are in the <a href="https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/plot2.tikz" target="_self">source code</a>.
 
 <!-- ------------------- end of main content --------------- -->
 

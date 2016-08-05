@@ -610,6 +610,12 @@ for instance). A table is used for typesetting a figure with
 sidecaption in HTML, and a low `width` value is recommended.
 The `sidecap=True` figure option has no impact on other formats.
 
+=== TikZ Figures ===
+
+Many LaTeX writers are dependent upon TikZ figures, and these can be
+used in DocOnce documents, see the "demo document":
+"http://hplgit.github.io/doconce/doc/pub/pgf_tikz/pgf_tikz.html".
+
 === Plot Files in LaTeX ===
 
 Users who applies Matplotlib to make figures get plots with fonts that
