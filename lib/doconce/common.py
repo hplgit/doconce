@@ -1278,7 +1278,7 @@ def tikz2img(tikz_file, encoding='utf8', tikz_libs=None):
     p = subprocess.Popen(['dvisvgm', '--bbox=min',
                           '-o', svg_file,
                           '--no-fonts',
-                          '-R',
+                          #'-R', #not compatible with older versions of dvisvgm
                           dvi_file],
               stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     out, err = p.communicate()
