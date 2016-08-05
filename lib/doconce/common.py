@@ -1270,7 +1270,7 @@ def tikz2img(tikz_file, encoding='utf8', tikz_libs=None):
     out, err = p.communicate()
     if p.poll() != 0:
         errwarn('*** error: failed to compile LaTeX document with TikZ file\n'
-              + '    (this is likely means that the tikz-figure is invalid)')
+              + '    (this likely means that the tikz figure is invalid)')
         return True
 
     # DVI --> SVG
@@ -1302,18 +1302,22 @@ def tikz2img(tikz_file, encoding='utf8', tikz_libs=None):
     """
     # SVG --> PNG
     #print "SVG --> PNG"
-    p = subprocess.Popen(['inkscape', '--without-gui',
-                           '--export-area-drawing', # cropping
-                           '--export-dpi=300',
-                           '--export-background=#ffffff', # white background
-                           '--export-background-opacity=1.0',
-                           '--export-png='+png_file,
-                           svg_file],
-              stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    out, err = p.communicate()
-    if p.poll() != 0:
+    try:
+        p = subprocess.Popen(['inkscape', '--without-gui',
+                               '--export-area-drawing', # cropping
+                               '--export-dpi=300',
+                               '--export-background=#ffffff', # white background
+                               '--export-background-opacity=1.0',
+                               '--export-png='+png_file,
+                               svg_file],
+                  stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        out, err = p.communicate()
+        if p.poll() != 0:
+            errwarn('*** error: failed to convert TikZ figure from SVG to PNG')
+            return True
+    except OSError as e:
         errwarn('*** error: failed to convert TikZ figure from SVG to PNG')
-        return True
+        errwarn('\n    reason: inkscape is not installed')
 
     # clean up files
     shutil.rmtree(tmp_dir)
