@@ -21,26 +21,26 @@ formats need automatic conversion.
 
 ======= A modest beginning =======
 
-FIGURE: [line] This shape is commonly referred to as a *straight line*. label{line}
+FIGURE: [line, width=500] This shape is commonly referred to as a *straight line*. label{line}
 
 The most fundamental shape is the line in Figure ref{line}. See the
 "source code":
 "https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/line.tikz"
 for how this TikZ figure is defined in LaTeX as a file `line.tikz`
-(and included in DocOnce through `FIGURE: [line] caption`).  Such
+(and included in DocOnce through `FIGURE: [line, width=500] caption`).  Such
 lines can be combined to form other shapes, e.g., a square
 as in Figure ref{square}, but that figure was created directly by
 the "`rectangle`":
 "https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/square.tikz"
 TikZ command.
 
-FIGURE: [square] This square is formed by four straight lines. label{square}
+FIGURE: [square, width=300] This square is formed by four straight lines. label{square}
 
 A "grid":
 "https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/grid.tikz"
 can also be easily made.
 
-FIGURE: [grid] This is a grid with 5 x 5 cells
+FIGURE: [grid, width=300] This is a grid with 5 x 5 cells
 
 A circle, however, cannot be formed by a finite number of straight lines.
 It requires "special code":
@@ -48,22 +48,19 @@ It requires "special code":
 
 FIGURE: [circle] This circle is drawn in blue with a dashed line.
 
-[kgh: filenames identical to words in the texts have been known to cause problems]
-[hpl: Not anymore?]
 
 ======= More advanced figures =======
 
-FIGURE: [maze, width=700] A "maze": "https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/maze.tikz" can be drawn by combining rectangle elements.
+FIGURE: [maze, width=400] A "maze": "https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/maze.tikz" can be drawn by combining rectangle elements.
 
 FIGURE: [graph] TikZ is quite well suited to draw "graphs": "https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/graph.tikz".
 
-[hpl: I cannot see the graph in HTML!]
 
 ======= Plotting functions =======
 
 TikZ can be used to plot functions. The next figure will be inlined.
 
-FIGURE: [plot1, width=800]
+FIGURE: [plot1, width=600]
 
 See the "source code": "https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/plot1.tikz" for how you make this figure.
 

@@ -130,14 +130,14 @@ formats need automatic conversion.
 <center> <!-- figure label: --> <div id="line"></div> <!-- FIGURE -->
 <hr class="figure">
 <center><p class="caption">Figure 1:  This shape is commonly referred to as a <em>straight line</em>.  <!-- caption label: line --> </p></center>
-<p><img src="fig/line.png" align="bottom" ></p>
+<p><img src="fig/line.png" align="bottom" width=500></p>
 </center>
 
 <p>
 The most fundamental shape is the line in Figure <a href="#line">1</a>. See the
 <a href="https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/line.tikz" target="_blank">source code</a>
 for how this TikZ figure is defined in LaTeX as a file <code>line.tikz</code>
-(and included in DocOnce through <code>FIGURE: [line] caption</code>).  Such
+(and included in DocOnce through <code>FIGURE: [line, width=500] caption</code>).  Such
 lines can be combined to form other shapes, e.g., a square
 as in Figure <a href="#square">2</a>, but that figure was created directly by
 the <a href="https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/square.tikz" target="_blank"><tt>rectangle</tt></a>
@@ -147,7 +147,7 @@ TikZ command.
 <center> <!-- figure label: --> <div id="square"></div> <!-- FIGURE -->
 <hr class="figure">
 <center><p class="caption">Figure 2:  This square is formed by four straight lines.  <!-- caption label: square --> </p></center>
-<p><img src="fig/square.png" align="bottom" ></p>
+<p><img src="fig/square.png" align="bottom" width=300></p>
 </center>
 
 <p>
@@ -158,7 +158,7 @@ can also be easily made.
 <center>  <!-- FIGURE -->
 <hr class="figure">
 <center><p class="caption">Figure 3:  This is a grid with 5 x 5 cells </p></center>
-<p><img src="fig/grid.png" align="bottom" ></p>
+<p><img src="fig/grid.png" align="bottom" width=400></p>
 </center>
 
 <p>
@@ -189,7 +189,7 @@ It requires <a href="https://github.com/hplgit/doconce/blob/master/doc/src/pgf_t
 <center>  <!-- FIGURE -->
 <hr class="figure">
 <center><p class="caption">Figure 5:  A <a href="https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/maze.tikz" target="_blank">maze</a> can be drawn by combining rectangle elements. </p></center>
-<p><img src="fig/maze.png" align="bottom" width=700></p>
+<p><img src="fig/maze.png" align="bottom" width=400></p>
 </center>
 
 <p>

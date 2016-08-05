@@ -40,13 +40,14 @@ A modest beginning
 .. _line:
 
 .. figure:: line.png
+   :width: 500
 
    This shape is commonly referred to as a *straight line*
 
 The most fundamental shape is the line in Figure :ref:`line`. See the
 `source code <https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/line.tikz>`__
 for how this TikZ figure is defined in LaTeX as a file ``line.tikz``
-(and included in DocOnce through ``FIGURE: [line] caption``).  Such
+(and included in DocOnce through ``FIGURE: [line, width=500] caption``).  Such
 lines can be combined to form other shapes, e.g., a square
 as in Figure :ref:`square`, but that figure was created directly by
 the `rectangle <https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/square.tikz>`__
@@ -55,6 +56,7 @@ TikZ command.
 .. _square:
 
 .. figure:: square.png
+   :width: 300
 
    *This square is formed by four straight lines*
 
@@ -62,6 +64,7 @@ A `grid <https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/grid
 can also be easily made.
 
 .. figure:: grid.png
+   :width: 400
 
    This is a grid with 5 x 5 cells
 
@@ -79,7 +82,7 @@ More advanced figures
 =====================
 
 .. figure:: maze.png
-   :width: 700
+   :width: 400
 
    A `maze <https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/maze.tikz>`__ can be drawn by combining rectangle elements
 
