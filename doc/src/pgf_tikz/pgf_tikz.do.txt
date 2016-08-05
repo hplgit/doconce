@@ -2,6 +2,28 @@ TITLE: Testing PGF and TikZ support in DocOnce
 AUTHOR: Kristian Gregorius Hustad Email: krihus@ifi.uio.no
 DATE: today
 
+__Summary.__
+Quick demo of how to make figures with TikZ in DocOnce.
+
+======= Ideas =======
+
+"TikZ": "http://www.math.uni-leipzig.de/~hellmund/LaTeX/pgf-tut.pdf"
+is a very strong tool for making figures in LaTeX. DocOnce supports such
+figures: if a figure file `myfig` exists in a version `myfig.tikz`,
+DocOnce will, in case of `latex` or `pdflatex` output, utilize the
+`myfig.tikz` figure directly. The problem is what do to with other
+output formats. In HTML formats (`html` and `sphinx`),
+one can use a corresponding SVG version of the figure,
+and for more primitive formats, one needs a plain PNG
+version. A utility script, `doconce tikz2fig` (?), can be used
+to convert a TikZ figure to SVG or PNG format:
+
+!bc sys
+Terminal> doconce tikz2fig myfig.tikz
+!ec
+The result is `myfig.svg` and `myfig.png` to be stored along with `myfig.tikz`.
+
+
 
 ======= A modest beginning =======
 
@@ -35,6 +57,3 @@ TikZ can be used to plot functions. The next figure will be inlined.
 FIGURE: [plot1]
 
 FIGURE: [plot2] The functions can even be labeled!
-
-
-
