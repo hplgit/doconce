@@ -47,8 +47,10 @@ The most fundamental shape is the line in Figure :ref:`line`. See the
 `source code <https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/line.tikz>`__
 for how this TikZ figure is defined in LaTeX as a file ``line.tikz``
 (and included in DocOnce through ``FIGURE: [line] caption``).  Such
-lines can be combined to form other shapes, e.g., a `square <https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/square.tikz>`__
-as in Figure :ref:`square`.
+lines can be combined to form other shapes, e.g., a square
+as in Figure :ref:`square`, but that figure was created directly by
+the `rectangle <https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/square.tikz>`__
+TikZ command.
 
 .. _square:
 
@@ -57,7 +59,7 @@ as in Figure :ref:`square`.
    *This square is formed by four straight lines*
 
 A `grid <https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/grid.tikz>`__
-can also be made from straight lines.
+can also be easily made.
 
 .. figure:: grid.png
 
@@ -77,12 +79,15 @@ More advanced figures
 =====================
 
 .. figure:: maze.png
+   :width: 700
 
-   A `maze <https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/maze.tikz>`__ can be drawn by combining the elements above
+   A `maze <https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/maze.tikz>`__ can be drawn by combining rectangle elements
 
 .. figure:: graph.png
 
    TikZ is quite well suited to draw `graphs <https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/graph.tikz>`__
+
+[**hpl 3**: I cannot see the graph in HTML!]
 
 Plotting functions
 ==================
@@ -90,10 +95,12 @@ Plotting functions
 TikZ can be used to plot functions. The next figure will be inlined.
 
 .. figure:: plot1.png
+   :width: 800
 
 See the `source code <https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/plot1.tikz>`__ for how you make this figure.
 
 .. figure:: plot2.png
+   :width: 500
 
    The functions can even be labeled!
 

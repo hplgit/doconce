@@ -138,8 +138,10 @@ The most fundamental shape is the line in Figure <a href="#line">1</a>. See the
 <a href="https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/line.tikz" target="_blank">source code</a>
 for how this TikZ figure is defined in LaTeX as a file <code>line.tikz</code>
 (and included in DocOnce through <code>FIGURE: [line] caption</code>).  Such
-lines can be combined to form other shapes, e.g., a <a href="https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/square.tikz" target="_blank">square</a>
-as in Figure <a href="#square">2</a>.
+lines can be combined to form other shapes, e.g., a square
+as in Figure <a href="#square">2</a>, but that figure was created directly by
+the <a href="https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/square.tikz" target="_blank"><tt>rectangle</tt></a>
+TikZ command.
 
 <p>
 <center> <!-- figure label: --> <div id="square"></div> <!-- FIGURE -->
@@ -150,7 +152,7 @@ as in Figure <a href="#square">2</a>.
 
 <p>
 A <a href="https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/grid.tikz" target="_blank">grid</a>
-can also be made from straight lines.
+can also be easily made.
 
 <p>
 <center>  <!-- FIGURE -->
@@ -186,8 +188,8 @@ It requires <a href="https://github.com/hplgit/doconce/blob/master/doc/src/pgf_t
 <p>
 <center>  <!-- FIGURE -->
 <hr class="figure">
-<center><p class="caption">Figure 5:  A <a href="https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/maze.tikz" target="_blank">maze</a> can be drawn by combining the elements above. </p></center>
-<p><img src="fig/maze.png" align="bottom" ></p>
+<center><p class="caption">Figure 5:  A <a href="https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/maze.tikz" target="_blank">maze</a> can be drawn by combining rectangle elements. </p></center>
+<p><img src="fig/maze.png" align="bottom" width=700></p>
 </center>
 
 <p>
@@ -197,13 +199,19 @@ It requires <a href="https://github.com/hplgit/doconce/blob/master/doc/src/pgf_t
 <p><img src="fig/graph.png" align="bottom" ></p>
 </center>
 
+<p>
+
+<!-- begin inline comment -->
+<font color="red">(<b>hpl 3</b>: I cannot see the graph in HTML!)</font>
+<!-- end inline comment -->
+
 <h1 id="___sec3" class="anchor">Plotting functions </h1>
 
 <p>
 TikZ can be used to plot functions. The next figure will be inlined.
 
 <p>
-<br /><br /><center><p><img src="fig/plot1.png" align="bottom" ></p></center><br /><br />
+<br /><br /><center><p><img src="fig/plot1.png" align="bottom" width=800></p></center><br /><br />
 
 <p>
 See the <a href="https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/plot1.tikz" target="_blank">source code</a> for how you make this figure.
@@ -212,7 +220,7 @@ See the <a href="https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/
 <center>  <!-- FIGURE -->
 <hr class="figure">
 <center><p class="caption">Figure 7:  The functions can even be labeled! </p></center>
-<p><img src="fig/plot2.png" align="bottom" ></p>
+<p><img src="fig/plot2.png" align="bottom" width=500></p>
 </center>
 
 <p>
