@@ -15,15 +15,9 @@ DocOnce will, in case of `latex` or `pdflatex` output, utilize the
 output formats. In HTML formats (`html` and `sphinx`),
 one can use a corresponding SVG version of the figure,
 and for more primitive formats, one needs a plain PNG
-version. A utility script, `doconce tikz2fig` (?), can be used
-to convert a TikZ figure to SVG or PNG format:
-
-!bc sys
-Terminal> doconce tikz2fig myfig.tikz
-!ec
-The result is `myfig.svg` and `myfig.png` to be stored along with `myfig.tikz`.
-
-
+version. DocOnce will automatically create such versions of the figure
+and store them along with `myfig.tikz`, as is done when other figure
+formats need automatic conversion.
 
 ======= A modest beginning =======
 

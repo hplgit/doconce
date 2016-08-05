@@ -1,3 +1,11 @@
+.. raw:: html
+
+        <script type="text/javascript">
+        $(document).ready(function() {
+            $("a[href^='http']").attr('target','_blank');
+        });
+        </script>
+
 .. Automatically generated Sphinx-extended reStructuredText file from DocOnce source
    (https://github.com/hplgit/doconce/)
 
@@ -22,14 +30,9 @@ DocOnce will, in case of ``latex`` or ``pdflatex`` output, utilize the
 output formats. In HTML formats (``html`` and ``sphinx``),
 one can use a corresponding SVG version of the figure,
 and for more primitive formats, one needs a plain PNG
-version. A utility script, ``doconce tikz2fig`` (?), can be used
-to convert a TikZ figure to SVG or PNG format:
-
-.. code-block:: text
-
-    Terminal> doconce tikz2fig myfig.tikz
-
-The result is ``myfig.svg`` and ``myfig.png`` to be stored along with ``myfig.tikz``.
+version. DocOnce will automatically create such versions of the figure
+and store them along with ``myfig.tikz``, as is done when other figure
+formats need automatic conversion.
 
 A modest beginning
 ==================
@@ -42,8 +45,9 @@ A modest beginning
 
 The most fundamental shape is the line in Figure :ref:`line`. See the
 `source code <https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/line.tikz>`__
-for how this TikZ figure is defined in LaTeX.  Such lines can be
-combined to form other shapes, e.g., a `square <https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/square.tikz>`__
+for how this TikZ figure is defined in LaTeX as a file ``line.tikz``
+(and included in DocOnce through ``FIGURE: [line] caption``).  Such
+lines can be combined to form other shapes, e.g., a `square <https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/square.tikz>`__
 as in Figure :ref:`square`.
 
 .. _square:

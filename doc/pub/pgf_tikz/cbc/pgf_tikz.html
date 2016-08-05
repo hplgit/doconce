@@ -74,7 +74,11 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="testing-pgf-and-tikz-support-in-doconce">
+  <script type="text/javascript">
+$(document).ready(function() {
+    $("a[href^='http']").attr('target','_blank');
+});
+</script><div class="section" id="testing-pgf-and-tikz-support-in-doconce">
 <h1>Testing PGF and TikZ support in DocOnce<a class="headerlink" href="#testing-pgf-and-tikz-support-in-doconce" title="Permalink to this headline">¶</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -97,12 +101,9 @@ DocOnce will, in case of <code class="docutils literal"><span class="pre">latex<
 output formats. In HTML formats (<code class="docutils literal"><span class="pre">html</span></code> and <code class="docutils literal"><span class="pre">sphinx</span></code>),
 one can use a corresponding SVG version of the figure,
 and for more primitive formats, one needs a plain PNG
-version. A utility script, <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">tikz2fig</span></code> (?), can be used
-to convert a TikZ figure to SVG or PNG format:</p>
-<div class="highlight-text"><div class="highlight"><pre><span></span>Terminal&gt; doconce tikz2fig myfig.tikz
-</pre></div>
-</div>
-<p>The result is <code class="docutils literal"><span class="pre">myfig.svg</span></code> and <code class="docutils literal"><span class="pre">myfig.png</span></code> to be stored along with <code class="docutils literal"><span class="pre">myfig.tikz</span></code>.</p>
+version. DocOnce will automatically create such versions of the figure
+and store them along with <code class="docutils literal"><span class="pre">myfig.tikz</span></code>, as is done when other figure
+formats need automatic conversion.</p>
 </div>
 <div class="section" id="a-modest-beginning">
 <h2>A modest beginning<a class="headerlink" href="#a-modest-beginning" title="Permalink to this headline">¶</a></h2>
@@ -112,8 +113,9 @@ to convert a TikZ figure to SVG or PNG format:</p>
 </div>
 <p>The most fundamental shape is the line in Figure <a class="reference internal" href="#line"><span class="std std-ref">This shape is commonly referred to as a straight line</span></a>. See the
 <a class="reference external" href="https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/line.tikz">source code</a>
-for how this TikZ figure is defined in LaTeX.  Such lines can be
-combined to form other shapes, e.g., a <a class="reference external" href="https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/square.tikz">square</a>
+for how this TikZ figure is defined in LaTeX as a file <code class="docutils literal"><span class="pre">line.tikz</span></code>
+(and included in DocOnce through <code class="docutils literal"><span class="pre">FIGURE:</span> <span class="pre">[line]</span> <span class="pre">caption</span></code>).  Such
+lines can be combined to form other shapes, e.g., a <a class="reference external" href="https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/square.tikz">square</a>
 as in Figure <a class="reference internal" href="#square"><span class="std std-ref">This square is formed by four straight lines</span></a>.</p>
 <div class="figure" id="id2">
 <span id="square"></span><img alt="_images/square.png" src="_images/square.png" />
