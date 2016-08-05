@@ -113,16 +113,15 @@ end of tocinfo -->
 
 <p>
 <a href="http://www.math.uni-leipzig.de/~hellmund/LaTeX/pgf-tut.pdf" target="_blank">TikZ</a>
-is a very strong tool for making figures in LaTeX. DocOnce supports such
-figures: if a figure file <code>myfig</code> exists in a version <code>myfig.tikz</code>,
-DocOnce will, in case of <code>latex</code> or <code>pdflatex</code> output, utilize the
-<code>myfig.tikz</code> figure directly. The problem is what do to with other
-output formats. In HTML formats (<code>html</code> and <code>sphinx</code>),
-one can use a corresponding SVG version of the figure,
-and for more primitive formats, one needs a plain PNG
-version. DocOnce will automatically create such versions of the figure
-and store them along with <code>myfig.tikz</code>, as is done when other figure
-formats need automatic conversion.
+is a very strong tool for making figures in LaTeX. DocOnce supports
+such figures: if a figure file <code>myfig</code> exists in a version
+<code>myfig.tikz</code>, DocOnce will, in case of <code>latex</code> or <code>pdflatex</code> output,
+utilize the <code>myfig.tikz</code> figure directly. The problem is what do to
+with other output formats. In <code>html</code> format one can use a
+corresponding SVG version of the figure, and for other formats, one
+needs a plain PNG file.  DocOnce will automatically create such
+versions of the figure and store them along with <code>myfig.tikz</code>, as is
+done when other figure formats need automatic conversion.
 
 <h1 id="___sec1" class="anchor">A modest beginning </h1>
 
@@ -158,7 +157,7 @@ can also be easily made.
 <center>  <!-- FIGURE -->
 <hr class="figure">
 <center><p class="caption">Figure 3:  This is a grid with 5 x 5 cells </p></center>
-<p><img src="fig/grid.png" align="bottom" width=400></p>
+<p><img src="fig/grid.png" align="bottom" width=300></p>
 </center>
 
 <p>
@@ -171,17 +170,6 @@ It requires <a href="https://github.com/hplgit/doconce/blob/master/doc/src/pgf_t
 <center><p class="caption">Figure 4:  This circle is drawn in blue with a dashed line. </p></center>
 <p><img src="fig/circle.png" align="bottom" ></p>
 </center>
-
-<p>
-
-<!-- begin inline comment -->
-<font color="red">(<b>kgh 1</b>: filenames identical to words in the texts have been known to cause problems)</font>
-<!-- end inline comment -->
-
-
-<!-- begin inline comment -->
-<font color="red">(<b>hpl 2</b>: Not anymore?)</font>
-<!-- end inline comment -->
 
 <h1 id="___sec2" class="anchor">More advanced figures </h1>
 
@@ -199,19 +187,13 @@ It requires <a href="https://github.com/hplgit/doconce/blob/master/doc/src/pgf_t
 <p><img src="fig/graph.png" align="bottom" ></p>
 </center>
 
-<p>
-
-<!-- begin inline comment -->
-<font color="red">(<b>hpl 3</b>: I cannot see the graph in HTML!)</font>
-<!-- end inline comment -->
-
 <h1 id="___sec3" class="anchor">Plotting functions </h1>
 
 <p>
 TikZ can be used to plot functions. The next figure will be inlined.
 
 <p>
-<br /><br /><center><p><img src="fig/plot1.png" align="bottom" width=800></p></center><br /><br />
+<br /><br /><center><p><img src="fig/plot1.png" align="bottom" width=600></p></center><br /><br />
 
 <p>
 See the <a href="https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/plot1.tikz" target="_blank">source code</a> for how you make this figure.

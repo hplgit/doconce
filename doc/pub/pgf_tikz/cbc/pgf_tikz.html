@@ -94,16 +94,15 @@ $(document).ready(function() {
 <div class="section" id="ideas">
 <h2>Ideas<a class="headerlink" href="#ideas" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="http://www.math.uni-leipzig.de/~hellmund/LaTeX/pgf-tut.pdf">TikZ</a>
-is a very strong tool for making figures in LaTeX. DocOnce supports such
-figures: if a figure file <code class="docutils literal"><span class="pre">myfig</span></code> exists in a version <code class="docutils literal"><span class="pre">myfig.tikz</span></code>,
-DocOnce will, in case of <code class="docutils literal"><span class="pre">latex</span></code> or <code class="docutils literal"><span class="pre">pdflatex</span></code> output, utilize the
-<code class="docutils literal"><span class="pre">myfig.tikz</span></code> figure directly. The problem is what do to with other
-output formats. In HTML formats (<code class="docutils literal"><span class="pre">html</span></code> and <code class="docutils literal"><span class="pre">sphinx</span></code>),
-one can use a corresponding SVG version of the figure,
-and for more primitive formats, one needs a plain PNG
-version. DocOnce will automatically create such versions of the figure
-and store them along with <code class="docutils literal"><span class="pre">myfig.tikz</span></code>, as is done when other figure
-formats need automatic conversion.</p>
+is a very strong tool for making figures in LaTeX. DocOnce supports
+such figures: if a figure file <code class="docutils literal"><span class="pre">myfig</span></code> exists in a version
+<code class="docutils literal"><span class="pre">myfig.tikz</span></code>, DocOnce will, in case of <code class="docutils literal"><span class="pre">latex</span></code> or <code class="docutils literal"><span class="pre">pdflatex</span></code> output,
+utilize the <code class="docutils literal"><span class="pre">myfig.tikz</span></code> figure directly. The problem is what do to
+with other output formats. In <code class="docutils literal"><span class="pre">html</span></code> format one can use a
+corresponding SVG version of the figure, and for other formats, one
+needs a plain PNG file.  DocOnce will automatically create such
+versions of the figure and store them along with <code class="docutils literal"><span class="pre">myfig.tikz</span></code>, as is
+done when other figure formats need automatic conversion.</p>
 </div>
 <div class="section" id="a-modest-beginning">
 <h2>A modest beginning<a class="headerlink" href="#a-modest-beginning" title="Permalink to this headline">¶</a></h2>
@@ -126,7 +125,7 @@ TikZ command.</p>
 <p>A <a class="reference external" href="https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/grid.tikz">grid</a>
 can also be easily made.</p>
 <div class="figure" id="id3">
-<a class="reference internal image-reference" href="_images/grid.png"><img alt="_images/grid.png" src="_images/grid.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="_images/grid.png"><img alt="_images/grid.png" src="_images/grid.png" style="width: 300px;" /></a>
 <p class="caption"><span class="caption-text">This is a grid with 5 x 5 cells</span></p>
 </div>
 <p>A circle, however, cannot be formed by a finite number of straight lines.
@@ -135,8 +134,6 @@ It requires <a class="reference external" href="https://github.com/hplgit/doconc
 <img alt="_images/circle.png" src="_images/circle.png" />
 <p class="caption"><span class="caption-text">This circle is drawn in blue with a dashed line</span></p>
 </div>
-<p>[<strong>kgh 1</strong>: filenames identical to words in the texts have been known to cause problems]
-[<strong>hpl 2</strong>: Not anymore?]</p>
 </div>
 <div class="section" id="more-advanced-figures">
 <h2>More advanced figures<a class="headerlink" href="#more-advanced-figures" title="Permalink to this headline">¶</a></h2>
@@ -148,13 +145,12 @@ It requires <a class="reference external" href="https://github.com/hplgit/doconc
 <img alt="_images/graph.png" src="_images/graph.png" />
 <p class="caption"><span class="caption-text">TikZ is quite well suited to draw <a class="reference external" href="https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/graph.tikz">graphs</a></span></p>
 </div>
-<p>[<strong>hpl 3</strong>: I cannot see the graph in HTML!]</p>
 </div>
 <div class="section" id="plotting-functions">
 <h2>Plotting functions<a class="headerlink" href="#plotting-functions" title="Permalink to this headline">¶</a></h2>
 <p>TikZ can be used to plot functions. The next figure will be inlined.</p>
 <div class="figure">
-<a class="reference internal image-reference" href="_images/plot1.png"><img alt="_images/plot1.png" src="_images/plot1.png" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="_images/plot1.png"><img alt="_images/plot1.png" src="_images/plot1.png" style="width: 600px;" /></a>
 </div>
 <p>See the <a class="reference external" href="https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/plot1.tikz">source code</a> for how you make this figure.</p>
 <div class="figure" id="id7">

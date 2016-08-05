@@ -23,16 +23,15 @@ Ideas
 =====
 
 `TikZ <http://www.math.uni-leipzig.de/~hellmund/LaTeX/pgf-tut.pdf>`__
-is a very strong tool for making figures in LaTeX. DocOnce supports such
-figures: if a figure file ``myfig`` exists in a version ``myfig.tikz``,
-DocOnce will, in case of ``latex`` or ``pdflatex`` output, utilize the
-``myfig.tikz`` figure directly. The problem is what do to with other
-output formats. In HTML formats (``html`` and ``sphinx``),
-one can use a corresponding SVG version of the figure,
-and for more primitive formats, one needs a plain PNG
-version. DocOnce will automatically create such versions of the figure
-and store them along with ``myfig.tikz``, as is done when other figure
-formats need automatic conversion.
+is a very strong tool for making figures in LaTeX. DocOnce supports
+such figures: if a figure file ``myfig`` exists in a version
+``myfig.tikz``, DocOnce will, in case of ``latex`` or ``pdflatex`` output,
+utilize the ``myfig.tikz`` figure directly. The problem is what do to
+with other output formats. In ``html`` format one can use a
+corresponding SVG version of the figure, and for other formats, one
+needs a plain PNG file.  DocOnce will automatically create such
+versions of the figure and store them along with ``myfig.tikz``, as is
+done when other figure formats need automatic conversion.
 
 A modest beginning
 ==================
@@ -64,7 +63,7 @@ A `grid <https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/grid
 can also be easily made.
 
 .. figure:: grid.png
-   :width: 400
+   :width: 300
 
    This is a grid with 5 x 5 cells
 
@@ -74,9 +73,6 @@ It requires `special code <https://github.com/hplgit/doconce/blob/master/doc/src
 .. figure:: circle.png
 
    This circle is drawn in blue with a dashed line
-
-[**kgh 1**: filenames identical to words in the texts have been known to cause problems]
-[**hpl 2**: Not anymore?]
 
 More advanced figures
 =====================
@@ -90,15 +86,13 @@ More advanced figures
 
    TikZ is quite well suited to draw `graphs <https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/graph.tikz>`__
 
-[**hpl 3**: I cannot see the graph in HTML!]
-
 Plotting functions
 ==================
 
 TikZ can be used to plot functions. The next figure will be inlined.
 
 .. figure:: plot1.png
-   :width: 800
+   :width: 600
 
 See the `source code <https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/plot1.tikz>`__ for how you make this figure.
 

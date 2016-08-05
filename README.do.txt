@@ -14,6 +14,10 @@ DocOnce is a modestly tagged (Markdown-like) markup language targeting scientifi
 
 Here are some of the most recent features and enhancements in DocOnce:
 
+ * Kristian Gregorius Hustad has now made support for TikZ figures
+   i DocOnce. This means that you can use TikZ (popular among LaTeX writers)
+   to make a figure and it used directly in `latex` or `pdflatex` output,
+   an SVG version is made for HTML and PNG for all other formats.
  * Thanks to support from Mirco Meiners and Kristian Gregorius Hustad,
    DocOnce now supports documents in foreign languages, at the moment
    Norwegian and German. (Expect the code to still be a bit unstable as
