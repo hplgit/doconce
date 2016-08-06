@@ -6,13 +6,14 @@ Automatically generated HTML file from DocOnce source
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
-<meta name="description" content="Eksempel på ikke-engelsk tekst">
-<meta name="keywords" content="språkformer,norsk,nynorsk,bokmål,figur">
+<meta name="description" content="DocOnce med norsk">
+<meta name="keywords" content="sammendrag,regning,admon demo,addisjon">
 
-<title>Eksempel på ikke-engelsk tekst</title>
+<title>DocOnce med norsk</title>
 
-<!-- Bootstrap style: bootstrap -->
+<!-- Bootstrap style: bootstrap_bluegray -->
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_bootstrap/css/bootstrap_bluegray.css" rel="stylesheet">
 <!-- not necessary
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 -->
@@ -25,6 +26,15 @@ Automatically generated HTML file from DocOnce source
    max-height: 400px;
    overflow-x: hidden;
 }
+
+/* Adds an invisible element before each target to offset for the navigation
+   bar */
+.anchor::before {
+  content:"";
+  display:block;
+  height:50px;      /* fixed header height for style bootstrap_bluegray */
+  margin:-50px 0 0; /* negative fixed header height */
+}
 </style>
 
 
@@ -32,19 +42,40 @@ Automatically generated HTML file from DocOnce source
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(u'Introduksjon', 1, u'sec:intro', u'sec:intro'),
-              (u'Demonstrasjon av popul\xe6re DokEngang elementer',
-               2,
+ 'sections': [('Innholdsfortegnelse',
+               1,
+               'table_of_contents',
+               'table_of_contents'),
+              (u'F\xf8rste overskrift: Vi regner litt', 1, None, '___sec0'),
+              (u'Problem 1: Legg sammen to tall', 2, None, '___sec1'),
+              (u'Prosjekt 2: Multipliser to tall', 2, None, '___sec2'),
+              (u'Bemerkning', 3, None, '___sec3'),
+              (u'Enda mer avansert matematikk', 2, None, '___sec4'),
+              (u'Andre overskrift: Vi ser film og bilde', 1, None, '___sec5'),
+              (u'Tredje overskrift: Vi programmerer p\xe5 norsk',
+               1,
                None,
-               '___sec1'),
-              (u'Oppgave 1: Hallo verden.',
-               2,
-               u'exercise:halloverden',
-               u'exercise:halloverden'),
-              (u'Litteraturliste', 1, None, '___sec3')]}
+               '___sec6'),
+              (u'Litteraturliste', 1, None, '___sec7')]}
 end of tocinfo -->
 
 <body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
 
     
 <!-- Bootstrap navigation bar -->
@@ -55,18 +86,23 @@ end of tocinfo -->
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="Norwegian.html">Eksempel på ikke-engelsk tekst</a>
+    <a class="navbar-brand" href="Norwegian.html">DocOnce med norsk</a>
   </div>
 
   <div class="navbar-collapse collapse navbar-responsive-collapse">
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Innhold <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="#sec:intro" style="font-size: 80%;"><b>Introduksjon</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrasjon av populære DokEngang elementer</a></li>
-     <!-- navigation toc: --> <li><a href="#exercise:halloverden" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Oppgave 1: Hallo verden.</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;"><b>Litteraturliste</b></a></li>
+     <!-- navigation toc: --> <li><a href="#table_of_contents" style="font-size: 80%;"><b>Innholdsfortegnelse</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;"><b>Første overskrift: Vi regner litt</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Problem 1: Legg sammen to tall</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Prosjekt 2: Multipliser to tall</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bemerkning</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Enda mer avansert matematikk</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;"><b>Andre overskrift: Vi ser film og bilde</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec6" style="font-size: 80%;"><b>Tredje overskrift: Vi programmerer på norsk</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec7" style="font-size: 80%;"><b>Litteraturliste</b></a></li>
 
         </ul>
       </li>
@@ -84,100 +120,205 @@ end of tocinfo -->
 
 
 <div class="jumbotron">
-<center><h1>Eksempel på ikke-engelsk tekst</h1></center>  <!-- document title -->
+<center><h1>DocOnce med norsk</h1></center>  <!-- document title -->
 
 <p>
-<!-- author(s): Åsgeir Ødegården (pseudonym!) -->
+<!-- author(s): Ø. Å. Lægreid -->
 
 <center>
-<b>Åsgeir Ødegården (pseudonym!)</b> 
+<b>Ø. Å. Lægreid</b> [1, 2]
 </center>
 
 <p>
 <!-- institution(s) -->
 
-<br>
-<!-- DATE: tody will be in English, so we write it out in Norwegian -->
-<p>
-<center><h4>12. juli, 2015</h4></center> <!-- date -->
+<center>[1] <b>Noensteds ASA</b></center>
+<center>[2] <b>Nord Kommune</b></center>
 <br>
 <p>
-<b>Sammendrag.</b> Dette er et kort notat på norsk for å demonstrere at DokEngang (DocOnce) kan
-håndtere andre språk enn engelsk.
-
-<h2>
-Table of contents</h2>
+<center><h4>fredag, 15. juli, 2016</h4></center> <!-- date -->
+<br>
+<p>
+<!-- Abstract, Summary eller Preface blir til Abtrakt, Sammendrag eller -->
+<!-- Forord. -->
 
 <p>
-<a href="#sec:intro"> Introduksjon </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec1"> Demonstrasjon av populære DokEngang elementer </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#exercise:halloverden"> Oppgave 1: Hallo verden. </a><br>
-<a href="#___sec3"> Litteraturliste </a><br>
-</p>
+<b>Sammendrag.</b> Dette dokumentet tester DocOnce med norsk støtte <a href="#norsk_tekst">[1]</a>.
+
 <p>
 </div> <!-- end jumbotron -->
 
-<h1 id="sec:intro">Introduksjon</h1>
+<h1 id="table_of_contents">Innholdsfortegnelse</h2>
 
 <p>
-Norsk er egentlig to språk, <em>bokmål</em> og <em>nynorsk</em>. <a href="https://no.wikipedia.org/wiki/Bokmål" target="_self">Bokmål</a> er forfatterens språk og det de
-fleste (85-90%) skriver i Norge, men <a href="https://no.wikipedia.org/wiki/Nynorsk" target="_self">nynorsk</a> er ikke særlig
-forskjellig, spesielt ikke sett med utlendingers øyne.
-Avstanden mellom norsk og nynorsk er mindre enn mellom
-norsk og svensk. Voksne nordmenn har sjelden problemer med å forstå
-skriftlig og muntlig svensk, og alle nordmenn forstår bokmål like lett
-som nynorsk. Likevel skal alle offentlige dokumenter foreligge på begge
-språk&nbsp;(!). Dansk ligger veldig nære bokmål, men
-uttales ganske annerledes.
+<a href="#___sec0"> Første overskrift: Vi regner litt </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec1"> Problem 1: Legg sammen to tall </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec2"> Prosjekt 2: Multipliser to tall </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec4"> Enda mer avansert matematikk </a><br>
+<a href="#___sec5"> Andre overskrift: Vi ser film og bilde </a><br>
+<a href="#___sec6"> Tredje overskrift: Vi programmerer på norsk </a><br>
+<a href="#___sec7"> Litteraturliste </a><br>
+</p>
 
-<h2 id="___sec1">Demonstrasjon av populære DokEngang elementer </h2>
-
-<p>
-Dette er et underkapittel av seksjon <a href="#sec:intro">Introduksjon</a>.
+<h1 id="___sec0" class="anchor">Første overskrift: Vi regner litt </h1>
 
 <p>
-<!-- Admons -->
+<blockquote>
+    Dagens oppvarming er \( 0 + 0 \). Det blir ikke mye oppvarming...
+</blockquote>
+
 
 <p>
-<div class="alert alert-block alert-success alert-text-normal"><b>Formålet med dette dokumentet.</b>
-Dette skrivet skal bare demonstrere norsk tekst, så vi trenger ikke tvære
-ut innholdet. Det er nok å demonstrere at figurtekster og andre spesielle
-elementer virker med UTF-8 tegnsett. La oss refere her til
-figur <a href="#fig1">1</a> slik man referer til en figur på norsk.
-Vi gjør også en referanse til litteraturen <a href="#norsk_tekst">[1]</a>.
+<div class="alert alert-block alert-success alert-text-normal"><b>Observer.</b>
+Faktisk er \( 1 + 1 = 2 \). Dette resultatet kan benyttes uten begrunnelse.
 </div>
 
 
 <p>
-<!-- Figurs -->
+<div class="alert alert-block alert-info alert-text-normal"><b>Spørsmål.</b>
+Hva blir \( 1 - 1 \)?
+</div>
+
 
 <p>
-<center> <!-- figure label: --> <div id="fig1"></div> <!-- FIGURE -->
-<hr class="figure">
-<center><p class="caption">Figur 1:  Figurtekst på norsk går bra.  <!-- caption label: fig1 --> </p></center>
-<p><img src="../manual/fig/wave1D.png" align="bottom" width=500></p>
-</center>
+<div class="alert alert-block alert-warning alert-text-normal"><b>Sammendrag.</b>
+Addisjon og subtraksjon er inverse operasjoner.
+</div>
+
+
+<p>
+<!-- Admon med tittel overskrifter default Observer, Sammendrag osv. -->
+<div class="alert alert-block alert-success alert-text-normal"><b>Boks med tittel!</b>
+Her kommer norsk tekst...
+</div>
+
+
+<p>
+<!-- Merk at oppgaver må ha engelsk nøkkelord som åpning i tittel, altså -->
+<!-- Problem, Oppgave eller Prosjekt -->
 
 <p>
 <!-- --- begin exercise --- -->
 
-<h2 id="exercise:halloverden">Oppgave 1: Hallo verden.</h2>
+<h2 id="___sec1" class="anchor">Problem 1: Legg sammen to tall </h2>
 
 <p>
-<a href="http://en.wikipedia.org/wiki/Hello_world_program" target="_self">Hallo verden</a> er
-en vanlig måte å teste ut ny teknologi på. I denne oppgaven skal du
-lage ditt første html-hallo-verden-program.
+Regn ut \( 1+2 \).
 
 <p>
-Du skal lage siden <code>index.html</code>, som lagres i en egen mappe. Her skal
-du bruke så mye av det du har lært fra første avsnittet. Tittelen på
-siden skal være "Hallo verden!". Innholdet bestemmer du selv. Husk å
-lage oppgaven i en egen mappe.
+<!-- --- begin answer of exercise --- -->
+<b>Kortsvar.</b>
+3.
+
+<p>
+<!-- --- end answer of exercise --- -->
+
+<p>
+<!-- --- begin solution of exercise --- -->
+<b>Løsning.</b>
+Ganske enkelt tell fingre: en finger, to fingre, tell opp til tre fingre
+tilsammen.
+
+<p>
+<!-- --- end solution of exercise --- -->
+Filnavn: <code>legg_sammen</code>.
 
 <p>
 <!-- --- end exercise --- -->
 
-<h1 id="___sec3">Litteraturliste </h1>
+<p>
+<!-- --- begin exercise --- -->
+
+<h2 id="___sec2" class="anchor">Prosjekt 2: Multipliser to tall </h2>
+
+<p>
+Regn ut \( 3\cdot 4 \).
+
+<p>
+<!-- --- begin hint in exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_2_1" style="font-size: 80%;"></a>
+<b>Hint.</b>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_2_1">
+
+<p>
+Oppgaven kan regnes ut ved hjelp av en kalkulator.
+
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end hint in exercise --- -->
+Filnavn: <code>multipliser</code>.
+
+<p>
+<!-- Closing remarks for this Prosjekt -->
+
+<h3 id="___sec3" class="anchor">Bemerkning </h3>
+
+<p>
+Faktisk er \( 3\cdot 4 = 4\cdot 3 \).
+
+<p>
+<!-- --- end exercise --- -->
+
+<h2 id="___sec4" class="anchor">Enda mer avansert matematikk </h2>
+
+<p>
+Vi ser på verdens mest berømte likning.
+
+<p>
+
+<!-- begin box -->
+<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
+$$ E = mc^2 $$
+</div>
+<!-- end box -->
+
+
+<h1 id="___sec5" class="anchor">Andre overskrift: Vi ser film og bilde </h1>
+
+<p>
+
+<iframe width="420" height="315" src="http://www.youtube.com/embed/bp3mCgrdMxU" frameborder="0" allowfullscreen></iframe>
+
+<p><em>YouTube film.</em></p>
+
+<p>
+<center>  <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figur 1:  Her er en figur av en funksjon. </p></center>
+<p><img src="https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png" align="bottom" width=500></p>
+</center>
+
+<h1 id="___sec6" class="anchor">Tredje overskrift: Vi programmerer på norsk </h1>
+
+<p>
+Noen holder seg innenfor ASCII-tabellens grenser når de programmerer, andre foretrekker å programmere på norsk ettersom stort sett går greit <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="Dette er en sannhet med store modifikasjoner"><a href="#def_footnote_1" id="link_footnote_1" style="color: white">1</a></button> med æøå i koden.
+
+<p id="def_footnote_1"><a href="#link_footnote_1"><b>1:</b></a> Dette er en sannhet med store modifikasjoner</p>
+
+<p>
+De tre ekstra vokalene gir rom for mange korte ord i det norske språk.
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># -*- coding: utf-8 -*-</span>
+
+<span style="color: #408080; font-style: italic"># vi må bruke utf-8 for å kunne ha æøå i koden</span>
+<span style="color: #008000; font-weight: bold">for</span> norsk_bokstav <span style="color: #AA22FF; font-weight: bold">in</span> [<span style="color: #BA2121">&#39;æ&#39;</span>, <span style="color: #BA2121">&#39;ø&#39;</span>, <span style="color: #BA2121">&#39;å&#39;</span>]:
+    <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;kl</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">r&quot;</span> <span style="color: #666666">%</span> norsk_bokstav
+    <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;s</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">r&quot;</span> <span style="color: #666666">%</span> norsk_bokstav
+    <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;t</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">r&quot;</span> <span style="color: #666666">%</span> norsk_bokstav
+</pre></div>
+
+<h1 id="___sec7" class="anchor">Litteraturliste </h1>
 
 <p>
 <!-- begin bibliography -->
@@ -185,7 +326,7 @@ lage oppgaven i en egen mappe.
 <ol>
  <li> <div id="norsk_tekst"></div> <b>Å. Ø. Ærlundsen and O. Æ. Sørlie</b>. 
     Litt om ting som må skrives på norsk,
-    \emphhttp://doconce.test.net,
+    2016,
     <a href="http://doconce.test.net" target="_self"><tt>http://doconce.test.net</tt></a>.</li>
 </ol>
 

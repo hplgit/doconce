@@ -74,6 +74,6 @@ def define(FILENAME_EXTENSION,
     CROSS_REFS['st'] = plain_ref_and_label
     INDEX_BIB['st'] = plain_index_bib
     EXERCISE['st'] = plain_exercise
-    TOC['st'] = lambda s: ''  # drop
+    TOC['st'] = lambda s, f: ''  # drop
     from plaintext import plain_quiz
     QUIZ['st'] = plain_quiz

@@ -88,7 +88,7 @@ Both directories contain a make.sh file for creating various formats.
 
 __version__ = '1.3'
 version = __version__
-__author__ = 'Hans Petter Langtangen', 'Johannes H. Ring'
+__author__ = 'Hans Petter Langtangen', 'Johannes H. Ring', 'Kristian Gregorius Hustad'
 author = __author__
 
 __acknowledgments__ = ''

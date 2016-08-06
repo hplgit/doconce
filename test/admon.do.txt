@@ -81,6 +81,10 @@ box, it is not a new paragraph):
 !et
 !ebox
 
+!bhint
+Newton's method requires a good start vector to converge fast.
+!ehint
+
 Let's begin a new paragraph and show a box with code only:
 
 !bbox

@@ -420,6 +420,14 @@ cp $name.pdf movie_demo
 
 system doconce format plain movies
 
+# Test locale support for html and pdflatex
+doconce format html locale --html_style=bootstrap_FlatUI --language=Norwegian --encoding=utf-8
+doconce format pdflatex locale --latex_code_style=vrb --language=Norwegian --encoding=utf-8
+pdflatex locale
+makeindex locale
+pdflatex locale
+pdflatex locale
+
 cd Springer_T2
 bash -x make.sh
 cd ..

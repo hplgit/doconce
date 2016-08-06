@@ -552,7 +552,7 @@ There are several specific options for Bootstrap styles:
    and govern the size of the document title. Default is `on`, while
    `h2` means a jumbotron with `h2` (section) size of the title
    (normally the jumbotron has huge heading fonts so some jumbotrons
-    look better with `h2` typesetting of the document title).
+   look better with `h2` typesetting of the document title).
  * `--html_quiz_button_text=X`: set a text on the answer button for
    Bootstrap-style quizzes. Without this option a small icon is used.
 

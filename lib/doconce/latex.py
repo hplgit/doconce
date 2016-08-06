@@ -6,7 +6,7 @@ from common import plain_exercise, table_analysis, \
      online_python_tutor, envir_delimiter_lines, safe_join, \
      insert_code_and_tex, is_file_or_url, chapter_pattern
 from misc import option, _abort, replace_code_command
-from doconce import errwarn, debugpr
+from doconce import errwarn, debugpr, locale_dict
 additional_packages = ''  # comma-sep. list of packages for \usepackage{}
 
 include_numbering_of_exercises = True
@@ -459,6 +459,10 @@ def latex_code(filestr, code_blocks, code_block_types,
     # and it might lead to strange results for the apostrophe!
     #NO: filestr = re.sub(r"""'([^']+?)'""", r"""`\g<1>'""", filestr)
 
+    # Specify language to be used in \documentclass
+    if locale_dict[locale_dict['language']]['latex package'] != 'english':
+        filestr = re.sub(r'(\\documentclass\[%?\n?)', r'\g<1>%s,' % locale_dict[locale_dict['language']]['latex package'], filestr)
+
     # References to external documents (done before !bc blocks in
     # case such blocks explain the syntax of the external doc. feature)
     pattern = r'^%\s*[Ee]xternaldocuments?:\s*(.+)$'
@@ -618,8 +622,10 @@ def latex_code(filestr, code_blocks, code_block_types,
         # with the beamer block envir. (This is more robus for the admon
         # title than previous solution where we redefined all admon envirs
         # to be block envirs.)
+
+        # Generate admon automatically name by name
         admons = 'notice', 'summary', 'warning', 'question', 'block'
-        Admons = [admon[0].upper() + admon[1:] for admon in admons]
+        #Admons = [admon[0].upper() + admon[1:] for admon in admons]
         for admon in admons:
             # First admons without title
             pattern = r'!b%s *\n' % admon
@@ -761,6 +767,13 @@ def latex_code(filestr, code_blocks, code_block_types,
                     types_of_exer[-1] = 'and ' + types_of_exer[-1]
                     types_of_exer = ', '.join(types_of_exer)
                 heading = "List of %s" % types_of_exer
+                # Translate
+                lang = locale_dict['language']
+                phrases = 'list of', 'exercises', 'projects', 'and', 'problems'
+                for phrase in phrases:
+                    if phrase in locale_dict['language']:
+                        heading = heading.replace(phrase, locale_dict[lang][phrase])
+
                 # Insert definition of \listofexercises
                 if r'\tableofcontents' in filestr:
                     # Here we take fragments normally found in a stylefile
@@ -839,9 +852,11 @@ def latex_code(filestr, code_blocks, code_block_types,
                      filestr)
 
     # Avoid Filename: as a new paragraph with indentation
-    filestr = re.sub(r'^(Filenames?): +?\\code\{',
-                     r'\\noindent \g<1>: \code{', filestr,
-                     flags=re.MULTILINE)
+    for filename in 'Filename', 'Filenames':
+        locale_fn = locale_dict[locale_dict['language']][filename]
+        filestr = re.sub(r'^(%s): +?\\code\{' % locale_fn,
+                         r'\\noindent \g<1>: \code{', filestr,
+                         flags=re.MULTILINE)
 
     # Preface is normally an unnumbered section or chapter
     # (add \addcontentsline only if book style with chapters
@@ -1104,7 +1119,7 @@ def latex_figure(m):
 
     if figure_method == 'includegraphics':
         if filename_ext == '.pgf' or filename_ext == '.tikz':
-            includeline = r'\input{%s}' % filename
+            includeline = r'\centering \input{%s}' % filename
         else:
             if latex_style == 'tufte-book':
                 if frac <= tufte_frac_limit4marginfig:
@@ -1626,7 +1641,8 @@ def latex_title(m):
     section_headings = option('latex_section_headings=', 'std')
 
     if latex_style in ("Springer_sv", "Springer_T2", "Springer_T4",
-                       "Springer_lncse", "Springer_lnup", "tufte-book"):
+                       "Springer_lncse", "Springer_lnup", "tufte-book",
+                       "siambook"):
         text += r"""
 \frontmatter
 \setcounter{page}{3}
@@ -1975,7 +1991,15 @@ def latex_abstract(m):
     else:
         if atype == 'preface':
             # book abstract
-            if latex_style not in ('Springer_sv', 'Springer_lnup'):
+            if latex_style == 'siambook':
+                abstract += r"""
+%% --- begin preface ---
+\begin{thepreface}
+%(text)s
+\end{end{preface}
+%% --- end preface ---
+""" % vars()
+            elif latex_style not in ('Springer_sv', 'Springer_lnup'):
                 # Must probably adjust this test for various book formats...
                 abstract += r"""
 %% --- begin preface ---
@@ -2209,29 +2233,6 @@ def latex_exercise(exer):
            include_numbering=include_numbering_of_exercises,
            include_type=include_numbering_of_exercises)
 
-def latex_exercise_old(exer):
-    # NOTE: this is the old exercise handler!!
-    s = ''  # result string
-
-    # Reuse plain_exercise (std doconce formatting) where possible
-    # and just make a few adjustments
-
-    s += exer['heading'] + ' ' + exer['title'] + ' ' + exer['heading'] + '\n'
-    if 'label' in exer:
-        s += 'label{%s}' % exer['label'] + '\n'
-    s += '\n' + exer['text'] + '\n'
-    for hint_no in sorted(exer['hint']):
-        s += exer['hint'][hint_no] + '\n'
-        #s += '\n' + exer['hint'][hint_no] + '\n'
-    if 'file' in exer:
-        #s += '\n' + r'\noindent' + '\nFilename: ' + r'\code{%s}' % exer['file'] + '\n'
-        s += 'Filename: ' + r'\code{%s}' % exer['file'] + '.\n'
-    if 'comments' in exer:
-        s += '\n' + exer['comments']
-    if 'solution' in exer:
-        pass
-    # Old: need to return three values now...
-    return s
 
 def latex_box(block, format, text_size='normal'):
     if 'begin{figure}' in block:
@@ -2315,9 +2316,10 @@ def get_admon_figname(admon_tp, admon_name):
         else:
             return None
 
+# Generate Python functions for admons
 admons = 'notice', 'summary', 'warning', 'question', 'block'
 for _admon in admons:
-    _Admon = _admon.capitalize()
+    _Admon = locale_dict[locale_dict['language']].get(_admon, _admon).capitalize()
     _title_period = '' if option('latex_admon_title_no_period') else '.'
     text = r"""
 def latex_%(_admon)s(text_block, format, title='%(_Admon)s', text_size='normal'):
@@ -2326,7 +2328,13 @@ def latex_%(_admon)s(text_block, format, title='%(_Admon)s', text_size='normal')
     if title == 'Block':  # block admon has no default title
         title = ''
 
+    # Allow specific style for this admon %(_admon)s: (for future!
+    # so far we lack declarations of individual admon styles)
+    ##latex_admon = option('latex_%(_admon)s_admon=', None)
+    ##if latex_admon is None:  # not admon-dep; specified a common one?
+    ##    latex_admon = option('latex_admon=', 'mdfbox')
     latex_admon = option('latex_admon=', 'mdfbox')
+
     if option('latex_title_layout=', '') == 'beamer':
         latex_admon = 'paragraph'  # block environ will be used anyway
 
@@ -2400,7 +2408,7 @@ def latex_%(_admon)s(text_block, format, title='%(_Admon)s', text_size='normal')
 
 ''' %% (title_mdframed, text_block_graybox2)
 
-    if latex_admon in ('colors1', 'colors2', 'mdfbox', 'grayicon', 'yellowicon', 'tcb'):
+    if latex_admon in ('colors1', 'colors2', 'mdfbox', 'grayicon', 'yellowicon', 'tcb', 'vbar'):
         text = r'''
 \begin{%(_admon)s_%%(latex_admon)sadmon}[%%(title)s]
 %%(text_block)s
@@ -2730,7 +2738,7 @@ def define(FILENAME_EXTENSION,
         'subsection':    r'\subsection{\g<subst>}',
         #'subsubsection': '\n' + r'\subsubsection{\g<subst>}' + '\n',
         'subsubsection': latex_subsubsection,
-        'paragraph':     r'\paragraph{\g<subst>}\n',
+        'paragraph':     r'\paragraph{\g<subst>}' + '\n',
         #'abstract':      '\n\n' + r'\\begin{abstract}' + '\n' + r'\g<text>' + '\n' + r'\end{abstract}' + '\n\n' + r'\g<rest>', # not necessary with separate \n
         #'abstract':      r'\n\n\\begin{abstract}\n\g<text>\n\end{abstract}\n\n\g<rest>',
         'abstract':      latex_abstract,
@@ -2848,12 +2856,12 @@ def define(FILENAME_EXTENSION,
 \vspace{1cm} % after toc
 """
     if latex_style in ('Springer_sv', 'Springer_lnup', 'tufte-book',
-                       'Springer_T2', 'Springer_T4'):
+                       'Springer_T2', 'Springer_T4', 'siambook'):
         toc_part += r"""
 \mainmatter
 """
 
-    TOC['latex'] = lambda s: toc_part
+    TOC['latex'] = lambda s, f: toc_part
     QUIZ['latex'] = latex_quiz
 
     preamble = ''
@@ -3050,6 +3058,11 @@ justified,
 %% Style: SIAM LaTeX2e multimedia
 \documentclass[leqno,%(draft)s]{siamltexmm}
 """ % vars()
+    elif latex_style == 'siambook':
+        INTRO['latex'] += r"""
+%% Style: SIAMGHbook2016 for SIAM books
+\documentclass[%(draft)s]{SIAMGHbook2016}
+""" % vars()
     elif latex_style == 'elsevier':
         INTRO['latex'] += r"""
 %% Style: Elsvier LaTeX style
@@ -3107,6 +3120,10 @@ justified,
 \usepackage{epsfig,makeidx,color,setspace,amsmath,amsfonts,amssymb}
 \usepackage[table]{xcolor}
 \usepackage{bm}
+"""
+    if option('language=', 'English') != 'English':
+        INTRO['latex'] += r"""
+\usepackage{babel}
 """
 
     #if 'FIGURE' in filestr: # let us always have this, neeeded in admons too
@@ -3200,6 +3217,9 @@ justified,
                 INTRO['latex'] += '\n' + r'\usepackage{graphicx}'
 
             INTRO['latex'] += '\n\n'
+
+    if option('siunits'):
+        INTRO['latex'] += '\n' + r'\usepackage{siunitx}  % SI units support' + '\n'
 
     m = re.search('^(!bc|@@@CODE|@@@CMD)', filestr, flags=re.MULTILINE)
     if m:
@@ -3386,6 +3406,16 @@ justified,
 \usepackage{ucs}
 \usepackage[utf8x]{inputenc}
 """
+    elif latex_style == 'siambook':
+        INTRO['latex'] += r"""
+\usepackage[urw-garamond,sfscaled=false]{mathdesign}
+\usepackage[T1]{fontenc}
+\renewcommand{\sfdefault}{phv}
+\renewcommand{\ttdefault}{cmtt}
+\renewcommand\bfdefault{b}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+"""
     else:
         if option('latex_encoding=', 'utf8') == 'utf8':
             INTRO['latex'] += r"""
@@ -3401,6 +3431,7 @@ justified,
 \usepackage{ucs}
 %\usepackage[utf8x]{inputenc}
 """
+
     if latex_font == 'helvetica':
         INTRO['latex'] += r"""
 % Set helvetica as the default font family:
@@ -3413,7 +3444,13 @@ justified,
 \usepackage[sc]{mathpazo}    % Palatino fonts
 \linespread{1.05}            % Palatino needs extra line spread to look nice
 """
-    if latex_style not in ('Springer_lnup', 'Springer_sv'):
+    elif latex_font == 'utopia':
+        INTRO['latex'] += r"""
+% Set utopia as the default font family:
+\usepackage{fourier}
+"""
+        # make sure no lmodern!
+    if latex_style not in ('Springer_lnup', 'Springer_sv') and latex_font != 'utopia':
         INTRO['latex'] += r"""
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 """
@@ -3743,7 +3780,7 @@ justified,
             except SyntaxError:
                 # eval(latex_admon_color) did not work, treat it as valid color
                 latex_admon_colors = [[a, latex_admon_color] for a in admons]
-        admon_styles = 'colors1', 'colors2', 'mdfbox', 'graybox2', 'grayicon', 'yellowicon', 'tcb'
+        admon_styles = 'colors1', 'colors2', 'mdfbox', 'graybox2', 'grayicon', 'yellowicon', 'tcb', 'vbar'
         admon_color = {style: {} for style in admon_styles}
 
         # Set default admon colors.
@@ -3767,6 +3804,7 @@ justified,
                 admon_color['grayicon'][admon] = gray3
                 admon_color['yellowicon'][admon] = yellow1
                 admon_color['tcb'][admon] = gray4
+                admon_color['vbar'][admon] = gray4
         else:
             for admon, latex_admon_color in latex_admon_colors:
                 # use latex_admon_color for everything
@@ -3801,6 +3839,24 @@ justified,
             packages = r"""\usepackage[most]{tcolorbox}
 
 """
+        elif latex_admon in ('vbar',):
+            packages = r"""
+% The changebar package allows colored bars along the text
+% edge for vbar admons.  However,
+% it also puts bars next to footnotes, which is undesired
+% for this class, so we "undo" that functionality with the
+% following hack
+% (taken from the BYUTextbook class)
+\makeatletter
+\let\textbookcls@footnotetext\@footnotetext
+\let\textbookcls@mpfootnotetext\@mpfootnotetext
+\makeatother
+\usepackage[leftbars,color]{changebar}
+\makeatletter
+\let\@footnotetext\textbookcls@footnotetext
+\let\@mpfootnotetext\textbookcls@mpfootnotetext
+\makeatother
+"""
         else: # mdfbox
             packages = r'\usepackage[framemethod=TikZ]{mdframed}'
         INTRO['latex'] += '\n' + packages + '\n\n% --- begin definitions of admonition environments ---\n'
@@ -3814,8 +3870,8 @@ justified,
                 else:
                     admon_color[style][admon] = r'\colorlet{%(latex_admon)s_%(admon)s_background}{%(color)s}' % vars()
 
+        # First define environments independent of admon type
         if latex_admon == 'graybox2':
-            # First define environments independent of admon type
 
             INTRO['latex'] += r"""
 % Admonition style "graybox2" is a gray or colored box with a square
@@ -4008,6 +4064,27 @@ justified,
   title=#2,
   #1}
 """ % vars()
+            elif latex_admon == 'vbar':
+                INTRO['latex'] += r"""
+%% Admonition style "vbar" is a vertial colored bar in the left margin
+%% which indents the text (taken from the BYUTextbook class)
+%% COMPILES, BUT DOES NOT WORK YET! Use changebar package and debug...
+%% "%(admon)s" admon
+%(define_bgcolor)s
+
+\setlength{\changebarsep}{-3pt}
+\setlength{\changebarwidth}{2pt}
+
+\newenvironment{%(admon)s_vbaradmon}[1]
+    {\cbcolor{%(latex_admon)s_%(admon)s_background}\par \vspace{10pt}
+     \cbstart
+    \begin{enumerate}\item[]
+     \noindent\textbf{#1}
+     \par\vspace{5pt}\small\noindent
+    } {\end{enumerate} \cbend\par \vspace{10pt}}
+
+""" % vars()
+
             elif latex_admon == 'mdfbox':
                 # mdfbox, the most flexible/custom admon construction
                 INTRO['latex'] += r"""
@@ -4112,6 +4189,7 @@ justified,
 \renewcommand{\headrulewidth}{1pt}
 \renewcommand{\headrule}{{\color{gray!50}%
 \hrule width\headwidth height\headrulewidth \vskip-\headrulewidth}}
+% replace \rightmark and \thepage by bfseries everwyhere to get bold headings
 \fancyhead[LE,RO]{{\color{seccolor}\nouppercase{\rightmark}}} %section
 \fancyhead[RE,LO]{{\color{seccolor}\thepage}}
 """
@@ -4139,7 +4217,8 @@ justified,
 % on even (E) pages,
 % chapter name to the right (R) and page number to the right (L)
 % on odd (O) pages (requires twoside option in documentclass)
-% (switch twoside to onside in documentclass to just have odd pages)"""
+% (switch twoside to onside in documentclass to just have odd pages)
+% replace \rightmark and \thepage by bfseries everwyhere to get bold headings"""
             if 'twoside,' in INTRO['latex']:
                 INTRO['latex'] += r"""
 \fancyhead[LE]{{\color{seccolor}\nouppercase{\rightmark}}} % section
@@ -4258,7 +4337,7 @@ justified,
                 break
     else:
         has_exer = True
-        # Remove subsection numbering[[[
+        # Remove subsection numbering
     if has_exer:
         if latex_style not in ("Springer_T2", "Springer_T4"):
             INTRO['latex'] += r"""
@@ -4280,7 +4359,24 @@ justified,
 % \subex{} is defined in t2do.sty or t4do.sty
 """
 
-
+    if chapters:
+        INTRO['latex'] += r"""
+% Redefine double page clear to make it a blank page without headers
+% (from BYUTextbook)
+\makeatletter
+\def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
+\hbox{}
+\thispagestyle{empty}
+\newpage
+\if@twocolumn\hbox{}\newpage\fi\fi\fi}
+\makeatother
+% These commands fiddle with the space left for page numbers in the TOC
+% (from BYUTextbook)
+\makeatletter
+%\renewcommand{\@pnumwidth}{2em}
+%\renewcommand{\@tocrmarg}{2.85em}
+\makeatother
+"""
     if chapters and latex_style not in ("Koma_Script", "Springer_T2", "Springer_T4", "Springer_lnup", "Springer_sv"):
         # Follow advice from fancyhdr: redefine \cleardoublepage
         # see http://www.tex.ac.uk/cgi-bin/texfaq2html?label=reallyblank

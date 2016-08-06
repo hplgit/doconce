@@ -20,24 +20,67 @@ can go wrong.
 ======= General topics =======
 
 ===== How can I study error messages and warnings from DocOnce? =====
+label{sec:warnings}
 
 The output from DocOnce and later compilation by various tools can be
 overwhelming in the terminal window. Fortunately, DocOnce also writes
 its warnings and error message to `mydoc.dlog` if `mydoc.do.txt` is the
 name of the DocOnce root file. It is recommended to study `mydoc.dlog`
-and correct everything that leads to warnings or errors without abortion.
+and correct anything that leads to warnings or errors without abortion.
 
 ===== How do I debug a DocOnce file that results in a strange error message? =====
+label{sec:debug}
 
 idx{how to debug DocOnce}
 idx{debugging DocOnce}
 
 First, do `doconce clean` to clean up all old files and recompile.
-Isolate the problem by a ``bisection'' method: split the file in two, compile
+Run `pdflatex` or `latex` since that checks for errors in your math
+formulas and is stricter on syntax than many other output formats like
+`html` and `sphinx`. Fortunately, DocOnce performs syntax checking on
+many constuctions that just lead to plain errors in LaTeX.
+
+If you have a document consisting of a file or two, you can isolate
+the problem by a ``bisection'' method: split the file in two, compile
 both parts, continue with the part that gave the problem, and repeat
-the process. This will quickly narrow down the text so you ultimately understand
-the problem. If you do not understand why the identified piece of text
-gives an error message, try to rewrite.
+the process. This will quickly narrow down the text so you ultimately
+understand the problem.
+
+If you have a big book, it can be difficult to track down *where* the
+error is.  If the error comes from LaTeX compilation, go to the main
+file's `.tex` file.  Say the main document is `mydoc.do.txt`. Then
+find the line with the reported error message in `mydoc.tex`, find the
+cause of the error, *and correct the error in the corresponding
+DocOnce source file*.  To find this file, try to recognize in
+`mydoc.tex` where in the document you are. Find some phrase that `X`
+potentially can be unique and to a Unix `find` command on `X`:
+
+!bc sys
+Terminal> find ../chapters -name '*.do.txt' -exec grep X {} \; -print
+!ec
+Hopefully, the output indentifies the right DocOnce source file.
+
+If the error is a Mako error, you have to search in the
+`tmp_mako__mydoc.do.txt` file: this is the file resulting from the
+running the Preprocess and Mako programs, and the file is therefore
+the actual text that DocOnce translates.
+
+In a big project, thre is usually some main file with a lot of
+`#include` statements. Go to this file, `mydoc.do.txt`, and ``remove''
+the include statements by just removing the final `e` in include:
+`#includ`.  Now can you can easily compile the subdocuments one by
+one. Start with one document file and bring in new files for inclusion
+until the problem appears for the first time. Then you have isolated
+the problematic file.  It might be necessary to compile only this
+file. To this end, it might be necessary to insert Mako code in the
+beginning of the file, and specify certain command-line arguments,
+especially `--allow_refs_to_external_docs` so you do not get errors
+from missing labels that are defined elsewhere in the original big
+document.
+
+Eventually, you have tracked down the erroneous piece of text, but perhaps
+you do not understand *why*. Then you just have to rewrite the text to
+something that compiles.
 
 
 ===== How do I cite and link to DocOnce? =====
@@ -568,6 +611,13 @@ see the "`examples`": "src/examples/index.html" directory.
 The back-ticks must be removed, or the text can be reformulated as
 in the line above it.
 
+===== Inline comment does not handle verbatim or emphasis right =====
+
+Inline comments lead (in LaTeX output formats) to shortened titles for
+a table of inline comments, and the shortening is done naively: the
+title can cut a verbatim expression in the middle. There is no other
+way around that to rewrite the inline comment. (The title consists of
+the first 50 characters or so of the text.
 
 ===== Inline verbatim code or boldface is not detected when used with a footnote =====
 
@@ -1035,7 +1085,12 @@ command will then effectively remove everything with the
 ===== What is the difference between doconce replace and doconce subst? =====
 
 `doconce replace` replaces one text by another, exactly as the text is
-written. For example, `doconce replace float double *.do.txt` is the same as
+written. For example,
+
+!bc sys
+Terminal> doconce replace float double *.do.txt
+!ec
+is the same as
 invoking an editor and replacing `float` by `double` in all files `*.do.txt`.
 On the other hand, `doconce subst` works with *regular expressions*, so
 `doconce subst from to` is the same as `re.sub(from, to)` in Python.
@@ -1885,8 +1940,17 @@ Note also that `doconce replace` and `doconce subst` can be used
 after `doconce format` to tune the LaTeX code in the preamble (and
 elsewhere). Such automatic edits are useful if they are few.
 
-There are comment lines with `--- begin preamble ---` and
-`--- end preamble ---` in the generated `.tex` file that can be
+There are comment lines with
+
+!bc
+--- begin preamble ---
+!ec
+and
+
+!bc
+--- end preamble ---
+!ec
+in the generated `.tex` file that can be
 used to replace the whole preamble by another text via a script.
 
 ===== How can I control the placement of figures? =====

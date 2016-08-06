@@ -1,0 +1,154 @@
+.. Automatically generated Sphinx-extended reStructuredText file from DocOnce source
+   (https://github.com/hplgit/doconce/)
+
+.. Document title:
+
+DocOnce mit Deutsch
+%%%%%%%%%%%%%%%%%%%
+
+:Authors: K. F. Rauß
+:Date: Freitag, 15. Jul, 2016
+
+.. index:: Zusammenfassung
+
+*Abstract.* Dieses Dokument tested DocOnce mit deutscher Unterstützung [Ref1]_.
+
+Erste Überschrift: Wir erwarten wenig
+=====================================
+
+.. index:: Rechnung
+
+
+..
+
+    Die heutige Erwärmung ist :math:`0 + 0`. Es ist nicht viel Wärme zu erwarten ...
+
+
+
+
+.. admonition:: Notiz
+
+   In der Tat, :math:`1 + 1 = 2`.
+   Dieses Ergebnis kann ohne Angabe von Gründen verwendet werden.
+
+
+
+
+
+.. admonition:: Frage
+
+   Was wird :math:`1-1` sein?
+
+
+
+
+
+.. admonition:: Zusammenfassung
+
+   Addition und Subtraktion sind inverse Operationen.
+
+
+
+
+.. index:: admon demo
+
+
+.. admonition:: Box mit dem Titel
+
+   Hier kommt der deutsche Text ...
+
+
+
+
+.. --- begin exercise ---
+
+Problem 1: Fügen Sie die beiden Zahlen
+--------------------------------------
+
+.. index:: Zusatz
+
+Berechnen :math:`1 + 2`.
+
+.. --- begin answer of exercise ---
+
+**Antwort.**
+3.
+
+.. --- end answer of exercise ---
+
+.. --- begin solution of exercise ---
+
+**Lösung.**
+Sie sagen einfach Finger: mit einem Finger, zwei Finger,
+zählen bis zu drei Fingern alltogether.
+
+.. --- end solution of exercise ---
+
+Dateiname: ``zusammenstellen``.
+
+.. --- end exercise ---
+
+.. --- begin exercise ---
+
+Projekt 2: Multiplizieren Sie zwei Zahlen
+-----------------------------------------
+
+Berechnen :math:`3\cdot 4`.
+
+.. --- begin hint in exercise ---
+
+**Hinweis.**
+Die Aufgabe kann mit einem Taschenrechner berechnet werden.
+
+.. --- end hint in exercise ---
+
+Dateiname: ``multipliziere``.
+
+.. Closing remarks for this Projekt
+
+Bemerkung
+~~~~~~~~~
+
+In der Tat, :math:`3\cdot 4 = 4\cdot 3`.
+
+.. --- end exercise ---
+
+Noch höhere Mathematik
+----------------------
+
+Wir schauen auf die berühmteste Gleichung der Welt.
+
+
+.. The below box could be typeset as .. admonition: Attention
+   but we have decided not to do so since the admon needs a title
+   (the box formatting is therefore just ignored)
+
+
+.. math::
+         E = mc^2
+
+
+Ändern Überschrift: Wir sehen Film und Bild
+===========================================
+
+.. raw:: html
+        
+        <iframe width="420" height="315" src="http://www.youtube.com/embed/bp3mCgrdMxU" frameborder="0" allowfullscreen></iframe>
+        
+        <p><em>YouTube film.</em></p>
+        
+
+.. figure:: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
+   :width: 500
+
+   Hier ist eine Abbildung einer Funktion
+
+Bibliographie
+=============
+
+.. [Ref1]
+   **K. F. Rauß**. Einige Dinge, die in deutscher Sprache abgefasst sein müssen,
+   *Archiv für wissenschaftliche Arbeiten*,
+   pp. 133-198,
+   1984.
+

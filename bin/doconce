@@ -95,7 +95,8 @@ def format():
             print 'Could not import doconce from directory\n', os.getcwd()
             sys.exit(1)
 
-    doconce.doconce.format_driver()
+    bg_session = doconce.doconce.format_driver()
+    return bg_session
 
 
 
@@ -491,12 +492,16 @@ EOF
             os.mkdir('_themes')
         shutil.copy(theme_dir, os.path.join('_themes', theme_dir))
 
+
     if conf_py is not None:
         shutil.copy(os.path.join(os.pardir, conf_py), 'conf.py')
-        # Check if title, author, or copyright are given
+
+        # Edit the file appropriately if title, author, or copyright are given
         with open('conf.py', 'r') as f:
             conf_text = f.read()
 
+        # Make conf.py ready for latex, man pages, texinfo, epub etc
+        # with current doc info
         pattern = r'latex_documents = \[.*?\]'
         replacement = r"latex_documents = [('index', 'doc.tex', project, u'%s',  'manual'),]" % author
         conf_text = re.sub(pattern, replacement, conf_text,
@@ -528,6 +533,7 @@ EOF
             conf_text = re.sub(pattern, "short_title = u'%s'" % short_title,
                                conf_text, flags=re.MULTILINE)
 
+        # Fix copyright issues
         pattern = r'''copyright *= *u?['"](.*?)['"]'''
         m = re.search(pattern, conf_text)
         if m:
@@ -541,6 +547,7 @@ EOF
         with open('conf.py', 'w') as f:
             f.write(conf_text)
 
+    # Make a script that can generate all available sphinx themes
     f = open('make_themes.sh', 'w')
     f.write("""#!/bin/sh
 # Make all themes given on the command line (or if no themes are
@@ -568,6 +575,7 @@ echo "for i in sphinx-*; do google-chrome $i/index.html; done"
     f.close()
     os.chmod('make_themes.sh', 0755)
 
+    # Make index.rst main file for the document
     f = open('index.rst', 'w')
     if parts:
         files = parts
@@ -616,6 +624,10 @@ Index
 """)
     f.close()
     os.chdir(os.pardir)
+
+    # Make the automake_sphinx.py compilation file for automatically
+    # preparing the sphinx document, copying various files, and running make
+
     f = open('automake_sphinx.py', 'w')
     f.write('''\
 #!/usr/bin/env python
@@ -952,6 +964,9 @@ def make_conf_py(themes, theme, title, short_title, copyright_,
                  logo, favicon, intersphinx):
     f = open('conf.py', 'r');  text = f.read();  f.close()
 
+    # Compensate bug July 2016 in Sphinx
+    text = text.replace('# import os', 'import os')
+
     # sphinx-quickstart sets copyright to authors with current year,
     # we customize this
     text = re.sub(r"copyright = u'(\d\d\d\d),.+",
@@ -972,18 +987,18 @@ def make_conf_py(themes, theme, title, short_title, copyright_,
             # User has given a short_title, must update short_title =
             text = re.sub(pattern1, "short_title = u'%s'" % short_title, text, flags=re.MULTILINE)
 
-    pattern = r'#?html_short_title *=.+'
+    pattern = r'#? *html_short_title *=.+'
     text = re.sub(pattern, 'html_short_title = short_title', text)
     # html_title defaults to "<project> v<release> documentation",
     # let it just be the title
-    text = re.sub('#html_title =.+', 'html_title = project', text)
+    text = re.sub(r'# *html_title =.+', 'html_title = project', text)
 
 
     themes_list = ["html_theme = '%s'" % theme] + \
                   ["#html_theme = '%s'" % t for t in sorted(themes)]
     themes_code = r"""
 
-check_additional_themes = [
+check_additional_themes= [
    'solarized', 'cloud', 'redcloud',
    'alabaster', 'bootstrap', 'impressjs']
 
@@ -1003,8 +1018,8 @@ if html_theme == 'solarized':
 
     # Remove html_theme_path and html_static_path deep down in the conf.py
     # file because we need them earlier and must initialize them ourselves
-    text = re.sub(r'# Add any paths that contain custom themes.+\n#html_theme_path = \[\]', "", text)
-    text = re.sub(r"# Add any paths that contain custom static.+?\n#html_static_path = \['_static'\]", "", text)
+    text = re.sub(r'# Add any paths that contain custom themes.+\n# *html_theme_path = \[\]', "", text)
+    text = re.sub(r"# Add any paths that contain custom static.+?\n# *html_static_path = \['_static'\]", "", text)
     # Paths are added below when we try to import various themes in conf.py
 
     extensions = """\
@@ -1140,9 +1155,7 @@ intersphinx_mapping = {
     # are now in IPython, but not installed as Python modules
 
     text = re.sub(r'extensions = .*?\]', extensions, text, flags=re.DOTALL)
-    text = text.replace('#html_theme_options = {}', """\
-
-# See http://sphinx.pocoo.org/theming.html for options
+    html_theme_options = r"""# See http://sphinx.pocoo.org/theming.html for options
 if html_theme in ('default', 'classic'):
     # pygments_style =
     html_theme_options = {
@@ -1331,11 +1344,14 @@ elif html_theme in tinker_themes:
     html_theme_path += [tinkerer.paths.themes]
 
 
-""")
+"""
+    text = re.sub(r'^# *html_theme_options = \{\}', html_theme_options,
+                  text, flags=re.MULTILINE)
+    #text = re.sub('^# *html_theme_path = \[\]', html_theme_options,
 
     # Examples on settings: http://pylit.berlios.de/conf.py.html
 
-    text = re.sub('#html_use_index =.+', """
+    text = re.sub(r'# *html_use_index =.+', """
 if html_theme == 'impressjs':
     html_use_index = False
 """, text)
@@ -1344,16 +1360,16 @@ if html_theme == 'impressjs':
         # Must copy logo file
         logo_basename = os.path.basename(logo)
         shutil.copy(os.path.abspath(logo), logo_basename)
-        text = text.replace('#html_logo = None', 'html_logo = "%s"'
-                            % logo_basename)
+        text = re.sub(r'# *html_logo = None', 'html_logo = "%s"'
+                      % logo_basename, text)
 
     if favicon is not None:
         # Must copy logo file
         favicon_basename = os.path.basename(favicon)
         shutil.copy(os.path.abspath(favicon),
                     os.path.join('_static', favicon_basename))
-        text = text.replace('#html_favicon = None', 'html_favicon = "%s"'
-                            % favicon_basename)
+        text = re.sub(r'# *html_favicon = None', 'html_favicon = "%s"'
+                      % favicon_basename, text)
 
     # For tinker themes we need to copy index.rst to master.rst
     if theme in ['dark', 'flat', 'modern5', 'minimal5', 'responsive']:
@@ -1683,9 +1699,10 @@ def main():
 
     # Treat wrong command name
     found = False
+    retval = None
     if command in commands:
         found = True
-        eval(command + '()')
+        retval = eval(command + '()')
     if not found:
         if command in ('html', 'latex', 'sphinx', 'rst', 'plain', 'gwiki', \
            'mwiki', 'epydoc', 'pandoc'):
@@ -1694,5 +1711,9 @@ def main():
         else:
             print 'command "%s" is not legal, must be among\n' % command
             print ', '.join(commands)
+    return retval
 
-main()
+bg_session = main()
+if bg_session is not None:
+    print '...running bokeh bg_session.loop_until_closed() in the background'
+    bg_session.loop_until_closed()

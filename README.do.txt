@@ -12,8 +12,26 @@ DocOnce is a modestly tagged (Markdown-like) markup language targeting scientifi
 
 ===== News =====
 
-Here are some of the most recent features in DocOnce:
+Here are some of the most recent features and enhancements in DocOnce:
 
+ * Kristian Gregorius Hustad has now made support for TikZ figures
+   in DocOnce. This means that you can use TikZ (popular among LaTeX writers)
+   to make a figure. The TikZ code will be used directly in `latex` or
+   `pdflatex` output, while an SVG version is made for HTML and a PNG is made
+   for all other formats. (This feature is still being developed. Please create
+   an issue if your TikZ figure isn't displayed properly.)
+ * Thanks to support from Mirco Meiners and Kristian Gregorius Hustad,
+   DocOnce now supports documents in foreign languages, at the moment
+   Norwegian and German. (Expect the code to still be a bit unstable as
+   these features are being tested and used.)
+ * It is easy to overlook the many warnings and non-fatal errors from
+   DocOnce when compiling a document. Now all comments from DocOnce for
+   a document `mydoc.do.txt` are collected in `mydoc.dlog` for
+   careful inspection.
+ * Lots of automatic adjustments of the Bootstrap styles: if it looks good
+   in one style, just switch to any other Bootstrap style and
+   it will look good there
+   as well (the generated code tweaks parameters in the various styles).
  * The `doconce format` command may issue a lot of warnings and concerns,
    which are usually lost in the very long output from translating
    DocOnce to some output format. Now all the warnings, errors, and comments

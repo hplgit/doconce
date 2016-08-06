@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jun 5, 2016</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jul 29, 2016</td>
 </tr>
 </tbody>
 </table>
@@ -323,8 +323,8 @@ are also possible: the text</p>
 linebreak in the output is wanted.</p>
 <p>Footnotes use a label in the text with the footnote text separate,
 preferably after the paragraph where the footnote appears:</p>
-<div class="highlight-text"><div class="highlight"><pre><span></span>Differentiating[^diff2] (ref{eq1}) leads
-to a new and simpler equation.
+<div class="highlight-text"><div class="highlight"><pre><span></span>Differentiating[^diff2] this equation leads
+to a new and much simpler equation.
 
 [^diff2]: More precisely, we apply the divergence
 $\nabla\cdot$ on both sides.
@@ -353,6 +353,9 @@ space around in sentences---this way, or in quotes:
 <p>The em-dash is used - without spaces - as alternative to hyphen with
 space around in sentences&#8212;this way, or in quotes:
 <em>Premature optimization is the root of all evil.</em>&#8212; Donald Knuth.</p>
+<p>The en-dash consists of two hyphens, either with blanks on both sides - for
+something in the middle of a sentenc - or in number ranges like 240 - 249.
+LaTeX writes are used to and fond of en-dash.</p>
 <p>An ampersand, as in Guns &amp; Roses or Texas A&amp;M, is written as a
 plain <code class="docutils literal"><span class="pre">&amp;</span></code> <em>with space(s) on both sides</em>. Single upper case letters on each
 side of <code class="docutils literal"><span class="pre">&amp;</span></code>, as in <code class="docutils literal"><span class="pre">Texas</span> <span class="pre">A</span> <span class="pre">&amp;</span> <span class="pre">M</span></code>, remove the spaces and result in
@@ -362,10 +365,11 @@ after <code class="docutils literal"><span class="pre">&amp;</span></code> will 
 <code class="docutils literal"><span class="pre">latex</span></code>, and <code class="docutils literal"><span class="pre">pdflatex</span></code> formats.</p>
 <p>Emojis, as defined in <a class="reference external" href="http://www.emoji-cheat-sheet.com">http://www.emoji-cheat-sheet.com</a>, can be
 inserted in the text, as (e.g.) <code class="docutils literal"><span class="pre">:dizzy_face:</span></code> with blank or newline
-before or after. Only the <code class="docutils literal"><span class="pre">pdflatex</span></code> and <code class="docutils literal"><span class="pre">html</span></code> output formats translate
-emoji specifications to images, while all other formats leave the
-textual specification in the document. The command-line option
-<code class="docutils literal"><span class="pre">--no_emoji</span></code> removes all emojis from the output document.</p>
+before or after :dizzy_face: Only the <code class="docutils literal"><span class="pre">pdflatex</span></code>, <code class="docutils literal"><span class="pre">html</span></code>, and <code class="docutils literal"><span class="pre">pandoc</span></code> output
+formats translate emoji specifications to images, while all other
+formats leave the textual specification in the document. The
+command-line option <code class="docutils literal"><span class="pre">--no_emoji</span></code> removes all emojis from the output
+document.</p>
 </div>
 <div class="section" id="lists">
 <h2>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h2>
@@ -1517,8 +1521,8 @@ examine the DocOnce source and the <code class="docutils literal"><span class="p
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>

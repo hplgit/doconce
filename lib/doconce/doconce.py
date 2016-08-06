@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 global dofile_basename
 
 import re, os, sys, shutil, subprocess, pprint, time, glob, codecs
@@ -7,6 +8,122 @@ except ImportError:
     # use standard arbitrary-ordered dict instead (original order of
     # citations is then lost)
     OrderedDict = dict
+
+# Support for non-English languages (not really implemented yet)
+global locale_dict
+locale_dict = dict(
+    language='English',  # language to be used
+    English={
+        'locale': 'us_US.UTF-8',
+        'latex package': 'english',
+        'toc': 'Table of contents',
+        'Contents': 'Contents',
+        'Figure': 'Figure',
+        'Movie': 'Movie',
+        'list of': 'List of',
+        'and': 'and',
+        'Exercise': 'Exercise',
+        'Project': 'Project',
+        'Problem': 'Problem',
+        'Example': 'Example',
+        'Projects': 'Projects',
+        'Problems': 'Problems',
+        'Examples': 'Examples',
+        'Preface': 'Preface',
+        'Abstract': 'Abstract',
+        'Summary': 'Summary',
+        # Admons
+        'summary': 'summary',
+        'hint': 'hint',
+        'question': 'question',
+        'notice': 'notice',
+        'warning': 'warning',
+        # box, quote are silent wrt title
+        'remarks': 'remarks', # In exercises
+        # Exercise headings
+        'Solution': 'solution',
+        '__Solution.__': '__Solution.__',
+        '__Answer.__': '__Answer.__',
+        '__Hint.__': '__Hint.__',
+        # At the end (in Sphinx)
+        'index': 'Index',
+        # References
+        'Filename': 'Filename',
+        'Filenames': 'Filenames',
+        },
+    Norwegian={
+        'locale': 'nb_NO.UTF-8', # norsk bokmål
+        'latex package': 'norsk',
+        'toc': 'Innholdsfortegnelse',
+        'Contents': 'Innhold',
+        'Figure': 'Figur',
+        'Movie': 'Video',
+        'list of': 'Liste over',
+        'and': 'og',
+        'Exercise': 'Oppgave',
+        'Project': 'Prosjekt',
+        'Problem': 'Problem',
+        'Example': 'Eksempel',
+        'Exercises': 'oppgaver',
+        'Projects': 'prosjekter',
+        'Problems': 'problemer',
+        'Examples': 'eksempeler',
+        'Preface': 'Forord',
+        'Abstract': 'Sammendrag',
+        'Summary': 'Sammendrag',
+        'summary': 'sammendrag',
+        'hint': 'Hint',
+        'question': 'spørsmål'.decode('utf-8'),
+        'notice': 'observer',
+        'warning': 'advarsel',
+        'remarks': 'bemerkning',
+        'index': 'Stikkordsliste',
+        'Solution': 'Løsning'.decode('utf-8'),  # In exercises
+        '__Solution.__': '__Løsning.__'.decode('utf-8'),
+        '__Answer.__': '__Kortsvar.__',
+        '__Hint.__': '__Hint.__',
+        'Filename': 'Filnavn',
+        'Filenames': 'Filnavn',
+        },
+    German={
+        'locale': 'de_DE.UTF-8',
+        'latex package': 'german',
+        'toc': 'Inhaltsverzeichnis',
+        'Contents': 'Inhalt',
+        'Figure': 'Abbildung',
+        'Movie': 'Film',
+        'list of': 'Liste von',
+        'and': 'und',
+        'Exercise': 'Übung'.decode('utf-8'),
+        'Project': 'Projekt',
+        'Problem': 'Problem',
+        'Example': 'Beispiel',
+        'Projects': 'Projekte',
+        'Problems': 'Probleme',
+        'Examples': 'Beispiele',
+        'Preface': 'Vorwort',
+        'Abstract': 'Abstract',
+        'Summary': 'Zusammenfassung',
+        # Admons
+        'summary': 'Zusammenfassung',
+        'hint': 'Hinweis',
+        'question': 'Frage',
+        'notice': 'Notiz',
+        'warning': 'Warnung',
+        # box, quote are silent wrt title
+        'remarks': 'Bemerkung', # In exercises
+        # Exercise headings
+        'Solution': 'Lösung'.decode('utf-8'),
+        '__Solution.__': '__Lösung.__'.decode('utf-8'),
+        '__Answer.__': '__Antwort.__',
+        '__Hint.__': '__Hinweis.__',
+        # At the end (in Sphinx)
+        'index': 'Index',
+        # References
+        'Filename': 'Dateiname',
+        'Filenames': 'Dateiname',
+        },
+    )
 
 def debugpr(heading='', text=''):
     """Add `heading` and `text` to the log/debug file."""
@@ -691,6 +808,14 @@ def syntax_check(filestr, format):
     filestr, code_blocks, code_block_types, tex_blocks = \
              remove_code_and_tex(filestr, format)
 
+    # mdash with spaces is not allowed---must be like this---in a sentence.
+    pattern = r'^[^#](---\s\w|\w\s---)'
+    m = re.search(pattern, filestr, flags=re.MULTILINE)
+    if m:
+        print '*** error: mdash (---) cannot have spaces around it'
+        errwarn(filestr[m.start()-20:m.start()+20])
+        _abort()
+
     # Check that all references to equations have parenthesis
     eq_labels = []
     pattern = r'label\{(.+?)\}'
@@ -707,7 +832,7 @@ def syntax_check(filestr, format):
         for m in m_:
             if m:
                 errwarn('*** error: reference to equation label "%s" is without parentheses' % eq_label)
-                errwarn('    the equation reference should be type set as (ref{%s})' % eq_label)
+                errwarn('    the equation reference should be typeset as (ref{%s})' % eq_label)
                 errwarn('... ' + filestr[m.start()-20:m.start()] + ' ' + filestr[m.start():m.end()+30] + ' ...')
                 found_problem = True
     if found_problem:
@@ -1735,7 +1860,7 @@ def exercises(filestr, format, code_blocks, tex_blocks):
                     msg = '\n*** %s: %s' % (exer['type'], exer['title'])
                     if 'label' in exer:
                         msg += '\n    label{%s}' % exer['label']
-                    msg += '\n    should be Exercise since it has refs to other parts of the document:\n    ' + ', '.join(external_refs)
+                    msg += '\n    should be Exercise since it has refs to other parts (?) of the document:\n    ' + ', '.join(external_refs)
                     errwarn(msg)
 
             # Be ready for next iteration
@@ -1743,8 +1868,14 @@ def exercises(filestr, format, code_blocks, tex_blocks):
             exer_end = False
             exer = {}
 
-    filestr = '\n'.join(newlines)
-    solutions = '\n'.join(solutions)
+    try:
+        filestr = '\n'.join(newlines)
+        solutions = '\n'.join(solutions)
+    except UnicodeDecodeError:
+        print '****** DOES THIS OCCUR AT ALL??? ******'
+        filestr = '\n'.join([n.decode('utf-8') for n in newlines if isinstance(n, str)])
+        solutions = '\n'.join([n.decode('utf-8') for n in solutions if isinstance(n, str)])
+
 
     if option('without_solutions') and option('solutions_at_end'):
         from common import chapter_pattern
@@ -2420,11 +2551,18 @@ def typeset_envirs(filestr, format):
                     if text_size not in ('small', 'large'):
                         errwarn('*** warning: wrong text size "%s" specified in %s environment!' % (text_size, envir))
                         errwarn('    must be "large" or "small" - will be set to normal')
+                if option('language=', 'English') != 'English' and title == '':
+                    title = locale_dict[locale_dict['language']].get(envir, envir).capitalize() + '.'
+
                 if title == '':
                     # Rely on the format's default title
                     return ENVIRS[format][envir](m.group(2), format, text_size=text_size)
                 else:
-                    return ENVIRS[format][envir](m.group(2), format, title, text_size=text_size)
+                    if envir in ('box', 'quote'):
+                        # no title
+                        return ENVIRS[format][envir](m.group(2), format, text_size=text_size)
+                    else:
+                        return ENVIRS[format][envir](m.group(2), format, title, text_size=text_size)
         else:
             # subst functions for default handling in primitive formats
             # that do not support the current environment
@@ -2433,21 +2571,21 @@ def typeset_envirs(filestr, format):
                 def subst(m):
                     return indent_lines(m.group(1), format, ' '*4) + '\n'
             elif envir in admons + ('hint', 'remarks'):
-                # Just a plan paragraph with paragraph heading
+                # Just a plain paragraph with paragraph heading
                 def subst(m):
                     title = m.group(1).strip()
                     # Text size specified in parenthesis?
                     m2 = re.search('^\s*\((.+?)\)', title)
 
                     if title == '' and envir != 'block':
-                        title = envir.capitalize() + '.'
+                        title = locale_dict[locale_dict['language']].get(envir, envir).capitalize() + '.'
                     elif title.lower() == 'none':
                         title == ''
                     elif m2:
                         text_size = m2.group(1).lower()
                         title = title.replace('(%s)' % text_size, '').strip()
                     elif title and title[-1] not in ('.', ':', '!', '?'):
-                        # Make sure the title ends with puncuation
+                        # Make sure the title ends with puncuation if not .:!?
                         title += '.'
                     # Recall that this formatting is called very late
                     # so native format must be used
@@ -2745,8 +2883,9 @@ def handle_figures(filestr, format):
         for figfile in figfiles:
             if not figfile.startswith('http'):
                 newname = os.path.join(figure_prefix, figfile)
-                filestr = re.sub(r'%s([,\]])' % figfile,
-                                 '%s\g<1>' % newname, filestr)
+                filestr = re.sub(r'^FIGURE: *\[%s([,\]])' % figfile,
+                                 'FIGURE: [%s\g<1>' % newname, filestr,
+                                 flags=re.MULTILINE)
     # Prefix movies also
     movie_pattern = INLINE_TAGS['movie']
     movie_files = [filename.strip()
@@ -2759,8 +2898,9 @@ def handle_figures(filestr, format):
         for movfile in movie_files:
             if not movfile.startswith('http'):
                 newname = os.path.join(movie_prefix, movfile)
-                filestr = re.sub(r'%s([,\]])' % movfile,
-                                 '%s\g<1>' % newname, filestr)
+                filestr = re.sub(r'^MOVIE: *\[%s([,\]])' % movfile,
+                                 'MOVIE: [%s\g<1>' % newname, filestr,
+                                 flags=re.MULTILINE)
 
     # Find new filenames
     figfiles = [filename.strip()
@@ -2856,6 +2996,13 @@ def handle_figures(filestr, format):
                         elif ext == '.pdf' and e.endswith('ps'):
                             cmd = 'pdf2ps %s %s' % \
                                   (figfile, converted_file)
+                        elif ext == '.tikz':    # TODO pgf handling
+                            failure = tikz2img(figfile)
+                            if '.svg' in search_extensions: # format supports svg
+                                converted_file = basepath + '.svg'
+                            else:   # use png
+                                converted_file = basepath + '.png'
+                            cmd = 'echo'
                         else:
                             if not os.path.isfile(converted_file):
                                 cmd = 'convert %s %s' % (figfile, converted_file)
@@ -2928,7 +3075,7 @@ def handle_cross_referencing(filestr, format, tex_blocks):
     #errwarn('sections:')
     #pprint.pprint(sections)
 
-    toc = TOC[format](sections)  # Always call TOC[format] to make a toc
+    toc = TOC[format](sections, filestr)  # Always call TOC[format] to make a toc
     # See if the toc string is to be inserted in filestr
     pattern = re.compile(r'^TOC:\s*(on|off).*$', re.MULTILINE)
     m = pattern.search(filestr)
@@ -3252,7 +3399,7 @@ def interpret_authors(filestr, format):
                         if m1:
                             pattern = r'\d\d\d\d'
                             date = m1.group(1)
-                            m2 = research(pattern, date)
+                            m2 = re.search(pattern, date)
                             if m2:
                                 year = m2.group()
                         if year is None:
@@ -3762,8 +3909,23 @@ def inline_tag_subst(filestr, format):
     m = re.search(r'^(DATE:\s*[Tt]oday)', filestr, re.MULTILINE)
     if m:
         origstr = m.group(1)
-        w = time.asctime().split()
-        date = w[1] + ' ' + w[2] + ', ' + w[4]
+
+        # Find curent date
+        if locale_dict['language'] == 'English':
+            w = time.asctime().split()
+            date = w[1] + ' ' + w[2] + ', ' + w[4]
+        else:
+            import locale
+            try:
+                locale.setlocale(locale.LC_TIME,
+                                 locale_dict[locale_dict['language']]['locale'])
+            except locale.Error, e:
+                errwarn('*** error: ' + str(e))
+                errwarn('    locale=%s must be installed' % (locale_dict[locale_dict['language']]['locale']))
+                errwarn('    sudo locale-gen de_DE.UTF-8; sudo update-locale')
+                _abort()
+            date = time.strftime('%A, %d. %b, %Y')
+
         # Add copyright right under the date if present
         if format not in ('html', 'latex', 'pdflatex', 'sphinx'):
             from common import get_copyfile_info
@@ -3773,7 +3935,10 @@ def inline_tag_subst(filestr, format):
                     date += '\n\nMade with DocOnce\n\n'
                 else:
                     date += '\n\nCopyright ' + cr_text + '\n\n'
-        filestr = filestr.replace(origstr, 'DATE: ' + date)
+        try:
+            filestr = filestr.replace(origstr, 'DATE: ' + date)
+        except UnicodeDecodeError:
+            filestr = filestr.replace(origstr, 'DATE: ' + date.decode('utf-8'))
 
     # Hack for not typesetting ampersands inside inline verbatim text
     groups = re.findall(INLINE_TAGS['verbatim'], filestr, flags=re.MULTILINE)
@@ -3973,8 +4138,9 @@ def file2file(in_filename, format, basename):
 
     if in_filename.endswith('.py') or in_filename.endswith('.py.do.txt'):
         filestr = doconce2format4docstrings(filestr, format)
+        bg_session = None
     else:
-        filestr = doconce2format(filestr, format)
+        filestr, bg_session = doconce2format(filestr, format)
 
     out_filename = basename + FILENAME_EXTENSION[format]
 
@@ -4005,7 +4171,7 @@ def file2file(in_filename, format, basename):
         """
 
     f.close()
-    return out_filename
+    return out_filename, bg_session
 
 
 def doconce2format4docstrings(filestr, format):
@@ -4130,6 +4296,16 @@ def doconce2format(filestr, format):
     # Next step: standardize newlines
     filestr = re.sub(r'(\r\n|\r|\n)', '\n', filestr)
 
+    # Next step: set language
+    global locale_dict
+    locale_dict['language'] = option('language=', 'English')
+    if locale_dict['language'] not in locale_dict:
+        print '*** error: language "%s" not supported in locale_dict' % locale_dict['language']
+        _abort()
+    else:
+        if locale_dict['language'] != 'English':
+            errwarn('*** locale set to ' + locale_dict['language'])
+
     # Check that all eqrefs have labels in tex blocks (\label{})
     if option('labelcheck=', 'off') == 'on':
         num_problems = 0
@@ -4210,7 +4386,15 @@ def doconce2format(filestr, format):
                              INLINE_TAGS_SUBST[format]['movie'],
                              filestr, flags=re.MULTILINE)
 
-
+    # Next step: IBPLOT commands for inline interactive plots
+    bg_session = None
+    m = re.search('^IBPLOT: *\[', filestr, flags=re.MULTILINE)
+    has_ibplot = True if m else False
+    if has_ibplot:
+        from html import embed_IBPLOTs
+        filestr, bg_session = embed_IBPLOTs(filestr, format)
+        #bg_session.loop_until_closed()
+        debugpr('The file after inserting interactive IBPLOT curve plots:', filestr)
     # Next step: deal with user-defined environments
     if '!bu-' in filestr:
         filestr = typeset_userdef_envirs(filestr, format)
@@ -4539,6 +4723,10 @@ def doconce2format(filestr, format):
             # soup can be used to rewrite the entire doc
             filestr = soup.prettify()
 
+    # Next step: do some language specific substitutions in headings
+    # (assume correct native language in running text)
+    for word in ['Figure', 'Movie', 'Exercise', 'Project', 'Problem']:
+        filestr = filestr.replace(word, locale_dict[locale_dict['language']][word])
 
     # Next step: remove exercise solution/answers, notes, etc
     # (Note: must be done after code and tex blocks are inserted!
@@ -4560,7 +4748,7 @@ def doconce2format(filestr, format):
         errwarn('\n\n...doconce format used %.1f s to translate the document (%d lines)\n' % (cpu, filestr.count('\n')))
         time.sleep(1)
 
-    return filestr
+    return filestr, bg_session
 
 
 def preprocess(filename, format, preprocessor_options=[]):
@@ -4843,9 +5031,20 @@ fix the lines as described or remove the mako statements.
 *** error: potential problem with the math formula
            $%s$
     since ${ can confuse Mako - rewrite %s""" % (formula, suggestion))
-                if formula.startswith('${\cal'):
-                    errwarn(r'Here: use \mathcal{...} instead of {\cal ...}')
+                if formula.startswith('{\\cal'):
+                    errwarn(r'Here: use \mathcal{...} in %s instead of {\cal ...}' % formula)
                 _abort()
+
+        # Find mako variables with missing right brace (common...)
+        pattern = r'\$\{[A-Za-z_][A-Za-z_0-9]*[", .;]' # ${variable ends in no }
+        variables = re.findall(pattern, filestr)
+        if variables:
+            errwarn('*** error: mako variable with missing right brace:\n' +
+                    '\n'.join(variables))
+            m = re.search(pattern, filestr)
+            if m:
+                print '    first occurrence:\n', filestr[m.start()-10:m.start()+20]
+            _abort()
 
         if preprocessor is not None:  # already found preprocess commands?
             # The output is in resultfile, mako is run on that
@@ -4902,7 +5101,7 @@ On Debian (incl. Ubuntu) systems, you can alternatively do
                             strict_undefined=strict_undefined)
         except Exception as e:
             errwarn('*** mako error: ' + str(type(e)).split("'")[1])
-            errwarn('   ', e)
+            errwarn('   ' + str(e))
             if "'ascii'" in str(e):
                 errwarn('    reason: doconce file contains non-ascii characters')
                 errwarn('    rerun with --encoding=utf-8 (or similar):')
@@ -5093,13 +5292,13 @@ def format_driver():
                             if not arg.startswith('--')]
     filename_preprocessed = preprocess(filename, format,
                                        preprocessor_options)
-    out_filename = file2file(filename_preprocessed, format, basename)
+    out_filename, bg_session = file2file(filename_preprocessed, format, basename)
 
     if filename_preprocessed.startswith('__') and not option('debug'):
         os.remove(filename_preprocessed)  # clean up
     #errwarn('----- successful run: %s filtered to %s\n' % (filename, out_filename))
     errwarn('output in ' + os.path.join(dirname, out_filename))
-
+    return bg_session
 
 class DocOnceSyntaxError(Exception):
     pass
@@ -5128,7 +5327,7 @@ def doconce_format(format, dotext, compile=False,
     try:
         output = subprocess.check_output(cmd, shell=True,
                                          stderr=subprocess.STDOUT)
-    except subprocess.CalledProcessError:
+    except subprocess.CalledProcessError as e:
         errwarn('Execution of "%s" failed!\n' % cmd)
         raise DocOnceSyntaxError('Could not run %s.\nOutput:\n%s' %
                                  (cmd, e.output))

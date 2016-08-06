@@ -329,6 +329,9 @@ def pandoc_ref_and_label(section_label2title, format, filestr):
     # right link text. html.py has probably most solutions.
     filestr = re.sub(r'([Ff]igure|[Mm]ovie)\s+ref\{(.+?)\}', '[\g<1>](#\g<2>)',
                      filestr)
+    # Remaining ref{} (should protect \eqref)
+    filestr = re.sub(r'ref\{(.+?)\}', '[\g<1>](#\g<1>)', filestr)
+    #filestr = re.sub(r'([^q])ref\{(.+?)\}', '\g<1>[\g<2>](#\g<2>)', filestr)
     return filestr
 
 
@@ -504,7 +507,7 @@ def define(FILENAME_EXTENSION,
     TABLE['pandoc'] = pandoc_table
     INDEX_BIB['pandoc'] = pandoc_index_bib
     EXERCISE['pandoc'] = plain_exercise
-    TOC['pandoc'] = lambda s: '# Table of contents: Run pandoc with --toc option'
+    TOC['pandoc'] = lambda s, f: '# Table of contents: Run pandoc with --toc option'
     QUIZ['pandoc'] = pandoc_quiz
     FIGURE_EXT['pandoc'] = {
         'search': ('.png', '.gif', '.jpg', '.jpeg', '.tif', '.tiff', '.pdf'),

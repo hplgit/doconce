@@ -1,4 +1,4 @@
-import os, sys, shutil, re, glob, time, subprocess
+import os, sys, shutil, re, glob, time, subprocess, codecs
 from doconce import errwarn
 
 _part_filename = '._%s%03d'
@@ -17,6 +17,8 @@ of intermediate results"""),
 0: X=15
 1: X=5
 2: 0.5"""),
+    ('--language=', """Native language to be used: English (default), Norwegian,
+"""),
     ('--preprocess_include_subst', """Turns on variable substitutions in # #include paths when running Preprocess:
     preprocess -i -DMYDIR=rn1
 will lead to the string "MYDIR" being replaced by the value "rn1"
@@ -39,6 +41,7 @@ AUTHOR: Kaare Dump at BSU {copyright|Released under the MIT license.}
     ('--align2equations', """Rewrite align/alignat math environments to separate equation environments.
 Sometimes needed for proper MathJax rendering (e.g., remark slides).
 Sphinx requires such rewrite and will do it regardless of this option."""),
+    ('--IBPLOT', 'automagic translation of IBPLOT commands.'),
     ('--exercise_numbering=',
      """absolute: exercises numbered as 1, 2, ... (default)
 chapter: exercises numbered as 1.1, 1.2, ... , 3.1, 3.2, ..., B.1, B.2, etc.
@@ -66,6 +69,7 @@ part of the command doconce sphinx_dir."""),
     ('--no_header_footer',
      'Do not include header and footer in (LaTeX and HTML) documents.'),
     ('--no_emoji', 'Remove all emojis.'),
+    ('--siunits', 'Allow siunitx MathJax/LaTeX package for support of SI units in various formats'),
     ('--allow_refs_to_external_docs', 'Do not abort translation if ref{...} to labels not defined in this document.'),
     ('--runestone',
      'Make a RunestoneInteractive version of a Sphinx document.'),
@@ -252,7 +256,7 @@ Koma_Script: Koma Script style,
 siamltex: SIAM's standard LaTeX style for papers,
 siamltexmm: SIAM's extended (blue) multimedia style for papers."""),
     ('--latex_font=',
-     """LaTeX font choice: helvetica, palatino, std (Computer Modern, default)."""),
+     """LaTeX font choice: helvetica, palatino, utopia, std (Computer Modern, default)."""),
     ('--latex_code_style=', """Typesetting of code blocks.
 pyg: use pygments (minted), style is set with --minted_latex_style=
 lst: use lstlistings
@@ -496,7 +500,7 @@ various latex environments for exercises (esp. in Springer styles)."""),
     ('--without_hints',
      'Leave out hints from exercises.'),
     ('--exercise_solution=',
-     'Typesetting of solutions: paragraph or admon.'),
+     'Typesetting of solutions: paragraph, admon, or quote.'),
     ('--wordpress',
      'Make HTML output for wordpress.com pages.'),
     ('--tables2csv',
@@ -931,11 +935,11 @@ def latin2html():
 
 # replace is taken from scitools
 def _usage_find_nonascii_chars():
-    print 'Usage: doconce find_non_ascii_chars file1 file2 ...'
+    print 'Usage: doconce find_nonascii_chars file1 file2 ...'
 
 def find_nonascii_chars():
     if len(sys.argv) <= 1:
-        usage_find_nonascii_chars()
+        _usage_find_nonascii_chars()
         sys.exit(0)
 
     filenames = wildcard_notation(sys.argv[1:])
@@ -2600,7 +2604,7 @@ def html_colorbullets():
     images of balls with colors.
     """
     if len(sys.argv) <= 1:
-        _usage_html_collorbullets()
+        _usage_html_colorbullets()
         sys.exit(0)
 
     red_bullet = 'bullet_red2.png'
@@ -2991,7 +2995,7 @@ def tablify(parts, format="html"):
                             print '   ',
                             for s, c in enumerate(row):
                                 column, width = c
-                                print ' %d%d: ' (r, s),
+                                print ' %d%d: ' % (r, s),
                                 if width is not None:
                                     print 'no width'
                                 else:
@@ -6802,6 +6806,7 @@ def _spellcheck_all(**kwargs):
         else:
             for name in tmp_misspelled:
                 print 'See', name, 'for misspellings in', name.replace('tmp_misspelled_', '')[:-1]
+        print 'Search tmp_stripped_*.do.txt for the misspellings'
         dictfile = kwargs.get('dictionary', '.dict4spell.txt')
         print 'When all misspellings are acceptable, cp new_dictionary.txt~',\
               dictfile, '\n'
@@ -7560,6 +7565,7 @@ MathJax.Hub.Config({
 });
 </script>
 \g<1>"""
+    # Nothing is done with --siunits option and siunitx package...
     text = re.sub(pattern, replacement, text)
     text = text.replace('EQREF{', '\\eqref{')
 
@@ -8611,7 +8617,7 @@ def _usage_ipynb2doconce():
 
 def ipynb2doconce():
     if len(sys.argv) < 2:
-        _usage_ipynb()
+        _usage_ipynb2doconce()
         sys.exit(0)
 
     cell_delimiter = '--cell_delimiter' in sys.argv

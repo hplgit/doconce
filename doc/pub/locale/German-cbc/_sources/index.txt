@@ -1,0 +1,19 @@
+
+.. Master file automatically created by doconce sphinx_dir
+
+
+DocOnce mit Deutsch
+===================
+
+Contents:
+
+.. toctree::
+   :maxdepth: 2
+
+   German
+
+
+Index
+=====
+
+* :ref:`genindex`

@@ -32,7 +32,7 @@ go back.
 """
 
 
-import re, os, commands, sys
+import re, os, commands, sys, subprocess
 from common import default_movie, plain_exercise, insert_code_and_tex
 from plaintext import plain_quiz
 from misc import _abort
@@ -438,7 +438,7 @@ def define(FILENAME_EXTENSION,
     from plaintext import plain_index_bib
     EXERCISE['mwiki'] = plain_exercise
     INDEX_BIB['mwiki'] = plain_index_bib
-    TOC['mwiki'] = lambda s: '<<<TOC>>>'  # __TOC__ will be wrongly translated to paragraph headline and needs a fix
+    TOC['mwiki'] = lambda s, f: '<<<TOC>>>'  # __TOC__ will be wrongly translated to paragraph headline and needs a fix
     QUIZ['mwiki'] = plain_quiz
 
     # document start:

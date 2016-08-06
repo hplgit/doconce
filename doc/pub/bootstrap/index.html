@@ -25,13 +25,13 @@ Automatically generated HTML file from DocOnce source
    overflow-x: hidden;
 }
 
-/* Position anchors of headings a bit higher so jumping to headlines
-behaves correctly */
-h1.anchor, h2.anchor, h3.anchor, h4.anchor {
-    display: block;
-    position: relative;
-    top: -100px;
-    visibility: hidden;
+/* Adds an invisible element before each target to offset for the navigation
+   bar */
+.anchor::before {
+  content:"";
+  display:block;
+  height:45px; /* fixed header height*/
+  margin:-50px 0 0; /* negative fixed header height */
 }
 </style>
 
@@ -99,7 +99,7 @@ end of tocinfo -->
 <center><h1>Demonstration of Bootstrap styles for DocOnce documents</h1></center>  <!-- document title -->
 
 <p>
-<center><h4>Jun 5, 2016</h4></center> <!-- date -->
+<center><h4>Jun 14, 2016</h4></center> <!-- date -->
 <br>
 <p>
 The <a href="http://getbootstrap.com" target="_blank">Bootstrap</a> framework for creating

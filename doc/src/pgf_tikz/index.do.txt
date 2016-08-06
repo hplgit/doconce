@@ -1,0 +1,10 @@
+TITLE: Testing PGF and TikZ support in DocOnce
+
+<%
+DOC_NAME = "pgf_tikz"
+%>
+
+* "HTML" : "${DOC_NAME}.html"
+* "LaTeX" : "${DOC_NAME}.pdf"
+* "Sphinx" : "cbc/${DOC_NAME}.html"
+

@@ -5,7 +5,7 @@ from common import table_analysis, plain_exercise, insert_code_and_tex, \
      get_legal_pygments_lexers, has_custom_pygments_lexer, emoji_url, \
      fix_ref_section_chapter
 from misc import option, _abort
-from doconce import errwarn
+from doconce import errwarn, locale_dict
 
 box_shadow = 'box-shadow: 8px 8px 5px #888888;'
 #box_shadow = 'box-shadow: 0px 0px 10px #888888'
@@ -585,7 +585,8 @@ display: inline;
     return s
 
 def toc2html(html_style, bootstrap=True,
-             max_headings=17): # max no of headings in pull down menu
+             max_headings=17, # max no of headings in pull down menu
+             ):
     global tocinfo  # computed elsewhere
 
     # level_depth: how many levels that are represented in the toc
@@ -656,6 +657,217 @@ def toc2html(html_style, bootstrap=True,
         _abort()
     return toc_html
 
+class CreateApp():
+    """
+    Class for interactive Bokeh plots.
+    Written by Fredrik Eikeland Fossan <fredrik.e.fossan@ntnu.no>.
+    """
+    def __init__(self, plot_info):
+        from numpy import linspace
+        from bokeh.models.widgets import Slider, TextInput
+        from bokeh.models import ColumnDataSource, HBox, VBoxForm
+
+        N = 200
+        colors = ['red', 'green', 'indigo', 'orange', 'blue', 'grey', 'purple']
+        possible_inputs = ['x_axis_label', 'xrange', 'yrange', 'sliderDict', 'title', 'number_of_graphs']
+
+        y = None
+        # Formula given or just Python function?
+        if ".py" in plot_info[0]:
+            # Python module with compute function
+            compute = None
+            msg = "from " + plot_info[0][0:-3] + " import compute"
+            errwarn('...exec: ' + msg)
+            exec(msg)
+            import inspect
+            arg_names = inspect.getargspec(compute).args
+            argString = ""
+            for n, arg in enumerate(arg_names):
+                argString = argString + arg
+                if n != len(arg_names) - 1:
+                    argString = argString + ", "
+            computeString = "y = compute(" + argString + ")"
+            self.computeString = computeString
+            self.compute = compute
+
+        self.curve = plot_info[0]
+        x_axis_label = None
+        y_axis_label = None
+        xrange = (0, 10)
+        yrange = (0, 10)
+        sliderDict = None
+        title = None
+        number_of_graphs = None
+        legend = None
+        reverseAxes = False
+
+        self.source = []
+        self.sliderList = []
+
+        for n in range(1,len(plot_info)):
+            # Update inputs
+
+            exec(plot_info[n].strip())
+
+        self.x = linspace(xrange[0], xrange[1], N)
+        self.reverseAxes = reverseAxes
+        if sliderDict != None:
+            self.parameters = sliderDict.keys()
+
+            for n, param in enumerate(self.parameters):
+                exec("sliderInstance = Slider(" + sliderDict[param] + ")") # Todo: Fix so exec is not needed
+                exec("self.sliderList.append(sliderInstance)") # Todo: Fix so exec is not needed
+                # get first value of param
+                exec(param + " = "  + 'self.sliderList[n].value') # Todo: Fix so exec is not needed
+
+        # Set up plot
+        from bokeh.plotting import Figure
+        assert len(xrange) == 2; assert len(yrange) == 2
+        self.plot = Figure(
+            plot_height=400, plot_width=400, title=title,
+            tools="crosshair,pan,reset,resize,save,wheel_zoom",
+            x_range=xrange, y_range=yrange)
+        self.plot.xaxis.axis_label = x_axis_label
+        self.plot.yaxis.axis_label = y_axis_label
+        # generate the first curve:
+        x = self.x
+        if ".py" in plot_info[0]:
+            exec(self.computeString)
+            errwarn('...exec: ' + self.computeString)
+        else:
+            exec(plot_info[0]) #  execute y = f(x, params)
+            errwarn('...exec: ' + plot_info[0])
+        #print 'XXX', y  # nan for womersley test!
+
+        if type(y) is list:
+            if legend == None:
+                legend = [legend]*len(y)
+            for n in range(len(y)):
+
+                if self.reverseAxes:
+                    x_plot = y[n]
+                    y_plot = self.x
+                else:
+                    x_plot = self.x
+                    y_plot = y[n]
+                self.source.append(
+                    ColumnDataSource(data=dict(x=x_plot, y=y_plot)))
+                self.plot.line(
+                    'x', 'y',
+                    source=self.source[n], line_width=3,
+                    line_color=colors[n], legend=legend[n])
+        else:
+            if self.reverseAxes:
+                x_plot = y
+                y_plot = self.x
+            else:
+                x_plot = self.x
+                y_plot = y
+            self.source.append(
+                ColumnDataSource(data=dict(x=x_plot, y=y_plot)))
+            self.plot.line(
+                'x', 'y',
+                source=self.source[0], line_width=3, legend=legend)
+
+    def update_data(self, attrname, old, new):
+        # Get the current slider values
+        y = None
+        x = self.x
+        for n, param in enumerate(self.parameters):
+            exec(param + " = "  + 'self.sliderList[n].value')
+        # generate the new curve:
+        if ".py" in self.curve:
+            compute = self.compute
+            exec(self.computeString) #  execute y = compute(x, params)
+            errwarn('...exec: ' + self.computeString)
+        else:
+            exec(self.curve) #  execute y = f(x, params)
+            errwarn('...exec: ' + self.curve)
+
+        if type(y) is list:
+            for n in range(len(y)):
+                if self.reverseAxes:
+                    x_plot = y[n]
+                    y_plot = self.x
+                else:
+                    x_plot = self.x
+                    y_plot = y[n]
+                self.source[n].data = dict(x=x_plot, y=y_plot)
+        else:
+            if self.reverseAxes:
+                x_plot = y
+                y_plot = x
+            else:
+                x_plot = x
+                y_plot = y
+            self.source[0].data = dict(x=x_plot, y=y_plot)
+
+
+def embed_IBPLOTs(filestr, format):
+    """
+    Replace all IBPLOT tags by proper script and bokeh code.
+    Written by Fredrik Eikeland Fossan with edits by H. P. Langtangen.
+    """
+    from bokeh.document import Document
+    from bokeh.client import push_session
+    from bokeh.embed import autoload_server
+    from bokeh.models import HBox, VBoxForm
+
+    document = Document()
+    session = push_session(document)
+
+    # Find all IBPLOT tags and store them
+    IBPLOT_tags = []
+    IBPLOT_lines = []
+    for line in filestr.splitlines():
+        if line.startswith('IBPLOT:'):
+            errwarn('*** found IBPLOT command\n    ' + line)
+            try:
+                plot_info = line[8:-1].split(';')
+            except Exception:
+                plot_info = []
+            if not plot_info:
+                errwarn('*** error: inline plot specification\n    %s\ncould not be split wrt ;' % line)
+                _abort()
+
+            new_plot_info = []
+            n = 0
+            for element in plot_info:
+                if not element:
+                    continue
+                if element[0] ==' ':
+                    element = element[1:]
+                if element[-1] ==' ':
+                    element = element[:-1]
+                if element[-1] == ']' and n == len(plot_info) -1:
+                    element = element[:-1]
+                new_plot_info.append(element)
+                n += 1
+            IBPLOT_tags.append(new_plot_info)
+            IBPLOT_lines.append(line)
+
+    appLayoutList = []
+    for app_info in IBPLOT_tags:
+        app = CreateApp(app_info)
+        for w in app.sliderList:
+            w.on_change('value', app.update_data)
+        inputs = VBoxForm(children=app.sliderList)
+        layout = HBox(children=[inputs, app.plot], width=800)
+        document.add_root(layout)
+        appLayoutList.append(layout)
+
+    # Replace each IBPLOT tag by proper HTML code
+    app_no = 0
+    for tags, line in zip(IBPLOT_tags, IBPLOT_lines):
+        text = autoload_server(appLayoutList[app_no], session_id=session.id)
+        if format == 'html':
+            filestr = filestr.replace(line, '<!--\n%s\n-->\n' % line + text)
+        else:
+            filestr = filestr.replace(line, '')
+        app_no += 1
+
+    document.add_root(layout)
+    return filestr, session
 
 def embed_newcommands(filestr):
     from expand_newcommands import process_newcommand
@@ -682,20 +894,26 @@ def embed_newcommands(filestr):
 
 def mathjax_header(filestr):
     newcommands = embed_newcommands(filestr)
+    if option('siunits'):
+        siunitx1 = '\nMathJax.Ajax.config.path["Contrib"] = "https://cdn.mathjax.org/mathjax/contrib";'
+        siunitx2 = ', "[Contrib]/siunitx/unpacked/siunitx.js"'
+    else:
+        siunitx1 = siunitx2 = ''
+
     mathjax_script_tag = """
 
-<script type="text/x-mathjax-config">
+<script type="text/x-mathjax-config">%s
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "AMS"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"%s]
   }
 });
 </script>
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-"""
+""" % (siunitx1, siunitx2)
     #<meta tag is valid only in html head anyway, so this was removed:
     #<!-- Fix slow MathJax rendering in IE8 -->
     #<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
@@ -1184,6 +1402,8 @@ function show_hide_code%d(){
     toc_html = ''
     if html_style.startswith('boots'):
         toc_html = toc2html(html_style, bootstrap=True, max_headings=10000)
+        # Fix
+        toc_html = re.sub(r'id="table_of_contents">', 'id="table_of_contents" class="anchor">', toc_html)
     elif html_style in ('solarized',):
         toc_html = toc2html(html_style, bootstrap=False)
     # toc_html lacks formatting, run some basic formatting here
@@ -1291,9 +1511,20 @@ function show_hide_code%d(){
     else:
         filestr = filestr.replace(' <!-- chapter heading -->', ' <hr>')
     if html_style.startswith('boots'):
-        # Insert toc
+        # Insert toc if toc
         if '***TABLE_OF_CONTENTS***' in filestr:
-            filestr = filestr.replace('***TABLE_OF_CONTENTS***', toc_html)
+            contents = locale_dict[locale_dict['language']]['Contents']
+            try:
+                filestr = filestr.replace('***TABLE_OF_CONTENTS***',
+                                          toc_html)
+                filestr = filestr.replace('***CONTENTS_PULL_DOWN_MENU***',
+                                          contents)
+            except UnicodeDecodeError:
+                filestr = filestr.replace('***TABLE_OF_CONTENTS***',
+                                          toc_html.decode('utf-8'))
+                filestr = filestr.replace('***CONTENTS_PULL_DOWN_MENU***',
+                                          contents.decode('utf-8'))
+
         jumbotron = option('html_bootstrap_jumbotron=', 'on')
         if jumbotron != 'off':
             # Fix jumbotron for title, author, date, toc, abstract, intro
@@ -1927,8 +2158,9 @@ def html_author(authors_and_institutions, auth2index,
 
 
 def html_abstract(m):
-    r'<b>\g<type>.</b> \g<text>\n\g<rest>'
+    # m is r'<b>\g<type>.</b> \g<text>\n\g<rest>'
     type = m.group('type')
+    type = locale_dict[locale_dict['language']].get(type, type)
     text = m.group('text')
     rest = m.group('rest')
     if type.lower() == 'preface':
@@ -2141,7 +2373,7 @@ def html_index_bib(filestr, index, citations, pubfile, pubdata):
 global tocinfo
 tocinfo = None
 
-def html_toc(sections):
+def html_toc(sections, filestr):
     # Find minimum section level
     level_min = 4
     for title, level, label in sections:
@@ -2151,9 +2383,16 @@ def html_toc(sections):
     toc_depth = int(option('toc_depth=', 2))
 
     extended_sections = []  # extended list for toc in HTML file
+    toc = locale_dict[locale_dict['language']]['toc']
+    # This function is always called, only extend headings if a TOC is wanted
+    m = re.search(r'^TOC: +[Oo]n', filestr, flags=re.MULTILINE)
+    if m:
+        extended_sections.append(
+            (toc, level_min, 'table_of_contents', 'table_of_contents'))
     #hr = '<hr>'
     hr = ''
-    s = '<h2>Table of contents</h2>\n\n%s\n<p>\n' % hr
+    s = '<h1 id="table_of_contents">%s</h2>\n\n%s\n<p>\n' % (toc, hr)
+    # (we add class="anchor" in the calling code the above heading, if necessary)
     for i in range(len(sections)):
         title, level, label = sections[i]
         href = label if label is not None else '___sec%d' % i
@@ -2335,7 +2574,10 @@ if html_admon_style is None:
         html_admon_style = 'gray'
 
 for _admon in admons:
-    _Admon = _admon.capitalize()  # upper first char
+    # _Admon is constructed at import time, used as default title, but
+    # will always be in English because of the early construction
+    _Admon = locale_dict[locale_dict['language']].get(_admon, _admon).capitalize()  # upper first char
+
     # Below we could use
     # <img src="data:image/png;base64,iVBORw0KGgoAAAANSUh..."/>
     # for embedding images in the html code rather than just including them
@@ -2517,7 +2759,7 @@ def define(FILENAME_EXTENSION,
         'section':       r'\n<h1>\g<subst></h1>',
         'subsection':    r'\n<h2>\g<subst></h2>',
         'subsubsection': r'\n<h3>\g<subst></h3>\n',
-        'paragraph':     r'<b>\g<subst></b>\n',
+        'paragraph':     r'<b>\g<subst></b>' + '\n',
         'abstract':      html_abstract,
         'title':         r'\n\n<center><h1>\g<subst></h1></center>  <!-- document title -->\n',
         'date':          r'<p>\n<center><h4>\g<subst></h4></center> <!-- date -->\n<br>',
@@ -2842,6 +3084,21 @@ code { color: inherit; background-color: transparent; }
 pre { color: inherit; background-color: transparent; }
 """
     if html_style.startswith('boots'):
+        height = 50  # fixed header hight in pixels, varies with style
+        if 'bootswatch' in html_style:
+            _style = html_style.split('_')[-1]
+            if _style in ('simplex', 'superhero'):
+                height = 40
+            elif _style in ('yeti',):
+                height = 45
+            elif _style in ('cerulean', 'cosmo', 'lumen', 'spacelab', 'united', 'slate', 'cyborg', 'amelia'):
+                height = 50
+            elif _style.startswith('journal') or _style in ('flatly', 'darkly'):
+                height = 60
+            elif _style in ('readable',):
+                height = 64
+        if html_style.startswith('bootstrap'):
+            height = 50
         style_changes += """
 /* Add scrollbar to dropdown menus in bootstrap navigation bar */
 .dropdown-menu {
@@ -2855,10 +3112,10 @@ pre { color: inherit; background-color: transparent; }
 .anchor::before {
   content:"";
   display:block;
-  height:50px; /* fixed header height*/
-  margin:-50px 0 0; /* negative fixed header height */
+  height:%spx;      /* fixed header height for style %s */
+  margin:-%spx 0 0; /* negative fixed header height */
 }
-"""
+""" % (height, html_style, height)
         if '!bquiz' in filestr:
         # Style for buttons for collapsing paragraphs
             style_changes += """
@@ -2924,6 +3181,7 @@ body { %s; }
     <a class="navbar-brand" href="%s">%s</a>
   </div>
 """ % (url, link)
+
                 bootstrap_title_bar = """
 <!-- Bootstrap navigation bar -->
 <div class="navbar navbar-default navbar-fixed-top">
@@ -2939,7 +3197,7 @@ body { %s; }
   <div class="navbar-collapse collapse navbar-responsive-collapse">
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">***CONTENTS_PULL_DOWN_MENU*** <b class="caret"></b></a>
         <ul class="dropdown-menu">
 ***TABLE_OF_CONTENTS***
         </ul>

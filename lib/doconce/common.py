@@ -4,9 +4,9 @@ DocOnce format to other formats.  Some convenience functions used in
 translation modules (latex.py, html.py, etc.) are also included in
 here.
 """
-import re, sys, urllib, os
+import re, sys, urllib, os, shutil, subprocess#, xml.etree.ElementTree
 from misc import option, _abort
-from doconce import errwarn
+from doconce import errwarn, locale_dict
 
 format = None   # latex, pdflatex, html, plain, etc
 
@@ -866,7 +866,16 @@ def doconce_exercise_output(
     # at the beginning of the translation process.
 
     latex_style = option('latex_style=', 'std')
-    solution_style = option('exercise_solution=', 'paragraph')
+    solution_style = option('exercise_solution=', 'paragraph') # admon, quote
+
+    language = locale_dict['language']
+    Solution = locale_dict[language]['Solution']
+    if solution_header == '__Solution.__':
+        solution_header = locale_dict[language]['__Solution.__']
+    if answer_header == '__Answer.__':
+        answer_header = locale_dict[language]['__Answer.__']
+    if hint_header == '__Hint.__':
+        hint_header = locale_dict[language]['__Hint.__']
 
     # Store solutions in a separate string
     has_solutions = False
@@ -999,10 +1008,12 @@ def doconce_exercise_output(
 
                 if subex['file']:
                     if len(subex['file']) == 1:
-                        s += 'Filename: `%s`' % subex['file'][0] + '.\n'
+                        Filename = locale_dict[language]['Filename']
+                        s += '%s: `%s`' % (Filename, subex['file'][0]) + '.\n'
                     else:
-                        s += 'Filenames: %s' % \
-                             ', '.join(['`%s`' % f for f in subex['file']]) + '.\n'
+                        Filenames = locale_dict[language]['Filenames']
+                        s += '%s: %s' % (Filenames, ', '.join(
+                            ['`%s`' % f for f in subex['file']]) + '.\n')
 
                 if subex['answer']:
                     s += '\n'
@@ -1022,8 +1033,11 @@ def doconce_exercise_output(
                     if solution_style == 'paragraph':
                         s += solution_header + '\n'
                     elif solution_style == 'admon':
-                        s   += '\n!bnotice Solution.\n\n'
-                        sol += '\n!bnotice Solution.\n\n'
+                        s   += '\n!bnotice %s.\n\n' % Solution
+                        sol += '\n!bnotice %s.\n\n' % Solution
+                    elif solution_style == 'quote':
+                        s   += '\n!bquote\n' + solution_header + '\n'
+                        sol += '\n!bquote\n' + solution_header + '\n'
                     # Make sure we have a sentence after the heading
                     if solution_header.endswith('===') and \
                         re.search(r'^\d+ %s' % _CODE_BLOCK,
@@ -1036,6 +1050,9 @@ def doconce_exercise_output(
                     if solution_style == 'admon':
                         s   += '!enotice\n\n'
                         sol += '!enotice\n\n'
+                    elif solution_style == 'quote':
+                        s   += '!equote\n\n'
+                        sol += '!equote\n\n'
                     if exer['type'] != 'Example':
                         s += '\n# ' + envir_delimiter_lines['sol'][1] + '\n'
 
@@ -1065,8 +1082,11 @@ def doconce_exercise_output(
         if solution_style == 'paragraph':
             s += solution_header + '\n'
         elif solution_style == 'admon':
-            s   += '\n!bnotice Solution.\n\n'
-            sol += '\n!bnotice Solution.\n\n'
+            s   += '\n!bnotice %s.\n\n' % Solution
+            sol += '\n!bnotice %s.\n\n' % Solution
+        elif solution_style == 'quote':
+            s   += '\n!bquote\n' + solution_header + '\n'
+            sol += '\n!bquote\n' + solution_header + '\n'
         # Make sure we have a sentence after the heading if real heading
         if solution_header.endswith('===') and \
             re.search(r'^\d+ %s' % _CODE_BLOCK, exer['solution'].lstrip()):
@@ -1078,6 +1098,9 @@ def doconce_exercise_output(
         if solution_style == 'admon':
             s   += '!enotice\n\n'
             sol += '!enotice\n\n'
+        elif solution_style == 'quote':
+            s   += '!equote\n\n'
+            sol += '!equote\n\n'
         if exer['type'] != 'Example':
             s += '\n# ' + envir_delimiter_lines['sol'][1] + '\n'
 
@@ -1087,16 +1110,16 @@ def doconce_exercise_output(
             # otherwise let it proceed at the end of the exercise text.
             s += '\n'
         if len(exer['file']) == 1:
-            s += 'Filename: `%s`' % exer['file'][0] + '.\n'
+            Filename = locale_dict[language]['Filename']
+            s += '%s: `%s`' % (Filename, exer['file'][0]) + '.\n'
         else:
-            s += 'Filenames: %s' % \
-                 ', '.join(['`%s`' % f for f in exer['file']]) + '.\n'
-        #s += '*Filename*: `%s`' % exer['file'] + '.\n'
-        #s += '\n' + '*Filename*: `%s`' % exer['file'] + '.\n'
-
+            Filenames = locale_dict[language]['Filenames']
+            s += '%s: %s' % (Filenames,
+                             ', '.join(['`%s`' %
+                                        f for f in exer['file']]) + '.\n')
     if exer['closing_remarks']:
-        s += '\n# Closing remarks for this %s\n\n=== Remarks ===\n\n' % \
-             exer['type'] + exer['closing_remarks'] + '\n\n'
+        s += '\n# Closing remarks for this %s\n\n=== %s ===\n\n' % \
+             (exer['type'], locale_dict[locale_dict['language']]['remarks'].capitalize()) + exer['closing_remarks'] + '\n\n'
 
     if exer['solution_file']:
         if len(exer['solution_file']) == 1:
@@ -1185,6 +1208,123 @@ def has_custom_pygments_lexer(name):
             return False
     return True
 
+
+def tikz2img(tikz_file, encoding='utf8', tikz_libs=None):
+    dvisvgm_template = r"""
+\documentclass[dvisvgm]{minimal}
+
+\usepackage[%s]{inputenc}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{tikz}
+
+%% TikZ libraries
+%s
+
+\begin{document}
+\noindent
+\input{%s}
+\end{document}
+"""
+
+    # handle tikz libraries
+    if tikz_libs is None:
+        tikz_libs = ""
+    elif isinstance(tikz_libs, list):
+        #tikz_libs = '\n'.join([r"\usetikzlibrary{%s}" % s for s in tikz_libs])
+        tikz_libs = r"\usetikzlibrary{%s}" % (', '.join(tikz_libs))
+    else:
+        # Error
+        raise Exception("TikZ libraries is not a list!")
+
+    # create temporary directory
+    fig_dir = os.path.dirname(tikz_file)
+    tmp_dir = os.path.join(fig_dir, 'tmp_tikz_rendering')
+    if not os.path.isdir(tmp_dir):
+        os.mkdir(tmp_dir)
+
+    # filenames
+    tikz_basefile = os.path.basename(tikz_file)
+    tikz_basefile_wo_ext = os.path.splitext(tikz_basefile)[0]
+    tex_file = os.path.join(tmp_dir, tikz_basefile_wo_ext + ".tex")
+    dvi_file = os.path.join(tmp_dir, tikz_basefile_wo_ext + ".dvi")
+    svg_file = os.path.join(fig_dir, tikz_basefile_wo_ext + ".svg")
+    png_file = os.path.join(fig_dir, tikz_basefile_wo_ext + ".png")
+
+
+    # wrap tikz in TeX file
+    tex_content = dvisvgm_template % (encoding, tikz_libs, tikz_file)
+    #print tex_content
+
+    with open(tex_file, 'w') as f:
+        f.write(tex_content)
+
+
+
+    # TeX --> DVI
+    #print "TeX --> DVI"
+    p = subprocess.Popen(['latex', '-output-directory='+tmp_dir,
+                        '-interaction=nonstopmode',
+                        tex_file],
+              stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    out, err = p.communicate()
+    if p.poll() != 0:
+        errwarn('*** error: failed to compile LaTeX document with TikZ file\n'
+              + '    (this likely means that the tikz figure is invalid)')
+        return True
+
+    # DVI --> SVG
+    #print "DVI --> SVG"
+    p = subprocess.Popen(['dvisvgm', '--bbox=min',
+                          '-o', svg_file,
+                          '--no-fonts',
+                          #'-R', #not compatible with older versions of dvisvgm
+                          dvi_file],
+              stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    out, err = p.communicate()
+    if p.poll() != 0:
+        errwarn('*** error: failed to convert TikZ figure from DVI to SVG')
+        return True
+
+
+    # minor fixes to SVG file
+    # should remove viewBox, height and width to improve browser compatibility
+    """
+    tree = xml.etree.ElementTree.parse(svg_file)
+    root = tree.getroot()
+    updated_svg = False
+    for attribute in ['viewBox', 'height', 'width']:
+        if attribute in root.attrib:
+            del root.attrib[attribute]
+            updated_svg = True
+    if updated_svg: # no need to write the same file back
+        tree.write(svg_file)
+    """
+    # SVG --> PNG
+    #print "SVG --> PNG"
+    try:
+        p = subprocess.Popen(['inkscape', '--without-gui',
+                               '--export-area-drawing', # cropping
+                               '--export-dpi=300',
+                               '--export-background=#ffffff', # white background
+                               '--export-background-opacity=1.0',
+                               '--export-png='+png_file,
+                               svg_file],
+                  stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        out, err = p.communicate()
+        if p.poll() != 0:
+            errwarn('*** error: failed to convert TikZ figure from SVG to PNG')
+            return True
+    except OSError as e:
+        errwarn('*** error: failed to convert TikZ figure from SVG to PNG')
+        errwarn('\n    reason: inkscape is not installed')
+
+    # clean up files
+    shutil.rmtree(tmp_dir)
+
+    return False    # not a failure
+
+
 BLANKLINE = {}
 FILENAME_EXTENSION = {}
 LIST = {}
@@ -1214,9 +1354,9 @@ QUIZ = {}
 # regular expressions for inline tags:
 #inline_tag_begin = r"""(?P<begin>(^|[(\s~>]|^__))"""
 # Need {} and ! in begin/end because of idx{...!_bold face_ ...}
-inline_tag_begin = r"""(?P<begin>(^|[(\s~>{!-]|^__))"""
+inline_tag_begin = r"""(?P<begin>(^|[(\s~>{!-]|^__|&[mn]dash;))"""
 # ' is included as apostrophe in end tag
-inline_tag_end = r"""(?P<end>($|[.,?!;:)<}!'\s~\[<-]))"""
+inline_tag_end = r"""(?P<end>($|[.,?!;:)<}!'\s~\[<&;-]))"""
 # alternatives using positive lookbehind and lookahead (not tested!):
 inline_tag_before = r"""(?<=(^|[(\s]))"""
 inline_tag_after = r"""(?=$|[.,?!;:)\s])"""
@@ -1224,6 +1364,9 @@ inline_tag_after = r"""(?=$|[.,?!;:)\s])"""
 
 _linked_files = '''\s*"(?P<url>([^"]+?\.html?|[^"]+?\.html?\#[^"]+?|[^"]+?\.txt|[^"]+?\.tex|[^"]+?\.pdf|[^"]+?\.f|[^"]+?\.c|[^"]+?\.cpp|[^"]+?\.cxx|[^"]+?\.py|[^"]+?\.ipynb|[^"]+?\.java|[^"]+?\.pl|[^"]+?\.sh|[^"]+?\.csh|[^"]+?\.zsh|[^"]+?\.ksh|[^"]+?\.tar\.gz|[^"]+?\.tar|[^"]+?\.zip|[^"]+?\.f77|[^"]+?\.f90|[^"]+?\.f95|[^"]+?\.png|[^"]+?\.jpe?g|[^"]+?\.gif|[^"]+?\.pdf|[^"]+?\.flv|[^"]+?\.webm|[^"]+?\.ogg|[^"]+?\.mp4|[^"]+?\.mpe?g|[^"]+?\.e?ps|_static-?[^/]*/[^"]+?))"'''
 #_linked_files = '''\s*"(?P<url>([^"]+?))"'''  # any file is accepted
+
+abstract_names = '|'.join([locale_dict[locale_dict['language']][p]
+                           for p in ['Abstract', 'Summary', 'Preface']])
 
 INLINE_TAGS = {
     # math: text inside $ signs, as in $a = b$, with space before the
@@ -1297,7 +1440,7 @@ INLINE_TAGS = {
     # it before DATE (not recommended for papers)
     # 'abstract' is in doconce.py processed before chapter, section, etc
     'abstract':  # needs re.DOTALL | re.MULTILINE
-    r"""^\s*__(?P<type>Abstract|Summary|Preface).__\s*(?P<text>.+?)(?P<rest>TOC:|\\tableofcontents|Table of [Cc]ontents|DATE:|% --- begin date|\\date\{|<!-- date|__[A-Z].+[.?:]__|^={3,9})""",
+    r"""^\s*__(?P<type>%s).__\s*(?P<text>.+?)(?P<rest>TOC:|\\tableofcontents|Table of [Cc]ontents|DATE:|%% --- begin date|\\date\{|<!-- date|__[A-Z].+[.?:]__|^={3,9})""" % abstract_names,  # Abstract|Summary|Preface
 
     'keywords':
     r'^__Keywords.__\s+(?P<subst>.+)\s*$',

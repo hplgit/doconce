@@ -4,7 +4,7 @@ See http://www.wikicreole.org/wiki/Creole1.0 for syntax.
 """
 # Simple edit of gwiki.py
 
-import re, os, sys
+import re, os, sys, subprocess
 from common import default_movie, plain_exercise, insert_code_and_tex
 from plaintext import plain_quiz
 from misc import _abort
@@ -205,7 +205,7 @@ def define(FILENAME_EXTENSION,
     from plaintext import plain_index_bib
     EXERCISE['cwiki'] = plain_exercise
     INDEX_BIB['cwiki'] = plain_index_bib
-    TOC['cwiki'] = lambda s: '<<TableOfContents>>'
+    TOC['cwiki'] = lambda s, f: '<<TableOfContents>>'
     QUIZ['cwiki'] = plain_quiz
     # document start:
     INTRO['cwiki'] = ''

@@ -3,7 +3,7 @@ from common import insert_code_and_tex, indent_lines, \
     table_analysis, plain_exercise, bibliography, \
     cite_with_multiple_args2multiple_cites, fix_ref_section_chapter
 from html import html_movie, html_quiz
-from doconce import _abort, errwarn
+from doconce import _abort, errwarn, locale_dict
 from misc import option, _abort
 
 def rst_abstract(m):
@@ -658,7 +658,7 @@ def define(FILENAME_EXTENSION,
         'section':       lambda m: '%s\n%s' % (m.group('subst'), '='*len(m.group('subst'))),
         'subsection':    lambda m: '%s\n%s' % (m.group('subst'), '-'*len(m.group('subst'))),
         'subsubsection': lambda m: '%s\n%s\n' % (m.group('subst'), '~'*len(m.group('subst'))),
-        'paragraph':     r'**\g<subst>**\n',  # extra newline
+        'paragraph':     r'**\g<subst>**' + '\n',  # extra newline
         'abstract':      rst_abstract,
         #'title':         r'======= \g<subst> =======\n',  # doconce top section, must be the highest section level (but no higher than others, need more code)
         'title':         None, # taken care of in ref_and_label_commoncode
@@ -718,7 +718,7 @@ def define(FILENAME_EXTENSION,
 
     TABLE['rst'] = rst_table
     EXERCISE['rst'] = plain_exercise
-    TOC['rst'] = lambda s: '.. contents:: Table of Contents\n   :depth: 2'
+    TOC['rst'] = lambda s, f: '.. contents:: %s\n   :depth: 2' % locale_dict[locale_dict['language']].get('toc', 'Table of contents')
     QUIZ['rst'] = rst_quiz
     INTRO['rst'] = """\
 .. Automatically generated reStructuredText file from DocOnce source

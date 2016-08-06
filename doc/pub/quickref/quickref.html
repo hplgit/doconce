@@ -30,8 +30,8 @@ Automatically generated HTML file from DocOnce source
 .anchor::before {
   content:"";
   display:block;
-  height:50px; /* fixed header height*/
-  margin:-50px 0 0; /* negative fixed header height */
+  height:64px;      /* fixed header height for style bootswatch_readable */
+  margin:-64px 0 0; /* negative fixed header height */
 }
 </style>
 
@@ -42,7 +42,11 @@ Automatically generated HTML file from DocOnce source
 
 <!-- tocinfo
 {'highest level': 2,
- 'sections': [('Supported Formats', 2, None, '___sec0'),
+ 'sections': [('Table of contents',
+               2,
+               'table_of_contents',
+               'table_of_contents'),
+              ('Supported Formats', 2, None, '___sec0'),
               ('Emacs syntax support', 2, None, '___sec1'),
               ('Title, Authors, and Date', 2, None, '___sec2'),
               ('Copyright', 2, None, '___sec3'),
@@ -106,6 +110,7 @@ MathJax.Hub.Config({
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="#table_of_contents" style="font-size: 80%;">Table of contents</a></li>
      <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;">Supported Formats</a></li>
      <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">Emacs syntax support</a></li>
      <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">Title, Authors, and Date</a></li>
@@ -163,10 +168,12 @@ MathJax.Hub.Config({
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <br>
 <p>
-<center><h4>Jun 5, 2016</h4></center> <!-- date -->
+<center><h4>Jul 29, 2016</h4></center> <!-- date -->
 <br>
+<p>
+</div> <!-- end jumbotron -->
 
-<h2>Table of contents</h2>
+<h1 id="table_of_contents">Table of contents</h2>
 
 <p>
 <a href="#___sec0"> Supported Formats </a><br>
@@ -206,9 +213,6 @@ professionally looking web versions with Sphinx or HTML. Other outlets
 include Google's <code>blogger.com</code>, Wikipedia/Wikibooks, IPython
 notebooks, plus a wide variety of other formats for documents without
 mathematics and code.
-
-<p>
-</div> <!-- end jumbotron -->
 
 <h2 id="___sec0" class="anchor">Supported Formats </h2>
 
@@ -433,8 +437,8 @@ preferably after the paragraph where the footnote appears:
 
 <p>
 <!-- begin verbatim block -->
-<pre><code>Differentiating[^diff2] \eqref{eq1} leads
-to a new and simpler equation.
+<pre><code>Differentiating[^diff2] this equation leads
+to a new and much simpler equation.
 
 [^diff2]: More precisely, we apply the divergence
 $\nabla\cdot$ on both sides.
@@ -483,7 +487,12 @@ This text is in the html rendered as
 <p>
 The em-dash is used - without spaces - as alternative to hyphen with
 space around in sentences&mdash;this way, or in quotes:
-*Premature optimization is the root of all evil.*&mdash; Donald Knuth.
+<em>Premature optimization is the root of all evil.</em>&mdash; Donald Knuth.
+
+<p>
+The en-dash consists of two hyphens, either with blanks on both sides &ndash; for
+something in the middle of a sentenc &ndash; or in number ranges like 240&ndash;249.
+LaTeX writes are used to and fond of en-dash.
 
 <p>
 An ampersand, as in Guns &amp; Roses or Texas A&amp;M, is written as a
@@ -497,10 +506,11 @@ after <code>&</code> will result in wrong typesetting of the ampersand in the <c
 <p>
 Emojis, as defined in <a href="http://www.emoji-cheat-sheet.com" target="_self"><tt>http://www.emoji-cheat-sheet.com</tt></a>, can be
 inserted in the text, as (e.g.) <code>:dizzy_face:</code> with blank or newline
-before or after. Only the <code>pdflatex</code> and <code>html</code> output formats translate
-emoji specifications to images, while all other formats leave the
-textual specification in the document. The command-line option
-<code>--no_emoji</code> removes all emojis from the output document.
+before or after <img src="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/emoji/png/dizzy_face.png" width="22px" height="22px" align="center"> Only the <code>pdflatex</code>, <code>html</code>, and <code>pandoc</code> output
+formats translate emoji specifications to images, while all other
+formats leave the textual specification in the document. The
+command-line option <code>--no_emoji</code> removes all emojis from the output
+document.
 
 <h2 id="___sec6" class="anchor">Lists </h2>
 

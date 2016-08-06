@@ -74,8 +74,10 @@ dest=../../pub/tutorial
 rm -rf $dest/html
 cp -r sphinx-rootdir/_build/html $dest
 cp tutorial.pdf tutorial.html $dest
+
 dest=../../../../doconce.wiki
-cp tutorial.rst $dest/tutorial_rst.rst
+# rst is inferior to md
+#cp tutorial.rst $dest/tutorial_rst.rst
 # mediawiki at github is too bad - very ugly result
 #cp demo/tutorial.mwiki $dest/tutorial_mediawiki.mediawiki
-cp tutorial.md $dest/tutorial_markdown.md
+cp tutorial.md $dest/
