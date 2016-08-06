@@ -1204,7 +1204,7 @@ def has_custom_pygments_lexer(name):
             errwarn('    sudo pip install -e git+https://github.com/hplgit/pygments-doconce#egg=pygments-doconce')
             errwarn('\n    or manually:')
             errwarn('    git clone https://github.com/hplgit/pygments-doconce.git; cd pygments-doconce; sudo python setup.py install')
-            errwarn(e)
+            errwarn(str(e))
             return False
     return True
 
