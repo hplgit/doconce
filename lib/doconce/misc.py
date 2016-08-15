@@ -41,6 +41,8 @@ AUTHOR: Kaare Dump at BSU {copyright|Released under the MIT license.}
     ('--align2equations', """Rewrite align/alignat math environments to separate equation environments.
 Sometimes needed for proper MathJax rendering (e.g., remark slides).
 Sphinx requires such rewrite and will do it regardless of this option."""),
+    ('--force_tikz_conversion',
+     'Force generation SVG/HTML versions of tikz figures, overwriting any previously generated SVG/HTML files (applies to all formats except LaTeX)'),
     ('--IBPLOT', 'automagic translation of IBPLOT commands.'),
     ('--exercise_numbering=',
      """absolute: exercises numbered as 1, 2, ... (default)

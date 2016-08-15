@@ -1246,10 +1246,11 @@ def tikz2img(tikz_file, encoding='utf8', tikz_libs=None):
     # filenames
     tikz_basefile = os.path.basename(tikz_file)
     tikz_basefile_wo_ext = os.path.splitext(tikz_basefile)[0]
+    render_suffix = "_tikzrender"
     tex_file = os.path.join(tmp_dir, tikz_basefile_wo_ext + ".tex")
     dvi_file = os.path.join(tmp_dir, tikz_basefile_wo_ext + ".dvi")
-    svg_file = os.path.join(fig_dir, tikz_basefile_wo_ext + ".svg")
-    png_file = os.path.join(fig_dir, tikz_basefile_wo_ext + ".png")
+    svg_file = os.path.join(fig_dir, tikz_basefile_wo_ext + render_suffix + ".svg")
+    png_file = os.path.join(fig_dir, tikz_basefile_wo_ext + render_suffix + ".png")
 
 
     # wrap tikz in TeX file
@@ -1269,8 +1270,12 @@ def tikz2img(tikz_file, encoding='utf8', tikz_libs=None):
               stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     out, err = p.communicate()
     if p.poll() != 0:
+        errwarn("Failed to compile LaTeX document with TikZ file!")
+        errwarn('STDOUT:\n'+out)
+        errwarn('STDERR:\n'+err)
         errwarn('*** error: failed to compile LaTeX document with TikZ file\n'
-              + '    (this likely means that the tikz figure is invalid)')
+              + '    (this likely means that the tikz figure is invalid)\n'
+              + '    see the output from latex above')
         return True
 
     # DVI --> SVG
