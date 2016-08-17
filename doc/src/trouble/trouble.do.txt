@@ -1099,6 +1099,15 @@ of `doconce subst`.
 Regular expressions are much more powerful for editing text, but also
 more complicated and errorprone.
 
+===== Python raises regex exception after `@@@CODE` command =====
+
+A regex exception is cryptic to interpret, so in case you get a Python regex
+exception right after a line in the output indicating copying code from a
+file, it points to an error in the regex used to identify the ``from'' or
+``to'' line. Just examine the regex and rewrite, perhaps to something
+simpler, if possible. Be careful with parentheses and special regex
+symbols (must be excaped by a backslash).
+
 ======= Preprocess/Mako =======
 
 ===== List important things to remember when programming Mako =====

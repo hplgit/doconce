@@ -233,7 +233,8 @@ def _doconce_url(paper, values):
         if venue.startswith('http'):
             venue = _doconce_format_url(venue)
         values.append(venue)
-    if venue is None and "url" in paper:
+    #if venue is None and "url" in paper:
+    if "url" in paper:
         values.append(_doconce_format_url(paper["url"]))
     return values
 
