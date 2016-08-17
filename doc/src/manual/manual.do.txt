@@ -516,6 +516,32 @@ FIGURE:[fig/wave1D, width=400] A wave. label{fig:viz}
 idx{`--fig_prefix=`}
 idx{FIGPREFIX}
 
+=== Choosing the Figure Format ===
+
+For each output format, there is a preference which type of graphics file
+that is preferred. That is, for HTML, for instance, we can accept many types
+of graphics formats. If we specify the extension as part of the filename,
+DocOnce will try to find that specific format. If not found, it will convert
+whatever can be used to some format suitable for HTML. It is highly recommended
+to prepare figures in different formats manually and not rely on automatic
+conversion by DocOnce -- that gives the best quality. For example, plots should
+always be prepared in both PDF and PNG formats.
+
+If we just specify the filestem of the figure file, DocOonce will pick the
+most appropriate version of the file for given output format. For HTML
+there is a preference for `.svg`, thereafter comes `.html` (typically Bokeh
+plots), then `.png`, then `gif`, then `.jpg`. Here is the preference list
+for the various formats:
+
+ * `latex`: `.eps`, `.ps`
+ * `pdflatex`: `.pgf`, `.tikz`, `.pdf`, `.png`, `.jpg`, `.jpeg`
+ * `html`: `.svg`, `.html`, `.png`, `.gif`, `.jpg`, `.jpeg`
+ * `sphinx`: `.png`, `.gif`, `.jpg`, `.jpeg`
+ * `pandoc`: `.png`, `.gif`, `.jpg`, `.jpeg`, `.tif`, `.tiff`, `.pdf`
+
+Other formats, which can display graphics, will prefer `.png` files.
+
+
 === Handling Variable Figure Paths ===
 
 Figure files are usually located in some directory. Sometimes one needs to

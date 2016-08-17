@@ -2983,6 +2983,7 @@ def handle_figures(filestr, format):
                     # ext might be empty, in that case we cannot convert
                     # anything:
                     if ext:
+                        tikz_fig = False
                         errwarn('figure ' + figfile +
                                 ' must have extension(s) ' +
                                 ', '.join(search_extensions))
@@ -2997,12 +2998,29 @@ def handle_figures(filestr, format):
                             cmd = 'pdf2ps %s %s' % \
                                   (figfile, converted_file)
                         elif ext == '.tikz':    # TODO pgf handling
-                            failure = tikz2img(figfile)
-                            if '.svg' in search_extensions: # format supports svg
-                                converted_file = basepath + '.svg'
-                            else:   # use png
-                                converted_file = basepath + '.png'
-                            cmd = 'echo'
+                            tikz_fig = True
+                            cmd = 'echo' # workaround
+                            svg_exists = os.path.isfile(basepath+"_tikzrender.svg")
+                            png_exists = os.path.isfile(basepath+"_tikzrender.png")
+                            img_exists = False
+                            existing_img = None
+                            if svg_exists and '.svg' in search_extensions:
+                                img_exists = True
+                                existing_img = basepath+"_tikzrender.svg"
+                            elif png_exists:
+                                img_exists = True
+                                existing_img = basepath+"_tikzrender.png"
+                            if not option('force_tikz_conversion') and img_exists:
+                                errwarn('found converted tikz figure in %s' % existing_img)
+                                converted_file = existing_img
+                                failure = False
+                            else:
+                                errwarn('Converting tikz figure to SVG/PNG...')
+                                failure = tikz2img(figfile)
+                                if '.svg' in search_extensions: # format supports svg
+                                    converted_file = basepath + '_tikzrender.svg'
+                                else:   # use png
+                                    converted_file = basepath + '_tikzrender.png'
                         else:
                             if not os.path.isfile(converted_file):
                                 cmd = 'convert %s %s' % (figfile, converted_file)
@@ -3016,7 +3034,8 @@ def handle_figures(filestr, format):
 using ImageMagick's convert program, but the result will
 be loss of quality. Generate a proper %s file (if possible).""" %
                                 (figfile, converted_file, converted_file))
-                        failure = os.system(cmd)
+                        if not tikz_fig:
+                            failure = os.system(cmd)
                         if not failure:
                             if not cmd == 'echo':
                                 errwarn('....image conversion: ' + cmd)

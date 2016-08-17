@@ -41,6 +41,8 @@ AUTHOR: Kaare Dump at BSU {copyright|Released under the MIT license.}
     ('--align2equations', """Rewrite align/alignat math environments to separate equation environments.
 Sometimes needed for proper MathJax rendering (e.g., remark slides).
 Sphinx requires such rewrite and will do it regardless of this option."""),
+    ('--force_tikz_conversion',
+     'Force generation SVG/HTML versions of tikz figures, overwriting any previously generated SVG/HTML files (applies to all formats except LaTeX)'),
     ('--IBPLOT', 'automagic translation of IBPLOT commands.'),
     ('--exercise_numbering=',
      """absolute: exercises numbered as 1, 2, ... (default)
@@ -7907,10 +7909,10 @@ def _latex2doconce(filestr):
         (r'\\subsection\*?\{(?P<subst>.+?)\}', r'===== \g<subst> =====', re.DOTALL),
         (r'\\subsubsection\*?\{(?P<subst>.+?)\}', r'=== \g<subst> ===', re.DOTALL),
         # Multiple-line headings with short title
-        (r'\\chapter\*?\[.+\]\{(?P<subst>.+?)\}', r'========= \g<subst> =========', re.DOTALL),
-        (r'\\section\*?\[.+\]\{(?P<subst>.+?)\}', r'======= \g<subst> =======', re.DOTALL),
-        (r'\\subsection\*?\[.+\]\{(?P<subst>.+?)\}', r'===== \g<subst> =====', re.DOTALL),
-        (r'\\subsubsection\*?\[.+\]\{(?P<subst>.+?)\}', r'=== \g<subst> ===', re.DOTALL),
+        (r'\\chapter\*?\[.+?\]\{(?P<subst>.+?)\}', r'========= \g<subst> =========', re.DOTALL),
+        (r'\\section\*?\[.+?\]\{(?P<subst>.+?)\}', r'======= \g<subst> =======', re.DOTALL),
+        (r'\\subsection\*?\[.+?\]\{(?P<subst>.+?)\}', r'===== \g<subst> =====', re.DOTALL),
+        (r'\\subsubsection\*?\[.+?\]\{(?P<subst>.+?)\}', r'=== \g<subst> ===', re.DOTALL),
         (r'\\bf\{(?P<subst>.+?)\}', r'_\g<subst>_'),
         (r'\\emph\{(?P<subst>.+?)\}', r'*\g<subst>*'),
         (r'\\texttt\{(?P<subst>[^}]+)\}', r'`\g<subst>`'),
