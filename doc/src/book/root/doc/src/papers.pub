@@ -1,0 +1,71 @@
+* articles
+** Numerical solution of the Navier-Stokes equations
+   key:      Chorin1968
+   author:   A. J. Chorin
+   year:     1968
+   journal:  Math. Comp.
+   volume:   22
+   pages:    745--762
+   status:   published
+* books
+** Scaling of Differential Equations
+   key:       Langtangen_scaling
+   author:    H. P. Langtangen, G. K. Pedersen
+   year:      2016
+   publisher: Springer
+   series:    Simula Springer Brief Series
+   note:      \url{http://tinyurl.com/qfjgxmf/web}
+   url:       http://tinyurl.com/qfjgxmf/web
+   entrytype: book
+* edited
+** Automated Solution of Partial Differential Equations by the Finite Element Method
+   key:       FEniCS
+   author:    A. Logg, K.-A. Mardal, G. N. Wells
+   year:      2012
+   publisher: Springer
+   entrytype: book
+** The Paraview Guide
+   key:       Paraview
+   author:    A. Henderson Squillacote
+   year:      2007
+   publisher: Kitware
+   url:       http://www.paraview.org/paraview-guide/
+   entrytype: book
+* proceedings
+** Parallelizing {PDE} Solvers Using the {Python} Programming Language
+   key:       CaiLangtangen2006
+   author:    X. Cai, H. P. Langtangen
+   editor:    A. M. Bruaset, A. Tveito
+   year:      2006
+   booktitle: Numerical Solution of Partial Differential Equations on Parallel 	Computers
+   publisher: Springer
+   volume:    51
+   pages:     295-325
+   timestamp: 2009.06.06
+   series:    Lecture Notes in Computational Science and Engineering
+   owner:     logg
+   entrytype: inproceedings
+** A Case Study in High-Performance Mixed-Language Programming
+   key:       Langtangen2007
+   author:    H. P. Langtangen
+   editor:    B. K{\aa}gstr{\o}m, E. Elmroth, J. Dongarra, J. Wasniewski
+   year:      2007
+   booktitle: Applied Parallel Computing -- State of the Art in Scientific Computing
+   publisher: Springer
+   pages:     36--49
+   timestamp: 2009.06.06
+   series:    Lecture Notes in Computer Science
+   entrytype: inproceedings
+* misc
+** Brief Tutorials on Scientific {Python}
+   key:       Langtangen_Hellevik_tutorial
+   author:    H. P. Langtangen, L. R. Hellevik
+   status:    published
+   url:       http://hplgit.github.io/bumpy/doc/web/index.html
+   entrytype: misc
+** The {Oasis Navier-Stokes} Solver
+   key:       oasis
+   author:    M. Mortensen, K. Valen-Sendstad
+   status:    published
+   url:       https://github.com/mikaem/Oasis
+   entrytype: misc
