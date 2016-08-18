@@ -1,0 +1,132 @@
+.. Automatically generated Sphinx-extended reStructuredText file from DocOnce source
+   (https://github.com/hplgit/doconce/)
+
+.. Document title:
+
+How to write a Book in DocOnce
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+:Authors: Hans Petter Langtangen (hpl at simula.no)
+:Date: Aug 17, 2016
+
+.. "Back cover promotion", i.e., short preface
+
+This note tells why and how you can use DocOnce to ease the writing of
+scientific books with much mathematics and computer code.
+
+.. All books have a table of contents
+
+.. Chapter 1
+
+.. _ch:why:
+
+Why DocOnce?
+%%%%%%%%%%%%
+
+Scientific books are very often written in LaTeX, but LaTeX is primarily
+suited for PDF output on paper. Today, your readers will be using different
+devices like tablet and phones for reading, and to address these media
+you need to write HTML. DocOnce lets you write in a syntax that is as
+simple as you use in email, and can then automatically translate that
+syntax to highly professional LaTeX or HTML for output (it can produce
+other formats too). So, the writing itself is easier since you avoid a lot
+of LaTeX or HTML tags, and the output is more versatile. We refer to the
+DocOnce tutorial and the web page for more arguments!
+
+.. Chapter 2
+
+.. _ch:getting_started:
+
+Hwo do I get started?
+%%%%%%%%%%%%%%%%%%%%%
+
+.. index:: getting started
+
+.. index:: book project setup
+
+1. Read the web page: `<https://github.com/hplgit/doconce>`_
+
+2. Read the tutorial to get a glimpse of the basic syntax
+
+ a. `HTML format <http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.html>`__
+
+ b. `PDF for printing <http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.pdf>`__
+
+3. Familiarize yourself with the `manual <http://hplgit.github.io/doconce/doc/pub/manual/manual.html>`__
+
+4. Install DocOnce and all it needs: try to run
+   the entire `Bash script <https://github.com/hplgit/doconce/raw/master/doc/src/manual/install_doconce.sh>`__ (just comment out lines that don't work and rerun)
+
+5. Make a GitHhub or Bitbucket Git repository for the book project,
+   see `quick intro <http://hplgit.github.io/teamods/bitgit/Langtangen_bitgit-bootstrap.html>`__ (or `PDF for printing <http://hplgit.github.io/teamods/bitgit/Langtangen_bitgit_4print.pdf>`__)
+
+6. Take a brief look at the `best practice document <http://hplgit.github.com/setup4book-doconce/doc/web/index.html>`__ which documents the setup of files
+
+7. Download the `tarfile <https://github.com/hplgit/doconce/raw/master/doc/src/book/root/doconce_demo_book.tar>`__ with a dummy file tree to be packed out in the root directory of the book repo (remember commit and push!)
+
+8. Go to ``doc/src`` and **start writing the first chapter!** (replace ``why.do.txt``)
+
+9. **Compile the document to PDF**: ``bash make.sh``, see ``my-book-4print.pdf``
+   (this is the standard Springer book layout, the ``svmono`` class adapted to
+   DocOnce)
+
+10. **Compile the document to HTML**: ``bash make_html.sh``, see ``my-book.html``
+
+.. Chapter 3
+
+.. _ch:real_writing:
+
+Some real writing
+%%%%%%%%%%%%%%%%%
+
+.. index:: syntax example
+
+Let us demonstrate *emphasize text*, **bold text**, ``inline monospace font``,
+and of course computer code that we can copy from a part of a file
+using regular expressions:
+
+.. code-block:: python
+
+    def f(x):
+        return 42*x
+
+.. Above we copy from def f up to, but not including,
+
+.. the def g line in mmycode.py
+
+It is a big advantage to copy computer code directly into the book, but
+you can also write it as part of the text, this time the FORTRAN equivalent:
+
+.. code-block:: fortran
+
+           subroutine f(x)
+           real*8 x
+           f = 42*x
+           return
+           end
+
+Mathematics is written in plain LaTeX inside a begin-end tex environment:
+
+.. math::
+         f(x) = 42x.
+
+Remember to use simple LaTeX: just the ``equation``, ``equation*``, ``\[ ... \]``,
+``align``, ``align*``, ``alignat``, or ``alignat*`` environments!
+Inline mathematics makes use of dollar signs: :math:`f(x)=42x`.
+
+As LaTeX writer, remember that white space counts in DocOnce syntax!
+Be extra careful with indentation of lists.
+
+Also remember that DocOnce avoids backslash in label, ref and cite,
+e.g., in references like [Ref1]_.
+References
+==========
+
+.. [Ref1]
+   **A. J. Chorin**. Numerical solution of the Navier-Stokes equations,
+   *Math. Comp.*,
+   22,
+   pp. 745-762,
+   1968.
+
+

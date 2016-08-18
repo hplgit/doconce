@@ -1,0 +1,37 @@
+========= Some real writing =========
+label{ch:real_writing}
+idx{syntax example}
+
+Let us demonstrate *emphasize text*, _bold text_, `inline monospace font`,
+and of course computer code that we can copy from a part of a file
+using regular expressions:
+
+@@@CODE src/mycode.py  def f@def g
+# Above we copy from def f up to, but not including,
+# the def g line in mmycode.py
+
+It is a big advantage to copy computer code directly into the book, but
+you can also write it as part of the text, this time the FORTRAN equivalent:
+
+!bc fcod
+       subroutine f(x)
+       real*8 x
+       f = 42*x
+       return
+       end
+!ec
+
+Mathematics is written in plain LaTeX inside a begin-end tex environment:
+
+!bt
+\[ f(x) = 42x.\]
+!et
+Remember to use simple LaTeX: just the `equation`, `equation*`, `\[ ... \]`,
+`align`, `align*`, `alignat`, or `alignat*` environments!
+Inline mathematics makes use of dollar signs: $f(x)=42x$.
+
+As LaTeX writer, remember that white space counts in DocOnce syntax!
+Be extra careful with indentation of lists.
+
+Also remember that DocOnce avoids backslash in label, ref and cite,
+e.g., in references like cite{Chorin1968}.

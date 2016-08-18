@@ -1,0 +1,293 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="How to write a Book in DocOnce">
+<meta name="keywords" content="getting started,book project setup,syntax example">
+
+<title>How to write a Book in DocOnce</title>
+
+<!-- Bootstrap style: bootstrap_bluegray -->
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_bootstrap/css/bootstrap_bluegray.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+<style type="text/css">
+/* Let inline verbatim have the same color as the surroundings */
+code { color: inherit; background-color: transparent; }
+
+/* Add scrollbar to dropdown menus in bootstrap navigation bar */
+.dropdown-menu {
+   height: auto;
+   max-height: 400px;
+   overflow-x: hidden;
+}
+
+/* Adds an invisible element before each target to offset for the navigation
+   bar */
+.anchor::before {
+  content:"";
+  display:block;
+  height:50px;      /* fixed header height for style bootstrap_bluegray */
+  margin:-50px 0 0; /* negative fixed header height */
+}
+
+body { font-size:20px;line-height:1.5; }
+</style>
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 0,
+ 'sections': [('Table of contents',
+               0,
+               'table_of_contents',
+               'table_of_contents'),
+              (u'Why DocOnce?', 0, u'ch:why', u'ch:why'),
+              (u'Hwo do I get started?',
+               0,
+               u'ch:getting_started',
+               u'ch:getting_started'),
+              (u'Some real writing',
+               0,
+               u'ch:real_writing',
+               u'ch:real_writing'),
+              (u'References', 1, None, '___sec3')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="my-book.html">How to write a Book in DocOnce</a>
+  </div>
+
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="#table_of_contents" style="font-size: 80%;"><b>Table of contents</b></a></li>
+     <!-- navigation toc: --> <li><a href="#ch:why" style="font-size: 80%;"><b>Why DocOnce?</b></a></li>
+     <!-- navigation toc: --> <li><a href="#ch:getting_started" style="font-size: 80%;"><b>Hwo do I get started?</b></a></li>
+     <!-- navigation toc: --> <li><a href="#ch:real_writing" style="font-size: 80%;"><b>Some real writing</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;References</a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<a name="part0000"></a>
+<!-- ------------------- main content ---------------------- -->
+
+
+
+<div class="jumbotron">
+<center><h1>How to write a Book in DocOnce</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Hans Petter Langtangen -->
+
+<center>
+<b>Hans Petter Langtangen</b> [1, 2] (<tt>hpl at simula.no</tt>)
+</center>
+
+<p>
+<!-- institution(s) -->
+
+<center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
+<center>[2] <b>Department of Informatics, University of Oslo</b></center>
+<br>
+<p>
+<center><h4>Aug 17, 2016</h4></center> <!-- date -->
+<br>
+<p>
+<!-- "Back cover promotion", i.e., short preface -->
+
+<p>
+This note tells why and how you can use DocOnce to ease the writing of
+scientific books with much mathematics and computer code.
+
+<p>
+<!-- All books have a table of contents -->
+
+<p>
+</div> <!-- end jumbotron -->
+
+<h1 id="table_of_contents">
+Table of contents</h2>
+
+<p>
+<a href="#ch:why"> Why DocOnce? </a><br>
+<a href="#ch:getting_started"> Hwo do I get started? </a><br>
+<a href="#ch:real_writing"> Some real writing </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec3"> References </a><br>
+</p>
+<p>
+<!-- Chapter 1 -->
+
+<center><h1 id="ch:why" class="anchor">Why DocOnce?</h1></center> <!-- chapter heading -->
+
+<p>
+Scientific books are very often written in LaTeX, but LaTeX is primarily
+suited for PDF output on paper. Today, your readers will be using different
+devices like tablet and phones for reading, and to address these media
+you need to write HTML. DocOnce lets you write in a syntax that is as
+simple as you use in email, and can then automatically translate that
+syntax to highly professional LaTeX or HTML for output (it can produce
+other formats too). So, the writing itself is easier since you avoid a lot
+of LaTeX or HTML tags, and the output is more versatile. We refer to the
+DocOnce tutorial and the web page for more arguments!
+
+<p>
+<!-- Chapter 2 -->
+
+<center><h1 id="ch:getting_started" class="anchor">Hwo do I get started?</h1></center> <!-- chapter heading -->
+
+<ol>
+<li> Read the web page: <a href="https://github.com/hplgit/doconce" target="_self"><tt>https://github.com/hplgit/doconce</tt></a></li>
+<li> Read the tutorial to get a glimpse of the basic syntax
+
+<ol type="a"></li>
+ <li> <a href="http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.html" target="_self">HTML format</a></li>
+ <li> <a href="http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.pdf" target="_self">PDF for printing</a></li>
+</ol>
+
+<li> Familiarize yourself with the <a href="http://hplgit.github.io/doconce/doc/pub/manual/manual.html" target="_self">manual</a></li>
+<li> Install DocOnce and all it needs: try to run
+   the entire <a href="https://github.com/hplgit/doconce/raw/master/doc/src/manual/install_doconce.sh" target="_self">Bash script</a> (just comment out lines that don't work and rerun)</li>
+<li> Make a GitHhub or Bitbucket Git repository for the book project,
+   see <a href="http://hplgit.github.io/teamods/bitgit/Langtangen_bitgit-bootstrap.html" target="_self">quick intro</a> (or <a href="http://hplgit.github.io/teamods/bitgit/Langtangen_bitgit_4print.pdf" target="_self">PDF for printing</a>)</li>
+<li> Take a brief look at the <a href="http://hplgit.github.com/setup4book-doconce/doc/web/index.html" target="_self">best practice document</a> which documents the setup of files</li>
+<li> Download the <a href="https://github.com/hplgit/doconce/raw/master/doc/src/book/root/doconce_demo_book.tar" target="_self">tarfile</a> with a dummy file tree to be packed out in the root directory of the book repo (remember commit and push!)</li>
+<li> Go to <code>doc/src</code> and <b>start writing the first chapter!</b> (replace <code>why.do.txt</code>)</li>
+<li> <b>Compile the document to PDF</b>: <code>bash make.sh</code>, see <code>my-book-4print.pdf</code>
+   (this is the standard Springer book layout, the <code>svmono</code> class adapted to
+   DocOnce)</li>
+<li> <b>Compile the document to HTML</b>: <code>bash make_html.sh</code>, see <code>my-book.html</code>
+<!-- Chapter 3 --></li>
+</ol>
+
+
+<center><h1 id="ch:real_writing" class="anchor">Some real writing</h1></center> <!-- chapter heading -->
+
+<p>
+Let us demonstrate <em>emphasize text</em>, <b>bold text</b>, <code>inline monospace font</code>,
+and of course computer code that we can copy from a part of a file
+using regular expressions:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">42*</span>x
+</pre></div>
+<p>
+<!-- Above we copy from def f up to, but not including, -->
+<!-- the def g line in mmycode.py -->
+
+<p>
+It is a big advantage to copy computer code directly into the book, but
+you can also write it as part of the text, this time the FORTRAN equivalent:
+
+<p>
+
+<!-- code=fortran (!bc fcod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>       <span style="color: #008000; font-weight: bold">subroutine </span>f(x)
+       <span style="color: #B00040">real</span><span style="color: #666666">*8</span> x
+       f <span style="color: #666666">=</span> <span style="color: #666666">42*</span>x
+       <span style="color: #008000; font-weight: bold">return</span>
+<span style="color: #008000; font-weight: bold">       end</span>
+</pre></div>
+<p>
+Mathematics is written in plain LaTeX inside a begin-end tex environment:
+
+$$ f(x) = 42x.$$
+
+Remember to use simple LaTeX: just the <code>equation</code>, <code>equation*</code>, <code>\[ ... \]</code>,
+<code>align</code>, <code>align*</code>, <code>alignat</code>, or <code>alignat*</code> environments!
+Inline mathematics makes use of dollar signs: \( f(x)=42x \).
+
+<p>
+As LaTeX writer, remember that white space counts in DocOnce syntax!
+Be extra careful with indentation of lists.
+
+<p>
+Also remember that DocOnce avoids backslash in label, ref and cite,
+e.g., in references like <a href="#Chorin1968">[1]</a>.
+
+<h1 id="___sec3" class="anchor">References </h1>
+
+<p>
+<!-- begin bibliography -->
+
+<ol>
+ <li> <div id="Chorin1968"></div> <b>A. J. Chorin</b>. 
+    Numerical solution of the Navier-Stokes equations,
+    <em>Math. Comp.</em>,
+    22,
+    pp. 745-762,
+    1968.</li>
+</ol>
+
+<!-- end bibliography -->
+
+<p>
+<!-- navigation buttons at the bottom of the page -->
+<ul class="pager">
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+</body>
+</html>
+    
+

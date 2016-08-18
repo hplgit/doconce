@@ -1,0 +1,62 @@
+% newcommands.tex common for HTML and LaTeX, must be run through
+% preprocess first
+
+% Remember: the entire command must be written on a single line!
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\halfi}{{1/2}}
+\newcommand{\dt}{\Delta t}
+% Springer's period for math formulas (Thinspace + Period):
+\newcommand{\tp}{\thinspace .}
+
+% #if FORMAT in ("latex", "pdflatex")
+\newcommand{\uex}{u_{\mbox{\footnotesize e}}}
+\newcommand{\wex}{w_{\mbox{\footnotesize e}}}
+\newcommand{\uexd}[1]{u_{\mbox{\footnotesize e}, #1}}
+\newcommand{\vex}{v_{\mbox{\footnotesize e}}}
+\newcommand{\vexd}[1]{v_{\mbox{\footnotesize e}, #1}}
+\newcommand{\Aex}{A_{\mbox{\footnotesize e}}}
+% #else
+\newcommand{\uex}{{u_{\small\mbox{e}}}}
+\newcommand{\wex}{{w_{\small\mbox{e}}}}
+\newcommand{\uexd}[1]{{u_{\small\mbox{e}, #1}}}
+\newcommand{\vex}{{v_{\small\mbox{e}}}}
+\newcommand{\vexd}[1]{{v_{\small\mbox{e}, #1}}}
+\newcommand{\Aex}{{A_{\small\mbox{e}}}}
+% #endif
+
+% Operators
+\newcommand{\Ddt}[1]{\frac{D #1}{dt}}
+\newcommand{\E}[1]{\hbox{E}\lbrack #1 \rbrack}
+\newcommand{\Var}[1]{\hbox{Var}\lbrack #1 \rbrack}
+\newcommand{\Std}[1]{\hbox{Std}\lbrack #1 \rbrack}
+
+\newcommand{\xpoint}{\bm{x}}
+\newcommand{\normalvec}{\bm{n}}
+\newcommand{\Oof}[1]{\mathcal{O}(#1)}
+
+% Boldface vectors/tensors
+\newcommand{\x}{\bm{x}}
+\newcommand{\X}{\bm{X}}
+\renewcommand{\u}{\bm{u}}
+\renewcommand{\v}{\bm{v}}
+\newcommand{\w}{\bm{w}}
+\newcommand{\acc}{\bm{a}}
+\newcommand{\rpos}{\bm{r}}
+\newcommand{\V}{\bm{V}}
+\newcommand{\e}{\bm{e}}
+\newcommand{\f}{\bm{f}}
+\newcommand{\F}{\bm{F}}
+\newcommand{\stress}{\bm{\sigma}}
+\newcommand{\strain}{\bm{\varepsilon}}
+\newcommand{\stressc}{{\sigma}}
+\newcommand{\strainc}{{\varepsilon}}
+\newcommand{\I}{\bm{I}}
+\newcommand{\T}{\bm{T}}
+
+% Unit vectors
+\newcommand{\ii}{\bm{i}}
+\newcommand{\jj}{\bm{j}}
+\newcommand{\kk}{\bm{k}}
+\newcommand{\ir}{\bm{i}_r}
+\newcommand{\ith}{\bm{i}_{\theta}}
+\newcommand{\iz}{\bm{i}_z}

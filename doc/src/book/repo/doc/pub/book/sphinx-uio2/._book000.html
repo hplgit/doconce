@@ -1,0 +1,241 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>How to write a Book in DocOnce</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+
+        <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+        <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
+
+        <script>sagecell.makeSagecell({inputLocation: ".sage"});</script>
+
+        <style type="text/css">
+                .sagecell .CodeMirror-scroll {
+                        overflow-y: hidden;
+                        overflow-x: auto;
+                }
+                .sagecell .CodeMirror {
+                        height: auto;
+                }
+        </style>
+
+    
+    <link rel="top" title="How to write a Book in DocOnce" href="index.html" />
+    <link rel="prev" title="How to write a Book in DocOnce" href="index.html" />
+
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <!-- Default Bootstrap-->
+  <link rel="stylesheet" href="_static/css/bootstrap.min.css"/>
+  <link rel="shortcut icon" href="_static/fenics.ico" />
+  <!-- Template styles CSS-->
+  <link rel="stylesheet" href="_static/css/main.css"/>
+  <link rel="stylesheet" href="_static/css/custom.css"/>
+  <link rel="stylesheet" href="_static/css/font-awesome.min.css"/>
+  <link rel="stylesheet" href="_static/css/animate.min.css"/>
+  <link rel="stylesheet" href="_static/css/responsive.css"/>
+
+  <!-- Template styles JS-->
+  <script src="_static/slides.min.jquery.js"></script>
+  <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+  <script type="text/javascript" src="_static/js/bootstrap.js"></script>
+  <script type="text/javascript" src="_static/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="_static/js/wow.min.js"></script>
+  <script type="text/javascript" src="_static/js/main.js"></script>
+  <script type="text/javascript" src="_static/js/jquery.bcSwipe.js"></script>
+  <script>
+    $(document).ready(function() {
+         $("#mycarousel").swiperight(function() {
+            $(this).carousel('prev');
+            });
+         $("#mycarousel").swipeleft(function() {
+            $(this).carousel('next');
+       });
+    });
+  </script>
+
+  
+       <style type="text/css">
+         div.admonition {
+           background-color: whiteSmoke;
+           border: 1px solid #bababa;
+         }
+       </style>
+      </head>
+    
+  <body role="document">
+<header id="header">
+      <div class="navbar navbar-inverse" role="banner">
+          <div class="container">
+              <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#headernavbar">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                  </button>
+
+                  <a class="navbar-brand" href="http/www.uio.no">
+                      <h1><img src="_static/uio_logo.png" alt="UiO Logo" class="img-responsive center-block banner-image"></h1>
+                  </a>
+
+              </div>
+              <div class="collapse navbar-collapse" id="headernavbar">
+                  <ul class="nav navbar-nav navbar-right">
+                    <li><a href="index.html" title="Previous page">
+                    Previous page</a></li>
+                    <li class="page_item"><a href="index.html">Home</a></li>
+		  </ul>
+              </div>
+          </div>
+      </div>
+  </header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      
+  <div class="section" id="how-to-write-a-book-in-doconce">
+<h1>How to write a Book in DocOnce<a class="headerlink" href="#how-to-write-a-book-in-doconce" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen (hpl at simula.no)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Aug 17, 2016</td>
+</tr>
+</tbody>
+</table>
+<p>This note tells why and how you can use DocOnce to ease the writing of
+scientific books with much mathematics and computer code.</p>
+</div>
+<div class="section" id="why-doconce">
+<span id="ch-why"></span><h1>Why DocOnce?<a class="headerlink" href="#why-doconce" title="Permalink to this headline">¶</a></h1>
+<p>Scientific books are very often written in LaTeX, but LaTeX is primarily
+suited for PDF output on paper. Today, your readers will be using different
+devices like tablet and phones for reading, and to address these media
+you need to write HTML. DocOnce lets you write in a syntax that is as
+simple as you use in email, and can then automatically translate that
+syntax to highly professional LaTeX or HTML for output (it can produce
+other formats too). So, the writing itself is easier since you avoid a lot
+of LaTeX or HTML tags, and the output is more versatile. We refer to the
+DocOnce tutorial and the web page for more arguments!</p>
+</div>
+<div class="section" id="hwo-do-i-get-started">
+<span id="ch-getting-started"></span><h1>Hwo do I get started?<a class="headerlink" href="#hwo-do-i-get-started" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="index-0"></span><ol class="arabic simple" id="index-1">
+<li>Read the web page: URL: <code class="docutils literal"><span class="pre">https://github.com/hplgit/doconce</span></code></li>
+<li>Read the tutorial to get a glimpse of the basic syntax</li>
+</ol>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li><a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.html">HTML format</a></li>
+<li><a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.pdf">PDF for printing</a></li>
+</ol>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li>Familiarize yourself with the <a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/manual/manual.html">manual</a></li>
+<li>Make a GitHhub or Bitbucket Git repository for the book project,
+see <a class="reference external" href="http://hplgit.github.io/teamods/bitgit/Langtangen_bitgit-bootstrap.html">quick intro</a> (or <a class="reference external" href="http://hplgit.github.io/teamods/bitgit/Langtangen_bitgit_4print.pdf">PDF for printing</a></li>
+<li>Take a brief look at the <a class="reference external" href="http://hplgit.github.com/setup4book-doconce/doc/web/index.html">best practice document</a> which documents the setup of files</li>
+<li>Download the <a class="reference external" href="https://github.com/hplgit/doconce/raw/master/doc/src/book/root/doconce_demo_book.tar">tarfile</a> with a dummy file tree to be packed out in the root directory of the book repo (remember commit and push!)</li>
+<li>Go to <code class="docutils literal"><span class="pre">doc/src</span></code> and <strong>start writing the first chapter!</strong> (replace <code class="docutils literal"><span class="pre">why.do.txt</span></code>)</li>
+<li><strong>Compile the document to PDF</strong>: <code class="docutils literal"><span class="pre">bash</span> <span class="pre">make.sh</span></code>, see <code class="docutils literal"><span class="pre">my-book-4print.pdf</span></code>
+(this is the standard Springer book layout, the <code class="docutils literal"><span class="pre">svmono</span></code> class adapted to
+DocOnce)</li>
+<li><strong>Compile the document to HTML</strong>: <code class="docutils literal"><span class="pre">bash</span> <span class="pre">make_html.sh</span></code>, see <code class="docutils literal"><span class="pre">my-book.html</span></code></li>
+</ol>
+</div>
+<div class="section" id="some-real-writing">
+<span id="ch-real-writing"></span><h1>Some real writing<a class="headerlink" href="#some-real-writing" title="Permalink to this headline">¶</a></h1>
+<p id="index-2">Let us demonstrate <em>emphasize text</em>, <strong>bold text</strong>, <code class="docutils literal"><span class="pre">inline</span> <span class="pre">monospace</span> <span class="pre">font</span></code>,
+and of course computer code that we can copy from a part of a file
+using regular expressions:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">42</span><span class="o">*</span><span class="n">x</span>
+</pre></div>
+</div>
+<p>It is a big advantage to copy computer code directly into the book, but
+you can also write it as part of the text, this time the FORTRAN equivalent:</p>
+<div class="highlight-fortran"><div class="highlight"><pre><span></span><span class="k">subroutine </span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="kt">real</span><span class="o">*</span><span class="mi">8</span> <span class="n">x</span>
+<span class="n">f</span> <span class="o">=</span> <span class="mi">42</span><span class="o">*</span><span class="n">x</span>
+<span class="k">return</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<p>Mathematics is written in plain LaTeX inside a begin-end tex environment:</p>
+<div class="math">
+\[f(x) = 42x.\]</div>
+<p>Remember to use simple LaTeX: just the <code class="docutils literal"><span class="pre">equation</span></code>, <code class="docutils literal"><span class="pre">equation*</span></code>, <code class="docutils literal"><span class="pre">\[</span> <span class="pre">...</span> <span class="pre">\]</span></code>,
+<code class="docutils literal"><span class="pre">align</span></code>, <code class="docutils literal"><span class="pre">align*</span></code>, <code class="docutils literal"><span class="pre">alignat</span></code>, or <code class="docutils literal"><span class="pre">alignat*</span></code> environments!
+Inline mathematics makes use of dollar signs: <span class="math">\(f(x)=42x\)</span>.</p>
+<p>As LaTeX writer, remember that white space counts in DocOnce syntax!
+Be extra careful with indentation of lists.</p>
+<p>Also remember that DocOnce avoids backslash in label, ref and cite,
+e.g., in references like <a class="reference internal" href="#ref1" id="id1">[Ref1]</a>.
+References
+==========</p>
+<table class="docutils citation" frame="void" id="ref1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[Ref1]</a></td><td><strong>A. J. Chorin</strong>. Numerical solution of the Navier-Stokes equations,
+<em>Math. Comp.</em>,
+22,
+pp. 745-762,
+1968.</td></tr>
+</tbody>
+</table>
+</div>
+
+
+    </div>
+  </div>
+</div>
+<footer id="footer">
+  <div class="container">
+      <div class="row">
+            
+              
+<form class="navbar-form navbar-right" action="/search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+            
+      </div>
+  </div>
+</footer>
+
+  </body>
+</html>
