@@ -16,7 +16,7 @@ function system {
 
 rm -rf tmp_* *.dolog
 pwd
-preprocess -DFORMAT=html newcommands_keep.p.tex > newcommands_keep.tex
+preprocess -DFORMAT=html newcommands.p.tex > newcommands.tex
 
 opt="--exercise_numbering=chapter"
 
@@ -79,10 +79,7 @@ for figdir in $figdirs; do
         cp -r $figdir/ $dest/html
     fi
 done
-# A single sphinx theme
-#rm -rf ${dest}/sphinx
-#cp -r sphinx-${theme}/_build/html ${dest}/sphinx
-rm -f $dest/sphinx-*
+rm -fr $dest/sphinx-*
 for dir in sphinx-*; do
  cp -r $dir/_build/html ${dest}/$dir
 done

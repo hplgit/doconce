@@ -96,7 +96,10 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">How to write a Book in DocOnce</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#why-doconce">Why DocOnce?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#hwo-do-i-get-started">Hwo do I get started?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#some-real-writing">Some real writing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#some-real-writing">Some real writing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
 </ul>
 </ul>
 </li>
@@ -113,7 +116,10 @@
 <li><a class="reference internal" href="#">How to write a Book in DocOnce</a></li>
 <li><a class="reference internal" href="#why-doconce">Why DocOnce?</a></li>
 <li><a class="reference internal" href="#hwo-do-i-get-started">Hwo do I get started?</a></li>
-<li><a class="reference internal" href="#some-real-writing">Some real writing</a></li>
+<li><a class="reference internal" href="#some-real-writing">Some real writing</a><ul>
+<li><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
 </ul>
 </ul>
 </li>
@@ -159,7 +165,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen (hpl at simula.no)</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Aug 17, 2016</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Aug 19, 2016</td>
 </tr>
 </tbody>
 </table>
@@ -181,7 +187,7 @@ DocOnce tutorial and the web page for more arguments!</p>
 <div class="section" id="hwo-do-i-get-started">
 <span id="ch-getting-started"></span><h1>Hwo do I get started?<a class="headerlink" href="#hwo-do-i-get-started" title="Permalink to this headline">¶</a></h1>
 <span class="target" id="index-0"></span><ol class="arabic simple" id="index-1">
-<li>Read the web page: URL: <code class="docutils literal"><span class="pre">https://github.com/hplgit/doconce</span></code></li>
+<li>Read the web page: <a class="reference external" href="https://github.com/hplgit/doconce">https://github.com/hplgit/doconce</a></li>
 <li>Read the tutorial to get a glimpse of the basic syntax</li>
 </ol>
 <blockquote>
@@ -192,8 +198,10 @@ DocOnce tutorial and the web page for more arguments!</p>
 </div></blockquote>
 <ol class="arabic simple" start="3">
 <li>Familiarize yourself with the <a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/manual/manual.html">manual</a></li>
+<li>Install DocOnce and all it needs: try to run
+the entire <a class="reference external" href="https://github.com/hplgit/doconce/raw/master/doc/src/manual/install_doconce.sh">Bash script</a> (just comment out lines that don&#8217;t work and rerun)</li>
 <li>Make a GitHhub or Bitbucket Git repository for the book project,
-see <a class="reference external" href="http://hplgit.github.io/teamods/bitgit/Langtangen_bitgit-bootstrap.html">quick intro</a> (or <a class="reference external" href="http://hplgit.github.io/teamods/bitgit/Langtangen_bitgit_4print.pdf">PDF for printing</a></li>
+see <a class="reference external" href="http://hplgit.github.io/teamods/bitgit/Langtangen_bitgit-bootstrap.html">quick intro</a> (or <a class="reference external" href="http://hplgit.github.io/teamods/bitgit/Langtangen_bitgit_4print.pdf">PDF for printing</a>)</li>
 <li>Take a brief look at the <a class="reference external" href="http://hplgit.github.com/setup4book-doconce/doc/web/index.html">best practice document</a> which documents the setup of files</li>
 <li>Download the <a class="reference external" href="https://github.com/hplgit/doconce/raw/master/doc/src/book/root/doconce_demo_book.tar">tarfile</a> with a dummy file tree to be packed out in the root directory of the book repo (remember commit and push!)</li>
 <li>Go to <code class="docutils literal"><span class="pre">doc/src</span></code> and <strong>start writing the first chapter!</strong> (replace <code class="docutils literal"><span class="pre">why.do.txt</span></code>)</li>
@@ -230,9 +238,9 @@ Inline mathematics makes use of dollar signs: <span class="math">\(f(x)=42x\)</s
 <p>As LaTeX writer, remember that white space counts in DocOnce syntax!
 Be extra careful with indentation of lists.</p>
 <p>Also remember that DocOnce avoids backslash in label, ref and cite,
-e.g., in references like <a class="reference internal" href="#ref1" id="id1">[Ref1]</a>.
-References
-==========</p>
+e.g., in references like <a class="reference internal" href="#ref1" id="id1">[Ref1]</a>.</p>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <table class="docutils citation" frame="void" id="ref1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
@@ -243,6 +251,7 @@ pp. 745-762,
 1968.</td></tr>
 </tbody>
 </table>
+</div>
 </div>
 
 

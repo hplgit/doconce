@@ -7,7 +7,7 @@ How to write a Book in DocOnce
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen (hpl at simula.no)
-:Date: Aug 17, 2016
+:Date: Aug 19, 2016
 
 .. "Back cover promotion", i.e., short preface
 
@@ -44,7 +44,7 @@ Hwo do I get started?
 
 .. index:: book project setup
 
-1. Read the web page: URL: ``https://github.com/hplgit/doconce``
+1. Read the web page: `<https://github.com/hplgit/doconce>`_
 
 2. Read the tutorial to get a glimpse of the basic syntax
 
@@ -54,20 +54,23 @@ Hwo do I get started?
 
 3. Familiarize yourself with the `manual <http://hplgit.github.io/doconce/doc/pub/manual/manual.html>`__
 
-4. Make a GitHhub or Bitbucket Git repository for the book project,
-   see `quick intro <http://hplgit.github.io/teamods/bitgit/Langtangen_bitgit-bootstrap.html>`__ (or `PDF for printing <http://hplgit.github.io/teamods/bitgit/Langtangen_bitgit_4print.pdf>`__
+4. Install DocOnce and all it needs: try to run
+   the entire `Bash script <https://github.com/hplgit/doconce/raw/master/doc/src/manual/install_doconce.sh>`__ (just comment out lines that don't work and rerun)
 
-5. Take a brief look at the `best practice document <http://hplgit.github.com/setup4book-doconce/doc/web/index.html>`__ which documents the setup of files
+5. Make a GitHhub or Bitbucket Git repository for the book project,
+   see `quick intro <http://hplgit.github.io/teamods/bitgit/Langtangen_bitgit-bootstrap.html>`__ (or `PDF for printing <http://hplgit.github.io/teamods/bitgit/Langtangen_bitgit_4print.pdf>`__)
 
-6. Download the `tarfile <https://github.com/hplgit/doconce/raw/master/doc/src/book/root/doconce_demo_book.tar>`__ with a dummy file tree to be packed out in the root directory of the book repo (remember commit and push!)
+6. Take a brief look at the `best practice document <http://hplgit.github.com/setup4book-doconce/doc/web/index.html>`__ which documents the setup of files
 
-7. Go to ``doc/src`` and **start writing the first chapter!** (replace ``why.do.txt``)
+7. Download the `tarfile <https://github.com/hplgit/doconce/raw/master/doc/src/book/root/doconce_demo_book.tar>`__ with a dummy file tree to be packed out in the root directory of the book repo (remember commit and push!)
 
-8. **Compile the document to PDF**: ``bash make.sh``, see ``my-book-4print.pdf``
+8. Go to ``doc/src`` and **start writing the first chapter!** (replace ``why.do.txt``)
+
+9. **Compile the document to PDF**: ``bash make.sh``, see ``my-book-4print.pdf``
    (this is the standard Springer book layout, the ``svmono`` class adapted to
    DocOnce)
 
-9. **Compile the document to HTML**: ``bash make_html.sh``, see ``my-book.html``
+10. **Compile the document to HTML**: ``bash make_html.sh``, see ``my-book.html``
 
 .. Chapter 3
 
@@ -116,6 +119,7 @@ Be extra careful with indentation of lists.
 
 Also remember that DocOnce avoids backslash in label, ref and cite,
 e.g., in references like [Ref1]_.
+
 References
 ==========
 
