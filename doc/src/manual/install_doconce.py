@@ -92,7 +92,7 @@ system('sudo pip install -e hg+https://bitbucket.org/miiton/sphinxjp.themes.sola
 system('sudo pip install -e git+https://github.com/shkumagai/sphinxjp.themes.impressjs#egg=sphinxjp.themes.impressjs')
 system('sudo pip install -e git+https://github.com/kriskda/sphinx-sagecell#egg=sphinx-sagecell')
 # tinkerer has several themes: minimal5, modern5, flat, dark, responsive
-system('sudo pip install tinkerer --upgrade')
+#pip install tinkerer --upgrade
 
 # Runestone sphinx books
 system('sudo pip install sphinxcontrib-paverutils')
