@@ -1160,13 +1160,14 @@ def bibliography(pubdata, citations, format='doconce'):
     citation_keys = list(citations.keys())
     # Reduce the database to the minimum
     pubdata = [pub for pub in pubdata if pub['key'] in citation_keys]
-    # Sort publications in the order of citations
+    # Sort publications in the order of my citations
     pubs = []
     for key in citations:
         for pub in pubdata:
             if pub['key'] == key:
                 pubs.append(pub)
                 break
+    # Format the output
     #text = '\n======= Bibliography =======\n\n' # the user writes the heading
     text = ''
     for pub in pubs:

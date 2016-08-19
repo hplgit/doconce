@@ -119,6 +119,7 @@ Be extra careful with indentation of lists.
 
 Also remember that DocOnce avoids backslash in label, ref and cite,
 e.g., in references like [Ref1]_.
+
 References
 ==========
 

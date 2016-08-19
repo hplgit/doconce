@@ -2014,7 +2014,7 @@ def exercises(filestr, format, code_blocks, tex_blocks):
         if not found_pairs:
             m = re.search(r'^![be]%s' % envir, filestr, flags=re.MULTILINE)
             if m:
-                errwarn('*** error: found !b%s or !e%s outside exercise section' % envir)
+                errwarn('*** error: found !b%s or !e%s outside exercise section' % (envir, envir))
                 errwarn(repr(filestr[m.start():m.start()+120]))
                 _abort()
 
