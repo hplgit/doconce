@@ -1,0 +1,247 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="How to write a Book in DocOnce">
+<meta name="keywords" content="getting started,book project setup,syntax example">
+
+<title>How to write a Book in DocOnce</title>
+
+
+<link href="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
+<style type="text/css">
+h1 {color: #b58900;}  /* yellow */
+/* h1 {color: #cb4b16;}  orange */
+/* h1 {color: #d33682;}  magenta, the original choice of thomasf */
+code { padding: 0px; background-color: inherit; }
+pre {
+  border: 0pt solid #93a1a1;
+  box-shadow: none;
+}
+
+div { text-align: justify; text-justify: inter-word; }
+</style>
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 0,
+ 'sections': [('Table of contents',
+               0,
+               'table_of_contents',
+               'table_of_contents'),
+              (u'Why DocOnce?', 0, u'ch:why', u'ch:why'),
+              (u'Hwo do I get started?',
+               0,
+               u'ch:getting_started',
+               u'ch:getting_started'),
+              (u'Some real writing',
+               0,
+               u'ch:real_writing',
+               u'ch:real_writing'),
+              (u'References', 1, None, '___sec3')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+<a name="part0000"></a>
+<p>
+<!-- begin top navigation -->
+<table style="width: 100%"><tr><td>
+</td><td>
+</td></tr></table>
+<!-- end top navigation -->
+</p>
+
+<p>
+<!-- ------------------- main content ---------------------- -->
+
+
+
+<center><h1>How to write a Book in DocOnce</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Hans Petter Langtangen -->
+
+<center>
+<b>Hans Petter Langtangen</b> [1, 2] (<tt>hpl at simula.no</tt>)
+</center>
+
+<p>
+<!-- institution(s) -->
+
+<center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
+<center>[2] <b>Department of Informatics, University of Oslo</b></center>
+<br>
+<p>
+<center><h4>Aug 19, 2016</h4></center> <!-- date -->
+<br>
+<p>
+<!-- "Back cover promotion", i.e., short preface -->
+
+<p>
+This note tells why and how you can use DocOnce to ease the writing of
+scientific books with much mathematics and computer code.
+
+<p>
+<!-- All books have a table of contents -->
+
+<h1 id="table_of_contents">
+Table of contents</h2>
+
+<p>
+<a href="#ch:why"> Why DocOnce? </a><br>
+<a href="#ch:getting_started"> Hwo do I get started? </a><br>
+<a href="#ch:real_writing"> Some real writing </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec3"> References </a><br>
+</p>
+<p>
+<!-- Chapter 1 -->
+
+<center><h1 id="ch:why">Why DocOnce?</h1></center> <hr>
+
+<p>
+Scientific books are very often written in LaTeX, but LaTeX is primarily
+suited for PDF output on paper. Today, your readers will be using different
+devices like tablet and phones for reading, and to address these media
+you need to write HTML. DocOnce lets you write in a syntax that is as
+simple as you use in email, and can then automatically translate that
+syntax to highly professional LaTeX or HTML for output (it can produce
+other formats too). So, the writing itself is easier since you avoid a lot
+of LaTeX or HTML tags, and the output is more versatile. We refer to the
+DocOnce tutorial and the web page for more arguments!
+
+<p>
+<!-- Chapter 2 -->
+
+<center><h1 id="ch:getting_started">Hwo do I get started?</h1></center> <hr>
+
+<ol>
+<li> Read the web page: <a href="https://github.com/hplgit/doconce" target="_self"><tt>https://github.com/hplgit/doconce</tt></a></li>
+<li> Read the tutorial to get a glimpse of the basic syntax
+
+<ol type="a"></li>
+ <li> <a href="http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.html" target="_self">HTML format</a></li>
+ <li> <a href="http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.pdf" target="_self">PDF for printing</a></li>
+</ol>
+
+<li> Familiarize yourself with the <a href="http://hplgit.github.io/doconce/doc/pub/manual/manual.html" target="_self">manual</a></li>
+<li> Install DocOnce and all it needs: try to run
+   the entire <a href="https://github.com/hplgit/doconce/raw/master/doc/src/manual/install_doconce.sh" target="_self">Bash script</a> (just comment out lines that don't work and rerun)</li>
+<li> Make a GitHhub or Bitbucket Git repository for the book project,
+   see <a href="http://hplgit.github.io/teamods/bitgit/Langtangen_bitgit-bootstrap.html" target="_self">quick intro</a> (or <a href="http://hplgit.github.io/teamods/bitgit/Langtangen_bitgit_4print.pdf" target="_self">PDF for printing</a>)</li>
+<li> Take a brief look at the <a href="http://hplgit.github.com/setup4book-doconce/doc/web/index.html" target="_self">best practice document</a> which documents the setup of files</li>
+<li> Download the <a href="https://github.com/hplgit/doconce/raw/master/doc/src/book/root/doconce_demo_book.tar" target="_self">tarfile</a> with a dummy file tree to be packed out in the root directory of the book repo (remember commit and push!)</li>
+<li> Go to <code>doc/src</code> and <b>start writing the first chapter!</b> (replace <code>why.do.txt</code>)</li>
+<li> <b>Compile the document to PDF</b>: <code>bash make.sh</code>, see <code>my-book-4print.pdf</code>
+   (this is the standard Springer book layout, the <code>svmono</code> class adapted to
+   DocOnce)</li>
+<li> <b>Compile the document to HTML</b>: <code>bash make_html.sh</code>, see <code>my-book.html</code>
+<!-- Chapter 3 --></li>
+</ol>
+
+
+<center><h1 id="ch:real_writing">Some real writing</h1></center> <hr>
+
+<p>
+Let us demonstrate <em>emphasize text</em>, <b>bold text</b>, <code>inline monospace font</code>,
+and of course computer code that we can copy from a part of a file
+using regular expressions:
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>def f(x):
+    return 42*x
+</code></pre>
+<!-- end verbatim block -->
+<!-- Above we copy from def f up to, but not including, -->
+<!-- the def g line in mmycode.py -->
+
+<p>
+It is a big advantage to copy computer code directly into the book, but
+you can also write it as part of the text, this time the FORTRAN equivalent:
+
+<p>
+<!-- begin verbatim block  fcod-->
+<pre><code>       subroutine f(x)
+       real*8 x
+       f = 42*x
+       return
+       end
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+Mathematics is written in plain LaTeX inside a begin-end tex environment:
+
+$$ f(x) = 42x.$$
+
+Remember to use simple LaTeX: just the <code>equation</code>, <code>equation*</code>, <code>\[ ... \]</code>,
+<code>align</code>, <code>align*</code>, <code>alignat</code>, or <code>alignat*</code> environments!
+Inline mathematics makes use of dollar signs: \( f(x)=42x \).
+
+<p>
+As LaTeX writer, remember that white space counts in DocOnce syntax!
+Be extra careful with indentation of lists.
+
+<p>
+Also remember that DocOnce avoids backslash in label, ref and cite,
+e.g., in references like <a href="#Chorin1968">[1]</a>.
+
+<h1 id="___sec3">References </h1>
+
+<p>
+<!-- begin bibliography -->
+
+<ol>
+ <li> <div id="Chorin1968"></div> <b>A. J. Chorin</b>. 
+    Numerical solution of the Navier-Stokes equations,
+    <em>Math. Comp.</em>,
+    22,
+    pp. 745-762,
+    1968.</li>
+</ol>
+
+<!-- end bibliography -->
+
+<p>
+<!-- begin bottom navigation -->
+<table style="width: 100%"><tr><td>
+</td><td>
+</td></tr></table>
+<!-- end bottom navigation -->
+</p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+

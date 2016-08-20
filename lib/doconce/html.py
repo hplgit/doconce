@@ -913,7 +913,7 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-""" (siunitx1, siunitx2)
+""" % (siunitx1, siunitx2)
     #<meta tag is valid only in html head anyway, so this was removed:
     #<!-- Fix slow MathJax rendering in IE8 -->
     #<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
@@ -2759,7 +2759,7 @@ def define(FILENAME_EXTENSION,
         'section':       r'\n<h1>\g<subst></h1>',
         'subsection':    r'\n<h2>\g<subst></h2>',
         'subsubsection': r'\n<h3>\g<subst></h3>\n',
-        'paragraph':     r'<b>\g<subst></b>\n',
+        'paragraph':     r'<b>\g<subst></b>' + '\n',
         'abstract':      html_abstract,
         'title':         r'\n\n<center><h1>\g<subst></h1></center>  <!-- document title -->\n',
         'date':          r'<p>\n<center><h4>\g<subst></h4></center> <!-- date -->\n<br>',

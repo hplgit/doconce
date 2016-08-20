@@ -49,6 +49,7 @@ EOF
 system doconce format html manual.do.txt --no_mako --html_style=bootswatch_readable --allow_refs_to_external_docs --html_code_style=inherit --cite_doconce --no_abort
 # Must fix one \eqref{} to (ref{})
 doconce replace '\eqref{my:special:eq}' '(ref{my:special:eq})' manual.html
+doconce replace '\eqref{eq1}' '(ref{eq1})' manual.html
 system doconce split_tmp.html manual.html
 
 # Sphinx
@@ -94,6 +95,7 @@ doconce subst '([^`])Guns & Roses([^`])' '\g<1>Guns {\&} Roses\g<2>' manual.tex
 doconce subst '([^`])Texas A & M([^`])' '\g<2>Texas A {\&} M\g<2>' manual.tex
 # Must fix one \eqref{} to (ref{})
 doconce replace '\eqref{my:special:eq}' '(ref{my:special:eq})' manual.tex
+doconce replace '\eqref{eq1}' '(ref{eq1})' manual.tex
 latex -shell-escape manual
 latex -shell-escape manual
 bibtex manual
@@ -113,6 +115,7 @@ doconce subst '([^`])Guns & Roses([^`])' '\g<1>Guns {\&} Roses\g<2>' manual.tex
 doconce subst '([^`])Texas A & M([^`])' '\g<2>Texas A {\&} M\g<2>' manual.tex
 # Must fix one \eqref{} to (ref{})
 doconce replace '\eqref{my:special:eq}' '(ref{my:special:eq})' manual.tex
+doconce replace '\eqref{eq1}' '(ref{eq1})' manual.tex
 pdflatex -shell-escape manual
 bibtex manual
 makeindex manual
@@ -190,7 +193,8 @@ dest=../../pub/manual
 cp -r demo/html demo/manual.pdf demo/manual.html demo/._manual*.html demo/fig demo/mov $dest
 
 dest=../../../../doconce.wiki
-cp demo/manual.rst $dest/manual_rst.rst
+# rst is inferior to md
+#cp demo/manual.rst $dest/manual_rst.rst
 # mediawiki at github is too bad - very ugly result
 #cp demo/manual.mwiki $dest/manual_mediawiki.mediawiki
-cp demo/manual.md $dest/manual_markdown.md
+cp demo/manual.md $dest

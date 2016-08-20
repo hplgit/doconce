@@ -2,6 +2,7 @@ from publish import config
 _format_venue = config.formatting._format_venue
 from publish.common import short_author
 from publish.config.defaults import thesistype_strings
+import re
 
 #------------------------------------------------------------------------------
 # DocOnce formatting
@@ -50,7 +51,7 @@ def doconce_format_articles(paper):
         values.append(paper["year"])
 
     if "note" in paper:
-        values.append(paper["note"])
+        values.append(_doconce_format_note(paper["note"]))
 
     # How published/URL
     values = _doconce_url(paper, values)
@@ -77,7 +78,7 @@ def doconce_format_books(paper):
         values.append(paper["publisher"])
     values.append(paper["year"])
     if "doi" in paper: values.append(_doconce_format_doi(paper["doi"]))
-    if "note" in paper: values.append(paper["note"])
+    if "note" in paper: values.append(_doconce_format_note(paper["note"]))
     values = _doconce_url(paper, values)
     return _doconce_join(values)
 
@@ -90,7 +91,7 @@ def doconce_format_edited(paper):
     if "publisher" in paper:
         values.append(paper["publisher"])
     values.append(paper["year"])
-    if "note" in paper: values.append(paper["note"])
+    if "note" in paper: values.append(_doconce_format_note(paper["note"]))
     values = _doconce_url(paper, values)
     return _doconce_join(values)
 
@@ -109,7 +110,7 @@ def doconce_format_chapters(paper):
     if "pages" in paper:
         values.append("pp. %s" % _doconce_format_pages(paper["pages"]))
     values.append(paper["year"])
-    if "note" in paper: values.append(paper["note"])
+    if "note" in paper: values.append(_doconce_format_note(paper["note"]))
     values = _doconce_url(paper, values)
     return _doconce_join(values)
 
@@ -123,7 +124,7 @@ def doconce_format_proceedings(paper):
     if "editor" in paper: values.append(_doconce_format_editors(paper))
     if "publisher" in paper: values.append(paper["publisher"])
     values.append(paper["year"])
-    if "note" in paper: values.append(paper["note"])
+    if "note" in paper: values.append(_doconce_format_note(paper["note"]))
     values = _doconce_url(paper, values)
     return _doconce_join(values)
 
@@ -136,7 +137,7 @@ def doconce_format_reports(paper):
     if "institution" in paper: values.append(_doconce_format_institution(paper))
     if "number" in paper: values.append(paper["number"])
     values.append(paper["year"])
-    if "note" in paper: values.append(paper["note"])
+    if "note" in paper: values.append(_doconce_format_note(paper["note"]))
     values = _doconce_url(paper, values)
     return _doconce_join(values)
 
@@ -148,7 +149,7 @@ def doconce_format_manuals(paper):
     values.append(_doconce_format_title(paper))
     values = _doconce_url(paper, values)
     if "year" in paper: values.append(paper["year"])
-    if "note" in paper: values.append(paper["note"])
+    if "note" in paper: values.append(_doconce_format_note(paper["note"]))
     values = _doconce_url(paper, values)
     return _doconce_join(values)
 
@@ -162,7 +163,7 @@ def doconce_format_theses(paper):
     if "school" in paper: values.append(paper["school"])
     values = _doconce_url(paper, values)
     values.append(paper["year"])
-    if "note" in paper: values.append(paper["note"])
+    if "note" in paper: values.append(_doconce_format_note(paper["note"]))
     values = _doconce_url(paper, values)
     return _doconce_join(values)
 
@@ -175,7 +176,7 @@ def doconce_format_courses(paper):
     if "institution" in paper: values.append(_doconce_format_institution(paper))
     values = _doconce_url(paper, values)
     if "year" in paper: values.append(paper["year"])
-    if "note" in paper: values.append(paper["note"])
+    if "note" in paper: values.append(_doconce_format_note(paper["note"]))
     values = _doconce_url(paper, values)
     return _doconce_join(values)
 
@@ -188,7 +189,7 @@ def doconce_format_talks(paper):
     if "meeting" in paper: values.append(paper["meeting"])
     values = _doconce_url(paper, values)
     values.append(paper["year"])
-    if "note" in paper: values.append(paper["note"])
+    if "note" in paper: values.append(_doconce_format_note(paper["note"]))
     values = _doconce_url(paper, values)
     return _doconce_join(values)
 
@@ -200,7 +201,7 @@ def doconce_format_posters(paper):
     values.append(_doconce_format_title(paper))
     if "meeting" in paper: values.append(paper["meeting"])
     values.append(paper["year"])
-    if "note" in paper: values.append(paper["note"])
+    if "note" in paper: values.append(_doconce_format_note(paper["note"]))
     values = _doconce_url(paper, values)
     return _doconce_join(values)
 
@@ -220,9 +221,17 @@ def doconce_format_misc(paper):
     if "volume" in paper: values.append("vol. %s" % paper["volume"])
     if "pages" in paper: values.append("pp. %s" % _doconce_format_pages(paper["pages"]))
     if "year" in paper: values.append(paper["year"])
-    if "note" in paper: values.append(paper["note"])
+    if "note" in paper: values.append(_doconce_format_note(paper["note"]))
     values = _doconce_url(paper, values)
     return _doconce_join(values)
+
+def _doconce_format_note(note):
+    # Make sure \url is handled correctly, LaTeX needs URLs this way
+    pattern = r'\\url\{(.+?)\}'
+    m = re.search(pattern, note)
+    if m:
+        note = re.sub(pattern, 'URL: "\g<1>"', note)
+    return note
 
 def _doconce_url(paper, values):
     venue = None
@@ -233,8 +242,13 @@ def _doconce_url(paper, values):
         if venue.startswith('http'):
             venue = _doconce_format_url(venue)
         values.append(venue)
-    if venue is None and "url" in paper:
-        values.append(_doconce_format_url(paper["url"]))
+    if "url" in paper:
+        if "note" in paper:
+            if (paper["url"] not in paper["note"]) and \
+               (paper["url"] not in paper["howpublished"]):
+                values.append(_doconce_format_url(paper["url"]))
+        else:
+            values.append(_doconce_format_url(paper["url"]))
     return values
 
 def _doconce_get_key_string(paper):
@@ -384,6 +398,10 @@ def rst_format_articles(paper):
     if "year" in paper:
         values.append(paper["year"])
 
+    # Note
+    if "note" in paper:
+        values.append(_rst_format_note(paper["note"]))
+
     # URL/howpublished
     values = _rst_url(paper, values)
 
@@ -404,6 +422,7 @@ def rst_format_books(paper):
     values.append(paper["year"])
     if "doi" in paper: values.append(_rst_format_doi(paper["doi"]))
     values = _rst_url(paper, values)
+    if "note" in paper: values.append(_rst_format_note(paper["note"]))
     return _rst_join(values)
 
 def rst_format_edited(paper):
@@ -416,6 +435,7 @@ def rst_format_edited(paper):
         values.append(paper["publisher"])
     values.append(paper["year"])
     values = _rst_url(paper, values)
+    if "note" in paper: values.append(_rst_format_note(paper["note"]))
     return _rst_join(values)
 
 def rst_format_chapters(paper):
@@ -432,6 +452,7 @@ def rst_format_chapters(paper):
     if "pages" in paper: values.append("pp. %s" % _rst_format_pages(paper["pages"]))
     values.append(paper["year"])
     values = _rst_url(paper, values)
+    if "note" in paper: values.append(_rst_format_note(paper["note"]))
     return _rst_join(values)
 
 def rst_format_proceedings(paper):
@@ -445,6 +466,7 @@ def rst_format_proceedings(paper):
     if "publisher" in paper: values.append(paper["publisher"])
     values.append(paper["year"])
     values = _rst_url(paper, values)
+    if "note" in paper: values.append(_rst_format_note(paper["note"]))
     return _rst_join(values)
 
 def rst_format_reports(paper):
@@ -457,6 +479,7 @@ def rst_format_reports(paper):
     if "number" in paper: values.append(paper["number"])
     values = _rst_url(paper, values)
     if "year" in paper: values.append(paper["year"])
+    if "note" in paper: values.append(_rst_format_note(paper["note"]))
     return _rst_join(values)
 
 def rst_format_manuals(paper):
@@ -467,6 +490,7 @@ def rst_format_manuals(paper):
     values.append(_rst_format_title(paper))
     values = _rst_url(paper, values)
     if "year" in paper: values.append(paper["year"])
+    if "note" in paper: values.append(_rst_format_note(paper["note"]))
     return _rst_join(values)
 
 def rst_format_theses(paper):
@@ -479,6 +503,7 @@ def rst_format_theses(paper):
     values.append(paper["school"])
     values.append(paper["year"])
     values = _rst_url(paper, values)
+    if "note" in paper: values.append(_rst_format_note(paper["note"]))
     return _rst_join(values)
 
 def rst_format_courses(paper):
@@ -490,6 +515,7 @@ def rst_format_courses(paper):
     if "institution" in paper: values.append(_rst_format_institution(paper))
     values = _rst_url(paper, values)
     if "year" in paper: values.append(paper["year"])
+    if "note" in paper: values.append(_rst_format_note(paper["note"]))
     return _rst_join(values)
 
 def rst_format_talks(paper):
@@ -501,6 +527,7 @@ def rst_format_talks(paper):
     if "meeting" in paper: values.append(paper["meeting"])
     values = _rst_url(paper, values)
     values.append(paper["year"])
+    if "note" in paper: values.append(_rst_format_note(paper["note"]))
     return _rst_join(values)
 
 def rst_format_posters(paper):
@@ -512,6 +539,7 @@ def rst_format_posters(paper):
     if "meeting" in paper: values.append(paper["meeting"])
     values.append(paper["year"])
     values = _rst_url(paper, values)
+    if "note" in paper: values.append(_rst_format_note(paper["note"]))
     return _rst_join(values)
 
 
@@ -531,7 +559,16 @@ def rst_format_misc(paper):
     if "pages" in paper: values.append("pp. %s" % _rst_format_pages(paper["pages"]))
     values = _rst_url(paper, values)
     if "year" in paper: values.append(paper["year"])
+    if "note" in paper: values.append(_rst_format_note(paper["note"]))
     return _rst_join(values)
+
+def _rst_format_note(note):
+    # Make sure \url is handled correctly, LaTeX needs URLs this way
+    pattern = r'\\url\{(.+?)\}'
+    m = re.search(pattern, note)
+    if m:
+        note = re.sub(pattern, 'URL: "\g<1>"', note)
+    return note
 
 def _rst_url(paper, values):
     venue = None
@@ -542,8 +579,13 @@ def _rst_url(paper, values):
         if venue.startswith('http'):
             venue = _rst_format_url(venue)
         values.append(venue)
-    if venue is None and "url" in paper:
-        values.append(_rst_format_url(paper["url"]))
+    if "url" in paper:
+        if "note" in paper:
+            if (paper["url"] not in paper["note"]) and \
+               (paper["url"] not in paper["howpublished"]):
+                values.append(_rst_format_url(paper["url"]))
+        else:
+            values.append(_rst_format_url(paper["url"]))
     return values
 
 def _rst_get_key_string(paper):

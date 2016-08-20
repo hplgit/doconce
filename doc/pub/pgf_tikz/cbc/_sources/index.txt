@@ -1,0 +1,13 @@
+
+.. Master file automatically created by doconce sphinx_dir
+
+
+Testing PGF and TikZ support in DocOnce
+=======================================
+
+Contents:
+
+.. toctree::
+   :maxdepth: 2
+
+   pgf_tikz

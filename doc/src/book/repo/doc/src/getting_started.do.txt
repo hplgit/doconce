@@ -1,0 +1,21 @@
+========= Hwo do I get started? =========
+label{ch:getting_started}
+idx{getting started}
+idx{book project setup}
+
+ o Read the web page: URL: "https://github.com/hplgit/doconce"
+ o Read the tutorial to get a glimpse of the basic syntax
+  o "HTML format": "http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.html"
+  o "PDF for printing": "http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.pdf"
+ o Familiarize yourself with the "manual": "http://hplgit.github.io/doconce/doc/pub/manual/manual.html"
+ o Install DocOnce and all it needs: try to run
+   the entire "Bash script": "https://github.com/hplgit/doconce/raw/master/doc/src/manual/install_doconce.sh" (just comment out lines that don't work and rerun)
+ o Make a GitHhub or Bitbucket Git repository for the book project,
+   see "quick intro": "http://hplgit.github.io/teamods/bitgit/Langtangen_bitgit-bootstrap.html" (or "PDF for printing": "http://hplgit.github.io/teamods/bitgit/Langtangen_bitgit_4print.pdf")
+ o Take a brief look at the "best practice document": "http://hplgit.github.com/setup4book-doconce/doc/web/index.html" which documents the setup of files
+ o Download the "tarfile": "https://github.com/hplgit/doconce/raw/master/doc/src/book/root/doconce_demo_book.tar" with a dummy file tree to be packed out in the root directory of the book repo (remember commit and push!)
+ o Go to `doc/src` and _start writing the first chapter!_ (replace `why.do.txt`)
+ o _Compile the document to PDF_: `bash make.sh`, see `my-book-4print.pdf`
+   (this is the standard Springer book layout, the `svmono` class adapted to
+   DocOnce)
+ o _Compile the document to HTML_: `bash make_html.sh`, see `my-book.html`

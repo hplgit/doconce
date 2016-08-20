@@ -1119,7 +1119,7 @@ def latex_figure(m):
 
     if figure_method == 'includegraphics':
         if filename_ext == '.pgf' or filename_ext == '.tikz':
-            includeline = r'\input{%s}' % filename
+            includeline = r'\centering \input{%s}' % filename
         else:
             if latex_style == 'tufte-book':
                 if frac <= tufte_frac_limit4marginfig:
@@ -1641,7 +1641,8 @@ def latex_title(m):
     section_headings = option('latex_section_headings=', 'std')
 
     if latex_style in ("Springer_sv", "Springer_T2", "Springer_T4",
-                       "Springer_lncse", "Springer_lnup", "tufte-book"):
+                       "Springer_lncse", "Springer_lnup", "tufte-book",
+                       "siambook"):
         text += r"""
 \frontmatter
 \setcounter{page}{3}
@@ -1990,7 +1991,15 @@ def latex_abstract(m):
     else:
         if atype == 'preface':
             # book abstract
-            if latex_style not in ('Springer_sv', 'Springer_lnup'):
+            if latex_style == 'siambook':
+                abstract += r"""
+%% --- begin preface ---
+\begin{thepreface}
+%(text)s
+\end{end{preface}
+%% --- end preface ---
+""" % vars()
+            elif latex_style not in ('Springer_sv', 'Springer_lnup'):
                 # Must probably adjust this test for various book formats...
                 abstract += r"""
 %% --- begin preface ---
@@ -2729,7 +2738,7 @@ def define(FILENAME_EXTENSION,
         'subsection':    r'\subsection{\g<subst>}',
         #'subsubsection': '\n' + r'\subsubsection{\g<subst>}' + '\n',
         'subsubsection': latex_subsubsection,
-        'paragraph':     r'\paragraph{\g<subst>}\n',
+        'paragraph':     r'\paragraph{\g<subst>}' + '\n',
         #'abstract':      '\n\n' + r'\\begin{abstract}' + '\n' + r'\g<text>' + '\n' + r'\end{abstract}' + '\n\n' + r'\g<rest>', # not necessary with separate \n
         #'abstract':      r'\n\n\\begin{abstract}\n\g<text>\n\end{abstract}\n\n\g<rest>',
         'abstract':      latex_abstract,
@@ -2847,7 +2856,7 @@ def define(FILENAME_EXTENSION,
 \vspace{1cm} % after toc
 """
     if latex_style in ('Springer_sv', 'Springer_lnup', 'tufte-book',
-                       'Springer_T2', 'Springer_T4'):
+                       'Springer_T2', 'Springer_T4', 'siambook'):
         toc_part += r"""
 \mainmatter
 """
@@ -3048,6 +3057,11 @@ justified,
         INTRO['latex'] += r"""
 %% Style: SIAM LaTeX2e multimedia
 \documentclass[leqno,%(draft)s]{siamltexmm}
+""" % vars()
+    elif latex_style == 'siambook':
+        INTRO['latex'] += r"""
+%% Style: SIAMGHbook2016 for SIAM books
+\documentclass[%(draft)s]{SIAMGHbook2016}
 """ % vars()
     elif latex_style == 'elsevier':
         INTRO['latex'] += r"""
@@ -3389,6 +3403,16 @@ justified,
         INTRO['latex'] += r"""
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+"""
+    elif latex_style == 'siambook':
+        INTRO['latex'] += r"""
+\usepackage[urw-garamond,sfscaled=false]{mathdesign}
+\usepackage[T1]{fontenc}
+\renewcommand{\sfdefault}{phv}
+\renewcommand{\ttdefault}{cmtt}
+\renewcommand\bfdefault{b}
 \usepackage{ucs}
 \usepackage[utf8x]{inputenc}
 """

@@ -1085,7 +1085,12 @@ command will then effectively remove everything with the
 ===== What is the difference between doconce replace and doconce subst? =====
 
 `doconce replace` replaces one text by another, exactly as the text is
-written. For example, `doconce replace float double *.do.txt` is the same as
+written. For example,
+
+!bc sys
+Terminal> doconce replace float double *.do.txt
+!ec
+is the same as
 invoking an editor and replacing `float` by `double` in all files `*.do.txt`.
 On the other hand, `doconce subst` works with *regular expressions*, so
 `doconce subst from to` is the same as `re.sub(from, to)` in Python.
@@ -1093,6 +1098,15 @@ You need experience with `re.sub` and regular expressions to take advantage
 of `doconce subst`.
 Regular expressions are much more powerful for editing text, but also
 more complicated and errorprone.
+
+===== Python raises regex exception after `@@@CODE` command =====
+
+A regex exception is cryptic to interpret, so in case you get a Python regex
+exception right after a line in the output indicating copying code from a
+file, it points to an error in the regex used to identify the ``from'' or
+``to'' line. Just examine the regex and rewrite, perhaps to something
+simpler, if possible. Be careful with parentheses and special regex
+symbols (must be excaped by a backslash).
 
 ======= Preprocess/Mako =======
 

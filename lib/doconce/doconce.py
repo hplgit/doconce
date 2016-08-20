@@ -808,7 +808,7 @@ def syntax_check(filestr, format):
     filestr, code_blocks, code_block_types, tex_blocks = \
              remove_code_and_tex(filestr, format)
 
-    # mdash with spaces
+    # mdash with spaces is not allowed---must be like this---in a sentence.
     pattern = r'^[^#](---\s\w|\w\s---)'
     m = re.search(pattern, filestr, flags=re.MULTILINE)
     if m:
@@ -2014,7 +2014,7 @@ def exercises(filestr, format, code_blocks, tex_blocks):
         if not found_pairs:
             m = re.search(r'^![be]%s' % envir, filestr, flags=re.MULTILINE)
             if m:
-                errwarn('*** error: found !b%s or !e%s outside exercise section' % envir)
+                errwarn('*** error: found !b%s or !e%s outside exercise section' % (envir, envir))
                 errwarn(repr(filestr[m.start():m.start()+120]))
                 _abort()
 
@@ -2571,7 +2571,7 @@ def typeset_envirs(filestr, format):
                 def subst(m):
                     return indent_lines(m.group(1), format, ' '*4) + '\n'
             elif envir in admons + ('hint', 'remarks'):
-                # Just a plan paragraph with paragraph heading
+                # Just a plain paragraph with paragraph heading
                 def subst(m):
                     title = m.group(1).strip()
                     # Text size specified in parenthesis?
@@ -2585,7 +2585,7 @@ def typeset_envirs(filestr, format):
                         text_size = m2.group(1).lower()
                         title = title.replace('(%s)' % text_size, '').strip()
                     elif title and title[-1] not in ('.', ':', '!', '?'):
-                        # Make sure the title ends with puncuation
+                        # Make sure the title ends with puncuation if not .:!?
                         title += '.'
                     # Recall that this formatting is called very late
                     # so native format must be used
@@ -2883,8 +2883,9 @@ def handle_figures(filestr, format):
         for figfile in figfiles:
             if not figfile.startswith('http'):
                 newname = os.path.join(figure_prefix, figfile)
-                filestr = re.sub(r'%s([,\]])' % figfile,
-                                 '%s\g<1>' % newname, filestr)
+                filestr = re.sub(r'^FIGURE: *\[%s([,\]])' % figfile,
+                                 'FIGURE: [%s\g<1>' % newname, filestr,
+                                 flags=re.MULTILINE)
     # Prefix movies also
     movie_pattern = INLINE_TAGS['movie']
     movie_files = [filename.strip()
@@ -2897,8 +2898,9 @@ def handle_figures(filestr, format):
         for movfile in movie_files:
             if not movfile.startswith('http'):
                 newname = os.path.join(movie_prefix, movfile)
-                filestr = re.sub(r'%s([,\]])' % movfile,
-                                 '%s\g<1>' % newname, filestr)
+                filestr = re.sub(r'^MOVIE: *\[%s([,\]])' % movfile,
+                                 'MOVIE: [%s\g<1>' % newname, filestr,
+                                 flags=re.MULTILINE)
 
     # Find new filenames
     figfiles = [filename.strip()
@@ -2981,6 +2983,7 @@ def handle_figures(filestr, format):
                     # ext might be empty, in that case we cannot convert
                     # anything:
                     if ext:
+                        tikz_fig = False
                         errwarn('figure ' + figfile +
                                 ' must have extension(s) ' +
                                 ', '.join(search_extensions))
@@ -2994,6 +2997,30 @@ def handle_figures(filestr, format):
                         elif ext == '.pdf' and e.endswith('ps'):
                             cmd = 'pdf2ps %s %s' % \
                                   (figfile, converted_file)
+                        elif ext == '.tikz':    # TODO pgf handling
+                            tikz_fig = True
+                            cmd = 'echo' # workaround
+                            svg_exists = os.path.isfile(basepath+"_tikzrender.svg")
+                            png_exists = os.path.isfile(basepath+"_tikzrender.png")
+                            img_exists = False
+                            existing_img = None
+                            if svg_exists and '.svg' in search_extensions:
+                                img_exists = True
+                                existing_img = basepath+"_tikzrender.svg"
+                            elif png_exists:
+                                img_exists = True
+                                existing_img = basepath+"_tikzrender.png"
+                            if not option('force_tikz_conversion') and img_exists:
+                                errwarn('found converted tikz figure in %s' % existing_img)
+                                converted_file = existing_img
+                                failure = False
+                            else:
+                                errwarn('Converting tikz figure to SVG/PNG...')
+                                failure = tikz2img(figfile)
+                                if '.svg' in search_extensions: # format supports svg
+                                    converted_file = basepath + '_tikzrender.svg'
+                                else:   # use png
+                                    converted_file = basepath + '_tikzrender.png'
                         else:
                             if not os.path.isfile(converted_file):
                                 cmd = 'convert %s %s' % (figfile, converted_file)
@@ -3007,7 +3034,8 @@ def handle_figures(filestr, format):
 using ImageMagick's convert program, but the result will
 be loss of quality. Generate a proper %s file (if possible).""" %
                                 (figfile, converted_file, converted_file))
-                        failure = os.system(cmd)
+                        if not tikz_fig:
+                            failure = os.system(cmd)
                         if not failure:
                             if not cmd == 'echo':
                                 errwarn('....image conversion: ' + cmd)

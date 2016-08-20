@@ -148,6 +148,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#non-breaking-space">Non-Breaking Space</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#horizontal-rule">Horizontal rule</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#em-dash">Em-dash</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#en-dash">En-dash</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ampersand">Ampersand</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#footnotes">Footnotes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#inline-comments">Inline Comments</a></li>
@@ -159,7 +160,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#generalized-references">Generalized References</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#generalized-references-to-chapters">Generalized References to Chapters</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#generalized-references-to-latex-documents">Generalized References to LaTeX Documents</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#tool-for-generating-generalizedd-references">Tool for Generating Generalizedd References</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tool-for-generating-generalized-references">Tool for Generating Generalized References</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#a-worked-example">A Worked Example</a></li>
 </ul>
 </li>
@@ -484,6 +485,7 @@
 <li><a class="reference internal" href="#non-breaking-space">Non-Breaking Space</a></li>
 <li><a class="reference internal" href="#horizontal-rule">Horizontal rule</a></li>
 <li><a class="reference internal" href="#em-dash">Em-dash</a></li>
+<li><a class="reference internal" href="#en-dash">En-dash</a></li>
 <li><a class="reference internal" href="#ampersand">Ampersand</a></li>
 <li><a class="reference internal" href="#footnotes">Footnotes</a></li>
 <li><a class="reference internal" href="#inline-comments">Inline Comments</a></li>
@@ -495,7 +497,7 @@
 <li><a class="reference internal" href="#generalized-references">Generalized References</a></li>
 <li><a class="reference internal" href="#generalized-references-to-chapters">Generalized References to Chapters</a></li>
 <li><a class="reference internal" href="#generalized-references-to-latex-documents">Generalized References to LaTeX Documents</a></li>
-<li><a class="reference internal" href="#tool-for-generating-generalizedd-references">Tool for Generating Generalizedd References</a></li>
+<li><a class="reference internal" href="#tool-for-generating-generalized-references">Tool for Generating Generalized References</a></li>
 <li><a class="reference internal" href="#a-worked-example">A Worked Example</a></li>
 </ul>
 </li>
@@ -803,7 +805,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jul 15, 2016</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jul 27, 2016</td>
 </tr>
 </tbody>
 </table>
@@ -3738,11 +3740,17 @@ works between characters, numbers, and the math dollar sign.)</div></blockquote>
 </div>
 <div class="section" id="em-dash">
 <h3>Em-dash<a class="headerlink" href="#em-dash" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-52"></span><p id="index-53">The <code class="docutils literal"><span class="pre">latex</span></code>, <code class="docutils literal"><span class="pre">pdflatex</span></code>, <code class="docutils literal"><span class="pre">sphinx</span></code>, and <code class="docutils literal"><span class="pre">html</span></code> formats support em-dash,
-indicated by three hyphens: <code class="docutils literal"><span class="pre">---</span></code>. The em-dash has two applications: 1)
-as alternative to a hyphen with space around in a sentence&#8212;except that
-there are no spaces around the em-dash, and 2) origin of quotes,
-where there is no space between the end of the quote and the m-dash:</p>
+<span class="target" id="index-52"></span><p id="index-53">The <code class="docutils literal"><span class="pre">latex</span></code>, <code class="docutils literal"><span class="pre">pdflatex</span></code>, <code class="docutils literal"><span class="pre">sphinx</span></code>, <code class="docutils literal"><span class="pre">html</span></code>, <code class="docutils literal"><span class="pre">pandoc</span></code>, and
+<code class="docutils literal"><span class="pre">ipynb</span></code> formats support em-dash,
+indicated by three hyphens: <code class="docutils literal"><span class="pre">---</span></code>. Other formats print just the
+three hyphens.
+The em-dash has two applications:</p>
+<blockquote>
+<div><ul class="simple">
+<li>as alternative to an ordinary single hyphen (with space around) in a sentence&#8212;except that there are no spaces around the em-dash (this is common, cf. <a class="reference external" href="https://en.wikipedia.org/wiki/Dash">Wikipedia</a>), and</li>
+<li>origin of quotes (where there is no space between the end of the quote and the m-dash):</li>
+</ul>
+</div></blockquote>
 <blockquote>
 <div><em>Premature optimization is the root of all evil.</em>&#8212;Donald Knuth.</div></blockquote>
 <p>The associated DocOnce source reads</p>
@@ -3752,9 +3760,26 @@ where there is no space between the end of the quote and the m-dash:</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="en-dash">
+<h3>En-dash<a class="headerlink" href="#en-dash" title="Permalink to this headline">¶</a></h3>
+<span class="target" id="index-54"></span><p id="index-55">The en-dash constists of two hyphens, as in <code class="docutils literal"><span class="pre">--</span></code>, and can be used instead
+of a single hyphen to get a slightly longer hyphen (LaTeX writers are
+especially used to this). Common applications are</p>
+<blockquote>
+<div><ul class="simple">
+<li>hyphen in compound words as the Navier - Stokes equations (here written as <code class="docutils literal"><span class="pre">Navier</span> <span class="pre">-</span> <span class="pre">Stokes</span></code>)</li>
+<li>hyphen in number ranges like 1 - 9</li>
+<li>hyphen around a sentence in sentence: To be precise - but not to detailed - we should ... (here the hyphen is written as <code class="docutils literal"><span class="pre">--</span></code>), as an alternative to em-dash (see section above)</li>
+</ul>
+</div></blockquote>
+<p>The <code class="docutils literal"><span class="pre">latex</span></code>, <code class="docutils literal"><span class="pre">pdflatex</span></code>, <code class="docutils literal"><span class="pre">sphinx</span></code>, <code class="docutils literal"><span class="pre">html</span></code>, <code class="docutils literal"><span class="pre">pandoc</span></code>, and
+<code class="docutils literal"><span class="pre">ipynb</span></code> formats support en-dash (basically this means that HTML output
+has <code class="docutils literal"><span class="pre">&amp;ndash</span></code> and LaTeX output is not altered). Other formats just show
+the raw double hyphen.</p>
+</div>
 <div class="section" id="ampersand">
 <h3>Ampersand<a class="headerlink" href="#ampersand" title="Permalink to this headline">¶</a></h3>
-<p id="index-54">An ampersand, as in Guns &amp; Roses or Texas A&amp;M, is written as a
+<p id="index-56">An ampersand, as in Guns &amp; Roses or Texas A&amp;M, is written as a
 plain <code class="docutils literal"><span class="pre">&amp;</span></code> <em>with space(s) on both sides</em>. Single upper case letters on each
 side of <code class="docutils literal"><span class="pre">&amp;</span></code>, as in <code class="docutils literal"><span class="pre">Texas</span> <span class="pre">A</span> <span class="pre">&amp;</span> <span class="pre">M</span></code>, remove the spaces and result in
 Texas A&amp;M, while words on both sides of <code class="docutils literal"><span class="pre">&amp;</span></code>, as in <code class="docutils literal"><span class="pre">Guns</span> <span class="pre">&amp;</span> <span class="pre">Roses</span></code>,
@@ -3767,7 +3792,7 @@ off the ampersand treatment for all formats.</p>
 </div>
 <div class="section" id="footnotes">
 <h3>Footnotes<a class="headerlink" href="#footnotes" title="Permalink to this headline">¶</a></h3>
-<p id="index-55">Typesetting of footnotes employs a common email or Extended Markdown syntax:</p>
+<p id="index-57">Typesetting of footnotes employs a common email or Extended Markdown syntax:</p>
 <div class="highlight-doconce"><div class="highlight"><pre><span></span>Footnotes are typeset according to the output format[^typesetting].
 The syntax is optional spaces, opening bracket, hat, a footnote name
 without spaces[^remedy-for-name-with-spaces], and closing bracket. The
@@ -3821,7 +3846,7 @@ case of spaces.</td></tr>
 </div>
 <div class="section" id="inline-comments">
 <h3>Inline Comments<a class="headerlink" href="#inline-comments" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-56"></span><p id="index-57">DocOnce also supports inline comments in the text:</p>
+<span class="target" id="index-58"></span><p id="index-59">DocOnce also supports inline comments in the text:</p>
 <div class="highlight-doconce"><div class="highlight"><pre><span></span>[name: comment]
 </pre></div>
 </div>
@@ -3846,7 +3871,7 @@ color boxes.</p>
 </div>
 <div class="section" id="inline-comments-for-editing">
 <h3>Inline Comments for Editing<a class="headerlink" href="#inline-comments-for-editing" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-58"></span><div class="admonition note" id="index-59">
+<span class="target" id="index-60"></span><div class="admonition note" id="index-61">
 <p class="first admonition-title">Note</p>
 <p class="last">The inline editing syntax in DocOnce was implemented before the invention
 of <a class="reference external" href="https://github.com/CriticMarkup/CriticMarkup-toolkit">CriticMarkup</a>.
@@ -3899,7 +3924,7 @@ important for the following discussion. (<strong>end add</strong>)</div></blockq
 the output formats <code class="docutils literal"><span class="pre">latex</span></code>, <code class="docutils literal"><span class="pre">pdflatex</span></code>, <code class="docutils literal"><span class="pre">html</span></code>, and <code class="docutils literal"><span class="pre">sphinx</span></code>.
 Otherwise, just the DocOnce syntax is shown (but that is also quite
 readable as edit instructions.)</p>
-<p id="index-60">The editing implied by the edit comments can be implemented in the DocOnce
+<p id="index-62">The editing implied by the edit comments can be implemented in the DocOnce
 file by the command</p>
 <div class="highlight-text"><div class="highlight"><pre><span></span>Terminal&gt; doconce apply_edit_comments mydoc.do.txt
 </pre></div>
@@ -3907,7 +3932,7 @@ file by the command</p>
 </div>
 <div class="section" id="forced-line-breaks">
 <h3>Forced Line Breaks<a class="headerlink" href="#forced-line-breaks" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-61"></span><span class="target" id="index-62"></span><p id="index-63">By <em>ending</em> a line in the DocOnce file
+<span class="target" id="index-63"></span><span class="target" id="index-64"></span><p id="index-65">By <em>ending</em> a line in the DocOnce file
 with <code class="docutils literal"><span class="pre">&lt;linebreak&gt;</span></code> the output format has a forced
 linebreak at this point. This can be used to typeset poems,
 songs (if not in a verbatim block), or the origin of quotes.
@@ -3947,7 +3972,7 @@ the line.</p>
 </div>
 <div class="section" id="inline-mathematics">
 <h3>Inline Mathematics<a class="headerlink" href="#inline-mathematics" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-64"></span><span class="target" id="index-65"></span><p id="index-66">Inline mathematics is written as in LaTeX, i.e., inside dollar signs.
+<span class="target" id="index-66"></span><span class="target" id="index-67"></span><p id="index-68">Inline mathematics is written as in LaTeX, i.e., inside dollar signs.
 Many formats leave this syntax as it is (including the two dollar signs),
 hence nice math formatting is only obtained in LaTeX, HTML, MediaWiki,
 and Sphinx (Epytext has some inline math support that is utilized).</p>
@@ -3980,7 +4005,7 @@ are vectors of length <span class="math">\(n\)</span>.&#8221;</p>
 </div>
 <div class="section" id="cross-referencing">
 <h3>Cross-Referencing<a class="headerlink" href="#cross-referencing" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-67"></span><span class="target" id="index-68"></span><span class="target" id="index-69"></span><p id="index-70">References and labels are supported. The syntax is simple:</p>
+<span class="target" id="index-69"></span><span class="target" id="index-70"></span><span class="target" id="index-71"></span><p id="index-72">References and labels are supported. The syntax is simple:</p>
 <div class="highlight-doconce"><div class="highlight"><pre><span></span><span class="nb">label{section:verbatim}</span>   # defines a label
 For more information we refer to Section ref{section:verbatim}.
 </pre></div>
@@ -4062,7 +4087,7 @@ must feature parentheses and look like</p>
 </div>
 <p>Hyperlinks to files or web addresses are handled as explained
 in the section <a class="reference internal" href="#inline-tagging"><span class="std std-ref">Inline Tagging</span></a>.</p>
-<p id="index-71">References to equations and sections in other documents can be done
+<p id="index-73">References to equations and sections in other documents can be done
 by the <em>generalized cross-referencing</em> syntax explained in the next
 section. However, sometimes one wants in an HTML document or notebook
 to make references to equations and sections in
@@ -4081,7 +4106,7 @@ the <code class="docutils literal"><span class="pre">.aux</span></code> file wil
 </div>
 <div class="section" id="generalized-cross-referencing">
 <span id="manual-genrefs"></span><h3>Generalized Cross-Referencing<a class="headerlink" href="#generalized-cross-referencing" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-72"></span><span class="target" id="index-73"></span><span class="target" id="index-74"></span><span class="target" id="index-75"></span><span class="target" id="index-76"></span><p id="index-77">Sometimes a series of individual documents may be assembled to one
+<span class="target" id="index-74"></span><span class="target" id="index-75"></span><span class="target" id="index-76"></span><span class="target" id="index-77"></span><span class="target" id="index-78"></span><p id="index-79">Sometimes a series of individual documents may be assembled to one
 large document, typically a book.
 In the book one wants to make cross references between chapters
 and sections, while these become references to external documents
@@ -4188,7 +4213,7 @@ PDF document.</p>
 </div>
 </div>
 <div class="section" id="generalized-references-to-chapters">
-<span id="index-78"></span><h4>Generalized References to Chapters<a class="headerlink" href="#generalized-references-to-chapters" title="Permalink to this headline">¶</a></h4>
+<span id="index-80"></span><h4>Generalized References to Chapters<a class="headerlink" href="#generalized-references-to-chapters" title="Permalink to this headline">¶</a></h4>
 <p>A reference to a chapter in a book becomes just
 a reference to a complete stand-alone document
 if chapters are compiled individually. Here is an example:</p>
@@ -4244,8 +4269,8 @@ the document &quot;Some Equations&quot;: &quot;http://some.net/someeqs/&quot;].
 <p>It is difficult in the <code class="docutils literal"><span class="pre">[external]</span></code> part of the generalized reference to
 refer to equation numbers in an external document. If one wants to refer
 to a LaTeX document, say a textbook, from some HTML or notebook, then
-one can use the <code class="docutils literal"><span class="pre">refaux</span></code> reference and an <code class="docutils literal"><span class="pre">.aux</span></code> as explained at the
-end of the previous section. Here is one example:</p>
+one can use the <code class="docutils literal"><span class="pre">refaux</span></code> reference and an <code class="docutils literal"><span class="pre">.aux</span></code> file as explained at the
+end of the previous section on <em>Cross-Referencing</em>. Here is one example:</p>
 <div class="highlight-doconce"><div class="highlight"><pre><span></span>From ref[(ref{eq1})][ in cite{Langtangen_2045}][
 equation (refaux{eq1}) in cite{Langtangen_2045}], we realize that...
 </pre></div>
@@ -4278,8 +4303,8 @@ in cite{Langtangen_2045}], we realize that...
 </pre></div>
 </div>
 </div>
-<div class="section" id="tool-for-generating-generalizedd-references">
-<h4>Tool for Generating Generalizedd References<a class="headerlink" href="#tool-for-generating-generalizedd-references" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="tool-for-generating-generalized-references">
+<h4>Tool for Generating Generalized References<a class="headerlink" href="#tool-for-generating-generalized-references" title="Permalink to this headline">¶</a></h4>
 <p>The <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">ref_external</span></code> command will read all the labels in the
 external documents listed in the <code class="docutils literal"><span class="pre">Externaldocuments:</span></code> comment
 and use the Publish database file of the current document
@@ -4437,7 +4462,7 @@ you just write directly in LaTeX with the <code class="docutils literal"><span c
 </div>
 <div class="section" id="index">
 <h3>Index<a class="headerlink" href="#index" title="Permalink to this headline">¶</a></h3>
-<p id="index-79">An index can be created for the <code class="docutils literal"><span class="pre">latex</span></code>, <code class="docutils literal"><span class="pre">rst</span></code>, and <code class="docutils literal"><span class="pre">sphinx</span></code> formats
+<p id="index-81">An index can be created for the <code class="docutils literal"><span class="pre">latex</span></code>, <code class="docutils literal"><span class="pre">rst</span></code>, and <code class="docutils literal"><span class="pre">sphinx</span></code> formats
 by the <code class="docutils literal"><span class="pre">idx</span></code> keyword, following a LaTeX-inspired syntax:</p>
 <div class="highlight-doconce"><div class="highlight"><pre><span></span><span class="nb">idx{some index entry}</span>
 <span class="nb">idx{main entry!subentry}</span>
@@ -4466,7 +4491,7 @@ tag in <code class="docutils literal"><span class="pre">html</span></code> outpu
 </div>
 <div class="section" id="emojis">
 <h3>Emojis<a class="headerlink" href="#emojis" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-80"></span><p id="index-81">Emojis are specified by syntax like <code class="docutils literal"><span class="pre">:sweat_smile:</span></code>, followed by
+<span class="target" id="index-82"></span><p id="index-83">Emojis are specified by syntax like <code class="docutils literal"><span class="pre">:sweat_smile:</span></code>, followed by
 whitespace (blank or newline) before and after.
 The available emoji names are shown at <a class="reference external" href="http://www.emoji-cheat-sheet.com">http://www.emoji-cheat-sheet.com</a>.
 Here is an example: :sweat_smile:</p>
@@ -4477,7 +4502,7 @@ The command-line option <code class="docutils literal"><span class="pre">--no_em
 </div>
 <div class="section" id="exercises-problems-projects-and-examples">
 <span id="manual-exercises"></span><h2>Exercises, Problems, Projects, and Examples<a class="headerlink" href="#exercises-problems-projects-and-examples" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-82"></span><span class="target" id="index-83"></span><span class="target" id="index-84"></span><p id="index-85">DocOnce has special support for four types of &#8220;exercises&#8221;, named
+<span class="target" id="index-84"></span><span class="target" id="index-85"></span><span class="target" id="index-86"></span><p id="index-87">DocOnce has special support for four types of &#8220;exercises&#8221;, named
 <em>exercise</em>, <em>problem</em>, <em>project</em>, or <em>example</em>.
 These are all typeset as special kind of
 subsections. Such subsections start with a subsection
@@ -4707,7 +4732,7 @@ which appears after the table of contents</li>
 use to further tailor the appearance of exercises (given that one
 edits the <code class="docutils literal"><span class="pre">.tex</span></code> file, preferably by a script after each <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code>
 command).</p>
-<p id="index-86">There is also a command <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">latex_exercise_toc</span></code> that makes a special
+<p id="index-88">There is also a command <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">latex_exercise_toc</span></code> that makes a special
 table of contents of the exercises. It truncates too long exercise headings,
 but by inserting <code class="docutils literal"><span class="pre">#</span> <span class="pre">Short</span> <span class="pre">title:</span> <span class="pre">Shorter</span> <span class="pre">title</span></code> right after the heading,
 the <code class="docutils literal"><span class="pre">Shorter</span> <span class="pre">title</span></code> will be used as title. Usually, this option is used
@@ -4846,7 +4871,7 @@ far beyond what DocOnce itself can output!</p>
 </div>
 <div class="section" id="extracting-selected-exercises-in-a-separate-document">
 <h3>Extracting Selected Exercises in a Separate Document<a class="headerlink" href="#extracting-selected-exercises-in-a-separate-document" title="Permalink to this headline">¶</a></h3>
-<p id="index-87">The command</p>
+<p id="index-89">The command</p>
 <div class="highlight-text"><div class="highlight"><pre><span></span>Terminal&gt; doconce extract_exercises tmp_mako__mydoc.do.txt --filter=key1;key2
 </pre></div>
 </div>
@@ -5127,7 +5152,7 @@ mathematics and computer code.</p>
 <h2>Other Environments<a class="headerlink" href="#other-environments" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="blocks-of-verbatim-computer-code">
 <span id="sec-verbatim-blocks"></span><h3>Blocks of Verbatim Computer Code<a class="headerlink" href="#blocks-of-verbatim-computer-code" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-88"></span><span class="target" id="index-89"></span><span class="target" id="index-90"></span><p id="index-91">Blocks of computer code, to be typeset verbatim, must appear inside a
+<span class="target" id="index-90"></span><span class="target" id="index-91"></span><span class="target" id="index-92"></span><p id="index-93">Blocks of computer code, to be typeset verbatim, must appear inside a
 &#8220;begin code&#8221; <code class="docutils literal"><span class="pre">!bc</span></code> keyword and an &#8220;end code&#8221; <code class="docutils literal"><span class="pre">!ec</span></code> keyword. Both
 keywords must be on a single line and <em>start at the beginning of the
 line</em>.  Before such a code block there must be a plain sentence
@@ -5213,7 +5238,7 @@ the code environment, e.g., <code class="docutils literal"><span class="pre">!bc
 The <code class="docutils literal"><span class="pre">-h</span></code> postfix has no impact on other output formats.</p>
 </div>
 <div class="section" id="customizing-code-environments-types-for-sphinx">
-<span id="index-92"></span><h4>Customizing Code Environments Types for Sphinx<a class="headerlink" href="#customizing-code-environments-types-for-sphinx" title="Permalink to this headline">¶</a></h4>
+<span id="index-94"></span><h4>Customizing Code Environments Types for Sphinx<a class="headerlink" href="#customizing-code-environments-types-for-sphinx" title="Permalink to this headline">¶</a></h4>
 <p>The argument after <code class="docutils literal"><span class="pre">!bc</span></code> can in case of Sphinx output be mapped onto
 any valid Pygments language for typesetting of the verbatim block by
 Pygments, if you do not want to rely on the defaults. This mapping
@@ -5468,7 +5493,7 @@ removed. For example, <code class="docutils literal"><span class="pre">&#64;&#64
 </div>
 <div class="section" id="latex-blocks-of-mathematical-text">
 <span id="mathtext"></span><h3>LaTeX Blocks of Mathematical Text<a class="headerlink" href="#latex-blocks-of-mathematical-text" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-93"></span><span class="target" id="index-94"></span><p id="index-95">Blocks of mathematical text are like computer code blocks, but
+<span class="target" id="index-95"></span><span class="target" id="index-96"></span><p id="index-97">Blocks of mathematical text are like computer code blocks, but
 the opening tag is <code class="docutils literal"><span class="pre">!bt</span></code> (begin TeX) and the closing tag is
 <code class="docutils literal"><span class="pre">!et</span></code>. It is important that <code class="docutils literal"><span class="pre">!bt</span></code> and <code class="docutils literal"><span class="pre">!et</span></code> appear on the beginning of the
 line and followed by a newline.</p>
@@ -5510,13 +5535,13 @@ output beyond LaTeX (<code class="docutils literal"><span class="pre">latex</spa
 simple <code class="docutils literal"><span class="pre">\[</span></code> and <code class="docutils literal"><span class="pre">\]</span></code> or <code class="docutils literal"><span class="pre">equation</span></code> and <code class="docutils literal"><span class="pre">align</span></code> or <code class="docutils literal"><span class="pre">align*</span></code> environments,
 and avoid referring to equations in MediaWikis.</p>
 </div>
-<span class="target" id="index-96"></span><p id="index-97">Going from DocOnce to MS Word is most easily done by outputting in the
+<span class="target" id="index-98"></span><p id="index-99">Going from DocOnce to MS Word is most easily done by outputting in the
 <code class="docutils literal"><span class="pre">latex</span></code> format and then using the <a class="reference external" href="http://johnmacfarlane.net/pandoc/">Pandoc</a> or <a class="reference external" href="http://latex2rtf.sourceforge.net/">latex2rtf</a> programs to translate from LaTeX
 to MS Word. Note that only a subset of LaTeX will be translated
 correctly, and mathematics is notoriously difficult and unpredicatble.</p>
-<span class="target" id="index-98"></span><span class="target" id="index-99"></span></div>
+<span class="target" id="index-100"></span><span class="target" id="index-101"></span></div>
 <div class="section" id="epub-and-mobi">
-<span id="index-100"></span><h4>ePub and Mobi<a class="headerlink" href="#epub-and-mobi" title="Permalink to this headline">¶</a></h4>
+<span id="index-102"></span><h4>ePub and Mobi<a class="headerlink" href="#epub-and-mobi" title="Permalink to this headline">¶</a></h4>
 <p>Conversion to the ePub and Mobi formats, popular for reading on Kindle
 devices, can go via HTML and the <a class="reference external" href="http://calibre-ebook.com/">Calibre</a> tools. On Debian/GNU Linux, install
 <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">calibre</span></code>, and run (e.g.)</p>
@@ -5591,7 +5616,7 @@ goes as follows:</p>
 </div>
 <p>Just edit this file, save it as <code class="docutils literal"><span class="pre">mydoc.json</span></code> and run
 <code class="docutils literal"><span class="pre">python3</span> <span class="pre">/some/path/to/epubmaker.py</span> <span class="pre">mydoc.json</span></code> to produce <code class="docutils literal"><span class="pre">mydoc.epub</span></code>.</p>
-<p id="index-101">If you want to read your DocOnce document on Kindle, sending the PDF
+<p id="index-103">If you want to read your DocOnce document on Kindle, sending the PDF
 file to the email address for the device seems to be a satisfactory option.</p>
 </div>
 <div class="section" id="apple-ibook-format">
@@ -5661,7 +5686,7 @@ mathematical expression.</li>
 </div>
 <div class="section" id="macros-newcommands">
 <span id="newcommands"></span><h3>Macros (Newcommands)<a class="headerlink" href="#macros-newcommands" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-102"></span><span class="target" id="index-103"></span><p id="index-104">DocOnce supports a type of macros via a LaTeX-style <em>newcommand</em>
+<span class="target" id="index-104"></span><span class="target" id="index-105"></span><p id="index-106">DocOnce supports a type of macros via a LaTeX-style <em>newcommand</em>
 construction, but only inside mathematical expressions (inline
 LaTeX math or LaTeX math blocks). Newcommands are not allowed
 in the running text. Here is an example:</p>
@@ -5864,7 +5889,7 @@ translation is desired.</p>
 </div>
 <div class="section" id="typesetting-of-algorithms">
 <h3>Typesetting of Algorithms<a class="headerlink" href="#typesetting-of-algorithms" title="Permalink to this headline">¶</a></h3>
-<p id="index-105">DocOnce has no support for typesetting of algorithms, while LaTeX
+<p id="index-107">DocOnce has no support for typesetting of algorithms, while LaTeX
 has quite sophisticated support. LaTeX writes need some strategy with
 dealing with algorithms in DocOnce: they should be sophisticated
 when the output is in LaTeX and they should be readable when the
@@ -5894,7 +5919,7 @@ if feature in element:
 </div>
 <div class="section" id="admonitions-1">
 <span id="manual-admon"></span><h3>Admonitions<a class="headerlink" href="#admonitions-1" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-106"></span><span class="target" id="index-107"></span><span class="target" id="index-108"></span><span class="target" id="index-109"></span><span class="target" id="index-110"></span><p id="index-111">DocOnce offers strong support for admonition environments, such
+<span class="target" id="index-108"></span><span class="target" id="index-109"></span><span class="target" id="index-110"></span><span class="target" id="index-111"></span><span class="target" id="index-112"></span><p id="index-113">DocOnce offers strong support for admonition environments, such
 as warning boxes, notification boxes, question boxes,
 and summary boxes. The boxes normally have an icon, a heading,
 and may also have a background color. A special box, the block,
@@ -5985,9 +6010,9 @@ the <code class="docutils literal"><span class="pre">automake_sphinx.py</span></
 gray background for all admonitions.  In <code class="docutils literal"><span class="pre">html</span></code>, <code class="docutils literal"><span class="pre">latex</span></code> and
 <code class="docutils literal"><span class="pre">pdflatex</span></code> there is quite some functionality to control the layout of
 admonitions.</p>
-<span class="target" id="index-112"></span></div>
+<span class="target" id="index-114"></span></div>
 <div class="section" id="layout-of-admonitions-in-html">
-<span id="index-113"></span><h4>Layout of Admonitions in HTML<a class="headerlink" href="#layout-of-admonitions-in-html" title="Permalink to this headline">¶</a></h4>
+<span id="index-115"></span><h4>Layout of Admonitions in HTML<a class="headerlink" href="#layout-of-admonitions-in-html" title="Permalink to this headline">¶</a></h4>
 <p>The command-line argument <code class="docutils literal"><span class="pre">--html_admon</span></code> sets the admonition style
 for the <code class="docutils literal"><span class="pre">html</span></code> format (see <a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/admon/index.html">demo</a>):</p>
 <blockquote>
@@ -6029,7 +6054,7 @@ for the <code class="docutils literal"><span class="pre">apricot</span></code>, 
 </div></blockquote>
 </div>
 <div class="section" id="layout-of-admonitions-in-latex">
-<span id="index-114"></span><h4>Layout of Admonitions in LaTeX<a class="headerlink" href="#layout-of-admonitions-in-latex" title="Permalink to this headline">¶</a></h4>
+<span id="index-116"></span><h4>Layout of Admonitions in LaTeX<a class="headerlink" href="#layout-of-admonitions-in-latex" title="Permalink to this headline">¶</a></h4>
 <p>In <code class="docutils literal"><span class="pre">latex</span></code> and <code class="docutils literal"><span class="pre">pdflatex</span></code>, the type of admonition style is set by
 the command-line option <code class="docutils literal"><span class="pre">--latex_admon=</span></code>.
 Several values are available (see <a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/admon/index.html">demo</a>):</p>
@@ -6103,9 +6128,9 @@ that should be changed inside the admons:</p>
 <p>i.e., a from-to, from-to type of syntax. In this particular example,
 the <code class="docutils literal"><span class="pre">!bc</span> <span class="pre">pycod</span></code> environment becomes <code class="docutils literal"><span class="pre">!bc</span> <span class="pre">pycod_yellow</span></code> and
 <code class="docutils literal"><span class="pre">!bc</span> <span class="pre">fpro</span></code> becomes <code class="docutils literal"><span class="pre">!bc</span> <span class="pre">fpro2</span></code> inside admonitions.</p>
-<span class="target" id="index-115"></span><span class="target" id="index-116"></span></div>
+<span class="target" id="index-117"></span><span class="target" id="index-118"></span></div>
 <div class="section" id="the-box-environment">
-<span id="index-117"></span><h4>The Box Environment<a class="headerlink" href="#the-box-environment" title="Permalink to this headline">¶</a></h4>
+<span id="index-119"></span><h4>The Box Environment<a class="headerlink" href="#the-box-environment" title="Permalink to this headline">¶</a></h4>
 <p>A plain box without any title or colored background,
 just a rectangular frame, is also
 available. The syntax goes like</p>
@@ -6355,7 +6380,7 @@ in particular the following one (with a caption),</p>
 </div>
 <div class="section" id="bibliography-references">
 <h2>Bibliography (References)<a class="headerlink" href="#bibliography-references" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-118"></span><span class="target" id="index-119"></span><p id="index-120">DocOnce applies the software tool <a class="reference external" href="https://bitbucket.org/logg/publish">Publish</a> to handle the bibliography in a
+<span class="target" id="index-120"></span><span class="target" id="index-121"></span><p id="index-122">DocOnce applies the software tool <a class="reference external" href="https://bitbucket.org/logg/publish">Publish</a> to handle the bibliography in a
 document. With Publish it is easy to import BibTeX data and maintain a
 database in a clean, self-explanatory textual format. From the Publish
 format it is easy to go BibTeX and reST or straightforward DocOnce
@@ -6375,7 +6400,7 @@ Terminal&gt; sudo python setup.py install
 </div>
 <div class="section" id="importing-your-data-to-the-publish-database">
 <h3>Importing your data to the Publish database<a class="headerlink" href="#importing-your-data-to-the-publish-database" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-121"></span><p id="index-122">Many scientists have their bibliographic data in the BibTex format. Here we
+<span class="target" id="index-123"></span><p id="index-124">Many scientists have their bibliographic data in the BibTex format. Here we
 assume that you have two files, <code class="docutils literal"><span class="pre">refs1.bib</span></code> and <code class="docutils literal"><span class="pre">refs2.bib</span></code>. These can
 be imported to a Publish database, residing in the file <code class="docutils literal"><span class="pre">papers.pub</span></code>,
 by the commands</p>
@@ -6449,7 +6474,7 @@ the output format is <code class="docutils literal"><span class="pre">latex</spa
 </div>
 <div class="section" id="referring-to-publications">
 <h3>Referring to publications<a class="headerlink" href="#referring-to-publications" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-123"></span><p id="index-124">We use the command</p>
+<span class="target" id="index-125"></span><p id="index-126">We use the command</p>
 <div class="highlight-doconce"><div class="highlight"><pre><span></span>cite{key}
 </pre></div>
 </div>
@@ -6499,7 +6524,7 @@ text is produced from the database.</p>
 </div>
 <div class="section" id="latex-bibliography-style">
 <h3>LaTeX Bibliography Style<a class="headerlink" href="#latex-bibliography-style" title="Permalink to this headline">¶</a></h3>
-<p id="index-125">The bibliography style is &#8220;plain&#8221; in LaTeX output. To change this, just
+<p id="index-127">The bibliography style is &#8220;plain&#8221; in LaTeX output. To change this, just
 edit the <code class="docutils literal"><span class="pre">.p.tex</span></code> file. For example,</p>
 <div class="highlight-text"><div class="highlight"><pre><span></span>doconce format latex mydoc
 doconce replace &#39;bibliographystyle{plain}&#39; &#39;bibliographystyle{abbrev}&#39; mydoc.p.tex
@@ -6509,7 +6534,7 @@ doconce replace &#39;bibliographystyle{plain}&#39; &#39;bibliographystyle{abbrev
 </div>
 <div class="section" id="preprocessing-and-postprocessing">
 <h2>Preprocessing and Postprocessing<a class="headerlink" href="#preprocessing-and-postprocessing" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-126"></span><p id="index-127">DocOnce allows preprocessor commands for, e.g., including files,
+<span class="target" id="index-128"></span><p id="index-129">DocOnce allows preprocessor commands for, e.g., including files,
 leaving out text, or inserting special text depending on the format.
 These commands are run prior to translation of the document.
 After translation, there are <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">split_*</span></code> commands available
@@ -6524,7 +6549,7 @@ line and being the only text on that line):</p>
 </div>
 <div class="section" id="the-preprocess-and-mako-preprocessors">
 <h3>The Preprocess and Mako Preprocessors<a class="headerlink" href="#the-preprocess-and-mako-preprocessors" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-128"></span><span class="target" id="index-129"></span><p id="index-130">Two preprocessors are supported: preprocess
+<span class="target" id="index-130"></span><span class="target" id="index-131"></span><p id="index-132">Two preprocessors are supported: preprocess
 (<a class="reference external" href="http://code.google.com/p/preprocess">http://code.google.com/p/preprocess</a>) and mako
 (<a class="reference external" href="http://www.makotemplates.org/">http://www.makotemplates.org/</a>). The former allows include and if-else
 statements much like the well-known preprocessor in C and C++ (but it
@@ -6642,7 +6667,7 @@ major reasons to adopt DocOnce.</p>
 </div>
 <div class="section" id="splitting-documents-into-smaller-pieces">
 <h3>Splitting Documents into Smaller Pieces<a class="headerlink" href="#splitting-documents-into-smaller-pieces" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-131"></span><p id="index-132">Long documents are conveniently split into smaller DocOnce files.
+<span class="target" id="index-133"></span><p id="index-134">Long documents are conveniently split into smaller DocOnce files.
 However, there must be a master document including all the pieces,
 otherwise references to sections and the index will not work properly.
 The master document is preferably a file just containing a set of
@@ -6657,7 +6682,7 @@ are normally placed before section headings. It is very actively used
 when writing slides with DocOnce. The <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code> command does not
 recognize <code class="docutils literal"><span class="pre">!split</span></code> instructions: one needs to run <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">split_*</span></code>
 as a postprocess, where the <code class="docutils literal"><span class="pre">*</span></code> means <code class="docutils literal"><span class="pre">html</span></code>, <code class="docutils literal"><span class="pre">rst</span></code>, or <code class="docutils literal"><span class="pre">beamer</span></code>.</p>
-<p id="index-133"><strong>HTML.</strong>
+<p id="index-135"><strong>HTML.</strong>
 Splitting an HTML document is done by</p>
 <div class="highlight-text"><div class="highlight"><pre><span></span>Terminal&gt; doconce format html mydoc
 Terminal&gt; doconce split_html mydoc
@@ -6694,7 +6719,7 @@ shown here, respectively (from left to right):</p>
 <p>However, if <code class="docutils literal"><span class="pre">--html_theme=</span></code> is set any theme starting
 with <code class="docutils literal"><span class="pre">bootstrap</span></code> or <code class="docutils literal"><span class="pre">bootswatch</span></code>, the navigation buttons are ignored,
 and Bootstrap-style buttons are used.</p>
-<span class="target" id="index-134"></span><span class="target" id="index-135"></span><p id="index-136"><strong>reStructuredText and Sphinx.</strong>
+<span class="target" id="index-136"></span><span class="target" id="index-137"></span><p id="index-138"><strong>reStructuredText and Sphinx.</strong>
 Here is a typical split of a large Sphinx document <code class="docutils literal"><span class="pre">mydoc.rst</span></code>
 into smaller pieces:</p>
 <div class="highlight-text"><div class="highlight"><pre><span></span>Terminal&gt; doconce format sphinx mydoc
@@ -6722,7 +6747,7 @@ in individual files like <code class="docutils literal"><span class="pre">split_
 </div>
 <div class="section" id="writing-slides">
 <h2>Writing Slides<a class="headerlink" href="#writing-slides" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-137"></span><span class="target" id="index-138"></span><span class="target" id="index-139"></span><p id="index-140">It is a potentially fast procedure to make slides from large amounts
+<span class="target" id="index-139"></span><span class="target" id="index-140"></span><span class="target" id="index-141"></span><p id="index-142">It is a potentially fast procedure to make slides from large amounts
 of DocOnce text, in particular for condensing material for
 lectures or for providing the slide set as an overview or study
 guide.  The slides can either be ordinary, separate slides - or just a
@@ -6756,7 +6781,7 @@ in <code class="docutils literal"><span class="pre">latex</span></code> and <cod
 </ul>
 </div></blockquote>
 <div class="section" id="overview-1">
-<span id="index-141"></span><h3>Overview<a class="headerlink" href="#overview-1" title="Permalink to this headline">¶</a></h3>
+<span id="index-143"></span><h3>Overview<a class="headerlink" href="#overview-1" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="slide-types">
 <h4>Slide Types<a class="headerlink" href="#slide-types" title="Permalink to this headline">¶</a></h4>
 <p>DocOnce can generate two types of slides: HTML5+CSS3 type of
@@ -6831,7 +6856,7 @@ on the slide.</li>
 <div class="section" id="slide-elements">
 <h3>Slide Elements<a class="headerlink" href="#slide-elements" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="title-page">
-<span id="index-142"></span><h4>Title page<a class="headerlink" href="#title-page" title="Permalink to this headline">¶</a></h4>
+<span id="index-144"></span><h4>Title page<a class="headerlink" href="#title-page" title="Permalink to this headline">¶</a></h4>
 <p>Here is a typical title page:</p>
 <div class="highlight-doconce"><div class="highlight"><pre><span></span><span class="gh">TITLE: On Something Interesting</span>
 <span class="gh">AUTHOR:</span> O. Nordmann at Seg. Fault Ltd. &amp; D. Bug Inc.
@@ -6853,7 +6878,7 @@ part defines the coordinates of the cell, <code class="docutils literal"><span c
 <code class="docutils literal"><span class="pre">01</span></code> is upper right. The <code class="docutils literal"><span class="pre">f</span></code> parameter specifies the fraction
 of the width occupied by this column of cells (can be left out,
 which results in columns of equal widths).</p>
-<div class="highlight-doconce" id="index-143"><div class="highlight"><pre><span></span><span class="k">!split</span>
+<div class="highlight-doconce" id="index-145"><div class="highlight"><pre><span></span><span class="k">!split</span>
 <span class="gh">======= Problem setting and methods =======</span>
 <span class="c"># Short title: Problem</span>
 
@@ -6968,7 +6993,7 @@ print x
 </div>
 <div class="section" id="html5-slides">
 <h3>HTML5 Slides<a class="headerlink" href="#html5-slides" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-144"></span><p>Not yet written...</p>
+<span class="target" id="index-146"></span><p>Not yet written...</p>
 <p>Just a very preliminary sketch of commands:</p>
 <div class="highlight-text"><div class="highlight"><pre><span></span>Terminal&gt; doconce format html myslides \
           --pygments_html_style=native --keep_pygments_html_bg
@@ -7128,7 +7153,7 @@ _minted-*
 </div>
 <div class="section" id="emacs-doconce-formatter">
 <span id="emacs-doconce"></span><h3>Emacs DocOnce Formatter<a class="headerlink" href="#emacs-doconce-formatter" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-145"></span><span class="target" id="index-146"></span><span class="target" id="index-147"></span><p id="index-148">The file <a class="reference external" href="https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el">.doconce-mode.el</a> in the DocOnce source distribution
+<span class="target" id="index-147"></span><span class="target" id="index-148"></span><span class="target" id="index-149"></span><p id="index-150">The file <a class="reference external" href="https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el">.doconce-mode.el</a> in the DocOnce source distribution
 gives a &#8220;DocOnce Editing Mode&#8221; in Emacs.</p>
 <p>Here is how to get the DocOnce Editing Mode in Emacs: Download <a class="reference external" href="https://raw.github.com/hplgit/doconce/master/misc/.doconce-mode.el">.doconce-mode.el</a> and save it in your home directory, then add these lines to <code class="docutils literal"><span class="pre">~/.emacs</span></code>:</p>
 <div class="highlight-doconce"><div class="highlight"><pre><span></span>(load-file &quot;~/.doconce-mode.el&quot;)
@@ -7210,7 +7235,7 @@ DocOnce and saving much typing!</p>
 </div>
 <div class="section" id="mako-programming">
 <span id="manual-mako"></span><h2>Mako Programming<a class="headerlink" href="#mako-programming" title="Permalink to this headline">¶</a></h2>
-<p id="index-149">The <a class="reference external" href="http://docs.makotemplates.org/">Mako</a> templating engine is used
+<p id="index-151">The <a class="reference external" href="http://docs.makotemplates.org/">Mako</a> templating engine is used
 as preprocessor for DocOnce documents, but the <a class="reference external" href="http://code.google.com/p/preprocess">Preprocess</a> is run prior to Mako and is recommended for
 including other files via <code class="docutils literal"><span class="pre">#</span> <span class="pre">#include</span> <span class="pre">&quot;filename&quot;</span></code>. Preprocess is also
 sufficient for if-else tests to steer which parts of the text that
@@ -7923,7 +7948,7 @@ format, and you need to know these steps to make use of the logfile.</p>
 </div>
 <div class="section" id="from-doconce-to-other-formats">
 <span id="doconce2formats"></span><h2>From DocOnce to Other Formats<a class="headerlink" href="#from-doconce-to-other-formats" title="Permalink to this headline">¶</a></h2>
-<p id="index-150">Transformation of a DocOnce document <code class="docutils literal"><span class="pre">mydoc.do.txt</span></code> to various other
+<p id="index-152">Transformation of a DocOnce document <code class="docutils literal"><span class="pre">mydoc.do.txt</span></code> to various other
 formats is done with the script <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code>:</p>
 <div class="highlight-text"><div class="highlight"><pre><span></span>Terminal&gt; doconce format formatname mydoc.do.txt
 </pre></div>
@@ -8029,7 +8054,7 @@ Trash
 *.vrb
 </pre></div>
 </div>
-<p id="index-151">If you host your files on GitHub and use a gh-pages branch to publish
+<p id="index-153">If you host your files on GitHub and use a gh-pages branch to publish
 your documents, make sure you have an empty file called <code class="docutils literal"><span class="pre">.nojeykyll</span></code>
 in the root directory or the repository and that this file is present
 in the gh-pages branch. Without <code class="docutils literal"><span class="pre">.nojekyll</span></code>, GitHub will not display
@@ -8085,7 +8110,7 @@ for grammar check.</p>
 </div>
 <div class="section" id="preprocessing">
 <span id="do2any-pre"></span><h3>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-152"></span><span class="target" id="index-153"></span><p id="index-154">The <code class="docutils literal"><span class="pre">preprocess</span></code> and <code class="docutils literal"><span class="pre">mako</span></code> programs are used to preprocess the
+<span class="target" id="index-154"></span><span class="target" id="index-155"></span><p id="index-156">The <code class="docutils literal"><span class="pre">preprocess</span></code> and <code class="docutils literal"><span class="pre">mako</span></code> programs are used to preprocess the
 file. The DocOnce program detects whether <code class="docutils literal"><span class="pre">preprocess</span></code> and/or <code class="docutils literal"><span class="pre">mako</span></code>
 statements are present and runs the corresponding programs, first
 <code class="docutils literal"><span class="pre">preprocess</span></code> and then <code class="docutils literal"><span class="pre">mako</span></code>.</p>
@@ -8148,7 +8173,7 @@ must be <code class="docutils literal"><span class="pre">MYDIR</span></code>, no
 </div>
 <div class="section" id="removal-of-inline-comments">
 <span id="do2any-inlinecomments"></span><h3>Removal of Inline Comments<a class="headerlink" href="#removal-of-inline-comments" title="Permalink to this headline">¶</a></h3>
-<p id="index-155">Inline comments (inside square brackets)
+<p id="index-157">Inline comments (inside square brackets)
 in the text are removed from the output by</p>
 <div class="highlight-text"><div class="highlight"><pre><span></span>Terminal&gt; doconce format latex mydoc --skip_inline_comments
 </pre></div>
@@ -8163,7 +8188,7 @@ and comments by different authors should be removed.</p>
 </div>
 <div class="section" id="notes">
 <span id="do2any-notes"></span><h3>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h3>
-<p id="index-156">DocOnce does not have a tag for longer notes, because implementation
+<p id="index-158">DocOnce does not have a tag for longer notes, because implementation
 of a &#8220;notes feature&#8221; is so easy using the <code class="docutils literal"><span class="pre">preprocess</span></code> or <code class="docutils literal"><span class="pre">mako</span></code>
 programs. Just introduce some variable, say <code class="docutils literal"><span class="pre">NOTES</span></code>, that you define
 through <code class="docutils literal"><span class="pre">-DNOTES</span></code> (or not) when running <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">...</span></code>. Inside
@@ -8176,13 +8201,13 @@ future revisions.</p>
 </div>
 <div class="section" id="demo-of-different-formats">
 <h3>Demo of Different Formats<a class="headerlink" href="#demo-of-different-formats" title="Permalink to this headline">¶</a></h3>
-<p id="index-157">A simple scientific report is available in <a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/index_with_doconce_commands.html">a lot of different formats</a>.
+<p id="index-159">A simple scientific report is available in <a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/index_with_doconce_commands.html">a lot of different formats</a>.
 How to create the different formats is explained in more depth
 in the coming sections.</p>
 </div>
 <div class="section" id="tweaking-the-doconce-output">
 <span id="do2any-tweaking"></span><h3>Tweaking the DocOnce Output<a class="headerlink" href="#tweaking-the-doconce-output" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-158"></span><p id="index-159">Occasionally, one would like to tweak the output in a certain format
+<span class="target" id="index-160"></span><p id="index-161">Occasionally, one would like to tweak the output in a certain format
 from DocOnce. One example is figure filenames when transforming
 DocOnce to reStructuredText. Since DocOnce does not know if the
 <code class="docutils literal"><span class="pre">.rst</span></code> file is going to be filtered to LaTeX or HTML, it cannot know
@@ -8238,8 +8263,8 @@ following sections. A list of all options is otbained by running
 </div>
 <div class="section" id="html">
 <span id="do2any-html"></span><h2>HTML<a class="headerlink" href="#html" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-160"></span><div class="section" id="basic-html-output">
-<span id="index-161"></span><h3>Basic HTML Output<a class="headerlink" href="#basic-html-output" title="Permalink to this headline">¶</a></h3>
+<span class="target" id="index-162"></span><div class="section" id="basic-html-output">
+<span id="index-163"></span><h3>Basic HTML Output<a class="headerlink" href="#basic-html-output" title="Permalink to this headline">¶</a></h3>
 <p>Making an HTML version of a DocOnce file <code class="docutils literal"><span class="pre">mydoc.do.txt</span></code>
 is performed by</p>
 <div class="highlight-text"><div class="highlight"><pre><span></span>Terminal&gt; doconce format html mydoc
@@ -8248,7 +8273,7 @@ is performed by</p>
 <p>The resulting file <code class="docutils literal"><span class="pre">mydoc.html</span></code> can be loaded into any web browser for viewing.</p>
 </div>
 <div class="section" id="typesetting-of-code">
-<span id="index-162"></span><h3>Typesetting of Code<a class="headerlink" href="#typesetting-of-code" title="Permalink to this headline">¶</a></h3>
+<span id="index-164"></span><h3>Typesetting of Code<a class="headerlink" href="#typesetting-of-code" title="Permalink to this headline">¶</a></h3>
 <p>If the Pygments package (including the <code class="docutils literal"><span class="pre">pygmentize</span></code> program)
 is installed, code blocks are typeset with
 aid of this package. The command-line argument <code class="docutils literal"><span class="pre">--no_pygments_html</span></code>
@@ -8258,9 +8283,9 @@ on line numbers in Pygments-formatted code blocks. A specific
 Pygments style is set by <code class="docutils literal"><span class="pre">--pygments_html_style=style</span></code>, where <code class="docutils literal"><span class="pre">style</span></code>
 can be <code class="docutils literal"><span class="pre">default</span></code>, <code class="docutils literal"><span class="pre">emacs</span></code>, <code class="docutils literal"><span class="pre">perldoc</span></code>, and other valid names for
 Pygments styles.</p>
-<span class="target" id="index-163"></span></div>
+<span class="target" id="index-165"></span></div>
 <div class="section" id="handling-of-movies">
-<span id="index-164"></span><h3>Handling of Movies<a class="headerlink" href="#handling-of-movies" title="Permalink to this headline">¶</a></h3>
+<span id="index-166"></span><h3>Handling of Movies<a class="headerlink" href="#handling-of-movies" title="Permalink to this headline">¶</a></h3>
 <p>MP4, WebM, and Ogg movies are typeset with the HTML5 <code class="docutils literal"><span class="pre">video</span></code> tag
 and the HTML code tries to load as many versions among MP4, WebM,
 and Ogg as exist (and the files are loaded in the mentioned order).
@@ -8270,7 +8295,7 @@ Other movie formats, e.g., <code class="docutils literal"><span class="pre">.flv
 the older <code class="docutils literal"><span class="pre">embed</span></code> tag.</p>
 </div>
 <div class="section" id="html-styles">
-<span id="index-165"></span><h3>HTML Styles<a class="headerlink" href="#html-styles" title="Permalink to this headline">¶</a></h3>
+<span id="index-167"></span><h3>HTML Styles<a class="headerlink" href="#html-styles" title="Permalink to this headline">¶</a></h3>
 <p>The HTML style can be defined either in the header of the HTML file,
 using a named built-in style;
 in an external CSS file; or in a template file.</p>
@@ -8295,7 +8320,7 @@ links to the CSS stylesheet in <code class="docutils literal"><span class="pre">
 be specified: <code class="docutils literal"><span class="pre">--ccs=file1.css,file2.css,file3.css</span></code>.</p>
 </div>
 <div class="section" id="html-templates">
-<span id="index-166"></span><h3>HTML templates<a class="headerlink" href="#html-templates" title="Permalink to this headline">¶</a></h3>
+<span id="index-168"></span><h3>HTML templates<a class="headerlink" href="#html-templates" title="Permalink to this headline">¶</a></h3>
 <p>Templates are HTML files with ready-made headers, footers, and style
 specifications where plain HTML text can be inserted in &#8220;slots&#8221; in the
 template file. Typically, there is a slot <code class="docutils literal"><span class="pre">%(main)s</span></code> for the main body
@@ -8326,9 +8351,9 @@ to how you store the template files), and run</p>
 </div>
 <p>The template in <code class="docutils literal"><span class="pre">style_vagrant</span></code> also needs an extra option
 <code class="docutils literal"><span class="pre">--html_style=bootstrap</span></code>.</p>
-<span class="target" id="index-167"></span></div>
+<span class="target" id="index-169"></span></div>
 <div class="section" id="splitting-html-documents">
-<span id="index-168"></span><h3>Splitting HTML documents<a class="headerlink" href="#splitting-html-documents" title="Permalink to this headline">¶</a></h3>
+<span id="index-170"></span><h3>Splitting HTML documents<a class="headerlink" href="#splitting-html-documents" title="Permalink to this headline">¶</a></h3>
 <p>The <code class="docutils literal"><span class="pre">!split</span></code> instruction (on separate lines) signifies a pagebreak.
 A command <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">split_html</span></code> is needed after <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code> to
 actually perform the split. The <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">split_html</span></code> command has
@@ -8341,7 +8366,7 @@ Terminal&gt; doconce split_html mydoc --nav_buttontop+bottom --pagination
 </pre></div>
 </div>
 <div class="section" id="the-html-file-collection">
-<span id="index-169"></span><h4>The HTML File Collection<a class="headerlink" href="#the-html-file-collection" title="Permalink to this headline">¶</a></h4>
+<span id="index-171"></span><h4>The HTML File Collection<a class="headerlink" href="#the-html-file-collection" title="Permalink to this headline">¶</a></h4>
 <p>There are usually a range of files needed for an HTML document arising
 from a DocOnce source. The needed files are listed in
 <code class="docutils literal"><span class="pre">.basename_html_file_collection</span></code>, where <code class="docutils literal"><span class="pre">basename</span></code> is the filestem of
@@ -8467,8 +8492,8 @@ figures. <code class="docutils literal"><span class="pre">X</span></code> is <co
 </div></blockquote>
 </div>
 <div class="section" id="blog-posts">
-<span id="do2any-blog"></span><span id="index-170"></span><h3>Blog Posts<a class="headerlink" href="#blog-posts" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-171"></span><span class="target" id="index-172"></span><p id="index-173">DocOnce can be used for writing blog posts provided the blog site accepts
+<span id="do2any-blog"></span><span id="index-172"></span><h3>Blog Posts<a class="headerlink" href="#blog-posts" title="Permalink to this headline">¶</a></h3>
+<span class="target" id="index-173"></span><span class="target" id="index-174"></span><p id="index-175">DocOnce can be used for writing blog posts provided the blog site accepts
 raw HTML code. Google&#8217;s Blogger service (<code class="docutils literal"><span class="pre">blogger.com</span></code> or
 <code class="docutils literal"><span class="pre">blogname.blogspot.com</span></code>) is particularly well suited since it also
 allows extensive LaTeX mathematics via MathJax.</p>
@@ -8532,7 +8557,7 @@ to equations.</p>
 </div>
 <div class="section" id="pandoc-and-markdown">
 <span id="do2any-pandoc"></span><h2>Pandoc and Markdown<a class="headerlink" href="#pandoc-and-markdown" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-174"></span><span class="target" id="index-175"></span><span class="target" id="index-176"></span><p id="index-177">Output in Pandoc&#8217;s extended Markdown format results from</p>
+<span class="target" id="index-176"></span><span class="target" id="index-177"></span><span class="target" id="index-178"></span><p id="index-179">Output in Pandoc&#8217;s extended Markdown format results from</p>
 <div class="highlight-text"><div class="highlight"><pre><span></span>Terminal&gt; doconce format pandoc mydoc
 </pre></div>
 </div>
@@ -8580,13 +8605,13 @@ Terminal&gt; doconce md2html mydoc
 <p>The result <code class="docutils literal"><span class="pre">mydoc.html</span></code> can be viewed in a browser.</p>
 </div>
 <div class="section" id="strict-markdown">
-<span id="index-178"></span><h3>Strict Markdown<a class="headerlink" href="#strict-markdown" title="Permalink to this headline">¶</a></h3>
+<span id="index-180"></span><h3>Strict Markdown<a class="headerlink" href="#strict-markdown" title="Permalink to this headline">¶</a></h3>
 <p>The option <code class="docutils literal"><span class="pre">--strict_markdown_output</span></code> generates plain or strict
 Markdown without the many extension that Pandoc accepts in Markdown
 syntax.</p>
 </div>
 <div class="section" id="github-flavored-markdown">
-<span id="index-179"></span><h3>GitHub-flavored Markdown<a class="headerlink" href="#github-flavored-markdown" title="Permalink to this headline">¶</a></h3>
+<span id="index-181"></span><h3>GitHub-flavored Markdown<a class="headerlink" href="#github-flavored-markdown" title="Permalink to this headline">¶</a></h3>
 <p>Adding the command-line option <code class="docutils literal"><span class="pre">github-md</span></code> turns on the
 <a class="reference external" href="https://guides.github.com/features/mastering-markdown/">GutHub-flavored Markdown dialect</a>, which is used for the issue tracker on <a class="reference external" href="http://github.com">GitHub</a>. A special feature is the support of task lists:
 unnumbered lists with <code class="docutils literal"><span class="pre">[x]</span></code> (task done) or <code class="docutils literal"><span class="pre">[</span> <span class="pre">]</span></code> (task not done).
@@ -8647,7 +8672,7 @@ version of Markdown (as opposed to Pandoc-extended Markdown (default),
 strict Markdown, or GitHub-flavored Markdown).</p>
 </div>
 <div class="section" id="strapdown-rendering-of-markdown-text">
-<span id="index-180"></span><h3>Strapdown rendering of Markdown text<a class="headerlink" href="#strapdown-rendering-of-markdown-text" title="Permalink to this headline">¶</a></h3>
+<span id="index-182"></span><h3>Strapdown rendering of Markdown text<a class="headerlink" href="#strapdown-rendering-of-markdown-text" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="http://strapdownjs.com">Strapdown</a> is a tool that can render Markdown
 text nicely in a web browser by just inserting an HTML header and
 footer in the Markdown file and load the file into a browser.
@@ -8689,7 +8714,7 @@ be advantageous to go via LaTeX.</p>
 </div>
 <div class="section" id="latex">
 <span id="do2any-latex"></span><h2>LaTeX<a class="headerlink" href="#latex" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-181"></span><div class="admonition note" id="index-182">
+<span class="target" id="index-183"></span><div class="admonition note" id="index-184">
 <p class="first admonition-title">Note</p>
 <p class="last">XeLaTeX and pdfLaTeX are used very much in the same way as standard
 LaTeX. The minor differences are described in separate sections
@@ -8770,8 +8795,8 @@ linebreaks in the inline verbatim text and hence avoid overfull hboxes.</p>
 </div>
 <div class="section" id="latex-pdf-generate-latex-step-1">
 <span id="do2any-latex-compile1"></span><h3>LaTeX-PDF: Generate LaTeX (Step 1)<a class="headerlink" href="#latex-pdf-generate-latex-step-1" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-183"></span><div class="section" id="the-translation-command">
-<span id="index-184"></span><h4>The translation command<a class="headerlink" href="#the-translation-command" title="Permalink to this headline">¶</a></h4>
+<span class="target" id="index-185"></span><div class="section" id="the-translation-command">
+<span id="index-186"></span><h4>The translation command<a class="headerlink" href="#the-translation-command" title="Permalink to this headline">¶</a></h4>
 <p>Filter the doconce text directly to valid LaTeX using
 the <code class="docutils literal"><span class="pre">--latex_code_style=</span></code> option:</p>
 <div class="highlight-text"><div class="highlight"><pre><span></span>Terminal&gt; doconce format pdflatex mydoc --latex_code_style=vrb
@@ -8801,7 +8826,7 @@ The default, <code class="docutils literal"><span class="pre">--device=screen</s
 on a screen where links are just clickable.</p>
 </div>
 <div class="section" id="command-line-options">
-<span id="index-185"></span><h4>Command-line options<a class="headerlink" href="#command-line-options" title="Permalink to this headline">¶</a></h4>
+<span id="index-187"></span><h4>Command-line options<a class="headerlink" href="#command-line-options" title="Permalink to this headline">¶</a></h4>
 <p>There are many additional options (run <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">--help</span></code> and
 look for options starting with <code class="docutils literal"><span class="pre">--latex</span></code> to get a more verbose description):</p>
 <blockquote>
@@ -8869,7 +8894,7 @@ Figure 5.3 on page 67&#8221;.</td></tr>
 </table>
 </div>
 <div class="section" id="syntax-highlighting">
-<span id="index-186"></span><h4>Syntax highlighting<a class="headerlink" href="#syntax-highlighting" title="Permalink to this headline">¶</a></h4>
+<span id="index-188"></span><h4>Syntax highlighting<a class="headerlink" href="#syntax-highlighting" title="Permalink to this headline">¶</a></h4>
 <p>The style of verbatim blocks of computer code is specified by
 <code class="docutils literal"><span class="pre">--latex_code_style=X</span></code>, where <code class="docutils literal"><span class="pre">X</span></code> can be set in a very flexible way.
 There are three main values, corresponding to three LaTeX tools
@@ -9044,7 +9069,7 @@ Terminal&gt; pdflatex -shell-escape mydoc
 </div>
 <div class="section" id="xelatex">
 <span id="do2any-xelatex"></span><h3>XeLaTeX<a class="headerlink" href="#xelatex" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-187"></span><p id="index-188">XeLaTeX is an alternative to pdfLaTeX and is run in almost the
+<span class="target" id="index-189"></span><p id="index-190">XeLaTeX is an alternative to pdfLaTeX and is run in almost the
 same way, except for the <code class="docutils literal"><span class="pre">--xelatex</span></code> flag to <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code>:</p>
 <div class="highlight-text"><div class="highlight"><pre><span></span>Terminal&gt; doconce format pdflatex mydoc --xelatex \
           --latex_code_style=lst
@@ -9054,7 +9079,7 @@ Terminal&gt; xelatex mydoc
 </div>
 <div class="section" id="from-pdf-to-e-book-formats">
 <span id="do2any-epub"></span><h3>From PDF to e-book formats<a class="headerlink" href="#from-pdf-to-e-book-formats" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-189"></span><p id="index-190">PDF (as generated from LaTeX above) can be read on most devices today.
+<span class="target" id="index-191"></span><p id="index-192">PDF (as generated from LaTeX above) can be read on most devices today.
 However, for Kindle and other devices specialized for e-books you
 need to convert to ePub or MOBI. The <a class="reference external" href="http://calibre-ebook.com/">Calibre</a>
 program can produce epub, mobi, and other e-book formats from PDF,
@@ -9064,7 +9089,7 @@ See the section <a class="reference internal" href="#mathtext"><span class="std 
 </div>
 <div class="section" id="microsoft-word-or-libreoffice">
 <span id="do2any-ms-ooffice"></span><h3>Microsoft Word or LibreOffice<a class="headerlink" href="#microsoft-word-or-libreoffice" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-191"></span><span class="target" id="index-192"></span><p id="index-193">Transforming DocOnce files to Word format is best done with the aid
+<span class="target" id="index-193"></span><span class="target" id="index-194"></span><p id="index-195">Transforming DocOnce files to Word format is best done with the aid
 of <code class="docutils literal"><span class="pre">pandoc</span></code>. A standard way is to first generate the Markdown format
 (<code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">pandoc</span></code>) and then use <code class="docutils literal"><span class="pre">pandoc</span></code> to generate a <code class="docutils literal"><span class="pre">.docx</span></code>
 file:</p>
@@ -9078,7 +9103,7 @@ does not work.</p>
 </div>
 <div class="section" id="jupyter-ipython-notebooks">
 <span id="do2any-ipynb"></span><h2>Jupyter (IPython) Notebooks<a class="headerlink" href="#jupyter-ipython-notebooks" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-194"></span><span class="target" id="index-195"></span><span class="target" id="index-196"></span><p id="index-197">DocOnce can generate json files for the Jupyter Notebook:</p>
+<span class="target" id="index-196"></span><span class="target" id="index-197"></span><span class="target" id="index-198"></span><p id="index-199">DocOnce can generate json files for the Jupyter Notebook:</p>
 <div class="highlight-text"><div class="highlight"><pre><span></span>Terminal&gt; doconce format ipynb mydoc  # results in mydoc.ipynb
 </pre></div>
 </div>
@@ -9239,7 +9264,7 @@ when running the <code class="docutils literal"><span class="pre">doconce</span>
 </div>
 <div class="section" id="matlab-notebooks">
 <span id="do2any-matlabnb"></span><h2>Matlab Notebooks<a class="headerlink" href="#matlab-notebooks" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-198"></span><span class="target" id="index-199"></span><span class="target" id="index-200"></span><p id="index-201">The Matlab <em>publish</em> format is aimed at notebooks, but the markup is
+<span class="target" id="index-200"></span><span class="target" id="index-201"></span><span class="target" id="index-202"></span><p id="index-203">The Matlab <em>publish</em> format is aimed at notebooks, but the markup is
 quite primitive, so only a small subset of DocOnce markup can translate
 successfully to the Matlab publish format. However, if you write within
 that subset, it is easy to create notebooks in DocOnce that can translate
@@ -9260,7 +9285,7 @@ any other output format):</p>
 </div>
 <div class="section" id="plain-ascii-text">
 <span id="do2any-ascii"></span><h2>Plain ASCII Text<a class="headerlink" href="#plain-ascii-text" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-202"></span><span class="target" id="index-203"></span><span class="target" id="index-204"></span><p id="index-205">We can go from DocOnce &#8220;back to&#8221; plain untagged text suitable for viewing
+<span class="target" id="index-204"></span><span class="target" id="index-205"></span><span class="target" id="index-206"></span><p id="index-207">We can go from DocOnce &#8220;back to&#8221; plain untagged text suitable for viewing
 in terminal windows, inclusion in email text, or for insertion in
 computer source code:</p>
 <div class="highlight-text"><div class="highlight"><pre><span></span>Terminal&gt; doconce format plain mydoc.do.txt  # results in mydoc.txt
@@ -9269,7 +9294,7 @@ computer source code:</p>
 </div>
 <div class="section" id="restructuredtext">
 <span id="do2any-rst"></span><h2>reStructuredText<a class="headerlink" href="#restructuredtext" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-206"></span><p id="index-207">Going from DocOnce to reStructuredText gives a lot of possibilities to
+<span class="target" id="index-208"></span><p id="index-209">Going from DocOnce to reStructuredText gives a lot of possibilities to
 go to other formats. First we filter the DocOnce text to a
 reStructuredText file <code class="docutils literal"><span class="pre">mydoc.rst</span></code>:</p>
 <div class="highlight-text"><div class="highlight"><pre><span></span>Terminal&gt; doconce format rst mydoc.do.txt
@@ -9315,8 +9340,8 @@ Some links for going from LaTeX to Word are listed below.</p>
 </div>
 <div class="section" id="sphinx">
 <span id="do2any-sphinx"></span><h2>Sphinx<a class="headerlink" href="#sphinx" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-208"></span><div class="section" id="the-basic-steps">
-<span id="index-209"></span><h3>The Basic Steps<a class="headerlink" href="#the-basic-steps" title="Permalink to this headline">¶</a></h3>
+<span class="target" id="index-210"></span><div class="section" id="the-basic-steps">
+<span id="index-211"></span><h3>The Basic Steps<a class="headerlink" href="#the-basic-steps" title="Permalink to this headline">¶</a></h3>
 <p>Sphinx documents demand quite some steps in their creation. We have automated
 most of the steps through the <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">sphinx_dir</span></code> command:</p>
 <div class="highlight-text"><div class="highlight"><pre><span></span>Terminal&gt; doconce sphinx_dir version=1.0 dirname=sphinxdir \
@@ -9388,12 +9413,12 @@ to <code class="docutils literal"><span class="pre">_static/myfile.txt</span></c
 However, I recommend instead that you manually copy
 files to <code class="docutils literal"><span class="pre">_static</span></code> when you want to link to them, or let your
 script which compiles the DocOnce document do it automatically.</p>
-<p id="index-210">One can get all links to open in a new window by adding the
+<p id="index-212">One can get all links to open in a new window by adding the
 option <code class="docutils literal"><span class="pre">--html_links_in_new_window</span></code> to the <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code> command.</p>
 </div>
 <div class="section" id="themes-2">
 <h3>Themes<a class="headerlink" href="#themes-2" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-211"></span><p id="index-212">DocOnce comes with a rich collection of HTML themes for Sphinx documents,
+<span class="target" id="index-213"></span><p id="index-214">DocOnce comes with a rich collection of HTML themes for Sphinx documents,
 much larger than what is found in the standard Sphinx distribution.
 Additional themes include
 <code class="docutils literal"><span class="pre">agni</span></code>,
@@ -9420,7 +9445,7 @@ and
 Some of the themes come with basic Sphinx, while others must be installed
 separately, see the <code class="docutils literal"><span class="pre">bundled/README_sphinx_themes.do.txt</span></code> file in
 the DocOnce source code tree for installation instructions.</p>
-<p id="index-213">The
+<p id="index-215">The
 <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">sphinx_dir</span></code> insert lots of extra code in the <code class="docutils literal"><span class="pre">conf.py</span></code>
 file to enable easy specification of information and,
 in particular,customization of themes.
@@ -9533,7 +9558,7 @@ You must run the generated <code class="docutils literal"><span class="pre">auto
 option to generate these type of documents.</p>
 </div>
 <div class="section" id="the-manual-sphinx-procedure">
-<span id="index-214"></span><h3>The manual Sphinx procedure<a class="headerlink" href="#the-manual-sphinx-procedure" title="Permalink to this headline">¶</a></h3>
+<span id="index-216"></span><h3>The manual Sphinx procedure<a class="headerlink" href="#the-manual-sphinx-procedure" title="Permalink to this headline">¶</a></h3>
 <p>If it is not desirable to use the autogenerated scripts explained
 above, here is the complete manual procedure of generating a
 Sphinx document from a file <code class="docutils literal"><span class="pre">mydoc.do.txt</span></code>.</p>
@@ -9622,7 +9647,7 @@ all such arguments can be customized both for Sphinx and LaTeX output.</p>
 </div>
 <div class="section" id="wiki-formats">
 <span id="do2any-wiki"></span><h2>Wiki Formats<a class="headerlink" href="#wiki-formats" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-215"></span><span class="target" id="index-216"></span><span class="target" id="index-217"></span><span class="target" id="index-218"></span><span class="target" id="index-219"></span><span class="target" id="index-220"></span><p id="index-221">There are many different wiki formats, but DocOnce only supports three:
+<span class="target" id="index-217"></span><span class="target" id="index-218"></span><span class="target" id="index-219"></span><span class="target" id="index-220"></span><span class="target" id="index-221"></span><span class="target" id="index-222"></span><p id="index-223">There are many different wiki formats, but DocOnce only supports three:
 <a class="reference external" href="http://code.google.com/p/support/wiki/WikiSyntax">Googlecode wiki</a>,
 <a class="reference external" href="http://www.mediawiki.org/wiki/Help:Formatting">MediaWiki</a>, and
 <a class="reference external" href="http://www.wikicreole.org/wiki/Creole1.0">Creole Wiki</a>.
@@ -9660,7 +9685,7 @@ one performs this substitution automatically (see next section).</p>
 </div>
 <div class="section" id="google-docs">
 <span id="do2any-google-docs"></span><h2>Google Docs<a class="headerlink" href="#google-docs" title="Permalink to this headline">¶</a></h2>
-<p id="index-222">Google Docs are normally made online in the interactive editor. However,
+<p id="index-224">Google Docs are normally made online in the interactive editor. However,
 you may upload a DocOnce document to Google Docs. This requires transforming
 the DocOnce document to one of the accepted formats for Google Docs:</p>
 <blockquote>
@@ -9692,7 +9717,7 @@ in Google Docs and the <a class="reference external" href="http://code.google.co
 <h2>Options for the <code class="docutils literal"><span class="pre">doconce</span></code> commands<a class="headerlink" href="#options-for-the-doconce-commands" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="doconce-format-command-line-options">
 <h3><code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code> command-line options<a class="headerlink" href="#doconce-format-command-line-options" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-223"></span><p id="index-224">The transformation of a DocOnce source to various format is done with
+<span class="target" id="index-225"></span><p id="index-226">The transformation of a DocOnce source to various format is done with
 the <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code> command, which has <em>a lot</em> of command-line options.
 These are printed out by <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">--help</span></code>. The output is listed
 here for convenience.</p>
@@ -9844,6 +9869,11 @@ Do not include header and footer in (LaTeX and HTML) documents.
 --no_emoji
 
 Remove all emojis.
+
+
+--siunits
+
+Allow siunitx MathJax/LaTeX package for support of SI units in various formats
 
 
 --allow_refs_to_external_docs
@@ -10178,7 +10208,7 @@ siamltexmm: SIAM&#39;s extended (blue) multimedia style for papers.
 
 --latex_font=...
 
-LaTeX font choice: helvetica, palatino, std (Computer Modern, default).
+LaTeX font choice: helvetica, palatino, utopia, std (Computer Modern, default).
 
 
 --latex_code_style=...
@@ -10794,7 +10824,7 @@ Combine paragraphs to one line (does not work well).
 </div>
 <div class="section" id="installation-of-doconce-and-its-dependencies">
 <span id="install-doconce"></span><h2>Installation of DocOnce and its Dependencies<a class="headerlink" href="#installation-of-doconce-and-its-dependencies" title="Permalink to this headline">¶</a></h2>
-<p id="index-225">Below, we explain the manual installation of all software that may be
+<p id="index-227">Below, we explain the manual installation of all software that may be
 needed when working with DocOnce documents.
 The impatient way to install everything that is needed is to use
 Anaconda Python and the <code class="docutils literal"><span class="pre">conda</span></code> program:</p>

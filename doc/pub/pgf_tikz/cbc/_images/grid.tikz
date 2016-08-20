@@ -1,0 +1,3 @@
+\begin{tikzpicture}
+\draw[step=1cm, gray, thin] (0,0) grid (5,5);
+\end{tikzpicture}

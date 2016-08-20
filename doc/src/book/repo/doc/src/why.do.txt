@@ -1,0 +1,12 @@
+========= Why DocOnce? =========
+label{ch:why}
+
+Scientific books are very often written in LaTeX, but LaTeX is primarily
+suited for PDF output on paper. Today, your readers will be using different
+devices like tablet and phones for reading, and to address these media
+you need to write HTML. DocOnce lets you write in a syntax that is as
+simple as you use in email, and can then automatically translate that
+syntax to highly professional LaTeX or HTML for output (it can produce
+other formats too). So, the writing itself is easier since you avoid a lot
+of LaTeX or HTML tags, and the output is more versatile. We refer to the
+DocOnce tutorial and the web page for more arguments!

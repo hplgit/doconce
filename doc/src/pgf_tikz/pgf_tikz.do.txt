@@ -1,0 +1,68 @@
+TITLE: Testing PGF and TikZ support in DocOnce
+AUTHOR: Kristian Gregorius Hustad Email: krihus@ifi.uio.no
+DATE: today
+
+__Summary.__
+Quick demo of how to make figures with TikZ in DocOnce.
+
+======= Ideas =======
+
+"TikZ": "http://www.math.uni-leipzig.de/~hellmund/LaTeX/pgf-tut.pdf"
+is a very strong tool for making figures in LaTeX. DocOnce supports
+such figures: if a figure file `myfig` exists in a version
+`myfig.tikz`, DocOnce will, in case of `latex` or `pdflatex` output,
+utilize the `myfig.tikz` figure directly. The problem is what do to
+with other output formats. In `html` format one can use a
+corresponding SVG version of the figure, and for other formats, one
+needs a plain PNG file.  DocOnce will automatically create such
+versions of the figure and store them along with `myfig.tikz`, as is
+done when other figure formats need automatic conversion.
+
+======= A modest beginning =======
+
+FIGURE: [line, width=500] This shape is commonly referred to as a *straight line*. label{line}
+
+The most fundamental shape is the line in Figure ref{line}. See the
+"source code":
+"https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/line.tikz"
+for how this TikZ figure is defined in LaTeX as a file `line.tikz`
+(and included in DocOnce through `FIGURE: [line, width=500] caption`).  Such
+lines can be combined to form other shapes, e.g., a square
+as in Figure ref{square}, but that figure was created directly by
+the "`rectangle`":
+"https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/square.tikz"
+TikZ command.
+
+FIGURE: [square, width=300] This square is formed by four straight lines. label{square}
+
+A "grid":
+"https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/grid.tikz"
+can also be easily made.
+
+FIGURE: [grid, width=300] This is a grid with 5 x 5 cells
+
+A circle, however, cannot be formed by a finite number of straight lines.
+It requires "special code":
+"https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/circle.tikz".
+
+FIGURE: [circle] This circle is drawn in blue with a dashed line.
+
+
+======= More advanced figures =======
+
+FIGURE: [maze, width=400] A "maze": "https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/maze.tikz" can be drawn by combining rectangle elements.
+
+FIGURE: [graph] TikZ is quite well suited to draw "graphs": "https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/graph.tikz".
+
+
+======= Plotting functions =======
+
+TikZ can be used to plot functions. The next figure will be inlined.
+
+FIGURE: [plot1, width=600]
+
+See the "source code": "https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/plot1.tikz" for how you make this figure.
+
+FIGURE: [plot2, width=500] The functions can even be labeled!
+
+All details are in the "source code": "https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/plot2.tikz".

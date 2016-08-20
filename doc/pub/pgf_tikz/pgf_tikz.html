@@ -1,0 +1,228 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Testing PGF and TikZ support in DocOnce">
+
+<title>Testing PGF and TikZ support in DocOnce</title>
+
+<!-- Bootstrap style: bootstrap_bluegray -->
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_bootstrap/css/bootstrap_bluegray.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+<style type="text/css">
+
+/* Add scrollbar to dropdown menus in bootstrap navigation bar */
+.dropdown-menu {
+   height: auto;
+   max-height: 400px;
+   overflow-x: hidden;
+}
+
+/* Adds an invisible element before each target to offset for the navigation
+   bar */
+.anchor::before {
+  content:"";
+  display:block;
+  height:50px;      /* fixed header height for style bootstrap_bluegray */
+  margin:-50px 0 0; /* negative fixed header height */
+}
+</style>
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(u'Ideas', 1, None, '___sec0'),
+              (u'A modest beginning', 1, None, '___sec1'),
+              (u'More advanced figures', 1, None, '___sec2'),
+              (u'Plotting functions', 1, None, '___sec3')]}
+end of tocinfo -->
+
+<body>
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="pgf_tikz.html">Testing PGF and TikZ support in DocOnce</a>
+  </div>
+
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;">Ideas</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">A modest beginning</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">More advanced figures</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">Plotting functions</a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<!-- ------------------- main content ---------------------- -->
+
+
+
+<div class="jumbotron">
+<center><h1>Testing PGF and TikZ support in DocOnce</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Kristian Gregorius Hustad -->
+
+<center>
+<b>Kristian Gregorius Hustad</b>  (<tt>krihus at ifi.uio.no</tt>)
+</center>
+
+<p>
+<!-- institution(s) -->
+
+<br>
+<p>
+<center><h4>Aug 5, 2016</h4></center> <!-- date -->
+<br>
+<p>
+<b>Summary.</b> Quick demo of how to make figures with TikZ in DocOnce.
+
+<p>
+</div> <!-- end jumbotron -->
+
+<h1 id="___sec0" class="anchor">Ideas </h1>
+
+<p>
+<a href="http://www.math.uni-leipzig.de/~hellmund/LaTeX/pgf-tut.pdf" target="_blank">TikZ</a>
+is a very strong tool for making figures in LaTeX. DocOnce supports
+such figures: if a figure file <code>myfig</code> exists in a version
+<code>myfig.tikz</code>, DocOnce will, in case of <code>latex</code> or <code>pdflatex</code> output,
+utilize the <code>myfig.tikz</code> figure directly. The problem is what do to
+with other output formats. In <code>html</code> format one can use a
+corresponding SVG version of the figure, and for other formats, one
+needs a plain PNG file.  DocOnce will automatically create such
+versions of the figure and store them along with <code>myfig.tikz</code>, as is
+done when other figure formats need automatic conversion.
+
+<h1 id="___sec1" class="anchor">A modest beginning </h1>
+
+<p>
+<center> <!-- figure label: --> <div id="line"></div> <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 1:  This shape is commonly referred to as a <em>straight line</em>.  <!-- caption label: line --> </p></center>
+<p><img src="fig/line.png" align="bottom" width=500></p>
+</center>
+
+<p>
+The most fundamental shape is the line in Figure <a href="#line">1</a>. See the
+<a href="https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/line.tikz" target="_blank">source code</a>
+for how this TikZ figure is defined in LaTeX as a file <code>line.tikz</code>
+(and included in DocOnce through <code>FIGURE: [line, width=500] caption</code>).  Such
+lines can be combined to form other shapes, e.g., a square
+as in Figure <a href="#square">2</a>, but that figure was created directly by
+the <a href="https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/square.tikz" target="_blank"><tt>rectangle</tt></a>
+TikZ command.
+
+<p>
+<center> <!-- figure label: --> <div id="square"></div> <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 2:  This square is formed by four straight lines.  <!-- caption label: square --> </p></center>
+<p><img src="fig/square.png" align="bottom" width=300></p>
+</center>
+
+<p>
+A <a href="https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/grid.tikz" target="_blank">grid</a>
+can also be easily made.
+
+<p>
+<center>  <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 3:  This is a grid with 5 x 5 cells </p></center>
+<p><img src="fig/grid.png" align="bottom" width=300></p>
+</center>
+
+<p>
+A circle, however, cannot be formed by a finite number of straight lines.
+It requires <a href="https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/circle.tikz" target="_blank">special code</a>.
+
+<p>
+<center>  <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 4:  This circle is drawn in blue with a dashed line. </p></center>
+<p><img src="fig/circle.png" align="bottom" ></p>
+</center>
+
+<h1 id="___sec2" class="anchor">More advanced figures </h1>
+
+<p>
+<center>  <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 5:  A <a href="https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/maze.tikz" target="_blank">maze</a> can be drawn by combining rectangle elements. </p></center>
+<p><img src="fig/maze.png" align="bottom" width=400></p>
+</center>
+
+<p>
+<center>  <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 6:  TikZ is quite well suited to draw <a href="https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/graph.tikz" target="_blank">graphs</a>. </p></center>
+<p><img src="fig/graph.png" align="bottom" ></p>
+</center>
+
+<h1 id="___sec3" class="anchor">Plotting functions </h1>
+
+<p>
+TikZ can be used to plot functions. The next figure will be inlined.
+
+<p>
+<br /><br /><center><p><img src="fig/plot1.png" align="bottom" width=600></p></center><br /><br />
+
+<p>
+See the <a href="https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/plot1.tikz" target="_blank">source code</a> for how you make this figure.
+
+<p>
+<center>  <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 7:  The functions can even be labeled! </p></center>
+<p><img src="fig/plot2.png" align="bottom" width=500></p>
+</center>
+
+<p>
+All details are in the <a href="https://github.com/hplgit/doconce/blob/master/doc/src/pgf_tikz/fig/plot2.tikz" target="_blank">source code</a>.
+
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+</body>
+</html>
+    
+

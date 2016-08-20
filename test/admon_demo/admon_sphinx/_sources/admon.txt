@@ -7,7 +7,7 @@ Testing admons
 %%%%%%%%%%%%%%
 
 :Authors: H. P. Langtangen
-:Date: Jul 18, 2016
+:Date: Jul 29, 2016
 
 .. !split
 
@@ -105,6 +105,12 @@ box, it is not a new paragraph):
    :label: _auto1
 
          f(x) = \sin(x)e^{1-x}
+
+
+**Hint.**
+
+Newton's method requires a good start vector to converge fast.
+
 
 
 Let's begin a new paragraph and show a box with code only:
