@@ -1,0 +1,6 @@
+.git
+.dockerignore
+.TODO
+Dockerfile
+src
+srclib

@@ -6,7 +6,7 @@
 set -x  # make sure each command is printed in the terminal
 
 function apt_install {
-  sudo apt-get -y install $1
+  sudo apt-get -y --no-install-recommends install $1
   if [ $? -ne 0 ]; then
     echo "could not install $1 - abort"
     exit 1
@@ -21,7 +21,7 @@ function pip_install {
   fi
 }
 
-sudo apt-get update --fix-missing
+sudo apt-get update --fix-missing -qq
 
 # Installation script for doconce and all dependencies
 
@@ -31,12 +31,18 @@ sudo apt-get update --fix-missing
 # vagrantbox/doc/src/vagrant/src-vagrant/deb2sh.py
 # (git clone git@github.com:hplgit/vagrantbox.git)
 
+# If no python installation available, install default python
+command -v python >/dev/null 2>&1 || apt_install python
+
 # Python v2.7 must be installed (doconce does not work with v3.x)
 pyversion=`python -c 'import sys; print sys.version[:3]'`
 if [ $pyversion != '2.7' ]; then echo "Python v${pyversion} cannot be used with DocOnce"; exit 1; fi
 
 # Install downloaded source code in subdirectory srclib
 if [ ! -d srclib ]; then mkdir srclib; fi
+
+# Build essentials
+apt_install build-essential
 
 # Version control systems
 apt_install mercurial
@@ -116,7 +122,10 @@ apt_install texlive-latex-extra
 apt_install texlive-latex-recommended
 apt_install texlive-math-extra
 apt_install texlive-font-utils
+apt_install texlive-fonts-extra
 apt_install texlive-humanities
+apt_install texlive-generic-extra
+apt_install texlive-xetex
 apt_install latexdiff
 apt_install auctex
 
