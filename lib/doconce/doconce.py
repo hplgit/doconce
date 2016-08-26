@@ -1307,6 +1307,7 @@ def insert_code_from_file(filestr, format):
 
             # Check if the code environment is explicitly specified
             if 'envir=' in line:
+                filetype = "unknown"
                 m = re.search(r'envir=([a-zN0-9_-]+)', line)
                 if m:
                     code_envir = m.group(1).strip()
