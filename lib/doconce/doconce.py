@@ -1444,7 +1444,8 @@ def insert_code_from_file(filestr, format):
 
                 if remove_indentation:
                     for k in range(len(codelines)):  # (don't use i!)
-                        codelines[k] = codelines[k][remove_indentation:]
+                        if len(codelines[k]) >= remove_indentation:
+                            codelines[k] = codelines[k][remove_indentation:]
 
                 code = ''.join(codelines)
                 code = code.rstrip() # remove trailing whitespace

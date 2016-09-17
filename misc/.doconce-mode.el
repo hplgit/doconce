@@ -7,7 +7,7 @@
 
 
 ;; Key bindings, see http://ergoemacs.org/emacs/keyboard_shortcuts.html
-(add-hook 'doconce-hook
+(add-hook 'DocOnce-hook
  (lambda ()
  (local-set-key (kbd "\C-chelp") "
 |--------------------------------------------------------|
