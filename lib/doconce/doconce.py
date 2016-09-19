@@ -856,9 +856,9 @@ def syntax_check(filestr, format):
     if found_problem:
         # Make Unix helper script to extract these labels
         with open('tmp_missing_labels.sh', 'w') as f:
-            f.write('rm -rf tmp_mako__* tmp_preprocess__*\n')
+            f.write('#rm -rf tmp_mako__* tmp_preprocess__*\n')
             for ref in non_defined:
-                f.write('echo "\n\*********************** %s *************************"\ngrep --color --with-filename --line-number --context=1 "{%s}" *.do.txt\n' % (ref, ref))
+                f.write("""find . -name '*.do.txt' -exec grep --color --with-filename --line-number "{%s}" {} \\;\n""" % (ref))
         errwarn('    run the generated script tmp_missing_labels.sh\n    to search for these missing labels!')
 
     if found_problem and not option('allow_refs_to_external_docs'):
@@ -889,6 +889,7 @@ Causes of missing labels:
         filestr2 = re.sub(r'\$.+?\$', '', filestr, flags=re.DOTALL) # strip math
         # Filer out @@@CODE, verbatim, boldface, paragraph, idx, and comments
         filestr2 = re.sub(r'idx\{(.+?)\}', '', filestr2, flags=re.MULTILINE)
+        filestr2 = re.sub('!bt.*?!et', '', filestr2, flags=re.DOTALL)
         filestr2 = re.sub(INLINE_TAGS['paragraph'], '', filestr2,
                           flags=re.MULTILINE)
         filestr2 = re.sub(r'^@@@CODE.+', '', filestr2,
@@ -907,7 +908,7 @@ Causes of missing labels:
                             re.findall(underscore_word_pattern, filestr2)]
         if underscore_words:
             errwarn('*** warning: latex format will have problem with words')
-            errwarn('    containing underscores:\n')
+            errwarn('    containing underscores (this warning is very uncertain, might be wrong too):\n')
             errwarn('\n'.join(underscore_words))
             errwarn('\n    typeset these words with `inline verbatim` or escape with backslash')
             m = re.search(underscore_word_pattern, filestr2)
