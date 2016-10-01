@@ -2076,7 +2076,7 @@ def html_movie(m):
                     errwarn('    could not find any .ogg/.mp4/.webm version of this filename')
                     import time
                     time.sleep(5)  # let the warning shine for a while
-                    _abort()
+                    #_abort()
 
             text += """
 </video>
