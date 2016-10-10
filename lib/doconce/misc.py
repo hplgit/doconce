@@ -8672,6 +8672,15 @@ the file) and then try again.
             # Remove % (matplotlib) directives from source
             source = re.sub('^%.+\n', '', source, flags=re.MULTILINE).strip()
             s = '\n!bc py' + ('hid' if collapsed else 'cod') + '\n' + source + '\n!ec\n'
+
+            # include LaTeX output if present
+            for output in cell['outputs']:
+                if 'data' in output:
+                    if 'text/latex' in output['data']:
+                        latex_output = output['data']['text/latex']
+                        # replace leading and trailing '$$'
+                        latex_output = "\\[%s\\]" % latex_output[2:-2]
+                        s += "!bt\n" + latex_output + "\n!et\n"
         dostr_list.append(s)
         cell_type_prev = cell['cell_type']
     # Fix common problems

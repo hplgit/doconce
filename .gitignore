@@ -3,6 +3,7 @@ syntax: glob
 *.o
 *.so
 *.a
+*.pyc
 # temporary files:
 build
 *.bak
