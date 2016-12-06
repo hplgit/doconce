@@ -950,7 +950,7 @@ def find_nonascii_chars():
             with open(filename, 'r') as f:
                 text = f.read()
         else:
-            print 'File %s not found' & filename
+            print 'File %s not found' % filename
             sys.exit(1)
         for i, c in enumerate(text):
             if ord(c) > 127:
