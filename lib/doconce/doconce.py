@@ -166,10 +166,10 @@ def errwarn(msg, newline=True):
 
 from common import *
 from misc import option, which, _abort
-import html, latex, pdflatex, rst, sphinx, st, epytext, plaintext, gwiki, mwiki, cwiki, pandoc, ipynb, xml, matlabnb
+import html, latex, pdflatex, rst, sphinx, st, epytext, plaintext, gwiki, mwiki, cwiki, pandoc, ipynb, matlabnb
 
 def supported_format_names():
-    return 'html', 'latex', 'pdflatex', 'rst', 'sphinx', 'st', 'epytext', 'plain', 'gwiki', 'mwiki', 'cwiki', 'pandoc', 'ipynb', 'xml', 'matlabnb'
+    return 'html', 'latex', 'pdflatex', 'rst', 'sphinx', 'st', 'epytext', 'plain', 'gwiki', 'mwiki', 'cwiki', 'pandoc', 'ipynb', 'matlabnb'
 
 def doconce_envirs():                     # begin-end environments
     return ['c', 't',                     # verbatim and tex blocks
@@ -4284,7 +4284,7 @@ def doconce2format(filestr, format):
            LIST, ARGLIST,TABLE, EXERCISE, FIGURE_EXT, CROSS_REFS, INDEX_BIB, \
            TOC, ENVIRS, INTRO, OUTRO
 
-    for module in html, latex, pdflatex, rst, sphinx, st, epytext, plaintext, gwiki, mwiki, cwiki, pandoc, ipynb, xml, matlabnb:
+    for module in html, latex, pdflatex, rst, sphinx, st, epytext, plaintext, gwiki, mwiki, cwiki, pandoc, ipynb, matlabnb:
         #errwarn('calling define function in', module.__name__)
         module.define(
             FILENAME_EXTENSION,
