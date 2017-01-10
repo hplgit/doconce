@@ -1,11 +1,18 @@
+from __future__ import print_function
+from __future__ import absolute_import
+from builtins import zip
+from builtins import str
+from builtins import range
+from past.builtins import basestring
+from builtins import object
 import re, os, glob, sys, glob
-from common import table_analysis, plain_exercise, insert_code_and_tex, \
+from .common import table_analysis, plain_exercise, insert_code_and_tex, \
      indent_lines, online_python_tutor, bibliography, \
      is_file_or_url, envir_delimiter_lines, doconce_exercise_output, \
      get_legal_pygments_lexers, has_custom_pygments_lexer, emoji_url, \
      fix_ref_section_chapter
-from misc import option, _abort
-from doconce import errwarn, locale_dict
+from .misc import option, _abort
+from .doconce import errwarn, locale_dict
 
 box_shadow = 'box-shadow: 8px 8px 5px #888888;'
 #box_shadow = 'box-shadow: 0px 0px 10px #888888'
@@ -42,7 +49,7 @@ def add_to_file_collection(filename, doconce_docname=None, mode='a'):
     and this name is used to set the filename of the file collection.
     Later, `doconce_docname` is not given (otherwise previous info is erased).
     """
-    if isinstance(filename, (str,unicode)):
+    if isinstance(filename, str):
         filenames = [filename]
     elif isinstance(filename, (list,tuple)):
         filenames = filename
@@ -657,7 +664,7 @@ def toc2html(html_style, bootstrap=True,
         _abort()
     return toc_html
 
-class CreateApp():
+class CreateApp(object):
     """
     Class for interactive Bokeh plots.
     Written by Fredrik Eikeland Fossan <fredrik.e.fossan@ntnu.no>.
@@ -712,7 +719,7 @@ class CreateApp():
         self.x = linspace(xrange[0], xrange[1], N)
         self.reverseAxes = reverseAxes
         if sliderDict != None:
-            self.parameters = sliderDict.keys()
+            self.parameters = list(sliderDict.keys())
 
             for n, param in enumerate(self.parameters):
                 exec("sliderInstance = Slider(" + sliderDict[param] + ")") # Todo: Fix so exec is not needed
@@ -870,7 +877,7 @@ def embed_IBPLOTs(filestr, format):
     return filestr, session
 
 def embed_newcommands(filestr):
-    from expand_newcommands import process_newcommand
+    from .expand_newcommands import process_newcommand
     newcommands_files = list(
         sorted([name
                 for name in glob.glob('newcommands*.tex')
@@ -1150,7 +1157,7 @@ function show_hide_code%d(){
             tex_blocks[i] = re.sub(r'<([^ {}])', '< \g<1>', tex_blocks[i])
             errwarn('    changed to')
             errwarn(tex_blocks[i])
-            print
+            print()
 
     if option('wordpress'):
         # Change all equations to $latex ...$\n
@@ -1240,7 +1247,7 @@ function show_hide_code%d(){
             tex_blocks[i] = re.sub(r'^label\{', '\\label{', tex_blocks[i],
                                    flags=re.MULTILINE)
 
-    from doconce import debugpr
+    from .doconce import debugpr
     debugpr('File before call to insert_code_and_tex (format html):', filestr)
     filestr = insert_code_and_tex(filestr, code_blocks, tex_blocks, format)
     debugpr('File after call to insert_code_and tex (format html):', filestr)
@@ -1329,7 +1336,7 @@ function show_hide_code%d(){
             filestr = latex + filestr
 
     # Copyright
-    from common import get_copyfile_info
+    from .common import get_copyfile_info
     cr_text = get_copyfile_info(filestr, format=format)
     if cr_text is not None:
         filestr = filestr.replace('Copyright COPYRIGHT_HOLDERS',
@@ -1362,7 +1369,7 @@ function show_hide_code%d(){
                          filestr, flags=re.DOTALL)
 
     # Find all URLs to files (non http, ftp)
-    import common
+    from . import common
     pattern = '<a href=' + common._linked_files
     files = re.findall(pattern, filestr)
     for f, dummy in files:
@@ -1409,7 +1416,7 @@ function show_hide_code%d(){
     # toc_html lacks formatting, run some basic formatting here
     tags = 'emphasize', 'bold', 'math', 'verbatim', 'colortext'
     # drop URLs in headings?
-    import common
+    from . import common
     for tag in tags:
         toc_html = re.sub(common.INLINE_TAGS[tag],
                           common.INLINE_TAGS_SUBST[format][tag],
@@ -1469,7 +1476,7 @@ function show_hide_code%d(){
         # Check that template does not have "main content" begin and
         # end lines that may interfere with the automatically generated
         # ones in DocOnce (may destroy the split_html command)
-        from doconce import main_content_char as _c
+        from .doconce import main_content_char as _c
         m = re.findall(r'(<!-- %s+ main content %s+)' % (_c,_c), template)
         if m:
             errwarn('*** error: template contains lines that may interfere')
@@ -1984,7 +1991,7 @@ def html_movie(m):
         # frame_*.png
         # frame_%04d.png:0->120
         # http://some.net/files/frame_%04d.png:0->120
-        import DocWriter
+        from . import DocWriter
         try:
             header, jscode, form, footer, frames = \
                     DocWriter.html_movie(filename, **kwargs)
@@ -2256,7 +2263,7 @@ def html_ref_and_label(section_label2title, format, filestr):
 
     filestr = '\n'.join(lines)
 
-    for label, no in label2no.iteritems():
+    for label, no in label2no.items():
         filestr = filestr.replace('ref{%s}' % label,
                                   '<a href="#%s">%s</a>' % (label, str(no)))
         # we allow 'non-number numbers' for custom environments like 'theorem A'
@@ -2324,7 +2331,7 @@ def html_exercise(exer):
 
 def html_index_bib(filestr, index, citations, pubfile, pubdata):
     if citations:
-        from common import cite_with_multiple_args2multiple_cites
+        from .common import cite_with_multiple_args2multiple_cites
         filestr = cite_with_multiple_args2multiple_cites(filestr)
     for label in citations:
         filestr = filestr.replace('cite{%s}' % label,
@@ -2337,12 +2344,12 @@ def html_index_bib(filestr, index, citations, pubfile, pubdata):
                 bibtext = bibtext.replace(
                     'label{%s}' % label, '<a name="%s"></a>' % label)
                 # (<a name=""></a> is later replaced by a div tag)
-            except UnicodeDecodeError, e:
+            except UnicodeDecodeError as e:
                 if "can't decode byte" in str(e):
                     try:
                         bibtext = bibtext.decode('utf-8').replace(
                             'label{%s}' % label, '<a name="%s"></a>' % label)
-                    except UnicodeDecodeError, e:
+                    except UnicodeDecodeError as e:
                         errwarn('UnicodeDecodeError: ' + e)
                         errwarn('*** error: problems in %s' % pubfile)
                         errwarn('    with key ' + label)
@@ -3156,7 +3163,7 @@ body { %s; }
             # Make link back to the main HTML file
             outfilename = option('html_output=', None)
             if outfilename is None:
-                from doconce import dofile_basename
+                from .doconce import dofile_basename
                 outfilename = dofile_basename + '.html'
             else:
                 if not outfilename.endswith('html'):
@@ -3214,7 +3221,7 @@ body { %s; }
     keywords = [keyword for keyword in keywords
                 if not '`' in keyword]
     # Keywords paragraph
-    import common
+    from . import common
     m = re.search(common.INLINE_TAGS['keywords'], filestr, flags=re.MULTILINE)
     if m:
         keywords += re.split(r', *', m.group(1))
@@ -3301,7 +3308,7 @@ Automatically generated HTML file from DocOnce source
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.js"></script>
 """
 
-    from common import has_copyright
+    from .common import has_copyright
     copyright_, symbol = has_copyright(filestr)
     if copyright_:
         OUTRO['html'] += """
@@ -3346,10 +3353,10 @@ def latin2html(text):
     text_new = []
     try:
         text = text.decode('utf-8')
-    except UnicodeDecodeError, e:
+    except UnicodeDecodeError as e:
         try:
             text = text.decode('latin-1')
-        except UnicodeDecodeError, e:
+        except UnicodeDecodeError as e:
             errwarn('Tried to interpret the file as utf-8 (failed) and latin-1 (failed) - aborted')
             raise e
     #except UnicodeEncodeError, e:
@@ -3360,7 +3367,7 @@ def latin2html(text):
                 text_new.append('&#%d;' % ord(c))
             else:
                 text_new.append(c)
-        except Exception, e:
+        except Exception as e:
             errwarn(e)
             errwarn('character causing problems: ' + c)
             raise e.__class__('%s: character causing problems: %s' % \

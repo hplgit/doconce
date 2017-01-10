@@ -1,3 +1,12 @@
+from __future__ import print_function
+from __future__ import absolute_import
+from future import standard_library
+standard_library.install_aliases()
+from builtins import zip
+from builtins import chr
+from builtins import str
+from builtins import range
+from past.builtins import basestring
 # -*- coding: utf-8 -*-
 global dofile_basename
 
@@ -149,9 +158,9 @@ def _rmdolog():
 def errwarn(msg, newline=True):
     """Function for reporting errors and warnings to screen and file."""
     if newline:
-        print msg
+        print(msg)
     else:
-        print msg,
+        print(msg, end=' ')
     logfilename = dofile_basename + '.dlog'
     mode = 'a' if os.path.isfile(logfilename) else 'w'
     if encoding:
@@ -164,9 +173,9 @@ def errwarn(msg, newline=True):
     if newline:
         err.write('\n')
 
-from common import *
-from misc import option, which, _abort
-import html, latex, pdflatex, rst, sphinx, st, epytext, plaintext, gwiki, mwiki, cwiki, pandoc, ipynb, matlabnb
+from .common import *
+from .misc import option, which, _abort
+from . import html, latex, pdflatex, rst, sphinx, st, epytext, plaintext, gwiki, mwiki, cwiki, pandoc, ipynb, matlabnb
 
 def supported_format_names():
     return 'html', 'latex', 'pdflatex', 'rst', 'sphinx', 'st', 'epytext', 'plain', 'gwiki', 'mwiki', 'cwiki', 'pandoc', 'ipynb', 'matlabnb'
@@ -301,13 +310,13 @@ def markdown2doconce(filestr, format=None, ipynb_mode=False):
     quote_envir = 'quote'
     quote_envir = 'block'
 
-    from common import inline_tag_begin, inline_tag_end
+    from .common import inline_tag_begin, inline_tag_end
     extended_markdown_language2dolang = dict(
         Python='py', Ruby='rb', Fortran='f', Cpp='cpp', C='c',
         Perl='pl', Bash='sh', HTML='html')
 
     bc_postfix = '-t' if ipynb_mode else ''
-    from common import unindent_lines
+    from .common import unindent_lines
     regex = [
         # Computer code with language specification
         (r"\n?```([A-Za-z]+)(.*?)\n```", lambda m: "\n\n!bc %scod%s%s\n!ec\n" % (extended_markdown_language2dolang[m.group(1)], bc_postfix, unindent_lines(m.group(2).rstrip(), trailing_newline=False)), re.DOTALL), # language given
@@ -403,7 +412,7 @@ def markdown2doconce(filestr, format=None, ipynb_mode=False):
                         lines[i] = '  *' + lines[i][1:]
                     elif re.search(r'^\d+\. ', lines[i]):
                         lines[i] = re.sub(r'^\d+\. ', '  o ', lines[i])
-                except Exception, e:
+                except Exception as e:
                     raise e
         new_quote = '\n'.join(lines)
         # Cannot use re.sub since there are many strange chars (for regex)
@@ -812,7 +821,7 @@ def syntax_check(filestr, format):
     pattern = r'^[^#](---\s\w|\w\s---)'
     m = re.search(pattern, filestr, flags=re.MULTILINE)
     if m:
-        print '*** error: mdash (---) cannot have spaces around it'
+        print('*** error: mdash (---) cannot have spaces around it')
         errwarn(filestr[m.start()-20:m.start()+20])
         _abort()
 
@@ -828,7 +837,7 @@ def syntax_check(filestr, format):
     found_problem = False
     for eq_label in eq_labels:
         m_ = [re.search(pattern % eq_label, filestr) for pattern in
-              pattern1, pattern2, pattern3]
+              (pattern1, pattern2, pattern3)]
         for m in m_:
             if m:
                 errwarn('*** error: reference to equation label "%s" is without parentheses' % eq_label)
@@ -875,7 +884,7 @@ Causes of missing labels:
 
     # Quotes or inline verbatim is not allowed inside emphasize and bold:
     # (force non-blank in the beginning and end to avoid interfering with lists)
-    from common import inline_tag_begin, inline_tag_end
+    from .common import inline_tag_begin, inline_tag_end
     pattern = r'%s\*(?P<subst>[^ ][^*]+?[^ ])\*%s' % (inline_tag_begin, inline_tag_end)
     for dummy1, dummy2, phrase, dummy3, dummy4 in \
             re.findall(pattern, filestr, flags=re.MULTILINE):
@@ -1286,12 +1295,12 @@ def insert_code_from_file(filestr, format):
 
             try:
                 if 'http' in filename:
-                    import urllib
-                    codefile = urllib.urlopen(filename)
+                    import urllib.request, urllib.parse, urllib.error
+                    codefile = urllib.request.urlopen(filename)
                     errwarn('... fetching source code from ' + path_prefix)
                 else:
                     codefile = open(filename, 'r')
-            except IOError, e:
+            except IOError as e:
                 errwarn('*** error: could not open the file %s used in\n%s' % (filename, line))
                 if CREATE_DUMMY_FILE and 'No such file or directory' in str(e):
                     errwarn('    No such file or directory!')
@@ -1385,8 +1394,7 @@ def insert_code_from_file(filestr, format):
                 try:
                     from_, to_ = patterns.split('@')
                 except:
-                    raise SyntaxError, \
-                    'Syntax error: missing @ in regex in line\n  %s' % line
+                    raise SyntaxError('Syntax error: missing @ in regex in line\n  %s' % line)
 
                 errwarn('copying %s regex "%s" until %s\n     file: %s,' %
                         ('after' if fromto == 'from-to:' else 'from',
@@ -1459,7 +1467,7 @@ def insert_code_from_file(filestr, format):
                         errwarn('error: could not find regex "%s"!' % to_)
                     if from_found and to_found:
                         errwarn('"From" and "to" regex match at the same line - empty text.')
-                    print
+                    print()
                     _abort()
                 errwarn(' lines %d-%d' % (from_line, to_line), newline=False)
             codefile.close()
@@ -1563,7 +1571,7 @@ def exercises(filestr, format, code_blocks, tex_blocks):
     # __Hint 1.__ some paragraph...,
     # __Hint 2.__ ...
 
-    from common import _CODE_BLOCK, _MATH_BLOCK
+    from .common import _CODE_BLOCK, _MATH_BLOCK
 
     all_exer = []   # collection of all exercises
     exer = {}       # data for one exercise, to be appended to all_exer
@@ -1875,13 +1883,13 @@ def exercises(filestr, format, code_blocks, tex_blocks):
         filestr = '\n'.join(newlines)
         solutions = '\n'.join(solutions)
     except UnicodeDecodeError:
-        print '****** DOES THIS OCCUR AT ALL??? ******'
+        print('****** DOES THIS OCCUR AT ALL??? ******')
         filestr = '\n'.join([n.decode('utf-8') for n in newlines if isinstance(n, str)])
         solutions = '\n'.join([n.decode('utf-8') for n in solutions if isinstance(n, str)])
 
 
     if option('without_solutions') and option('solutions_at_end'):
-        from common import chapter_pattern
+        from .common import chapter_pattern
         if re.search(chapter_pattern, filestr, flags=re.MULTILINE):
             has_chapters = True
         else:
@@ -2291,7 +2299,7 @@ def typeset_tables(filestr, format):
     The list is easily translated to various output formats
     by other modules.
     """
-    from StringIO import StringIO
+    from io import StringIO
     result = StringIO()
 
     # Fix: make sure there is a blank line after the table
@@ -2623,7 +2631,7 @@ def typeset_lists(filestr, format, debug_info=[]):
     """
     debugpr('*** List typesetting phase + comments and blank lines ***')
     import string
-    from StringIO import StringIO
+    from io import StringIO
     result = StringIO()
     lastindent = 0
     lists = []
@@ -3111,7 +3119,7 @@ def handle_cross_referencing(filestr, format, tex_blocks):
 
     # 3. Replace ref by hardcoded numbers from a latex .aux file
     refaux = 'refaux{' in filestr
-    from latex import aux_label2number
+    from .latex import aux_label2number
     label2number = aux_label2number()
     if format not in ('latex', 'pdflatex') and refaux and not label2number:
         errwarn('*** error: used refaux{} reference(s), but no option --replace_ref_by_latex_auxno=')
@@ -3468,7 +3476,7 @@ def interpret_authors(filestr, format):
         # Avoid multiple versions of the same institution in copyright_
         #keys = list(set(list(copyright_.keys()))) # does not preserve seq.
         keys = []
-        for key in copyright_.keys():
+        for key in list(copyright_.keys()):
             if not key in keys:
                 keys.append(key)
         copy_copyright_ = copyright_.copy()
@@ -3538,7 +3546,7 @@ def typeset_authors(filestr, format):
 def typeset_section_numbering(filestr, format):
     chapter = section = subsection = subsubsection = 0
     # Do we have chapters?
-    from common import chapter_pattern
+    from .common import chapter_pattern
     if re.search(chapter_pattern, filestr, flags=re.MULTILINE):
         has_chapters = True
     else:
@@ -3941,7 +3949,7 @@ def inline_tag_subst(filestr, format):
             try:
                 locale.setlocale(locale.LC_TIME,
                                  locale_dict[locale_dict['language']]['locale'])
-            except locale.Error, e:
+            except locale.Error as e:
                 errwarn('*** error: ' + str(e))
                 errwarn('    locale=%s must be installed' % (locale_dict[locale_dict['language']]['locale']))
                 errwarn('    sudo locale-gen de_DE.UTF-8; sudo update-locale')
@@ -3950,7 +3958,7 @@ def inline_tag_subst(filestr, format):
 
         # Add copyright right under the date if present
         if format not in ('html', 'latex', 'pdflatex', 'sphinx'):
-            from common import get_copyfile_info
+            from .common import get_copyfile_info
             cr_text = get_copyfile_info(filestr, format=format)
             if cr_text is not None:
                 if cr_text == 'Made with DocOnce':
@@ -4069,7 +4077,7 @@ def inline_tag_subst(filestr, format):
                 if m:
                     try:
                         replacement_str = replacement(m)
-                    except Exception, e:
+                    except Exception as e:
                         errwarn('Problem at line\n   ' +  lines[i] +
                                 '\nException:\n' + str(e))
                         errwarn('occured while replacing inline tag "%s" (%s) with aid of function %s' % (tag, tag_pattern, replacement.__name__))
@@ -4082,7 +4090,7 @@ def inline_tag_subst(filestr, format):
             filestr = '\n'.join(lines)
 
         else:
-            raise ValueError, 'replacement is of type %s' % type(replacement)
+            raise ValueError('replacement is of type %s' % type(replacement))
 
         if occurences > 0:
             debugpr('\n**** The file after %d "%s" substitutions ***\n%s\n%s\n\n' % (occurences, tag, filestr, '-'*80))
@@ -4174,7 +4182,7 @@ def file2file(in_filename, format, basename):
 
     try:
         f.write(filestr)
-    except UnicodeEncodeError, e:
+    except UnicodeEncodeError as e:
         # Provide error message and abortion, because the code
         # below that tries UTF-8 will result in strange characters
         # in the output. It is better that the user specifies
@@ -4322,7 +4330,7 @@ def doconce2format(filestr, format):
     global locale_dict
     locale_dict['language'] = option('language=', 'English')
     if locale_dict['language'] not in locale_dict:
-        print '*** error: language "%s" not supported in locale_dict' % locale_dict['language']
+        print('*** error: language "%s" not supported in locale_dict' % locale_dict['language'])
         _abort()
     else:
         if locale_dict['language'] != 'English':
@@ -4413,7 +4421,7 @@ def doconce2format(filestr, format):
     m = re.search('^IBPLOT: *\[', filestr, flags=re.MULTILINE)
     has_ibplot = True if m else False
     if has_ibplot:
-        from html import embed_IBPLOTs
+        from .html import embed_IBPLOTs
         filestr, bg_session = embed_IBPLOTs(filestr, format)
         #bg_session.loop_until_closed()
         debugpr('The file after inserting interactive IBPLOT curve plots:', filestr)
@@ -4455,7 +4463,7 @@ def doconce2format(filestr, format):
 
     # Next step: substitute latex-style newcommands in filestr and tex_blocks
     # (not in code_blocks)
-    from expand_newcommands import expand_newcommands
+    from .expand_newcommands import expand_newcommands
     if format not in ('latex', 'pdflatex'):
         newcommand_files = glob.glob('newcommands*_replace.tex')
         if format in ('sphinx', 'pandoc', 'ipynb'):
@@ -5013,7 +5021,7 @@ The above code block contains "%s" on the *beginning of a line*.
 Such lines cause problems for the mako preprocessor
 since it thinks this is a mako statement.
 ''' % (m.group(0)))
-                    print
+                    print()
                     mako_problems = True
         if mako_problems:
             errwarn('''\
@@ -5065,7 +5073,7 @@ fix the lines as described or remove the mako statements.
                     '\n'.join(variables))
             m = re.search(pattern, filestr)
             if m:
-                print '    first occurrence:\n', filestr[m.start()-10:m.start()+20]
+                print('    first occurrence:\n', filestr[m.start()-10:m.start()+20])
             _abort()
 
         if preprocessor is not None:  # already found preprocess commands?
@@ -5111,7 +5119,7 @@ On Debian (incl. Ubuntu) systems, you can alternatively do
         #                strict_undefined=strict_undefined)
         if encoding:
             try:
-                filestr = unicode(filestr, encoding)
+                filestr = str(filestr, encoding)
             except UnicodeDecodeError as e:
                 if "unicode codec can't decode" in str(e):
                     errwarn(e)
@@ -5218,30 +5226,30 @@ def format_driver():
     global _log, encoding, filename, dofile_basename
 
     if '--options' in sys.argv:
-        from misc import help_format
+        from .misc import help_format
         help_format()
         sys.exit(1)
 
-    from misc import check_command_line_options
+    from .misc import check_command_line_options
     check_command_line_options(4)
 
     try:
         format = sys.argv[1]
         filename = sys.argv[2]
         del sys.argv[1:3]
-        import common
+        from . import common
         common.format = format
     except IndexError:
-        from misc import get_legal_command_line_options
+        from .misc import get_legal_command_line_options
         options = ' '.join(get_legal_command_line_options())
-        print 'Usage: %s format filename [preprocessor options] [%s]\n' \
-                % (sys.argv[0], options)
-        print 'Run "doconce format --options" to see explanation of all options'
+        print('Usage: %s format filename [preprocessor options] [%s]\n' \
+                % (sys.argv[0], options))
+        print('Run "doconce format --options" to see explanation of all options')
         if len(sys.argv) == 1:
-            print 'Missing format specification!'
-        print 'formats:', ', '.join(supported_format_names())
-        print '\n-DFORMAT=format is always defined when running preprocess'
-        print 'Other -Dvar or -Dvar=value options can be added'
+            print('Missing format specification!')
+        print('formats:', ', '.join(supported_format_names()))
+        print('\n-DFORMAT=format is always defined when running preprocess')
+        print('Other -Dvar or -Dvar=value options can be added')
         sys.exit(1)
 
     # Treat some synonyms of format
@@ -5250,7 +5258,7 @@ def format_driver():
 
     names = supported_format_names()
     if format not in names:
-        print '%s is not among the supported formats:\n%s' % (format, names)
+        print('%s is not among the supported formats:\n%s' % (format, names))
         _abort()
 
     encoding = option('encoding=', default='')
@@ -5265,7 +5273,7 @@ def format_driver():
     this file is not produced.
 
     """)
-        print '*** debug output in ' + _log_filename
+        print('*** debug output in ' + _log_filename)
 
 
     debugpr('\n\n******* output format: %s *******\n\n' % format)
@@ -5285,13 +5293,13 @@ def format_driver():
                 found = True
                 break
         if not found:
-            print '*** error: given doconce file "%s", but no' % basename
-            print '    files with extensions %s exist' % ' or '.join(legal_extensions)
+            print('*** error: given doconce file "%s", but no' % basename)
+            print('    files with extensions %s exist' % ' or '.join(legal_extensions))
             _abort()
     else:
         # Given extension
         if not os.path.isfile(filename):
-            print '*** error: file %s does not exist' % filename
+            print('*** error: file %s does not exist' % filename)
             _abort()
         if ext == '.txt':
             if filename.endswith('.do.txt'):
@@ -5301,8 +5309,8 @@ def format_driver():
         elif ext == '.do':
             basename = filename[:-3]
         else:
-            print '*** error: illegal file extension %s' % ext
-            print '    must be %s' % ' or '.join(legal_extensions)
+            print('*** error: illegal file extension %s' % ext)
+            print('    must be %s' % ' or '.join(legal_extensions))
             _abort()
 
     dofile_basename = basename  # global variable

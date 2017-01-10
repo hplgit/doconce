@@ -58,6 +58,10 @@ Results in the notebook myfile.ipynb.
 All you need is this file - no dependencies except Python version 2.7
 and the numpy and sympy modules for running the example.
 """
+from __future__ import print_function
+from builtins import zip
+from builtins import str
+from builtins import range
 __author__ = 'Hans Petter Langtangen <hpl@simula.no>'
 
 import sys, os, re, logging
@@ -94,7 +98,7 @@ def read(text, argv=sys.argv[2:]):
         import mako
         has_mako = True
     except ImportError:
-        print 'Cannot import mako - mako is not run'
+        print('Cannot import mako - mako is not run')
         has_mako = False
 
     if has_mako:
@@ -102,7 +106,7 @@ def read(text, argv=sys.argv[2:]):
         from mako.lookup import TemplateLookup
         lookup = TemplateLookup(directories=[os.curdir])
 
-        text = unicode(text, encoding)
+        text = str(text, encoding)
         temp = Template(text=text, lookup=lookup,
                         strict_undefined=True)
         logging.info('******* mako_kwargs: %s' % str(mako_kwargs))
@@ -219,8 +223,8 @@ def driver():
         with open(filename, 'r') as f:
             text = f.read()
     except (IndexError, IOError) as e:
-        print 'Usage: %s filename' % (sys.argv[0])
-        print e
+        print('Usage: %s filename' % (sys.argv[0]))
+        print(e)
         sys.exit(1)
     cells = read(text, argv=sys.argv[2:])
     filestr = write(cells, 3)
@@ -239,14 +243,14 @@ def test_notebook_generator():
     logging.info('******* original text:\n%s' % text)
     cells = read(text, argv=argv)
     computed = write(cells, 3).strip()
-    print computed
+    print(computed)
 
     with open('.test1.ipynb', 'r') as f:
         expected = f.read().strip()
 
-    for c1, c2, n in zip(computed, expected, range(len(expected))):
+    for c1, c2, n in zip(computed, expected, list(range(len(expected)))):
         if c1 != c2:
-            print 'character no.%d differ: %s vs %s' % (n, c1, c2)
+            print('character no.%d differ: %s vs %s' % (n, c1, c2))
     assert computed == expected
 
 if __name__ == '__main__':

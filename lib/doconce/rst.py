@@ -1,10 +1,15 @@
+from __future__ import absolute_import
+from builtins import zip
+from builtins import str
+from builtins import range
+from past.builtins import basestring
 import re, os, sys
-from common import insert_code_and_tex, indent_lines, \
+from .common import insert_code_and_tex, indent_lines, \
     table_analysis, plain_exercise, bibliography, \
     cite_with_multiple_args2multiple_cites, fix_ref_section_chapter
-from html import html_movie, html_quiz
-from doconce import _abort, errwarn, locale_dict
-from misc import option, _abort
+from .html import html_movie, html_quiz
+from .doconce import _abort, errwarn, locale_dict
+from .misc import option, _abort
 
 def rst_abstract(m):
     # r'\n*\g<type>.* \g<text>\n\g<rest>'
@@ -138,7 +143,7 @@ def rst_code(filestr, code_blocks, code_block_types,
 
     if option('rst_mathjax') and (re.search(r'^!bt', filestr, flags=re.MULTILINE) or re.search(r'\\\( .+ \\\)', filestr)):
         # First add MathJax script in the very beginning of the file
-        from html import mathjax_header
+        from .html import mathjax_header
         latex = indent_lines(mathjax_header(filestr).lstrip(), 'rst')
         filestr = '\n.. raw:: html\n\n' + latex + '\n\n' + filestr
         # Replace all the !bt parts by raw html directive (make sure
@@ -385,7 +390,7 @@ def ref_and_label_commoncode(section_label2title, format, filestr):
     filestr = cpattern.sub('', filestr)
     filestr = re.sub(r'label\{[^}]+?\}', '', filestr)  # all the remaining
 
-    import doconce
+    from . import doconce
     doconce.debugpr(debugtext)
 
     return filestr
@@ -399,7 +404,7 @@ def rst_ref_and_label(section_label2title, format, filestr):
         filestr = filestr.replace('ref{%s}' % label,
                                   '`%s`_' % section_label2title[label])
 
-    from common import ref2equations
+    from .common import ref2equations
     filestr = ref2equations(filestr)
     # replace remaining ref{x} as x_
     filestr = re.sub(r'ref\{(.+?)\}', '`\g<1>`_', filestr)
@@ -708,7 +713,7 @@ def define(FILENAME_EXTENSION,
 
         'separator': '\n',
         }
-    from common import DEFAULT_ARGLIST
+    from .common import DEFAULT_ARGLIST
     ARGLIST['rst'] = DEFAULT_ARGLIST
     FIGURE_EXT['rst'] = {
         'search': ('.png', '.gif', '.jpg', '.jpeg', '.pdf', '.eps', '.ps'),
@@ -726,7 +731,7 @@ def define(FILENAME_EXTENSION,
 
 """
     # http://stackoverflow.com/questions/11830242/non-breaking-space
-    from common import INLINE_TAGS
+    from .common import INLINE_TAGS
     if re.search(INLINE_TAGS['non-breaking-space'], filestr):
         nbsp = """
 .. |nbsp| unicode:: 0xA0
@@ -734,7 +739,7 @@ def define(FILENAME_EXTENSION,
 
 """
         if 'TITLE:' not in filestr:
-            import common
+            from . import common
             if common.format in ('rst', 'sphinx'):
                 errwarn('*** error: non-breaking space character ~ is used,')
                 errwarn('    but this will give an error when the document does')

@@ -3,14 +3,18 @@ Google Code Wiki translator.
 Syntax defined by http://code.google.com/p/support/wiki/WikiSyntax
 Here called gwiki to make the dialect clear (g for google).
 """
+from __future__ import absolute_import
+from future import standard_library
+standard_library.install_aliases()
+from builtins import zip
 
 
-import re, os, commands, sys
-from common import default_movie, plain_exercise, insert_code_and_tex, \
+import re, os, subprocess, sys
+from .common import default_movie, plain_exercise, insert_code_and_tex, \
      fix_ref_section_chapter
-from plaintext import plain_quiz
-from misc import _abort
-from doconce import errwarn
+from .plaintext import plain_quiz
+from .misc import _abort
+from .doconce import errwarn
 
 def gwiki_code(filestr, code_blocks, code_block_types,
                tex_blocks, format):
@@ -38,7 +42,7 @@ def gwiki_figure(m):
             # try to convert image file to PNG, using
             # convert from ImageMagick:
             cmd = 'convert %s png:%s' % (filename, root+'.png')
-            failure, output = commands.getstatusoutput(cmd)
+            failure, output = subprocess.getstatusoutput(cmd)
             if failure:
                 errwarn('\n**** Warning: could not run ' + cmd)
                 errwarn('Convert %s to PNG format manually' % filename)
@@ -72,7 +76,7 @@ googlecode repository) and substitute the line above with the URL.
 """ % (caption, filename, filename)
     return result
 
-from common import table_analysis
+from .common import table_analysis
 
 def gwiki_table(table):
     """Native gwiki table."""
@@ -154,7 +158,7 @@ def wiki_ref_and_label_common(section_label2title, format, filestr):
         filestr = filestr.replace('ref{%s}' % label,
                                   '[#%s]' % title.replace(' ', '_'))
 
-    from common import ref2equations
+    from .common import ref2equations
     filestr = ref2equations(filestr)
 
     # replace remaining ref{x} as x
@@ -225,7 +229,7 @@ def define(FILENAME_EXTENSION,
         }
 
     CODE['gwiki'] = gwiki_code
-    from html import html_table
+    from .html import html_table
     #TABLE['gwiki'] = html_table
     TABLE['gwiki'] = gwiki_table
 
@@ -255,7 +259,7 @@ def define(FILENAME_EXTENSION,
         'search': ('.png', '.gif', '.jpg', '.jpeg'),
         'convert': ('.png', '.gif', '.jpg')}
     CROSS_REFS['gwiki'] = gwiki_ref_and_label
-    from plaintext import plain_index_bib
+    from .plaintext import plain_index_bib
     EXERCISE['gwiki'] = plain_exercise
     INDEX_BIB['gwiki'] = plain_index_bib
     TOC['gwiki'] = lambda s, f: '<wiki: toc max_depth="2" />'

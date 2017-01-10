@@ -1,6 +1,9 @@
+from __future__ import division
+from __future__ import print_function
+from past.utils import old_div
 def f(x):
     """Runge's function."""
-    return 1/(1 + x**2)
+    return old_div(1,(1 + x**2))
 
 # Plot f
 import matplotlib.pyplot as plt
@@ -14,9 +17,9 @@ plt.savefig('f_plot.png')
 import sympy as sm
 x = sm.Symbol('x')
 f_expr = f(x)
-print f_expr
+print(f_expr)
 df_expr = sm.diff(f_expr, x)
-print df_expr
+print(df_expr)
 df = sm.lambdify(x, df_expr)  # turn expression into Python function
 
 # Plot f'(x)

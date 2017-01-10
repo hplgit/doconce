@@ -1,3 +1,7 @@
+from __future__ import print_function
+from __future__ import absolute_import
+from builtins import range
+from past.builtins import basestring
 #!/usr/bin/env python
 
 # NOTE: all newcommands can only span *one line*!
@@ -47,7 +51,7 @@ def process_newcommand(line):
 
     if found:
         # fix \x, \b, \r... etc in strings
-        from latex import fix_latex_command_regex as fix
+        from .latex import fix_latex_command_regex as fix
         pattern = fix(pattern, 'match')
         replacement = fix(replacement, 'replacement')
         return pattern, replacement
@@ -88,7 +92,7 @@ def substitute(source, newcommands):
     else:
         text = source
 
-    from doconce import debugpr
+    from .doconce import debugpr
     for pattern, replacement in newcommands:
         text, n = re.subn(pattern, replacement, text)
         if n:
@@ -124,9 +128,9 @@ def expand_newcommands(newcommands_files, source):
 
 if __name__ == '__main__':
     if len(sys.argv) < 3:
-        print 'Usage: expand_newcommands.py newcommands_file source_file1 source_file2 ...'
+        print('Usage: expand_newcommands.py newcommands_file source_file1 source_file2 ...')
         sys.exit(1)
     newcommands_file = sys.argv[1]
     for source_file in sys.argv[2:]:
-        print 'expanding newcommands in', source_file
+        print('expanding newcommands in', source_file)
         expand_newcommands(newcommands_file, source_file)

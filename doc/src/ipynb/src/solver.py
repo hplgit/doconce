@@ -1,3 +1,6 @@
+from __future__ import division
+from builtins import range
+from past.utils import old_div
 import numpy as np
 
 def solver(I, V, m, b, s, F, t, damping='linear'):
@@ -35,12 +38,12 @@ def solver(I, V, m, b, s, F, t, damping='linear'):
 
     for n in range(1,N):
         if damping == 'linear':
-            u[n+1] = (2*m*u[n] + (b*dt/2 - m)*u[n-1] +
-                      dt**2*(F[n] - s(u[n])))/(m + b*dt/2)
+            u[n+1] = old_div((2*m*u[n] + (b*dt/2 - m)*u[n-1] +
+                      dt**2*(F[n] - s(u[n]))),(m + b*dt/2))
         elif damping == 'quadratic':
-            u[n+1] = (2*m*u[n] - m*u[n-1] + b*u[n]*abs(u[n] - u[n-1])
-                      - dt**2*(s(u[n]) - F[n]))/\
-                      (m + b*abs(u[n] - u[n-1]))
+            u[n+1] = old_div((2*m*u[n] - m*u[n-1] + b*u[n]*abs(u[n] - u[n-1])
+                      - dt**2*(s(u[n]) - F[n])),\
+                      (m + b*abs(u[n] - u[n-1])))
     return u, t
 
 # Simplified implementation

@@ -1,3 +1,6 @@
+from __future__ import division
+from builtins import range
+from past.utils import old_div
 
 def bokeh_plot(u, t, legends, u_e, t_e, I, w, t_range, filename):
     """
@@ -57,7 +60,7 @@ def demo_bokeh():
         return I*np.cos(w*t)
 
     def u_numerical(t):
-        w_tilde = (2./dt)*np.arcsin(w*dt/2.)
+        w_tilde = (old_div(2.,dt))*np.arcsin(w*dt/2.)
         return I*np.cos(w_tilde*t)
 
     I = 1               # Amplitude
@@ -75,7 +78,7 @@ def demo_bokeh():
 
     # Make a series of numerical solutions with different time steps
     for n in num_steps_per_period:
-        dt = P/n  # Time step length
+        dt = old_div(P,n)  # Time step length
         t_ = np.linspace(0, T, num_periods*n+1)
         u_ = u_numerical(t_)
         u.append(u_)

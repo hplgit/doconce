@@ -1,11 +1,14 @@
+from __future__ import print_function
+from __future__ import absolute_import
+from builtins import range
 # http://sphinx.pocoo.org/ext/math.html#
 
 # can reuse most of rst module:
-from rst import *
-from common import align2equations, online_python_tutor, \
+from .rst import *
+from .common import align2equations, online_python_tutor, \
      get_legal_pygments_lexers, has_custom_pygments_lexer
-from misc import option, _abort
-from doconce import errwarn
+from .misc import option, _abort
+from .doconce import errwarn
 
 # RunestoneInteractive book counters
 question_counter = 0
@@ -188,7 +191,7 @@ def sphinx_quiz(quiz):
         return rst_quiz(quiz)
 
 
-from latex import fix_latex_command_regex as fix_latex
+from .latex import fix_latex_command_regex as fix_latex
 
 def sphinx_code(filestr, code_blocks, code_block_types,
                 tex_blocks, format):
@@ -333,7 +336,7 @@ def sphinx_code(filestr, code_blocks, code_block_types,
     and references to them will be empty):""")
         for label in multiple_math_labels_with_refs:
             errwarn('    label{%s}' % label)
-        print
+        print()
 
     filestr = insert_code_and_tex(filestr, code_blocks, tex_blocks, 'sphinx')
 
@@ -612,7 +615,7 @@ def sphinx_ref_and_label(section_label2title, format, filestr):
 
 def sphinx_index_bib(filestr, index, citations, pubfile, pubdata):
     filestr = rst_bib(filestr, citations, pubfile, pubdata)
-    from common import INLINE_TAGS
+    from .common import INLINE_TAGS
 
     for word in index:
         # Drop verbatim, emphasize, bold, and math in index
@@ -712,7 +715,7 @@ def define(FILENAME_EXTENSION,
            filestr):
     if not 'rst' in BLANKLINE:
         # rst.define is not yet ran on these dictionaries, do it:
-        import rst
+        from . import rst
         rst.define(FILENAME_EXTENSION,
                    BLANKLINE,
                    INLINE_TAGS_SUBST,

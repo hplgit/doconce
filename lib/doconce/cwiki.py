@@ -2,13 +2,15 @@
 Creole Wiki (as used on bitbucket.org).
 See http://www.wikicreole.org/wiki/Creole1.0 for syntax.
 """
+from __future__ import absolute_import
+from builtins import zip
 # Simple edit of gwiki.py
 
 import re, os, sys, subprocess
-from common import default_movie, plain_exercise, insert_code_and_tex
-from plaintext import plain_quiz
-from misc import _abort
-from doconce import errwarn
+from .common import default_movie, plain_exercise, insert_code_and_tex
+from .plaintext import plain_quiz
+from .misc import _abort
+from .doconce import errwarn
 
 def cwiki_code(filestr, code_blocks, code_block_types,
                tex_blocks, format):
@@ -51,7 +53,7 @@ def cwiki_figure(m):
     result = r"""{{%s|%s}}""" % (filename, caption)
     return result
 
-from common import table_analysis
+from .common import table_analysis
 
 def cwiki_table(table):
     """Native Creole wiki table."""
@@ -106,7 +108,7 @@ def cwiki_author(authors_and_institutions, auth2index,
     # we skip institutions in Creole wiki
     return text
 
-from gwiki import wiki_ref_and_label_common
+from .gwiki import wiki_ref_and_label_common
 
 def cwiki_ref_and_label(section_label2title, format, filestr):
     return wiki_ref_and_label_common(section_label2title, format, filestr)
@@ -202,7 +204,7 @@ def define(FILENAME_EXTENSION,
         'search': ('.png', '.gif', '.jpg', '.jpeg'),
         'convert': ('.png', '.gif', '.jpg')}
     CROSS_REFS['cwiki'] = cwiki_ref_and_label
-    from plaintext import plain_index_bib
+    from .plaintext import plain_index_bib
     EXERCISE['cwiki'] = plain_exercise
     INDEX_BIB['cwiki'] = plain_index_bib
     TOC['cwiki'] = lambda s, f: '<<TableOfContents>>'
