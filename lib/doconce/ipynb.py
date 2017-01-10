@@ -430,6 +430,8 @@ def ipynb_code(filestr, code_blocks, code_block_types,
                 ipynb_code_tp[i] = 'markdown'
         elif tp.endswith('hid'):
             ipynb_code_tp[i] = 'cell_hidden'
+        elif tp.endswith('out'):
+            ipynb_code_tp[i] = 'cell_output'
         elif tp.startswith('py'):
             ipynb_code_tp[i] = 'cell'
         else:
@@ -489,6 +491,8 @@ def ipynb_code(filestr, code_blocks, code_block_types,
                 notebook_blocks[i] = ['cell', notebook_blocks[i]]
             elif ipynb_code_tp[idx] == 'cell_hidden':
                 notebook_blocks[i] = ['cell_hidden', notebook_blocks[i]]
+            elif ipynb_code_tp[idx] == 'cell_output':
+                notebook_blocks[i] = ['cell_output', notebook_blocks[i]]
             else:
                 notebook_blocks[i] = ['text', notebook_blocks[i]]
         elif re.match(pattern % _MATH_BLOCK, notebook_blocks[i]):
@@ -591,11 +595,7 @@ def ipynb_code(filestr, code_blocks, code_block_types,
     mdstr = []  # plain md format of the notebook
     prompt_number = 1
     for block_tp, block in notebook_blocks:
-        if (block_tp == 'text' or block_tp == 'math') and block != '':
-            # Pure comments between math/code and math/code come
-            # out as empty blocks, should detect that situation
-            # (challenging - can have multiple lines of comments,
-            # or begin and end comment lines with important things between)
+        if (block_tp == 'text' or block_tp == 'math') and block != '' and block != '<!--  -->':
             if nb_version == 3:
                 nb.cells.append(new_text_cell(u'markdown', source=block))
             elif nb_version == 4:
@@ -632,6 +632,36 @@ def ipynb_code(filestr, code_blocks, code_block_types,
                             execution_count=prompt_number,
                             metadata=dict(collapsed=False)))
                     prompt_number += 1
+                    mdstr.append(('codecell', block))
+        elif block_tp == 'cell_output' and block != '':
+            block = block.rstrip()
+            if nb_version == 3:
+                print("WARNING: Output not implemented for nbformat v3.")
+            elif nb_version == 4:
+                outputs = [
+                    {
+                        "data": {
+                            "text/plain": [
+                                block
+                            ]
+                        },
+                        "execution_count": prompt_number-1,
+                        "metadata": {},
+                        "output_type": "execute_result"
+                    }
+                ]
+                previous_cell = cells[-1]
+                if previous_cell.cell_type == "code":
+                    previous_cell.outputs = outputs
+                else:
+                    print("WARNING: DocOnce ipynb got code output,",
+                          "but previous was not code.")
+                    cells.append(new_code_cell(
+                        source="#",
+                        outputs=outputs,
+                        execution_count=prompt_number,
+                        metadata=dict(collapsed=False)
+                    ))
                     mdstr.append(('codecell', block))
         elif block_tp == 'cell_hidden' and block != '':
             block = block.rstrip()
