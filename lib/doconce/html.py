@@ -1528,9 +1528,9 @@ function show_hide_code%d(){
                                           contents)
             except UnicodeDecodeError:
                 filestr = filestr.replace('***TABLE_OF_CONTENTS***',
-                                          toc_html.decode('utf-8'))
+                                          toc_html)
                 filestr = filestr.replace('***CONTENTS_PULL_DOWN_MENU***',
-                                          contents.decode('utf-8'))
+                                          contents)
 
         jumbotron = option('html_bootstrap_jumbotron=', 'on')
         if jumbotron != 'off':
@@ -3348,19 +3348,7 @@ def latin2html(text):
     if not isinstance(text, str):
         return text
 
-    # Turn ascii into utf-8 or latin-1 before finding the ord(c)
-    # codes and writing them out in html
     text_new = []
-    try:
-        text = text
-    except UnicodeDecodeError as e:
-        try:
-            text = text.decode('latin-1')
-        except UnicodeDecodeError as e:
-            errwarn('Tried to interpret the file as utf-8 (failed) and latin-1 (failed) - aborted')
-            raise e
-    #except UnicodeEncodeError, e:
-    #    pass
     for c in text:
         try:
             if ord(c) > 159:

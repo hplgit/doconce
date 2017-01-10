@@ -658,7 +658,7 @@ def define(FILENAME_EXTENSION,
         # (note len(m.group('subst')) gives wrong length for latin-1 strings,
         # seems to work for utf-8, if problems: replace lambda function
         # with an ordinary function where you can debug and test!
-        #'chapter':       lambda m: '%s\n%s' % (m.group('subst'), '%'*len(m.group('subst').decode(encoding))),
+        #'chapter':       lambda m: '%s\n%s' % (m.group('subst'), '%'*len(m.group('subst'))),
         'chapter':       lambda m: '%s\n%s' % (m.group('subst'), '%'*len(m.group('subst'))),
         'section':       lambda m: '%s\n%s' % (m.group('subst'), '='*len(m.group('subst'))),
         'subsection':    lambda m: '%s\n%s' % (m.group('subst'), '-'*len(m.group('subst'))),

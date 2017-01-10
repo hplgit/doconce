@@ -140,8 +140,6 @@ def debugpr(heading='', text=''):
     if option('debug'):
         global _log
         if encoding:
-            if sys.version_info[0] == 2 and isinstance(text, str):
-                text = text.decode(encoding)
             _log = codecs.open('_doconce_debugging.log','a', encoding)
         else:
             _log = open('_doconce_debugging.log','a')
@@ -165,8 +163,6 @@ def errwarn(msg, newline=True):
     logfilename = dofile_basename + '.dlog'
     mode = 'a' if os.path.isfile(logfilename) else 'w'
     if encoding:
-        if sys.version_info[0] == 2 and isinstance(msg, str):
-            msg = msg.decode(encoding)
         err = codecs.open(logfilename, mode, encoding)
     else:
         err = open(logfilename, mode)
@@ -1473,11 +1469,7 @@ def insert_code_from_file(filestr, format):
                 errwarn(' lines %d-%d' % (from_line, to_line), newline=False)
             codefile.close()
 
-            # Need a fix if utf-8 code in file
-            try:
-                "!bc %spro\n%s\n!ec" % (filetype, code)
-            except UnicodeDecodeError as e:
-                code = code.decode('utf-8')
+            "!bc %spro\n%s\n!ec" % (filetype, code)
 
             if code_envir in ('None', 'off', 'none'):
                 # no need to embed code in anything
@@ -1885,8 +1877,8 @@ def exercises(filestr, format, code_blocks, tex_blocks):
         solutions = '\n'.join(solutions)
     except UnicodeDecodeError:
         print('****** DOES THIS OCCUR AT ALL??? ******')
-        filestr = '\n'.join([n.decode('utf-8') for n in newlines if isinstance(n, basestring)])
-        solutions = '\n'.join([n.decode('utf-8') for n in solutions if isinstance(n, basestring)])
+        filestr = '\n'.join([n for n in newlines if isinstance(n, basestring)])
+        solutions = '\n'.join([n for n in solutions if isinstance(n, basestring)])
 
 
     if option('without_solutions') and option('solutions_at_end'):
@@ -3976,7 +3968,7 @@ def inline_tag_subst(filestr, format):
         try:
             filestr = filestr.replace(origstr, 'DATE: ' + date)
         except UnicodeDecodeError:
-            filestr = filestr.replace(origstr, 'DATE: ' + date.decode('utf-8'))
+            filestr = filestr.replace(origstr, 'DATE: ' + date)
 
     # Hack for not typesetting ampersands inside inline verbatim text
     groups = re.findall(INLINE_TAGS['verbatim'], filestr, flags=re.MULTILINE)
