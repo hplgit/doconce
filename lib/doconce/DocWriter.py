@@ -788,7 +788,7 @@ def html_movie(plotfiles, interval_ms=300, width=800, height=600,
 
     # Start with expanding plotfiles if it is a filename generator
     if not isinstance(plotfiles, (tuple,list)):
-        if not isinstance(plotfiles, str):
+        if not isinstance(plotfiles, basestring):
             raise TypeError('plotfiles must be list or filename generator, not %s' % type(plotfiles))
 
         filename_generator = plotfiles

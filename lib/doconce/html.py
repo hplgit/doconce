@@ -49,7 +49,7 @@ def add_to_file_collection(filename, doconce_docname=None, mode='a'):
     and this name is used to set the filename of the file collection.
     Later, `doconce_docname` is not given (otherwise previous info is erased).
     """
-    if isinstance(filename, str):
+    if isinstance(filename, basestring):
         filenames = [filename]
     elif isinstance(filename, (list,tuple)):
         filenames = filename
@@ -2347,7 +2347,7 @@ def html_index_bib(filestr, index, citations, pubfile, pubdata):
             except UnicodeDecodeError as e:
                 if "can't decode byte" in str(e):
                     try:
-                        bibtext = bibtext.decode('utf-8').replace(
+                        bibtext = bibtext.replace(
                             'label{%s}' % label, '<a name="%s"></a>' % label)
                     except UnicodeDecodeError as e:
                         errwarn('UnicodeDecodeError: ' + e)
@@ -3352,7 +3352,7 @@ def latin2html(text):
     # codes and writing them out in html
     text_new = []
     try:
-        text = text.decode('utf-8')
+        text = text
     except UnicodeDecodeError as e:
         try:
             text = text.decode('latin-1')

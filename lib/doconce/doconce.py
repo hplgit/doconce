@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from __future__ import print_function
 from __future__ import absolute_import
 from future import standard_library
@@ -6,8 +7,8 @@ from builtins import zip
 from builtins import chr
 from builtins import str
 from builtins import range
-from past.builtins import basestring
-# -*- coding: utf-8 -*-
+from past.builtins import basestring, unicode
+
 global dofile_basename
 
 import re, os, sys, shutil, subprocess, pprint, time, glob, codecs
@@ -17,7 +18,7 @@ except ImportError:
     # use standard arbitrary-ordered dict instead (original order of
     # citations is then lost)
     OrderedDict = dict
-
+    
 # Support for non-English languages (not really implemented yet)
 global locale_dict
 locale_dict = dict(
@@ -82,13 +83,13 @@ locale_dict = dict(
         'Summary': 'Sammendrag',
         'summary': 'sammendrag',
         'hint': 'Hint',
-        'question': 'spørsmål'.decode('utf-8'),
+        'question': u'spørsmål',
         'notice': 'observer',
         'warning': 'advarsel',
         'remarks': 'bemerkning',
         'index': 'Stikkordsliste',
-        'Solution': 'Løsning'.decode('utf-8'),  # In exercises
-        '__Solution.__': '__Løsning.__'.decode('utf-8'),
+        'Solution': u'Løsning',  # In exercises
+        '__Solution.__': u'__Løsning.__',
         '__Answer.__': '__Kortsvar.__',
         '__Hint.__': '__Hint.__',
         'Filename': 'Filnavn',
@@ -103,7 +104,7 @@ locale_dict = dict(
         'Movie': 'Film',
         'list of': 'Liste von',
         'and': 'und',
-        'Exercise': 'Übung'.decode('utf-8'),
+        'Exercise': u'Übung',
         'Project': 'Projekt',
         'Problem': 'Problem',
         'Example': 'Beispiel',
@@ -122,8 +123,8 @@ locale_dict = dict(
         # box, quote are silent wrt title
         'remarks': 'Bemerkung', # In exercises
         # Exercise headings
-        'Solution': 'Lösung'.decode('utf-8'),
-        '__Solution.__': '__Lösung.__'.decode('utf-8'),
+        'Solution': u'Lösung',
+        '__Solution.__': u'__Lösung.__',
         '__Answer.__': '__Antwort.__',
         '__Hint.__': '__Hinweis.__',
         # At the end (in Sphinx)
@@ -139,7 +140,7 @@ def debugpr(heading='', text=''):
     if option('debug'):
         global _log
         if encoding:
-            if isinstance(text, str):
+            if sys.version_info[0] == 2 and isinstance(text, str):
                 text = text.decode(encoding)
             _log = codecs.open('_doconce_debugging.log','a', encoding)
         else:
@@ -164,7 +165,7 @@ def errwarn(msg, newline=True):
     logfilename = dofile_basename + '.dlog'
     mode = 'a' if os.path.isfile(logfilename) else 'w'
     if encoding:
-        if isinstance(msg, str):
+        if sys.version_info[0] == 2 and isinstance(msg, str):
             msg = msg.decode(encoding)
         err = codecs.open(logfilename, mode, encoding)
     else:
@@ -1884,8 +1885,8 @@ def exercises(filestr, format, code_blocks, tex_blocks):
         solutions = '\n'.join(solutions)
     except UnicodeDecodeError:
         print('****** DOES THIS OCCUR AT ALL??? ******')
-        filestr = '\n'.join([n.decode('utf-8') for n in newlines if isinstance(n, str)])
-        solutions = '\n'.join([n.decode('utf-8') for n in solutions if isinstance(n, str)])
+        filestr = '\n'.join([n.decode('utf-8') for n in newlines if isinstance(n, basestring)])
+        solutions = '\n'.join([n.decode('utf-8') for n in solutions if isinstance(n, basestring)])
 
 
     if option('without_solutions') and option('solutions_at_end'):
@@ -2299,7 +2300,10 @@ def typeset_tables(filestr, format):
     The list is easily translated to various output formats
     by other modules.
     """
-    from io import StringIO
+    try:
+        from StringIO import StringIO
+    except ImportError:
+        from io import StringIO
     result = StringIO()
 
     # Fix: make sure there is a blank line after the table
@@ -2631,7 +2635,11 @@ def typeset_lists(filestr, format, debug_info=[]):
     """
     debugpr('*** List typesetting phase + comments and blank lines ***')
     import string
-    from io import StringIO
+    
+    try:  # Python 2.7 needs the old StringIO
+        from StringIO import StringIO
+    except ImportError:
+        from io import StringIO
     result = StringIO()
     lastindent = 0
     lists = []
@@ -2677,7 +2685,7 @@ def typeset_lists(filestr, format, debug_info=[]):
                 # (rst, latex, html):
                 if 'comment' in INLINE_TAGS_SUBST[format]:
                     comment_action = INLINE_TAGS_SUBST[format]['comment']
-                    if isinstance(comment_action, str):
+                    if isinstance(comment_action, basestring):
                         new_comment = comment_action % line[1:].strip()
                     elif callable(comment_action):
                         new_comment = comment_action(line[1:].strip())
@@ -3673,7 +3681,7 @@ def interpret_quiz_text(text, insert_missing_heading= False,
     m = re.search(pattern, text, flags=re.MULTILINE)
     if m:
         heading = m.group(1).strip()
-        if insert_missing_heading and isinstance(previous_heading, str):
+        if insert_missing_heading and isinstance(previous_heading, basestring):
             if heading.lower() not in previous_heading.lower():
                 # Quiz heading is missing and wanted
                 text = '===== Exercise: %s =====\n\n' % heading + text
@@ -3769,7 +3777,7 @@ def extract_quizzes(filestr, format):
     if format in ("rst", "sphinx"):
         #cp = '.. %s\n'  # \n gives error if text follows right after !equiz
         cp = '.. %s'
-    if not isinstance(cp, str):
+    if not isinstance(cp, basestring):
         raise TypeError
     # line start: must allow spaces first in rst/sphinx, but quiz inside
     # indented admons do not work anyway in rst/sphix
@@ -4604,7 +4612,7 @@ def doconce2format(filestr, format):
                 '!bnotes', '!enotes',]
     for command in commands:
         comment_action = INLINE_TAGS_SUBST[format].get('comment', '# %s')
-        if isinstance(comment_action, str):
+        if isinstance(comment_action, basestring):
             split_comment = comment_action % (command + r'\g<1>')
         elif callable(comment_action):
             split_comment = comment_action((command + r'\g<1>'))
@@ -4881,7 +4889,7 @@ def preprocess(filename, format, preprocessor_options=[]):
 
         if key is not None:
             # evaluate value if it has the form eval('something')
-            if isinstance(value, str) and value.startswith('eval('):
+            if isinstance(value, basestring) and value.startswith('eval('):
                 try:
                     mako_kwargs[key] = eval(value[5:-1])
                 except (NameError, TypeError, SyntaxError) as e:
@@ -5119,7 +5127,8 @@ On Debian (incl. Ubuntu) systems, you can alternatively do
         #                strict_undefined=strict_undefined)
         if encoding:
             try:
-                filestr = str(filestr, encoding)
+                if sys.version_info[0] == 2:
+                    filestr = unicode(filestr, encoding)
             except UnicodeDecodeError as e:
                 if "unicode codec can't decode" in str(e):
                     errwarn(e)

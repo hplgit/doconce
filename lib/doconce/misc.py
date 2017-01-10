@@ -1,17 +1,18 @@
-from __future__ import division
 from __future__ import print_function
 from __future__ import absolute_import
+from __future__ import division
 from past.builtins import execfile
 from future import standard_library
-from functools import reduce
 standard_library.install_aliases()
 from builtins import zip
 from builtins import str
 from builtins import range
 from past.builtins import basestring
 from past.utils import old_div
+from past.utils import old_div
 import os, sys, shutil, re, glob, time, subprocess, codecs
 from .doconce import errwarn
+from functools import reduce
 
 _part_filename = '._%s%03d'
 _part_filename_wildcard = '._*[0-9][0-9][0-9]'
@@ -619,7 +620,7 @@ def get_legal_command_line_options():
     return _legal_command_line_options
 
 def help_format():
-    print("""
+    print(r"""
 doconce format X doconcefile
 
 where X can be any of the formats
@@ -1155,7 +1156,7 @@ def replace():
             f.close()
 
 def _usage_replace_from_file():
-    print("""Usage: doconce replace_from_file file-with-from-to file1 file2 ...
+    print(r"""Usage: doconce replace_from_file file-with-from-to file1 file2 ...
 
 The file must contain two columns with the from and to parts
 for each substitution. Comment lines starting with # are allowed.
@@ -1215,7 +1216,7 @@ def replace_from_file():
             f.close()
 
 def _usage_find():
-    print("""Usage: doconce find expression
+    print(r"""Usage: doconce find expression
 
 Searches for all .do.txt files in subdirectories and
 writes out filename, line number and line containing expression
@@ -1440,7 +1441,7 @@ def _dofix_localURLs(filename, exclude_adr):
 
 
 def _usage_sphinxfix_localURLs():
-    print("""
+    print(r"""
 Usage: doconce sphinxfix_localURLs file1.rst file2.rst ... -not adr1 adr2 ...
 
 Each link to a local file, e.g., "link": "src/dir1/myfile.txt",
@@ -1492,7 +1493,7 @@ def sphinxfix_localURLs():
 
 def _usage_latex_exercise_toc():
     print('Usage: doconce latex_exercise_toc myfile.do.txt ["List of exercises"]')
-    print("""
+    print(r"""
 Can insert
 # Short: My own short title
 in the text of an exercise and this defines a short version of the
@@ -1609,7 +1610,7 @@ def latex_exercise_toc():
 
 
 def _usage_combine_images():
-    print("""\
+    print(r"""\
 Usage: doconce combine_images [pdf|png] [-4] image1 image2 ... output_file
 Applies montage if not PDF or EPS images, else
 pdftk, pdfnup and pdfcrop.
@@ -1691,7 +1692,7 @@ def combine_images():
 
 def _usage_expand_commands():
     print('Usage: doconce expand_commands file1 file2 ...')
-    print("""
+    print(r"""
 A file .expand_commands may define _replace and _regex_subst lists
 for str.replace and re.sub substitutions (respectively) to be applied
 to file1 file2 ...
@@ -2146,7 +2147,7 @@ download preprocess from http://code.google.com/p/preprocess""")
             output = subprocess.check_output(cmd, shell=True,
                                              stderr=subprocess.STDOUT)
         except subprocess.CalledProcessError as e:
-            print("""You have requested the minted latex style, but this
+            print(r"""You have requested the minted latex style, but this
 requires the pygments package to be installed. On Debian/Ubuntu: run
 Terminal> sudo apt-get install python-pygments
 Or
@@ -2185,7 +2186,7 @@ def replace_code_command(filestr):
                     break
             if alt_verb_delimiter is None:
                 alt_verb_delimiter = alt_verb_delimiters[0]
-                print("""
+                print(r"""
 *** warning: inline verbatim "%s"
     contains all delimiters %s that the LaTeX
     command \\Verb can make use of - be prepared for strange output that
@@ -2657,7 +2658,7 @@ def html_colorbullets():
         f.close()
 
 def _usage_split_html():
-    print("""
+    print(r"""
 Usage: doconce split_html mydoc.html --method=... --nav_button=name --pagination --reference="acknowledgment/author" --font_size=slides --copyright=everypage|titlepage
 
 --method=split|space8|hrule|colorline specifies pagebreak
@@ -2779,7 +2780,7 @@ h2 {font-size: 180%;}
 
 
 def _usage_slides_html():
-    print("""
+    print(r"""
 Usage: doconce slides_html mydoc.html slide_type --html_slide_theme=themename --html_footer_logo=name --nav_button=name --font_size=slides --copyright=everypage|titlepage
 
 slide_type: reveal deck csss dzslides
@@ -3171,13 +3172,13 @@ def doconce_split_html(header, parts, footer, basename, filename, slides=False):
                 # Bootstrap style
                 text += '\n<ul class="pager">\n'
                 if pn > 0:
-                    text += """\
+                    text += r"""\
   <li class="previous">
     <a href="%s">&larr; Prev</a>
   </li>
 """ % prev_part_filename
                 if pn < len(parts)-1:
-                    text += """\
+                    text += r"""\
   <li class="next">
     <a href="%s">Next &rarr;</a>
   </li>
@@ -3429,7 +3430,7 @@ def doconce_split_html(header, parts, footer, basename, filename, slides=False):
                 header_part_line_filename = html_imagefile(header_part_line)
             else:
                 header_part_line_filename = 'http://hplgit.github.io/doconce/bundled/html_images/%s.png' % header_part_line
-            lines.append("""
+            lines.append(r"""
 <p><br><img src="%s"><p><br><p>
 """ % header_part_line_filename)
 
@@ -3463,21 +3464,21 @@ def doconce_split_html(header, parts, footer, basename, filename, slides=False):
                 lines.append('<table style="width: 100%"><tr><td>\n')
                 if pn > 0:
                     if nav_button == 'text':
-                        lines.append("""\
+                        lines.append(r"""\
 <div style="text-align: left;"><a href="%s">&laquo; Previous</a></div>
 """ % (prev_part_filename))
                     else:
-                        lines.append("""\
+                        lines.append(r"""\
 <div style="text-align: left;"><a href="%s"><img src="%s" border=0 alt="&laquo; Previous"></a></div>
 """ % (prev_part_filename, prev_button_filename))
                 lines.append('</td><td>\n')
                 if pn < len(parts)-1:
                     if nav_button == 'text':
-                        lines.append("""\
+                        lines.append(r"""\
 <div style="text-align: right;"><a href="%s">Next &raquo;</a></div>
 """ % (next_part_filename))
                     else:
-                        lines.append("""\
+                        lines.append(r"""\
 <div style="text-align: right;"><a href="%s"><img src="%s" border=0 alt="Next &raquo;"></a></div>
 """ % (next_part_filename, next_button_filename))
                 lines.append('</td></tr></table>\n')
@@ -3505,21 +3506,21 @@ def doconce_split_html(header, parts, footer, basename, filename, slides=False):
             lines.append('<table style="width: 100%"><tr><td>\n')
             if pn > 0:
                 if nav_button == 'text':
-                    lines.append("""\
+                    lines.append(r"""\
 <div style="text-align: left;"><a href="%s">&laquo; Previous</a></div>
 """ % (prev_part_filename))
                 else:
-                    lines.append("""\
+                    lines.append(r"""\
 <div style="text-align: left;"><a href="%s"><img src="%s" border=0 alt="&laquo; Previous"></a></div>
 """ % (prev_part_filename, prev_button_filename))
             lines.append('</td><td>\n')
             if pn < len(parts)-1:
                 if nav_button == 'text':
-                    lines.append("""\
+                    lines.append(r"""\
 <div style="text-align: right;"><a href="%s">Next &raquo;</a></div>
 """ % (next_part_filename))
                 else:
-                    lines.append("""\
+                    lines.append(r"""\
 <div style="text-align: right;"><a href="%s"><img src="%s" border=0 alt="Next &raquo;"></a></div>
 """ % (next_part_filename, next_button_filename))
             lines.append('</td></tr></table>\n')
@@ -4847,7 +4848,7 @@ hr.figure { border: 0; width: 80%%; border-bottom: 1px solid #aaa}
         footer_logo = 'uio_footer'
 
     # Default footer logo command
-    repl = """
+    repl = r"""
 <div style="position: absolute; bottom: 0px; left: 0; margin-left: 0px;">
 <img src="%s/cbc_footer.png" width=110%%;></div>
 """ % footer_logo
@@ -4861,37 +4862,37 @@ hr.figure { border: 0; width: 80%%; border-bottom: 1px solid #aaa}
     if footer_logo == 'cbc_footer':
         if slide_tp not in ('reveal', 'deck'):
             raise ValueError('slide type "%s" cannot have --html_footer_logo' ^ slide_tp)
-        repl = """
+        repl = r"""
 <div style="position: absolute; bottom: 0px; left: 0; margin-left: 0px;">
 <img src="%s/cbc_footer.png" width=110%%;></div>
 """ % footer_logo_path[slide_tp]
     elif footer_logo == 'cbc_symbol':
-        repl = """
+        repl = r"""
 <div style="position: absolute; bottom: 0px; left: 0; margin-left: 20px; margin-bottom: 20px;">
 <img src="%s/cbc_symbol.png" width="50"></div>
 """ % footer_logo_path[slide_tp]
     elif footer_logo == 'simula_footer':
-        repl = """
+        repl = r"""
 <div style="position: absolute; bottom: 0px; left: 0; margin-left: 0px;">
 <img src="%s/simula_footer.png" width=700></div>
 """ % footer_logo_path[slide_tp]
     elif footer_logo == 'simula_symbol':
-        repl = """
+        repl = r"""
 <div style="position: absolute; bottom: 0px; left: 0; margin-left: 20px; margin-bottom: 10px;">
 <img src="%s/simula_symbol.png" width=200></div>
 """ % footer_logo_path[slide_tp]
     elif footer_logo == 'uio_footer':
-        repl = """
+        repl = r"""
 <div style="position: absolute; bottom: 0px; left: 0; margin-left: 20px; margin-bottom: 0px;">
 <img src="%s/uio_footer.png" width=450></div>
 """ % footer_logo_path[slide_tp]
     elif footer_logo == 'uio_symbol':
-        repl = """
+        repl = r"""
 <div style="position: absolute; bottom: 0px; left: 0; margin-left: 20px; margin-bottom: 20px;">
 <img src="%s/uio_symbol.png" width=100></div>
 """ % footer_logo_path[slide_tp]
     elif footer_logo == 'uio_simula_symbol':
-        repl = """
+        repl = r"""
 <div style="position: absolute; bottom: 0px; left: 0; margin-left: 20px; margin-bottom: 0px;">
 <img src="%s/uio_footer.png" width="180"></div>
 <div style="position: absolute; bottom: 0px; left: 0; margin-left: 250px; margin-bottom: 0px;">
@@ -4943,7 +4944,7 @@ hr.figure { border: 0; width: 80%%; border-bottom: 1px solid #aaa}
     slide_syntax[slide_tp]['body_lines'] = ''.join(body_lines)
 
     #<title>%(title)s</title>
-    slides = """\
+    slides = r"""\
 <!DOCTYPE html>
 
 %(head_lines)s
@@ -5133,7 +5134,7 @@ td.padding {
         if html_copyright_placement == 'titlepage' and part_no > 0:
             copyright_ = ''
 
-        slides += """
+        slides += r"""
 %s
 %s
 %s
@@ -5143,7 +5144,7 @@ td.padding {
        part,
        copyright_,
        slide_syntax[slide_tp]['slide_envir_end'])
-    slides += """
+    slides += r"""
 %s
 
 </body>
@@ -5170,7 +5171,7 @@ td.padding {
 
 
 def _usage_slides_beamer():
-    print("""Usage: doconce slides_beamer mydoc --beamer_slide_theme=themename --beamer_slide_navigation=off --beamer_block_style=mdbox [--handout])
+    print(r"""Usage: doconce slides_beamer mydoc --beamer_slide_theme=themename --beamer_slide_navigation=off --beamer_block_style=mdbox [--handout])
 
 themename can be
 red_plain, blue_plain, red_shadow, blue_shadow, dark, dark_gradient, vintage
@@ -5224,7 +5225,7 @@ def slides_beamer():
 
 
 def _usage_slides_markdown():
-    print("""
+    print(r"""
 Usage: doconce slides_markdown mydoc slide_type --slide_theme=dark
 
 slide_type: remark (the only implemented so far)
@@ -5258,7 +5259,7 @@ def slides_markdown():
     if slide_type != 'remark':
         print('*** error: only remark slides are allowed, not %s' % slide_type)
 
-    template = """
+    template = r"""
 <!DOCTYPE html>
 <html>
 <head>
@@ -5302,7 +5303,7 @@ h1, h2, h3 {
     additional_styling = ''
     if theme == 'dark':
         class_ = 'class: center, middle, inverse'
-        additional_styling = """
+        additional_styling = r"""
 
 /* Style taken from the official remark demo */
 body { font-family: 'Droid Serif'; }
@@ -5540,7 +5541,7 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
 """ % vars()
 
     if handout:
-        slides += """
+        slides += r"""
 \usepackage{pgfpages} % for handouts
 """
 
@@ -5828,7 +5829,7 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
 %(part)s
 \end{frame}
 """ % vars()
-    slides += """
+    slides += r"""
 \end{document}
 """
     slides = re.sub(r'% !split\s+', '', slides)
@@ -5912,7 +5913,7 @@ def split_rst0():
 
 def _usage_split_rst():
     print('Usage: doconce split_rst mydoc')
-    print("""Example:
+    print(r"""Example:
 doconce sphinx_dir author="Kaare Dump" title="Short title" dirname=mydir mydoc
 doconce format sphinx mydoc
 doconce split_rst mydoc
@@ -5977,21 +5978,21 @@ def doconce_rst_split(parts, basename, filename):
             first_heading = m.group(1)
             if first_heading.startswith('='):
                 if re.search(r'^(%%+)$', text, flags=re.MULTILINE):
-                    print("""
+                    print(r"""
 *** error: first heading in part %d is a section, but the part
     also contains a chapter.
     !split must be moved to avoid such inconsistent reST headings""" % pn)
                     _abort()
             elif first_heading.startswith('-'):
                 if re.search(r'^(%%+|==+)$', text, flags=re.MULTILINE):
-                    print("""
+                    print(r"""
 *** error: first heading in part %d is a subsection, but the part
     also contains a chapter or section.
     !split must be moved to avoid such inconsistent reST headings""" % pn)
                     _abort()
             elif first_heading.startswith('~'):
                 if re.search(r'^(%%+|==+|--+)$', text, flags=re.MULTILINE):
-                    print("""
+                    print(r"""
 *** error: first heading in part %d is a subsubsection, but the part
     also contains a chapter, section, or subsection.
     !split must be moved to avoid such inconsistent reST headings""" % pn)
@@ -6001,7 +6002,7 @@ def doconce_rst_split(parts, basename, filename):
         generated_files.append(part_filename)
 
         if nbsp and pn > 0 and '|nbsp|' in text:
-            text = """
+            text = r"""
 
 .. |nbsp| unicode:: 0xA0
    :trim:
@@ -6105,7 +6106,7 @@ def teamod():
     os.mkdir('src-%s' % name)
     os.mkdir('slides-%s' % name)
     f = open('main_%s.do.txt' % name, 'w')
-    f.write("""# Main file for teaching module "%s"
+    f.write(r"""# Main file for teaching module "%s"
 
 TITLE: Here Goes The Title ...
 AUTHOR: name1 email:..@.. at institution1, institution2, ...
@@ -6116,7 +6117,7 @@ DATE: today
 """ % name)
     f.close()
     f = open('%s.do.txt' % name, 'w')
-    f.write("""# Teaching module: %s
+    f.write(r"""# Teaching module: %s
 ======= Section =======
 
 ===== Subsection =====
@@ -6829,7 +6830,7 @@ def _spellcheck_all(**kwargs):
         sys.exit(0)
 
 def _usage_spellcheck():
-    print("""
+    print(r"""
 doconce spellcheck file1.do.txt file2.do.txt ...  # use .dict4spell.txt
 doconce spellcheck -d .mydict.txt file1.do.txt file2.do.txt ...
 
@@ -7222,7 +7223,7 @@ def ref_external():
 
 def _usage_latex_problems():
     print('doconce latex_problems mydoc.log [overfull-hbox-limit --texcode]')
-    print("""
+    print(r"""
 Interpret the .log file and write out latex problems related to
 undefined references, multiply defined labels, and overfull hboxes.
 The lower limit for overfull hboxes can be specified as an integer.
@@ -8454,7 +8455,7 @@ def latex2doconce():
     by files combined to a single file, avoid footnotes, index inside
     paragraphs, do not start code blocks with indentation, ...
     """
-    print("""# #ifdef LATEX2DOCONCE
+    print(r"""# #ifdef LATEX2DOCONCE
 This is the result of the doconce latex2doconce program.
 The translation from LaTeX is just a helper. The text must
 be carefully examined! (Be prepared that some text might also
@@ -8476,7 +8477,7 @@ def html2doconce():
     Apply transformations to an html file to help translate the
     document into DocOnce format.
     """
-    print("""# #ifdef HTML2DOCONCE
+    print(r"""# #ifdef HTML2DOCONCE
 This is the result of the doconce htmldoconce program.
 The translation from HTML is just a helper. The text must
 be carefully examined! (Be prepared that some text might also
@@ -8609,11 +8610,11 @@ def latex_dislikes():
                 if envir in begin_likes:
                     pass # fine!
                 elif envir in begin_ok:
-                    print("""
+                    print(r"""
 Found \\begin{%s}, which can be handled, but it is
 recommended to avoid this construction.""" % envir)
                 else:
-                    print("""
+                    print(r"""
 Found \\begin{%s}, which will not carry over to DocOnce
 and other formats.""" % envir)
                     # Could have message here (begin_messages) that
@@ -8659,7 +8660,7 @@ def ipynb2doconce():
 
     # checking if we have modern enough ipynb format
     if nb['nbformat'] < 4:
-        print("""*** error: ipynb file format is too old (at least v4 needed).
+        print(r"""*** error: ipynb file format is too old (at least v4 needed).
 Please, upgrade format of your ipynb-file using Jupyter (just open and save
 the file) and then try again.
 """)
@@ -8992,7 +8993,7 @@ def pygmentize():
 
 def _usage_makefile():
     print('Usage:   doconce makefile doconce-file [html pdflatex latex sphinx gwiki pandoc ipynb deck reveal beamer ...]')
-    print("""Example: doconce makefile mydoc.do.txt html sphinx'
+    print(r"""Example: doconce makefile mydoc.do.txt html sphinx'
 
 A script make.py is generated with the basic steps for running a
 spellcheck on .do.txt files followed by commands for producing
@@ -9308,7 +9309,7 @@ def main():
 
     for format in formats:
         if format.endswith('latex'):
-            make.write("""
+            make.write(r"""
     # --- latex ---
 
     common_latex_options = ' --latex_code_style=vrb'
@@ -9322,7 +9323,7 @@ def main():
           postfix='auto')
 """)
         elif format == 'html':
-            make.write("""
+            make.write(r"""
     # --- HTML ---
 
     common_html_options = ''
@@ -9342,7 +9343,7 @@ def main():
     #html(dofile, options=common_options + common_html_options + ' --html_style=solarized3 --html_output=%s-solarized' % dofile, split=True)
 """)
         elif format == 'sphinx':
-            make.write("""
+            make.write(r"""
     # --- Sphinx ---
 
     sphinx_themes = ['pyramid',]
@@ -9357,7 +9358,7 @@ def main():
           split=False)
 """)
         elif format == 'reveal':
-            make.write("""
+            make.write(r"""
 
     # --- reveal.js slides ---
 
@@ -9368,7 +9369,7 @@ def main():
       theme='darkgray')
 """)
         elif format == 'deck':
-            make.write("""
+            make.write(r"""
     # --- deck.js slides ---
 
     deck_slides(
@@ -9378,7 +9379,7 @@ def main():
       theme='sandstone.default')
 """)
         elif format == 'beamer':
-            make.write("""
+            make.write(r"""
     # --- latex beamer slides ---
 
     beamer_slides(
@@ -9389,7 +9390,7 @@ def main():
       ptex2tex_envir='minted')  # 'ans:nt'
 """)
         elif format.endswith('wiki') or format in ('pandoc', 'plain', 'ipynb'):
-            make.write("""
+            make.write(r"""
     doconce2format(dofile, format, options=common_options + '')
 
 """)
@@ -9401,13 +9402,13 @@ def main():
         with_toc = ' -DWITH_TOC' if 'WITH_TOC' in text else ''
 
         dofile = dofile[:-7]
-        make.write("""
+        make.write(r"""
     # Slides file %(dofile)s
     dofile = "%(dofile)s"
 """ % vars())
         for format in formats:
             if format == 'html':
-                make.write("""
+                make.write(r"""
     html_style = 'bloodish'
     # One long HTML file
     html(
@@ -9442,7 +9443,7 @@ def main():
       theme='sandstone.default')
 """)
             elif format.endswith('latex'):
-                make.write("""
+                make.write(r"""
     beamer_slides(
       dofile,
       options=common_options + ' --latex_code_style=pyg',
@@ -9456,7 +9457,7 @@ def main():
       options=common_options + ' --device=paper' + with_toc,
       )
 """)
-    make.write("""
+    make.write(r"""
     # Dump all Unix commands run above as a Bash script
     bash = open('tmp_make.sh', 'w')
     print 'see tmp_make.sh for an equivalent auto-generated unix script'
@@ -9482,7 +9483,7 @@ function system {
 
     print 'see tmp_output.log for the output of all the commands'
 """)
-    make.write("""
+    make.write(r"""
 
 if __name__ == '__main__':
     main()
@@ -9495,7 +9496,7 @@ if __name__ == '__main__':
 
 def _usage_fix_bibtex4publish():
     print('Usage: doconce fix_bibtex4publish fil1e.bib file2.bib ...')
-    print("""
+    print(r"""
 Fix a bibtex file so that the values are enclosed by braces (only)
 and publish can import the data.
 """)
@@ -9920,7 +9921,7 @@ def gitdiff():
 
 def _usage_extract_exercises():
     print('Usage: doconce extract_exercises tmp_mako__mydoc.do.txt "--filter=keyword 1;keyword 2; some key word" --exercise_numbering=chapter --examples_as_exercises')
-    print("""
+    print(r"""
 Extract exercises to a separate document. Inherit numbering from parent
 document.
 

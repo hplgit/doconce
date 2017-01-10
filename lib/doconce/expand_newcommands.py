@@ -1,14 +1,13 @@
+#!/usr/bin/env python
 from __future__ import print_function
 from __future__ import absolute_import
 from builtins import range
 from past.builtins import basestring
-#!/usr/bin/env python
+import shutil, re, sys, os
 
 # NOTE: all newcommands can only span *one line*!
 # (necessary requirement since a findall with re.DOTALL will
 # not catch the final } of a command, real parsing is then neeeded)
-
-import shutil, re, sys, os
 
 def process_newcommand(line):
     line = line.replace('renewcommand', 'newcommand') # make syntax uniform

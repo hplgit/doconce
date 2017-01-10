@@ -22,7 +22,7 @@ man_filename = os.path.join("doc", "man", "man1", "doconce.1")
 if "install" in sys.argv:
     # Compresses the man page
     try:
-        man_inputfile = open(man_filename, 'r')
+        man_inputfile = open(man_filename, 'rb')
         man_contents = man_inputfile.read()
         man_inputfile.close()
 

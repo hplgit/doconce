@@ -1,8 +1,8 @@
 # -*- coding: iso-8859-15 -*-
 
-from __future__ import division
 from __future__ import print_function
 from __future__ import absolute_import
+from __future__ import division
 from future import standard_library
 standard_library.install_aliases()
 from builtins import zip
@@ -1663,7 +1663,7 @@ def latex_title(m):
 %\contentsline{chapter}{Bibliography}{829}{chapter.Bib}
 %\contentsline{chapter}{Index}{831}{chapter.Index}
 """
-    text += """
+    text += r"""
 
 % ----------------- title -------------------------
 """
@@ -1762,7 +1762,7 @@ def latex_author(authors_and_institutions, auth2index,
         if len(auth2index[author]) == 1:
             one_author_at_one_institution = True
 
-    text = """
+    text = r"""
 
 % ----------------- author(s) -------------------------
 """
@@ -1917,7 +1917,7 @@ def latex_author(authors_and_institutions, auth2index,
         errwarn('    --latex_title_layout=%s --latex_style=%s' % (title_layout, latex_style))
         _abort()
 
-    text += """
+    text += r"""
 % ----------------- end author(s) -------------------------
 
 """
@@ -2056,8 +2056,9 @@ def latex_ref_and_label(section_label2title, format, filestr):
     filestr = re.sub(r'\s+ref\{', replacement, filestr)
     # It is very confusing with \vref{} to undefined labels, so
     # let's detect them and replace with ref
-    _label_pattern = r'\label\{(.+?)\}'
-    _ref_pattern = r'\v?ref\{(.+?)\}'
+    _label_pattern = r'\\label\{(.+?)\}'
+    _ref_pattern = r'\\v?ref\{(.+?)\}'
+    print("Final all", _label_pattern)
     labels = re.findall(_label_pattern, filestr)
     refs   = re.findall(_ref_pattern,   filestr)
     external_refs = []
@@ -3476,20 +3477,6 @@ justified,
 \usepackage{chngcntr}
 \counterwithin{doconcequizcounter}{chapter}
 """
-
-    '''
-    # Package for quiz
-    # http://ctan.uib.no/macros/latex/contrib/exam/examdoc.pdf
-    # Requires documentclass{exam} and cannot be used in combination
-    # with other documentclass
-    if '!bquiz' in filestr:
-        INTRO['latex'] += r"""
-\usepackage{exam}            % for quiz typesetting
-\newcommand{\questionlabel}{}
-\CorrectChoiceEmphasis{\itshape}
-\checkboxchar{$\Box$}\checkedchar{$\blacksquare$}
-"""
-    '''
 
     # Make sure hyperlinks are black (as the text) for printout
     # and otherwise set to the dark blue linkcolor

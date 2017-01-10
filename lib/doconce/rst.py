@@ -443,8 +443,8 @@ def rst_bib(filestr, citations, pubfile, pubdata, numbering=True):
                 except UnicodeDecodeError as e:
                     if "can't decode byte" in str(e):
                         try:
-                            bibtext = bibtext.decode('utf-8').replace(
-                                '[%s]' % label, cite % citations[label])
+                            bibtext = bibtext.replace('[%s]' % label, 
+                                                      cite % citations[label])
                         except UnicodeDecodeError as e:
                             errwarn('UnicodeDecodeError: ' + e)
                             errwarn('*** error: problems in %s' % pubfile)

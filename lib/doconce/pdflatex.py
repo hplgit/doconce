@@ -1,7 +1,7 @@
+# -*- coding: iso-8859-15 -*-
 from __future__ import absolute_import
 from future import standard_library
 standard_library.install_aliases()
-# -*- coding: iso-8859-15 -*-
 from .latex import *
 from .doconce import errwarn
 
