@@ -294,7 +294,7 @@ def _doconce_get_authors_string(authors):
 
 def _doconce_mark_author(author, text) :
   "Mark the text with bold face if author is in the list of marked authors"
-  if "mark_author" in config and author.strip() in config.get("mark_author") :
+  if config.has_key("mark_author") and author.strip() in config.get("mark_author") :
     return "_%s_" % text
   else:
     return text
@@ -628,7 +628,7 @@ def _rst_get_authors_string(authors):
 
 def _rst_mark_author(author, text) :
   "Mark the text with bold face if author is in the list of marked authors"
-  if "mark_author" in config and author.strip() in config.get("mark_author") :
+  if config.has_key("mark_author") and author.strip() in config.get("mark_author") :
     return "_%s_" % text
   else:
     return text
@@ -888,7 +888,7 @@ def _xml_get_authors_string(authors):
 
 def _xml_mark_author(author, text):
   "Mark the text with bold face if author is in the list of marked authors"
-  if "mark_author" in config and author.strip() in config.get("mark_author") :
+  if config.has_key("mark_author") and author.strip() in config.get("mark_author") :
     return '<author marked="True">%s</author>' % text
   else:
     return '<author marked="False">%s</author>' % text
