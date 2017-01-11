@@ -3,7 +3,7 @@ from builtins import str
 from builtins import range
 import re, sys, shutil, os
 from .common import default_movie, plain_exercise, table_analysis, \
-     insert_code_and_tex, indent_lines
+     insert_code_and_tex, indent_lines, fix_ref_section_chapter
 from .html import html_movie, html_table
 from .pandoc import pandoc_ref_and_label, pandoc_index_bib, pandoc_quote, \
      language2pandoc, pandoc_quiz
@@ -15,7 +15,8 @@ figure_encountered = False
 movie_encountered = False
 figure_files = []
 movie_files = []
-html_encountered = False
+figure_labels = {}
+html_encountered = False    
 
 def ipynb_author(authors_and_institutions, auth2index,
                  inst2index, index2inst, auth2email):
@@ -57,7 +58,8 @@ def ipynb_table(table):
     text = re.sub(r'`([^`]+?)`', '<code>\g<1></code>', text)
     return text
 
-def ipynb_figure(m):
+def ipynb_figure(m):    
+    global figure_labels    
     # m.group() must be called before m.group('name')
     text = '<!-- dom:%s -->\n<!-- begin figure -->\n' % m.group()
 
@@ -74,6 +76,8 @@ def ipynb_figure(m):
     if not filename.startswith('http'):
         figure_files.append(filename)
 
+    figure_number = len(figure_labels) + 1
+
     # Extract optional label in caption
     label = None
     pattern = r' *label\{(.+?)\}'
@@ -81,6 +85,7 @@ def ipynb_figure(m):
     if m:
         label = m.group(1).strip()
         caption = re.sub(pattern, '', caption)
+        figure_labels[label] = figure_number
 
     display_method = option('ipynb_figure=', 'imgtag')
     if display_method == 'md':
@@ -101,10 +106,10 @@ def ipynb_figure(m):
             caption = re.sub(INLINE_TAGS[tag], INLINE_TAGS_SUBST['html'][tag],
                              caption, flags=re.MULTILINE)
         text += """
-<p>%s</p>
-<img src="%s" %s>
+<img src="{filename}" {opts}>
+<p style='font-size: 0.9em'><i>Figure {figure_number}: {caption}</i></p>
 
-""" % (caption, filename, opts)
+""".format(filename=filename, opts=opts, caption=caption, figure_number=figure_number)
     elif display_method == 'Image':
         # Image object
         # NOTE: This code will normally not work because it inserts a verbatim
@@ -826,6 +831,51 @@ def ipynb_index_bib(filestr, index, citations, pubfile, pubdata):
     filestr = re.sub(r'^# ---------- (markdown|code) cell$', '',
                      filestr, flags=re.MULTILINE)
     return filestr
+    
+    
+def ipynb_ref_and_label(section_label2title, format, filestr):
+    filestr = fix_ref_section_chapter(filestr, format)
+
+    # Replace all references to sections. Pandoc needs a coding of
+    # the section header as link. (Not using this anymore.)
+    def title2pandoc(title):
+        # http://johnmacfarlane.net/pandoc/README.html
+        for c in ('?', ';', ':'):
+            title = title.replace(c, '')
+        title = title.replace(' ', '-').strip()
+        start = 0
+        for i in range(len(title)):
+            if title[i].isalpha():
+                start = i
+        title = title[start:]
+        title = title.lower()
+        if not title:
+            title = 'section'
+        return title
+
+    for label in section_label2title:
+        filestr = filestr.replace('ref{%s}' % label,
+                  '[%s](#%s)' % (section_label2title[label],
+                                 label))
+    
+    # TODO Consider handling the case where a figure label is used 
+    # but not referenced as "figure ref{label}"
+    
+    pattern = r'([Ff]igure|[Mm]ovie)\s+ref\{(.+?)\}'
+    for m in re.finditer(pattern, filestr):
+        label = m.group(2).strip()
+        figure_number = figure_labels[label]
+        replace_pattern = r'([Ff]igure|[Mm]ovie)\s+ref\{' + label + r'\}'
+        replace_string = '[\g<1> {figure_number}](#{label})'.format(
+            figure_number=figure_number, 
+            label=label
+        )
+        filestr = re.sub(replace_pattern, replace_string, filestr)
+                     
+    # Remaining ref{} (should protect \eqref)
+    filestr = re.sub(r'ref\{(.+?)\}', '[\g<1>](#\g<1>)', filestr)
+    return filestr
+
 
 def define(FILENAME_EXTENSION,
            BLANKLINE,
@@ -899,7 +949,7 @@ def define(FILENAME_EXTENSION,
 
         'separator': '\n',
         }
-    CROSS_REFS['ipynb'] = pandoc_ref_and_label
+    CROSS_REFS['ipynb'] = ipynb_ref_and_label
 
     TABLE['ipynb'] = ipynb_table
     cite = option('ipynb_cite=', 'plain')
