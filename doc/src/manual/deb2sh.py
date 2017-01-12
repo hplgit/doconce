@@ -13,6 +13,7 @@ File syntax:
    by sudo apt-get install packagename.
 
 """
+from __future__ import print_function
 import sys
 try:
     debpkg = sys.argv[1]
@@ -147,5 +148,5 @@ shfile.write('echo "Everything is successfully installed!"\n')
 shfile.close()
 pyfile.write("print 'Everything is successfully installed!'\n")
 pyfile.close()
-print 'Generated %s.sh and %s.py with all install commands.' % \
-      (outfile, outfile)
+print('Generated %s.sh and %s.py with all install commands.' % \
+      (outfile, outfile))

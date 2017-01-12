@@ -1,3 +1,7 @@
+from __future__ import division
+from __future__ import print_function
+from builtins import range
+from past.utils import old_div
 from numpy import *
 from matplotlib.pyplot import *
 import sys
@@ -5,7 +9,7 @@ import sys
 def solver(I, a, T, dt, theta):
     """Solve u'=-a*u, u(0)=I, for t in (0,T]; step: dt."""
     dt = float(dt)           # avoid integer division
-    N = int(round(T/dt))     # no of time intervals
+    N = int(round(old_div(T,dt)))     # no of time intervals
     T = N*dt                 # adjust T to fit time step dt
     u = zeros(N+1)           # array of u[n] values
     t = linspace(0, T, N+1)  # time mesh
@@ -65,13 +69,13 @@ def read_command_line(use_argparse=True):
     if use_argparse:
         parser = define_command_line_options()
         args = parser.parse_args()
-        print 'I={}, a={}, makeplot={}, dt_values={}'.format(
-            args.I, args.a, args.makeplot, args.dt_values)
+        print('I={}, a={}, makeplot={}, dt_values={}'.format(
+            args.I, args.a, args.makeplot, args.dt_values))
         return args.I, args.a, args.T, args.makeplot, args.dt_values
     else:
         if len(sys.argv) < 6:
-            print 'Usage: %s I a on/off dt1 dt2 dt3 ...' % \
-                  sys.argv[0]; sys.exit(1)
+            print('Usage: %s I a on/off dt1 dt2 dt3 ...' % \
+                  sys.argv[0]); sys.exit(1)
 
         I = float(sys.argv[1])
         a = float(sys.argv[2])
@@ -92,13 +96,13 @@ def main():
 
         # Compute convergence rates
         m = len(dt_values)
-        r[theta] = [log(E_values[i-1]/E_values[i])/
-                    log(dt_values[i-1]/dt_values[i])
+        r[theta] = [old_div(log(old_div(E_values[i-1],E_values[i])),
+                    log(old_div(dt_values[i-1],dt_values[i])))
                     for i in range(1, m, 1)]
 
     for theta in r:
-        print '\nPairwise convergence rates for theta=%g:' % theta
-        print ' '.join(['%.2f' % r_ for r_ in r[theta]])
+        print('\nPairwise convergence rates for theta=%g:' % theta)
+        print(' '.join(['%.2f' % r_ for r_ in r[theta]]))
     return r
 
 def verify_convergence_rate():
@@ -116,12 +120,12 @@ if __name__ == '__main__':
     if 'verify_rates' in sys.argv:
         sys.argv.remove('verify_rates')
         if not '--dt' in sys.argv:
-            print 'Must assign several dt values through the --dt option'
+            print('Must assign several dt values through the --dt option')
             sys.exit(1)  # abort
         if verify_convergence_rate():
             pass
         else:
-            print 'Bug in the implementation!'
+            print('Bug in the implementation!')
     else:
         # Perform simulations
         main()

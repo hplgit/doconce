@@ -1,3 +1,4 @@
+from __future__ import print_function
 # NOTE: This is a program used to test all slides styles in all combinations.
 # Fine for new slide environments, but optimal combinations are what
 # a user needs, not all combinations.
@@ -7,10 +8,10 @@
 import os, shutil, sys
 
 def system(cmd):
-    print cmd
+    print(cmd)
     failure = os.system(cmd)
     if failure:
-        print 'could not run', cmd
+        print('could not run', cmd)
         sys.exit(1)
 
 from collections import OrderedDict as dict

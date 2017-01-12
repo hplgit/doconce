@@ -13,12 +13,16 @@ does not work properly.
 
 2.
 """
+from __future__ import absolute_import
+from builtins import str
+from builtins import range
+from past.builtins import basestring
 import re, sys
-from common import default_movie, plain_exercise, bibliography, \
+from .common import default_movie, plain_exercise, bibliography, \
      cite_with_multiple_args2multiple_cites, insert_code_and_tex, \
      fix_ref_section_chapter
-from misc import option
-from doconce import errwarn
+from .misc import option
+from .doconce import errwarn
 
 def matlabnb_author(authors_and_institutions, auth2index,
                  inst2index, index2inst, auth2email):
@@ -62,7 +66,7 @@ def matlabnb_code(filestr, code_blocks, code_block_types,
                 if not (line.startswith('!bc') or line.startswith('!ec'))]) + '\n'
 
     # Insert % at the beginning of each line
-    from common import _CODE_BLOCK, _MATH_BLOCK
+    from .common import _CODE_BLOCK, _MATH_BLOCK
     code_line = r'^\d+ ' + _CODE_BLOCK
     code_line_problem = r' (\d+ ' + _CODE_BLOCK + ')'
     math_line = r'^\d+ ' + _MATH_BLOCK
@@ -128,7 +132,7 @@ def matlabnb_ref_and_label(section_label2title, format, filestr):
         filestr = filestr.replace('ref{%s}' % label,
                                   '"%s"' % section_label2title[label])
 
-    from common import ref2equations
+    from .common import ref2equations
     filestr = ref2equations(filestr)
 
     return filestr
@@ -314,7 +318,7 @@ def define(FILENAME_EXTENSION,
         }
 
     CODE['matlabnb'] = matlabnb_code
-    from common import DEFAULT_ARGLIST
+    from .common import DEFAULT_ARGLIST
     ARGLIST['matlabnb'] = DEFAULT_ARGLIST
     FIGURE_EXT['matlabnb'] = {
         'search': ('.png', '.gif', '.jpg', '.jpeg', '.pdf'),  #.pdf?
@@ -332,14 +336,14 @@ def define(FILENAME_EXTENSION,
         'separator': '\n',
         }
     CROSS_REFS['matlabnb'] = matlabnb_ref_and_label
-    from html import html_table
+    from .html import html_table
     TABLE['matlabnb'] = html_table
     #TABLE['matlabnb'] = matlabnb_table
     EXERCISE['matlabnb'] = plain_exercise
     INDEX_BIB['matlabnb'] = matlabnb_index_bib
     TOC['matlabnb'] = matlabnb_toc
 
-    from common import indent_lines
+    from .common import indent_lines
     ENVIRS['matlabnb'] = {
         'warning':   lambda block, format, title='Warning', text_size='normal':
            matlabnb_box(block, title),

@@ -3,6 +3,7 @@
 # #include "docstrings/docstring.dst.txt"
 
 '''
+from __future__ import absolute_import
 
 __version__ = '1.3'
 version = __version__
@@ -11,4 +12,4 @@ author = __author__
 
 __acknowledgments__ = ''
 
-from doconce import doconce_format, DocOnceSyntaxError
+from .doconce import doconce_format, DocOnceSyntaxError

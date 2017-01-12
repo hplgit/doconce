@@ -6,6 +6,7 @@
 
 # The script is based on packages listed in debpkg_doconce.txt.
 
+from __future__ import print_function
 logfile = 'tmp_output.log'  # store all output of all operating system commands
 f = open(logfile, 'w'); f.close()  # touch logfile so it can be appended
 
@@ -13,16 +14,16 @@ import subprocess, sys
 
 def system(cmd):
     """Run system command cmd."""
-    print cmd
+    print(cmd)
     try:
         output = subprocess.check_output(cmd, shell=True,
                                          stderr=subprocess.STDOUT)
     except subprocess.CalledProcessError as e:
-        print 'Command\n  %s\nfailed.' % cmd
-        print 'Return code:', e.returncode
-        print e.output
+        print('Command\n  %s\nfailed.' % cmd)
+        print('Return code:', e.returncode)
+        print(e.output)
         sys.exit(1)
-    print output
+    print(output)
     f = open(logfile, 'a'); f.write(output); f.close()
 
 system('sudo apt-get update --fix-missing')
@@ -170,4 +171,4 @@ system('sudo apt-get -y install diffuse')
 # example on installing mdframed.sty manually (it exists in texlive,
 # but sometimes needs to be in its newest version)
 
-print 'Everything is successfully installed!'
+print('Everything is successfully installed!')

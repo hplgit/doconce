@@ -1,4 +1,6 @@
 """Minimalistic set of unit tests for DocOnce."""
+from __future__ import print_function
+from builtins import range
 # Note: test.verify is a full test, but requires *a lot* of dependencies.
 # This test can be run with an install of plain DocOnce code (even not
 # preprocess and mako are used).
@@ -87,7 +89,7 @@ def test_mintest_html():
     for filename in filenames:
         assert_equal_files(filename,
                            os.path.join('mintest', filename))
-    print '------- end of html test ------------'
+    print('------- end of html test ------------')
 
 def test_mintest_latex():
     filename = '_ref_mintest'
@@ -99,7 +101,7 @@ def test_mintest_latex():
     filenames = [filename+'.tex']
     for filename in filenames:
         assert_equal_files(filename, os.path.join('mintest', filename))
-    print '------- end of latex test ------------'
+    print('------- end of latex test ------------')
 
 def test_mintest_plain():
     filename = '_ref_mintest'
@@ -111,7 +113,7 @@ def test_mintest_plain():
     filenames = [filename+'.txt']
     for filename in filenames:
         assert_equal_files(filename, os.path.join('mintest', filename))
-    print '------- end of plain text test ------------'
+    print('------- end of plain text test ------------')
 
 def test_mintest_ipynb():
     filename = '_ref_mintest'
@@ -123,7 +125,7 @@ def test_mintest_ipynb():
     filenames = [filename+'.ipynb']
     for filename in filenames:
         assert_equal_files(filename, os.path.join('mintest', filename))
-    print '------- end of plain text test ------------'
+    print('------- end of plain text test ------------')
 
 if __name__ == '__main__':
     test_mintest_html()

@@ -1,6 +1,7 @@
+from __future__ import absolute_import
 
-from epytext import epytext_author
-from common import default_movie, plain_exercise, DEFAULT_ARGLIST
+from .epytext import epytext_author
+from .common import default_movie, plain_exercise, DEFAULT_ARGLIST
 
 def define(FILENAME_EXTENSION,
            BLANKLINE,
@@ -53,7 +54,7 @@ def define(FILENAME_EXTENSION,
         'ampersand2':    r' \g<1>&\g<2>',
         }
 
-    from rst import rst_code, rst_table
+    from .rst import rst_code, rst_table
     CODE['st'] = rst_code
     TABLE['st'] = rst_table
 
@@ -70,10 +71,10 @@ def define(FILENAME_EXTENSION,
         'separator': '',
         }
     ARGLIST['st'] = DEFAULT_ARGLIST
-    from plaintext import plain_ref_and_label, plain_index_bib
+    from .plaintext import plain_ref_and_label, plain_index_bib
     CROSS_REFS['st'] = plain_ref_and_label
     INDEX_BIB['st'] = plain_index_bib
     EXERCISE['st'] = plain_exercise
     TOC['st'] = lambda s, f: ''  # drop
-    from plaintext import plain_quiz
+    from .plaintext import plain_quiz
     QUIZ['st'] = plain_quiz

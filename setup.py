@@ -5,6 +5,8 @@ Usage of this setup.py script:
 python setup.py install [, --prefix=$PREFIX]
 
 """
+from __future__ import print_function
+from builtins import str
 __author__ = 'Hans Petter Langtangen <hpl@simula.no>'
 __acknowledgemets__ = 'Johannes H. Ring',
 
@@ -20,7 +22,7 @@ man_filename = os.path.join("doc", "man", "man1", "doconce.1")
 if "install" in sys.argv:
     # Compresses the man page
     try:
-        man_inputfile = open(man_filename, 'r')
+        man_inputfile = open(man_filename, 'rb')
         man_contents = man_inputfile.read()
         man_inputfile.close()
 
@@ -37,8 +39,8 @@ if "install" in sys.argv:
         man_outputfile.close()
 
         man_filename = tmp_filename
-    except IOError, msg:
-        print "Unable to compress man page: %s" % msg
+    except IOError as msg:
+        print("Unable to compress man page: %s" % msg)
 
 # Make doconce_config_default.py file (based on newest set of options)
 import doconce.misc
@@ -93,5 +95,5 @@ setup(
 # Clean up the temporary compressed man page
 if man_filename.endswith(".gz") and os.path.isfile(man_filename):
     if "-q" not in sys.argv or "--quiet" not in sys.argv:
-        print "Removing %s" % man_filename
+        print("Removing %s" % man_filename)
     os.remove(man_filename)

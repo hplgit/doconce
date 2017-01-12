@@ -2,6 +2,10 @@
 See http://johnmacfarlane.net/pandoc/README.html
 for syntax.
 """
+from __future__ import absolute_import
+from builtins import zip
+from builtins import range
+from past.builtins import basestring
 # Remaining key issue: github_md dialect hardcodes all the newlines so
 # lines in paragraphs should be joined if the resulting Markdown text
 # is published as an issue on github.com. (Difficult to solve. Current
@@ -9,11 +13,11 @@ for syntax.
 # documents and issues.)
 
 import re, sys, functools
-from common import default_movie, plain_exercise, table_analysis, \
+from .common import default_movie, plain_exercise, table_analysis, \
      insert_code_and_tex, bibliography, indent_lines, fix_ref_section_chapter
-from html import html_movie, html_table
-from misc import option
-from doconce import errwarn
+from .html import html_movie, html_table
+from .misc import option
+from .doconce import errwarn
 
 # Mapping of envirs to correct Pandoc verbatim environment
 language2pandoc = dict(
@@ -487,7 +491,7 @@ def define(FILENAME_EXTENSION,
             'box':      slate_success,
             }
 
-    from common import DEFAULT_ARGLIST
+    from .common import DEFAULT_ARGLIST
     ARGLIST['pandoc'] = DEFAULT_ARGLIST
     LIST['pandoc'] = {
         'itemize':

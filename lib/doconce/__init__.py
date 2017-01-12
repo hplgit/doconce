@@ -85,6 +85,7 @@ Documentation of DocOnce is found in
 Both directories contain a make.sh file for creating various formats.
 
 '''
+from __future__ import absolute_import
 
 __version__ = '1.3'
 version = __version__
@@ -93,4 +94,4 @@ author = __author__
 
 __acknowledgments__ = ''
 
-from doconce import doconce_format, DocOnceSyntaxError
+from .doconce import doconce_format, DocOnceSyntaxError

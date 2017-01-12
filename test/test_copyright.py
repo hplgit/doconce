@@ -1,9 +1,10 @@
+from __future__ import print_function
 import os, shutil, sys, re, glob
 shutil.copy('copyright.do.txt', 'tmp_copyright.do.txt')
 name = 'tmp_copyright'  # DocOnce file
 
 def system(cmd):
-    print cmd
+    print(cmd)
     failure = os.system(cmd)
     if failure:
         sys.exit(1)
@@ -40,7 +41,7 @@ for format in 'pdflatex', 'sphinx', 'html':
                 cmd += ' --latex_code_style=vrb'
             elif format == 'html':
                 cmd += ' --html_output=%s%d' % (name, counter)
-            print cmd
+            print(cmd)
             system(cmd)
             if format == 'html':
                 cmd = 'doconce split_html %s%d.html' % (name, counter)
