@@ -1290,6 +1290,8 @@ def tikz2img(tikz_file, encoding='utf8', tikz_libs=None):
     out, err = p.communicate()
     if p.poll() != 0:
         errwarn('*** error: failed to convert TikZ figure from DVI to SVG')
+        errwarn('STDOUT:\n'+out)
+        errwarn('STDERR:\n'+err)
         return True
 
 
@@ -1311,7 +1313,7 @@ def tikz2img(tikz_file, encoding='utf8', tikz_libs=None):
     try:
         p = subprocess.Popen(['inkscape', '--without-gui',
                                '--export-area-drawing', # cropping
-                               '--export-dpi=300',
+                               '--export-dpi=600',
                                '--export-background=#ffffff', # white background
                                '--export-background-opacity=1.0',
                                '--export-png='+png_file,
