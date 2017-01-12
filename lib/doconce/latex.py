@@ -1,12 +1,21 @@
 # -*- coding: iso-8859-15 -*-
 
-import os, commands, re, sys, glob, shutil, subprocess
-from common import plain_exercise, table_analysis, \
+from __future__ import print_function
+from __future__ import absolute_import
+from __future__ import division
+from future import standard_library
+standard_library.install_aliases()
+from builtins import zip
+from builtins import str
+from builtins import range
+from past.utils import old_div
+import os, subprocess, re, sys, glob, shutil, subprocess
+from .common import plain_exercise, table_analysis, \
      _CODE_BLOCK, _MATH_BLOCK, doconce_exercise_output, indent_lines, \
      online_python_tutor, envir_delimiter_lines, safe_join, \
      insert_code_and_tex, is_file_or_url, chapter_pattern
-from misc import option, _abort, replace_code_command
-from doconce import errwarn, debugpr, locale_dict
+from .misc import option, _abort, replace_code_command
+from .doconce import errwarn, debugpr, locale_dict
 additional_packages = ''  # comma-sep. list of packages for \usepackage{}
 
 include_numbering_of_exercises = True
@@ -43,7 +52,7 @@ def aux_label2number():
 def get_bib_index_pages():
     """Find the page number for the Index and Bibliography from .aux file."""
     bib_page = idx_page = '9999'
-    from doconce import dofile_basename
+    from .doconce import dofile_basename
     name = dofile_basename + '.aux'
     if not os.path.isfile(name):
         return bib_page, idx_page
@@ -127,7 +136,7 @@ def latex_code_envir(
         envir_tp = 'cod'
         envir = envir[:-3]
 
-    from common import get_legal_pygments_lexers
+    from .common import get_legal_pygments_lexers
     global envir2pyg, envir2lst
 
     if envir in ('ipy', 'do'):
@@ -550,7 +559,7 @@ def latex_code(filestr, code_blocks, code_block_types,
                         code_block_types[_block_no] = new_envir
                     else:
                         if _envir not in admon_envir_mapping:
-                            print '*** error: requested %s to be replaced by something else inside admons, but\n    envir %s is not defined as part of --latex_admon_envir_map=...' % (_envir, _envir)
+                            print('*** error: requested %s to be replaced by something else inside admons, but\n    envir %s is not defined as part of --latex_admon_envir_map=...' % (_envir, _envir))
                             _abort()
                         new_envir = admon_envir_mapping[_envir]
                         lines[i] = lines[i].replace(_envir, new_envir)
@@ -580,7 +589,7 @@ def latex_code(filestr, code_blocks, code_block_types,
             new_envirs.append(envir + admon_envir_mapping['all'])
     envirs += new_envirs
     # Add all possible pygments envirs
-    from common import has_custom_pygments_lexer, get_legal_pygments_lexers
+    from .common import has_custom_pygments_lexer, get_legal_pygments_lexers
     if 'ipy' in code_block_types:
         has_custom_pygments_lexer('ipy')
     if 'do' in code_block_types:
@@ -656,7 +665,7 @@ def latex_code(filestr, code_blocks, code_block_types,
     pattern = r'(begin\{block\}|paragraph)\{.*?\\code\{.*?%.*?\}'
     filestr = re.sub(pattern, lambda m: m.group().replace('%', '\\%'), filestr)
 
-    from common import get_copyfile_info
+    from .common import get_copyfile_info
     cr_text = get_copyfile_info(filestr, format=format)
     if cr_text is not None:
         filestr = filestr.replace('Copyright COPYRIGHT_HOLDERS',
@@ -1079,8 +1088,8 @@ def latex_figure(m):
         if is_file_or_url(filename) != 'url':
             errwarn('*** error: cannot fetch latex figure %s on the net (no connection or invalid URL)' % filename)
             _abort()
-        import urllib
-        f = urllib.urlopen(filename)
+        import urllib.request, urllib.parse, urllib.error
+        f = urllib.request.urlopen(filename)
         file_content = f.read()
         f.close()
         f = open(basename, 'w')
@@ -1269,7 +1278,7 @@ def latex_movie(m):
 
     def link_to_local_html_movie_player():
         """Simple solution where an HTML file is made for playing the movie."""
-        from common import default_movie
+        from .common import default_movie
         text = default_movie(m)
 
         # URL to HTML viewer file must have absolute path in \href
@@ -1327,12 +1336,12 @@ modestbranding=1   %% no YouTube logo in control bar
             # make a separate html file that can play the animation
             text += link_to_local_html_movie_player()
         else:
-            import DocWriter
+            from . import DocWriter
             header, jscode, form, footer, frames = \
                     DocWriter.html_movie(filename)
             # Make a good estimate of the frame rate: it takes 30 secs
             # to run the animation: rate*30 = no of frames
-            framerate = int(len(frames)/30.)
+            framerate = int(old_div(len(frames),30.))
             commands = [r'\includegraphics[width=0.9\textwidth]{%s}' %
                         f for f in frames]
             commands = ('\n\\newframe\n').join(commands)
@@ -1654,7 +1663,7 @@ def latex_title(m):
 %\contentsline{chapter}{Bibliography}{829}{chapter.Bib}
 %\contentsline{chapter}{Index}{831}{chapter.Index}
 """
-    text += """
+    text += r"""
 
 % ----------------- title -------------------------
 """
@@ -1753,7 +1762,7 @@ def latex_author(authors_and_institutions, auth2index,
         if len(auth2index[author]) == 1:
             one_author_at_one_institution = True
 
-    text = """
+    text = r"""
 
 % ----------------- author(s) -------------------------
 """
@@ -1908,7 +1917,7 @@ def latex_author(authors_and_institutions, auth2index,
         errwarn('    --latex_title_layout=%s --latex_style=%s' % (title_layout, latex_style))
         _abort()
 
-    text += """
+    text += r"""
 % ----------------- end author(s) -------------------------
 
 """
@@ -2047,8 +2056,9 @@ def latex_ref_and_label(section_label2title, format, filestr):
     filestr = re.sub(r'\s+ref\{', replacement, filestr)
     # It is very confusing with \vref{} to undefined labels, so
     # let's detect them and replace with ref
-    _label_pattern = r'\label\{(.+?)\}'
-    _ref_pattern = r'\v?ref\{(.+?)\}'
+    _label_pattern = r'\\label\{(.+?)\}'
+    _ref_pattern = r'\\v?ref\{(.+?)\}'
+    print("Final all", _label_pattern)
     labels = re.findall(_label_pattern, filestr)
     refs   = re.findall(_ref_pattern,   filestr)
     external_refs = []
@@ -2273,7 +2283,7 @@ def _get_admon_figs(filename):
     if not os.path.isdir(latexfigdir_all):
         os.mkdir(latexfigdir_all)
         os.chdir(latexfigdir_all)
-        import doconce
+        from . import doconce
         doconce_dir = os.path.dirname(doconce.__file__)
         doconce_datafile = os.path.join(doconce_dir, datafile)
         #errwarn('copying admon figures from %s to subdirectory %s' % \)
@@ -2605,7 +2615,7 @@ def latex_quiz(quiz):
                 text += '$\bigcirc$ '
 
         text += '\n' + choice[1] + '\n\n'
-    from common import envir_delimiter_lines
+    from .common import envir_delimiter_lines
     if not option('without_answers'):
         begin, end = envir_delimiter_lines['ans']
         correct = [i for i, choice in enumerate(quiz['choices'])
@@ -2698,7 +2708,7 @@ def define(FILENAME_EXTENSION,
            OUTRO,
            filestr):
     # all arguments are dicts and accept in-place modifications (extensions)
-    from common import INLINE_TAGS
+    from .common import INLINE_TAGS
     m = re.search(INLINE_TAGS['inlinecomment'], filestr, flags=re.DOTALL)
     has_inline_comments = True if m else False
 
@@ -2939,7 +2949,7 @@ def define(FILENAME_EXTENSION,
 %-------------------- begin preamble ----------------------
 """
 
-    from misc import copy_latex_packages
+    from .misc import copy_latex_packages
 
     side_tp = 'twoside' if option('device=') == 'paper' else 'oneside'
     draft = 'draft' if option('draft') else 'final'
@@ -3468,20 +3478,6 @@ justified,
 \counterwithin{doconcequizcounter}{chapter}
 """
 
-    '''
-    # Package for quiz
-    # http://ctan.uib.no/macros/latex/contrib/exam/examdoc.pdf
-    # Requires documentclass{exam} and cannot be used in combination
-    # with other documentclass
-    if '!bquiz' in filestr:
-        INTRO['latex'] += r"""
-\usepackage{exam}            % for quiz typesetting
-\newcommand{\questionlabel}{}
-\CorrectChoiceEmphasis{\itshape}
-\checkboxchar{$\Box$}\checkedchar{$\blacksquare$}
-"""
-    '''
-
     # Make sure hyperlinks are black (as the text) for printout
     # and otherwise set to the dark blue linkcolor
     linkcolor = option('latex_link_color=', None)
@@ -3616,7 +3612,7 @@ justified,
 %\doublespacing
 """
 
-    from common import has_copyright
+    from .common import has_copyright
     copyright_, symbol = has_copyright(filestr)
     symbol = r'\copyright\ ' if symbol else ''
     fancy_header = option('latex_fancy_header')

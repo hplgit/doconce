@@ -1,11 +1,15 @@
+from __future__ import print_function
+from builtins import input
 #!/usr/bin/env python
+from __future__ import print_function
+from builtins import input
 import sys, os, shutil, glob
 
 def system(cmd):
-    print cmd
+    print(cmd)
     failure = os.system(cmd)
     if failure:
-        print 'could not run\n%s\nin%s' % (cmd, os.getcwd())
+        print('could not run\n%s\nin%s' % (cmd, os.getcwd()))
         sys.exit(1)
 
 def rmtree(directory):
@@ -66,7 +70,7 @@ def zipfiles2lib():
 
 def pack_reveal_deck_csss():
     if clone:
-        print """
+        print("""
 NOTE: cloning repos like reveal.js and deck.js may bring in new
 versions of styles that are not compatible with previous tuning.
 So, be careful to mix doconce tunings with new versions.
@@ -85,8 +89,8 @@ You should also diff with a fresh reveal.js clone to see how new
 
 (Detected time-consuming incompatibilities Jan, 2014, after reveal and
 deck had undergone significant developments.)
-"""
-        ans = raw_input('Sure you want to proceed? (y/n) ')
+""")
+        ans = input('Sure you want to proceed? (y/n) ')
         if ans.lower().startswith('n'):
             return
 
@@ -173,7 +177,7 @@ if __name__ == '__main__':
     os.system('rm -f *.zip')
 
     if len(sys.argv) == 1:
-        print 'Usage: python _update.py all | | all-noclone | local'
+        print('Usage: python _update.py all | | all-noclone | local')
         sys.exit(1)
     if sys.argv[1] == 'all':
         clone = True
@@ -186,4 +190,4 @@ if __name__ == '__main__':
         #eval(func + '()')
         pack_local_dirs()
 
-    print 'Successful execution of', sys.argv[0]
+    print('Successful execution of', sys.argv[0])

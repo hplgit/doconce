@@ -1,6 +1,9 @@
 # -*- coding: iso-8859-15 -*-
-from latex import *
-from doconce import errwarn
+from __future__ import absolute_import
+from future import standard_library
+standard_library.install_aliases()
+from .latex import *
+from .doconce import errwarn
 
 def pdflatex_emoji(m):
     space1 = m.group(1)
@@ -11,10 +14,10 @@ def pdflatex_emoji(m):
     emojifile = os.path.join(latexfigdir, name + '.png')
     if not os.path.isfile(emojifile):
         # Download emoji image
-        from common import emoji_url
+        from .common import emoji_url
         url = emoji_url + name + '.png'
-        import urllib
-        urllib.urlretrieve(url, filename=emojifile)
+        import urllib.request, urllib.parse, urllib.error
+        urllib.request.urlretrieve(url, filename=emojifile)
         # Check that this was successful
         with open(emojifile, 'r') as f:
             if 'Not Found' in f.read():
@@ -44,7 +47,7 @@ def define(FILENAME_EXTENSION,
 
     if not 'latex' in BLANKLINE:
         # latex.define is not yet ran on these dictionaries, do it:
-        import latex
+        from . import latex
         latex.define(FILENAME_EXTENSION,
                      BLANKLINE,
                      INLINE_TAGS_SUBST,

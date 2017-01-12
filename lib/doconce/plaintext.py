@@ -1,7 +1,11 @@
+from __future__ import absolute_import
+from builtins import str
+from builtins import range
+from past.builtins import basestring
 import re, sys
-from common import default_movie, plain_exercise, bibliography, \
+from .common import default_movie, plain_exercise, bibliography, \
      cite_with_multiple_args2multiple_cites, fix_ref_section_chapter
-from misc import option
+from .misc import option
 
 
 def plain_author(authors_and_institutions, auth2index,
@@ -35,7 +39,7 @@ def plain_ref_and_label(section_label2title, format, filestr):
         filestr = filestr.replace('ref{%s}' % label,
                                   '"%s"' % section_label2title[label])
 
-    from common import ref2equations
+    from .common import ref2equations
     filestr = ref2equations(filestr)
 
     return filestr
@@ -215,9 +219,9 @@ def define(FILENAME_EXTENSION,
         'ampersand2':    r' \g<1>&\g<2>',
         }
 
-    from rst import rst_code
+    from .rst import rst_code
     CODE['plain'] = rst_code
-    from common import DEFAULT_ARGLIST
+    from .common import DEFAULT_ARGLIST
     ARGLIST['plain'] = DEFAULT_ARGLIST
     LIST['plain'] = {
         'itemize':
@@ -232,14 +236,14 @@ def define(FILENAME_EXTENSION,
         'separator': '\n',
         }
     CROSS_REFS['plain'] = plain_ref_and_label
-    from rst import rst_table
+    from .rst import rst_table
     TABLE['plain'] = rst_table
     #TABLE['plain'] = plain_table
     EXERCISE['plain'] = plain_exercise
     INDEX_BIB['plain'] = plain_index_bib
     TOC['plain'] = plain_toc
 
-    from common import indent_lines
+    from .common import indent_lines
     ENVIRS['plain'] = {
         'warning':   lambda block, format, title='Warning', text_size='normal':
            plain_box(block, title),

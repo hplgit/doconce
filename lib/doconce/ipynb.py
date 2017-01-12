@@ -1,11 +1,14 @@
+from __future__ import absolute_import
+from builtins import str
+from builtins import range
 import re, sys, shutil, os
-from common import default_movie, plain_exercise, table_analysis, \
+from .common import default_movie, plain_exercise, table_analysis, \
      insert_code_and_tex, indent_lines
-from html import html_movie, html_table
-from pandoc import pandoc_ref_and_label, pandoc_index_bib, pandoc_quote, \
+from .html import html_movie, html_table
+from .pandoc import pandoc_ref_and_label, pandoc_index_bib, pandoc_quote, \
      language2pandoc, pandoc_quiz
-from misc import option, _abort
-from doconce import errwarn
+from .misc import option, _abort
+from .doconce import errwarn
 
 # Global variables
 figure_encountered = False
@@ -93,7 +96,7 @@ def ipynb_figure(m):
             #text += '<a name="%s"></a>' % label
             text += '<div id="%s"></div>\n' % label
         # Fix caption markup so it becomes html
-        from doconce import INLINE_TAGS_SUBST, INLINE_TAGS
+        from .doconce import INLINE_TAGS_SUBST, INLINE_TAGS
         for tag in 'bold', 'emphasize', 'verbatim':
             caption = re.sub(INLINE_TAGS[tag], INLINE_TAGS_SUBST['html'][tag],
                              caption, flags=re.MULTILINE)
@@ -243,7 +246,7 @@ def ipynb_code(filestr, code_blocks, code_block_types,
 
     # filestr becomes json list after this function so we must typeset
     # envirs here. All envirs are typeset as pandoc_quote.
-    from common import _CODE_BLOCK, _MATH_BLOCK
+    from .common import _CODE_BLOCK, _MATH_BLOCK
     envir_format = option('ipynb_admon=', 'paragraph')
     # Remove all !bpop-!epop environments (they cause only problens and
     # have no use)
@@ -255,7 +258,7 @@ def ipynb_code(filestr, code_blocks, code_block_types,
     filestr = re.sub('^<!-- !bnotes.*?<!-- !enotes -->\n', '', filestr,
                      flags=re.DOTALL|re.MULTILINE)
     filestr = re.sub('^<!-- !split -->\n', '', filestr, flags=re.MULTILINE)
-    from doconce import doconce_envirs
+    from .doconce import doconce_envirs
     envirs = doconce_envirs()[8:-2]
     for envir in envirs:
         pattern = r'^!b%s(.*?)\n(.+?)\s*^!e%s' % (envir, envir)
@@ -326,7 +329,7 @@ def ipynb_code(filestr, code_blocks, code_block_types,
     # Insert %matplotlib inline in the first block using matplotlib
     # Only typeset Python code as blocks, otherwise !bc environmens
     # become plain indented Markdown.
-    from doconce import dofile_basename
+    from .doconce import dofile_basename
     ipynb_tarfile = 'ipynb-%s-src.tar.gz' % dofile_basename
     src_paths = set()
     mpl_inline = False
@@ -780,7 +783,7 @@ def ipynb_index_bib(filestr, index, citations, pubfile, pubdata):
     # Quite some code here is copy from latex_index_bib
     # http://nbviewer.ipython.org/github/ipython/nbconvert-examples/blob/master/citations/Tutorial.ipynb
     if citations:
-        from common import cite_with_multiple_args2multiple_cites
+        from .common import cite_with_multiple_args2multiple_cites
         filestr = cite_with_multiple_args2multiple_cites(filestr)
     for label in citations:
         filestr = filestr.replace('cite{%s}' % label,
@@ -802,7 +805,7 @@ def ipynb_index_bib(filestr, index, citations, pubfile, pubdata):
         os.chdir(this_dir)
 
         bibstyle = option('latex_bibstyle=', 'plain')
-        from latex import fix_latex_command_regex
+        from .latex import fix_latex_command_regex
         bibtext = fix_latex_command_regex(r"""
 ((*- extends 'latex_article.tplx' -*))
 
@@ -881,7 +884,7 @@ def define(FILENAME_EXTENSION,
     # treatment of envirs in ipynb_code and ENVIRS can be empty.
     ENVIRS['ipynb'] = {}
 
-    from common import DEFAULT_ARGLIST
+    from .common import DEFAULT_ARGLIST
     ARGLIST['ipynb'] = DEFAULT_ARGLIST
     LIST['ipynb'] = {
         'itemize':

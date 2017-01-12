@@ -1,3 +1,4 @@
+from builtins import str
 from publish import config
 _format_venue = config.formatting._format_venue
 from publish.common import short_author
@@ -30,7 +31,7 @@ def doconce_format_articles(paper):
     # Volume
     if "volume" in paper:
         vol = paper["volume"]
-        if paper.has_key("number") :
+        if "number" in paper :
             vol += "(%s)" % paper["number"]
         values.append(vol)
 
@@ -378,7 +379,7 @@ def rst_format_articles(paper):
     # Volume
     if "volume" in paper:
         vol = paper["volume"]
-        if paper.has_key("number") :
+        if "number" in paper :
             vol += "(%s)" % paper["number"]
         values.append(vol)
 

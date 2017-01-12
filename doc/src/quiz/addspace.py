@@ -2,6 +2,7 @@
 Add space(s) at the beginning of all lines in a file to allow
 the html code not to be interpreted as quizes inside !bc/!ec tags.
 """
+from __future__ import print_function
 import sys
 f = open(sys.argv[1], 'r')
 try:
@@ -9,5 +10,5 @@ try:
 except IndexError:
     spaces = 1
 for line in f.read().splitlines():
-    print ' '*spaces, line
+    print(' '*spaces, line)
 

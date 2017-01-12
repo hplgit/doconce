@@ -1,5 +1,6 @@
+from __future__ import absolute_import
 import re
-from common import indent_lines, default_movie, plain_exercise
+from .common import indent_lines, default_movie, plain_exercise
 
 
 def epytext_author(authors_and_institutions, auth2index,
@@ -67,10 +68,10 @@ def define(FILENAME_EXTENSION,
         'ampersand2':    r' \g<1>&\g<2>',
         }
 
-    from rst import rst_code, rst_table
+    from .rst import rst_code, rst_table
     CODE['epytext'] = rst_code
     TABLE['epytext'] = rst_table
-    from plaintext import plain_ref_and_label, plain_index_bib
+    from .plaintext import plain_ref_and_label, plain_index_bib
     CROSS_REFS['epytext'] = plain_ref_and_label
     INDEX_BIB['epytext'] = plain_index_bib
     EXERCISE['epytext'] = plain_exercise
@@ -96,7 +97,7 @@ def define(FILENAME_EXTENSION,
         'module variable': '@var',
         }
     TOC['epytext'] = lambda x, f: '\n'  # no toc for epydoc
-    from plaintext import plain_quiz
+    from .plaintext import plain_quiz
     QUIZ['epytext'] = plain_quiz
 
     #insert QUIZ in various .py files, plaintext can do something simple, problem: cannot insert headline and exercise because then the exercise is not interpreted! problem2: quiz will just be a part of an exercises, unrendered

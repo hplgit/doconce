@@ -7,4 +7,5 @@
 # #include "more_functions.py"
 
 # Test the code included above
-print some_func(1, 'arg')
+from __future__ import print_function
+print(some_func(1, 'arg'))
