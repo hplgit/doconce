@@ -156,6 +156,8 @@ def _rmdolog():
 
 def errwarn(msg, newline=True):
     """Function for reporting errors and warnings to screen and file."""
+    if(isinstance(msg, bytes)):
+        msg = msg.decode("utf-8")
     if newline:
         print(msg)
     else:
