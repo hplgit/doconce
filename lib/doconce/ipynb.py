@@ -335,7 +335,6 @@ def ipynb_code(filestr, code_blocks, code_block_types,
     # Only typeset Python code as blocks, otherwise !bc environmens
     # become plain indented Markdown.
     from .doconce import dofile_basename
-    
     ipynb_tarfile = 'ipynb-%s-src.tar.gz' % dofile_basename
     src_paths = set()
     mpl_inline = False
