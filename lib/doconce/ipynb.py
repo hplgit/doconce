@@ -34,6 +34,7 @@ def ipynb_author(authors_and_institutions, auth2index,
     # New code: typeset as lines, but insert a comment so we
     # can convert back <!-- dom:AUTHOR: ... ->
     s = '\n'
+    first_pass = True
     for author, i, e in authors_and_institutions:
         s+= '<!-- dom:AUTHOR: ' + author
         if e is not None:
@@ -41,11 +42,16 @@ def ipynb_author(authors_and_institutions, auth2index,
         if i is not None:
             s += ' at ' + ' & '.join(i)
         s += ' -->\n'
-        s+= '<!-- Author: --> _%s_' % (author)
+        # Add extra line between heading and first author
+        if first_pass:
+            s+= '<!-- Author: -->  \n_%s_' % (author)
+        else:
+            s+= '<!-- Author: --> _%s_' % (author)
         if e is not None:
             s += ' (email: `%s`)' % e
         if i is not None:
             s += ', ' + ' and '.join(i)
+        first_pass = False
         s += '  \n'
     return s
 

@@ -3539,7 +3539,7 @@ def typeset_authors(filestr, format):
         index2inst, auth2email, filestr = interpret_authors(filestr, format)
     author_block = INLINE_TAGS_SUBST[format]['author']\
         (authors_and_institutions, auth2index, inst2index,
-         index2inst, auth2email)
+         index2inst, auth2email).rstrip() + '\n'  # ensure one newline
     filestr = filestr.replace('XXXAUTHOR', author_block)
     return filestr
 
