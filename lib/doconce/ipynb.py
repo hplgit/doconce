@@ -46,7 +46,7 @@ def ipynb_author(authors_and_institutions, auth2index,
             s += ' (email: `%s`)' % e
         if i is not None:
             s += ', ' + ' and '.join(i)
-        s += '\n\n'
+        s += '  \n'
     return s
 
 def ipynb_table(table):

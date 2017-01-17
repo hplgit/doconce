@@ -18,7 +18,7 @@ except ImportError:
     # use standard arbitrary-ordered dict instead (original order of
     # citations is then lost)
     OrderedDict = dict
-    
+
 # Support for non-English languages (not really implemented yet)
 global locale_dict
 locale_dict = dict(
@@ -2627,7 +2627,7 @@ def typeset_lists(filestr, format, debug_info=[]):
     """
     debugpr('*** List typesetting phase + comments and blank lines ***')
     import string
-    
+
     try:  # Python 2.7 needs the old StringIO
         from StringIO import StringIO
     except ImportError:
@@ -3539,7 +3539,7 @@ def typeset_authors(filestr, format):
         index2inst, auth2email, filestr = interpret_authors(filestr, format)
     author_block = INLINE_TAGS_SUBST[format]['author']\
         (authors_and_institutions, auth2index, inst2index,
-         index2inst, auth2email).rstrip() + '\n'  # ensure one newline
+         index2inst, auth2email)
     filestr = filestr.replace('XXXAUTHOR', author_block)
     return filestr
 
