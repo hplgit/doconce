@@ -1,0 +1,79 @@
+package:
+    name: doconce
+    version: 1.3.0
+source:
+    path: .
+build:
+    number: 3
+    string: cse
+    script: python setup.py install
+requirements:
+    build:
+        - future
+        - pygments
+    run:
+        - future
+        - python
+        - pygments
+        - notebook
+        - tornado
+        - pyzmq
+        - traitlets
+        - pickleshare
+        - jsonschema
+        - future
+        - mako
+        - python-levenshtein
+        - libxml2
+        - libxslt
+        - zlib
+        - lxml
+        - sphinx
+        - alabaster
+        - sphinx_rtd_theme
+        - sphinx-bootstrap-theme
+        - paver
+        - cogapp
+        - beautifulsoup4
+        - html5lib
+        - texinfo
+        - pandoc
+        - sphinxcontrib-paverutils
+        - sphinxjp.themes.solarized
+        - preprocess
+        - publish
+test:
+    imports:
+        - doconce
+about:
+    description: 'Doconce is two things:
+        
+        1. Doconce is a very simple and minimally tagged markup language that
+        looks like ordinary ASCII text (much like what you would use in an
+        email), but the text can be transformed to numerous other formats,
+        including HTML, Wiki, LaTeX, PDF, reStructuredText (reST), Sphinx,
+        Epytext, and also plain text (where non-obvious formatting/tags are
+        removed for clear reading in, e.g., emails). From reStructuredText
+        you can go to XML, HTML, LaTeX, PDF, OpenOffice, and from the latter
+        to RTF and MS Word. From Pandoc one can generate Markdown, reST,
+        LaTeX, HTML, PDF, DocBook XML, OpenOffice, GNU Texinfo, MediaWiki,
+        RTF, Groff, and other formats.
+        
+        2. Doconce is a working strategy for never duplicating information.
+        Text is written in a single place and then transformed to a number of
+        different destinations of diverse type (software source code,
+        manuals, tutorials, books, wikis, memos, emails, etc.). The Doconce
+        markup language support this working strategy. The slogan is: "Write
+        once, include anywhere".
+
+        '
+    dev_url: https://github.com/hplgit/doconce
+    doc_url: http://hplgit.github.io/doconce/doc/web/
+    home: http://hplgit.github.io/doconce/doc/web/
+    license: BSD 3-clause
+    license_family: BSD
+    license_file: LICENSE
+    summary: Document once, include anywhere
+extra:
+    recipe-maintainers:
+        - dragly
