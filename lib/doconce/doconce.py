@@ -18,7 +18,7 @@ except ImportError:
     # use standard arbitrary-ordered dict instead (original order of
     # citations is then lost)
     OrderedDict = dict
-    
+
 # Support for non-English languages (not really implemented yet)
 global locale_dict
 locale_dict = dict(
@@ -2627,7 +2627,7 @@ def typeset_lists(filestr, format, debug_info=[]):
     """
     debugpr('*** List typesetting phase + comments and blank lines ***')
     import string
-    
+
     try:  # Python 2.7 needs the old StringIO
         from StringIO import StringIO
     except ImportError:
