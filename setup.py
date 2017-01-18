@@ -10,7 +10,7 @@ from builtins import str
 __author__ = 'Hans Petter Langtangen <hpl@simula.no>'
 __acknowledgemets__ = 'Johannes H. Ring',
 
-from distutils.core import setup
+from setuptools import setup
 
 import os, sys, glob, gzip, tempfile
 
