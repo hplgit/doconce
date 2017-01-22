@@ -13,6 +13,7 @@ addons:
   apt:
     packages:
       - python-dev
+      - python-pygments
 before_install:
     - sudo pip install future --upgrade
 install:
