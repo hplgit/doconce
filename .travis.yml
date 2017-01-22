@@ -9,8 +9,16 @@ python:
   - "3.4"
   - "3.5"
   - "3.6"
+addons:
+  apt:
+    packages:
+      - python-dev
+before_install:
+    - sudo pip install future --upgrade
 install:
     - sudo python setup.py install
 script:
     - doconce --version
     - doconce
+email:
+    - false
