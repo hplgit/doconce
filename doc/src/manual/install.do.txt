@@ -10,10 +10,12 @@ needed when working with DocOnce documents.
 The impatient way to install everything that is needed is to use
 Anaconda Python and the `conda` program:
 
+DocOnce is available from the `conda-forge` channel. To add the `conda-forge` channel and subsequently install DocOnce, run the following commands.
+
 !bc sys
-Terminal> conda install --channel johannr doconce
+Terminal> conda config --add channels conda-forge
+Terminal> conda install doconce
 !ec
-The `conda` package is available for Mac and Linux only.
 
 If you do not want to use Anaconda and are
 on a Debian-based Linux
