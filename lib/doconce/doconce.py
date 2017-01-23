@@ -3540,7 +3540,12 @@ def typeset_authors(filestr, format):
     author_block = INLINE_TAGS_SUBST[format]['author']\
         (authors_and_institutions, auth2index, inst2index,
          index2inst, auth2email).rstrip() + '\n'  # ensure one newline
-    filestr = filestr.replace('XXXAUTHOR', author_block)
+    if filestr.count('XXXAUTHOR') > 1:
+        print "*** warning: authors are listed in more than one location"
+        filestr = filestr.replace('XXXAUTHOR', author_block, 1) # insert author block in the first location
+        filestr = filestr.replace('XXXAUTHOR', '')              # ignore the rest
+    else:
+        filestr = filestr.replace('XXXAUTHOR', author_block)
     return filestr
 
 def typeset_section_numbering(filestr, format):
