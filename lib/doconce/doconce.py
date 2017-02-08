@@ -2776,7 +2776,7 @@ def typeset_lists(filestr, format, debug_info=[]):
                     # Switch between 1,2,3 and a,b,c
                     if len(lists) % 2 == 0:
                         item = itemformat.replace('%d', '%s') % \
-                               string.lowercase[enumerate_counter-1]
+                               string.ascii_lowercase[enumerate_counter-1]
                     else:
                         item = itemformat % enumerate_counter
                 # indent here counts with '3. ':
