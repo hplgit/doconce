@@ -60,7 +60,7 @@ def add_to_file_collection(filename, doconce_docname=None, mode='a'):
     # must provide the right doconce_docname and mode='a' in order
     # to write correctly to an already existing file.
     global _file_collection_filename
-    if isinstance(doconce_docname, str) and doconce_docname != '':
+    if isinstance(doconce_docname, basestring) and doconce_docname != '':
         if doconce_docname.endswith('.do.txt'):
             doconce_docname = doconce_docname[:-7]
         if doconce_docname.endswith('.html'):
