@@ -3952,7 +3952,7 @@ def inline_tag_subst(filestr, format):
             except locale.Error as e:
                 errwarn('*** error: ' + str(e))
                 errwarn('    locale=%s must be installed' % (locale_dict[locale_dict['language']]['locale']))
-                errwarn('    sudo locale-gen de_DE.UTF-8; sudo update-locale')
+                errwarn('    sudo locale-gen %s; sudo update-locale' % (locale_dict[locale_dict['language']]['locale']))
                 _abort()
             date = time.strftime('%A, %d. %b, %Y')
 
@@ -3968,7 +3968,7 @@ def inline_tag_subst(filestr, format):
         try:
             filestr = filestr.replace(origstr, 'DATE: ' + date)
         except UnicodeDecodeError:
-            filestr = filestr.replace(origstr, 'DATE: ' + date)
+            filestr = filestr.replace(origstr, u'DATE: ' + date.decode('utf-8'))
 
     # Hack for not typesetting ampersands inside inline verbatim text
     groups = re.findall(INLINE_TAGS['verbatim'], filestr, flags=re.MULTILINE)
