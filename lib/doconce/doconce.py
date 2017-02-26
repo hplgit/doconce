@@ -77,14 +77,14 @@ locale_dict = dict(
         'Exercises': 'oppgaver',
         'Projects': 'prosjekter',
         'Problems': 'problemer',
-        'Examples': 'eksempeler',
+        'Examples': 'eksempler',
         'Preface': 'Forord',
         'Abstract': 'Sammendrag',
         'Summary': 'Sammendrag',
         'summary': 'sammendrag',
         'hint': 'Hint',
         'question': u'spørsmål',
-        'notice': 'observer',
+        'notice': 'observér',
         'warning': 'advarsel',
         'remarks': 'bemerkning',
         'index': 'Stikkordsliste',
@@ -133,6 +133,44 @@ locale_dict = dict(
         'Filename': 'Dateiname',
         'Filenames': 'Dateiname',
         },
+    Basque={
+	    'locale': 'eu_ES.UTF-8',
+	    'latex package': 'basque',
+	    'toc': 'Aurkibidea',
+	    'Contents': 'Edukiak',
+	    'Figure': 'Irudia',
+	    'Movie': 'Filma',
+	    'list of': 'Zerrenda',
+	    'and': 'eta',
+	    'Exercise': 'Ariketa',
+	    'Project': 'Proiektua',
+	    'Problem': 'Problema',
+	    'Example': 'Adibidea',
+	    'Projects': 'Proiektuak',
+	    'Problems': 'Problemak',
+	    'Examples': 'Adibideak',
+	    'Preface': 'Hitzaurrea',
+	    'Abstract': 'Laburpena',
+	    'Summary': 'Laburpena',
+	    # Admons
+	    'summary': 'laburpena',
+	    'hint': 'laguntza',
+	    'question': 'galdera',
+	    'notice': 'oharra',
+	    'warning': 'kontuz',
+	    # box, quote are silent wrt title
+	    'remarks': 'iruzkinak', # In exercises
+	    # Exercise headings
+	    'Solution': 'soluzioa',
+	    '__Solution.__': '__Soluzioa.__',
+	    '__Answer.__': '__Erantzuna.__',
+	    '__Hint.__': '__Laguntza.__',
+	    # At the end (in Sphinx)
+	    'index': 'Indizea',
+	    # References
+	    'Filename': 'Fitxategi',
+	    'Filenames': 'Fitxategiak',
+	    },
     )
 
 def debugpr(heading='', text=''):
