@@ -84,7 +84,7 @@ locale_dict = dict(
         'summary': 'sammendrag',
         'hint': 'Hint',
         'question': u'spørsmål',
-        'notice': 'observér',
+        'notice': u'observér',
         'warning': 'advarsel',
         'remarks': 'bemerkning',
         'index': 'Stikkordsliste',
