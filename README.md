@@ -7,7 +7,9 @@
 ### News
 
 Here are some of the most recent features and enhancements in DocOnce:
-
+ * On 10 October 2016, Hans Petter Langtangen, creator of DocOnce, [passed away](https://www.simula.no/news/hans-petter-langtangen-1962-2016). Kristian Gregorius Hustad, supported by the [Centre for Computing in Science Education](http://www.mn.uio.no/ccse/english/) at the University of Oslo, will assume the role of principal maintainer.
+ * Language support for Basque has been added. Thanks to Josu M. Igartua for providing the translation.
+ * DocOnce can now be used with both Python 2 and Python 3.
  * Kristian Gregorius Hustad has now made support for TikZ figures
    in DocOnce. This means that you can use TikZ (popular among LaTeX writers)
    to make a figure. The TikZ code will be used directly in `latex` or
@@ -78,7 +80,7 @@ Here are some recent books written in DocOnce:
 
 ### Installation
 
-DocOnce is a pure Python v2.7 package and installed by
+DocOnce is a pure Python package and installed by
 
 
 ```
@@ -89,13 +91,20 @@ However, DocOnce has *a lot* of dependencies, depending on what type of
 formats you want to work with and how advanced constructions that are
 used in the text.
 
-With Anaconda Python v2.7 it is trivial to install DocOnce and all
+With Anaconda it is trivial to install DocOnce and all
 dependencies by
 
 
 ```
-Terminal> sudo conda install --channel johannr doconce
+Terminal> conda config --add channels conda-forge
+Terminal> conda install doconce
 ```
+
+*Warning.* 
+As of March 2017, a few dependencies have yet to be added to the `conda-forge` channel, but most formats should work fine.
+
+
+
 
 On Debian/Ubuntu it is fairly straightforward
 to get the packages you need. Basically, you can run a [Bash script](https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/install_doconce.sh) or an equivalent [Python script](https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/install_doconce.py). Such a script installs
@@ -222,16 +231,14 @@ DocOnce is written by Hans Petter Langtangen ([hpl@simula.no](mailto:hpl@simula.
 
 #### Link in the copyright
 
-If you add a copyright (`{copyright}` after any author or institution
-name in the
-`AUTHOR` field(s)), the command-line option `--cite_doconce` can be used
+The command-line option `--cite_doconce` can be used
 to equip the copyright field with a link to the present page.
 Here is an example involving some document `mydoc.do.txt`:
 
 
 ```
 TITLE: Some document
-AUTHOR: Joe Doe {copyright}
+AUTHOR: Joe Doe
 ...
 ```
 
