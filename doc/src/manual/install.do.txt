@@ -22,7 +22,7 @@ on a Debian-based Linux
 computer (running, e.g., Ubuntu), you can instead run the Bash script
 "`install_doconce.sh`": "https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/install_doconce.sh" or the equivalent Python script
 "`install_doconce.py`": "https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/install_doconce.py".
-These scripts gives a comprehensive installation. Some users will prefer to
+These scripts give a comprehensive installation. Some users will prefer to
 install just what is needed for them, and this is explained below.
 
 !bwarning Version control systems are needed!

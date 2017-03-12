@@ -66,12 +66,12 @@ cp -r mov/wave_frames sphinx-rootdir/_build/html/mov
 
 # rst:
 system doconce format rst manual.do.txt --no_mako --cite_doconce --no_abort
-system rst2html.py manual.rst > manual.rst.html
-system rst2xml.py manual.rst > manual.xml
+system rst2html manual.rst > manual.rst.html
+system rst2xml manual.rst > manual.xml
 
 # The Mako generated HTML table must be removed before creating latex
 doconce remove --from '.. end sphinx-figtable-in-html' --to '.. end sphinx-figtable-in-html' manual.rst > manual.4latex.rst
-system rst2latex.py manual.4latex.rst > manual.rst.tex
+system rst2latex manual.4latex.rst > manual.rst.tex
 
 system pdflatex manual.rst.tex
 # fix figure extension: rst will use .png file for wave1D, but this is not

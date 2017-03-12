@@ -5,12 +5,12 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>DocOnce Description</title>
+    <title>DocOnce Description &#8212; DocOnce Description 1.0 documentation</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.4/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap-theme.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
@@ -19,7 +19,8 @@
         VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -28,28 +29,11 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
-
-        <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
-        <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
-
-        <script>sagecell.makeSagecell({inputLocation: ".sage"});</script>
-
-        <style type="text/css">
-                .sagecell .CodeMirror-scroll {
-                        overflow-y: hidden;
-                        overflow-x: auto;
-                }
-                .sagecell .CodeMirror {
-                        height: auto;
-                }
-        </style>
-
-    
-    <link rel="top" title="DocOnce Description" href="#" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="DocOnce Description" href="manual.html" />
-
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -110,9 +94,11 @@
 <li class="toctree-l4"><a class="reference internal" href="manual.html#figure-placement">Figure Placement</a></li>
 <li class="toctree-l4"><a class="reference internal" href="manual.html#figure-references">Figure References</a></li>
 <li class="toctree-l4"><a class="reference internal" href="manual.html#inline-figures">Inline Figures</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#choosing-the-figure-format">Choosing the Figure Format</a></li>
 <li class="toctree-l4"><a class="reference internal" href="manual.html#handling-variable-figure-paths">Handling Variable Figure Paths</a></li>
 <li class="toctree-l4"><a class="reference internal" href="manual.html#figures-with-subfigures">Figures with Subfigures</a></li>
 <li class="toctree-l4"><a class="reference internal" href="manual.html#sidecaption-in-latex-and-html">Sidecaption in LaTeX and HTML</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#tikz-figures">TikZ Figures</a></li>
 <li class="toctree-l4"><a class="reference internal" href="manual.html#plot-files-in-latex">Plot Files in LaTeX</a></li>
 <li class="toctree-l4"><a class="reference internal" href="manual.html#interactive-bokeh-plots-for-html">Interactive Bokeh Plots for HTML</a></li>
 <li class="toctree-l4"><a class="reference internal" href="manual.html#converting-matplotlib-plots-to-bokeh">Converting Matplotlib Plots to Bokeh</a></li>
@@ -343,7 +329,7 @@
 <li class="toctree-l3"><a class="reference internal" href="manual.html#the-old-ptex2tex-step">The old <code class="docutils literal"><span class="pre">ptex2tex</span></code> step</a></li>
 <li class="toctree-l3"><a class="reference internal" href="manual.html#latex-pdf-generate-latex-step-1">LaTeX-PDF: Generate LaTeX (Step 1)</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="manual.html#the-translation-command">The translation command</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manual.html#id43">Newcommands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#id44">Newcommands</a></li>
 <li class="toctree-l4"><a class="reference internal" href="manual.html#output-for-paper-vs-screen">Output for paper vs screen</a></li>
 <li class="toctree-l4"><a class="reference internal" href="manual.html#command-line-options">Command-line options</a></li>
 <li class="toctree-l4"><a class="reference internal" href="manual.html#syntax-highlighting">Syntax highlighting</a></li>
@@ -441,7 +427,7 @@
               
                 
   <li>
-    <a href="manual.html" title="Next Chapter: DocOnce Description"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">DocOnce Descr... &raquo;</span>
+    <a href="manual.html" title="Next Chapter: DocOnce Description"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">DocOnce Description &raquo;</span>
     </a>
   </li>
               
@@ -467,7 +453,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 content">
       
   <style type="text/css">
   .dropdown-menu {
@@ -532,14 +518,14 @@
         <br/>
         
 <div id="sourcelink">
-  <a href="_sources/index.txt"
+  <a href="_sources/index.rst.txt"
      rel="nofollow">Source</a>
 </div>
       
     </p>
     <p>
-        &copy; Copyright 2016, Hans Petter Langtangen.<br/>
-      Created using <a href="https://github.com/hplgit/doconce">DocOnce</a> and <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.4.<br/>
+        &copy; Copyright 2017, Hans Petter Langtangen, Kristian Gregorius Hustad.<br/>
+      Created using <a href="https://github.com/hplgit/doconce">DocOnce</a> and <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.2.<br/>
     </p>
   </div>
 </footer>
