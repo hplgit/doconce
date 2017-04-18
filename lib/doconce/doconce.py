@@ -3068,6 +3068,7 @@ def handle_figures(filestr, format):
                                 failure = False
                             else:
                                 errwarn('Converting tikz figure to SVG/PNG...')
+                                tikz_libs = None
                                 if option('tikz_libs='):
                                     tikz_libs = option('tikz_libs=').split(',')
                                     errwarn('Using TikZ libraries: %s' % tikz_libs)
