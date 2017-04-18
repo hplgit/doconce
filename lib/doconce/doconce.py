@@ -1507,7 +1507,10 @@ def insert_code_from_file(filestr, format):
                 errwarn(' lines %d-%d' % (from_line, to_line), newline=False)
             codefile.close()
 
-            "!bc %spro\n%s\n!ec" % (filetype, code)
+            try:
+                "!bc %spro\n%s\n!ec" % (filetype, code)
+            except UnicodeDecodeError as e:
+                code = code.decode('utf-8')
 
             if code_envir in ('None', 'off', 'none'):
                 # no need to embed code in anything
@@ -3065,7 +3068,10 @@ def handle_figures(filestr, format):
                                 failure = False
                             else:
                                 errwarn('Converting tikz figure to SVG/PNG...')
-                                failure = tikz2img(figfile)
+                                if option('tikz_libs='):
+                                    tikz_libs = option('tikz_libs=').split(',')
+                                    errwarn('Using TikZ libraries: %s' % tikz_libs)
+                                failure = tikz2img(figfile, tikz_libs=tikz_libs)
                                 if '.svg' in search_extensions: # format supports svg
                                     converted_file = basepath + '_tikzrender.svg'
                                 else:   # use png
