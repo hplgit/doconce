@@ -883,9 +883,16 @@ def latex_code(filestr, code_blocks, code_block_types,
                          'usepackage\g<1>{graphicx}\n\\usepackage{pgf}',
                          filestr)
     if re.search(r'input\{.+\.tikz\}', filestr):
+        tikz_libs_str = ''
+        if option('tikz_libs='):
+            tikz_libs = option('tikz_libs=')
+            tikz_libs_str = '\n'.join(['\\usetikzlibrary{%s}' % lib for lib in tikz_libs.split(',')])
         filestr = re.sub(r'usepackage(.*?){graphicx}',
-                         'usepackage\g<1>{graphicx}\n\\usepackage{tikz}',
+                         'usepackage\g<1>{graphicx}\n\\usepackage{tikz}'
+                         +tikz_libs_str,
                          filestr)
+
+
 
     # Fix % and # in link texts (-> \%, \# - % is otherwise a comment...)
     pattern = r'\\href\{\{(.+?)\}\}\{(.+?)\}'
