@@ -3991,14 +3991,30 @@ def inline_tag_subst(filestr, format):
             date = w[1] + ' ' + w[2] + ', ' + w[4]
         else:
             import locale
+            locale_str = locale_dict[locale_dict['language']]['locale']
             try:
                 locale.setlocale(locale.LC_TIME,
-                                 locale_dict[locale_dict['language']]['locale'])
+                                 locale_str)
             except locale.Error as e:
-                errwarn('*** error: ' + str(e))
-                errwarn('    locale=%s must be installed' % (locale_dict[locale_dict['language']]['locale']))
-                errwarn('    sudo locale-gen %s; sudo update-locale' % (locale_dict[locale_dict['language']]['locale']))
-                _abort()
+                # workaround for Norwegian locale on Mac
+                recovered = False
+                import platform
+                is_mac = platform.system() == 'Darwin'
+                if is_mac and locale_str == 'nb_NO.UTF-8':
+                    # try generic Norwegian
+                    try:
+                        locale.setlocale(locale.LC_TIME,
+                                        'no_NO.UTF-8')
+                    except locale.Error as e:
+                        # error is handled in the outer try-block
+                        pass
+                    else:
+                        recovered = True
+                if not recovered:
+                    errwarn('*** error: ' + str(e))
+                    errwarn('    locale=%s must be installed' % (locale_dict[locale_dict['language']]['locale']))
+                    errwarn('    sudo locale-gen %s; sudo update-locale' % (locale_dict[locale_dict['language']]['locale']))
+                    _abort()
             date = time.strftime('%A, %d. %b, %Y')
 
         # Add copyright right under the date if present
