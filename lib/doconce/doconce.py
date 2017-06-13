@@ -5343,7 +5343,12 @@ def format_driver():
     dirname, basename = os.path.split(filename)
     if dirname:
         os.chdir(dirname)
-        errwarn('*** doconce format now works in directory %s' % dirname)
+        filename = basename
+        # errwarn('*** doconce format now works in directory %s' % dirname)
+        # cannot call errwarn before dofile_basename is initialized
+        # print instead
+        print('*** doconce format now works in directory %s' % dirname)
+
     basename, ext = os.path.splitext(basename)
     # Can allow no extension, .do, or .do.txt
     legal_extensions = ['.do', '.do.txt']
