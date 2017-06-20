@@ -3050,10 +3050,16 @@ def handle_figures(filestr, format):
                             cmd = 'pdf2ps %s %s' % \
                                   (figfile, converted_file)
                         elif ext == '.tikz':    # TODO pgf handling
+                            def up_to_date(source, target):
+                                source_modified = os.path.getmtime(source)
+                                target_modified = os.path.getmtime(target)
+                                return source_modified <= target_modified
                             tikz_fig = True
                             cmd = 'echo' # workaround
-                            svg_exists = os.path.isfile(basepath+"_tikzrender.svg")
-                            png_exists = os.path.isfile(basepath+"_tikzrender.png")
+                            svg_file = basepath+"_tikzrender.svg"
+                            svg_exists = os.path.isfile(svg_file)
+                            png_file = basepath+"_tikzrender.png"
+                            png_exists = os.path.isfile(png_file)
                             img_exists = False
                             existing_img = None
                             if svg_exists and '.svg' in search_extensions:
@@ -3062,7 +3068,7 @@ def handle_figures(filestr, format):
                             elif png_exists:
                                 img_exists = True
                                 existing_img = basepath+"_tikzrender.png"
-                            if not option('force_tikz_conversion') and img_exists:
+                            if not option('force_tikz_conversion') and img_exists and up_to_date(figfile, existing_img):
                                 errwarn('found converted tikz figure in %s' % existing_img)
                                 converted_file = existing_img
                                 failure = False
