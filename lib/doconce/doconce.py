@@ -1552,8 +1552,8 @@ def insert_os_commands(filestr, format):
         """Run system command cmd."""
         errwarn('*** running OS command ' + cmd)
         try:
-            output = subprocess.check_output(cmd, shell=True,
-                                             stderr=subprocess.STDOUT)
+            output = str(subprocess.check_output(cmd, shell=True,
+                                                 stderr=subprocess.STDOUT))
         except subprocess.CalledProcessError as e:
             errwarn('*** error: failure of @@@OSCMD %s' % cmd)
             errwarn(e.output)
@@ -3050,10 +3050,16 @@ def handle_figures(filestr, format):
                             cmd = 'pdf2ps %s %s' % \
                                   (figfile, converted_file)
                         elif ext == '.tikz':    # TODO pgf handling
+                            def up_to_date(source, target):
+                                source_modified = os.path.getmtime(source)
+                                target_modified = os.path.getmtime(target)
+                                return source_modified <= target_modified
                             tikz_fig = True
                             cmd = 'echo' # workaround
-                            svg_exists = os.path.isfile(basepath+"_tikzrender.svg")
-                            png_exists = os.path.isfile(basepath+"_tikzrender.png")
+                            svg_file = basepath+"_tikzrender.svg"
+                            svg_exists = os.path.isfile(svg_file)
+                            png_file = basepath+"_tikzrender.png"
+                            png_exists = os.path.isfile(png_file)
                             img_exists = False
                             existing_img = None
                             if svg_exists and '.svg' in search_extensions:
@@ -3062,7 +3068,7 @@ def handle_figures(filestr, format):
                             elif png_exists:
                                 img_exists = True
                                 existing_img = basepath+"_tikzrender.png"
-                            if not option('force_tikz_conversion') and img_exists:
+                            if not option('force_tikz_conversion') and img_exists and up_to_date(figfile, existing_img):
                                 errwarn('found converted tikz figure in %s' % existing_img)
                                 converted_file = existing_img
                                 failure = False
@@ -3991,14 +3997,30 @@ def inline_tag_subst(filestr, format):
             date = w[1] + ' ' + w[2] + ', ' + w[4]
         else:
             import locale
+            locale_str = locale_dict[locale_dict['language']]['locale']
             try:
                 locale.setlocale(locale.LC_TIME,
-                                 locale_dict[locale_dict['language']]['locale'])
+                                 locale_str)
             except locale.Error as e:
-                errwarn('*** error: ' + str(e))
-                errwarn('    locale=%s must be installed' % (locale_dict[locale_dict['language']]['locale']))
-                errwarn('    sudo locale-gen %s; sudo update-locale' % (locale_dict[locale_dict['language']]['locale']))
-                _abort()
+                # workaround for Norwegian locale on Mac
+                recovered = False
+                import platform
+                is_mac = platform.system() == 'Darwin'
+                if is_mac and locale_str == 'nb_NO.UTF-8':
+                    # try generic Norwegian
+                    try:
+                        locale.setlocale(locale.LC_TIME,
+                                        'no_NO.UTF-8')
+                    except locale.Error as e:
+                        # error is handled in the outer try-block
+                        pass
+                    else:
+                        recovered = True
+                if not recovered:
+                    errwarn('*** error: ' + str(e))
+                    errwarn('    locale=%s must be installed' % (locale_dict[locale_dict['language']]['locale']))
+                    errwarn('    sudo locale-gen %s; sudo update-locale' % (locale_dict[locale_dict['language']]['locale']))
+                    _abort()
             date = time.strftime('%A, %d. %b, %Y')
 
         # Add copyright right under the date if present
@@ -5327,7 +5349,12 @@ def format_driver():
     dirname, basename = os.path.split(filename)
     if dirname:
         os.chdir(dirname)
-        errwarn('*** doconce format now works in directory %s' % dirname)
+        filename = basename
+        # errwarn('*** doconce format now works in directory %s' % dirname)
+        # cannot call errwarn before dofile_basename is initialized
+        # print instead
+        print('*** doconce format now works in directory %s' % dirname)
+
     basename, ext = os.path.splitext(basename)
     # Can allow no extension, .do, or .do.txt
     legal_extensions = ['.do', '.do.txt']

@@ -1,0 +1,36 @@
+<%
+# need to test a variety of valid headers
+author_lines = []
+
+author_1 = {'name': 'Kristian Gregorius Hustad',
+            'email': 'krihus@ifi.uio.no',
+            'institutions': ['Centre for Computing in Science Education, University of Oslo',
+                            'Department of Informatics, University of Oslo']}
+author_2 = {'name': 'Hans Petter Langtangen',
+            'email': 'hpl@simula.no',
+            'institutions': ['Center for Biomedical Computing, Simula Research Laboratory',
+                            'Department of Informatics, University of Oslo']}
+authors = [author_1]
+
+if WITH_SECOND_AUTHOR != UNDEFINED:
+    authors.append(author_2)
+    #author_lines.append('AUTHOR: test2')
+for author in authors:
+    author_line_parts = ['AUTHOR:', author['name']]
+    if WITH_EMAIL != UNDEFINED:
+        author_line_parts.append("Email: %s" % author['email'])
+        pass
+    if WITH_INSTITUTIONS != UNDEFINED:
+        institutions_str = ''
+        if 'institutions' in author and len(author['institutions']) > 0:
+            institutions_str = 'at ' + ' & '.join(author['institutions'])
+        author_line_parts.append(institutions_str)
+    author_line_str = ' '.join(author_line_parts)
+    author_lines.append(author_line_str)
+
+AUTHOR_LINES_STR = '\n'.join(author_lines)
+%>
+
+TITLE: Test document
+${AUTHOR_LINES_STR}
+DATE: today
