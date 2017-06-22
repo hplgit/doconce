@@ -6,7 +6,7 @@ python setup.py install [, --prefix=$PREFIX]
 
 """
 from __future__ import print_function
-from builtins import str
+#from builtins import str
 __author__ = 'Hans Petter Langtangen <hpl@simula.no>'
 __acknowledgemets__ = 'Johannes H. Ring',
 
@@ -16,7 +16,9 @@ import os, sys, glob, gzip, tempfile
 
 # Make sure we import from doconce in this package, not an installed one:
 # (need this for extracting the version below)
-sys.path.insert(0, os.path.join('lib')); import doconce
+sys.path.insert(0, os.path.join('lib'))
+#import doconce
+__version__ = '1.4.0'
 
 man_filename = os.path.join("doc", "man", "man1", "doconce.1")
 if "install" in sys.argv:
@@ -74,12 +76,14 @@ for var, value in config_variables:
 config.close()
 
 setup(
-    version = str(doconce.version),
+    version = __version__,
     author = "Hans Petter Langtangen",
     author_email = "<hpl@simula.no>",
+    maintainer = "Kristian Gregorius Hustad",
+    maintainer_email = "<krihus@ifi.uio.no>",
     description = __doc__,
     license = "BSD",
-    name = "Doconce",
+    name = "DocOnce",
     url = "https://github.com/hplgit/doconce",
     package_dir = {'': 'lib'},
     packages = ['doconce'],
@@ -90,6 +94,15 @@ setup(
     package_data = {'': ['sphinx_themes.zip', 'html_images.zip', 'reveal.js.zip', 'deck.js.zip', 'csss.zip', 'latex_styles.zip']},
     scripts = [os.path.join('bin', f) for f in ['doconce']],
     data_files=[(os.path.join("share", "man", "man1"),[man_filename,]),],
+    install_requires=[
+        'pygments',
+        'preprocess',
+        'mako',
+        'future'
+    ],
+    dependency_link=[
+        'git+https://github.com/doconce/preprocess#egg=preprocess',
+    ],
     )
 
 # Clean up the temporary compressed man page
