@@ -84,8 +84,12 @@ DocOnce is a pure Python package and installed by
 
 
 ```
-Terminal> sudo python setup.py install
+Terminal> sudo pip install --upgrade .
 ```
+
+*Notice.* 
+If you first installed DocOnce prior to February 2017, you must remove the old installation before upgrading. See instructions in \#110.
+
 
 However, DocOnce has *a lot* of dependencies, depending on what type of
 formats you want to work with and how advanced constructions that are
@@ -118,7 +122,7 @@ the pure DocOnce source (and perhaps the preprocessors if you use them).
 Although DocOnce is in Debian, do not run `sudo apt-get install python-doconce`
 as this gives a very old version of DocOnce that is out of sync with the
 documentation. Instead, clone the DocOnce GitHub repo as shown above
-and run `setup.py` or use `conda install`.
+and run `pip install` or use `conda install`.
 
 
 
