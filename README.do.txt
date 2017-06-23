@@ -92,7 +92,7 @@ Terminal> sudo pip install --upgrade .
 !ec
 
 !bnotice
-If you first installed DocOnce prior to February 2017, you must remove the old installation before upgrading. See instructions in \#110.
+If you first installed DocOnce prior to February 2017, you must remove the old installation before upgrading. See instructions in #110.
 !enotice
 However, DocOnce has *a lot* of dependencies, depending on what type of
 formats you want to work with and how advanced constructions that are
