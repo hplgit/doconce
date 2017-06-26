@@ -1,0 +1,6 @@
+TITLE: A Treatise on Something
+AUTHOR: John Doe Email: john@doe.com at Doe Corp. & The Society of Ficticious People
+AUTHOR: Jane Doe Email: jane@doe.com at The Society of Ficticious People
+DATE: today
+
+It is known that something exists.

@@ -1,0 +1,7 @@
+The expression `a/b`, where `a` and `b` are both integers, is evaluated differently in Python 2 and Python 3. While Python 2 uses the common rules of integer division (flooring the result), such that the set of integers are closed under division, Python 3 will return a (decimal) floating point number, if `a % b != 0` (the remainder is non-zero).
+
+!bc pycod
+c = 3/2
+# Python 2: c is 1
+# Python 3: c is 1.5
+!ec
