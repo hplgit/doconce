@@ -17,6 +17,7 @@ from functools import reduce
 _part_filename = '._%s%03d'
 _part_filename_wildcard = '._*[0-9][0-9][0-9]'
 
+_config_path = os.path.join(os.path.expanduser('~'), '.config', 'doconce', 'default.cfg')
 _registered_command_line_options = [
     ('--help',
      'Print all options to the doconce program.'),
@@ -634,18 +635,46 @@ pandoc, epytext.
             opt += '...'
         print('\n%s\n\n%s\n' % (opt, help))
 
-# Import options from config file instead of the command line
-try:
-    import doconce_config
-    # Above module must do from doconce.doconce_config_default import *
-except ImportError:
-    # No doconce_config module, rely on this package's default
-    from . import doconce_config_default as doconce_config
+def mkdir_p(dir_path):
+    if not os.path.exists(dir_path):
+        os.makedirs(dir_path)
 
-# Challenge: want different doconce_config files: just
-# use different dirs and have one local in each
-# or have system wide directories that one adjusts in PYTHONPATH
+def make_config():
+    # Make doconce_config_default.py file (based on newest set of options)
+    config_variables = []  # list of (var, value) pairs
+    for opt in _legal_command_line_options:
+        var = opt[2:]
+        if var[-1] == '=':
+            var = var[:-1]
+            value = ''
+        else:
+            value = 'False'
+        config_variables.append((var.replace('-', '_'), value))
 
+    config = {}
+    s = '{'
+    for var, value in config_variables:
+        line = "'%s': %s," % (var, value)
+        if value == '':
+            line = '#' + line
+        s += '\n    '+line
+    s += '\n}'
+    mkdir_p(os.path.dirname(_config_path))
+    with open(_config_path, 'w') as f:
+        f.write(s)
+
+def get_config():
+    if not (os.path.exists(_config_path) and os.path.isfile(_config_path)):
+        print("generating config file at '%s'" % _config_path)
+        make_config()
+    with open(_config_path, 'r') as f:
+        s = f.read()
+        config = eval(s)
+        #config = json.load(f)
+    return config
+
+
+doconce_config = get_config()
 
 def option(name, default=None):
     """
@@ -681,8 +710,8 @@ def option(name, default=None):
     # Check if name is in configuration file (doconce_config)
     # and get a default value from there
     name_dash2underscore = name.replace('-', '_')
-    if hasattr(doconce_config, name_dash2underscore):
-        value = getattr(doconce_config, name_dash2underscore)
+    if name_dash2underscore in doconce_config:
+        value = doconce_config[name_dash2underscore]
 
     # Let the user's default value override that in the config file
     if default is not None:
