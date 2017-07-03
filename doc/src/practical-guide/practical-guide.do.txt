@@ -137,6 +137,18 @@ a = 2
 
 -----
 
-@@@CODE examples/a_primer_on_primes.do.txt
+@@@CODE examples/a_primer_on_primes_.do.txt
 
 -----
+
+
+======= Best practices =======
+
+===== Version control =====
+As with any type of code, DocOnce documents should be kept under version control. In this guide we only consider Git, but the principles should translate to other types of version control systems as well.
+
+First and foremost, only source files, viz. files that cannot be regenerated automatically should be added to Git. All documents should be reproduced by running some sort of makefile. The author prefers GNU Makefiles, but shell scripts can also be used.
+
+When writing long lines, it is recommended to configure the text editor to display them wrapped, while newlines are only added to the document for paragraphs etc. This will make the git history much more legible since adding a single word at the start of a paragraph doesn't cause changes to the entire paragraph.
+
+[kgh: `.gitignore` for DocOnce]
