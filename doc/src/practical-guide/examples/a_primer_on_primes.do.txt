@@ -2,6 +2,11 @@ TITLE: A Primer on Primes
 AUTHOR: Kristian Gregorius Hustad Email: krihus@ifi.uio.no at Centre for Computing in Science Education, University of Oslo
 DATE: today
 
+!bwarning
+This document is intended to demonstrate DocOnce features.
+Consult other texts for an introduction to prime numbers.
+!ewarning
+
 ======= Theoretical foundations =======
 ===== Divisibility =====
 An integer $b$ is divisible by $a$ if $\frac{b}{a}$ leaves no remainder. In that case, we say that $a$ *divides* $b$ (note the order). This is written as $a \mid b$.

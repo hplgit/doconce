@@ -2,6 +2,8 @@ TITLE: A practical guide to DocOnce
 AUTHOR: Kristian Gregorius Hustad Email: krihus@ifi.uio.no at Centre for Computing in Science Education, University of Oslo
 DATE: today
 
+*_DRAFT_*
+
 TOC: on
 
 This guide attempts to give an introduction to DocOnce by example. The reader is assumed to be familiar with LaTeX and basic terminal usage.
