@@ -18,7 +18,7 @@ import os, sys, glob, gzip, tempfile
 # (need this for extracting the version below)
 sys.path.insert(0, os.path.join('lib'))
 #import doconce
-__version__ = '1.4.0'
+__version__ = '1.4.1'
 
 man_filename = os.path.join("doc", "man", "man1", "doconce.1")
 if "install" in sys.argv:
