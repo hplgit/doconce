@@ -16,6 +16,10 @@ from .common import plain_exercise, table_analysis, \
      insert_code_and_tex, is_file_or_url, chapter_pattern
 from .misc import option, _abort, replace_code_command
 from .doconce import errwarn, debugpr, locale_dict
+import base64
+from . import execution
+import uuid
+import os
 additional_packages = ''  # comma-sep. list of packages for \usepackage{}
 
 include_numbering_of_exercises = True
@@ -1032,6 +1036,10 @@ def latex_code(filestr, code_blocks, code_block_types,
 
     lines = filestr.splitlines()
     current_code_envir = None
+    current_code = ""
+    
+    kernel_client = execution.create_kernel_client()
+    
     for i in range(len(lines)):
         if lines[i].startswith('!bc'):
             words = lines[i].split()
@@ -1049,13 +1057,14 @@ def latex_code(filestr, code_blocks, code_block_types,
                 errwarn('*** error: mismatch between !bc and !ec')
                 errwarn('\n'.join(lines[i-3:i+4]))
                 _abort()
+            print("FORMATTING", current_code_envir, latex_code_style)
             if latex_code_style is None:
                 lines[i] = '\\b' + current_code_envir
             else:
                 begin, end = latex_code_envir(current_code_envir,
                                               latex_code_style)
                 lines [i] = begin
-        if lines[i].startswith('!ec'):
+        elif lines[i].startswith('!ec'):
             if current_code_envir is None:
                 # No envir set by previous !bc?
                 errwarn('*** error: mismatch between !bc and !ec')
@@ -1072,7 +1081,42 @@ def latex_code(filestr, code_blocks, code_block_types,
                 begin, end = latex_code_envir(current_code_envir,
                                               latex_code_style)
                 lines [i] = end
+            outputs, execution_count = execution.run_cell(kernel_client, current_code)
+            if len(outputs) > 0:
+                for output in outputs:
+                    begin, end = latex_code_envir(
+                        "default",
+                        latex_code_style
+                    )
+                    if "text" in output:
+                        lines[i] += "{}\n{}\n{}\n".format(
+                            begin, 
+                            output["text"],
+                            end
+                        )
+                    if "data" in output:
+                        data = output["data"]
+                        if "image/png" in data:
+                            data = data["image/png"]
+                            filename_stem = ".doconce_figure_cache/{}".format(str(uuid.uuid4()))
+                            os.makedirs(".doconce_figure_cache", exist_ok=True)
+                            filename = "{}.png".format(filename_stem)
+                            g = open(filename, "wb")
+                            g.write(base64.decodebytes(bytes(data, encoding="utf-8")))
+                            g.close()
+                            lines[i] += "\\includegraphics{{{}}}\n".format(filename_stem)
+                        elif "text/plain" in data:  # add text only if no image
+                            lines[i] += "{}\n{}\n{}\n".format(
+                                begin, 
+                                output["data"]["text/plain"],
+                                end
+                            )
+                
             current_code_envir = None
+            current_code = ""
+        else:
+            if current_code_envir is not None:
+                current_code += lines[i] + "\n"
     filestr = safe_join(lines, '\n')
 
     return filestr

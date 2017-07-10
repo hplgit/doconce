@@ -2,7 +2,7 @@
 
 This is a cell that should execute automatically:
 
-!bc pycell
+!bc pycod
 a = 1
 b = 2
 c = a + b
@@ -12,7 +12,7 @@ c
 
 This is a cell that should plot and output:
 
-!bc pycell
+!bc pycod
 from pylab import *
 x = linspace(0, 10, 100)
 plot(x, x*x)

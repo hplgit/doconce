@@ -613,6 +613,8 @@ the document into multiple parts."""),
     ('--sphinx_figure_captions=', 'Font style in figure captions: emphasize (default) or normal. If you use boldface or emphasize in the caption, the font style will be normal for that caption.'),
     ('--oneline_paragraphs',
      'Combine paragraphs to one line (does not work well).'),
+    ('--execute',
+     'Automatically run code blocks and show output below the code block.'),
     ]
 
 _legal_command_line_options = \
