@@ -614,7 +614,7 @@ def ipynb_code(filestr, code_blocks, code_block_types,
     mdstr = []  # plain md format of the notebook
     prompt_number = 1
     
-    kernel_client = execution.create_kernel_client()
+    kernel_client = execution.JupyterKernelClient()
     
     for block_tp, block in notebook_blocks:
         if (block_tp == 'text' or block_tp == 'math') and block != '' and block != '<!--  -->':
@@ -792,6 +792,8 @@ def ipynb_code(filestr, code_blocks, code_block_types,
  ]
 }"""
     '''
+    execution.stop(kernel_client)
+    
     return filestr
 
 def ipynb_index_bib(filestr, index, citations, pubfile, pubdata):

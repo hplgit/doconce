@@ -4,25 +4,29 @@ try:
     from queue import Empty  # Py 3
 except ImportError:
     from Queue import Empty # Py 2
-
-def create_kernel_client():
-    kernelmanager = MultiKernelManager()
-    kernel_client_id = kernelmanager.start_kernel('python3')
-    kernel_client_kernel = kernelmanager.get_kernel(kernel_client_id)
-    kernel_client = kernel_client_kernel.client()
-    kernel_client.start_channels()
-    return kernel_client
+    
+class JupyterKernelClient:
+    def __init__(self):
+        self.manager = MultiKernelManager()
+        self.kernel_id = self.manager.start_kernel('python3')
+        self.kernel = self.manager.get_kernel(self.kernel_id)
+        self.client = self.kernel.client()
+        self.client.start_channels()
+        
+def stop(kernel_client):
+    kernel_client.client.stop_channels()
+    kernel_client.manager.shutdown_kernel(kernel_client.kernel_id)
 
 def run_cell(kernel_client, source, timeout=30, cell_index=0):
     # Adapted from nbconvert.ExecutePreprocessor
     # Copyright (c) IPython Development Team.
     # Distributed under the terms of the Modified BSD License.
     
-    msg_id = kernel_client.execute(source)
+    msg_id = kernel_client.client.execute(source)
     # wait for finish, with timeout
     while True:
         try:
-            msg = kernel_client.shell_channel.get_msg(timeout=timeout)
+            msg = kernel_client.client.shell_channel.get_msg(timeout=timeout)
         except Empty:
             print("Timeout waiting for execute reply", timeout)
             try:
@@ -47,7 +51,7 @@ def run_cell(kernel_client, source, timeout=30, cell_index=0):
             # in certain CI systems, waiting < 1 second might miss messages.
             # So long as the kernel sends a status:idle message when it
             # finishes, we won't actually have to wait this long, anyway.
-            msg = kernel_client.iopub_channel.get_msg(timeout=5)
+            msg = kernel_client.client.iopub_channel.get_msg(timeout=5)
         except Empty:
             print("Timeout waiting for IOPub output")
             break

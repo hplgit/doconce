@@ -97,10 +97,9 @@ envir2lst = dict(
     # pyopt and pysc are treated explicitly
     )
 
-def latex_code_envir(
-    envir,
-    envir_spec,
-    ):
+def latex_code_envir(envir, envir_spec):
+    if envir_spec is None:
+        return '\\b' + envir, '\\e' + envir
     leftmargin = option('latex_code_leftmargin=', '2')
     bg_vpad = '_vpad' if option('latex_code_bg_vpad') else ''
 
@@ -1038,7 +1037,7 @@ def latex_code(filestr, code_blocks, code_block_types,
     current_code_envir = None
     current_code = ""
     
-    kernel_client = execution.create_kernel_client()
+    kernel_client = execution.JupyterKernelClient()
     
     for i in range(len(lines)):
         if lines[i].startswith('!bc'):
@@ -1057,12 +1056,11 @@ def latex_code(filestr, code_blocks, code_block_types,
                 errwarn('*** error: mismatch between !bc and !ec')
                 errwarn('\n'.join(lines[i-3:i+4]))
                 _abort()
-            if latex_code_style is None:
-                lines[i] = '\\b' + current_code_envir
-            else:
-                begin, end = latex_code_envir(current_code_envir,
-                                              latex_code_style)
-                lines [i] = begin
+            begin, end = latex_code_envir(
+                current_code_envir,
+                latex_code_style
+            )
+            lines [i] = begin
         elif lines[i].startswith('!ec'):
             if current_code_envir is None:
                 # No envir set by previous !bc?
@@ -1074,12 +1072,12 @@ def latex_code(filestr, code_blocks, code_block_types,
                 #errwarn('    check that every !bc matches !ec in the entire text:')
                 #errwarn(filestr)
                 _abort()
-            if latex_code_style is None:
-                lines[i] = '\\e' + current_code_envir
-            else:
-                begin, end = latex_code_envir(current_code_envir,
-                                              latex_code_style)
-                lines [i] = end
+            
+            begin, end = latex_code_envir(
+                current_code_envir,    
+                latex_code_style
+            )
+            lines [i] = end
             outputs, execution_count = execution.run_cell(kernel_client, current_code)
             if len(outputs) > 0:
                 for output in outputs:
@@ -1116,6 +1114,9 @@ def latex_code(filestr, code_blocks, code_block_types,
         else:
             if current_code_envir is not None:
                 current_code += lines[i] + "\n"
+                
+    execution.stop(kernel_client)
+    
     filestr = safe_join(lines, '\n')
 
     return filestr
