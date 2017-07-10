@@ -9,6 +9,11 @@ from .pandoc import pandoc_ref_and_label, pandoc_index_bib, pandoc_quote, \
      language2pandoc, pandoc_quiz
 from .misc import option, _abort
 from .doconce import errwarn
+from nbformat.v4 import output_from_msg
+try:
+    from queue import Empty  # Py 3
+except ImportError:
+    from Queue import Empty # Py 2
 
 # Global variables
 figure_encountered = False
@@ -242,6 +247,99 @@ video_tag = '<video controls loop alt="%s" height="%s" width="%s" src="data:vide
         _abort()
     text += '<!-- end movie -->\n'
     return text
+    
+
+def run_cell(kc, cell, timeout=30, cell_index=0):
+    # Adapted from nbconvert.ExecutePreprocessor
+    # Copyright (c) IPython Development Team.
+    # Distributed under the terms of the Modified BSD License.
+    
+    msg_id = kc.execute(cell.source)
+    print("Executing cell:\n%s", cell.source)
+    # wait for finish, with timeout
+    while True:
+        try:
+            msg = kc.shell_channel.get_msg(timeout=timeout)
+        except Empty:
+            print("Timeout waiting for execute reply", timeout)
+            try:
+                exception = TimeoutError
+            except NameError:
+                exception = RuntimeError
+            raise exception("Cell execution timed out")
+
+        if msg['parent_header'].get('msg_id') == msg_id:
+            break
+        else:
+            # not our reply
+            continue
+
+    outs = cell.outputs = []
+
+    while True:
+        try:
+            # We've already waited for execute_reply, so all output
+            # should already be waiting. However, on slow networks, like
+            # in certain CI systems, waiting < 1 second might miss messages.
+            # So long as the kernel sends a status:idle message when it
+            # finishes, we won't actually have to wait this long, anyway.
+            msg = kc.iopub_channel.get_msg(timeout=5)
+        except Empty:
+            print("Timeout waiting for IOPub output")
+            break
+        if msg['parent_header'].get('msg_id') != msg_id:
+            # not an output from our execution
+            continue
+
+        msg_type = msg['msg_type']
+        print("output:", msg_type)
+        content = msg['content']
+
+        # set the prompt number for the input and the output
+        if 'execution_count' in content:
+            cell['execution_count'] = content['execution_count']
+
+        if msg_type == 'status':
+            if content['execution_state'] == 'idle':
+                break
+            else:
+                continue
+        elif msg_type == 'execute_input':
+            continue
+        elif msg_type == 'clear_output':
+            outs[:] = []
+            # clear display_id mapping for this cell
+            # for display_id, cell_map in self._display_id_map.items():
+            #     if cell_index in cell_map:
+            #         cell_map[cell_index] = []
+            continue
+        elif msg_type.startswith('comm'):
+            continue
+        
+        display_id = None
+        if msg_type in {'execute_result', 'display_data', 'update_display_data'}:
+            display_id = msg['content'].get('transient', {}).get('display_id', None)
+            # if display_id:
+                # self._update_display_id(display_id, msg)
+            if msg_type == 'update_display_data':
+                # update_display_data doesn't get recorded
+                continue
+
+        try:
+            out = output_from_msg(msg)
+        except ValueError:
+            print("unhandled iopub msg: " + msg_type)
+            continue
+        # if display_id:
+            # record output index in:
+            #   _display_id_map[display_id][cell_idx]
+            # cell_map = self._display_id_map.setdefault(display_id, {})
+            # output_idx_list = cell_map.setdefault(cell_index, [])
+            # output_idx_list.append(len(outs))
+
+        outs.append(out)
+
+    return outs
 
 def ipynb_code(filestr, code_blocks, code_block_types,
                tex_blocks, format):
@@ -445,6 +543,8 @@ def ipynb_code(filestr, code_blocks, code_block_types,
             ipynb_code_tp[i] = 'cell_hidden'
         elif tp.endswith('out'):
             ipynb_code_tp[i] = 'cell_output'
+        elif tp.endswith('cell'):
+            ipynb_code_tp[i] = 'cell_autoexecute'
         elif tp.startswith('py'):
             ipynb_code_tp[i] = 'cell'
         else:
@@ -502,6 +602,8 @@ def ipynb_code(filestr, code_blocks, code_block_types,
             idx = int(m.group(1))
             if ipynb_code_tp[idx] == 'cell':
                 notebook_blocks[i] = ['cell', notebook_blocks[i]]
+            elif ipynb_code_tp[idx] == 'cell_autoexecute':
+                notebook_blocks[i] = ['cell_autoexecute', notebook_blocks[i]]
             elif ipynb_code_tp[idx] == 'cell_hidden':
                 notebook_blocks[i] = ['cell_hidden', notebook_blocks[i]]
             elif ipynb_code_tp[idx] == 'cell_output':
@@ -607,6 +709,16 @@ def ipynb_code(filestr, code_blocks, code_block_types,
 
     mdstr = []  # plain md format of the notebook
     prompt_number = 1
+    
+    # Prepare Autoexecute
+    from jupyter_client import MultiKernelManager
+    kernelmanager = MultiKernelManager()
+    remote_id = kernelmanager.start_kernel('python3')
+    remote_kernel = kernelmanager.get_kernel(remote_id)
+    remote = remote_kernel.client()
+    remote.start_channels()
+    # end prepare autoexecute
+    
     for block_tp, block in notebook_blocks:
         if (block_tp == 'text' or block_tp == 'math') and block != '' and block != '<!--  -->':
             if nb_version == 3:
@@ -615,37 +727,45 @@ def ipynb_code(filestr, code_blocks, code_block_types,
                 cells.append(new_markdown_cell(source=block))
             mdstr.append(('markdown', block))
         elif block_tp == 'cell' and block != '' and block != []:
-            if isinstance(block, list):
-                for block_ in block:
-                    block_ = block_.rstrip()
-                    if block_ != '':
-                        if nb_version == 3:
-                            nb.cells.append(new_code_cell(
-                                input=block_,
-                                prompt_number=prompt_number,
-                                collapsed=False))
-                        elif nb_version == 4:
-                            cells.append(new_code_cell(
-                                source=block_,
-                                execution_count=prompt_number,
-                                metadata=dict(collapsed=False)))
-                        prompt_number += 1
-                        mdstr.append(('codecell', block_))
-            else:
-                block = block.rstrip()
-                if block != '':
+            if not isinstance(block, list):
+                block = [block]
+            for block_ in block:
+                block_ = block_.rstrip()
+                if block_ != '':
                     if nb_version == 3:
                         nb.cells.append(new_code_cell(
-                            input=block,
+                            input=block_,
                             prompt_number=prompt_number,
                             collapsed=False))
                     elif nb_version == 4:
                         cells.append(new_code_cell(
-                            source=block,
+                            source=block_,
                             execution_count=prompt_number,
                             metadata=dict(collapsed=False)))
                     prompt_number += 1
-                    mdstr.append(('codecell', block))
+                    mdstr.append(('codecell', block_))
+        elif block_tp == 'cell_autoexecute':            
+            print("Got cell autoexec!!!!")
+            timeout = 30
+            if nb_version == 3:
+                print("WARNING: Autoexecute not implemented for nbformat v3.")
+                continue
+            if not isinstance(block, list):
+                block = [block]
+            for block_ in block:
+                block_ = block_.rstrip()
+                if block_ != '':
+                    code_cell = new_code_cell(
+                        source=block_,
+                        execution_count=prompt_number,
+                        metadata=dict(collapsed=False)
+                    )
+                    cells.append(code_cell)
+                    prompt_number += 1
+                    mdstr.append(('codecell', block_))
+                    
+                    code_cell.outputs = run_cell(remote, code_cell)
+                    
         elif block_tp == 'cell_output' and block != '':
             block = block.rstrip()
             if nb_version == 3:
