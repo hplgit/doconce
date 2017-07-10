@@ -1057,7 +1057,6 @@ def latex_code(filestr, code_blocks, code_block_types,
                 errwarn('*** error: mismatch between !bc and !ec')
                 errwarn('\n'.join(lines[i-3:i+4]))
                 _abort()
-            print("FORMATTING", current_code_envir, latex_code_style)
             if latex_code_style is None:
                 lines[i] = '\\b' + current_code_envir
             else:

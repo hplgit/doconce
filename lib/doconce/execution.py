@@ -19,7 +19,6 @@ def run_cell(kernel_client, source, timeout=30, cell_index=0):
     # Distributed under the terms of the Modified BSD License.
     
     msg_id = kernel_client.execute(source)
-    print("Executing cell:\n", source)
     # wait for finish, with timeout
     while True:
         try:
