@@ -1,0 +1,20 @@
+======= Testing pycell =======
+
+This is a cell that should execute automatically:
+
+!bc pycell
+a = 1
+b = 2
+c = a + b
+print("The result is {}".format(c))
+c
+!ec
+
+This is a cell that should plot and output:
+
+!bc pycell
+from pylab import *
+x = linspace(0, 10, 100)
+plot(x, x*x)
+show()
+!ec
