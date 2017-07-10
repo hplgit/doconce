@@ -1037,7 +1037,8 @@ def latex_code(filestr, code_blocks, code_block_types,
     current_code_envir = None
     current_code = ""
     
-    kernel_client = execution.JupyterKernelClient()
+    if option("execute"):
+        kernel_client = execution.JupyterKernelClient()
     
     for i in range(len(lines)):
         if lines[i].startswith('!bc'):
@@ -1078,36 +1079,37 @@ def latex_code(filestr, code_blocks, code_block_types,
                 latex_code_style
             )
             lines [i] = end
-            outputs, execution_count = execution.run_cell(kernel_client, current_code)
-            if len(outputs) > 0:
-                for output in outputs:
-                    begin, end = latex_code_envir(
-                        "default",
-                        latex_code_style
-                    )
-                    if "text" in output:
-                        lines[i] += "{}\n{}\n{}\n".format(
-                            begin, 
-                            output["text"],
-                            end
+            if option("execute"):
+                outputs, execution_count = execution.run_cell(kernel_client, current_code)
+                if len(outputs) > 0:
+                    for output in outputs:
+                        begin, end = latex_code_envir(
+                            "default",
+                            latex_code_style
                         )
-                    if "data" in output:
-                        data = output["data"]
-                        if "image/png" in data:
-                            data = data["image/png"]
-                            filename_stem = ".doconce_figure_cache/{}".format(str(uuid.uuid4()))
-                            os.makedirs(".doconce_figure_cache", exist_ok=True)
-                            filename = "{}.png".format(filename_stem)
-                            g = open(filename, "wb")
-                            g.write(base64.decodebytes(bytes(data, encoding="utf-8")))
-                            g.close()
-                            lines[i] += "\\includegraphics{{{}}}\n".format(filename_stem)
-                        elif "text/plain" in data:  # add text only if no image
+                        if "text" in output:
                             lines[i] += "{}\n{}\n{}\n".format(
                                 begin, 
-                                output["data"]["text/plain"],
+                                output["text"],
                                 end
                             )
+                        if "data" in output:
+                            data = output["data"]
+                            if "image/png" in data:
+                                data = data["image/png"]
+                                filename_stem = ".doconce_figure_cache/{}".format(str(uuid.uuid4()))
+                                os.makedirs(".doconce_figure_cache", exist_ok=True)
+                                filename = "{}.png".format(filename_stem)
+                                g = open(filename, "wb")
+                                g.write(base64.decodebytes(bytes(data, encoding="utf-8")))
+                                g.close()
+                                lines[i] += "\\includegraphics{{{}}}\n".format(filename_stem)
+                            elif "text/plain" in data:  # add text only if no image
+                                lines[i] += "{}\n{}\n{}\n".format(
+                                    begin, 
+                                    output["data"]["text/plain"],
+                                    end
+                                )
                 
             current_code_envir = None
             current_code = ""
