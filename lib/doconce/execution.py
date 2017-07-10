@@ -29,6 +29,7 @@ def run_cell(kernel_client, source, timeout=30, cell_index=0):
             msg = kernel_client.client.shell_channel.get_msg(timeout=timeout)
         except Empty:
             print("Timeout waiting for execute reply", timeout)
+            print("Tried to run the following source:\n{}".format(source))
             try:
                 exception = TimeoutError
             except NameError:
