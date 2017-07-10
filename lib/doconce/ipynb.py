@@ -649,7 +649,7 @@ def ipynb_code(filestr, code_blocks, code_block_types,
                                 cell["execution_count"] = execution_count
                     prompt_number += 1
                     mdstr.append(('codecell', block_))
-        elif block_tp == 'cell_output' and block != '':
+        elif block_tp == 'cell_output' and block != '' and not option("ignore_output"):
             block = block.rstrip()
             if nb_version == 3:
                 print("WARNING: Output not implemented for nbformat v3.")
