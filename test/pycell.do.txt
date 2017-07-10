@@ -18,3 +18,8 @@ x = linspace(0, 10, 100)
 plot(x, x*x)
 show()
 !ec
+
+!bc pycod-t
+while True:
+    i = 2
+!ec

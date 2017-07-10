@@ -583,6 +583,11 @@ def latex_code(filestr, code_blocks, code_block_types,
 
     # Check for misspellings
     envirs = 'pro pypro cypro cpppro cpro fpro plpro shpro mpro cod pycod cycod cppcod ccod fcod plcod shcod mcod htmlcod htmlpro latexcod latexpro rstcod rstpro xmlcod xmlpro cppans pyans fans bashans swigans uflans sni dat dsni csv txt sys slin ipy rpy plin ver warn rule summ ccq cc ccl pyshell pyoptpro pyscpro ipy do'.split()
+    
+    for i, envir in enumerate(code_block_types):
+        if envir.endswith("-t"):
+            code_block_types[i] = re.sub(r"-t$", "", envir)
+    
     # Add user's potential new envirs inside admons
     new_envirs = []
     for envir in envirs:
@@ -1079,7 +1084,8 @@ def latex_code(filestr, code_blocks, code_block_types,
                 latex_code_style
             )
             lines [i] = end
-            if option("execute"):
+            print("Code envir", current_code_envir)
+            if option("execute") and not current_code_envir.endswith("-t"):
                 outputs, execution_count = execution.run_cell(kernel_client, current_code)
                 if len(outputs) > 0:
                     for output in outputs:
