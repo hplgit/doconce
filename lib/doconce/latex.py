@@ -1044,6 +1044,13 @@ def latex_code(filestr, code_blocks, code_block_types,
     
     if option("execute"):
         kernel_client = execution.JupyterKernelClient()
+        # This enables PDF output as well as PNG for figures. 
+        # We only use the PDF when available, but PNG should be added as fallback.
+        execution.run_cell(
+            kernel_client,
+            "from IPython.display import set_matplotlib_formats\n" +
+            "set_matplotlib_formats('png', 'pdf')"
+        )
     
     for i in range(len(lines)):
         if lines[i].startswith('!bc'):
@@ -1101,13 +1108,18 @@ def latex_code(filestr, code_blocks, code_block_types,
                             )
                         if "data" in output:
                             data = output["data"]
-                            if "image/png" in data:
-                                data = data["image/png"]
+                            if "application/pdf" in data or "image/png" in data:
+                                if "application/pdf" in data:
+                                    img_data = data["application/pdf"]
+                                    suffix = ".pdf"
+                                else:
+                                    img_data = data["image/png"]
+                                    suffix = ".png"
                                 filename_stem = ".doconce_figure_cache/{}".format(str(uuid.uuid4()))
                                 os.makedirs(".doconce_figure_cache", exist_ok=True)
-                                filename = "{}.png".format(filename_stem)
+                                filename = "{}{}".format(filename_stem, suffix)
                                 g = open(filename, "wb")
-                                g.write(base64.decodebytes(bytes(data, encoding="utf-8")))
+                                g.write(base64.decodebytes(bytes(img_data, encoding="utf-8")))
                                 g.close()
                                 lines[i] += "\\includegraphics{{{}}}\n".format(filename_stem)
                             elif "text/plain" in data:  # add text only if no image

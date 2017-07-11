@@ -10,6 +10,8 @@ print("The result is {}".format(c))
 c
 !ec
 
+=== Plotting ===
+
 This is a cell that should plot and output:
 
 !bc pycod
@@ -19,7 +21,22 @@ plot(x, x*x)
 show()
 !ec
 
+To improve quality when exporting to LaTeX, the following code has automatically
+been run to enable PDF export in notebooks.
+
+!bc pycod-t
+from IPython.display import set_matplotlib_formats
+set_matplotlib_formats('png', 'pdf')
+!ec
+
+=== Not executed ===
+
+This is a code block that should not be executed:
+
 !bc pycod-t
 while True:
     i = 2
 !ec
+
+This is some *formatted* stuff, which is _underlined_ and stuff and maybe even
+contains $a + 2b$.
