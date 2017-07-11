@@ -1,4 +1,4 @@
-from jupyter_client import MultiKernelManager
+from jupyter_client import KernelManager
 from nbformat.v4 import output_from_msg
 from . import misc
 try:
@@ -9,19 +9,18 @@ except ImportError:
 
 class JupyterKernelClient:
     def __init__(self):
-        self.manager = MultiKernelManager()
-        self.kernel_id = self.manager.start_kernel('python3')
-        self.kernel = self.manager.get_kernel(self.kernel_id)
-        self.client = self.kernel.client()
-        self.client.start_channels()
+        self.manager = KernelManager(kernel_name='python3')
         working_directory = misc.option("execute_working_directory=", None)
         if working_directory is not None:
-            print("CHANGING DIRECTORY", working_directory)
-            run_cell(self, "import os; os.chdir('{}')".format(working_directory))
+            self.kernel = self.manager.start_kernel(cwd=working_directory)
+        else:
+            self.kernel = self.manager.start_kernel()
+        self.client = self.manager.client()
+        self.client.start_channels()
 
 def stop(kernel_client):
     kernel_client.client.stop_channels()
-    kernel_client.manager.shutdown_kernel(kernel_client.kernel_id)
+    kernel_client.manager.shutdown_kernel()
 
 
 def run_cell(kernel_client, source, timeout=120):
