@@ -793,7 +793,8 @@ def ipynb_code(filestr, code_blocks, code_block_types,
  ]
 }"""
     '''
-    execution.stop(kernel_client)
+    if option("execute"):
+        execution.stop(kernel_client)
     
     return filestr
 
