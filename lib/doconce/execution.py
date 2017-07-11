@@ -1,10 +1,12 @@
 from jupyter_client import MultiKernelManager
 from nbformat.v4 import output_from_msg
+from . import misc
 try:
     from queue import Empty  # Py 3
 except ImportError:
     from Queue import Empty # Py 2
-    
+
+
 class JupyterKernelClient:
     def __init__(self):
         self.manager = MultiKernelManager()
@@ -12,16 +14,21 @@ class JupyterKernelClient:
         self.kernel = self.manager.get_kernel(self.kernel_id)
         self.client = self.kernel.client()
         self.client.start_channels()
-        
+        working_directory = misc.option("execute_working_directory=", None)
+        if working_directory is not None:
+            print("CHANGING DIRECTORY", working_directory)
+            run_cell(self, "import os; os.chdir('{}')".format(working_directory))
+
 def stop(kernel_client):
     kernel_client.client.stop_channels()
     kernel_client.manager.shutdown_kernel(kernel_client.kernel_id)
 
-def run_cell(kernel_client, source, timeout=120, cell_index=0):
+
+def run_cell(kernel_client, source, timeout=120):
     # Adapted from nbconvert.ExecutePreprocessor
     # Copyright (c) IPython Development Team.
     # Distributed under the terms of the Modified BSD License.
-    
+
     msg_id = kernel_client.client.execute(source)
     # wait for finish, with timeout
     while True:
