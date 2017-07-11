@@ -100,6 +100,7 @@ envir2lst = dict(
 def latex_code_envir(envir, envir_spec):
     if envir_spec is None:
         return '\\b' + envir, '\\e' + envir
+        
     leftmargin = option('latex_code_leftmargin=', '2')
     bg_vpad = '_vpad' if option('latex_code_bg_vpad') else ''
 
@@ -217,7 +218,7 @@ def interpret_latex_code_style():
             envir, pkg = pkg.split(':')
         return pkg, bg, style
 
-    legal_envirs = 'pro pypro cypro cpppro cpro fpro plpro shpro mpro cod pycod cycod cppcod ccod fcod plcod shcod mcod rst cppans pyans fans bashans swigans uflans sni dat dsni sys slin ipy pyshell rpy plin ver warn rule summ ccq cc ccl txt htmlcod htmlpro html rbpro rbcod rb xmlpro xmlcod xml latexpro latexcod latex default'.split()
+    legal_envirs = 'pro pypro pyout cypro cpppro cpro fpro plpro shpro mpro cod pycod cycod cppcod ccod fcod plcod shcod mcod rst cppans pyans fans bashans swigans uflans sni dat dsni sys slin ipy pyshell rpy plin ver warn rule summ ccq cc ccl txt htmlcod htmlpro html rbpro rbcod rb xmlpro xmlcod xml latexpro latexcod latex default'.split()
     d = {}
     if '@' not in latex_code_style:
         # Common definition for all languages
@@ -582,7 +583,7 @@ def latex_code(filestr, code_blocks, code_block_types,
     filestr = safe_join(lines, '\n')
 
     # Check for misspellings
-    envirs = 'pro pypro cypro cpppro cpro fpro plpro shpro mpro cod pycod cycod cppcod ccod fcod plcod shcod mcod htmlcod htmlpro latexcod latexpro rstcod rstpro xmlcod xmlpro cppans pyans fans bashans swigans uflans sni dat dsni csv txt sys slin ipy rpy plin ver warn rule summ ccq cc ccl pyshell pyoptpro pyscpro ipy do'.split()
+    envirs = 'pro pypro pyout cypro cpppro cpro fpro plpro shpro mpro cod pycod cycod cppcod ccod fcod plcod shcod mcod htmlcod htmlpro latexcod latexpro rstcod rstpro xmlcod xmlpro cppans pyans fans bashans swigans uflans sni dat dsni csv txt sys slin ipy rpy plin ver warn rule summ ccq cc ccl pyshell pyoptpro pyscpro ipy do'.split()
     
     for i, envir in enumerate(code_block_types):
         if envir.endswith("-t"):
@@ -1069,6 +1070,9 @@ def latex_code(filestr, code_blocks, code_block_types,
                 errwarn('*** error: mismatch between !bc and !ec')
                 errwarn('\n'.join(lines[i-3:i+4]))
                 _abort()
+            if current_code_envir.endswith("out") and option("ignore_output"):
+                lines[i] = ""
+                continue
             begin, end = latex_code_envir(
                 current_code_envir,
                 latex_code_style
@@ -1085,13 +1089,15 @@ def latex_code(filestr, code_blocks, code_block_types,
                 #errwarn('    check that every !bc matches !ec in the entire text:')
                 #errwarn(filestr)
                 _abort()
-            
             begin, end = latex_code_envir(
                 current_code_envir,    
                 latex_code_style
             )
-            lines [i] = end
-            if option("execute") and not current_code_envir.endswith("-t"):
+            if current_code_envir.endswith("out") and option("ignore_output"):
+                lines[i] = ""
+            else:
+                lines [i] = end
+            if option("execute") and not current_code_envir.endswith("-t") and not current_code_envir.endswith("out"):
                 outputs, execution_count = execution.run_cell(kernel_client, current_code)
                 if len(outputs) > 0:
                     for output in outputs:
@@ -1132,6 +1138,9 @@ def latex_code(filestr, code_blocks, code_block_types,
             current_code = ""
         else:
             if current_code_envir is not None:
+                if current_code_envir.endswith("out") and option("ignore_output"):
+                    lines[i] = ""
+                    continue
                 current_code += lines[i] + "\n"
                 
     if option("execute"):

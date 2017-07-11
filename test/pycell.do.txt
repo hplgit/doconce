@@ -29,6 +29,20 @@ from IPython.display import set_matplotlib_formats
 set_matplotlib_formats('png', 'pdf')
 !ec
 
+=== Ignore output ===
+
+Output from `pyout` and similar can be ignored by passing `--ignore_output` to
+DocOnce:
+
+!bc pycod
+a = 2
+print(a)
+!ec
+
+!bc pyout 
+2
+!ec
+
 === Not executed ===
 
 This is a code block that should not be executed:
