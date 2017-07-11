@@ -613,10 +613,10 @@ def ipynb_code(filestr, code_blocks, code_block_types,
 
     mdstr = []  # plain md format of the notebook
     prompt_number = 1
-    
+
     if option("execute"):
         kernel_client = execution.JupyterKernelClient()
-    
+
     for block_tp, block in notebook_blocks:
         if (block_tp == 'text' or block_tp == 'math') and block != '' and block != '<!--  -->':
             if nb_version == 3:
@@ -846,8 +846,9 @@ def ipynb_index_bib(filestr, index, citations, pubfile, pubdata):
                      filestr, flags=re.MULTILINE)
     return filestr
 
-
 def ipynb_ref_and_label(section_label2title, format, filestr):
+    # TODO: comments should have been removed before we get here!
+    filestr = re.sub(r'^#.+', '', filestr, flags=re.MULTILINE)
     filestr = fix_ref_section_chapter(filestr, format)
 
     # Replace all references to sections. Pandoc needs a coding of
