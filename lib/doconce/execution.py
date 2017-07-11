@@ -17,7 +17,7 @@ def stop(kernel_client):
     kernel_client.client.stop_channels()
     kernel_client.manager.shutdown_kernel(kernel_client.kernel_id)
 
-def run_cell(kernel_client, source, timeout=30, cell_index=0):
+def run_cell(kernel_client, source, timeout=120, cell_index=0):
     # Adapted from nbconvert.ExecutePreprocessor
     # Copyright (c) IPython Development Team.
     # Distributed under the terms of the Modified BSD License.
@@ -61,7 +61,6 @@ def run_cell(kernel_client, source, timeout=30, cell_index=0):
             continue
 
         msg_type = msg['msg_type']
-        print("output:", msg_type)
         content = msg['content']
 
         # set the prompt number for the input and the output
