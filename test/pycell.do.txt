@@ -31,8 +31,8 @@ set_matplotlib_formats('png', 'pdf')
 
 === Ignore output ===
 
-Output from `pyout` and similar can be ignored by passing `--ignore_output` to
-DocOnce:
+Predefined output can be omitted by passing `--ignore_output` to DocOnce.
+This will remove all environments ending with `out`.
 
 !bc pycod
 a = 2
@@ -54,3 +54,13 @@ while True:
 
 This is some *formatted* stuff, which is _underlined_ and stuff and maybe even
 contains $a + 2b$.
+
+=== Code with errors ===
+
+If code contains errors, it will still be run and the exception shown as part
+of the output:
+
+!bc pycod
+for a in range(10)
+    print(a)
+!ec
