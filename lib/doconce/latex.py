@@ -1091,7 +1091,6 @@ def latex_code(filestr, code_blocks, code_block_types,
                 latex_code_style
             )
             lines [i] = end
-            print("Code envir", current_code_envir)
             if option("execute") and not current_code_envir.endswith("-t"):
                 outputs, execution_count = execution.run_cell(kernel_client, current_code)
                 if len(outputs) > 0:
@@ -1135,7 +1134,8 @@ def latex_code(filestr, code_blocks, code_block_types,
             if current_code_envir is not None:
                 current_code += lines[i] + "\n"
                 
-    execution.stop(kernel_client)
+    if option("execute"):
+        execution.stop(kernel_client)
     
     filestr = safe_join(lines, '\n')
 
