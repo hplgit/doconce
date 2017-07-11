@@ -1100,15 +1100,17 @@ def latex_code(filestr, code_blocks, code_block_types,
             if option("execute") and not current_code_envir.endswith("-t") and not current_code_envir.endswith("out"):
                 outputs, execution_count = execution.run_cell(kernel_client, current_code)
                 if len(outputs) > 0:
+                    ansi_escape = re.compile(r'\x1b[^m]*m')
                     for output in outputs:
                         begin, end = latex_code_envir(
-                            "default",
+                            "pyout",
                             latex_code_style
                         )
                         if "text" in output:
+                            text_output = ansi_escape.sub("", output["text"])
                             lines[i] += "{}\n{}\n{}\n".format(
                                 begin, 
-                                output["text"],
+                                text_output,
                                 end
                             )
                         if "data" in output:
@@ -1126,13 +1128,23 @@ def latex_code(filestr, code_blocks, code_block_types,
                                 g = open(filename, "wb")
                                 g.write(base64.decodebytes(bytes(img_data, encoding="utf-8")))
                                 g.close()
-                                lines[i] += "\\includegraphics{{{}}}\n".format(filename_stem)
+                                lines[i] += "\\includegraphics[width=0.8\\textwidth]{{{}}}\n".format(filename_stem)
                             elif "text/plain" in data:  # add text only if no image
+                                text_output = ansi_escape.sub("", output["data"]["text/plain"])
                                 lines[i] += "{}\n{}\n{}\n".format(
                                     begin, 
-                                    output["data"]["text/plain"],
+                                    text_output,
                                     end
                                 )
+                        elif "traceback" in output:
+                            # TODO: convert ANSI escape chars to colors
+                            traceback = "\n".join(output["traceback"])
+                            traceback = ansi_escape.sub("", traceback)
+                            lines[i] += "{}\n{}\n{}\n".format(
+                                begin, 
+                                traceback,
+                                end
+                            )
                 
             current_code_envir = None
             current_code = ""
