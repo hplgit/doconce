@@ -9,6 +9,7 @@ from .pandoc import pandoc_ref_and_label, pandoc_index_bib, pandoc_quote, \
      language2pandoc, pandoc_quiz
 from .misc import option, _abort
 from .doconce import errwarn
+from . import execution
 
 # Global variables
 figure_encountered = False
@@ -243,6 +244,7 @@ video_tag = '<video controls loop alt="%s" height="%s" width="%s" src="data:vide
     text += '<!-- end movie -->\n'
     return text
 
+
 def ipynb_code(filestr, code_blocks, code_block_types,
                tex_blocks, format):
     """
@@ -441,6 +443,8 @@ def ipynb_code(filestr, code_blocks, code_block_types,
                 code_blocks[i] = '\n'.join(lines)
                 code_blocks[i] = indent_lines(code_blocks[i], format)
                 ipynb_code_tp[i] = 'markdown'
+        elif tp.endswith("-e"):
+            ipynb_code_tp[i] = 'execute_hidden'
         elif tp.endswith('hid'):
             ipynb_code_tp[i] = 'cell_hidden'
         elif tp.endswith('out'):
@@ -502,6 +506,8 @@ def ipynb_code(filestr, code_blocks, code_block_types,
             idx = int(m.group(1))
             if ipynb_code_tp[idx] == 'cell':
                 notebook_blocks[i] = ['cell', notebook_blocks[i]]
+            elif ipynb_code_tp[idx] == 'execute_hidden':
+                notebook_blocks[i] = ['execute_hidden', notebook_blocks[i]]
             elif ipynb_code_tp[idx] == 'cell_hidden':
                 notebook_blocks[i] = ['cell_hidden', notebook_blocks[i]]
             elif ipynb_code_tp[idx] == 'cell_output':
@@ -607,6 +613,10 @@ def ipynb_code(filestr, code_blocks, code_block_types,
 
     mdstr = []  # plain md format of the notebook
     prompt_number = 1
+
+    if option("execute"):
+        kernel_client = execution.JupyterKernelClient()
+
     for block_tp, block in notebook_blocks:
         if (block_tp == 'text' or block_tp == 'math') and block != '' and block != '<!--  -->':
             if nb_version == 3:
@@ -614,39 +624,37 @@ def ipynb_code(filestr, code_blocks, code_block_types,
             elif nb_version == 4:
                 cells.append(new_markdown_cell(source=block))
             mdstr.append(('markdown', block))
-        elif block_tp == 'cell' and block != '' and block != []:
-            if isinstance(block, list):
-                for block_ in block:
-                    block_ = block_.rstrip()
-                    if block_ != '':
-                        if nb_version == 3:
-                            nb.cells.append(new_code_cell(
-                                input=block_,
-                                prompt_number=prompt_number,
-                                collapsed=False))
-                        elif nb_version == 4:
-                            cells.append(new_code_cell(
-                                source=block_,
-                                execution_count=prompt_number,
-                                metadata=dict(collapsed=False)))
-                        prompt_number += 1
-                        mdstr.append(('codecell', block_))
-            else:
-                block = block.rstrip()
-                if block != '':
+        elif block_tp == "execute_hidden" and option("execute"):
+            if not isinstance(block, list):
+                block = [block]
+            for block_ in block:
+                outputs, execution_count = execution.run_cell(kernel_client, block_)
+        elif (block_tp == 'cell') and block != '' and block != []:
+            if not isinstance(block, list):
+                block = [block]
+            for block_ in block:
+                block_ = block_.rstrip()
+                if block_ != '':
                     if nb_version == 3:
                         nb.cells.append(new_code_cell(
-                            input=block,
+                            input=block_,
                             prompt_number=prompt_number,
                             collapsed=False))
                     elif nb_version == 4:
-                        cells.append(new_code_cell(
-                            source=block,
+                        cell = new_code_cell(
+                            source=block_,
                             execution_count=prompt_number,
-                            metadata=dict(collapsed=False)))
+                            metadata=dict(collapsed=False)
+                        )
+                        cells.append(cell)
+                        if option("execute"):
+                            outputs, execution_count = execution.run_cell(kernel_client, block_)
+                            cell.outputs = outputs
+                            if execution_count:
+                                cell["execution_count"] = execution_count
                     prompt_number += 1
-                    mdstr.append(('codecell', block))
-        elif block_tp == 'cell_output' and block != '':
+                    mdstr.append(('codecell', block_))
+        elif block_tp == 'cell_output' and block != '' and not option("ignore_output"):
             block = block.rstrip()
             if nb_version == 3:
                 print("WARNING: Output not implemented for nbformat v3.")
@@ -790,6 +798,9 @@ def ipynb_code(filestr, code_blocks, code_block_types,
  ]
 }"""
     '''
+    if option("execute"):
+        execution.stop(kernel_client)
+    
     return filestr
 
 def ipynb_index_bib(filestr, index, citations, pubfile, pubdata):
@@ -840,8 +851,9 @@ def ipynb_index_bib(filestr, index, citations, pubfile, pubdata):
                      filestr, flags=re.MULTILINE)
     return filestr
 
-
 def ipynb_ref_and_label(section_label2title, format, filestr):
+    # TODO: comments should have been removed before we get here!
+    filestr = re.sub(r'^#.+', '', filestr, flags=re.MULTILINE)
     filestr = fix_ref_section_chapter(filestr, format)
 
     # Replace all references to sections. Pandoc needs a coding of

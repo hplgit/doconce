@@ -7,6 +7,7 @@ from future import standard_library
 standard_library.install_aliases()
 from builtins import zip
 from builtins import str
+from builtins import bytes
 from builtins import range
 from past.utils import old_div
 import os, subprocess, re, sys, glob, shutil, subprocess
@@ -16,6 +17,10 @@ from .common import plain_exercise, table_analysis, \
      insert_code_and_tex, is_file_or_url, chapter_pattern
 from .misc import option, _abort, replace_code_command
 from .doconce import errwarn, debugpr, locale_dict
+import base64
+from . import execution
+import uuid
+import os
 additional_packages = ''  # comma-sep. list of packages for \usepackage{}
 
 include_numbering_of_exercises = True
@@ -93,10 +98,10 @@ envir2lst = dict(
     # pyopt and pysc are treated explicitly
     )
 
-def latex_code_envir(
-    envir,
-    envir_spec,
-    ):
+def latex_code_envir(envir, envir_spec):
+    if envir_spec is None:
+        return '\\b' + envir, '\\e' + envir
+        
     leftmargin = option('latex_code_leftmargin=', '2')
     bg_vpad = '_vpad' if option('latex_code_bg_vpad') else ''
 
@@ -214,7 +219,7 @@ def interpret_latex_code_style():
             envir, pkg = pkg.split(':')
         return pkg, bg, style
 
-    legal_envirs = 'pro pypro cypro cpppro cpro fpro plpro shpro mpro cod pycod cycod cppcod ccod fcod plcod shcod mcod rst cppans pyans fans bashans swigans uflans sni dat dsni sys slin ipy pyshell rpy plin ver warn rule summ ccq cc ccl txt htmlcod htmlpro html rbpro rbcod rb xmlpro xmlcod xml latexpro latexcod latex default'.split()
+    legal_envirs = 'pro pypro pyout cypro cpppro cpro fpro plpro shpro mpro cod pycod cycod cppcod ccod fcod plcod shcod mcod rst cppans pyans fans bashans swigans uflans sni dat dsni sys slin ipy pyshell rpy plin ver warn rule summ ccq cc ccl txt htmlcod htmlpro html rbpro rbcod rb xmlpro xmlcod xml latexpro latexcod latex default'.split()
     d = {}
     if '@' not in latex_code_style:
         # Common definition for all languages
@@ -579,7 +584,14 @@ def latex_code(filestr, code_blocks, code_block_types,
     filestr = safe_join(lines, '\n')
 
     # Check for misspellings
-    envirs = 'pro pypro cypro cpppro cpro fpro plpro shpro mpro cod pycod cycod cppcod ccod fcod plcod shcod mcod htmlcod htmlpro latexcod latexpro rstcod rstpro xmlcod xmlpro cppans pyans fans bashans swigans uflans sni dat dsni csv txt sys slin ipy rpy plin ver warn rule summ ccq cc ccl pyshell pyoptpro pyscpro ipy do'.split()
+    envirs = 'pro pypro pyout cypro cpppro cpro fpro plpro shpro mpro cod pycod cycod cppcod ccod fcod plcod shcod mcod htmlcod htmlpro latexcod latexpro rstcod rstpro xmlcod xmlpro cppans pyans fans bashans swigans uflans sni dat dsni csv txt sys slin ipy rpy plin ver warn rule summ ccq cc ccl pyshell pyoptpro pyscpro ipy do'.split()
+    
+    for i, envir in enumerate(code_block_types):
+        if envir.endswith("-t"):
+            code_block_types[i] = re.sub(r"-t$", "", envir)
+        if envir.endswith("-e"):
+            code_block_types[i] = re.sub(r"-e$", "", envir)
+    
     # Add user's potential new envirs inside admons
     new_envirs = []
     for envir in envirs:
@@ -1032,6 +1044,18 @@ def latex_code(filestr, code_blocks, code_block_types,
 
     lines = filestr.splitlines()
     current_code_envir = None
+    current_code = ""
+    
+    if option("execute"):
+        kernel_client = execution.JupyterKernelClient()
+        # This enables PDF output as well as PNG for figures. 
+        # We only use the PDF when available, but PNG should be added as fallback.
+        execution.run_cell(
+            kernel_client,
+            "from IPython.display import set_matplotlib_formats\n" +
+            "set_matplotlib_formats('png', 'pdf')"
+        )
+    
     for i in range(len(lines)):
         if lines[i].startswith('!bc'):
             words = lines[i].split()
@@ -1049,13 +1073,18 @@ def latex_code(filestr, code_blocks, code_block_types,
                 errwarn('*** error: mismatch between !bc and !ec')
                 errwarn('\n'.join(lines[i-3:i+4]))
                 _abort()
-            if latex_code_style is None:
-                lines[i] = '\\b' + current_code_envir
-            else:
-                begin, end = latex_code_envir(current_code_envir,
-                                              latex_code_style)
-                lines [i] = begin
-        if lines[i].startswith('!ec'):
+            if current_code_envir.endswith("out") and option("ignore_output"):
+                lines[i] = ""
+                continue
+            elif current_code_envir.endswith("-e"):
+                lines[i] = ""
+                continue
+            begin, end = latex_code_envir(
+                current_code_envir,
+                latex_code_style
+            )
+            lines [i] = begin
+        elif lines[i].startswith('!ec'):
             if current_code_envir is None:
                 # No envir set by previous !bc?
                 errwarn('*** error: mismatch between !bc and !ec')
@@ -1066,13 +1095,83 @@ def latex_code(filestr, code_blocks, code_block_types,
                 #errwarn('    check that every !bc matches !ec in the entire text:')
                 #errwarn(filestr)
                 _abort()
-            if latex_code_style is None:
-                lines[i] = '\\e' + current_code_envir
+            begin, end = latex_code_envir(
+                current_code_envir,    
+                latex_code_style
+            )
+            if current_code_envir.endswith("out") and option("ignore_output"):
+                lines[i] = ""
+            elif current_code_envir.endswith("-e"):
+                if option("execute"):
+                    execution.run_cell(kernel_client, current_code)
+                lines[i] = ""
             else:
-                begin, end = latex_code_envir(current_code_envir,
-                                              latex_code_style)
                 lines [i] = end
+            if option("execute") and not current_code_envir.endswith("-t") and not current_code_envir.endswith("out") and not current_code_envir.endswith("-e"):
+                outputs, execution_count = execution.run_cell(kernel_client, current_code)
+                if len(outputs) > 0:
+                    ansi_escape = re.compile(r'\x1b[^m]*m')
+                    for output in outputs:
+                        begin, end = latex_code_envir(
+                            "pyout",
+                            latex_code_style
+                        )
+                        if "text" in output:
+                            text_output = ansi_escape.sub("", output["text"])
+                            lines[i] += "{}\n{}\n{}\n".format(
+                                begin, 
+                                text_output,
+                                end
+                            )
+                        if "data" in output:
+                            data = output["data"]
+                            if "application/pdf" in data or "image/png" in data:
+                                if "application/pdf" in data:
+                                    img_data = data["application/pdf"]
+                                    suffix = ".pdf"
+                                else:
+                                    img_data = data["image/png"]
+                                    suffix = ".png"
+                                cache_folder = ".doconce_figure_cache"
+                                filename_stem = "{}/{}".format(cache_folder, str(uuid.uuid4()))
+                                if not os.path.exists(cache_folder):
+                                    os.makedirs(cache_folder)
+                                filename = "{}{}".format(filename_stem, suffix)
+                                g = open(filename, "wb")
+                                g.write(base64.decodebytes(bytes(img_data, encoding="utf-8")))
+                                g.close()
+                                lines[i] += "\\includegraphics[width=0.8\\textwidth]{{{}}}\n".format(filename_stem)
+                            elif "text/plain" in data:  # add text only if no image
+                                text_output = ansi_escape.sub("", output["data"]["text/plain"])
+                                lines[i] += "{}\n{}\n{}\n".format(
+                                    begin, 
+                                    text_output,
+                                    end
+                                )
+                        elif "traceback" in output:
+                            # TODO: convert ANSI escape chars to colors
+                            traceback = "\n".join(output["traceback"])
+                            traceback = ansi_escape.sub("", traceback)
+                            lines[i] += "{}\n{}\n{}\n".format(
+                                begin, 
+                                traceback,
+                                end
+                            )
+                
             current_code_envir = None
+            current_code = ""
+        else:
+            if current_code_envir is not None:
+                if current_code_envir.endswith("out") and option("ignore_output"):
+                    lines[i] = ""
+                    continue
+                current_code += lines[i] + "\n"
+                if current_code_envir.endswith("-e"):
+                    lines[i] = ""
+                
+    if option("execute"):
+        execution.stop(kernel_client)
+    
     filestr = safe_join(lines, '\n')
 
     return filestr
