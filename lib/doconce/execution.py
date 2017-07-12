@@ -1,3 +1,7 @@
+from __future__ import print_function
+from __future__ import division
+from __future__ import unicode_literals
+
 from jupyter_client import KernelManager
 from nbformat.v4 import output_from_msg
 from . import misc
