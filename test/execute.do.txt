@@ -1,4 +1,4 @@
-======= Automatic execution of code blocks =======
+========= Automatic execution of code blocks =========
 
 Compile this document with
 
@@ -26,7 +26,7 @@ print("The result is {}".format(c))
 c
 !ec
 
-=== Plotting ===
+======= Plotting =======
 
 This is a cell that should plot and output:
 
@@ -45,7 +45,7 @@ from IPython.display import set_matplotlib_formats
 set_matplotlib_formats('png', 'pdf')
 !ec
 
-=== Ignore output ===
+======= Ignore output =======
 
 Predefined output can be omitted by passing `--ignore_output` to DocOnce.
 This will remove all environments ending with `out`.
@@ -59,7 +59,7 @@ print(a)
 2
 !ec
 
-=== Not executed ===
+======= Not executed =======
 
 This is a code block that should not be executed:
 
@@ -71,7 +71,7 @@ while True:
 This is some *formatted* stuff, which is _underlined_ and stuff and maybe even
 contains $a + 2b$.
 
-=== Code with errors ===
+======= Code with errors =======
 
 If code contains errors, it will still be run and the exception shown as part
 of the output:
@@ -81,25 +81,12 @@ for a in range(10)
     print(a)
 !ec
 
-=== Open file ===
+======= Opening files =======
+
+The working directory is the same as the .do.txt file.
+You may want to use `os.chdir` to change the directory.
 
 !bc pycod
 with open("../LICENSE") as f:
     print(f.read())
 !ec
-
-# === References ===
-# 
-# If you want to reference a generated figure or code block, just use label and ref:
-# 
-# !bc pycod
-# from pylab import *
-# 
-# x = linspace(0, 10, 100)
-# plot(x, x*x)
-# show()
-# !ec
-# label{fig:myplot}
-# 
-# We will now refer to it as Figure ref{fig:myplot} and return to more information about
-# the figure.
