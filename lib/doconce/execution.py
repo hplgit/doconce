@@ -27,7 +27,6 @@ def run_cell(kernel_client, source, timeout=120):
     # Adapted from nbconvert.ExecutePreprocessor
     # Copyright (c) IPython Development Team.
     # Distributed under the terms of the Modified BSD License.
-
     msg_id = kernel_client.client.execute(source)
     # wait for finish, with timeout
     while True:

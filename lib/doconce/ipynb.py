@@ -443,12 +443,12 @@ def ipynb_code(filestr, code_blocks, code_block_types,
                 code_blocks[i] = '\n'.join(lines)
                 code_blocks[i] = indent_lines(code_blocks[i], format)
                 ipynb_code_tp[i] = 'markdown'
+        elif tp.endswith("-e"):
+            ipynb_code_tp[i] = 'execute_hidden'
         elif tp.endswith('hid'):
             ipynb_code_tp[i] = 'cell_hidden'
         elif tp.endswith('out'):
             ipynb_code_tp[i] = 'cell_output'
-        elif tp.endswith('cell'):
-            ipynb_code_tp[i] = 'cell_autoexecute'
         elif tp.startswith('py'):
             ipynb_code_tp[i] = 'cell'
         else:
@@ -506,8 +506,8 @@ def ipynb_code(filestr, code_blocks, code_block_types,
             idx = int(m.group(1))
             if ipynb_code_tp[idx] == 'cell':
                 notebook_blocks[i] = ['cell', notebook_blocks[i]]
-            elif ipynb_code_tp[idx] == 'cell_autoexecute':
-                notebook_blocks[i] = ['cell_autoexecute', notebook_blocks[i]]
+            elif ipynb_code_tp[idx] == 'execute_hidden':
+                notebook_blocks[i] = ['execute_hidden', notebook_blocks[i]]
             elif ipynb_code_tp[idx] == 'cell_hidden':
                 notebook_blocks[i] = ['cell_hidden', notebook_blocks[i]]
             elif ipynb_code_tp[idx] == 'cell_output':
@@ -624,7 +624,12 @@ def ipynb_code(filestr, code_blocks, code_block_types,
             elif nb_version == 4:
                 cells.append(new_markdown_cell(source=block))
             mdstr.append(('markdown', block))
-        elif (block_tp == 'cell' or block_tp == "cell_autoexecute") and block != '' and block != []:
+        elif block_tp == "execute_hidden" and option("execute"):
+            if not isinstance(block, list):
+                block = [block]
+            for block_ in block:
+                outputs, execution_count = execution.run_cell(kernel_client, block_)
+        elif (block_tp == 'cell') and block != '' and block != []:
             if not isinstance(block, list):
                 block = [block]
             for block_ in block:
@@ -642,7 +647,7 @@ def ipynb_code(filestr, code_blocks, code_block_types,
                             metadata=dict(collapsed=False)
                         )
                         cells.append(cell)
-                        if option("execute") or block_tp == "cell_autoexecute":
+                        if option("execute"):
                             outputs, execution_count = execution.run_cell(kernel_client, block_)
                             cell.outputs = outputs
                             if execution_count:

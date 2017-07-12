@@ -588,6 +588,8 @@ def latex_code(filestr, code_blocks, code_block_types,
     for i, envir in enumerate(code_block_types):
         if envir.endswith("-t"):
             code_block_types[i] = re.sub(r"-t$", "", envir)
+        if envir.endswith("-e"):
+            code_block_types[i] = re.sub(r"-e$", "", envir)
     
     # Add user's potential new envirs inside admons
     new_envirs = []
@@ -1073,6 +1075,9 @@ def latex_code(filestr, code_blocks, code_block_types,
             if current_code_envir.endswith("out") and option("ignore_output"):
                 lines[i] = ""
                 continue
+            elif current_code_envir.endswith("-e"):
+                lines[i] = ""
+                continue
             begin, end = latex_code_envir(
                 current_code_envir,
                 latex_code_style
@@ -1095,9 +1100,13 @@ def latex_code(filestr, code_blocks, code_block_types,
             )
             if current_code_envir.endswith("out") and option("ignore_output"):
                 lines[i] = ""
+            elif current_code_envir.endswith("-e"):
+                if option("execute"):
+                    execution.run_cell(kernel_client, current_code)
+                lines[i] = ""
             else:
                 lines [i] = end
-            if option("execute") and not current_code_envir.endswith("-t") and not current_code_envir.endswith("out"):
+            if option("execute") and not current_code_envir.endswith("-t") and not current_code_envir.endswith("out") and not current_code_envir.endswith("-e"):
                 outputs, execution_count = execution.run_cell(kernel_client, current_code)
                 if len(outputs) > 0:
                     ansi_escape = re.compile(r'\x1b[^m]*m')
@@ -1154,6 +1163,8 @@ def latex_code(filestr, code_blocks, code_block_types,
                     lines[i] = ""
                     continue
                 current_code += lines[i] + "\n"
+                if current_code_envir.endswith("-e"):
+                    lines[i] = ""
                 
     if option("execute"):
         execution.stop(kernel_client)

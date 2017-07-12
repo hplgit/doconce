@@ -1,9 +1,19 @@
 ======= Testing pycell =======
 
+Hidden execution cells can be used to perform operations that need to be done
+before the following cells are executed:
+
+!bc pycod-e
+import os
+os.listdir(".")
+a = 1
+e = 0
+f = 3
+!ec
+
 This is a cell that should execute automatically:
 
 !bc pycod
-a = 1
 b = 2
 c = a + b
 print("The result is {}".format(c))
