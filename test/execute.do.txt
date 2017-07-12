@@ -1,5 +1,11 @@
 ======= Automatic execution of code blocks =======
 
+Compile this document with
+
+!bc sh-t
+doconce format execute.do.txt --execute
+!ec
+
 Hidden execution cells can be used to perform operations that need to be done
 before the following cells are executed:
 
@@ -82,18 +88,18 @@ with open("../LICENSE") as f:
     print(f.read())
 !ec
 
-=== References ===
-
-If you want to reference a generated figure or code block, just use label and ref:
-
-!bc pycod
-from pylab import *
-
-x = linspace(0, 10, 100)
-plot(x, x*x)
-show()
-!ec
-label{fig:myplot}
-
-We will now refer to it as Figure ref{fig:myplot} and return to more information about
-the figure.
+# === References ===
+# 
+# If you want to reference a generated figure or code block, just use label and ref:
+# 
+# !bc pycod
+# from pylab import *
+# 
+# x = linspace(0, 10, 100)
+# plot(x, x*x)
+# show()
+# !ec
+# label{fig:myplot}
+# 
+# We will now refer to it as Figure ref{fig:myplot} and return to more information about
+# the figure.
