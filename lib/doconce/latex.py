@@ -1131,8 +1131,10 @@ def latex_code(filestr, code_blocks, code_block_types,
                                 else:
                                     img_data = data["image/png"]
                                     suffix = ".png"
-                                filename_stem = ".doconce_figure_cache/{}".format(str(uuid.uuid4()))
-                                os.makedirs(".doconce_figure_cache", exist_ok=True)
+                                cache_folder = ".doconce_figure_cache"
+                                filename_stem = "{}/{}".format(cache_folder, str(uuid.uuid4()))
+                                if not os.path.exists(cache_folder):
+                                    os.makedirs(cache_folder)
                                 filename = "{}{}".format(filename_stem, suffix)
                                 g = open(filename, "wb")
                                 g.write(base64.decodebytes(bytes(img_data, encoding="utf-8")))
