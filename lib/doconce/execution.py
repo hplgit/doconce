@@ -10,11 +10,7 @@ except ImportError:
 class JupyterKernelClient:
     def __init__(self):
         self.manager = KernelManager(kernel_name='python3')
-        working_directory = misc.option("execute_working_directory=", None)
-        if working_directory is not None:
-            self.kernel = self.manager.start_kernel(cwd=working_directory)
-        else:
-            self.kernel = self.manager.start_kernel()
+        self.kernel = self.manager.start_kernel()
         self.client = self.manager.client()
         self.client.start_channels()
 

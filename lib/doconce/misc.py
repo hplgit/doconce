@@ -615,8 +615,6 @@ the document into multiple parts."""),
      'Combine paragraphs to one line (does not work well).'),
     ('--execute',
      'Automatically run code blocks and show output below the code block.'),
-    ('--execute_working_directory=',
-     'Set the working directory for running code.'),
     ('--ignore_output',
      'Ignore output cells. Useful when you want to use execute rather than predefined output cells.'),
     ]
