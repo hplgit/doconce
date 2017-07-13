@@ -60,7 +60,7 @@ def add_to_file_collection(filename, doconce_docname=None, mode='a'):
     # must provide the right doconce_docname and mode='a' in order
     # to write correctly to an already existing file.
     global _file_collection_filename
-    if isinstance(doconce_docname, str) and doconce_docname != '':
+    if isinstance(doconce_docname, basestring) and doconce_docname != '':
         if doconce_docname.endswith('.do.txt'):
             doconce_docname = doconce_docname[:-7]
         if doconce_docname.endswith('.html'):
@@ -902,8 +902,8 @@ def embed_newcommands(filestr):
 def mathjax_header(filestr):
     newcommands = embed_newcommands(filestr)
     if option('siunits'):
-        siunitx1 = '\nMathJax.Ajax.config.path["Contrib"] = "https://cdn.mathjax.org/mathjax/contrib";'
-        siunitx2 = ', "[Contrib]/siunitx/unpacked/siunitx.js"'
+        siunitx1 = '\nMathJax.Ajax.config.path["siunitx"] = "http://rawgit.com/burnpanck/MathJax-siunitx/master/";'
+        siunitx2 = ', "[siunitx]/siunitx.js"'
     else:
         siunitx1 = siunitx2 = ''
 
@@ -917,8 +917,8 @@ MathJax.Hub.Config({
   }
 });
 </script>
-<script type="text/javascript"
- src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+<script type="text/javascript" async
+ src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 """ % (siunitx1, siunitx2)
     #<meta tag is valid only in html head anyway, so this was removed:

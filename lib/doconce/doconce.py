@@ -18,7 +18,7 @@ except ImportError:
     # use standard arbitrary-ordered dict instead (original order of
     # citations is then lost)
     OrderedDict = dict
-    
+
 # Support for non-English languages (not really implemented yet)
 global locale_dict
 locale_dict = dict(
@@ -77,14 +77,14 @@ locale_dict = dict(
         'Exercises': 'oppgaver',
         'Projects': 'prosjekter',
         'Problems': 'problemer',
-        'Examples': 'eksempeler',
+        'Examples': 'eksempler',
         'Preface': 'Forord',
         'Abstract': 'Sammendrag',
         'Summary': 'Sammendrag',
         'summary': 'sammendrag',
         'hint': 'Hint',
         'question': u'spørsmål',
-        'notice': 'observer',
+        'notice': u'observér',
         'warning': 'advarsel',
         'remarks': 'bemerkning',
         'index': 'Stikkordsliste',
@@ -133,6 +133,44 @@ locale_dict = dict(
         'Filename': 'Dateiname',
         'Filenames': 'Dateiname',
         },
+    Basque={
+	    'locale': 'eu_ES.UTF-8',
+	    'latex package': 'basque',
+	    'toc': 'Aurkibidea',
+	    'Contents': 'Edukiak',
+	    'Figure': 'Irudia',
+	    'Movie': 'Filma',
+	    'list of': 'Zerrenda',
+	    'and': 'eta',
+	    'Exercise': 'Ariketa',
+	    'Project': 'Proiektua',
+	    'Problem': 'Problema',
+	    'Example': 'Adibidea',
+	    'Projects': 'Proiektuak',
+	    'Problems': 'Problemak',
+	    'Examples': 'Adibideak',
+	    'Preface': 'Hitzaurrea',
+	    'Abstract': 'Laburpena',
+	    'Summary': 'Laburpena',
+	    # Admons
+	    'summary': 'laburpena',
+	    'hint': 'laguntza',
+	    'question': 'galdera',
+	    'notice': 'oharra',
+	    'warning': 'kontuz',
+	    # box, quote are silent wrt title
+	    'remarks': 'iruzkinak', # In exercises
+	    # Exercise headings
+	    'Solution': 'soluzioa',
+	    '__Solution.__': '__Soluzioa.__',
+	    '__Answer.__': '__Erantzuna.__',
+	    '__Hint.__': '__Laguntza.__',
+	    # At the end (in Sphinx)
+	    'index': 'Indizea',
+	    # References
+	    'Filename': 'Fitxategi',
+	    'Filenames': 'Fitxategiak',
+	    },
     )
 
 def debugpr(heading='', text=''):
@@ -1471,7 +1509,10 @@ def insert_code_from_file(filestr, format):
                 errwarn(' lines %d-%d' % (from_line, to_line), newline=False)
             codefile.close()
 
-            "!bc %spro\n%s\n!ec" % (filetype, code)
+            try:
+                "!bc %spro\n%s\n!ec" % (filetype, code)
+            except UnicodeDecodeError as e:
+                code = code.decode('utf-8')
 
             if code_envir in ('None', 'off', 'none'):
                 # no need to embed code in anything
@@ -1513,8 +1554,8 @@ def insert_os_commands(filestr, format):
         """Run system command cmd."""
         errwarn('*** running OS command ' + cmd)
         try:
-            output = subprocess.check_output(cmd, shell=True,
-                                             stderr=subprocess.STDOUT)
+            output = str(subprocess.check_output(cmd, shell=True,
+                                                 stderr=subprocess.STDOUT))
         except subprocess.CalledProcessError as e:
             errwarn('*** error: failure of @@@OSCMD %s' % cmd)
             errwarn(e.output)
@@ -2045,11 +2086,57 @@ def process_envir(filestr, envir, format, action='remove', reason=''):
                   '\n(.+?)' + comment_pattern % \
                   envir_delimiter_lines[envir][1] + '\n'
     if action == 'remove':
-        if callable(comment_pattern):
-            replacement = comment_pattern('removed !b%s ... !e%s environment ' % (envir, envir) + reason)
+        if format == 'ipynb':
+            import nbformat
+            # need to traverse notebook dictionary to remove lines
+            nb_dict = nbformat.reads(filestr, 4)
+            start_i, start_j, end_i, end_j = None, None, None, None
+            start_found = False
+            end_found = False
+            coors = []
+            target_line = comment_pattern % envir_delimiter_lines[envir][0]
+            for i, cell in enumerate(nb_dict['cells']):
+                if cell['cell_type'] == 'markdown':
+                    for j, src_line in enumerate(cell['source'].splitlines()):
+                        if src_line.strip() == target_line:
+                            if not start_found:
+                                start_found = True
+                                end_found = False
+                                coors.append((i, j))
+                                target_line = comment_pattern % envir_delimiter_lines[envir][1]
+                            else:
+                                end_found = True
+                                start_found = False
+                                coors.append((i, j))
+                                target_line = comment_pattern % envir_delimiter_lines[envir][0]
+                        elif start_found:
+                            coors.append((i, j))
+                elif start_found:
+                    coors.append((i, None))
+            if not end_found:
+                errwarn("Failed to remove %s environment" % envir)
+            else:
+                for i, j in reversed(coors):
+                    if j is None:
+                        # code cell
+                        nb_dict['cells'].pop(i)
+                        continue
+                    cell = nb_dict['cells'][i]
+                    cell_lines = cell['source'].splitlines()
+                    print(cell_lines[j])
+                    cell_lines.pop(j)
+                    cell['source'] = '\n'.join(cell_lines)
+                    if len(cell_lines) == 0:
+                        nb_dict['cells'].pop(i)
+                filestr = nbformat.writes(nb_dict, 4)
+
+
         else:
-            replacement = comment_pattern % ('removed !b%s ... !e%s environment %s' % (envir, envir, reason))
-        filestr = re.sub(pattern, replacement, filestr, flags=re.DOTALL)
+            if callable(comment_pattern):
+                replacement = comment_pattern('removed !b%s ... !e%s environment ' % (envir, envir) + reason)
+            else:
+                replacement = comment_pattern % ('removed !b%s ... !e%s environment %s' % (envir, envir, reason))
+            filestr = re.sub(pattern, replacement, filestr, flags=re.DOTALL)
         return filestr
     elif action == 'grep':
         return re.findall(pattern, filestr, flags=re.DOTALL)
@@ -2629,7 +2716,7 @@ def typeset_lists(filestr, format, debug_info=[]):
     """
     debugpr('*** List typesetting phase + comments and blank lines ***')
     import string
-    
+
     try:  # Python 2.7 needs the old StringIO
         from StringIO import StringIO
     except ImportError:
@@ -2778,7 +2865,7 @@ def typeset_lists(filestr, format, debug_info=[]):
                     # Switch between 1,2,3 and a,b,c
                     if len(lists) % 2 == 0:
                         item = itemformat.replace('%d', '%s') % \
-                               string.lowercase[enumerate_counter-1]
+                               string.ascii_lowercase[enumerate_counter-1]
                     else:
                         item = itemformat % enumerate_counter
                 # indent here counts with '3. ':
@@ -3011,10 +3098,16 @@ def handle_figures(filestr, format):
                             cmd = 'pdf2ps %s %s' % \
                                   (figfile, converted_file)
                         elif ext == '.tikz':    # TODO pgf handling
+                            def up_to_date(source, target):
+                                source_modified = os.path.getmtime(source)
+                                target_modified = os.path.getmtime(target)
+                                return source_modified <= target_modified
                             tikz_fig = True
                             cmd = 'echo' # workaround
-                            svg_exists = os.path.isfile(basepath+"_tikzrender.svg")
-                            png_exists = os.path.isfile(basepath+"_tikzrender.png")
+                            svg_file = basepath+"_tikzrender.svg"
+                            svg_exists = os.path.isfile(svg_file)
+                            png_file = basepath+"_tikzrender.png"
+                            png_exists = os.path.isfile(png_file)
                             img_exists = False
                             existing_img = None
                             if svg_exists and '.svg' in search_extensions:
@@ -3023,13 +3116,17 @@ def handle_figures(filestr, format):
                             elif png_exists:
                                 img_exists = True
                                 existing_img = basepath+"_tikzrender.png"
-                            if not option('force_tikz_conversion') and img_exists:
+                            if not option('force_tikz_conversion') and img_exists and up_to_date(figfile, existing_img):
                                 errwarn('found converted tikz figure in %s' % existing_img)
                                 converted_file = existing_img
                                 failure = False
                             else:
                                 errwarn('Converting tikz figure to SVG/PNG...')
-                                failure = tikz2img(figfile)
+                                tikz_libs = None
+                                if option('tikz_libs='):
+                                    tikz_libs = option('tikz_libs=').split(',')
+                                    errwarn('Using TikZ libraries: %s' % tikz_libs)
+                                failure = tikz2img(figfile, tikz_libs=tikz_libs)
                                 if '.svg' in search_extensions: # format supports svg
                                     converted_file = basepath + '_tikzrender.svg'
                                 else:   # use png
@@ -3948,14 +4045,30 @@ def inline_tag_subst(filestr, format):
             date = w[1] + ' ' + w[2] + ', ' + w[4]
         else:
             import locale
+            locale_str = locale_dict[locale_dict['language']]['locale']
             try:
                 locale.setlocale(locale.LC_TIME,
-                                 locale_dict[locale_dict['language']]['locale'])
+                                 locale_str)
             except locale.Error as e:
-                errwarn('*** error: ' + str(e))
-                errwarn('    locale=%s must be installed' % (locale_dict[locale_dict['language']]['locale']))
-                errwarn('    sudo locale-gen de_DE.UTF-8; sudo update-locale')
-                _abort()
+                # workaround for Norwegian locale on Mac
+                recovered = False
+                import platform
+                is_mac = platform.system() == 'Darwin'
+                if is_mac and locale_str == 'nb_NO.UTF-8':
+                    # try generic Norwegian
+                    try:
+                        locale.setlocale(locale.LC_TIME,
+                                        'no_NO.UTF-8')
+                    except locale.Error as e:
+                        # error is handled in the outer try-block
+                        pass
+                    else:
+                        recovered = True
+                if not recovered:
+                    errwarn('*** error: ' + str(e))
+                    errwarn('    locale=%s must be installed' % (locale_dict[locale_dict['language']]['locale']))
+                    errwarn('    sudo locale-gen %s; sudo update-locale' % (locale_dict[locale_dict['language']]['locale']))
+                    _abort()
             date = time.strftime('%A, %d. %b, %Y')
 
         # Add copyright right under the date if present
@@ -3970,7 +4083,7 @@ def inline_tag_subst(filestr, format):
         try:
             filestr = filestr.replace(origstr, 'DATE: ' + date)
         except UnicodeDecodeError:
-            filestr = filestr.replace(origstr, 'DATE: ' + date)
+            filestr = filestr.replace(origstr, u'DATE: ' + date.decode('utf-8'))
 
     # Hack for not typesetting ampersands inside inline verbatim text
     groups = re.findall(INLINE_TAGS['verbatim'], filestr, flags=re.MULTILINE)
@@ -5284,7 +5397,12 @@ def format_driver():
     dirname, basename = os.path.split(filename)
     if dirname:
         os.chdir(dirname)
-        errwarn('*** doconce format now works in directory %s' % dirname)
+        filename = basename
+        # errwarn('*** doconce format now works in directory %s' % dirname)
+        # cannot call errwarn before dofile_basename is initialized
+        # print instead
+        print('*** doconce format now works in directory %s' % dirname)
+
     basename, ext = os.path.splitext(basename)
     # Can allow no extension, .do, or .do.txt
     legal_extensions = ['.do', '.do.txt']

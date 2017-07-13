@@ -42,5 +42,8 @@ _minted-*
 .*_html_file_collection
 .*.exerinfo
 .*.copyright
+*.dlog
 sphinx-rootdir
 Trash
+# pip files
+*.egg-info

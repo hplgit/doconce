@@ -1,0 +1,498 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="A practical guide to DocOnce">
+
+<title>A practical guide to DocOnce</title>
+
+<!-- Bootstrap style: bootswatch_readable -->
+<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/readable/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+<style type="text/css">
+
+/* Add scrollbar to dropdown menus in bootstrap navigation bar */
+.dropdown-menu {
+   height: auto;
+   max-height: 400px;
+   overflow-x: hidden;
+}
+
+/* Adds an invisible element before each target to offset for the navigation
+   bar */
+.anchor::before {
+  content:"";
+  display:block;
+  height:64px;      /* fixed header height for style bootswatch_readable */
+  margin:-64px 0 0; /* negative fixed header height */
+}
+</style>
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [('Table of contents',
+               1,
+               'table_of_contents',
+               'table_of_contents'),
+              (u'Preliminaries', 1, None, '___sec0'),
+              (u'What is DocOnce?', 2, None, '___sec1'),
+              (u'Installation', 2, None, '___sec2'),
+              (u'Initial installation', 3, None, '___sec3'),
+              (u'Subsequent updates', 3, None, '___sec4'),
+              (u'Getting started', 1, None, '___sec5'),
+              (u'What does a minimal document look like?',
+               2,
+               None,
+               '___sec6'),
+              (u'Headings', 2, None, '___sec7'),
+              (u'Code', 2, None, '___sec8'),
+              (u'Formulae', 2, None, '___sec9'),
+              (u'A complete document', 1, None, '___sec10'),
+              (u'Best practices', 1, None, '___sec11'),
+              (u'Version control', 2, None, '___sec12')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript" async
+ src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="practical-guide.html">A practical guide to DocOnce</a>
+  </div>
+
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="#table_of_contents" style="font-size: 80%;"><b>Table of contents</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;"><b>Preliminaries</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;What is DocOnce?</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Installation</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Initial installation</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subsequent updates</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;"><b>Getting started</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;What does a minimal document look like?</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec7" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Headings</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec8" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Formulae</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec10" style="font-size: 80%;"><b>A complete document</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec11" style="font-size: 80%;"><b>Best practices</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Version control</a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<!-- ------------------- main content ---------------------- -->
+
+
+
+<div class="jumbotron">
+<center><h1>A practical guide to DocOnce</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Kristian Gregorius Hustad -->
+
+<center>
+<b>Kristian Gregorius Hustad</b>  (<tt>krihus at ifi.uio.no</tt>)
+</center>
+
+<p>
+<!-- institution -->
+
+<center><b>Centre for Computing in Science Education, University of Oslo</b></center>
+<br>
+<p>
+<center><h4>Jul 4, 2017</h4></center> <!-- date -->
+<br>
+<p>
+<em><b>DRAFT</b></em>
+
+<p>
+</div> <!-- end jumbotron -->
+
+<h1 id="table_of_contents">Table of contents</h2>
+
+<p>
+<a href="#___sec0"> Preliminaries </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec1"> What is DocOnce? </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec2"> Installation </a><br>
+<a href="#___sec5"> Getting started </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec6"> What does a minimal document look like? </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec7"> Headings </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec8"> Code </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec9"> Formulae </a><br>
+<a href="#___sec10"> A complete document </a><br>
+<a href="#___sec11"> Best practices </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec12"> Version control </a><br>
+</p>
+<p>
+This guide attempts to give an introduction to DocOnce by example. The reader is assumed to be familiar with LaTeX and basic terminal usage.
+
+<h1 id="___sec0" class="anchor">Preliminaries </h1>
+
+<h2 id="___sec1" class="anchor">What is DocOnce? </h2>
+<blockquote>
+    DocOnce is a modestly tagged (Markdown-like) markup language targeting scientific reports, software documentation, books, blog posts, and slides involving much math and code in the text. From DocOnce source you can generate LaTeX, Sphinx, HTML, Jupyter notebooks, Markdown, and other formats. This means that you from a single source can get the most up-to-date publishing technologies for paper, tablets, and phones.
+</blockquote>
+
+
+<p>
+
+<!-- begin inline comment -->
+<font color="red">(<b>kgh 1</b>: Elaborate)</font>
+<!-- end inline comment -->
+
+<h2 id="___sec2" class="anchor">Installation </h2>
+DocOnce works best with Linux, but Mac OS X is also supported <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="DocOnce uses a variety of tools for some very specific tasks. Some of these may not be available for Mac, but for most use cases, this is not a problem."><a href="#def_footnote_1" id="link_footnote_1" style="color: white">1</a></button>. (Windows use is discouraged although DocOnce can be installed on Windows via conda.)
+
+<p id="def_footnote_1"><a href="#link_footnote_1"><b>1:</b></a> DocOnce uses a variety of tools for some very specific tasks. Some of these may not be available for Mac, but for most use cases, this is not a problem.</p>
+
+<p>
+The easiest way to install DocOnce is to clone the repo from GitHub and perform an installation via pip. Note that the git repository is quite large (around 600 MB).
+
+<h3 id="___sec3" class="anchor">Initial installation </h3>
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>git clone https://github.com/hplgit/doconce
+cd doconce
+sudo pip install --upgrade .
+</pre></div>
+
+<h3 id="___sec4" class="anchor">Subsequent updates </h3>
+
+From the doconce repository, run
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>git pull
+sudo pip install --upgrade .
+</pre></div>
+
+<h1 id="___sec5" class="anchor">Getting started </h1>
+
+<h2 id="___sec6" class="anchor">What does a minimal document look like? </h2>
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000080; font-weight: bold">TITLE: A Treatise on Something</span>
+<span style="color: #000080; font-weight: bold">AUTHOR:</span> John Doe Email: john@doe.com at Doe Corp. &amp; The Society of Ficticious People
+<span style="color: #000080; font-weight: bold">AUTHOR:</span> Jane Doe Email: jane@doe.com at The Society of Ficticious People
+<span style="color: #000080; font-weight: bold">DATE:</span> today
+
+It is known that something exists.
+</pre></div>
+<p>
+A document should start with specifying the title, author(s) and date of the document. Each author is specified on a separate line on the following form:
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000080; font-weight: bold">AUTHOR:</span> &lt;name&gt; [Email: &lt;email_address&gt;] [at &lt;institution&gt; [&amp; &lt;other institution&gt;]*]
+</pre></div>
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>Notice.</b>
+Words enclosed by <code>&lt;</code> and <code>&gt;</code> should be replaced by an actual value. Words enclosed in <code>[</code> and <code>]</code> are optional, and <code>*</code> means the prepending expression can be repeated 0 or more times. For instance, it is used above to specify that an author can have more than two institutions.
+</div>
+
+
+<p>
+The date can be set to <code>today</code>, in which case Doconce will replace it with the current date, or any other text string.
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000080; font-weight: bold">DATE:</span> The end of days
+</pre></div>
+
+<h2 id="___sec7" class="anchor">Headings </h2>
+Headings are written on a separate line surrounded by 3, 5, 7 or 9 <code>=</code> signs on either side. The larger headings have more <code>=</code> signs.
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000080; font-weight: bold">========= A chapter =========</span>
+<span style="color: #000080; font-weight: bold">======= A section =======</span>
+<span style="color: #000080; font-weight: bold">===== A subsection =====</span>
+<span style="color: #000080; font-weight: bold">=== A subsubsection ===</span>
+<span style="color: #800080; font-weight: bold">__ Inline paragraph heading __</span>
+</pre></div>
+
+<h2 id="___sec8" class="anchor">Code </h2>
+Code can either be written inline or in separate blocks. For instance, we can write <code>print &quot;test&quot;</code> or
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;test&quot;</span>
+</pre></div>
+<p>
+A longer example:
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>The expression `a/b`, where `a` and `b` are both integers, is evaluated differently in Python 2 and Python 3. While Python 2 uses the common rules of integer division (flooring the result), such that the set of integers are closed under division, Python 3 will return a (decimal) floating point number, if `a % b != 0` (the remainder is non-zero).
+
+!bc pycod
+c = 3/2
+<span style="color: #408080; font-style: italic"># Python 2: c is 1</span>
+<span style="color: #408080; font-style: italic"># Python 3: c is 1.5</span>
+!ec
+</pre></div>
+<p>
+This renders as:
+<hr>
+
+<p>
+The expression <code>a/b</code>, where <code>a</code> and <code>b</code> are both integers, is evaluated differently in Python 2 and Python 3. While Python 2 uses the common rules of integer division (flooring the result), such that the set of integers are closed under division, Python 3 will return a (decimal) floating point number, if <code>a % b != 0</code> (the remainder is non-zero).
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>c <span style="color: #666666">=</span> <span style="color: #666666">3/2</span>
+<span style="color: #408080; font-style: italic"># Python 2: c is 1</span>
+<span style="color: #408080; font-style: italic"># Python 3: c is 1.5</span>
+</pre></div>
+<p>
+<hr>
+
+<h2 id="___sec9" class="anchor">Formulae </h2>
+Similar to LaTeX, both inline mathematics and blocks of mathematics are supported. The formula syntax is indentical to LaTeX.
+
+<p>
+Inline mathematics must be enclosed in <code>$</code> signs.
+
+<p>
+Example:
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>We can choose $n = 2^{16}$
+</pre></div>
+<p>
+renders as
+
+<p>
+<hr>
+
+<p>
+We can choose \( n = 2^{16} \)
+
+<p>
+<hr>
+
+<p>
+More complicated equations are usually written in a math block. DocOnce supports a selection of the math environments from LaTeX, including <code>equation</code> and <code>align</code>.
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>!bt
+<span style="color: #008000">\begin{align}</span>
+a = 2
+<span style="color: #008000">\end{align}</span>
+!et
+</pre></div>
+<p>
+<hr>
+
+$$
+\begin{align}
+a = 2
+\label{_auto1}
+\end{align}
+$$
+
+<p>
+<hr>
+
+<p>
+<!-- !split -->
+
+<h1 id="___sec10" class="anchor">A complete document </h1>
+
+<p>
+<hr>
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000080; font-weight: bold">TITLE: A Primer on Primes</span>
+<span style="color: #000080; font-weight: bold">AUTHOR:</span> Kristian Gregorius Hustad Email: krihus@ifi.uio.no at Centre for Computing in Science Education, University of Oslo
+<span style="color: #000080; font-weight: bold">DATE:</span> today
+
+!bwarning
+This document is intended to demonstrate DocOnce features.
+Consult other texts for an introduction to prime numbers.
+!ewarning
+
+<span style="color: #000080; font-weight: bold">======= Theoretical foundations =======</span>
+<span style="color: #000080; font-weight: bold">===== Divisibility =====</span>
+An integer $b$ is divisible by $a$ if $\frac{b}{a}$ leaves no remainder. In that case, we say that $a$ *divides* $b$ (note the order). This is written as $a \mid b$.
+!bt
+<span style="color: #008000">\begin{equation}</span>
+a \mid b \iff b = qa + r \text{ such that } a, b, q \in \mathbb{Z} \text{ and $r=0$}
+<span style="color: #008000">\end{equation}</span>
+!et
+
+In Python, we can obtain the remainder by employing the modulus operator, `%`.
+!bc pycod
+<span style="color: #408080; font-style: italic"># b  = q*a + r</span>
+<span style="color: #408080; font-style: italic"># 14 = 4*3 + 2</span>
+b = 14
+a = 3
+b % a # =&gt; 2
+!ec
+
+<span style="color: #000080; font-weight: bold">===== Coprimality =====</span>
+Two integers $a$ and $b$ are *coprime* if they have no common factors besides 1.
+
+<span style="color: #000080; font-weight: bold">===== Greatest common divisors =====</span>
+The greatest common divisor of two integers $a$ and $b$ is the largest integer which satisfies
+!bt
+<span style="color: #008000">\begin{align}</span>
+c = \mathrm{gcd}(a, b) \iff c \mid a \; \wedge \; c \mid b
+<span style="color: #008000">\end{align}</span>
+!et
+
+<span style="color: #800080; font-weight: bold">__Definition:__</span>
+!bt
+<span style="color: #008000">\begin{align}</span>
+\text{$a$ and $b$ are coprime} \iff \mathrm{gcd}(a, b) = 1
+<span style="color: #008000">\end{align}</span>
+!et
+
+<span style="color: #000080; font-weight: bold">===== Euclid&#39;s algorithm =====</span>
+!bc pypro
+def gcd(a, b):
+    &quot;&quot;&quot;Returns the greatest common divisor of two positive integers&quot;&quot;&quot;
+    if b == 0:
+        return a
+    else:
+        r = a % b
+        return gcd(b, r)
+!ec
+
+
+<span style="color: #000080; font-weight: bold">======= Primality =======</span>
+<span style="color: #800080; font-weight: bold">__Definition:__</span>
+A prime is a positive integer divisible only by itself and 1.
+
+!bt
+<span style="color: #008000">\begin{align}</span>
+\text{$p$ is prime} \iff \nexists q \, (q \mid p, \; q \in (\mathbb{N}\setminus\{1, p\}))
+<span style="color: #008000">\end{align}</span>
+!et
+
+
+!bnotice
+Any two primes $p$ and $q$ are coprime. Thus we can define the set of primes as the set where any two non-equal members are coprime.
+
+!bt
+<span style="color: #008000">\begin{align}</span>
+%p, q \in P \iff
+P = \{ p_1, p_2, \dots, p_k \in \mathbb{N} \; \mid \; \mathrm{gcd}(p_m, p_n) = 1, m \neq n  \}
+<span style="color: #008000">\end{align}</span>
+!et
+!enotice
+
+<span style="color: #000080; font-weight: bold">======= Determining primality =======</span>
+
+<span style="color: #000080; font-weight: bold">===== A naive algorithm =====</span>
+<span style="color: #008000">label{subsec:naive_alg}</span>
+We can check whether a number, $n$, is prime by testing divisibility for all primes smaller than $n$.
+<span style="color: #800080; font-weight: bold">@@@CODE src/prime.py</span>
+
+<span style="color: #000080; font-weight: bold">===== Sieve of Eratosthenes =====</span>
+Although the program in ref{subsec:naive_alg} does work, it is very inefficient. The Sieve of Eratosthenes is based around the idea of crossing off non-prime numbers until only primes remain. This approach is much faster than testing primality for every candidate number.
+
+To optimize even further, we shall make use of a few simple observations:
+o Any composite number, $c$, has a factor $f \leq \sqrt{c}$
+o If we cross off every multiple of every prime, we would cross off all non-squares twice. For instance both $2 \cdot 7$ and $7 \cdot 2$ would be crossed off. We can avoid this (and save time) by starting with the squares so that we end up crossing off $p \cdot p, p \cdot (p+1), \dots$
+
+<span style="color: #800080; font-weight: bold">@@@CODE src/sieve.py</span>
+</pre></div>
+<p>
+<hr>
+
+<h1 id="___sec11" class="anchor">Best practices </h1>
+
+<h2 id="___sec12" class="anchor">Version control </h2>
+As with any type of code, DocOnce documents should be kept under version control. In this guide we only consider Git, but the principles should translate to other types of version control systems as well.
+
+<p>
+First and foremost, only source files, viz. files that cannot be regenerated automatically should be added to Git. All documents should be reproduced by running some sort of makefile. The author prefers GNU Makefiles, but shell scripts can also be used.
+
+<p>
+When writing long lines, it is recommended to configure the text editor to display them wrapped, while newlines are only added to the document for paragraphs etc. This will make the git history much more legible since adding a single word at the start of a paragraph doesn't cause changes to the entire paragraph.
+
+<p>
+
+<!-- begin inline comment -->
+<font color="red">(<b>kgh 2</b>: <code>.gitignore</code> for DocOnce)</font>
+<!-- end inline comment -->
+
+
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+<center style="font-size:80%">
+<!-- copyright -->  Made with <a href="https://github.com/hplgit/doconce">DocOnce</a>
+</center>
+
+
+</body>
+</html>
+    
+

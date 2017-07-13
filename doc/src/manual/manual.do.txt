@@ -1,11 +1,15 @@
 TITLE: DocOnce Description
 AUTHOR: Hans Petter Langtangen {copyright} at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
+AUTHOR: Kristian Gregorius Hustad {copyright} at Centre for Computing in Science Education, University of Oslo & Department of Informatics, University of Oslo
 DATE: today
 
 
 # lines beginning with # are doconce comment lines
 # (documents can also have mako comment lines)
 
+!bwarning
+Some parts of this manual may be outdated. Please create an issue at URL: "https://github.com/hplgit/doconce" to report errors.
+!ewarning
 
 ======= What Is DocOnce? =======
 label{what:is:doconce}

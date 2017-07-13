@@ -559,7 +559,7 @@ def remove_code_and_tex(filestr, format):
     # ipynb (and future interactive executable documents) needs to
     # see if a code is to be executed or just displayed as text.
     # !bc *cod-t and !bc *pro-t is used to indicate pure text.
-    if format not in ('ipynb', 'matlabnb'):
+    if format not in ('ipynb', 'matlabnb', 'latex', 'pdflatex'):
         filestr = re.sub(r'^!bc +([a-z0-9]+)-t', r'!bc \g<1>',
                          filestr, flags=re.MULTILINE)
     # !bc pypro-h for show/hide button

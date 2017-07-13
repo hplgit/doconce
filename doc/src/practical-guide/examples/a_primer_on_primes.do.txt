@@ -1,0 +1,94 @@
+TITLE: A Primer on Primes
+AUTHOR: Kristian Gregorius Hustad Email: krihus@ifi.uio.no at Centre for Computing in Science Education, University of Oslo
+DATE: today
+
+!bwarning
+This document is intended to demonstrate DocOnce features.
+Consult other texts for an introduction to prime numbers.
+!ewarning
+
+======= Theoretical foundations =======
+===== Divisibility =====
+An integer $b$ is divisible by $a$ if $\frac{b}{a}$ leaves no remainder. In that case, we say that $a$ *divides* $b$ (note the order). This is written as $a \mid b$.
+!bt
+\begin{equation}
+a \mid b \iff b = qa + r \text{ such that } a, b, q \in \mathbb{Z} \text{ and $r=0$}
+\end{equation}
+!et
+
+In Python, we can obtain the remainder by employing the modulus operator, `%`.
+!bc pycod
+# b  = q*a + r
+# 14 = 4*3 + 2
+b = 14
+a = 3
+b % a # => 2
+!ec
+
+===== Coprimality =====
+Two integers $a$ and $b$ are *coprime* if they have no common factors besides 1.
+
+===== Greatest common divisors =====
+The greatest common divisor of two integers $a$ and $b$ is the largest integer which satisfies
+!bt
+\begin{align}
+c = \mathrm{gcd}(a, b) \iff c \mid a \; \wedge \; c \mid b
+\end{align}
+!et
+
+__Definition:__
+!bt
+\begin{align}
+\text{$a$ and $b$ are coprime} \iff \mathrm{gcd}(a, b) = 1
+\end{align}
+!et
+
+===== Euclid's algorithm =====
+!bc pypro
+def gcd(a, b):
+    """Returns the greatest common divisor of two positive integers"""
+    if b == 0:
+        return a
+    else:
+        r = a % b
+        return gcd(b, r)
+!ec
+
+
+======= Primality =======
+__Definition:__
+A prime is a positive integer divisible only by itself and 1.
+
+!bt
+\begin{align}
+\text{$p$ is prime} \iff \nexists q \, (q \mid p, \; q \in (\mathbb{N}\setminus\{1, p\}))
+\end{align}
+!et
+
+
+!bnotice
+Any two primes $p$ and $q$ are coprime. Thus we can define the set of primes as the set where any two non-equal members are coprime.
+
+!bt
+\begin{align}
+%p, q \in P \iff
+P = \{ p_1, p_2, \dots, p_k \in \mathbb{N} \; \mid \; \mathrm{gcd}(p_m, p_n) = 1, m \neq n  \}
+\end{align}
+!et
+!enotice
+
+======= Determining primality =======
+
+===== A naive algorithm =====
+label{subsec:naive_alg}
+We can check whether a number, $n$, is prime by testing divisibility for all primes smaller than $n$.
+@@@CODE src/prime.py
+
+===== Sieve of Eratosthenes =====
+Although the program in ref{subsec:naive_alg} does work, it is very inefficient. The Sieve of Eratosthenes is based around the idea of crossing off non-prime numbers until only primes remain. This approach is much faster than testing primality for every candidate number.
+
+To optimize even further, we shall make use of a few simple observations:
+o Any composite number, $c$, has a factor $f \leq \sqrt{c}$
+o If we cross off every multiple of every prime, we would cross off all non-squares twice. For instance both $2 \cdot 7$ and $7 \cdot 2$ would be crossed off. We can avoid this (and save time) by starting with the squares so that we end up crossing off $p \cdot p, p \cdot (p+1), \dots$
+
+@@@CODE src/sieve.py

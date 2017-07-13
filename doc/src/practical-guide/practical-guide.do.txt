@@ -1,0 +1,156 @@
+TITLE: A practical guide to DocOnce
+AUTHOR: Kristian Gregorius Hustad Email: krihus@ifi.uio.no at Centre for Computing in Science Education, University of Oslo
+DATE: today
+
+*_DRAFT_*
+
+TOC: on
+
+This guide attempts to give an introduction to DocOnce by example. The reader is assumed to be familiar with LaTeX and basic terminal usage.
+
+======= Preliminaries =======
+
+===== What is DocOnce? =====
+!bquote
+DocOnce is a modestly tagged (Markdown-like) markup language targeting scientific reports, software documentation, books, blog posts, and slides involving much math and code in the text. From DocOnce source you can generate LaTeX, Sphinx, HTML, Jupyter notebooks, Markdown, and other formats. This means that you from a single source can get the most up-to-date publishing technologies for paper, tablets, and phones.
+!equote
+
+[kgh: Elaborate]
+
+===== Installation =====
+DocOnce works best with Linux, but Mac OS X is also supported[^mac_support]. (Windows use is discouraged although DocOnce can be installed on Windows via conda.)
+
+[^mac_support]: DocOnce uses a variety of tools for some very specific tasks. Some of these may not be available for Mac, but for most use cases, this is not a problem.
+
+The easiest way to install DocOnce is to clone the repo from GitHub and perform an installation via pip. Note that the git repository is quite large (around 600 MB).
+
+=== Initial installation ===
+!bc
+git clone https://github.com/hplgit/doconce
+cd doconce
+sudo pip install --upgrade .
+!ec
+
+=== Subsequent updates ===
+From the doconce repository, run
+!bc
+git pull
+sudo pip install --upgrade .
+!ec
+
+======= Getting started =======
+
+===== What does a minimal document look like? =====
+@@@CODE examples/example1.do.txt
+
+A document should start with specifying the title, author(s) and date of the document. Each author is specified on a separate line on the following form:
+
+!bc do
+AUTHOR: <name> [Email: <email_address>] [at <institution> [& <other institution>]*]
+!ec
+
+!bnotice
+Words enclosed by `<` and `>` should be replaced by an actual value. Words enclosed in `[` and `]` are optional, and `*` means the prepending expression can be repeated 0 or more times. For instance, it is used above to specify that an author can have more than two institutions.
+!enotice
+
+The date can be set to `today`, in which case Doconce will replace it with the current date, or any other text string.
+!bc do
+DATE: The end of days
+!ec
+
+
+===== Headings =====
+Headings are written on a separate line surrounded by 3, 5, 7 or 9 `=` signs on either side. The larger headings have more `=` signs.
+
+!bc do
+========= A chapter =========
+======= A section =======
+===== A subsection =====
+=== A subsubsection ===
+__ Inline paragraph heading __
+!ec
+
+===== Code =====
+Code can either be written inline or in separate blocks. For instance, we can write `print "test"` or
+!bc pycod
+print "test"
+!ec
+
+A longer example:
+!bc do
+The expression `a/b`, where `a` and `b` are both integers, is evaluated differently in Python 2 and Python 3. While Python 2 uses the common rules of integer division (flooring the result), such that the set of integers are closed under division, Python 3 will return a (decimal) floating point number, if `a % b != 0` (the remainder is non-zero).
+
+|bc pycod
+c = 3/2
+# Python 2: c is 1
+# Python 3: c is 1.5
+|ec
+!ec
+
+
+This renders as:
+-----
+
+# #include "examples/code1.do.txt"
+
+-----
+
+===== Formulae =====
+Similar to LaTeX, both inline mathematics and blocks of mathematics are supported. The formula syntax is indentical to LaTeX.
+
+Inline mathematics must be enclosed in `$` signs.
+
+Example:
+!bc do
+We can choose $n = 2^{16}$
+!ec
+
+renders as
+
+-----
+
+We can choose $n = 2^{16}$
+
+-----
+
+More complicated equations are usually written in a math block. DocOnce supports a selection of the math environments from LaTeX, including `equation` and `align`.
+
+!bc do
+|bt
+\begin{align}
+a = 2
+\end{align}
+|et
+!ec
+
+-----
+
+!bt
+\begin{align}
+a = 2
+\end{align}
+!et
+
+-----
+
+!split
+
+======= A complete document =======
+
+-----
+
+@@@CODE examples/a_primer_on_primes_.do.txt
+
+-----
+
+
+======= Best practices =======
+
+===== Version control =====
+As with any type of code, DocOnce documents should be kept under version control. In this guide we only consider Git, but the principles should translate to other types of version control systems as well.
+
+First and foremost, only source files, viz. files that cannot be regenerated automatically should be added to Git. All documents should be reproduced by running some sort of makefile. The author prefers GNU Makefiles, but shell scripts can also be used.
+
+When writing long lines, it is recommended to configure the text editor to display them wrapped, while newlines are only added to the document for paragraphs etc. This will make the git history much more legible since adding a single word at the start of a paragraph doesn't cause changes to the entire paragraph.
+
+[kgh: `.gitignore` for DocOnce]

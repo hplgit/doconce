@@ -1,0 +1,92 @@
+========= Automatic execution of code blocks =========
+
+Compile this document with
+
+!bc sh-t
+doconce format execute.do.txt --execute
+!ec
+
+Hidden execution cells can be used to perform operations that need to be done
+before the following cells are executed:
+
+!bc pycod-e
+import os
+os.listdir(".")
+a = 1
+e = 0
+f = 3
+!ec
+
+This is a cell that should execute automatically:
+
+!bc pycod
+b = 2
+c = a + b
+print("The result is {}".format(c))
+c
+!ec
+
+======= Plotting =======
+
+This is a cell that should plot and output:
+
+!bc pycod
+from pylab import *
+x = linspace(0, 10, 100)
+plot(x, x*x)
+show()
+!ec
+
+To improve quality when exporting to LaTeX, the following code has automatically
+been run to enable PDF export in notebooks.
+
+!bc pycod-t
+from IPython.display import set_matplotlib_formats
+set_matplotlib_formats('png', 'pdf')
+!ec
+
+======= Ignore output =======
+
+Predefined output can be omitted by passing `--ignore_output` to DocOnce.
+This will remove all environments ending with `out`.
+
+!bc pycod
+a = 2
+print(a)
+!ec
+
+!bc pyout 
+2
+!ec
+
+======= Not executed =======
+
+This is a code block that should not be executed:
+
+!bc pycod-t
+while True:
+    i = 2
+!ec
+
+This is some *formatted* stuff, which is _underlined_ and stuff and maybe even
+contains $a + 2b$.
+
+======= Code with errors =======
+
+If code contains errors, it will still be run and the exception shown as part
+of the output:
+
+!bc pycod
+for a in range(10)
+    print(a)
+!ec
+
+======= Opening files =======
+
+The working directory is the same as the .do.txt file.
+You may want to use `os.chdir` to change the directory.
+
+!bc pycod
+with open("../LICENSE") as f:
+    print(f.read())
+!ec

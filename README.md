@@ -7,7 +7,10 @@
 ### News
 
 Here are some of the most recent features and enhancements in DocOnce:
-
+ * MathJax, which is used to render LaTeX formulae in HTML, has shut down their CDN (Content Delivery Network) which serves the JavaScript files. DocOnce has been updated to use a new CDN. For the time being, the old URL redirects to the new CDN, and old DocOnce documents still display LaTeX correctly. However, at some point in the future, documents created before July 2017 will cease to display LaTeX formulae properly. **It is therefore recommended to rerun DocOnce on HTML documents which contain LaTeX formulae.**
+ * On 10 October 2016, Hans Petter Langtangen, creator of DocOnce, [passed away](https://www.simula.no/news/hans-petter-langtangen-1962-2016). Kristian Gregorius Hustad, supported by the [Centre for Computing in Science Education](http://www.mn.uio.no/ccse/english/) at the University of Oslo, will assume the role of principal maintainer.
+ * Language support for Basque has been added. Thanks to Josu M. Igartua for providing the translation.
+ * DocOnce can now be used with both Python 2 and Python 3.
  * Kristian Gregorius Hustad has now made support for TikZ figures
    in DocOnce. This means that you can use TikZ (popular among LaTeX writers)
    to make a figure. The TikZ code will be used directly in `latex` or
@@ -22,54 +25,6 @@ Here are some of the most recent features and enhancements in DocOnce:
    DocOnce when compiling a document. Now all comments from DocOnce for
    a document `mydoc.do.txt` are collected in `mydoc.dlog` for
    careful inspection.
- * Lots of automatic adjustments of the Bootstrap styles: if it looks good
-   in one style, just switch to any other Bootstrap style and
-   it will look good there
-   as well (the generated code tweaks parameters in the various styles).
- * The `doconce format` command may issue a lot of warnings and concerns,
-   which are usually lost in the very long output from translating
-   DocOnce to some output format. Now all the warnings, errors, and comments
-   are available in `mydoc.dolog` (if the main file is named `mydoc.do.txt`).
-   It is recommended to examine this `.dolog` file.
- * Now you can copy code from files and left-adjust the code `X`
-   spaces by the syntax `@@@CODE-X filename`. This is particularly useful
-   when copying code snippets from function bodies and get
-   the snippets to start in column 1.
- * DocOnce supports various types of copyright statements for
-   commercial and academic settings (thanks to Louis Criscuolo's
-   many suggestions to implement this important feature). See
-   [description](http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#copyright).
- * LaTeX output for figures is now `\begin{figure}[!ht] % my:fig` if
-   `my:fig` is the figure label. Note that the previous `[t]` option
-   is now `[!ht]` ("work hard to place the figure here, but if impossible,
-   place it on top of the next page").
-   Also, adding the label on the line makes it easy to
-   autoedit the `[!ht]` option for specific figures, if desired.
- * DocOnce supports interactive Bokeh plots for data exploration in
-   HTML documents, see [demo](http://hplgit.github.io/doconce/doc/pub/manual/manual.html#___sec13).
- * DocOnce can generate Matlab notebooks in the publish format
-   (output format `matlabnb`).
- * Exercises can now be extracted as individual files (e.g., for distribution
-   to students). The files are in DocOnce format and can be compiled to, e.g.,
-   LaTeX or IPython notebooks, see [a quick description](http://hplgit.github.io/doconce/doc/pub/manual/._manual013.html#exercises:standalone).
- * DocOnce and all its dependencies are now trivial to install with Anaconda Python: `sudo conda install --channel johannr doconce` (thanks to Johannes Ring).
- * Bootstrap HTML styles features hints, answers, and solutions in
-   exercises as *unfolded text*.
- * `doconce extract_exercises`
-   extracts all exercises from a document (can be used, e.g., to publish exercises separately or to extract only those exercises suitable to being published as IPython notebooks).
- * DocOnce features [user-defined environments](http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#user-defined-environments) with begin-end tags, doing
-   exactly what you want: you may (e.g.) use your favorite *native* example
-   LaTeX environment when writing LaTeX.
- * Documents can have interactive Python code in HTML and Sphinx via the `pyscpro` code
-   environment (Sage Math Cells).
- * New support for [RunestoneInteractive books](http://runestoneinteractive.org)
-   (as a special case of the Sphinx output format).
- * New support for [verbatim code blocks in LaTeX](http://hplgit.github.io/doconce/doc/pub/latexcode/demo.html) with a lot of flexibility for fancy typesetting via the Pygments and Listings packages (i.e., no more need for the `ptex2tex` step).
- * [New document](http://hplgit.github.io/setup4book-doconce/doc/web/index.html) explaining the efficient way to use DocOnce for book writing.
- * Embedded [quizzes or multiple-choice questions](http://hplgit.github.io/doconce/doc/pub/quiz/quiz.html), which can be automatically uploaded to
-   [Kahoot online games](https://getkahoot.com).
- * [Admonitions](http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#admonitions), i.e., boxes for notifications, tips, warnings, etc., with
-   great [flexibility in the typesetting](http://hplgit.github.io/doconce/doc/pub/admon/index.html) (at least in HTML and LaTeX).
 
 Here are some recent books written in DocOnce:
 
@@ -78,24 +33,35 @@ Here are some recent books written in DocOnce:
 
 ### Installation
 
-DocOnce is a pure Python v2.7 package and installed by
+DocOnce is a pure Python package and installed by
 
 
 ```
-Terminal> sudo python setup.py install
+Terminal> sudo pip install --upgrade .
 ```
+
+*Notice.* 
+If you first installed DocOnce prior to February 2017, you must remove the old installation before upgrading. See instructions in [issue #110](https://github.com/hplgit/doconce/issues/110).
+
 
 However, DocOnce has *a lot* of dependencies, depending on what type of
 formats you want to work with and how advanced constructions that are
 used in the text.
 
-With Anaconda Python v2.7 it is trivial to install DocOnce and all
+With Anaconda it is trivial to install DocOnce and all
 dependencies by
 
 
 ```
-Terminal> sudo conda install --channel johannr doconce
+Terminal> conda config --add channels conda-forge
+Terminal> conda install doconce
 ```
+
+*Warning.* 
+As of March 2017, a few dependencies have yet to be added to the `conda-forge` channel, but most formats should work fine.
+
+
+
 
 On Debian/Ubuntu it is fairly straightforward
 to get the packages you need. Basically, you can run a [Bash script](https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/install_doconce.sh) or an equivalent [Python script](https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/install_doconce.py). Such a script installs
@@ -109,7 +75,7 @@ the pure DocOnce source (and perhaps the preprocessors if you use them).
 Although DocOnce is in Debian, do not run `sudo apt-get install python-doconce`
 as this gives a very old version of DocOnce that is out of sync with the
 documentation. Instead, clone the DocOnce GitHub repo as shown above
-and run `setup.py` or use `conda install`.
+and run `pip install` or use `conda install`.
 
 
 
@@ -119,7 +85,7 @@ and run `setup.py` or use `conda install`.
 ### Highlights
 
 
- * DocOnce is a modestly tagged markup language (see [syntax example](http://hplgit.github.io/teamods/writing_reports/_static/report/do.txt.html)), quite like Markdown, but with many more features, aimed at documents with
+ * DocOnce is a modestly tagged markup language (see [syntax example](http://hplgit.github.io/teamods/writing_reports/_static/report.do.txt.html)), quite like Markdown, but with many more features, aimed at documents with
    *much math and code in the text* (see [demo](http://hplgit.github.io/teamods/writing_reports/index.html)).
  * There is extensive support for book projects. In addition to classical LaTeX-based paper books one gets for free fully responsive, modern-looking, HTML-based ebooks for tablets and phones. Parts of books can, e.g., appear in blog posts for discussion and as IPython notebooks for experimentation and annotation.
  * For documents with math and code, you can generate *clean* plain LaTeX (PDF), HTML (with MathJax and Pygments - embedded in your own templates), Sphinx for attractive web design, Markdown, IPython notebooks, HTML for Google or Wordpress blog posts, and MediaWiki. The LaTeX output has many fancy layouts for typesetting of computer code.
@@ -222,16 +188,14 @@ DocOnce is written by Hans Petter Langtangen ([hpl@simula.no](mailto:hpl@simula.
 
 #### Link in the copyright
 
-If you add a copyright (`{copyright}` after any author or institution
-name in the
-`AUTHOR` field(s)), the command-line option `--cite_doconce` can be used
+The command-line option `--cite_doconce` can be used
 to equip the copyright field with a link to the present page.
 Here is an example involving some document `mydoc.do.txt`:
 
 
 ```
 TITLE: Some document
-AUTHOR: Joe Doe {copyright}
+AUTHOR: Joe Doe
 ...
 ```
 
