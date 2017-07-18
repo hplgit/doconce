@@ -3,7 +3,7 @@ from builtins import str
 from builtins import range
 import re, sys, shutil, os
 from .common import default_movie, plain_exercise, table_analysis, \
-     insert_code_and_tex, indent_lines, fix_ref_section_chapter
+     insert_code_and_tex, indent_lines, fix_ref_section_chapter, bibliography
 from .html import html_movie, html_table
 from .pandoc import pandoc_ref_and_label, pandoc_index_bib, pandoc_quote, \
      language2pandoc, pandoc_quiz
@@ -800,7 +800,7 @@ def ipynb_code(filestr, code_blocks, code_block_types,
     '''
     if option("execute"):
         execution.stop(kernel_client)
-    
+
     return filestr
 
 def ipynb_index_bib(filestr, index, citations, pubfile, pubdata):
@@ -843,13 +843,37 @@ def ipynb_index_bib(filestr, index, citations, pubfile, pubdata):
                          flags=re.MULTILINE)
 
     # Save idx{} and label{} as metadata, also have labels as div tags
-    filestr = re.sub(r'((idx\{.+?\})', r'<!-- dom:\g<1> -->', filestr)
+    filestr = re.sub(r'(idx\{.+?\})', r'<!-- dom:\g<1> -->', filestr)
     filestr = re.sub(r'(label\{(.+?)\})', r'<!-- dom:\g<1> --><div id="\g<2>"></div>', filestr)
     # Also treat special cell delimiter comments that might appear from
     # doconce ipynb2doconce conversions
     filestr = re.sub(r'^# ---------- (markdown|code) cell$', '',
                      filestr, flags=re.MULTILINE)
     return filestr
+
+
+def ipynb_index_bib_latex_plain(filestr, index, citations, pubfile, pubdata):
+    if citations:
+        from .common import cite_with_multiple_args2multiple_cites
+        filestr = cite_with_multiple_args2multiple_cites(filestr)
+
+    for label in citations:
+        filestr = filestr.replace('cite{%s}' % label,'[[{}]](#{})'.format(citations[label], label))
+
+    if pubfile is not None:
+        bibtext = bibliography(pubdata, citations, format='doconce')
+        filestr = re.sub(r'^BIBFILE:.+$', bibtext, filestr, flags=re.MULTILINE)
+
+    # Save idx{} and label{} as metadata, also have labels as div tags
+    filestr = re.sub(r'(idx\{.+?\})', r'<!-- dom:\g<1> -->', filestr)
+    filestr = re.sub(r'(label\{(.+?)\})', r'<!-- dom:\g<1> --><div id="\g<2>"></div>', filestr)
+    # Also treat special cell delimiter comments that might appear from
+    # doconce ipynb2doconce conversions
+    filestr = re.sub(r'^# ---------- (markdown|code) cell$', '',
+                     filestr, flags=re.MULTILINE)
+
+    return filestr
+
 
 def ipynb_ref_and_label(section_label2title, format, filestr):
     # TODO: comments should have been removed before we get here!
@@ -975,6 +999,8 @@ def define(FILENAME_EXTENSION,
     cite = option('ipynb_cite=', 'plain')
     if cite == 'latex':
         INDEX_BIB['ipynb'] = ipynb_index_bib
+    elif cite == 'latex-plain':
+        INDEX_BIB['ipynb'] = ipynb_index_bib_latex_plain
     else:
         INDEX_BIB['ipynb'] = pandoc_index_bib
     EXERCISE['ipynb'] = plain_exercise
