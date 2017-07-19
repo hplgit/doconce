@@ -35,6 +35,24 @@ from pylab import *
 x = linspace(0, 10, 100)
 plot(x, x*x)
 show()
+!ec caption(This is a figure) label(fig:myplot)
+
+Some text then plot:
+
+!bc pycod
+from pylab import *
+x = linspace(0, 10, 100)
+plot(x, exp(x))
+show()
+!ec
+
+More plot:
+
+!bc pycod
+from pylab import *
+x = linspace(0, 10, 100)
+plot(x, sin(x))
+show()
 !ec
 
 To improve quality when exporting to LaTeX, the following code has automatically
@@ -55,7 +73,7 @@ a = 2
 print(a)
 !ec
 
-!bc pyout 
+!bc pyout
 2
 !ec
 

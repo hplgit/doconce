@@ -101,7 +101,7 @@ envir2lst = dict(
 def latex_code_envir(envir, envir_spec):
     if envir_spec is None:
         return '\\b' + envir, '\\e' + envir
-        
+
     leftmargin = option('latex_code_leftmargin=', '2')
     bg_vpad = '_vpad' if option('latex_code_bg_vpad') else ''
 
@@ -585,13 +585,13 @@ def latex_code(filestr, code_blocks, code_block_types,
 
     # Check for misspellings
     envirs = 'pro pypro pyout cypro cpppro cpro fpro plpro shpro mpro cod pycod cycod cppcod ccod fcod plcod shcod mcod htmlcod htmlpro latexcod latexpro rstcod rstpro xmlcod xmlpro cppans pyans fans bashans swigans uflans sni dat dsni csv txt sys slin ipy rpy plin ver warn rule summ ccq cc ccl pyshell pyoptpro pyscpro ipy do'.split()
-    
+
     for i, envir in enumerate(code_block_types):
         if envir.endswith("-t"):
             code_block_types[i] = re.sub(r"-t$", "", envir)
         if envir.endswith("-e"):
             code_block_types[i] = re.sub(r"-e$", "", envir)
-    
+
     # Add user's potential new envirs inside admons
     new_envirs = []
     for envir in envirs:
@@ -872,6 +872,8 @@ def latex_code(filestr, code_blocks, code_block_types,
                      r'\subex{\g<1>%s}' % subex_header_postfix,
                      filestr)
 
+
+
     # Avoid Filename: as a new paragraph with indentation
     for filename in 'Filename', 'Filenames':
         locale_fn = locale_dict[locale_dict['language']][filename]
@@ -1045,17 +1047,19 @@ def latex_code(filestr, code_blocks, code_block_types,
     lines = filestr.splitlines()
     current_code_envir = None
     current_code = ""
-    
+
     if option("execute"):
         kernel_client = execution.JupyterKernelClient()
-        # This enables PDF output as well as PNG for figures. 
+        # This enables PDF output as well as PNG for figures.
         # We only use the PDF when available, but PNG should be added as fallback.
-        execution.run_cell(
+        outputs, count = execution.run_cell(
             kernel_client,
+            "%matplotlib inline\n" +  # TODO consider removing this line, but it appears to be needed
             "from IPython.display import set_matplotlib_formats\n" +
-            "set_matplotlib_formats('png', 'pdf')"
+            "set_matplotlib_formats('pdf', 'png')"
         )
-    
+        print(outputs)
+
     for i in range(len(lines)):
         if lines[i].startswith('!bc'):
             words = lines[i].split()
@@ -1095,8 +1099,25 @@ def latex_code(filestr, code_blocks, code_block_types,
                 #errwarn('    check that every !bc matches !ec in the entire text:')
                 #errwarn(filestr)
                 _abort()
+
+            print("LINE", lines[i])
+
+            # capture caption and label if exists
+            label = None
+            label_match = re.search(r"label\((.*?)\)", lines[i])
+            print("LABEL_MATCH", label_match)
+            if label_match is not None:
+                label = label_match.group(1)
+
+            caption = None
+            caption_match = re.search(r"caption\((.*?)\)", lines[i])
+            print("CAPTION_MATCH", caption_match)
+            if caption_match is not None:
+                caption = caption_match.group(1)
+            print(caption)
+
             begin, end = latex_code_envir(
-                current_code_envir,    
+                current_code_envir,
                 latex_code_style
             )
             if current_code_envir.endswith("out") and option("ignore_output"):
@@ -1119,7 +1140,7 @@ def latex_code(filestr, code_blocks, code_block_types,
                         if "text" in output:
                             text_output = ansi_escape.sub("", output["text"])
                             lines[i] += "{}\n{}\n{}\n".format(
-                                begin, 
+                                begin,
                                 text_output,
                                 end
                             )
@@ -1127,9 +1148,11 @@ def latex_code(filestr, code_blocks, code_block_types,
                             data = output["data"]
                             if "application/pdf" in data or "image/png" in data:
                                 if "application/pdf" in data:
+                                    print("GOT PDF IMAGE DATA")
                                     img_data = data["application/pdf"]
                                     suffix = ".pdf"
                                 else:
+                                    print("GOT PNG IMAGE DATA")
                                     img_data = data["image/png"]
                                     suffix = ".png"
                                 cache_folder = ".doconce_figure_cache"
@@ -1140,11 +1163,26 @@ def latex_code(filestr, code_blocks, code_block_types,
                                 g = open(filename, "wb")
                                 g.write(base64.decodebytes(bytes(img_data, encoding="utf-8")))
                                 g.close()
-                                lines[i] += "\\includegraphics[width=0.8\\textwidth]{{{}}}\n".format(filename_stem)
+
+                                caption_and_label = ""
+                                if caption is not None and label is not None:
+                                    caption_and_label = (
+                                        "\\captionof{{figure}}{{{caption}}}\n"
+                                        "\\label{{{label}}}\n"
+                                    ).format(label=label, caption=caption)
+
+                                lines[i] += (
+                                    "\n"
+                                    "\\begin{{center}}\n"
+                                    "   \\includegraphics[width=0.8\\textwidth]{{{filename_stem}}}\n"
+                                    "   {caption_and_label}"
+                                    "\\end{{center}}\n"
+                                ).format(filename_stem=filename_stem, caption_and_label=caption_and_label)
+                                print("I HAS CAPTION", caption)
                             elif "text/plain" in data:  # add text only if no image
                                 text_output = ansi_escape.sub("", output["data"]["text/plain"])
                                 lines[i] += "{}\n{}\n{}\n".format(
-                                    begin, 
+                                    begin,
                                     text_output,
                                     end
                                 )
@@ -1153,11 +1191,11 @@ def latex_code(filestr, code_blocks, code_block_types,
                             traceback = "\n".join(output["traceback"])
                             traceback = ansi_escape.sub("", traceback)
                             lines[i] += "{}\n{}\n{}\n".format(
-                                begin, 
+                                begin,
                                 traceback,
                                 end
                             )
-                
+
             current_code_envir = None
             current_code = ""
         else:
@@ -1168,10 +1206,10 @@ def latex_code(filestr, code_blocks, code_block_types,
                 current_code += lines[i] + "\n"
                 if current_code_envir.endswith("-e"):
                     lines[i] = ""
-                
+
     if option("execute"):
         execution.stop(kernel_client)
-    
+
     filestr = safe_join(lines, '\n')
 
     return filestr
@@ -1518,7 +1556,7 @@ source=%(filename)s
 &autoPlay=true
 },
 transparent
-]{\framebox[0.5\linewidth[c]{%(nolinkurl_filename)s}}{APlayer9.swf}
+]{\framebox[0.5\linewidth[c]]{%(nolinkurl_filename)s}}{APlayer9.swf}
 """ % vars()
             elif ext.lower() in ('.mpg', '.mpeg', '.avi'):
                 # Use old movie15 package which will launch a separate player
@@ -3204,6 +3242,9 @@ justified,
     INTRO['latex'] += r"""
 \listfiles               %  print all files needed to compile this document
 """
+    if option('execute'):
+        INTRO['latex'] += r"\usepackage{caption}"
+
     if latex_papersize == 'a4':
         INTRO['latex'] += r"""
 \usepackage[a4paper]{geometry}
