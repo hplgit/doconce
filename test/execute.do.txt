@@ -28,16 +28,17 @@ c
 
 ======= Plotting =======
 
-This is a cell that should plot and output:
+This is a code block that should plot and output:
 
 !bc pycod
 from pylab import *
 x = linspace(0, 10, 100)
 plot(x, x*x)
 show()
-!ec caption(This is a figure) label(fig:myplot)
+!ec
 
-Some text then plot:
+Figures produced from such code blocks can have labels and captions added to
+the `!ec` line:
 
 !bc pycod
 from pylab import *
@@ -45,6 +46,9 @@ x = linspace(0, 10, 100)
 plot(x, exp(x))
 show()
 !ec
+caption{This is a figure} label{fig:myplot}
+
+The above figure can be referenced as usual: Above is figure ref{fig:myplot}
 
 More plot:
 

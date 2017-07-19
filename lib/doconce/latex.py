@@ -1101,14 +1101,18 @@ def latex_code(filestr, code_blocks, code_block_types,
 
             # capture caption and label if exists
             label = None
-            label_match = re.search(r"label\((.*?)\)", lines[i])
+            label_regex = re.compile(r"label\{(.*?)\}")
+            label_match = re.search(label_regex, lines[i + 1])
             if label_match is not None:
                 label = label_match.group(1)
+                lines[i + 1] = re.sub(label_regex, "", lines[i + 1])
 
             caption = None
-            caption_match = re.search(r"caption\((.*?)\)", lines[i])
+            caption_regex = re.compile(r"caption\{(.*?)\}")
+            caption_match = re.search(caption_regex, lines[i + 1])
             if caption_match is not None:
                 caption = caption_match.group(1)
+                lines[i + 1] = re.sub(caption_regex, "", lines[i + 1])
 
             begin, end = latex_code_envir(
                 current_code_envir,
@@ -1157,11 +1161,14 @@ def latex_code(filestr, code_blocks, code_block_types,
                                 g.close()
 
                                 caption_and_label = ""
-                                if caption is not None and label is not None:
-                                    caption_and_label = (
+                                if caption is not None:
+                                    caption_and_label += (
                                         "\\captionof{{figure}}{{{caption}}}\n"
+                                    ).format(caption=caption)
+                                if label is not None:
+                                    caption_and_label += (
                                         "\\label{{{label}}}\n"
-                                    ).format(label=label, caption=caption)
+                                    ).format(label=label)
 
                                 lines[i] += (
                                     "\n"
@@ -2193,7 +2200,6 @@ def latex_ref_and_label(section_label2title, format, filestr):
     # let's detect them and replace with ref
     _label_pattern = r'\\label\{(.+?)\}'
     _ref_pattern = r'\\v?ref\{(.+?)\}'
-    print("Final all", _label_pattern)
     labels = re.findall(_label_pattern, filestr)
     refs   = re.findall(_ref_pattern,   filestr)
     external_refs = []
