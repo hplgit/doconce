@@ -1058,7 +1058,6 @@ def latex_code(filestr, code_blocks, code_block_types,
             "from IPython.display import set_matplotlib_formats\n" +
             "set_matplotlib_formats('pdf', 'png')"
         )
-        print(outputs)
 
     for i in range(len(lines)):
         if lines[i].startswith('!bc'):
@@ -1100,21 +1099,16 @@ def latex_code(filestr, code_blocks, code_block_types,
                 #errwarn(filestr)
                 _abort()
 
-            print("LINE", lines[i])
-
             # capture caption and label if exists
             label = None
             label_match = re.search(r"label\((.*?)\)", lines[i])
-            print("LABEL_MATCH", label_match)
             if label_match is not None:
                 label = label_match.group(1)
 
             caption = None
             caption_match = re.search(r"caption\((.*?)\)", lines[i])
-            print("CAPTION_MATCH", caption_match)
             if caption_match is not None:
                 caption = caption_match.group(1)
-            print(caption)
 
             begin, end = latex_code_envir(
                 current_code_envir,
@@ -1148,11 +1142,9 @@ def latex_code(filestr, code_blocks, code_block_types,
                             data = output["data"]
                             if "application/pdf" in data or "image/png" in data:
                                 if "application/pdf" in data:
-                                    print("GOT PDF IMAGE DATA")
                                     img_data = data["application/pdf"]
                                     suffix = ".pdf"
                                 else:
-                                    print("GOT PNG IMAGE DATA")
                                     img_data = data["image/png"]
                                     suffix = ".png"
                                 cache_folder = ".doconce_figure_cache"
@@ -1178,7 +1170,6 @@ def latex_code(filestr, code_blocks, code_block_types,
                                     "   {caption_and_label}"
                                     "\\end{{center}}\n"
                                 ).format(filename_stem=filename_stem, caption_and_label=caption_and_label)
-                                print("I HAS CAPTION", caption)
                             elif "text/plain" in data:  # add text only if no image
                                 text_output = ansi_escape.sub("", output["data"]["text/plain"])
                                 lines[i] += "{}\n{}\n{}\n".format(
