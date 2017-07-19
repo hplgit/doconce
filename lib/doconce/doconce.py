@@ -4994,6 +4994,33 @@ On Debian systems, preprocess can be installed through the
 preprocess package (sudo apt-get install preprocess).
 """ % filename)
             _abort()
+        def version_compare(a, b):
+            """
+            a < b: return -1
+            a == b: return 0
+            a > b: return 1
+            """
+            a_parts = [int(p) for p in a.split('.')]
+            b_parts = [int(p) for p in b.split('.')]
+            max_parts = max(len(a_parts), len(b_parts))
+            for i in range(max_parts):
+                if len(a_parts) <= i:
+                    # b must be newer
+                    return -1
+                elif len(b_parts) <= i:
+                    # a must be newer
+                    return 1
+                elif a_parts[i] < b_parts[i]:
+                    return -1
+                elif a_parts[i] > b_parts[i]:
+                    return 1
+            return 0
+        required_preprocess_version = '1.2.2'
+        if version_compare(preprocess.__version__, required_preprocess_version) == -1:
+            errwarn("ERROR: DocOnce requires preprocess >= 1.2.2")
+            errwarn("Install a newer version with:\n"
+                    + "sudo pip install -U git+https://github.com/doconce/preprocess#egg=preprocess")
+            _abort()
 
         if option('no_preprocess'):
             errwarn('Found preprocess-like statements, but --no_preprocess prevents running preprocess')

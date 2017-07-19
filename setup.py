@@ -71,9 +71,6 @@ setup(
         'mako',
         'future'
     ],
-    dependency_link=[
-        'git+https://github.com/doconce/preprocess#egg=preprocess',
-    ],
     )
 
 # Clean up the temporary compressed man page
