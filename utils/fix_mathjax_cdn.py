@@ -21,10 +21,12 @@ def replace(s):
 if __name__ == '__main__':
     if len(sys.argv) < 2:
         print("ERROR: No file name provided")
+        print("Usage: %s <html file>" % (sys.argv[0]))
         sys.exit(1)
     filename = sys.argv[1]
     with open(filename, 'r') as f:
         old = f.read()
     new = replace(old)
-    with open(filename, 'w') as f:
-        f.write(new)
+    if new != old:
+        with open(filename, 'w') as f:
+            f.write(new)
