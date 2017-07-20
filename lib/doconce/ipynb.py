@@ -866,7 +866,9 @@ def ipynb_index_bib_latex_plain(filestr, index, citations, pubfile, pubdata):
 
     # Save idx{} and label{} as metadata, also have labels as div tags
     filestr = re.sub(r'(idx\{.+?\})', r'<!-- dom:\g<1> -->', filestr)
-    filestr = re.sub(r'(label\{(.+?)\})', r'<!-- dom:\g<1> --><div id="\g<2>"></div>', filestr)
+    # filestr = re.sub(r'(label\{(.+?)\})', r'<!-- dom:\g<1> --><div id="\g<2>"></div>', filestr)
+    filestr = re.sub(r'label\{(.+?)\}', '<div id="\g<1>"></div>', filestr)
+
     # Also treat special cell delimiter comments that might appear from
     # doconce ipynb2doconce conversions
     filestr = re.sub(r'^# ---------- (markdown|code) cell$', '',
