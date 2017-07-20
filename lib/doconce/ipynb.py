@@ -3,7 +3,7 @@ from builtins import str
 from builtins import range
 import re, sys, shutil, os
 from .common import default_movie, plain_exercise, table_analysis, \
-     insert_code_and_tex, indent_lines, fix_ref_section_chapter
+     insert_code_and_tex, indent_lines, fix_ref_section_chapter, bibliography
 from .html import html_movie, html_table
 from .pandoc import pandoc_ref_and_label, pandoc_index_bib, pandoc_quote, \
      language2pandoc, pandoc_quiz
@@ -843,7 +843,7 @@ def ipynb_index_bib(filestr, index, citations, pubfile, pubdata):
                          flags=re.MULTILINE)
 
     # Save idx{} and label{} as metadata, also have labels as div tags
-    filestr = re.sub(r'((idx\{.+?\})', r'<!-- dom:\g<1> -->', filestr)
+    filestr = re.sub(r'(idx\{.+?\})', r'<!-- dom:\g<1> -->', filestr)
     filestr = re.sub(r'(label\{(.+?)\})', r'<!-- dom:\g<1> --><div id="\g<2>"></div>', filestr)
     # Also treat special cell delimiter comments that might appear from
     # doconce ipynb2doconce conversions
@@ -852,47 +852,28 @@ def ipynb_index_bib(filestr, index, citations, pubfile, pubdata):
     return filestr
 
 
-def ipynb_ref_and_label(section_label2title, format, filestr):
-    filestr = fix_ref_section_chapter(filestr, format)
+def ipynb_index_bib_latex_plain(filestr, index, citations, pubfile, pubdata):
+    if citations:
+        from .common import cite_with_multiple_args2multiple_cites
+        filestr = cite_with_multiple_args2multiple_cites(filestr)
 
-    # Replace all references to sections. Pandoc needs a coding of
-    # the section header as link. (Not using this anymore.)
-    def title2pandoc(title):
-        # http://johnmacfarlane.net/pandoc/README.html
-        for c in ('?', ';', ':'):
-            title = title.replace(c, '')
-        title = title.replace(' ', '-').strip()
-        start = 0
-        for i in range(len(title)):
-            if title[i].isalpha():
-                start = i
-        title = title[start:]
-        title = title.lower()
-        if not title:
-            title = 'section'
-        return title
+    for label in citations:
+        filestr = filestr.replace('cite{%s}' % label,'[[{}]](#{})'.format(citations[label], label))
 
-    for label in section_label2title:
-        filestr = filestr.replace('ref{%s}' % label,
-                  '[%s](#%s)' % (section_label2title[label],
-                                 label))
+    if pubfile is not None:
+        bibtext = bibliography(pubdata, citations, format='doconce')
+        filestr = re.sub(r'^BIBFILE:.+$', bibtext, filestr, flags=re.MULTILINE)
 
-    # TODO Consider handling the case where a figure label is used
-    # but not referenced as "figure ref{label}"
+    # Save idx{} and label{} as metadata, also have labels as div tags
+    filestr = re.sub(r'(idx\{.+?\})', r'<!-- dom:\g<1> -->', filestr)
+    # filestr = re.sub(r'(label\{(.+?)\})', r'<!-- dom:\g<1> --><div id="\g<2>"></div>', filestr)
+    filestr = re.sub(r'label\{(.+?)\}', '<div id="\g<1>"></div>', filestr)
 
-    pattern = r'([Ff]igure|[Mm]ovie)\s+ref\{(.+?)\}'
-    for m in re.finditer(pattern, filestr):
-        label = m.group(2).strip()
-        figure_number = figure_labels[label]
-        replace_pattern = r'([Ff]igure|[Mm]ovie)\s+ref\{' + label + r'\}'
-        replace_string = '[\g<1> {figure_number}](#{label})'.format(
-            figure_number=figure_number,
-            label=label
-        )
-        filestr = re.sub(replace_pattern, replace_string, filestr)
+    # Also treat special cell delimiter comments that might appear from
+    # doconce ipynb2doconce conversions
+    filestr = re.sub(r'^# ---------- (markdown|code) cell$', '',
+                     filestr, flags=re.MULTILINE)
 
-    # Remaining ref{} (should protect \eqref)
-    filestr = re.sub(r'ref\{(.+?)\}', '[\g<1>](#\g<1>)', filestr)
     return filestr
 
 
@@ -1020,6 +1001,8 @@ def define(FILENAME_EXTENSION,
     cite = option('ipynb_cite=', 'plain')
     if cite == 'latex':
         INDEX_BIB['ipynb'] = ipynb_index_bib
+    elif cite == 'latex-plain':
+        INDEX_BIB['ipynb'] = ipynb_index_bib_latex_plain
     else:
         INDEX_BIB['ipynb'] = pandoc_index_bib
     EXERCISE['ipynb'] = plain_exercise
