@@ -18,7 +18,6 @@ from .common import plain_exercise, table_analysis, \
 from .misc import option, _abort, replace_code_command
 from .doconce import errwarn, debugpr, locale_dict
 import base64
-from . import execution
 import uuid
 import os
 additional_packages = ''  # comma-sep. list of packages for \usepackage{}
@@ -101,7 +100,7 @@ envir2lst = dict(
 def latex_code_envir(envir, envir_spec):
     if envir_spec is None:
         return '\\b' + envir, '\\e' + envir
-        
+
     leftmargin = option('latex_code_leftmargin=', '2')
     bg_vpad = '_vpad' if option('latex_code_bg_vpad') else ''
 
@@ -443,7 +442,8 @@ identifierstyle=\color{darkblue},
 
 def latex_code(filestr, code_blocks, code_block_types,
                tex_blocks, format):
-
+    if option("execute"):
+        from . import execution
     if option('latex_double_hyphen'):
         errwarn('*** warning: --latex_double_hyphen may lead to unwanted edits.')
         errwarn('             search for all -- in the .p.tex file and check.')
@@ -585,13 +585,13 @@ def latex_code(filestr, code_blocks, code_block_types,
 
     # Check for misspellings
     envirs = 'pro pypro pyout cypro cpppro cpro fpro plpro shpro mpro cod pycod cycod cppcod ccod fcod plcod shcod mcod htmlcod htmlpro latexcod latexpro rstcod rstpro xmlcod xmlpro cppans pyans fans bashans swigans uflans sni dat dsni csv txt sys slin ipy rpy plin ver warn rule summ ccq cc ccl pyshell pyoptpro pyscpro ipy do'.split()
-    
+
     for i, envir in enumerate(code_block_types):
         if envir.endswith("-t"):
             code_block_types[i] = re.sub(r"-t$", "", envir)
         if envir.endswith("-e"):
             code_block_types[i] = re.sub(r"-e$", "", envir)
-    
+
     # Add user's potential new envirs inside admons
     new_envirs = []
     for envir in envirs:
@@ -1045,17 +1045,17 @@ def latex_code(filestr, code_blocks, code_block_types,
     lines = filestr.splitlines()
     current_code_envir = None
     current_code = ""
-    
+
     if option("execute"):
         kernel_client = execution.JupyterKernelClient()
-        # This enables PDF output as well as PNG for figures. 
+        # This enables PDF output as well as PNG for figures.
         # We only use the PDF when available, but PNG should be added as fallback.
         execution.run_cell(
             kernel_client,
             "from IPython.display import set_matplotlib_formats\n" +
             "set_matplotlib_formats('png', 'pdf')"
         )
-    
+
     for i in range(len(lines)):
         if lines[i].startswith('!bc'):
             words = lines[i].split()
@@ -1096,7 +1096,7 @@ def latex_code(filestr, code_blocks, code_block_types,
                 #errwarn(filestr)
                 _abort()
             begin, end = latex_code_envir(
-                current_code_envir,    
+                current_code_envir,
                 latex_code_style
             )
             if current_code_envir.endswith("out") and option("ignore_output"):
@@ -1119,7 +1119,7 @@ def latex_code(filestr, code_blocks, code_block_types,
                         if "text" in output:
                             text_output = ansi_escape.sub("", output["text"])
                             lines[i] += "{}\n{}\n{}\n".format(
-                                begin, 
+                                begin,
                                 text_output,
                                 end
                             )
@@ -1144,7 +1144,7 @@ def latex_code(filestr, code_blocks, code_block_types,
                             elif "text/plain" in data:  # add text only if no image
                                 text_output = ansi_escape.sub("", output["data"]["text/plain"])
                                 lines[i] += "{}\n{}\n{}\n".format(
-                                    begin, 
+                                    begin,
                                     text_output,
                                     end
                                 )
@@ -1153,11 +1153,11 @@ def latex_code(filestr, code_blocks, code_block_types,
                             traceback = "\n".join(output["traceback"])
                             traceback = ansi_escape.sub("", traceback)
                             lines[i] += "{}\n{}\n{}\n".format(
-                                begin, 
+                                begin,
                                 traceback,
                                 end
                             )
-                
+
             current_code_envir = None
             current_code = ""
         else:
@@ -1168,10 +1168,10 @@ def latex_code(filestr, code_blocks, code_block_types,
                 current_code += lines[i] + "\n"
                 if current_code_envir.endswith("-e"):
                     lines[i] = ""
-                
+
     if option("execute"):
         execution.stop(kernel_client)
-    
+
     filestr = safe_join(lines, '\n')
 
     return filestr

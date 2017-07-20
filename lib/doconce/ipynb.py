@@ -9,7 +9,6 @@ from .pandoc import pandoc_ref_and_label, pandoc_index_bib, pandoc_quote, \
      language2pandoc, pandoc_quiz
 from .misc import option, _abort
 from .doconce import errwarn
-from . import execution
 
 # Global variables
 figure_encountered = False
@@ -254,6 +253,8 @@ def ipynb_code(filestr, code_blocks, code_block_types,
     if newcommands:
         filestr = newcommands + filestr
     """
+    if option("execute"):
+        from . import execution
     # Fix pandoc citations to normal internal links: [[key]](#key)
     filestr = re.sub(r'\[@(.+?)\]', r'[[\g<1>]](#\g<1>)', filestr)
 
