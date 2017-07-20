@@ -864,15 +864,16 @@ def ipynb_index_bib_latex_plain(filestr, index, citations, pubfile, pubdata):
         bibtext = bibliography(pubdata, citations, format='doconce')
         filestr = re.sub(r'^BIBFILE:.+$', bibtext, filestr, flags=re.MULTILINE)
 
-    # Save idx{} and label{} as metadata, also have labels as div tags
-    filestr = re.sub(r'(idx\{.+?\})', r'<!-- dom:\g<1> -->', filestr)
-    # filestr = re.sub(r'(label\{(.+?)\})', r'<!-- dom:\g<1> --><div id="\g<2>"></div>', filestr)
-    filestr = re.sub(r'label\{(.+?)\}', '<div id="\g<1>"></div>', filestr)
+    # remove all index entries (could also place them
+    # in special comments to keep the information)
 
-    # Also treat special cell delimiter comments that might appear from
-    # doconce ipynb2doconce conversions
-    filestr = re.sub(r'^# ---------- (markdown|code) cell$', '',
-                     filestr, flags=re.MULTILINE)
+    filestr = re.sub(r'idx\{.+?\}' + '\n?', '', filestr)
+
+    # Use HTML anchors for labels and [link text](#label) for references
+    # outside mathematics.
+    #filestr = re.sub(r'label\{(.+?)\}', '<a name="\g<1>"></a>', filestr)
+    # Note: HTML5 should have <sometag id="..."></sometag> instead
+    filestr = re.sub(r'label\{(.+?)\}', '<div id="\g<1>"></div>', filestr)
 
     return filestr
 
