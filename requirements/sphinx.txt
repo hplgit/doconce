@@ -1,0 +1,17 @@
+# Sphinx (with additional third/party themes)
+sphinx
+
+alabaster
+sphinx_rtd_theme
+#-e hg+https://bitbucket.org/ecollins/cloud_sptheme#egg=cloud_sptheme
+hg+https://bitbucket.org/ecollins/cloud_sptheme#egg=cloud_sptheme
+git+https://github.com/ryan-roemer/sphinx-bootstrap-theme#egg=sphinx-bootstrap-theme
+hg+https://bitbucket.org/miiton/sphinxjp.themes.solarized#egg=sphinxjp.themes.solarized
+git+https://github.com/shkumagai/sphinxjp.themes.impressjs#egg=sphinxjp.themes.impressjs
+git+https://github.com/kriskda/sphinx-sagecell#egg=sphinx-sagecell
+
+# Runestone sphinx books
+sphinxcontrib-paverutils
+paver
+cogapp
+
