@@ -147,7 +147,7 @@ to the author name, and the `and` with surrounding spaces is
 essential as delimiter between different institutions.
 An email address can optionally be included, using the syntax
 !bc
- AUTHOR: name Email: somename@site.net at institution1 and institution2
+ AUTHOR: name Email: somename@site.net at institution1 & institution2
 !ec
 Multiple authors require multiple `AUTHOR:` lines. All information
 associated with `TITLE:` and `AUTHOR:` keywords must appear on a single
