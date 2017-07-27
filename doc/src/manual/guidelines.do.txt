@@ -84,7 +84,7 @@ follow the rules below.
  * Learn about the preprocessors Preprocess and Mako - these are smart
    tools for, e.g., commenting out/in large portions of text and creating
    macros.
- * Use *generalized referenes* when referring to companion documents
+ * Use *generalized references* when referring to companion documents
    that may later become part of this document (or migrated out of this document).
  * Follow "recommendations for DocOnce books": "https://github.com/hplgit/setup4book-doconce" if you plan to write a book.
 

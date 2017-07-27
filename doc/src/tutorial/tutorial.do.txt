@@ -87,8 +87,10 @@ the formating. Here are some examples.
     `!bt` (begin TeX) and `!et` (end TeX) tags on separate lines.
     Inline mathematics is surrounded by dollar signs: `$a=b$`.
   * Comment lines start with `#` and are not visible in the output document.
-  * Comments to authors can be inserted throughout the text with a
-    syntax like `[name: comment...]` and made visible or invisible as desired.
+  * Comments to authors can be inserted throughout the text with the following syntax and made visible or invisible as desired.
+!bc
+[name: comment...]
+!ec
   * Title, author, date, figures, and movies are written on one line,
     starting with a keyword: `TITLE:`, `AUTHOR:`, `DATE:`, `FIGURE:`,
     and `MOVIE:`.

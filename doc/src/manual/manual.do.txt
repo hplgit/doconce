@@ -139,7 +139,7 @@ title is treated as the rest of the line, so is the date, but the
 author text consists of the name and associated institution(s) with
 the syntax
 !bc
- AUTHOR: name at institution1 and institution2 and institution3
+ AUTHOR: name at institution1 & institution2 & institution3
 !ec
 The `at` with surrounding spaces
 is essential for adding information about institution(s)
@@ -327,7 +327,7 @@ __A Paragraph.__ The running text goes here.
 idx{abstract}
 
 DocOnce also supports abstracts. The syntax is like an ordinary
-paragraph with heading *Abstract*, *Summary*, or *Preface,
+paragraph with heading *Abstract*, *Summary*, or *Preface*,
 but the text *must* be followed by a
 
  * section or paragraph heading
@@ -432,7 +432,7 @@ The generated LaTeX code applies
 !bc latexcod
 \begin{figure}[!ht] % my:fig
 !ec
-i..e, we use the
+i.e., we use the
 ``here'' option `[!ht]` to recommend a placement as near the `FIGURE:`
 command as possible. One can autoedit the `.tex` file and modify the
 `figure` environment options, e.g.,
@@ -522,8 +522,8 @@ idx{FIGPREFIX}
 
 === Choosing the Figure Format ===
 
-For each output format, there is a preference which type of graphics file
-that is preferred. That is, for HTML, for instance, we can accept many types
+For each output format, there is a preference for the type of graphics file
+to use. That is, for HTML, for instance, we can accept many types
 of graphics formats. If we specify the extension as part of the filename,
 DocOnce will try to find that specific format. If not found, it will convert
 whatever can be used to some format suitable for HTML. It is highly recommended
@@ -2540,7 +2540,7 @@ DocOnce has special support for four types of ``exercises'', named
 *exercise*, *problem*, *project*, or *example*.
 These are all typeset as special kind of
 subsections. Such subsections start with a subsection
-headline surrounded 5 `=` characters, and last up to the
+headline surrounded by 5 `=` characters, and last up to the
 next headline or the end of the file. The headline itself must
 consists of the word *Exercise*, *Problem*, *Project*, or *Example*, followed
 by a colon and a title of the exercise, problem, or project.
@@ -2713,7 +2713,7 @@ the result file can be uploaded. One can also think of mechanisms for
 downloading the solution file if the result file meets certain
 criteria.  DocOnce does not yet generate such functionality in any
 output format, but this is an intended future feature to be
-impelemented.
+implemented.
 
 For now, exercises, problems, projects, examples are typeset as ordinary
 DocOnce sections (this is the most general approach that will work for many
@@ -2728,7 +2728,7 @@ see Problem ref{...}
 !ec
 works well in all formats (i.e., no double `Problem Problem` appears).
 
-=== Remark on Typesettng of Examples ===
+=== Remark on Typesetting of Examples ===
 
 Examples are *not* typeset similarly to exercises unless one adds the
 command-line option `--examples_as_exercises`. That is, without this
@@ -3028,7 +3028,7 @@ or a `chapter.local_number` like `5.2` or `B.4` (in case of an appendix),
 depending on the option
 `--exercise_numbering=X`, with `X=absolute` or `X=chapter`, respectively.
 
-===== Example on an Exercise =====
+===== Example of an Exercise =====
 
 The next section show the typesetting of the following exercise.
 For output in HTML with various Bootstrap styles, hints and answers
@@ -3333,7 +3333,7 @@ corresponds to `ccq` which is defined in the config file `.ptex2tex.cfg`).
 
 By default, `pro` is used for complete programs, `cod` is for a code
 snippet. The syntax `Xcod` and `Xpro` imply a program or snippet in
-computer language `X`, wehre `X` can be `f` for Fortran, `c` for C,
+computer language `X`, where `X` can be `f` for Fortran, `c` for C,
 `cpp` for C++, `sh` for Unix shells, `pl` for Perl, `m` for Matlab,
 `cy` for Cython, `r` for Ruby, `js` for JavaScript, `latex` for LaTeX,
 `html` for HTML, and `py` for Python.  With no `X` prefix, `cod` and
@@ -3706,7 +3706,7 @@ Going from DocOnce to MS Word is most easily done by outputting in the
 "http://johnmacfarlane.net/pandoc/" or "latex2rtf":
 "http://latex2rtf.sourceforge.net/" programs to translate from LaTeX
 to MS Word. Note that only a subset of LaTeX will be translated
-correctly, and mathematics is notoriously difficult and unpredicatble.
+correctly, and mathematics is notoriously difficult and unpredictable.
 
 idx{epub}
 idx{`epubmaker.py`}
@@ -4026,7 +4026,7 @@ How many admonition types are there in DocOnce?
 |equestion
 
 |bblock This is a block.
-A block has never any icon. A block has never any icon,
+A block never has any icon. A block has never any icon,
 but may feature a title. It is often used in slides.
 |eblock
 
@@ -4061,7 +4061,7 @@ How many admonition types are there in DocOnce?
 !equestion
 
 !bblock This is a block.
-A block has never any icon. A block has never any icon,
+A block never has any icon. A block has never any icon,
 but may feature a title. It is often used in slides.
 !eblock
 
@@ -4696,7 +4696,7 @@ idx{`mako` preprocessor}
 idx{`preprocess` preprocessor}
 
 Two preprocessors are supported: preprocess
-(URL:"http://code.google.com/p/preprocess") and mako
+(URL:"https://github.com/doconce/preprocess") and mako
 (URL:"http://www.makotemplates.org/"). The former allows include and if-else
 statements much like the well-known preprocessor in C and C++ (but it
 does not allow sophisticated macro substitutions). The latter
@@ -4960,7 +4960,7 @@ mathematical formulas, admonitions, etc.
 
 Points to consider (just sketches...):
 
- * Only some pygments style are suited for a particular reveal.js/deck.js
+ * Only some pygments styles are suited for a particular reveal.js/deck.js
    theme
  * Only some admon styles are appropriate
  * Admon styles are erased in reveal
@@ -5249,7 +5249,7 @@ The cycle is
 ======= Support for non-English =======
 
 DocOnce can handle documents in other languages than English. At the time
-of this writing there is support for Norwegian and German.
+of this writing there is support for Basque, German and Norwegian. Please create an issue at URL: "https://github.com/hplgit/doconce/issues" to request support for additional languages.
 
 A demo directory with files is "`locale`": "https://github.com/hplgit/doconce/tree/master/doc/src/locale". For example, `norsk.do.txt` contains a simple document
 in Norwegian. To compile, one must supply the options
