@@ -2084,11 +2084,57 @@ def process_envir(filestr, envir, format, action='remove', reason=''):
                   '\n(.+?)' + comment_pattern % \
                   envir_delimiter_lines[envir][1] + '\n'
     if action == 'remove':
-        if callable(comment_pattern):
-            replacement = comment_pattern('removed !b%s ... !e%s environment ' % (envir, envir) + reason)
+        if format == 'ipynb':
+            import nbformat
+            # need to traverse notebook dictionary to remove lines
+            nb_dict = nbformat.reads(filestr, 4)
+            start_i, start_j, end_i, end_j = None, None, None, None
+            start_found = False
+            end_found = False
+            coors = []
+            target_line = comment_pattern % envir_delimiter_lines[envir][0]
+            for i, cell in enumerate(nb_dict['cells']):
+                if cell['cell_type'] == 'markdown':
+                    for j, src_line in enumerate(cell['source'].splitlines()):
+                        if src_line.strip() == target_line:
+                            if not start_found:
+                                start_found = True
+                                end_found = False
+                                coors.append((i, j))
+                                target_line = comment_pattern % envir_delimiter_lines[envir][1]
+                            else:
+                                end_found = True
+                                start_found = False
+                                coors.append((i, j))
+                                target_line = comment_pattern % envir_delimiter_lines[envir][0]
+                        elif start_found:
+                            coors.append((i, j))
+                elif start_found:
+                    coors.append((i, None))
+            if not end_found:
+                errwarn("Failed to remove %s environment" % envir)
+            else:
+                for i, j in reversed(coors):
+                    if j is None:
+                        # code cell
+                        nb_dict['cells'].pop(i)
+                        continue
+                    cell = nb_dict['cells'][i]
+                    cell_lines = cell['source'].splitlines()
+                    print(cell_lines[j])
+                    cell_lines.pop(j)
+                    cell['source'] = '\n'.join(cell_lines)
+                    if len(cell_lines) == 0:
+                        nb_dict['cells'].pop(i)
+                filestr = nbformat.writes(nb_dict, 4)
+
+
         else:
-            replacement = comment_pattern % ('removed !b%s ... !e%s environment %s' % (envir, envir, reason))
-        filestr = re.sub(pattern, replacement, filestr, flags=re.DOTALL)
+            if callable(comment_pattern):
+                replacement = comment_pattern('removed !b%s ... !e%s environment ' % (envir, envir) + reason)
+            else:
+                replacement = comment_pattern % ('removed !b%s ... !e%s environment %s' % (envir, envir, reason))
+            filestr = re.sub(pattern, replacement, filestr, flags=re.DOTALL)
         return filestr
     elif action == 'grep':
         return re.findall(pattern, filestr, flags=re.DOTALL)
