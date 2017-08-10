@@ -717,7 +717,10 @@ def ipynb_code(filestr, code_blocks, code_block_types,
         filestr = nbjson.writes(nb)
     elif nb_version == 4:
         nb = new_notebook(cells=cells)
-        from IPython.nbformat import writes
+        try:
+            from nbformat import writes
+        except ImportError:
+            from IPython.nbformat import writes
         filestr = writes(nb, version=4)
 
     # Check that there are no empty cells:
