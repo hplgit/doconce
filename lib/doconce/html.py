@@ -184,8 +184,8 @@ def css_link_solarized_highlight(style='light'):
 <script>hljs.initHighlightingOnLoad();</script>
 """ % vars()
 
-css_link_solarized_thomasf_light = '<link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">'
-css_link_solarized_thomasf_dark = '<link href="http://thomasf.github.io/solarized-css/solarized-dark.min.css" rel="stylesheet">'
+css_link_solarized_thomasf_light = '<link href="https://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">'
+css_link_solarized_thomasf_dark = '<link href="https://thomasf.github.io/solarized-css/solarized-dark.min.css" rel="stylesheet">'
 css_solarized_thomasf_gray = """\
 h1, h2, h3, h4 { color:#839496; font-weight: bold; } /* gray */
 code { padding: 0px; background-color: inherit; }
@@ -3034,15 +3034,15 @@ div { text-align: justify; text-justify: inter-word; }
         boots_version = '3.1.1'
         if html_style == 'bootstrap':
             boots_style = 'boostrap'
-            urls = ['http://netdna.bootstrapcdn.com/bootstrap/%s/css/bootstrap.min.css' % boots_version]
+            urls = ['https://netdna.bootstrapcdn.com/bootstrap/%s/css/bootstrap.min.css' % boots_version]
         elif html_style == 'bootstrap_bootflat':
             boots_style = 'bootflat'
-            urls = ['http://netdna.bootstrapcdn.com/bootstrap/%s/css/bootstrap.min.css' % boots_version,
+            urls = ['https://netdna.bootstrapcdn.com/bootstrap/%s/css/bootstrap.min.css' % boots_version,
                     'RAW_GITHUB_URL/bootflat/bootflat.github.io/master/bootflat/css/bootflat.css']
         elif html_style.startswith('bootstrap_'):
             # Local DocOnce stored or modified bootstrap themes
             boots_style = html_style.split('_')[1]
-            urls = ['http://netdna.bootstrapcdn.com/bootstrap/%s/css/bootstrap.min.css' % boots_version,
+            urls = ['https://netdna.bootstrapcdn.com/bootstrap/%s/css/bootstrap.min.css' % boots_version,
                     'RAW_GITHUB_URL/hplgit/doconce/master/bundled/html_styles/style_bootstrap/css/%s.css' % html_style]
         elif html_style.startswith('bootswatch'):
             default = 'cosmo'
@@ -3053,7 +3053,7 @@ div { text-align: justify; text-justify: inter-word; }
                 errwarn('*** error: wrong bootswatch style %s' % boots_style)
                 errwarn('    legal choices:\n    %s' % ', '.join(legal_bootswatch_styles))
                 _abort()
-            urls = ['http://netdna.bootstrapcdn.com/bootswatch/%s/%s/bootstrap.min.css' % (boots_version, boots_style)]
+            urls = ['https://netdna.bootstrapcdn.com/bootswatch/%s/%s/bootstrap.min.css' % (boots_version, boots_style)]
             # Dark styles need some recommended options
             dark_styles = 'amelia cyborg darkly slate superhero'.split()
             if boots_style in dark_styles:
@@ -3074,7 +3074,7 @@ div { text-align: justify; text-justify: inter-word; }
 <!-- Bootstrap style: %s -->
 %s
 <!-- not necessary
-<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+<link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 -->
 """% (html_style, '\n'.join(['<link href="%s" rel="stylesheet">' % url
                    for url in urls]))
@@ -3293,7 +3293,7 @@ Automatically generated HTML file from DocOnce source
 </div>  <!-- end container -->
 <!-- include javascript, jQuery *first* -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
 <!-- Bootstrap footer
 <footer>
