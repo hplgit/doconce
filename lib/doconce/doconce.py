@@ -2095,7 +2095,7 @@ def process_envir(filestr, envir, format, action='remove', reason=''):
             target_line = comment_pattern % envir_delimiter_lines[envir][0]
             for i, cell in enumerate(nb_dict['cells']):
                 if cell['cell_type'] == 'markdown':
-                    for j, src_line in enumerate(cell['source'].splitlines()):
+                    for j, src_line in enumerate(cell['source'].split('\n')):
                         if src_line.strip() == target_line:
                             if not start_found:
                                 start_found = True
@@ -2120,7 +2120,7 @@ def process_envir(filestr, envir, format, action='remove', reason=''):
                         nb_dict['cells'].pop(i)
                         continue
                     cell = nb_dict['cells'][i]
-                    cell_lines = cell['source'].splitlines()
+                    cell_lines = cell['source'].split('\n')
                     cell_lines.pop(j)
                     cell['source'] = '\n'.join(cell_lines)
                     if len(cell_lines) == 0:
