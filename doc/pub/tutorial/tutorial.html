@@ -12,9 +12,9 @@ Automatically generated HTML file from DocOnce source
 <title>DocOnce Tutorial: Document Once, Include Anywhere</title>
 
 <!-- Bootstrap style: bootswatch_readable -->
-<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/readable/bootstrap.min.css" rel="stylesheet">
+<link href="https://netdna.bootstrapcdn.com/bootswatch/3.1.1/readable/bootstrap.min.css" rel="stylesheet">
 <!-- not necessary
-<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+<link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 -->
 
 <style type="text/css">
@@ -26,6 +26,15 @@ code { color: inherit; background-color: transparent; }
    height: auto;
    max-height: 400px;
    overflow-x: hidden;
+}
+
+/* Adds an invisible element before each target to offset for the navigation
+   bar */
+.anchor::before {
+  content:"";
+  display:block;
+  height:64px;      /* fixed header height for style bootswatch_readable */
+  margin:-64px 0 0; /* negative fixed header height */
 }
 </style>
 
@@ -155,12 +164,12 @@ MathJax.Hub.Config({
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <br>
 <p>
-<center><h4>Jun 3, 2016</h4></center> <!-- date -->
+<center><h4>Oct 24, 2017</h4></center> <!-- date -->
 <br>
 <p>
 </div> <!-- end jumbotron -->
 
-<h1 id="___sec0">Some DocOnce Features </h1>
+<h1 id="___sec0" class="anchor">Some DocOnce Features </h1>
 
 <ul>
  <li> Strong support for texts with much math and code.</li>
@@ -202,7 +211,7 @@ MathJax.Hub.Config({
    for warnings, questions, hints, remarks, summaries, etc.</li>
 </ul>
 
-<h1 id="___sec1">What Does DocOnce Look Like? </h1>
+<h1 id="___sec1" class="anchor">What Does DocOnce Look Like? </h1>
 
 <p>
 DocOnce text looks like ordinary text (much like Markdown <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="In fact, DocOnce allows basic GitHub-extended Markdown syntax as input. This is attractive for newcomers from Markdown or writers who also write Markdown documents (or uses Markdown frequently at GitHub)."><a href="#def_footnote_1" id="link_footnote_1" style="color: white">1</a></button>),
@@ -229,12 +238,15 @@ the formating. Here are some examples.
     <code>!bt</code> (begin TeX) and <code>!et</code> (end TeX) tags on separate lines.
     Inline mathematics is surrounded by dollar signs: <code>$a=b$</code>.</li>
   <li> Comment lines start with <code>#</code> and are not visible in the output document.</li>
-  <li> Comments to authors can be inserted throughout the text with a
-    syntax like <code>
-&lt;!-- begin inline comment --&gt;
-&lt;font color=&quot;red&quot;&gt;(&lt;b&gt;name 1&lt;/b&gt;: comment...)&lt;/font&gt;
-&lt;!-- end inline comment --&gt;
-</code> and made visible or invisible as desired.</li>
+  <li> Comments to authors can be inserted throughout the text with the following syntax and made visible or invisible as desired.</li>
+</ul>
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>[name: comment...]
+</pre></div>
+<ul>
   <li> Title, author, date, figures, and movies are written on one line,
     starting with a keyword: <code>TITLE:</code>, <code>AUTHOR:</code>, <code>DATE:</code>, <code>FIGURE:</code>,
     and <code>MOVIE:</code>.</li>
@@ -256,7 +268,7 @@ sensitive to whitespace and require a monospace font.
 </div>
 
 
-<h2 id="___sec2">What Can DocOnce Be Used For? </h2>
+<h2 id="___sec2" class="anchor">What Can DocOnce Be Used For? </h2>
 
 <p>
 LaTeX is ideal for articles, thesis, and books, but the PDF files does
@@ -270,7 +282,7 @@ media you want to target.  DocOnce also has many extra features for
 supporting large documents with much code and mathematics, not found
 in any of other publishing tool.
 
-<h2 id="manual:latex:guide">Writing Guidelines (Especially for LaTeX Users!)</h2>
+<h2 id="manual:latex:guide" class="anchor">Writing Guidelines (Especially for LaTeX Users!)</h2>
 
 <p>
 LaTeX writers often have their own writing habits with use of their
@@ -358,7 +370,7 @@ follow the rules below.
  <li> Learn about the preprocessors Preprocess and Mako - these are smart
    tools for, e.g., commenting out/in large portions of text and creating
    macros.</li>
- <li> Use <em>generalized referenes</em> when referring to companion documents
+ <li> Use <em>generalized references</em> when referring to companion documents
    that may later become part of this document (or migrated out of this document).</li>
  <li> Follow <a href="https://github.com/hplgit/setup4book-doconce" target="_self">recommendations for DocOnce books</a> if you plan to write a book.</li>
 </ul>
@@ -450,7 +462,7 @@ translation is desired.
 </div>
 
 
-<h2 id="___sec4">Basic Syntax </h2>
+<h2 id="___sec4" class="anchor">Basic Syntax </h2>
 
 <p>
 Here is an example of some simple text written in the DocOnce format:
@@ -545,11 +557,11 @@ left-adjusted).
 <p>
 The DocOnce text above results in the following little document:
 
-<h1 id="___sec5">First a Section Heading </h1>
+<h1 id="___sec5" class="anchor">First a Section Heading </h1>
 
-<h2 id="___sec6">Then a Subsection Heading </h2>
+<h2 id="___sec6" class="anchor">Then a Subsection Heading </h2>
 
-<h3 id="___sec7">Finally a Subsubection Heading </h3>
+<h3 id="___sec7" class="anchor">Finally a Subsubection Heading </h3>
 
 <p>
 You can also have paragraphs with a paragraph heading surrounded
@@ -559,7 +571,7 @@ by double underscores are the beginning of a line.
 <b>This is a paragraph heading.</b>
 And here comes the text.
 
-<h2 id="my:first:sec">A Subsection with Sample Text</h2>
+<h2 id="my:first:sec" class="anchor">A Subsection with Sample Text</h2>
 
 <p>
 Ordinary text looks like ordinary text, but must always start at the
@@ -607,12 +619,12 @@ the plain text format which does not support hyperlinks.
 <b>Inline comments.</b>
 DocOnce also allows inline comments of the form 
 <!-- begin inline comment -->
-<font color="red">(<b>name 2</b>: comment)</font>
+<font color="red">(<b>name 1</b>: comment)</font>
 <!-- end inline comment -->
  (with
 a space after <code>name:</code>), e.g., such as 
 <!-- begin inline comment -->
-<font color="red">(<b>hpl 3</b>: here I will make some remarks to the text)</font>
+<font color="red">(<b>hpl 2</b>: here I will make some remarks to the text)</font>
 <!-- end inline comment -->
 . Inline comments can be removed from the output
 by a command-line argument (see the section <a href="#doconce2formats">From DocOnce to Other Formats</a> for an
@@ -656,7 +668,7 @@ for aligning the headings and the columns (center, right, left).
 <p>
 <!-- Lines beginning with # are comment lines. -->
 
-<h2 id="___sec9">Mathematics </h2>
+<h2 id="___sec9" class="anchor">Mathematics </h2>
 
 <p>
 Inline mathematics, such as \( \nu = \sin(x) \) is written exactly as in LaTeX:
@@ -714,7 +726,7 @@ tables, and
 </div>
 
 
-<h2 id="___sec10">Computer Code </h2>
+<h2 id="___sec10" class="anchor">Computer Code </h2>
 
 <p>
 You can have blocks of computer code, starting and ending with
@@ -787,7 +799,7 @@ line.  DocOnce documents have extension <code>do.txt</code>. The <code>do</code>
 for <code>doconce</code>, while the trailing <code>.txt</code> denotes a text document so
 that editors gives you plain text editing capabilities.
 
-<h2 id="newcommands">Macros (Newcommands), Cross-References, Index, and Bibliography</h2>
+<h2 id="newcommands" class="anchor">Macros (Newcommands), Cross-References, Index, and Bibliography</h2>
 
 <p>
 DocOnce supports a type of macros via a LaTeX-style <em>newcommand</em>
@@ -848,14 +860,14 @@ be automatically converted to the simple Publish format.
 For further details on functionality and
 syntax we refer to the <a href="http://hplgit.github.io/doconce/doc/pub/manual/html/" target="_self">DocOnce manual</a>.
 
-<h1 id="doconce2formats">From DocOnce to Other Formats</h1>
+<h1 id="doconce2formats" class="anchor">From DocOnce to Other Formats</h1>
 
 <p>
 We refer to the manual for detailed information on how to compile a DocOnce
 document to various formats. Here we just give a glimpse of the
 possibilities.
 
-<h2 id="___sec13">Example: Make an HTML File </h2>
+<h2 id="___sec13" class="anchor">Example: Make an HTML File </h2>
 
 <p>
 Suppose you have some DocOnce text in <code>mydoc.do.txt</code>. Here is how you
@@ -874,7 +886,7 @@ tailoring the compilation. Run <code>doconce format --help</code> to see a list
 of all options. Those that start with <code>--html_</code> are specific for the
 HTML output format.
 
-<h2 id="___sec14">Preprocessors </h2>
+<h2 id="___sec14" class="anchor">Preprocessors </h2>
 
 <p>
 A DocOnce compilation has three stages:
@@ -897,7 +909,7 @@ variable that tells which computer language the document is to apply).
 The preprocessors are definitely one of the strongest features of
 DocOnce.
 
-<h2 id="___sec15">Output Formats </h2>
+<h2 id="___sec15" class="anchor">Output Formats </h2>
 
 <p>
 DocOnce can be translated to many formats. For documents with much
@@ -919,7 +931,7 @@ Other formats are
  <li> <code>pandoc</code> (various Markdown formats)</li>
 </ul>
 
-<h2 id="___sec16">Slides </h2>
+<h2 id="___sec16" class="anchor">Slides </h2>
 
 <p>
 DocOnce has strong support for writing slides, see the
@@ -942,7 +954,7 @@ Several popular slide formats are supported:
  <li> Plain HTML</li>
 </ul>
 
-<h1 id="___sec17">Demos </h1>
+<h1 id="___sec17" class="anchor">Demos </h1>
 
 <p>
 Our <a href="http://hplgit.github.io/teamods/writing_reports/index.html" target="_self">short scientific report</a> is a good
@@ -981,8 +993,8 @@ formats.
 
 </div>  <!-- end container -->
 <!-- include javascript, jQuery *first* -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
 <!-- Bootstrap footer
 <footer>
@@ -992,7 +1004,7 @@ formats.
 
 
 <center style="font-size:80%">
-<!-- copyright --> &copy; 2016, Hans Petter Langtangen
+<!-- copyright --> &copy; 2017, Hans Petter Langtangen
 </center>
 
 
