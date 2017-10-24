@@ -1590,10 +1590,10 @@ function show_hide_code%d(){
         head = """
 <!-- Tools for embedded Bokeh plots -->
 <link rel="stylesheet"
-      href="http://cdn.pydata.org/bokeh/release/bokeh-%(bokeh_version)s.min.css"
+      href="https://cdn.pydata.org/bokeh/release/bokeh-%(bokeh_version)s.min.css"
       type="text/css" />
 <script type="text/javascript"
-	src="http://cdn.pydata.org/bokeh/release/bokeh-%(bokeh_version)s.min.js">
+	src="https://cdn.pydata.org/bokeh/release/bokeh-%(bokeh_version)s.min.js">
 </script>
 <script type="text/javascript">
   Bokeh.set_log_level("info");
@@ -1690,8 +1690,8 @@ def interpret_bokeh_plot(text):
         <meta charset="utf-8">
         <title>Damped vibrations</title>
 
-        <link rel="stylesheet" href="http://cdn.pydata.org/bokeh/release/bokeh-0.9.0.min.css" type="text/css" />
-        <script type="text/javascript" src="http://cdn.pydata.org/bokeh/release/bokeh-0.9.0.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.pydata.org/bokeh/release/bokeh-0.9.0.min.css" type="text/css" />
+        <script type="text/javascript" src="https://cdn.pydata.org/bokeh/release/bokeh-0.9.0.min.js"></script>
         <script type="text/javascript">
             Bokeh.set_log_level("info");
         </script>
@@ -2909,7 +2909,7 @@ def define(FILENAME_EXTENSION,
        heading_font_family == '?' or heading_font_family == 'help':
         errwarn(' '.join(google_fonts))
         _abort()
-    link = "@import url(http://fonts.googleapis.com/css?family=%s);"
+    link = "@import url(https://fonts.googleapis.com/css?family=%s);"
     import_body_font = ''
     if body_font_family is not None:
         if body_font_family in google_fonts:
@@ -3243,8 +3243,8 @@ body { %s; }
         # Embed Sage Cell server
         # See https://github.com/sagemath/sagecell/blob/master/doc/embedding.rst
         scripts += """
-<script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
-<script src="http://sagecell.sagemath.org/embedded_sagecell.js"></script>
+<script src="https://sagecell.sagemath.org/static/jquery.min.js"></script>
+<script src="https://sagecell.sagemath.org/embedded_sagecell.js"></script>
 <link rel="stylesheet" type="text/css" href="https://sagecell.sagemath.org/static/sagecell_embed.css">
 <script>
 $(function () {
@@ -3292,7 +3292,7 @@ Automatically generated HTML file from DocOnce source
         OUTRO['html'] += """
 </div>  <!-- end container -->
 <!-- include javascript, jQuery *first* -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
 <!-- Bootstrap footer
