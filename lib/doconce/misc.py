@@ -5577,15 +5577,15 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
 """
 
     # Check if we need minted or anslistings:
-    if re.search('\\usepackage.+minted', header):
+    if re.search(r'\\usepackage.+minted', header):
         slides = slides.replace(
             r'%\usepackage{minted}', r'\usepackage{minted}')
-    if re.search('\\usepackage.+listings', header):
+    if re.search(r'\\usepackage.+listings', header):
         m = re.search(r'^% Define colors.+?^% end of custom lstdefinestyles', header, flags=re.DOTALL|re.MULTILINE)
         lststyles = m.group() if m else ''
         slides = slides.replace(
             r'%\usepackage{listingsutf8}', r'\usepackage{listingsutf8}' + '\n\n' + lststyles)
-    if re.search('\\usepackage.+anslistings', header):
+    if re.search(r'\\usepackage.+anslistings', header):
         slides = slides.replace(
             r'%\usepackage{anslistings}', r'\usepackage{anslistings}')
 
