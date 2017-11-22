@@ -3334,9 +3334,9 @@ def doconce_split_html(header, parts, footer, basename, filename, slides=False):
     # Treat \eqref and labels: MathJax does not support references
     # to eq. labels in other files.
     # Also, skip equation references to external documents.
-    label_pattern = r'\label\{(.+?)\}'  # label in latex equations
+    label_pattern = r'\\label\{(.+?)\}'  # label in latex equations
     parts_label = [re.findall(label_pattern, ''.join(part)) for part in parts]
-    eqref_pattern = r'\eqref\{(.+?)\}'
+    eqref_pattern = r'\\eqref\{(.+?)\}'
     ref_pattern = r'ref(ch)?\[([^\]]*?)\]\[([^\]]*?)\]\[([^\]]*?)\]'
     parts_eqref = [re.findall(eqref_pattern,
                               re.sub(ref_pattern, '', ''.join(part)))
