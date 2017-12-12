@@ -79,6 +79,7 @@ envir2pyg = dict(
     dat='text', txt='text', csv='text',
     ipy='ipy', do='doconce',
     # pyopt and pysc are treated explicitly
+    r='r', php='php',
     )
 envir2lst = dict(
     pyshell='Python',
@@ -91,6 +92,7 @@ envir2lst = dict(
     dat='text', txt='text', csv='text',
     ipy='Python', do='text',
     # pyopt and pysc are treated explicitly
+    r='r', php='php',
     )
 
 def latex_code_envir(
