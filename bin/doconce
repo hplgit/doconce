@@ -1676,17 +1676,19 @@ doconce latex_exercise_toc myfile
 
 def main():
     from doconce import __version__ as version
+    import doconce
+    doconce_dir = os.path.dirname(doconce.__file__)
     if len(sys.argv) > 2 and sys.argv[1] == 'format' and misc_option('help'):
         help_format()
         sys.exit(0)
     if len(sys.argv) == 1 or misc_option('help'):
-        print('DocOnce version', version)
+        print('DocOnce version', version, '(from %s)' % doconce_dir)
         print('Usage: doconce command [optional arguments]')
         print('commands: %s' % (' '.join(commands)))
         help()
         sys.exit(0)
     if misc_option('version'):
-        print('DocOnce version', version)
+        print('DocOnce version', version, '(from %s)' % doconce_dir)
         sys.exit(0)
 
     command = sys.argv[1]
