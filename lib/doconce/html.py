@@ -2371,7 +2371,7 @@ def html_index_bib(filestr, index, citations, pubfile, pubdata):
 
     # could use anchors for idx{...}, but multiple entries of an index
     # would lead to multiple anchors, so remove them all:
-    filestr = re.sub(r'idx\{.+?\}\n?', '', filestr)
+    filestr = re.sub(r'idx\{([^\{\}]*(?:\{[^\}]*\})?[^\}]*)\}\n?', '', filestr)
 
     return filestr
 
@@ -3216,9 +3216,10 @@ body { %s; }
 """ % (outfilename, title, code_custom_links)
 
 
-    keywords = re.findall(r'idx\{(.+?)\}', filestr)
+    keywords = re.findall(r'idx\{([^\{\}]*(?:\{[^\}]*\})?[^\}]*)\}', filestr)
     # idx with verbatim is usually too specialized - remove them
-    keywords = [keyword for keyword in keywords
+    # Strip cross-references as well
+    keywords = [keyword.split('|')[0] for keyword in keywords
                 if not '`' in keyword]
     # Keywords paragraph
     from . import common

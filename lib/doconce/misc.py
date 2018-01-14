@@ -7504,7 +7504,7 @@ def _capitalize(filestr, cap_words, cap_words_fix):
             # comes after the initial word)
             word0 = title.split()[0]
             if word0 in ['Exercise:', 'Problem:', 'Project:', 'Example:',
-                         '[Exercise}:', '{Problem}:', '{Project}:', '{Example}:',]:
+                         '{Exercise}:', '{Problem}:', '{Project}:', '{Example}:',]:
                 title = title.replace(word0, '').strip()
                 new_title = word0 + ' ' + title.capitalize()
             else:
