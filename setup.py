@@ -86,7 +86,9 @@ setup(
     data_files=[(os.path.join("share", "man", "man1"),[man_filename,]),],
     install_requires=[
         'pygments',
-        'preprocess',
+        #'preprocess',
+        # PIP will pull outdated preprocess from PyPi if preprocess is not already installed
+        # do pip install --upgrade git+https://github.com/doconce/preprocess instead
         'mako',
         'future'
     ],
