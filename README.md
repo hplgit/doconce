@@ -33,10 +33,11 @@ Here are some recent books written in DocOnce:
 
 ### Installation
 
-DocOnce is a pure Python package and installed by
+DocOnce is a pure Python package and can be installed with `pip`.
 
 
 ```
+Terminal> sudo pip install --upgrade git+https://github.com/doconce/preprocess
 Terminal> sudo pip install --upgrade .
 ```
 

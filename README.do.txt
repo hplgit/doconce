@@ -38,9 +38,10 @@ FIGURE: [doc/src/manual/fig/doconce_books, width=600 frac=0.8]
 
 ===== Installation =====
 
-DocOnce is a pure Python package and installed by
+DocOnce is a pure Python package and can be installed with `pip`.
 
 !bc sys
+Terminal> sudo pip install --upgrade git+https://github.com/doconce/preprocess
 Terminal> sudo pip install --upgrade .
 !ec
 

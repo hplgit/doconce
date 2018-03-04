@@ -192,15 +192,34 @@ index entries, figures, tables, and admonitions).
 
 <h2>Installation</h2>
 
-DocOnce is a pure Python package and installed by
+DocOnce is a pure Python package and can be installed with <code>pip</code>.
 
 <p>
-<pre>Terminal&gt; sudo python setup.py install
+<pre>
+Terminal&gt; sudo pip install --upgrade git+https://github.com/doconce/preprocess
+Terminal&gt; sudo pip install --upgrade .
 </pre>
 <p>
 However, DocOnce has <em>a lot</em> of dependencies, depending on what type of
 formats you want to work with and how advanced constructiosn that are
 used in the text.
+
+<p>
+With Anaconda it is trivial to install DocOnce and all
+dependencies by
+
+<p>
+
+<pre>
+Terminal&gt; conda config --add channels conda-forge
+Terminal&gt; conda install doconce
+</pre>
+
+<div class="alert alert-block alert-warning alert-text-normal">
+<b>Warning.</b>
+<p>
+As of March 2017, a few dependencies have yet to be added to the <code>conda-forge</code> channel, but most formats should work fine.
+</div>
 
 <p>
 On Debian/Ubuntu it is fairly straightforward
@@ -211,9 +230,12 @@ detailed description of what is needed of software for various purposes.
 
 <p>
 <div class="alert alert-block alert-warning alert-text-normal">
-<b>Install from GitHub repo, not from binary packages.</b>
+<b>Install from GitHub repo, not from Debian.</b>
 <p>
-If you rely on the Debian package on Linux systems (<code>sudo apt-get install python-doconce</code>), note that this version of DocOnce is old and out of sync with the documentation.
+Although DocOnce is in Debian, do not run <code>sudo apt-get install python-doconce</code>
+as this gives a very old version of DocOnce that is out of sync with the
+documentation. Instead, clone the DocOnce GitHub repo as shown above
+and run <code>pip install</code> or use <code>conda install</code>.
 </div>
 
 
