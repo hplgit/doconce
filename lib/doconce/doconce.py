@@ -357,6 +357,10 @@ def markdown2doconce(filestr, format=None, ipynb_mode=False):
         (r"\n?```([A-Za-z]+)(.*?)\n```", lambda m: "\n\n!bc %scod%s%s\n!ec\n" % (extended_markdown_language2dolang[m.group(1)], bc_postfix, unindent_lines(m.group(2).rstrip(), trailing_newline=False)), re.DOTALL), # language given
         # Computer code without (or the same) language specification
         (r"\n?```\n(.+?)\n```", lambda m: "\n\n!bc\n%s\n!ec\n" % unindent_lines(m.group(1).rstrip(), trailing_newline=False), re.DOTALL),
+        # Figure/movie (the figure/movie syntax is in a dom: comment)
+        (r'<!-- begin figure -->.+?<!-- end figure -->\n', '', re.DOTALL),
+        (r'<!-- begin movie -->.+?<!-- end movie -->\n', '', re.DOTALL),
+        (r'!\[(.+?)\]\((.+?)\)', 'FIGURE: [\g<2>, width=600 frac=0.8] \g<1>\n'),
         # Paragraph heading written in boldface
         (r"\n\n\*\*(?P<subst>[^*]+?)([.?!:])\*\* ", r"\n\n__\g<subst>\g<2>__ "),
         # Boldface **word** to _word_
@@ -371,10 +375,6 @@ def markdown2doconce(filestr, format=None, ipynb_mode=False):
         # Equation
         (r"\n?\$\$\n *(\\begin\{.+?\}.+?\\end\{.+?\})\s+\$\$", r"\n!bt\n\g<1>\n!et", re.DOTALL),
         (r"\n?\$\$\n(.+?)\n\$\$", r"\n!bt\n\\[ \g<1> \]\n!et", re.DOTALL),
-        # Figure/movie (the figure/movie syntax is in a dom: comment)
-        (r'<!-- begin figure -->.+?<!-- end figure -->\n', '', re.DOTALL),
-        (r'<!-- begin movie -->.+?<!-- end movie -->\n', '', re.DOTALL),
-        (r'!\[(.+?)\]\((.+?)\)', 'FIGURE: [\g<2>, width=600 frac=0.8] \g<1>\n'),
         # TOC
         (r"^\[TOC\]", r"TOC: on", re.MULTILINE),
         # doconce metadata comments in .ipynb files

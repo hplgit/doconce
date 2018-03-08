@@ -72,7 +72,7 @@ system('sudo pip install jsonschema')
 # Preprocessors
 system('sudo pip install future')
 system('sudo pip install mako')
-system('sudo pip install -e git+https://github.com/hplgit/preprocess#egg=preprocess')
+system('sudo pip install -e git+https://github.com/doconce/preprocess#egg=preprocess')
 
 # Publish for handling bibliography
 system('sudo pip install python-Levenshtein')

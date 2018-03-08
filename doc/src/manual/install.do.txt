@@ -49,17 +49,18 @@ DocOnce itself is pure Python code hosted at URL:
 Installation can be done via
 
 !bc sys
-sudo pip install -e git+https://github.com/hplgit/doconce#egg=doconce
+sudo pip install git+https://github.com/hplgit/doconce
 # or if doconce is already installed
-sudo pip install -e git+https://github.com/hplgit/doconce#egg=doconce --upgrade
+sudo pip install git+https://github.com/hplgit/doconce --upgrade
 !ec
+
 However, the recommended approach is to have a copy of the source on
-the local computer and run `setup.py`:
+the local computer and run `pip install` in that directory:
 
 !bc sys
 git clone git@github.com:hplgit/doconce.git
 cd doconce
-sudo python setup.py install
+sudo pip install .
 cd ..
 !ec
 Since DocOnce is frequently updated, it becomes necessary to ensure
@@ -68,7 +69,7 @@ that you work with the most recent version:
 !bc sys
 cd doconce
 git pull origin master
-sudo python setup.py install
+sudo pip install --upgrade .
 !ec
 
 
@@ -93,12 +94,12 @@ is no bibliography, and you stick to the output formats LaTeX and HTML
 
 === Preprocessors ===
 
-If you make use of the "Preprocess": "https://github.com/hplgit/preprocess"
+If you make use of the "Preprocess": "https://github.com/doconce/preprocess"
 preprocessor, this program must be installed:
 
 !bc sys
 pip install -e \
-   git+https://github.com/hplgit/preprocess#egg=preprocess --upgrade
+   git+https://github.com/doconce/preprocess#egg=preprocess --upgrade
 !ec
 A much more advanced alternative to Preprocess is
 "Mako": "http://www.makotemplates.org". Its installation is done by

@@ -801,7 +801,7 @@ $$
 <center>[3] <b>Centre for Computing in Science Education, University of Oslo</b></center>
 <br>
 <p>
-<center><h4>Oct 24, 2017</h4></center> <!-- date -->
+<center><h4>Mar 4, 2018</h4></center> <!-- date -->
 <br>
 <p>
 <!-- lines beginning with # are doconce comment lines -->
@@ -13292,20 +13292,20 @@ Installation can be done via
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>sudo pip install -e git+https://github.com/hplgit/doconce#egg=doconce
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>sudo pip install git+https://github.com/hplgit/doconce
 # or if doconce is already installed
-sudo pip install -e git+https://github.com/hplgit/doconce#egg=doconce --upgrade
+sudo pip install git+https://github.com/hplgit/doconce --upgrade
 </pre></div>
 <p>
 However, the recommended approach is to have a copy of the source on
-the local computer and run <code>setup.py</code>:
+the local computer and run <code>pip install</code> in that directory:
 
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>git clone git@github.com:hplgit/doconce.git
 cd doconce
-sudo python setup.py install
+sudo pip install .
 cd ..
 </pre></div>
 <p>
@@ -13317,7 +13317,7 @@ that you work with the most recent version:
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>cd doconce
 git pull origin master
-sudo python setup.py install
+sudo pip install --upgrade .
 </pre></div>
 
 <h2 id="___sec227" class="anchor">Dependencies </h2>
@@ -13345,14 +13345,14 @@ is no bibliography, and you stick to the output formats LaTeX and HTML
 <h3 id="___sec229" class="anchor">Preprocessors </h3>
 
 <p>
-If you make use of the <a href="https://github.com/hplgit/preprocess" target="_self">Preprocess</a>
+If you make use of the <a href="https://github.com/doconce/preprocess" target="_self">Preprocess</a>
 preprocessor, this program must be installed:
 
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>pip install -e \
-   git+https://github.com/hplgit/preprocess#egg=preprocess --upgrade
+   git+https://github.com/doconce/preprocess#egg=preprocess --upgrade
 </pre></div>
 <p>
 A much more advanced alternative to Preprocess is
@@ -13887,7 +13887,7 @@ syntax and not references for explaining parts of the text.
 
 
 <center style="font-size:80%">
-<!-- copyright --> &copy; 2017, Hans Petter Langtangen, Kristian Gregorius Hustad. Made with <a href="https://github.com/hplgit/doconce">DocOnce</a>
+<!-- copyright --> &copy; 2018, Hans Petter Langtangen, Kristian Gregorius Hustad. Made with <a href="https://github.com/hplgit/doconce">DocOnce</a>
 </center>
 
 

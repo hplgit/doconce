@@ -69,7 +69,7 @@ pip_install jsonschema
 # Preprocessors
 pip_install future
 pip_install mako
-pip_install -e git+https://github.com/hplgit/preprocess#egg=preprocess
+pip_install -e git+https://github.com/doconce/preprocess#egg=preprocess
 
 # Publish for handling bibliography
 pip_install python-Levenshtein

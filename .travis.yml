@@ -13,11 +13,11 @@ addons:
   apt:
     packages:
       - python-dev
-      - python-pygments
+      - python-pip
 before_install:
-    - sudo pip install future --upgrade
+    - sudo pip install --upgrade git+https://github.com/doconce/preprocess
 install:
-    - sudo python setup.py install
+    - sudo pip install .
 script:
     - doconce --version
     - doconce

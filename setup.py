@@ -18,7 +18,7 @@ import os, sys, glob, gzip, tempfile
 # (need this for extracting the version below)
 sys.path.insert(0, os.path.join('lib'))
 
-__version__ = '1.4.4'
+__version__ = '1.4.5'
 
 man_filename = os.path.join("doc", "man", "man1", "doconce.1")
 if "install" in sys.argv:
@@ -86,7 +86,9 @@ setup(
     data_files=[(os.path.join("share", "man", "man1"),[man_filename,]),],
     install_requires=[
         'pygments',
-        'preprocess',
+        #'preprocess',
+        # PIP will pull outdated preprocess from PyPi if preprocess is not already installed
+        # do pip install --upgrade git+https://github.com/doconce/preprocess instead
         'mako',
         'future'
     ],
