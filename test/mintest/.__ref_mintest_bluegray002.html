@@ -11,27 +11,50 @@ Automatically generated HTML file from DocOnce source
 <title>A minimal test that DocOnce works</title>
 
 <!-- Bootstrap style: bootstrap_bluegray -->
-<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_bootstrap/css/bootstrap_bluegray.css" rel="stylesheet">
 <!-- not necessary
-<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+<link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 -->
+
+<style type="text/css">
+
+/* Add scrollbar to dropdown menus in bootstrap navigation bar */
+.dropdown-menu {
+   height: auto;
+   max-height: 400px;
+   overflow-x: hidden;
+}
+
+/* Adds an invisible element before each target to offset for the navigation
+   bar */
+.anchor::before {
+  content:"";
+  display:block;
+  height:50px;      /* fixed header height for style bootstrap_bluegray */
+  margin:-50px 0 0; /* negative fixed header height */
+}
+</style>
 
 
 </head>
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Test of plain text ', 1, None, '___sec0'),
-              (' Test standard text with lists and inline tagging ',
+ 'sections': [('Table of contents',
+               1,
+               'table_of_contents',
+               'table_of_contents'),
+              ('Test of plain text', 1, None, '___sec0'),
+              ('Test standard text with lists and inline tagging',
                2,
                None,
                '___sec1'),
-              (' Test of figures and movies ', 2, None, '___sec2'),
-              (' Test of math, code, admons, quiz ', 1, None, '___sec3'),
-              (' Math ', 2, None, '___sec4'),
-              (' Code ', 2, None, '___sec5'),
-              (' Admonitions ', 2, None, '___sec6')]}
+              ('Test of figures and movies', 2, None, '___sec2'),
+              ('Test of math, code, admons, quiz', 1, None, '___sec3'),
+              ('Math', 2, None, '___sec4'),
+              ('Code', 2, None, '___sec5'),
+              ('Admonitions', 2, None, '___sec6')]}
 end of tocinfo -->
 
 <body>
@@ -46,8 +69,8 @@ MathJax.Hub.Config({
   }
 });
 </script>
-<script type="text/javascript"
- src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+<script type="text/javascript" async
+ src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
 
@@ -63,11 +86,13 @@ MathJax.Hub.Config({
     </button>
     <a class="navbar-brand" href="_ref_mintest_bluegray.html">A minimal test that DocOnce works</a>
   </div>
+
   <div class="navbar-collapse collapse navbar-responsive-collapse">
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href=".__ref_mintest_bluegray001.html#table_of_contents" style="font-size: 80%;"><b>Table of contents</b></a></li>
      <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;"><b>Test of plain text</b></a></li>
      <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Test standard text with lists and inline tagging</a></li>
      <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Test of figures and movies</a></li>
@@ -90,9 +115,9 @@ MathJax.Hub.Config({
 <a name="part0002"></a>
 <!-- !split -->
 
-<h1 id="___sec0">Test of plain text </h1>
+<h1 id="___sec0" class="anchor">Test of plain text </h1>
 
-<h2 id="___sec1">Test standard text with lists and inline tagging </h2>
+<h2 id="___sec1" class="anchor">Test standard text with lists and inline tagging </h2>
 
 <p>
 Here are some DocOnce features:
@@ -138,21 +163,21 @@ Here are some DocOnce features:
     cleaner LaTeX and HTML output.</li>
 </ul>
 
-<h2 id="___sec2">Test of figures and movies </h2>
+<h2 id="___sec2" class="anchor">Test of figures and movies </h2>
 
 <p>
 Inline figure:
 
 <p>
-<center><p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=300></p></center>
+<br /><br /><center><p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=300></p></center><br /><br />
 
 <p>
 Figure <a href="#fig1">1</a> has a caption.
 
 <p>
-<center> <!-- figure -->
+<center> <!-- figure label: --> <div id="fig1"></div> <!-- FIGURE -->
 <hr class="figure">
-<center><p class="caption">Figure 1:  Figure with caption. <div id="fig1"></div> </p></center>
+<center><p class="caption">Figure 1:  Figure with caption.  <!-- caption label: fig1 --> </p></center>
 <p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=300></p>
 </center>
 
@@ -174,13 +199,21 @@ Here is a YouTube movie:
 </div>
 <p><em>Movie on the hard disk: 1D wave motion.</em></p>
 
+<!-- Issue warning if in a Safari browser -->
+<script language="javascript">
+if (!!(window.safari)) {
+  document.write("<div style=\"width: 95%%; padding: 10px; border: 1px solid #100; border-radius: 4px;\"><p><font color=\"red\">The above movie will not play in Safari - use Chrome, Firefox, or Opera.</font></p></div>")}
+</script>
+
 <p>
 <p>
 <!-- navigation buttons at the bottom of the page -->
 <ul class="pager">
+\
   <li class="previous">
     <a href=".__ref_mintest_bluegray001.html">&larr; Prev</a>
   </li>
+\
   <li class="next">
     <a href=".__ref_mintest_bluegray003.html">Next &rarr;</a>
   </li>
@@ -189,8 +222,8 @@ Here is a YouTube movie:
 
 </div>  <!-- end container -->
 <!-- include javascript, jQuery *first* -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
 <!-- Bootstrap footer
 <footer>

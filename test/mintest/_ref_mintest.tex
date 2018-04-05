@@ -9,17 +9,17 @@
 %-------------------- begin preamble ----------------------
 
 \documentclass[%
-twoside,                 % oneside: electronic viewing, twoside: printing
-final,                   % or draft (marks overfull hboxes, figures with paths)
+oneside,                 % oneside: electronic viewing, twoside: printing
+final,                   % draft: marks overfull hboxes, figures with paths
 10pt]{article}
 
-\listfiles               % print all files needed to compile this document
+\listfiles               %  print all files needed to compile this document
 
-\usepackage{relsize,makeidx,color,setspace,amsmath,amsfonts}
+\usepackage{relsize,makeidx,color,setspace,amsmath,amsfonts,amssymb}
 \usepackage[table]{xcolor}
-\usepackage{bm,microtype}
+\usepackage{bm,ltablex,microtype}
 
-\usepackage{graphicx}
+\usepackage[pdftex]{graphicx}
 
 % Movies are handled by the href package
 \newenvironment{doconce:movie}{}{}
@@ -31,28 +31,29 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % Define colors
 \definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
+\definecolor{tucorange}{rgb}{1.0,0.64,0}
 \definecolor{darkorange}{rgb}{.71,0.21,0.01}
 \definecolor{darkgreen}{rgb}{.12,.54,.11}
 \definecolor{myteal}{rgb}{.26, .44, .56}
 \definecolor{gray}{gray}{0.45}
 \definecolor{mediumgray}{gray}{.8}
 \definecolor{lightgray}{gray}{.95}
+\definecolor{brown}{rgb}{0.54,0.27,0.07}
+\definecolor{purple}{rgb}{0.5,0.0,0.5}
+\definecolor{darkgray}{gray}{0.25}
+\definecolor{darkblue}{rgb}{0,0.08,0.45}
+\definecolor{darkblue2}{rgb}{0,0,0.8}
+\definecolor{lightred}{rgb}{1.0,0.39,0.28}
+\definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
+\definecolor{lightblue}{rgb}{0.53,0.81,0.92}
+\definecolor{lightblue2}{rgb}{0.3,0.3,1.0}
+\definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
+\definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
 
 \colorlet{comment_green}{green!50!black}
 \colorlet{string_red}{red!60!black}
 \colorlet{keyword_pink}{magenta!70!black}
 \colorlet{indendifier_green}{green!70!white}
-
-% New ansi colors
-\definecolor{brown}{rgb}{0.54,0.27,0.07}
-\definecolor{purple}{rgb}{0.5,0.0,0.5}
-\definecolor{darkgray}{gray}{0.25}
-\definecolor{darkblue}{rgb}{0,0.08,0.45}
-\definecolor{lightred}{rgb}{1.0,0.39,0.28}
-\definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
-\definecolor{lightblue}{rgb}{0.53,0.81,0.92}
-\definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
-\definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
 
 % Backgrounds for code
 \definecolor{cbg_gray}{rgb}{.95, .95, .95}
@@ -98,17 +99,18 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
     }
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
-\setcounter{tocdepth}{2}  % number chapter, section, subsection
+\setcounter{tocdepth}{2}  % levels in table of contents
 
 % Tricks for having figures close to where they are defined:
 % 1. define less restrictive rules for where to put figures
 \setcounter{topnumber}{2}
 \setcounter{bottomnumber}{2}
 \setcounter{totalnumber}{4}
-\renewcommand{\topfraction}{0.85}
-\renewcommand{\bottomfraction}{0.85}
-\renewcommand{\textfraction}{0.15}
-\renewcommand{\floatpagefraction}{0.7}
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.95}
+\renewcommand{\textfraction}{0}
+\renewcommand{\floatpagefraction}{0.75}
+% floatpagefraction must always be less than topfraction!
 % 2. ensure all figures are flushed before next section
 \usepackage[section]{placeins}
 % 3. enable begin{figure}[H] (often leads to ugly pagebreaks)
@@ -271,13 +273,17 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \raggedbottom
 \makeindex
+\usepackage[totoc]{idxlayout}   % for index in the toc
+\usepackage[nottoc]{tocbibind}  % for references/bibliography in the toc
 
 %-------------------- end preamble ----------------------
 
 \begin{document}
 
-% endif for #ifdef PREAMBLE
+% matching end for #ifdef PREAMBLE
 % #endif
+
+\newcommand{\exercisesection}[1]{\subsection*{#1}}
 
 \input{newcommands_bfmath}
 \input{newcommands_replace}
@@ -304,15 +310,17 @@ A minimal test that DocOnce works
 {\bf Hans Petter Langtangen${}^{}$} \\ [0mm]
 \end{center}
 
-    \begin{center}
+\begin{center}
 % List of all institutions:
 \end{center}
     
 % ----------------- end author(s) -------------------------
 
-\begin{center} % date
+% --- begin date ---
+\begin{center}
 Jan 1, 2031
 \end{center}
+% --- end date ---
 
 \vspace{1cm}
 
@@ -393,15 +401,19 @@ Inline figure:
 
 
 
+\vspace{6mm}
+
 % inline figure
 \centerline{\includegraphics[width=0.7\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
+
+\vspace{6mm}
 
 
 
 Figure~\ref{fig1} has a caption.
 
 
-\begin{figure}[t]
+\begin{figure}[!ht]  % fig1
   \centerline{\includegraphics[width=0.7\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
   \caption{
   Figure with caption. \label{fig1}
@@ -424,14 +436,10 @@ Here is a YouTube movie:
 
 \begin{doconce:movie}
 \refstepcounter{doconce:movie:counter}
-\begin{center}
+\begin{quote}
 % link to external viewer
-\href{run:../doc/src/manual/mov/wave.webm}{\nolinkurl{../doc/src/manual/mov/wave.webm}}
-\end{center}
-
-\begin{center}  % movie caption
-Movie \arabic{doconce:movie:counter}: Movie on the hard disk: 1D wave motion.
-\end{center}
+Movie \arabic{doconce:movie:counter}: Movie on the hard disk: 1D wave motion. \href{run:../doc/src/manual/mov/wave.webm}{\nolinkurl{../doc/src/manual/mov/wave.webm}}
+\end{quote}
 \end{doconce:movie}
 
 
@@ -481,7 +489,7 @@ print trapezoidal(f, 0, 4)
 \begin{question_mdfboxadmon}[Question.]
 How do adminitions look like? That depends on the output format and
 what type of admon design in the format one has chosen.
-\end{question_mdfboxadmon}
+\end{question_mdfboxadmon} % title: Question.
 
 
 
@@ -490,16 +498,13 @@ what type of admon design in the format one has chosen.
 Many DocOnce errors arise from wrong use of white space. The white space
 is not as critical as in reStructuredText, but is not ignored either,
 as in {\LaTeX} and HTML.
-\end{warning_mdfboxadmon}
+\end{warning_mdfboxadmon} % title: White space is important!
 
 
 
 % ------------------- end of main content ---------------
 
-
 % #ifdef PREAMBLE
-\printindex
-
 \end{document}
 % #endif
 
