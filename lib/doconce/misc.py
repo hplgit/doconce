@@ -3381,7 +3381,7 @@ def doconce_split_html(header, parts, footer, basename, filename, slides=False):
                     i = 0  # restart numbering
                     has_chapters = True
             if 'label{' in line:
-                m = re.search(r'\label\{(.+?)\}', line)
+                m = re.search(r'\\label\{(.+?)\}', line)
                 if m:
                     label = m.group(1)
                     if label in labels:
@@ -8227,7 +8227,7 @@ def _latex2doconce(filestr):
         if r'\end{itemize}' in lines[i] or r'\eit' in lines[i]:
             inside_itemize = False
             lines[i] = ''
-        if re.search(r'^\s*\appendix', lines[i]):
+        if re.search(r'^\s*\\appendix', lines[i]):
             appendix = True
         if appendix and 'section{' in lines[i] or 'section*{' in lines[i]:
             lines[i] = re.sub(r'section\*?\{(.+?)\}',
@@ -8635,7 +8635,7 @@ def latex_dislikes():
 
     for line in lines:
         if r'\begin{' in line:
-            m = re.search(r'\begin\{(.+?)\}', line)
+            m = re.search(r'\\begin\{(.+?)\}', line)
             if m:
                 envir = m.group(1)
                 if envir in begin_likes:
