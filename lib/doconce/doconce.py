@@ -60,7 +60,7 @@ locale_dict = dict(
         # References
         'Filename': 'Filename',
         'Filenames': 'Filenames',
-        },
+    },
     Norwegian={
         'locale': 'nb_NO.UTF-8', # norsk bokmål
         'latex package': 'norsk',
@@ -94,7 +94,7 @@ locale_dict = dict(
         '__Hint.__': '__Hint.__',
         'Filename': 'Filnavn',
         'Filenames': 'Filnavn',
-        },
+    },
     German={
         'locale': 'de_DE.UTF-8',
         'latex package': 'german',
@@ -132,7 +132,7 @@ locale_dict = dict(
         # References
         'Filename': 'Dateiname',
         'Filenames': 'Dateiname',
-        },
+    },
     Basque={
 	    'locale': 'eu_ES.UTF-8',
 	    'latex package': 'basque',
@@ -170,7 +170,45 @@ locale_dict = dict(
 	    # References
 	    'Filename': 'Fitxategi',
 	    'Filenames': 'Fitxategiak',
-	    },
+    },
+    Arabic={
+        'locale': 'ar_SA.UTF-8',
+        'latex package': 'arabic',
+        'toc': u'الفَهْرس',
+        'Contents': u'المُحْتويات',
+        'Figure': u'رَسْم تَوضِيحي',
+        'Movie': u'فِيلم',
+        'list of': u'قَائِمة',
+        'and': u'و',
+        'Exercise': u'تَمْرِين',
+        'Project': u'مَشْرُوع',
+        'Problem': u'مَسْألة',
+        'Example': u'مِثَال',
+        'Projects': u'مَشَارِيع',
+        'Problems': u'مَسَائِل',
+        'Examples': u'أَمْثِلة',
+        'Preface': u'مُقَدِّمة',
+        'Abstract': u'المُلَّخص',
+        'Summary': u'الخُلاصَة',
+        # Admons
+        'summary': u'الخُلاصة',
+        'hint': u'تَلْمِيح',
+        'question': u'سُؤال',
+        'notice': u'تَنْبِيه',
+        'warning': u'تَحْذِير',
+        # box, quote are silent wrt title
+        'remarks': u'مُلاحَظات', # In exercises
+        # Exercise headings
+        'Solution': u'الحَل',
+        '__Solution.__': u'__الحَل__',
+        '__Answer.__': u'__الجَواب__',
+        '__Hint.__': u'__تَلْميح__',
+        # At the end (in Sphinx)
+        'index': u'الدَّليل',
+        # References
+        'Filename': u'اسم_الملف',
+        'Filenames': u'أسماء_الملفات',
+    }
     )
 
 def debugpr(heading='', text=''):
