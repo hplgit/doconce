@@ -1,0 +1,87 @@
+TITLE: DocOnce with Arabic
+AUTHOR: عبدالله أحمد الحدب
+DATE: today
+
+idx{المُلَّخص}
+
+__المُلَّخص.__
+هذا الملف يشرح طريقة استخدام Doconce مع اللغة العربية cite{english_text}.
+
+TOC: on
+
+======= العنوان الأول: إجراء عمليات حسابية =======
+
+idx{عمليات حسابيه}
+
+!bquote
+أول تمرين هو $0+0$ . هذا تمرين سيط جداً
+!equote
+
+!bnotice
+نعم، $1+1$ هذه نتيجه يمكن استخدامها بدون إثباتها رياضياً
+!enotice
+
+!bquestion
+ما هو ناتج هذه العمليه الحسابية  $1-1$ ؟
+!equestion
+
+!bsummary
+الجمع والطرح عمليات عكسيه لبعضهم البعض
+!esummary
+
+idx{admon demo}
+
+!bnotice Box العنوان !
+هنا نستطيع استخدام اللغة العربية
+!enotice
+
+
+===== مَسْألة :  أوجد ناتج جمع رقمين =====
+file=add
+idx{الجمع}
+
+احسب $1+2$.
+
+!bsol
+قم بعملية الجمع باستخدام أصابع اليد
+!esol
+
+!bans
+3.
+!eans
+
+===== مَشْرُوع : أوجد ناتج عملية الضرب =====
+file=multiply
+
+أوجد ناتج
+$3 \cdot 4 $.
+
+!bhint
+يمكنك استخدام الآله الحاسبه في هذا التمرين.
+!ehint
+
+!bremarks
+ملاحظه , $3\cdot 4 = 4\cdot 3$.
+!eremarks
+
+===== الرياضيات المتقدمة =====
+
+هذه أشهر معادلة رياضية في العلوم على الإطلاق .
+
+!bbox
+!bt
+\[ E = mc^2 \]
+!et
+!ebox
+
+# #ifdef _
+======= العنوان الثاني :إضافة ماقاطع الفيديو و الصور =======
+
+MOVIE: [http://www.youtube.com/watch?v=bp3mCgrdMxU, width=420 height=315] YouTube film.
+
+FIGURE: [https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/blog/f_plot.png, width=500 frac=0.8] Here is a sketch of a function.
+# #endif
+
+======= المصادر =======
+
+BIBFILE: papers.pub
