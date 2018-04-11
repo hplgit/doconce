@@ -385,14 +385,14 @@ def markdown2doconce(filestr, format=None, ipynb_mode=False):
 
     from .common import inline_tag_begin, inline_tag_end
     extended_markdown_language2dolang = dict(
-        Python='py', Ruby='rb', Fortran='f', Cpp='cpp', C='c',
-        Perl='pl', Bash='sh', HTML='html')
+        python='py', ruby='rb', fortran='f', cpp='cpp', c='c',
+        perl='pl', bash='sh', html='html')
 
     bc_postfix = '-t' if ipynb_mode else ''
     from .common import unindent_lines
     regex = [
         # Computer code with language specification
-        (r"\n?```([A-Za-z]+)(.*?)\n```", lambda m: "\n\n!bc %scod%s%s\n!ec\n" % (extended_markdown_language2dolang[m.group(1)], bc_postfix, unindent_lines(m.group(2).rstrip(), trailing_newline=False)), re.DOTALL), # language given
+        (r"\n?```([A-Za-z]+)(.*?)\n```", lambda m: "\n\n!bc %scod%s%s\n!ec\n" % (extended_markdown_language2dolang[m.group(1).lower()], bc_postfix, unindent_lines(m.group(2).rstrip(), trailing_newline=False)), re.DOTALL), # language given
         # Computer code without (or the same) language specification
         (r"\n?```\n(.+?)\n```", lambda m: "\n\n!bc\n%s\n!ec\n" % unindent_lines(m.group(1).rstrip(), trailing_newline=False), re.DOTALL),
         # Figure/movie (the figure/movie syntax is in a dom: comment)
