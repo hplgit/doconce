@@ -1098,12 +1098,7 @@ def latex_figure(m):
             errwarn('*** error: cannot fetch latex figure %s on the net (no connection or invalid URL)' % filename)
             _abort()
         import urllib.request, urllib.parse, urllib.error
-        f = urllib.request.urlopen(filename)
-        file_content = f.read()
-        f.close()
-        f = open(basename, 'w')
-        f.write(file_content)
-        f.close()
+        urllib.request.urlretrieve(filename, basename)
         filename = os.path.join(figdir, basename)
         os.chdir(this_dir)
 
