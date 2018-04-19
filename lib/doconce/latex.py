@@ -2609,7 +2609,7 @@ def latex_quiz(quiz):
     import string
     for i, choice in enumerate(quiz['choices']):
         if 'letter' in choice_tp:
-            text += '\\textbf{%s}. ' % string.uppercase[i]
+            text += '\\textbf{%s}. ' % string.ascii_uppercase[i]
         elif 'number' in choice_tp:
             text += '\\textbf{%s}. ' % str(i+1)
         if option('without_answers') and option('without_solutions'):
@@ -2625,7 +2625,7 @@ def latex_quiz(quiz):
         correct = [i for i, choice in enumerate(quiz['choices'])
                    if choice[0] == 'right']
         if 'letter' in choice_tp:
-            correct = [string.uppercase[i] for i in correct]
+            correct = [string.ascii_uppercase[i] for i in correct]
         else:
             # keep number but add 1
             correct = [str(i+1) for i in correct]
@@ -2646,7 +2646,7 @@ def latex_quiz(quiz):
 
         for i, choice in enumerate(quiz['choices']):
             if 'letter' in choice_tp:
-                solution += '\\textbf{%s}: ' % string.uppercase[i]
+                solution += '\\textbf{%s}: ' % string.ascii_uppercase[i]
             else:
                 solution += '\\textbf{%s}: ' % str(i+1)
             solution += choice[0].capitalize() + '. '
