@@ -340,6 +340,11 @@ def ipynb_code(filestr, code_blocks, code_block_types,
     src_paths = set()
     mpl_inline = False
 
+    # allow the user to disable automatic insertion of `%matplotlib inline`
+    disable_mpl_inline = option('ipynb_disable_mpl_inline', False)
+    if disable_mpl_inline:
+        mpl_inline = True
+
     split_pyshell = option('ipynb_split_pyshell=', 'on')
     if split_pyshell is None:
         split_pyshell = False

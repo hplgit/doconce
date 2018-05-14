@@ -477,6 +477,8 @@ Note that pyshell-t and ipy-t environments just displays the session,
 while default pyshell and ipy removes all output (all output from print
 statements will come after the entire session).
 """),
+    ('--ipynb_disable_mpl_inline', """Disable automatic insertion of `%matplotlib inline`
+before the first import of matplotlib."""),
     ('--ipynb_cite=', """Typesetting of bibliography.
 plain: simple native typesetting (same as pandoc) (default)
 latex: ipynb support for latex-style bibliographies (not mature)."""),
