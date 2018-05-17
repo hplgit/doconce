@@ -409,7 +409,7 @@ def markdown2doconce(filestr, format=None, ipynb_mode=False):
         # equation references from doconce-translatex ipynb files (do this before links! - same syntax...)
         (r'\[\(\d+?\)\]\(#(.+?)\)', r'(ref{\g<1>})'),
         # Link with link text
-        (r"\[(?P<text>[^\]]+?)\]\((?P<url>.+?)\)", r'"\g<text>": "(\g<url>)"'),
+        (r"\[(?P<text>[^\]]+?)\]\((?P<url>.+?)\)", r'"\g<text>": "\g<url>"'),
         # Equation
         (r"\n?\$\$\n *(\\begin\{.+?\}.+?\\end\{.+?\})\s+\$\$", r"\n!bt\n\g<1>\n!et", re.DOTALL),
         (r"\n?\$\$\n(.+?)\n\$\$", r"\n!bt\n\\[ \g<1> \]\n!et", re.DOTALL),
