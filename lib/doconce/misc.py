@@ -7936,8 +7936,8 @@ def _latex2doconce(filestr):
         (r'\\idxfn\{(?P<subst>.+?)\}', r'idx{`\g<subst>` (FEniCS)}'),
         (r'\\idxe\{(?P<attr>.+?)\}\{(?P<obj>.+?)\}', r'idx{`\g<attr>` \g<obj>}'),
         (r'\\refeq\{(?P<subst>.+?)\}', r'(ref{\g<subst>})'),
-        (r'^\bpy\s+', r'\bipy' + '\n', re.MULTILINE),
-        (r'^\epy\s+', r'\eipy' + '\n', re.MULTILINE),
+        (r'^\\bpy\s+', r'\bipy' + '\n', re.MULTILINE),
+        (r'^\\epy\s+', r'\eipy' + '\n', re.MULTILINE),
         (r'\\footnote\{(.+?)\}', subst_footnote_latex2doconce, re.DOTALL),
         # general latex constructions
         # (comments are removed line by line below)
@@ -8142,20 +8142,20 @@ def _latex2doconce(filestr):
     # \linewidth.
 
     # figures with width spec: psfig, group1: filename, group2: width, group3: caption
-    pattern = re.compile(r'\\begin{figure}.*?\psfig\{.*?=([^,]+?),\s*width=(.+?)\\linewidth.*?\caption\{(.*?)\}\s*\\end{figure}', re.DOTALL)
+    pattern = re.compile(r'\\begin{figure}.*?\\psfig\{.*?=([^,]+?),\s*width=(.+?)\\linewidth.*?\\caption\{(.*?)\}\s*\\end{figure}', re.DOTALL)
     filestr = pattern.sub(r'FIGURE: [\g<1>, width=\g<2>] {{{{\g<3>}}}}', filestr)
     # note: cannot treat width=10cm, only width=0.8\linewidth
     # figures: psfig, group1: filename, group2: caption
-    pattern = re.compile(r'\\begin{figure}.*?\psfig\{.*?=([^,]+).*?\caption\{(.*?)\}\s*\\end{figure}', re.DOTALL)
+    pattern = re.compile(r'\\begin{figure}.*?\\psfig\{.*?=([^,]+).*?\\caption\{(.*?)\}\s*\\end{figure}', re.DOTALL)
     filestr = pattern.sub(r'FIGURE: [\g<1>, width=400] {{{{\g<2>}}}}', filestr)
     # figures: includegraphics, group1: width, group2: filename, group3: caption
-    pattern = re.compile(r'\\begin{figure}.*?\includegraphics\[width=(.+?)\\linewidth\]\{(.+?)\}.*?\caption\{(.*?)\}\s*\\end{figure}', re.DOTALL)
+    pattern = re.compile(r'\\begin{figure}.*?\\includegraphics\[width=(.+?)\\linewidth\]\{(.+?)\}.*?\\caption\{(.*?)\}\s*\\end{figure}', re.DOTALL)
     filestr = pattern.sub(r'FIGURE: [\g<2>, width=400 frac=\g<1>] {{{{\g<3>}}}}', filestr)
     # includegraphics with other measures of width and caption after fig
-    pattern = re.compile(r'\\begin{figure}.*?\includegraphics\[(.+?)]\{(.+?)\}.*?\caption\{(.*?)\}\s*\\end{figure}', re.DOTALL)
+    pattern = re.compile(r'\\begin{figure}.*?\\includegraphics\[(.+?)]\{(.+?)\}.*?\\caption\{(.*?)\}\s*\\end{figure}', re.DOTALL)
     filestr = pattern.sub(r'# original latex figure with \g<1>\n\nFIGURE: [\g<2>, width=400 frac=1.0] {{{{\g<3>}}}}', filestr)
     # includegraphics with other measures of width and caption before fig
-    pattern = re.compile(r'\\begin{figure}.*?\caption\{(.*?)\}\includegraphics\[(.+?)]\{(.+?)\}.*?\s*\\end{figure}', re.DOTALL)
+    pattern = re.compile(r'\\begin{figure}.*?\\caption\{(.*?)\}\\includegraphics\[(.+?)]\{(.+?)\}.*?\s*\\end{figure}', re.DOTALL)
     filestr = pattern.sub(r'# original latex figure with \g<2>\n\nFIGURE: [\g<3>, width=400 frac=1.0] {{{{\g<1>}}}}', filestr)
 
     # Better method: grab all begin and end figures and analyze the complete
