@@ -614,7 +614,10 @@ def sphinx_ref_and_label(section_label2title, format, filestr):
     return filestr
 
 def sphinx_index_bib(filestr, index, citations, pubfile, pubdata):
-    filestr = rst_bib(filestr, citations, pubfile, pubdata)
+    # allow user to force the use of original bibliography keys instead of numbered labels
+    numbering = not option('sphinx_preserve_bib_keys', False)
+
+    filestr = rst_bib(filestr, citations, pubfile, pubdata, numbering=numbering)
     from .common import INLINE_TAGS
 
     for word in index:

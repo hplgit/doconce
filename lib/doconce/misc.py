@@ -607,6 +607,7 @@ math and/or code, this option turns all explanations off."""),
      'Univ. of Oslo version of rst files for their Vortex system.'),
     ('--rst_mathjax',
      'Use raw HTML with MathJax for LaTeX mathematics in rst files.'),
+    ('--sphinx_preserve_bib_keys', "Use the user's keys to in bibliography instead of numbers"),
     ('--sphinx_keep_splits',
      """Respect user's !split commands. Default: Override user's !split
 and insert new !split before all topmost sections. This is what
