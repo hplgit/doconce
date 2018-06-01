@@ -1227,6 +1227,7 @@ def tikz2img(tikz_file, encoding='utf8', tikz_libs=None):
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{tikz}
+\usepackage{pgfplots}
 
 %% TikZ libraries
 %s
