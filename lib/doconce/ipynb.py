@@ -747,7 +747,13 @@ def ipynb_code(filestr, code_blocks, code_block_types,
         except KeyError as e:
             errwarn('*** error: label "%s" is not defined' % str(e))
 
-    filestr = re.sub(r'\(ref\{(.+?)\}\)', subst, filestr)
+    #filestr = re.sub(r'\(ref\{(.+?)\}\)', subst, filestr)
+
+    # pandoc_ref_and_label replaces ref{%s} with [%s](#%s), where label is inserted
+    # we want the link to display the equation number instead of the label
+    for label, tag in label2tag.items():
+        filestr = filestr.replace("[%s](#%s)" % (label, label), "[%s](#%s)" % (tag, label))
+
     """
     # MathJax reference to tag (recall that the equations have both label
     # and tag (know that tag only works well in HTML, but this mjx-eqn-no
