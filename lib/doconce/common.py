@@ -1161,6 +1161,8 @@ def bibliography(pubdata, citations, format='doconce'):
     from . import publish_doconce
     if format == 'doconce':
         formatter = publish_doconce.doconce_format
+    elif format == 'ipynb':
+        formatter = publish_doconce.doconce_format
     elif format in ('rst', 'sphinx'):
         formatter = publish_doconce.rst_format
     elif format == 'xml':

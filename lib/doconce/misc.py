@@ -481,6 +481,7 @@ statements will come after the entire session).
 before the first import of matplotlib."""),
     ('--ipynb_cite=', """Typesetting of bibliography.
 plain: simple native typesetting (same as pandoc) (default)
+latex-plain: Similar to latex-style plain
 latex: ipynb support for latex-style bibliographies (not mature)."""),
     ('--ipynb_admon=',
      """\

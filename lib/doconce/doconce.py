@@ -2903,8 +2903,10 @@ def typeset_lists(filestr, format, debug_info=[]):
                                string.ascii_lowercase[enumerate_counter-1]
                     else:
                         item = itemformat % enumerate_counter
-                # indent here counts with '3. ':
-                result.write(' '*(indent - 2 - enumerate_counter//10 - 1))
+                # don't indent enumerated markdown lists - they must be left-aligned!
+                if format != 'ipynb':
+                    # indent here counts with '3. ':
+                    result.write(' '*(indent - 2 - enumerate_counter//10 - 1))
                 result.write(item + ' ')
             elif listtype == 'description':
                 if '%s' in itemformat:
@@ -3429,7 +3431,7 @@ def handle_index_and_bib(filestr, format):
                 if format in ('latex', 'pdflatex'):
                     cite_formatting = 'latex'
                 elif format in ('pandoc', 'ipynb'):
-                    if option('ipynb_cite=', 'plain') == 'latex':
+                    if option('ipynb_cite=', 'plain') in ('latex', 'latex-plain'):
                         cite_formatting = 'standard'
                     else:
                         cite_formatting = 'pandoc'
