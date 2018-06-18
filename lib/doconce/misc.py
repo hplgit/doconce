@@ -4979,8 +4979,7 @@ hr.figure { border: 0; width: 80%%; border-bottom: 1px solid #aaa}
     slide_syntax[slide_tp]['body_lines'] = ''.join(body_lines)
 
     #<title>%(title)s</title>
-    slides = r"""\
-<!DOCTYPE html>
+    slides = r"""<!DOCTYPE html>
 
 %(head_lines)s
 
