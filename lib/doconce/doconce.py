@@ -2587,7 +2587,7 @@ def typeset_userdef_envirs(filestr, format):
     userdef_envirs = re.findall(r'^!bu-([^ ]+)', filestr, flags=re.MULTILINE)
     if not userdef_envirs:
         return filestr
-    userfile = 'userdef_environments.py'
+    userfile = option('userdef_environment_file=','userdef_environments.py')
     if os.path.isfile(userfile):
         # This should be unnecessary, should find files in the current dir
         sys_path_original = list(sys.path)
