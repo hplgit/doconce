@@ -3208,13 +3208,13 @@ def doconce_split_html(header, parts, footer, basename, filename, slides=False):
                 # Bootstrap style
                 text += '\n<ul class="pager">\n'
                 if pn > 0:
-                    text += r"""\
+                    text += r"""
   <li class="previous">
     <a href="%s">&larr; Prev</a>
   </li>
 """ % prev_part_filename
                 if pn < len(parts)-1:
-                    text += r"""\
+                    text += r"""
   <li class="next">
     <a href="%s">Next &rarr;</a>
   </li>
