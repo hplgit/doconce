@@ -1008,7 +1008,7 @@ Causes of missing labels:
                         (len(w[0]), len(w[-1])))
                 _abort()
             if len(w[0]) not in (3,5,7,9):
-                errwarn('\n*** error: wrong number of = in heading (%d):\n    %s' % len(w[0], line))
+                errwarn('\n*** error: wrong number of = in heading (%d):\n    %s' % (len(w[0]), line))
                 _abort()
 
     # Check that rst headings come in right order
