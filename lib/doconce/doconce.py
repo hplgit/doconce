@@ -10,6 +10,7 @@ from builtins import range
 from past.builtins import basestring, unicode
 
 global dofile_basename
+dofile_basename = None
 
 import re, os, sys, shutil, subprocess, pprint, time, glob, codecs
 try:
@@ -236,6 +237,8 @@ def errwarn(msg, newline=True):
         print(msg)
     else:
         print(msg, end=' ')
+    if dofile_basename is None:
+        return
     logfilename = dofile_basename + '.dlog'
     mode = 'a' if os.path.isfile(logfilename) else 'w'
     if encoding:
