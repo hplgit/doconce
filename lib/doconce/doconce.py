@@ -5312,7 +5312,10 @@ On Debian (incl. Ubuntu) systems, you can alternatively do
         except Exception as e:
             errwarn('*** mako error: ' + str(type(e)).split("'")[1])
             errwarn('   ' + str(e))
-            if "'ascii'" in str(e):
+            if isinstance(e, mako.exceptions.SyntaxException):
+                import platform
+                errwarn('This could indicate that the mako template code is not compatible with the version of Python currently used by DocOnce and mako, which is Python %s' % platform.python_version())
+            elif "'ascii'" in str(e):
                 errwarn('    reason: doconce file contains non-ascii characters')
                 errwarn('    rerun with --encoding=utf-8 (or similar):')
                 errwarn('    doconce format %s %s %s --encoding=utf-8'
