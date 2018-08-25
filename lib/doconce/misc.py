@@ -618,6 +618,7 @@ the document into multiple parts."""),
     ('--sphinx_figure_captions=', 'Font style in figure captions: emphasize (default) or normal. If you use boldface or emphasize in the caption, the font style will be normal for that caption.'),
     ('--oneline_paragraphs',
      'Combine paragraphs to one line (does not work well).'),
+    ('--html_responsive_figure_width', 'Use figure width as max-width, and set width to 100 percent so that figures can shrink to device width.')
     ]
 
 _legal_command_line_options = \
