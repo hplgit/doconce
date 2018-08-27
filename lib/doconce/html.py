@@ -1750,6 +1750,15 @@ def html_figure(m):
     sidecaption = 0
     if opts:
         info = [s.split('=') for s in opts.split()]
+        
+        if option('html_responsive_figure_width'):
+            styleset = []
+            styleset.append("width: 100%")
+            for opt, value in info: 
+                if opt == "width": 
+                    styleset.append("max-width: %s" % value)
+            info.append(["style", "'" + "; ".join(styleset) + "'"])
+
         opts = ' '.join(['%s=%s' % (opt, value)
                          for opt, value in info
                          if opt not in ['frac', 'sidecap']])

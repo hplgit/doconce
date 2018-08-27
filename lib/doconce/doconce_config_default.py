@@ -73,6 +73,7 @@ html_links_in_new_window = False
 #html_figure_caption =
 #html_figure_hrule =
 #html_copyright =
+html_responsive_figure_width = False
 cite_doconce = False
 #device =
 number_all_equations = False
