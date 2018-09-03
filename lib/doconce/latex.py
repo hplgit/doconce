@@ -71,7 +71,7 @@ def get_bib_index_pages():
 envir2pyg = dict(
     pyshell='python',
     py='python', cy='cython', f='fortran',
-    c='c', cpp='c++', sh='bash', rst='rst',
+    c='c', cpp='c++', bash='bash', sh='bash', rst='rst',
     m ='matlab', pl='perl', swig='c++',
     latex='latex', html='html', js='js',
     java='java',
@@ -84,7 +84,7 @@ envir2pyg = dict(
 envir2lst = dict(
     pyshell='Python',
     py='Python', cy='Python', f='Fortran',
-    c='C', cpp='C++', sh='bash', rst='text',
+    c='C', cpp='C++', bash='bash', sh='bash', rst='text',
     m ='Matlab', pl='Perl', swig='C++',
     latex='TeX', html='HTML', js='Java',
     java='Java',
