@@ -2433,7 +2433,9 @@ def bootstrap_collapse(visible_text, collapsed_text,
 <p>
 <a class="glyphicon glyphicon-%(icon)s showdetails" data-toggle="collapse"
  data-target="#%(id)s" style="font-size: 80%%;">%(button_text)s</a>
+<a href="#%(id)s" data-toggle="collapse">
 %(visible_text)s
+</a>
 <div class="collapse-group">
 <p><div class="collapse" id="%(id)s">
 %(collapsed_text)s
