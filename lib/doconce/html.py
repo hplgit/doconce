@@ -1243,8 +1243,8 @@ function show_hide_code%d(){
         """
         if 'label' in tex_blocks[i]:
             # Fix label -> \label in tex_blocks
-            tex_blocks[i] = tex_blocks[i].replace(' label{', ' \\label{')
-            tex_blocks[i] = re.sub(r'^label\{', '\\label{', tex_blocks[i],
+            tex_blocks[i] = tex_blocks[i].replace(r' label{', r' \\label{')
+            tex_blocks[i] = re.sub(r'^label\{', r'\\label{', tex_blocks[i],
                                    flags=re.MULTILINE)
 
     from .doconce import debugpr
@@ -1298,7 +1298,7 @@ function show_hide_code%d(){
         filestr = re.sub(r'\\\]\s*\$\$', '$$', filestr)
         # Equation references (ref{...}) must be \eqref{...} in MathJax
         # (note: this affects also (ref{...}) syntax in verbatim blocks...)
-        filestr = re.sub(r'\(ref\{(.+?)\}\)', r'\eqref{\g<1>}', filestr)
+        filestr = re.sub(r'\(ref\{(.+?)\}\)', r'\\eqref{\g<1>}', filestr)
 
     elif MATH_TYPESETTING == 'WordPress':
         filestr = re.sub(r'!bt *\n', '\n', filestr)

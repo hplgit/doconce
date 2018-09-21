@@ -2206,7 +2206,7 @@ def replace_code_command(filestr):
     # Remove one newline (two implies far too long inline verbatim)
     pattern = re.compile(r'\\code\{([^\n}]*?)\n(.*?)\}', re.DOTALL)
     # (this pattern does not handle \code{...} with internal } AND \n!)
-    filestr = pattern.sub(r'\code{\g<1> \g<2>}', filestr)
+    filestr = pattern.sub(r'\\code{\g<1> \g<2>}', filestr)
     verb_command = 'Verb'  # requires fancyvrb package, otherwise use std 'verb'
 
     verb_delimiter = '!'

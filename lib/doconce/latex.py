@@ -859,14 +859,14 @@ def latex_code(filestr, code_blocks, code_block_types,
         subex_header_postfix = option('latex_subex_header_postfix=', ')')
         # Default is a), b), but could be a:, b:, or a. b.
         filestr = re.sub(r'\\paragraph\{([a-z])\)\}',
-                     r'\subex{\g<1>%s}' % subex_header_postfix,
+                     r'\\subex{\g<1>%s}' % subex_header_postfix,
                      filestr)
 
     # Avoid Filename: as a new paragraph with indentation
     for filename in 'Filename', 'Filenames':
         locale_fn = locale_dict[locale_dict['language']][filename]
         filestr = re.sub(r'^(%s): +?\\code\{' % locale_fn,
-                         r'\\noindent \g<1>: \code{', filestr,
+                         r'\\noindent \g<1>: \\code{', filestr,
                          flags=re.MULTILINE)
 
     # Preface is normally an unnumbered section or chapter
@@ -2085,14 +2085,14 @@ def latex_ref_and_label(section_label2title, format, filestr):
     #filestr = re.sub(r'\bLaTeX\b', r'{\LaTeX}', filestr)
     non_chars = '''"'`*/_-'''
     filestr = re.sub(r'''([^%s])\bLaTeX\b([^%s])''' % (non_chars, non_chars),
-                     r'\g<1>{\LaTeX}\g<2>', filestr)
+                     r'\g<1>{\\LaTeX}\g<2>', filestr)
     filestr = re.sub(r'''([^%s])\bpdfLaTeX\b([^%s])''' % (non_chars, non_chars),
                      fix_latex_command_regex(
-                     r'\g<1>\textsc{pdf}{\LaTeX}\g<2>',
+                     r'\g<1>\\textsc{pdf}{\\LaTeX}\g<2>',
                      application='replacement'), filestr)
     filestr = re.sub(r'''([^%s])\bBibTeX\b([^%s])'''% (non_chars, non_chars),
                      fix_latex_command_regex(
-                     r'\g<1>\textsc{Bib}\negthinspace{\TeX}\g<2>',
+                     r'\g<1>\\textsc{Bib}\\negthinspace{\\TeX}\g<2>',
                      application='replacement'), filestr)
     # Fix \idx{{\LaTeX}...} to \idx{LaTeX...} (otherwise all the
     # LaTeX index keywords appear at the beginning because of {)
@@ -2732,27 +2732,27 @@ def define(FILENAME_EXTENSION,
 
         'math':          None,  # indicates no substitution, leave as is
         'math2':         r'\g<begin>$\g<latexmath>$\g<end>',
-        'emphasize':     r'\g<begin>\emph{\g<subst>}\g<end>',
+        'emphasize':     r'\g<begin>\\emph{\g<subst>}\g<end>',
         'bold':          r'\g<begin>\\textbf{\g<subst>}\g<end>',  # (re.sub swallows a \)
-        'verbatim':      r'\g<begin>\code{\g<subst>}\g<end>',
+        'verbatim':      r'\g<begin>\\code{\g<subst>}\g<end>',
         # The following verbatim is better if fixed fontsize is ok, since
         # \code{\latexcommand{arg1}} style formatting does not work well
         # with ptex2tex (the regex will not include the proper second }
         #'verbatim':      r'\g<begin>{\footnotesize{10pt}{10pt}\Verb!\g<subst>!\g<end>',
         'colortext':     r'\\textcolor{\g<color>}{\g<text>}',
         #'linkURL':       r'\g<begin>\href{\g<url>}{\g<link>}\g<end>',
-        'linkURL2':      r'\href{{\g<url>}}{\g<link>}',
-        'linkURL3':      r'\href{{\g<url>}}{\g<link>}',
-        'linkURL2v':     r'\href{{\g<url>}}{\\nolinkurl{\g<link>}}',
-        'linkURL3v':     r'\href{{\g<url>}}{\\nolinkurl{\g<link>}}',
-        'plainURL':      r'\href{{\g<url>}}{\\nolinkurl{\g<url>}}',  # cannot use \code inside \href, use \nolinkurl to handle _ and # etc. (implies verbatim font)
+        'linkURL2':      r'\\href{{\g<url>}}{\g<link>}',
+        'linkURL3':      r'\\href{{\g<url>}}{\g<link>}',
+        'linkURL2v':     r'\\href{{\g<url>}}{\\nolinkurl{\g<link>}}',
+        'linkURL3v':     r'\\href{{\g<url>}}{\\nolinkurl{\g<link>}}',
+        'plainURL':      r'\\href{{\g<url>}}{\\nolinkurl{\g<url>}}',  # cannot use \code inside \href, use \nolinkurl to handle _ and # etc. (implies verbatim font)
         'inlinecomment': latex_inline_comment,
-        'chapter':       r'\chapter{\g<subst>}',
-        'section':       r'\section{\g<subst>}',
-        'subsection':    r'\subsection{\g<subst>}',
+        'chapter':       r'\\chapter{\g<subst>}',
+        'section':       r'\\section{\g<subst>}',
+        'subsection':    r'\\subsection{\g<subst>}',
         #'subsubsection': '\n' + r'\subsubsection{\g<subst>}' + '\n',
         'subsubsection': latex_subsubsection,
-        'paragraph':     r'\paragraph{\g<subst>}' + '\n',
+        'paragraph':     r'\\paragraph{\g<subst>}' + '\\n',
         #'abstract':      '\n\n' + r'\\begin{abstract}' + '\n' + r'\g<text>' + '\n' + r'\end{abstract}' + '\n\n' + r'\g<rest>', # not necessary with separate \n
         #'abstract':      r'\n\n\\begin{abstract}\n\g<text>\n\end{abstract}\n\n\g<rest>',
         'abstract':      latex_abstract,
@@ -2768,12 +2768,12 @@ def define(FILENAME_EXTENSION,
         'linebreak':     latex_linebreak,
         'footnote':      latex_footnotes,
         'non-breaking-space': None,
-        'ampersand1':    r'\g<1> {\&} \g<2>',
-        'ampersand2':    r' \g<1>{\&}\g<2>',
+        'ampersand1':    r'\g<1> {\\&} \g<2>',
+        'ampersand2':    r' \g<1>{\\&}\g<2>',
         # Use \Verb instead of \textbf since emoji name can contain underscore
         # (note that pdflatex.py defines a figure for emojis, plain latex
         # has just verbatim name of the emoji)
-        'emoji':         r'\g<1>(\Verb!\g<2>!)\g<3>',
+        'emoji':         r'\g<1>(\\Verb!\g<2>!)\g<3>',
         }
 
     ENVIRS['latex'] = {
