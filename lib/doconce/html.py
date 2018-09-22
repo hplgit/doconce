@@ -1243,7 +1243,7 @@ function show_hide_code%d(){
         """
         if 'label' in tex_blocks[i]:
             # Fix label -> \label in tex_blocks
-            tex_blocks[i] = tex_blocks[i].replace(r' label{', r' \\label{')
+            tex_blocks[i] = tex_blocks[i].replace(r' label{', r' \label{')
             tex_blocks[i] = re.sub(r'^label\{', r'\\label{', tex_blocks[i],
                                    flags=re.MULTILINE)
 
