@@ -71,7 +71,7 @@ def get_bib_index_pages():
 envir2pyg = dict(
     pyshell='python',
     py='python', cy='cython', f='fortran',
-    c='c', cpp='c++', bash='bash', sh='bash', rst='rst',
+    c='c', cpp='c++', cu='cuda', cuda='cuda', bash='bash', sh='bash', rst='rst',
     m ='matlab', pl='perl', swig='c++',
     latex='latex', html='html', js='js',
     java='java',
@@ -216,7 +216,7 @@ def interpret_latex_code_style():
             envir, pkg = pkg.split(':')
         return pkg, bg, style
 
-    legal_envirs = 'pro pypro cypro cpppro cpro fpro plpro shpro mpro cod pycod cycod cppcod ccod fcod plcod shcod mcod rst cppans pyans fans bashans swigans uflans sni dat dsni sys slin ipy pyshell rpy plin ver warn rule summ ccq cc ccl txt htmlcod htmlpro html rbpro rbcod rb xmlpro xmlcod xml latexpro latexcod latex default'.split()
+    legal_envirs = 'pro pypro cypro cpppro cudapro cudacod cupro cucod cpro fpro plpro shpro mpro cod pycod cycod cppcod ccod fcod plcod shcod mcod rst cppans pyans fans bashans swigans uflans sni dat dsni sys slin ipy pyshell rpy plin ver warn rule summ ccq cc ccl txt htmlcod htmlpro html rbpro rbcod rb xmlpro xmlcod xml latexpro latexcod latex default'.split()
     d = {}
     if '@' not in latex_code_style:
         # Common definition for all languages
@@ -914,7 +914,7 @@ def latex_code(filestr, code_blocks, code_block_types,
         no_footnote = option('latex_no_program_footnotelink')
         latex_style = option('latex_style=', 'std')
         suffices = ['.py', '.f', '.f90', '.f95', '.c', '.cpp', '.cxx',
-                    '.m', '.r', '.js', '.tex', '.h']
+                    '.cu', '.m', '.r', '.js', '.tex', '.h']
 
         def subst(m):  # m is match object
             url = m.group(1).strip()

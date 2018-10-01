@@ -1959,7 +1959,7 @@ def ptex2tex():
                     envir2pygments = dict(
                         pyshell='python',
                         py='python', cy='cython', f='fortran',
-                        c='c', cpp='c++', sh='bash', rst='rst',
+                        c='c', cpp='c++', cu='cuda', cuda='cuda', sh='bash', rst='rst',
                         m ='matlab', pl='perl', swig='c++',
                         latex='latex', html='html', js='js',
                         java='java',

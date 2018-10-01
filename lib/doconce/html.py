@@ -988,7 +988,7 @@ Causes of missing labels:
     # Mapping from envir (+cod/pro if present) to pygment style
     envir2pygments = dict(
         py='python', cy='cython', f='fortran',
-        c='c', cpp='c++', bash='bash', sh='bash', rst='rst',
+        c='c', cpp='c++', cu='cuda', cuda='cuda', bash='bash', sh='bash', rst='rst',
         m='matlab', pl='perl', rb='ruby',
         swig='c++', latex='latex', tex='latex',
         html='html', xml='xml',

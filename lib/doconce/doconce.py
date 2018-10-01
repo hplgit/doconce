@@ -1405,7 +1405,7 @@ def insert_code_from_file(filestr, format):
                 filetype = os.path.splitext(filename)[1][1:]  # drop dot
 
                 # Adjustments to some names
-                if filetype in ('f', 'c', 'java', 'cpp', 'py', 'pyopt', 'cy', 'pl', 'm', 'sh', 'html', 'txt', 'dat'):
+                if filetype in ('f', 'c', 'java', 'cpp', 'cu', 'py', 'pyopt', 'cy', 'pl', 'm', 'sh', 'html', 'txt', 'dat'):
                     pass # standard filetypes
                 elif filetype == 'cxx' or filetype == 'C' or filetype == 'h' \
                        or filetype == 'i':
