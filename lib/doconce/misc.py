@@ -11,7 +11,7 @@ from past.builtins import basestring
 from past.utils import old_div
 from past.utils import old_div
 import os, sys, shutil, re, glob, time, subprocess, codecs
-from .doconce import errwarn
+from .doconce import errwarn, locale_dict
 from functools import reduce
 
 _part_filename = '._%s%03d'
@@ -6667,7 +6667,7 @@ def _do_fixes_4MSWord(text):
     return t
 
 
-def _spellcheck(filename, dictionaries=['.dict4spell.txt'], newdict=None,
+def _spellcheck(filename, language='English', dictionaries=['.dict4spell.txt'], newdict=None,
                 remove_multiplicity=False, strip_file='.strip', verbose=False):
     """
     Spellcheck `filename` and list misspellings in the file misspellings.txt~.
@@ -6796,8 +6796,14 @@ def _spellcheck(filename, dictionaries=['.dict4spell.txt'], newdict=None,
 
     personal_dictionaries = list(set(personal_dictionaries))
     misspellings = 'tmp_misspelled_' + filename + '~'
-    cmd = 'cat %s | ispell -l -t -d american %s > %s' % \
-          (scratchfile, p_opt, misspellings)
+
+    if not 'aspell_dictionary' in locale_dict[language]:
+        print("Language '%s' has no known aspell dictionary" % language)
+        sys.exit(0)
+    aspell_dictionary = locale_dict[language]['aspell_dictionary']
+
+    cmd = 'cat %s | ispell -l -t -d %s %s > %s' % \
+          (scratchfile, aspell_dictionary, p_opt, misspellings)
     #cmd = 'cat %s | aspell -t -d american list %s > %s'
     system(cmd)
 
@@ -6839,20 +6845,20 @@ def _spellcheck(filename, dictionaries=['.dict4spell.txt'], newdict=None,
         f.close()
 
 
-def _spellcheck_all(**kwargs):
+def _spellcheck_all(filenames, **kwargs):
     for filename in glob.glob('tmp_misspelled*~') + glob.glob('misspellings.txt~*'):
         os.remove(filename)
     for filename in ['__tmp.do.txt']:
         if filename in sys.argv[1:]:  # iterate over copy
             os.remove(filename)
             del sys.argv[sys.argv.index(filename)]
-    for filename in sys.argv[1:]:
+    for filename in filenames:
         if not filename.startswith('tmp_stripped_'):
             _spellcheck(filename, **kwargs)
     tmp_misspelled = glob.glob('tmp_misspelled*~')
     if len(tmp_misspelled) > 0:
         print()
-        if len(sys.argv[1:]) == 1:
+        if len(filenames) == 1:
             print('See misspellings.txt~ for all misspelled words found.')
         else:
             for name in tmp_misspelled:
@@ -6958,27 +6964,43 @@ execfile is applied to .strip to execute the definition of the lists.
 
 
 def spellcheck():
-    if len(sys.argv) == 1:
-        _usage_spellcheck()
-        sys.exit(0)
-    if sys.argv[1] == '-d':
-        dictionary = [sys.argv[2]]
-        del sys.argv[1:3]
+    supported_languages = list(filter(lambda l: 'aspell_dictionary' in locale_dict[l], sorted(locale_dict.keys())))
+    supported_languages_str = ', '.join(supported_languages)
+
+    import argparse
+    parser = argparse.ArgumentParser(prog="doconce spellcheck",
+        description="Spellcheck DocOnce documents",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser.add_argument('filename', type=str, nargs='+', help='A *.do.txt file to spellcheck')
+    parser.add_argument('-d', '--dictionary', type=str, default=None, dest='dictionary',
+        help='A personal dictionary file with whitelisted words')
+    parser.add_argument('-l', '--language', type=str, default='English', dest='language',
+        help="Supported languages: %s" % supported_languages_str)
+    parser.add_argument('--debug', default=False, action='store_true')
+    args = parser.parse_args()
+    filenames = args.filename
+    dictionary_filename = args.dictionary
+    language = args.language
+    verbose = args.debug
+
+    if dictionary_filename != None:
+        if os.path.isfile(dictionary_filename):
+            dictionary = [dictionary_filename]
+        else:
+            print("ERROR: Dictionary file '%s' does not exist!")
+            sys.exit(0)
     else:
         if os.path.isfile('.dict4spell.txt'):
             dictionary = ['.dict4spell.txt']
         else:
             dictionary = []
-    verbose = False
-    for i in range(1, len(sys.argv)):
-        if sys.argv[i] == '--debug':
-            del sys.argv[i]
-            verbose = True
-    if len(sys.argv) < 2:
-        _usage_spellcheck()
+
+    if language not in supported_languages:
+        print("Unsupported language '%s'" % language)
+        print("Supported languages: %s" % supported_languages_str)
         sys.exit(0)
 
-    _spellcheck_all(newdict='misspellings.txt~', remove_multiplicity=False,
+    _spellcheck_all(filenames, language=language, newdict='misspellings.txt~', remove_multiplicity=False,
                     dictionaries=dictionary, verbose=verbose)
 
 def _usage_ref_external():
