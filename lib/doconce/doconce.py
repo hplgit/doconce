@@ -24,9 +24,11 @@ except ImportError:
 global locale_dict
 locale_dict = dict(
     language='English',  # language to be used
-    English={
+    American={
+        # 'English' is an alias for 'American'
         'locale': 'us_US.UTF-8',
         'latex package': 'english',
+        'aspell_dictionary' : 'american', # with aspell, this is an alias for 'en_US'
         'toc': 'Table of contents',
         'Contents': 'Contents',
         'Figure': 'Figure',
@@ -65,6 +67,7 @@ locale_dict = dict(
     Norwegian={
         'locale': 'nb_NO.UTF-8', # norsk bokmål
         'latex package': 'norsk',
+        'aspell_dictionary' : 'norsk', # with aspell, this is an alias for 'nb'
         'toc': 'Innholdsfortegnelse',
         'Contents': 'Innhold',
         'Figure': 'Figur',
@@ -99,6 +102,7 @@ locale_dict = dict(
     German={
         'locale': 'de_DE.UTF-8',
         'latex package': 'german',
+        'aspell_dictionary' : 'deutsch', # with aspell, this is an alias for 'de_DE'
         'toc': 'Inhaltsverzeichnis',
         'Contents': 'Inhalt',
         'Figure': 'Abbildung',
@@ -175,6 +179,7 @@ locale_dict = dict(
     Arabic={
         'locale': 'ar_SA.UTF-8',
         'latex package': 'arabic',
+        'aspell_dictionary' : 'arabic', # with aspell, this is an alias for 'ar'
         'toc': u'الفَهْرس',
         'Contents': u'المُحْتويات',
         'Figure': u'رَسْم تَوضِيحي',
@@ -211,6 +216,14 @@ locale_dict = dict(
         'Filenames': u'أسماء_الملفات',
     }
     )
+# Let English be an alias for American
+locale_dict['English'] = locale_dict['American'].copy()
+# Create British based on (American) English
+locale_dict['British'] = locale_dict['American'].copy()
+locale_dict['British']['locale'] = 'en_GB.UTF-8'
+locale_dict['British']['aspell_dictionary'] = 'british' # with aspell, this is an alias for 'en_GB'
+locale_dict['British']['latex package'] = 'british' # with aspell, this is an alias for 'en_GB'
+
 
 def debugpr(heading='', text=''):
     """Add `heading` and `text` to the log/debug file."""
