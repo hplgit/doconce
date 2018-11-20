@@ -12,7 +12,7 @@ from .common import table_analysis, plain_exercise, insert_code_and_tex, \
      get_legal_pygments_lexers, has_custom_pygments_lexer, emoji_url, \
      fix_ref_section_chapter
 from .misc import option, _abort
-from .doconce import errwarn, locale_dict
+from .doconce import errwarn, locale_dict, lookup_locale_dict
 
 box_shadow = 'box-shadow: 8px 8px 5px #888888;'
 #box_shadow = 'box-shadow: 0px 0px 10px #888888'
@@ -1750,12 +1750,12 @@ def html_figure(m):
     sidecaption = 0
     if opts:
         info = [s.split('=') for s in opts.split()]
-        
+
         if option('html_responsive_figure_width'):
             styleset = []
             styleset.append("width: 100%")
-            for opt, value in info: 
-                if opt == "width": 
+            for opt, value in info:
+                if opt == "width":
                     styleset.append("max-width: %s" % value)
             info.append(["style", "'" + "; ".join(styleset) + "'"])
 
@@ -2480,9 +2480,11 @@ def html_quiz(quiz):
     import string
     bootstrap = option('html_style=', '').startswith('boots')
     button_text = option('html_quiz_button_text=', '')
+    question_prefix_default = lookup_locale_dict('question_prefix')
+    common_choice_prefix_default = lookup_locale_dict('choice_prefix')
     question_prefix = quiz.get('question prefix',
-                               option('quiz_question_prefix=', 'Question:'))
-    common_choice_prefix = option('quiz_choice_prefix=', 'Choice')
+                               option('quiz_question_prefix=', question_prefix_default))
+    common_choice_prefix = option('quiz_choice_prefix=', common_choice_prefix_default)
     hr = '<hr>' if option('quiz_horizontal_rule=', 'on') == 'on' else ''
     quiz_expl = option('quiz_explanations=', 'on')
 

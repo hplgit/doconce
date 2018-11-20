@@ -63,6 +63,9 @@ locale_dict = dict(
         # References
         'Filename': 'Filename',
         'Filenames': 'Filenames',
+        # Quiz
+        'question_prefix': 'Question:', # question in multiple-choice quiz
+        'choice_prefix': 'Choice',      # choice in multiple-choice quiz
     },
     Norwegian={
         'locale': 'nb_NO.UTF-8', # norsk bokmål
@@ -98,6 +101,9 @@ locale_dict = dict(
         '__Hint.__': '__Hint.__',
         'Filename': 'Filnavn',
         'Filenames': 'Filnavn',
+        # Quiz
+        'question_prefix': u'Spørsmål:',    # question in multiple-choice quiz
+        'choice_prefix': 'Alternativ',      # choice in multiple-choice quiz
     },
     German={
         'locale': 'de_DE.UTF-8',
@@ -224,6 +230,17 @@ locale_dict['British']['locale'] = 'en_GB.UTF-8'
 locale_dict['British']['aspell_dictionary'] = 'british' # with aspell, this is an alias for 'en_GB'
 locale_dict['British']['latex package'] = 'british' # with aspell, this is an alias for 'en_GB'
 
+
+def lookup_locale_dict(key, fallback_to_english=True):
+    if key in locale_dict[locale_dict['language']]:
+        return locale_dict[locale_dict['language']][key]
+
+    # could not find localized term
+    if fallback_to_english:
+        assert key in locale_dict['English'], "'%s' is not in locale_dict" % key
+        return locale_dict['English'][key]
+    else:
+        raise ValueError("'%s' is not in locale_dict for %s" % (key, locale_dict['language']))
 
 def debugpr(heading='', text=''):
     """Add `heading` and `text` to the log/debug file."""
