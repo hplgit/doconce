@@ -4580,9 +4580,8 @@ def fix_latex_command_regex(pattern, application='match'):
 
     """
     import string
-    problematic_letters = string.ascii_letters if application == 'match' \
-                          else 'abfgnrtv'
 
+    problematic_letters = string.ascii_letters
     for letter in problematic_letters:
         problematic_pattern = '\\' + letter
 
