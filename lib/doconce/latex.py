@@ -2230,7 +2230,7 @@ def latex_index_bib(filestr, index, citations, pubfile, pubdata):
 %s
 \thispagestyle{empty}""" % contentsline) + bibtext
             else:
-                bibtext = '\\clearemptydoublepage\n' + bibtext
+                bibtext = r'\\clearemptydoublepage\n' + bibtext
             # (the \cleardoublepage might not work well with Koma-script)
 
         filestr = re.sub(r'^BIBFILE:.+$', bibtext, filestr,
