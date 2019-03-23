@@ -1284,8 +1284,8 @@ def tikz2img(tikz_file, encoding='utf8', tikz_libs=None):
     out, err = p.communicate()
     if p.poll() != 0:
         errwarn("Failed to compile LaTeX document with TikZ file!")
-        errwarn('STDOUT:\n'+out)
-        errwarn('STDERR:\n'+err)
+        errwarn('STDOUT:\n'+out.decode('utf-8'))
+        errwarn('STDERR:\n'+err.decode('utf-8'))
         errwarn('*** error: failed to compile LaTeX document with TikZ file\n'
               + '    (this likely means that the tikz figure is invalid)\n'
               + '    see the output from latex above')
@@ -1302,8 +1302,8 @@ def tikz2img(tikz_file, encoding='utf8', tikz_libs=None):
     out, err = p.communicate()
     if p.poll() != 0:
         errwarn('*** error: failed to convert TikZ figure from DVI to SVG')
-        errwarn('STDOUT:\n'+out)
-        errwarn('STDERR:\n'+err)
+        errwarn('STDOUT:\n'+out.decode('utf-8'))
+        errwarn('STDERR:\n'+err.decode('utf-8'))
         return True
 
 

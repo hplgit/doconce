@@ -3054,7 +3054,7 @@ def handle_figures(filestr, format):
             if not figfile.startswith('http'):
                 newname = os.path.join(figure_prefix, figfile)
                 filestr = re.sub(r'^FIGURE: *\[%s([,\]])' % figfile,
-                                 'FIGURE: [%s\g<1>' % newname, filestr,
+                                 r'FIGURE: [%s\g<1>' % newname, filestr,
                                  flags=re.MULTILINE)
     # Prefix movies also
     movie_pattern = INLINE_TAGS['movie']
