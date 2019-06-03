@@ -5152,7 +5152,7 @@ preprocess package (sudo apt-get install preprocess).
                                                  stderr=subprocess.STDOUT)
             except subprocess.CalledProcessError as e:
                 errwarn('Could not run preprocessor:\n%s' % cmd)
-                errwarn(e.output)
+                errwarn(e.output.decode('utf-8'))
                 errwarn('return code from preprocess: ' + str(e.returncode))
                 _abort()
             # Make filestr the result of preprocess in case mako shall be run
