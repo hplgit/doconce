@@ -890,7 +890,7 @@ def latex_code(filestr, code_blocks, code_block_types,
             tikz_libs = option('tikz_libs=')
             tikz_libs_str = '\n'.join([r'\\usetikzlibrary{%s}' % lib for lib in tikz_libs.split(',')])
         filestr = re.sub(r'usepackage(.*?){graphicx}',
-                         r'usepackage\g<1>{graphicx}\n\\usepackage{tikz}'
+                         r'usepackage\g<1>{graphicx}\n\\usepackage{pgfplots}\\usepackage{tikz}'
                          +tikz_libs_str,
                          filestr)
 
