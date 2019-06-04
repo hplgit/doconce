@@ -59,6 +59,8 @@ Sphinx requires such rewrite and will do it regardless of this option."""),
      'Force generation SVG/HTML versions of tikz figures, overwriting any previously generated SVG/HTML files (applies to all formats except LaTeX)'),
     ('--tikz_libs=',
      'TikZ libraries used in figures.'),
+    ('--pgfplots_libs=',
+     'pgfplots libraries used in figures.'),
     ('--IBPLOT', 'automagic translation of IBPLOT commands.'),
     ('--exercise_numbering=',
      """absolute: exercises numbered as 1, 2, ... (default)

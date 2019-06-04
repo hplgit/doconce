@@ -886,11 +886,17 @@ def latex_code(filestr, code_blocks, code_block_types,
                          filestr)
     if re.search(r'input\{.+\.tikz\}', filestr):
         tikz_libs_str = ''
+        pgfplots_libs_str = ''
         if option('tikz_libs='):
             tikz_libs = option('tikz_libs=')
-            tikz_libs_str = '\n'.join([r'\\usetikzlibrary{%s}' % lib for lib in tikz_libs.split(',')])
+            tikz_libs_str = '\n'.join([r'\\usetikzlibrary{%s}' % lib for lib in tikz_libs.split(',')]) + '\n'
+        if option('pgfplots_libs='):
+            pgfplots_libs = option('pgfplots_libs=')
+            pgfplots_libs_str = '\n'.join([r'\\usepgfplotslibrary{%s}' % lib for lib in pgfplots_libs.split(',')]) + '\n'
         filestr = re.sub(r'usepackage(.*?){graphicx}',
-                         r'usepackage\g<1>{graphicx}\n\\usepackage{pgfplots}\\usepackage{tikz}'
+                         r'usepackage\g<1>{graphicx}\n\\usepackage{pgfplots}\n'
+                         +pgfplots_libs_str
+                         +r'\\usepackage{tikz}\n'
                          +tikz_libs_str,
                          filestr)
 

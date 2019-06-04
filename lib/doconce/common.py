@@ -1221,7 +1221,7 @@ def has_custom_pygments_lexer(name):
     return True
 
 
-def tikz2img(tikz_file, encoding='utf8', tikz_libs=None):
+def tikz2img(tikz_file, encoding='utf8', tikz_libs=None, pgfplots_libs=None):
     dvisvgm_template = r"""
 \documentclass[dvisvgm]{minimal}
 
@@ -1232,6 +1232,9 @@ def tikz2img(tikz_file, encoding='utf8', tikz_libs=None):
 \usepackage{pgfplots}
 
 %% TikZ libraries
+%s
+
+%% pgfplots libraries
 %s
 
 \begin{document}
@@ -1250,6 +1253,13 @@ def tikz2img(tikz_file, encoding='utf8', tikz_libs=None):
         # Error
         raise Exception("TikZ libraries is not a list!")
 
+    if pgfplots_libs is None:
+        pgfplots_libs = ""
+    elif isinstance(pgfplots_libs, list):
+        pgfplots_libs = r"\usepgfplotslibrary{%s}" % (', '.join(pgfplots_libs))
+    else:
+        # Error
+        raise Exception("pgfplots libraries is not a list!")
     # create temporary directory
     fig_dir = os.path.dirname(tikz_file)
     tmp_dir = os.path.join(fig_dir, 'tmp_tikz_rendering')
@@ -1267,7 +1277,7 @@ def tikz2img(tikz_file, encoding='utf8', tikz_libs=None):
 
 
     # wrap tikz in TeX file
-    tex_content = dvisvgm_template % (encoding, tikz_libs, tikz_file)
+    tex_content = dvisvgm_template % (encoding, tikz_libs, pgfplots_libs, tikz_file)
     #print tex_content
 
     with open(tex_file, 'w') as f:
