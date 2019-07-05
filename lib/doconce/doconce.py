@@ -95,9 +95,9 @@ locale_dict = dict(
         'warning': 'advarsel',
         'remarks': 'bemerkning',
         'index': 'Stikkordsliste',
-        'Solution': u'Løsning',  # In exercises
-        '__Solution.__': u'__Løsning.__',
-        '__Answer.__': '__Kortsvar.__',
+        'Solution': u'Løsningsforslag',  # In exercises
+        '__Solution.__': u'__Løsningsforslag.__',
+        '__Answer.__': '__Fasit.__',
         '__Hint.__': '__Hint.__',
         'Filename': 'Filnavn',
         'Filenames': 'Filnavn',
