@@ -54,10 +54,9 @@ locale_dict = dict(
         # box, quote are silent wrt title
         'remarks': 'remarks', # In exercises
         # Exercise headings
-        'Solution': 'solution',
-        '__Solution.__': '__Solution.__',
-        '__Answer.__': '__Answer.__',
-        '__Hint.__': '__Hint.__',
+        'Solution': 'Solution',
+        'Answer': 'Answer',
+        'Hint': 'Hint',
         # At the end (in Sphinx)
         'index': 'Index',
         # References
@@ -96,9 +95,8 @@ locale_dict = dict(
         'remarks': 'bemerkning',
         'index': 'Stikkordsliste',
         'Solution': u'Løsningsforslag',  # In exercises
-        '__Solution.__': u'__Løsningsforslag.__',
-        '__Answer.__': '__Fasit.__',
-        '__Hint.__': '__Hint.__',
+        'Answer': 'Fasit',  # In exercises
+        'Hint': 'Hint',  # In exercises
         'Filename': 'Filnavn',
         'Filenames': 'Filnavn',
         # Quiz
@@ -135,9 +133,8 @@ locale_dict = dict(
         'remarks': 'Bemerkung', # In exercises
         # Exercise headings
         'Solution': u'Lösung',
-        '__Solution.__': u'__Lösung.__',
-        '__Answer.__': '__Antwort.__',
-        '__Hint.__': '__Hinweis.__',
+        'Answer': 'Antwort',
+        'Hint': 'Hinweis',
         # At the end (in Sphinx)
         'index': 'Index',
         # References
@@ -172,10 +169,9 @@ locale_dict = dict(
 	    # box, quote are silent wrt title
 	    'remarks': 'iruzkinak', # In exercises
 	    # Exercise headings
-	    'Solution': 'soluzioa',
-	    '__Solution.__': '__Soluzioa.__',
-	    '__Answer.__': '__Erantzuna.__',
-	    '__Hint.__': '__Laguntza.__',
+	    'Solution': 'Soluzioa',
+	    'Answer': 'Erantzuna',
+	    'Hint': 'Laguntza',
 	    # At the end (in Sphinx)
 	    'index': 'Indizea',
 	    # References
@@ -212,9 +208,8 @@ locale_dict = dict(
         'remarks': u'مُلاحَظات', # In exercises
         # Exercise headings
         'Solution': u'الحَل',
-        '__Solution.__': u'__الحَل__',
-        '__Answer.__': u'__الجَواب__',
-        '__Hint.__': u'__تَلْميح__',
+        'Answer': u'الجَواب',
+        'Hint': u'تَلْميح',
         # At the end (in Sphinx)
         'index': u'الدَّليل',
         # References
