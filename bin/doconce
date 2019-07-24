@@ -399,8 +399,7 @@ y
 #!/bin/bash
 echo Making %(sphinx_rootdir)s
 mkdir %(sphinx_rootdir)s
-sphinx-quickstart <<EOF
-%(sphinx_rootdir)s
+sphinx-quickstart %(sphinx_rootdir)s <<EOF
 n
 _
 %(title)s
