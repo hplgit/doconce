@@ -366,26 +366,10 @@ sphinx-quickstart < tmp_sphinx_gen.inp
         f2.write("""\
 %(sphinx_rootdir)s
 n
-_
 %(title)s
 %(author)s
 %(version)s
-%(version)s
 en
-.rst
-index
-y
-y
-n
-n
-n
-n
-n
-y
-n
-y
-y
-y
 """ % vars())
         f1.close()
         f2.close()
@@ -399,29 +383,12 @@ y
 #!/bin/bash
 echo Making %(sphinx_rootdir)s
 mkdir %(sphinx_rootdir)s
-sphinx-quickstart <<EOF
-%(sphinx_rootdir)s
+sphinx-quickstart %(sphinx_rootdir)s <<EOF
 n
-_
 %(title)s
 %(author)s
 %(version)s
-%(version)s
 en
-.rst
-index
-y
-y
-n
-n
-n
-n
-n
-y
-n
-y
-y
-y
 
 EOF
 """ % vars())
