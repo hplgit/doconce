@@ -880,7 +880,7 @@ def doconce_exercise_output(
     language = locale_dict['language']
     Solution = locale_dict[language]['Solution']
     if solution_header == '__Solution.__':
-        solution_header = '__{0}.__'.format(locale_dict[language]['Solution'])
+        solution_header = '__{0}.__'.format(locale_dict[language]['Solution'].encode('utf-8'))
     if answer_header == '__Answer.__':
         answer_header = '__{0}.__'.format(locale_dict[language]['Answer'])
     if hint_header == '__Hint.__':
