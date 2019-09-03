@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Google Code Wiki translator.
 Syntax defined by http://code.google.com/p/support/wiki/WikiSyntax

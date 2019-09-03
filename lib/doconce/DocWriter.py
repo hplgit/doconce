@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 DocWriter is a tool for writing documents in ASCII, HTML,
 LaTeX, DocOnce, and other formats based on input from Python

@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+""" Module description. """
+
 from __future__ import absolute_import
 import re
 from .common import indent_lines, default_movie, plain_exercise

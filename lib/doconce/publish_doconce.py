@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+""" Module description. """
+
 from builtins import str
 from publish import config
 _format_venue = config.formatting._format_venue

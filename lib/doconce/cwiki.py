@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Creole Wiki (as used on bitbucket.org).
 See http://www.wikicreole.org/wiki/Creole1.0 for syntax.

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Configuration of Doconce parameters that can also be set
 on the command line.
