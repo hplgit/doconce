@@ -630,14 +630,14 @@ def latex_code(filestr, code_blocks, code_block_types,
 
     # Replace all admon envirs by block envirs in case of beamer.
     if option('latex_title_layout=', '') == 'beamer':
-        # The admon envir is paragraph if beamer. Replace all such envirs
-        # with the beamer block envir. (This is more robus for the admon
+        # The admon envir is paragraph of beamer. Replace all such envirs
+        # with the beamer block envir. (This is more robust for the admon
         # title than previous solution where we redefined all admon envirs
         # to be block envirs.)
 
         # Generate admon automatically name by name
         admons = 'notice', 'summary', 'warning', 'question', 'block'
-        #Admons = [admon[0].upper() + admon[1:] for admon in admons]
+        # Admons = [admon[0].upper() + admon[1:] for admon in admons]
         for admon in admons:
             # First admons without title
             pattern = r'!b%s *\n' % admon

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-""" Module description. """"
+""" Module description. """
 
 from builtins import str
 from publish import config

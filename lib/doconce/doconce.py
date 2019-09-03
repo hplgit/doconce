@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-""" Module description. """"
+""" Module description. """
  
 from __future__ import print_function
 from __future__ import absolute_import
@@ -107,7 +107,7 @@ locale_dict = dict(
     },
     German={
         'locale': 'de_DE.UTF-8',
-        'latex package': 'german',
+        'latex package': 'ngerman',
         'aspell_dictionary' : 'deutsch', # with aspell, this is an alias for 'de_DE'
         'toc': 'Inhaltsverzeichnis',
         'Contents': 'Inhalt',
@@ -141,7 +141,7 @@ locale_dict = dict(
         'index': 'Index',
         # References
         'Filename': 'Dateiname',
-        'Filenames': 'Dateiname',
+        'Filenames': 'Dateinamen',
     },
     Basque={
 	    'locale': 'eu_ES.UTF-8',
