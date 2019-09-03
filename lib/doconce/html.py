@@ -2314,7 +2314,7 @@ def html_exercise(exer):
     language = locale_dict['language']
     envir2heading = dict(hint=r'(?P<heading>__{0}(?P<hintno> \d+)?\.__)'.format(locale_dict[language]['Hint']),
                          ans=r'(?P<heading>__{0}\.__)'.format(locale_dict[language]['Answer']),
-                         sol=r'(?P<heading>__{0}\.__)'.format(locale_dict[language]['Solution']))
+                         sol=r'(?P<heading>__{0}\.__)'.format(locale_dict[language]['Solution'].encode('utf-8')))
 
     global _id_counter # need this trick to update this var in subst func
     _id_counter = 0
