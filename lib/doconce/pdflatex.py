@@ -1,4 +1,6 @@
-# -*- coding: iso-8859-15 -*-
+# -*- coding: utf-8 -*-
+""" Module description. """"
+
 from __future__ import absolute_import
 from future import standard_library
 standard_library.install_aliases()

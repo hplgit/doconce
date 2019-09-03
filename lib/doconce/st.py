@@ -1,5 +1,7 @@
-from __future__ import absolute_import
+# -*- coding: utf-8 -*-
+""" Module description. """"
 
+from __future__ import absolute_import
 from .epytext import epytext_author
 from .common import default_movie, plain_exercise, DEFAULT_ARGLIST
 

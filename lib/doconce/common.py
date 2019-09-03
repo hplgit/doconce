@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 This module contains data structures used in translation of the
 DocOnce format to other formats.  Some convenience functions used in

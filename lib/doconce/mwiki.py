@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 MediaWiki translator, aimed at Wikipedia/WikiBooks type of web pages.
 Syntax defined by http://en.wikipedia.org/wiki/Help:Wiki_markup
