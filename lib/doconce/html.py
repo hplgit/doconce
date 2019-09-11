@@ -2311,9 +2311,10 @@ def html_exercise(exer):
     if not bootstrap:
         return exerstr, solstr
     # Bootstrap typesetting where hints and solutions can be folded
-    envir2heading = dict(hint=r'(?P<heading>__Hint(?P<hintno> \d+)?\.__)',
-                         ans=r'(?P<heading>__Answer\.__)',
-                         sol=r'(?P<heading>__Solution\.__)')
+    language = locale_dict['language']
+    envir2heading = dict(hint=r'(?P<heading>__{0}(?P<hintno> \d+)?\.__)'.format(locale_dict[language]['Hint']),
+                         ans=r'(?P<heading>__{0}\.__)'.format(locale_dict[language]['Answer']),
+                         sol=r'(?P<heading>__{0}\.__)'.format(locale_dict[language]['Solution']))
 
     global _id_counter # need this trick to update this var in subst func
     _id_counter = 0
