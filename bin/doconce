@@ -373,6 +373,7 @@ _
 en
 .rst
 index
+
 y
 y
 n
@@ -383,6 +384,7 @@ y
 n
 n
 y
+
 y
 y
 """ % vars())
@@ -407,6 +409,7 @@ _
 en
 .rst
 index
+
 y
 y
 n
@@ -417,6 +420,7 @@ y
 n
 n
 y
+
 y
 y
 EOF
@@ -916,7 +920,7 @@ else:
         print('copying', filename, 'to _sources')
         logging.info('copy: %%s to _sources' %% filename)
         shutil.copy(filename, '_sources')
-    print()'*** running paver build to build the RunestoneInteractive book')
+    print('*** running paver build to build the RunestoneInteractive book')
     logging.info('running paver build to create the RunestoneInteractive book')
     system('paver build')
 
