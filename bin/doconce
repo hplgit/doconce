@@ -350,7 +350,7 @@ def sphinx_dir():
     print()
     time.sleep(1.5)
 
-    #make_conf_py_runestone(themes, theme, title, short_title,
+    # make_conf_py_runestone(themes, theme, title, short_title,
     #                       copyright_, logo, favicon, intersphinx)
 
     if os.path.isdir(sphinx_rootdir):
@@ -370,7 +370,6 @@ _
 %(title)s
 %(author)s
 %(version)s
-%(version)s
 en
 .rst
 index
@@ -380,8 +379,8 @@ n
 n
 n
 n
-n
 y
+n
 n
 y
 y
@@ -391,8 +390,8 @@ y
         f2.close()
         system('tmp_sphinx_gen',
                failure_info='to generate sphinx directory')
-        #os.remove('tmp_sphinx_gen.bat')
-        #os.remove('tmp_sphinx_gen.inp')
+        # os.remove('tmp_sphinx_gen.bat')
+        # os.remove('tmp_sphinx_gen.inp')
     else:
         f = open('tmp_sphinx_gen.sh', 'w')
         f.write("""\
@@ -405,7 +404,6 @@ _
 %(title)s
 %(author)s
 %(version)s
-%(version)s
 en
 .rst
 index
@@ -415,19 +413,18 @@ n
 n
 n
 n
-n
 y
 n
+n
 y
 y
 y
-
 EOF
 """ % vars())
         f.close()
         system('sh tmp_sphinx_gen.sh',
                failure_info='to generate sphinx directory')
-        #os.remove('tmp_sphinx_gen.sh')
+        # os.remove('tmp_sphinx_gen.sh')
     os.chdir(sphinx_rootdir)
 
     sphinx_basic_themes = 'agogo basic bizstyle classic default epub haiku nature pyramid scrolls sphinxdoc traditional'.split()
