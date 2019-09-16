@@ -797,7 +797,7 @@ if '--runestone' not in sys.argv:
     system('make clean')
     system('make html')
 
-    print 'Fix generated files:',
+    print('Fix generated files:', )
     os.chdir('_build/html')
     for filename in glob.glob('*.html') + glob.glob('.*.html'):
         print(filename, )
