@@ -661,7 +661,7 @@ def latex_code(filestr, code_blocks, code_block_types,
             pattern = r'!b%s +(.+)' % admon
             filestr = re.sub(pattern, r'\\begin{block}{\g<1> }', filestr)
             pattern = r'!e%s' % admon
-            filestr = re.sub(pattern, r'\end{block}', filestr)
+            filestr = re.sub(pattern, r'\\end{block}', filestr)
     # Fix None titles to empty titles
     filestr = filestr.replace('begin{block}{None }', 'begin{block}{}')
     # Fix % inside verbatim in block/paragraph titles
