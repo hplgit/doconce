@@ -209,8 +209,8 @@ def pandoc_code(filestr, code_blocks, code_block_types,
     # \eqref and labels will not work, but labels do no harm
     filestr = filestr.replace(' label{', ' \\label{')
     pattern = r'^label\{'
-    filestr = re.sub(pattern, '\\label{', filestr, flags=re.MULTILINE)
-    filestr = re.sub(r'\(ref\{(.+?)\}\)', r'\eqref{\g<1>}', filestr)
+    filestr = re.sub(pattern, '\\\label{', filestr, flags=re.MULTILINE)
+    filestr = re.sub(r'\\(ref\\{(.+?)\\}\\)', r'\\eqref{\g<1>}', filestr)
 
     # Final fixes
 
