@@ -258,6 +258,8 @@ def _rmdolog():
 
 def errwarn(msg, newline=True):
     """Function for reporting errors and warnings to screen and file."""
+    if isinstance(msg, Exception):
+        msg = str(msg)
     if newline:
         print(msg)
     else:
