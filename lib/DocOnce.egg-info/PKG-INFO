@@ -1,0 +1,34 @@
+Metadata-Version: 1.2
+Name: DocOnce
+Version: 1.4.13
+Summary: 
+Usage of this setup.py script:
+
+python setup.py install [, --prefix=$PREFIX]
+
+
+Home-page: https://github.com/hplgit/doconce
+Author: Hans Petter Langtangen
+Author-email: hpl@simula.no
+Maintainer: Kristian Gregorius Hustad
+Maintainer-email: krihus@ifi.uio.no
+License: BSD
+Description: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: Other Audience
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: MacOS
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: Unix
+Classifier: Programming Language :: Python
+Classifier: Topic :: Documentation
+Classifier: Topic :: Software Development :: Documentation
+Classifier: Topic :: Text Processing :: Markup
+Classifier: Topic :: Text Processing :: Markup :: HTML
+Classifier: Topic :: Text Processing :: Markup :: LaTeX
+Classifier: Topic :: Text Processing :: Markup :: XML

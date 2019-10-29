@@ -10,14 +10,14 @@ the tests works. This script puts all results in a file test.v, which
 is to be compared to the reference data in test.r.
 """
 
-import commands, os, sys, re, doconce.common, time
+import subprocess, os, sys, re, doconce.common, time
 
 # recommendation: remove installation and reinstall (to test setup.py)
 
 # Check that we have Internet
 if not doconce.common.internet_access(2):
-    print 'No Internet connection. This verification will be very slow!'
-    print 'And it will be wrong...'
+    print('No Internet connection. This verification will be very slow!')
+    print('And it will be wrong...')
     time.sleep(3)
 
 
@@ -28,7 +28,7 @@ log.close()  # just touch the file
 system_output = []
 
 def add(filename, logfile):
-    print '...adding file', filename
+    print('...adding file', filename)
     logfile.write("""
 ************** File: %s *****************
 """ % filename)
@@ -41,21 +41,21 @@ def add(filename, logfile):
         logfile.write(fstr)
 
 def clean_and_make(append=True):
-    print '\n\nCleaning....................................'
+    print('\n\nCleaning....................................')
     failure = os.system('sh -x clean.sh > /dev/null')
     if failure:
         raise OSError('Could not run clean.sh successfully')
-    print '\n\nRunning make.sh...............................\nin', os.getcwd()
-    failure, output = commands.getstatusoutput('bash -x make.sh')
+    print('\n\nRunning make.sh...............................\nin', os.getcwd())
+    failure, output = subprocess.getstatusoutput('bash -x make.sh')
     system_output.append(output)
     if failure:
         where = os.getcwd()
         for line in output.splitlines():
-            print line
+            print(line)
         raise OSError('Could not run %s/make.sh successfully!\nRerun manually (go to %s and run ./make.sh' % (where, where))
 
 # test multiple authors, figure, movie, math, encodings, etc:
-print '...running ./make.sh in test'  # works only under Unix...
+print('...running ./make.sh in test')  # works only under Unix...
 clean_and_make(append=False)
 
 log = open(logfilename, 'a')
@@ -107,7 +107,7 @@ add(os.path.join(os.pardir, '_doconce2anything.do.txt'), log)
 os.chdir(thisdir)
 # test DocWriter:
 log = open(logfilename, 'a')
-failure, output = commands.getstatusoutput('python ../lib/doconce/DocWriter.py')
+failure, output = subprocess.getstatusoutput('python ../lib/doconce/DocWriter.py')
 files = 'tmp_DocOnce.do.txt', 'tmp_DocWriter.do.txt', 'tmp_DocWriter.html', \
         'tmp_HTML.html'
 for f in files:
@@ -136,7 +136,7 @@ os.chdir(thisdir)
 
 # test quickref:
 quickdir = os.path.join(os.pardir, 'doc', 'src', 'quickref')
-print 'cd', quickdir
+print('cd', quickdir)
 os.chdir(quickdir)
 
 clean_and_make()

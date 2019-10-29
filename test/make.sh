@@ -47,6 +47,8 @@ system doconce format html testdoc --wordpress  $ex --html_exercise_icon=questio
 cp testdoc.html testdoc_wordpress.html
 
 system doconce format html testdoc --without_answers --without_solutions $ex -DSOMEVAR --html_exercise_icon=default --solutions_at_end --html_share=http://cyber.space.com/specials,twitter,print,google+,facebook,linkedin $rawgit
+system doconce format html testdoc --without_answers --without_solutions $ex --html_exercise_icon=default --answers_at_end --solutions_at_end --html_share=http://cyber.space.com/specials,twitter,print,google+,facebook,linkedin $rawgit
+
 system doconce split_html testdoc.html --method=space10
 cp testdoc.html testdoc_no_solutions.html
 

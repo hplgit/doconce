@@ -1,3 +1,7 @@
+.vscode/
+ale/
+venv/
+
 syntax: glob
 # compiled files:
 *.o

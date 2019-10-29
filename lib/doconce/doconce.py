@@ -1988,7 +1988,7 @@ def exercises(filestr, format, code_blocks, tex_blocks):
         solutions = '\n'.join([n for n in solutions if isinstance(n, basestring)])
 
 
-    if option('without_solutions') and option('solutions_at_end'):
+    if option('solutions_at_end') or option('answers_at_end'):
         from .common import chapter_pattern
         if re.search(chapter_pattern, filestr, flags=re.MULTILINE):
             has_chapters = True
@@ -2000,23 +2000,33 @@ def exercises(filestr, format, code_blocks, tex_blocks):
         # at the end of substitutions and write this to file!
         solfilename = dofile_basename + '_exersol.do.txt'
         f = open(solfilename, 'w')
+
+        # Header for answer and/or solutions at end of book
+        header_at_end = '======= '
+        if option('solutions_at_end') and option('answers_at_end'):
+            header_at_end += 'Answers and Solutions'
+        elif option('answers_at_end'):
+            header_at_end += 'Answers'
+        elif option('solutions_at_end'):
+            header_at_end += 'Solutions'
+        header_at_end += ' ======='
         if has_chapters:
-            sol_heading = '========= Solutions =========\nlabel{ch:solutions}\n\n'
-        else:
-            sol_heading = '======= Solutions =======\nlabel{sec:solutions}\n\n'
-        f.write(sol_heading)
+            header_at_end = '==' + header_at_end + '=='
+        header_at_end += '\nlabel{ch:solutions}\n\n'
+
+        f.write(header_at_end)
         f.write(solutions)
         f.close()
         #errwarn('solutions to exercises in', dofile_basename)
 
         pattern = '(^={5,7} +(References|Bibliography) +={5,7})'
-        sol_sec = sol_heading + solutions
+        sol_sec = header_at_end + solutions
         if re.search(pattern, filestr, flags=re.MULTILINE):
             filestr = re.sub(pattern,
                              sol_sec + '\n\n\\g<1>',
                              filestr, flags=re.MULTILINE)
         else:
-            # Just add solutions at the end
+            # Just add solutions/answers at the end
             filestr += '\n\n\n' + sol_sec
 
     if option('exercises_in_zip'):
@@ -3841,7 +3851,7 @@ def interpret_quiz_text(text, insert_missing_heading= False,
             if heading.lower() not in previous_heading.lower():
                 # Quiz heading is missing and wanted
                 text = '===== Exercise: %s =====\n\n' % heading + text
-                # no label, file=, solution= are needed for quizes
+                # no label, file=, solution= are needed for quizzes
                 previous_heading_tp = 'exercise'
         heading_comment = ct('--- quiz heading: ' + heading) + '\n' + ct('--- previous heading type: ' + str(previous_heading_tp))
         text = re.sub(pattern, heading_comment, text, flags=re.MULTILINE)
@@ -4942,7 +4952,7 @@ def doconce2format(filestr, format):
     # (Note: must be done after code and tex blocks are inserted!
     # Otherwise there is a mismatch between all original blocks
     # and those present after solutions, answers, etc. are removed)
-    envir2option = dict(sol='solutions', ans='answers', hint='hints')
+    envir2option = dict(sol='solutions', ans='answers', hint='hints', sol_at_end='solutions at end', ans_at_end='answers_at_end')
     # Recall that the comment syntax is now dependent on the format
     for envir in 'sol', 'ans', 'hint':
         option_name = 'without_' + envir2option[envir]
@@ -4950,7 +4960,13 @@ def doconce2format(filestr, format):
             filestr = process_envir(
                 filestr, envir, format, action='remove',
                 reason='(because of the command-line option --%s)\n' % option_name)
-
+    # Do the same but for answers and solutions in the end of the document (--answers_at_end and --solutions_at_end)
+    for envir in 'ans_at_end', 'sol_at_end':
+        option_name = envir2option[envir]
+        if not option(option_name):
+            filestr = process_envir(
+                filestr, envir, format, action='remove',
+                reason='(because of the command-line option --%s)\n' % option_name)
     debugpr('The file after potential removal of solutions, answers, hints, etc.:', filestr)
 
     cpu = time.time() - _t0
