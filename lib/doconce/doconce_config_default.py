@@ -129,6 +129,7 @@ examples_as_exercises = False
 exercises_as_subsections = False
 solutions_at_end = False
 without_solutions = False
+answers_at_end = False
 without_answers = False
 without_hints = False
 #exercise_solution =

@@ -11889,6 +11889,11 @@ here for convenience.
     Leave out solution environments from exercises.
     
     
+    --answers_at_end
+    
+    Place answers to exercises at the end of the document.
+    
+    
     --without_answers
     
     Leave out answer environments from exercises.

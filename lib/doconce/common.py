@@ -51,6 +51,11 @@ envir_delimiter_lines = {
     begin_end_comment_tags('exercise'),
     'subex':
     begin_end_comment_tags('subexercise'),
+    'sol_at_end':
+    begin_end_comment_tags('solution of exercise at end'),
+    'ans_at_end':
+    begin_end_comment_tags('answer of exercise at end'),
+
 }
 
 _counter_for_html_movie_player = 0
@@ -923,7 +928,15 @@ def doconce_exercise_output(
     if include_type:
         s += ' ' + exer['type']
         if sol:
-            sol += ' Solution to ' + exer['type']
+            header_at_end = ' '
+            if option('solutions_at_end') and option('answers_at_end'):
+                header_at_end += 'Answer and Solution'
+            elif option('answers_at_end'):
+                header_at_end += 'Answer'
+            elif option('solutions_at_end'):
+                header_at_end += 'Solution'
+            header_at_end += ' to '
+            sol += header_at_end + exer['type']
         if include_numbering:
             if 'inherited_no' in exer:
                 exer_no = str(exer['inherited_no'])
@@ -998,9 +1011,6 @@ def doconce_exercise_output(
             letter = string.ascii_lowercase[i]
             s += '\n__%s)__\n' % letter
 
-            if subex['solution'] or (subex['answer'] and not option('without_answers')):
-                sol += '\n__%s)__\n' % letter
-
             if subex['text']:
                 s += subex['text'] + '\n'
 
@@ -1027,17 +1037,25 @@ def doconce_exercise_output(
 
                 if subex['answer']:
                     s += '\n'
-                    if exer['type'] != 'Example':
+                    if exer['type'] == 'Example':
+                        s += answer_header + '\n' + subex['answer'] + '\n'
+                    else:
                         s += '\n# ' + envir_delimiter_lines['ans'][0] + '\n'
-                        sol += '\n# ' + envir_delimiter_lines['ans'][0] + '\n'
-                    s += answer_header + '\n' + subex['answer'] + '\n'
-                    sol += answer_header + '\n' + subex['answer'] + '\n'
-                    if exer['type'] != 'Example':
+                        s += answer_header + '\n' + subex['answer'] + '\n'
                         s += '\n# ' + envir_delimiter_lines['ans'][1] + '\n'
-                        sol += '\n# ' + envir_delimiter_lines['ans'][1] + '\n'
+                        if option('answers_at_end'):
+                            # Write subex letter and 'Answer.' in bold on the same line
+                            sol += '\n__%s) ' % letter
+                            sol += answer_header[2:] + '\n' + subex['answer'] + '\n'
+                        else:
+                            sol += '\n# ' + envir_delimiter_lines['ans_at_end'][0] + '\n'
+                            sol += answer_header + '\n' + subex['answer'] + '\n'
+                            sol += '\n# ' + envir_delimiter_lines['ans_at_end'][1] + '\n'
 
                 if subex['solution']:
                     s += '\n'
+                    # Leave out begin-end solution comments if example since we want to
+                    # avoid marking such sections for deletion (--without_solutions)
                     if exer['type'] != 'Example':
                         s += '\n# ' + envir_delimiter_lines['sol'][0] + '\n'
                     if solution_style == 'paragraph':
@@ -1055,8 +1073,11 @@ def doconce_exercise_output(
                         errwarn('\nwarning: open the solution in exercise "%s" with a line of\ntext before the code! (Now "Code:" is inserted)' % exer['title'] + '\n')
                         s   += 'Code:\n'
                         sol += '\nCode:\n'
-                    s   +=        subex['solution'] + '\n'
-                    sol += '\n' + subex['solution'] + '\n'
+
+                    s += subex['solution'] + '\n'
+                    # Write subex letter and 'Solution.' in bold on the same line
+                    sol += '\n__%s) ' % letter
+                    sol += solution_header[2:] + '\n' + subex['solution'] + '\n'
                     if solution_style == 'admon':
                         s   += '!enotice\n\n'
                         sol += '!enotice\n\n'
@@ -1073,15 +1094,21 @@ def doconce_exercise_output(
         s += '\n'
         # Leave out begin-end answer comments if example since we want to
         # avoid marking such sections for deletion (--without_answers)
-        if exer['type'] != 'Example':
+        if exer['type'] == 'Example':
+            s += answer_header + '\n' + exer['answer'] + '\n'
+            sol += answer_header + '\n' + exer['answer'] + '\n'
+        else:
             s += '\n# ' + envir_delimiter_lines['ans'][0] + '\n'
-            sol += '\n# ' + envir_delimiter_lines['ans'][0] + '\n'
-        s += answer_header + '\n' + exer['answer'] + '\n'
-        sol += answer_header + '\n' + exer['answer'] + '\n'
-
-        if exer['type'] != 'Example':
+            s += answer_header + '\n' + exer['answer'] + '\n'
             s += '\n# ' + envir_delimiter_lines['ans'][1] + '\n'
-            sol += '\n# ' + envir_delimiter_lines['ans'][1] + '\n'
+            # Leave out begin-end answer comments if --answers_at_end since
+            # we want to avoid marking such sections for deletion
+            if option('answers_at_end'):
+                sol += answer_header + '\n' + exer['answer'] + '\n'
+            else:
+                sol += '\n# ' + envir_delimiter_lines['ans_at_end'][0] + '\n'
+                sol += answer_header + '\n' + exer['answer'] + '\n'
+                sol += '\n# ' + envir_delimiter_lines['ans_at_end'][1] + '\n'
 
     if exer['solution']:
         s += '\n'
@@ -1104,7 +1131,15 @@ def doconce_exercise_output(
             s   += 'Code:\n'
             sol += '\nCode:\n'
         s   +=       exer['solution'] + '\n'
-        sol += '\n'+ exer['solution'] + '\n'
+        # Leave out begin-end solution comments if --solutions_at_end since
+        # we want to avoid marking such sections for deletion
+        if option('solutions_at_end'):
+            sol += '\n' + solution_header + '\n' + exer['solution'] + '\n'
+        else:
+            sol += '\n# ' + envir_delimiter_lines['sol_at_end'][0] + '\n'
+            sol += '\n' + solution_header + '\n' + exer['solution'] + '\n'
+            sol += '\n# ' + envir_delimiter_lines['sol_at_end'][1] + '\n'
+
         if solution_style == 'admon':
             s   += '!enotice\n\n'
             sol += '!enotice\n\n'
