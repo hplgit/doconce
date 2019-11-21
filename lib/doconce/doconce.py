@@ -4954,7 +4954,7 @@ def doconce2format(filestr, format):
     # (Note: must be done after code and tex blocks are inserted!
     # Otherwise there is a mismatch between all original blocks
     # and those present after solutions, answers, etc. are removed)
-    envir2option = dict(sol='solutions', ans='answers', hint='hints', sol_at_end='solutions at end', ans_at_end='answers_at_end')
+    envir2option = dict(sol='solutions', ans='answers', hint='hints', sol_at_end='solutions_at_end', ans_at_end='answers_at_end')
     # Recall that the comment syntax is now dependent on the format
     for envir in 'sol', 'ans', 'hint':
         option_name = 'without_' + envir2option[envir]
