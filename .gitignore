@@ -44,3 +44,6 @@ _minted-*
 .*.copyright
 sphinx-rootdir
 Trash
+private
+venv
+lib/DocOnce.egg-info/

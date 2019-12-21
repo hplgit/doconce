@@ -2306,37 +2306,33 @@ def html_exercise(exer):
         solution_header='__Solution.__',
         answer_header='__Answer.__',
         hint_header='__Hint.__')
-
     bootstrap = option('html_style=', '').startswith('boots')
-    if not bootstrap:
-        return exerstr, solstr
-    # Bootstrap typesetting where hints and solutions can be folded
-    language = locale_dict['language']
-    envir2heading = dict(hint=r'(?P<heading>__{0}(?P<hintno> \d+)?\.__)'.format(locale_dict[language]['Hint']),
-                         ans=r'(?P<heading>__{0}\.__)'.format(locale_dict[language]['Answer']),
-                         sol=r'(?P<heading>__{0}\.__)'.format(locale_dict[language]['Solution']))
+    if bootstrap:
+        # Bootstrap typesetting where hints and solutions can be folded
+        language = locale_dict['language']
+        envir2heading = dict(hint=r'(?P<heading>__{0}(?P<hintno> \d+)?\.__)'.format(locale_dict[language]['Hint']),
+                             ans=r'(?P<heading>__{0}\.__)'.format(locale_dict[language]['Answer']),
+                             sol=r'(?P<heading>__{0}\.__)'.format(locale_dict[language]['Solution']))
+        global _id_counter # need this trick to update this var in subst func
+        _id_counter = 0
+        for envir in 'hint', 'ans', 'sol':
 
-    global _id_counter # need this trick to update this var in subst func
-    _id_counter = 0
-    for envir in 'hint', 'ans', 'sol':
+            def subst(m):
+                global _id_counter
+                _id_counter += 1
+                heading = m.group('heading')
+                body = m.group('body')
+                id = 'exer_%d_%d' % (exer['no'], _id_counter)
+                visible_text = heading
+                unfold = bootstrap_collapse(
+                    visible_text=heading, collapsed_text=body,
+                    id=id, button_text='', icon='hand-right')
+                replacement = '\n# ' + envir_delimiter_lines[envir][0] + '\n' + unfold + '\n# ' + envir_delimiter_lines[envir][1] + '\n'
+                return replacement
 
-        def subst(m):
-            global _id_counter
-            _id_counter += 1
-            heading = m.group('heading')
-            body = m.group('body')
-            id = 'exer_%d_%d' % (exer['no'], _id_counter)
-            visible_text = heading
-            unfold = bootstrap_collapse(
-                visible_text=heading, collapsed_text=body,
-                id=id, button_text='', icon='hand-right')
-            replacement = '\n# ' + envir_delimiter_lines[envir][0] + '\n' + unfold + '\n# ' + envir_delimiter_lines[envir][1] + '\n'
-            return replacement
-
-        pattern = '\n# ' + envir_delimiter_lines[envir][0] + '\s+' + envir2heading[envir] + '(?P<body>.+?)' + '\n# ' + envir_delimiter_lines[envir][1] + '\n'
-        exerstr = re.sub(pattern, subst, exerstr, flags=re.DOTALL)
-        solstr = re.sub(pattern, subst, solstr, flags=re.DOTALL)
-
+            pattern = '\n# ' + envir_delimiter_lines[envir][0] + '\s+' + envir2heading[envir] + '(?P<body>.+?)' + '\n# ' + envir_delimiter_lines[envir][1] + '\n'
+            exerstr = re.sub(pattern, subst, exerstr, flags=re.DOTALL)
+            solstr = re.sub(pattern, subst, solstr, flags=re.DOTALL)
     return exerstr, solstr
 
 def html_index_bib(filestr, index, citations, pubfile, pubdata):

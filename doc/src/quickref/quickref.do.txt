@@ -964,9 +964,9 @@ Here goes a full solution of the whole exercise.
 !ec
 By default, answers, solutions, and hints are typeset as paragraphs.
 The command-line arguments `--without_answers` and `--without_solutions`
-turn off output of answers and solutions, respectively, except for
-examples.
+turn off output of answers and solutions, respectively, except for examples. The command line options `--answers_at_end` and `--solutions_at_end` write all answers and solutions to exercises to a separate section in the end of the document, respectively. Combine with `--without_answers` and `--without_solutions` to remove answers and solutions from the main text. 
 
+The commands `!anshide` and `!solhide` can be used to hide from the main text answers and solutions, respectively, until the `!ansoff` and `!soloff` commands are encountered. Similarly, the `!ansdocend` and `!soldocend` commands move answers and solutions to the end of the book. 
 
 ===== Environments =====
 

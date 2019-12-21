@@ -4479,7 +4479,7 @@ with ``!esubex``, on the beginning of separate lines.
 Within the main exercise or
 a subexercise, three other environments are possible: (full) solution,
 (short) *answer*, and *hints*. The environments have begin-end
-directives ``!bans``, ``!eans``, ``!bsol``, ``!esol``, ``!bhint``, ``!ehint``, which
+directives ``!bans``, ``!eans``, ``!bsol``, ``!esol``, ``!bans_docend``, ``!eans_docend``, ``!bsol_docend``, ``!esol_docend``, ``!bhint``, ``!ehint``, which
 all must appear on the beginning of a separate line (just as
 ``!bc`` and ``!ec``).
 

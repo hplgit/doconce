@@ -1480,6 +1480,10 @@ the environments:
 
  * ``sol``: full solution to exercise or sub-exercise
 
+ * ``ans_docend``: same as the ans environment, but placed in the end of the document
+
+ * ``sol_docend``: same as the sol environment, but placed in the end of the document
+
  * ``hint``: multiple help items in an exercise or sub-exercise
 
  * ``quote``: indented text
@@ -1491,8 +1495,7 @@ the environments:
 
  * ``pop``: text to gradually pop up in slide presentations
 
- * ``slidecell``: indication of cells in a grid layout for elements on a
-   slide
+ * ``slidecell``: indication of cells in a grid layout for elements on a slide
 
 In addition, the user can define new environments ``!bc-name`` as
 explained in the `manual <http://hplgit.github.io/doconce/doc/pub/manual/manual.html#manual:userdef:envir>`__.

@@ -1704,7 +1704,11 @@ Here goes a full solution of the whole exercise.
 By default, answers, solutions, and hints are typeset as paragraphs.
 The command-line arguments <code>--without_answers</code> and <code>--without_solutions</code>
 turn off output of answers and solutions, respectively, except for
-examples.
+examples. The command line options <code>--answers_at_end</code> and <code>--solutions_at_end</code> write all answers and solutions to exercises to a separate section in the end of the document, respectively. Combine with <code>--without_answers</code> and <code>--without_solutions</code> to remove answers and solutions from the main text. 
+
+<p>
+The commands <code>!anshide</code> and <code>!solhide</code> can be used to hide from the main text answers and solutions, respectively, until the <code>!ansoff</code> and <code>!soloff</code> commands are encountered. Similarly, the <code>!ansdocend</code> and <code>!soldocend</code> commands move answers and solutions to the end of the book. 
+
 
 <h2 id="___sec21" class="anchor">Environments </h2>
 
@@ -1719,14 +1723,15 @@ the environments:
  <li> <code>subex</code>: sub-exercise</li>
  <li> <code>ans</code>: short answer to exercise or sub-exercise</li>
  <li> <code>sol</code>: full solution to exercise or sub-exercise</li>
+ <li> <code>ans_docend</code>: same as the ans environment, but placed in the end of the document</li>
+ <li> <code>sol_docend</code>: same as the sol environment, but placed in the end of the document</li>
  <li> <code>hint</code>: multiple help items in an exercise or sub-exercise</li>
  <li> <code>quote</code>: indented text</li>
  <li> <code>notice</code>, <code>summary</code>, <code>warning</code>, <code>question</code>: admonition boxes with
     custom title, special icon, and (sometimes) background color</li>
  <li> <code>block</code>, <code>box</code>: simpler boxes (<code>block</code> may have title but never any icon)</li>
  <li> <code>pop</code>: text to gradually pop up in slide presentations</li>
- <li> <code>slidecell</code>: indication of cells in a grid layout for elements on a
-   slide</li>
+ <li> <code>slidecell</code>: indication of cells in a grid layout for elements on a slide</li>
 </ul>
 
 In addition, the user can define new environments <code>!bc-name</code> as

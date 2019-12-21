@@ -105,7 +105,7 @@ locale_dict = dict(
     },
     German={
         'locale': 'de_DE.UTF-8',
-        'latex package': 'ngerman',
+        'latex package': 'german',
         'aspell_dictionary' : 'deutsch', # with aspell, this is an alias for 'de_DE'
         'toc': 'Inhaltsverzeichnis',
         'Contents': 'Inhalt',
@@ -139,7 +139,7 @@ locale_dict = dict(
         'index': 'Index',
         # References
         'Filename': 'Dateiname',
-        'Filenames': 'Dateinamen',
+        'Filenames': 'Dateiname',
     },
     Basque={
 	    'locale': 'eu_ES.UTF-8',
@@ -258,8 +258,6 @@ def _rmdolog():
 
 def errwarn(msg, newline=True):
     """Function for reporting errors and warnings to screen and file."""
-    if isinstance(msg, Exception):
-        msg = str(msg)
     if newline:
         print(msg)
     else:
@@ -286,6 +284,7 @@ def supported_format_names():
 def doconce_envirs():                     # begin-end environments
     return ['c', 't',                     # verbatim and tex blocks
             'ans', 'sol', 'subex',        # exercises
+            'ans_docend', 'sol_docend',   # exercises at document end
             'pop', 'slidecell', 'notes',  # slides
             'hint', 'remarks',            # exercises
             'quote', 'box',
@@ -1696,6 +1695,9 @@ def exercises(filestr, format, code_blocks, tex_blocks):
     if not re.search(exer_heading_pattern, filestr, flags=re.MULTILINE):
         return filestr
 
+    # Exercise modifiers
+    exer_modifier_pattern = r'^!(?P<ans_sol>ans|sol)(?P<behavior>hide|docend|off)$'
+
     label_pattern = re.compile(r'^\s*label\{(.+?)\}')
     # We accept file and solution to be comment lines
     #file_pattern = re.compile(r'^#? *file *= *([^\s]+)')
@@ -1721,6 +1723,12 @@ def exercises(filestr, format, code_blocks, tex_blocks):
     subex_pattern_end = '!esubex'
     closing_remarks_pattern_begin = '!bremarks'
     closing_remarks_pattern_end = '!eremarks'
+    has_ans_docend = False
+    has_sol_docend = False
+    force_ans_docend = False
+    force_sol_docend = False
+    force_ans_hide = False
+    force_sol_hide = False
 
     lines = filestr.splitlines()
     newlines = []     # lines in resulting file
@@ -1733,8 +1741,8 @@ def exercises(filestr, format, code_blocks, tex_blocks):
         line = lines[line_no].lstrip()
         #errwarn('LINE %d:' % line_no, line)
         #pprint.pprint(exer)
-
         m_chapter = re.search(chapter_pattern, line)
+        m_exermodif = re.search(exer_modifier_pattern, line)
         if m_chapter:
             if m_chapter.group(1):
                 # Appendix
@@ -1758,8 +1766,6 @@ def exercises(filestr, format, code_blocks, tex_blocks):
 
         m_heading = re.search(exer_heading_pattern, line)
         if m_heading:
-            inside_exer = True
-
             exer = {}  # data in the exercise
             subex = {} # data in a subexercise
             exer['title'] = m_heading.group('title')
@@ -1790,23 +1796,45 @@ def exercises(filestr, format, code_blocks, tex_blocks):
             exer['file'] = None
             exer['keywords'] = None
             exer.update(dict(text=[], hints=[], answer=[],
+                             sol_docend=[], ans_docend=[],
                              solution=[], subex=[], closing_remarks=[]))
-
+            #Reset variables
+            inside_exer = True
+            inside_ans_docend = False
+            inside_sol_docend = False
             exer_end = False
-
             inside_hint = False
             inside_subex = False
             inside_answer = False
             inside_solution = False
+            inside_answer_at_end = False
+            inside_solution_at_end = False
             inside_closing_remarks = False
+        elif m_exermodif:
+            if m_exermodif.group('ans_sol') == 'ans':
+                if m_exermodif.group('behavior') == 'docend':
+                    force_ans_docend = True
+                    has_ans_docend = True
+                elif m_exermodif.group('behavior') == 'hide':
+                    force_ans_hide = True
+                elif m_exermodif.group('behavior') == 'off':
+                    force_ans_docend = False
+                    force_ans_hide = False
+            elif m_exermodif.group('ans_sol') == 'sol':
+                if m_exermodif.group('behavior') == 'docend':
+                    force_sol_docend = True
+                    has_sol_docend = True
+                elif m_exermodif.group('behavior') == 'hide':
+                    force_sol_hide = True
+                elif m_exermodif.group('behavior') == 'off':
+                    force_sol_docend = False
+                    force_sol_hide = False
         elif inside_exer:
             instruction_line = True
-
             m_label = label_pattern.search(line)
             m_file = file_pattern.search(line)
             m_solution_file = solution_pattern.search(line)
             m_keywords = keywords_pattern.search(line)
-
             if m_label:
                 if exer['label'] is None:
                     label = m_label.group(1)
@@ -1826,31 +1854,45 @@ def exercises(filestr, format, code_blocks, tex_blocks):
             elif m_solution_file:
                 exer['solution_file'] = [name.strip() for name in
                                          m_solution_file.group(1).split(',')]
-
             elif line.startswith(subex_pattern_begin):
                 inside_subex = True
                 subex = dict(text=[], hints=[], answer=[],
+                             sol_docend=[], ans_docend=[],
                              solution=[], file=None, aftertext=[])
             elif line.startswith(subex_pattern_end):
                 inside_subex = False
                 subex['text'] = '\n'.join(subex['text']).strip()
                 subex['answer'] = '\n'.join(subex['answer']).strip()
                 subex['solution'] = '\n'.join(subex['solution']).strip()
+                subex['ans_docend'] = '\n'.join(subex['ans_docend']).strip()
+                subex['sol_docend'] = '\n'.join(subex['sol_docend']).strip()
                 for _i in range(len(subex['hints'])):
                     subex['hints'][_i] = '\n'.join(subex['hints'][_i]).strip()
-
                 exer['subex'].append(subex)
-
             elif line.startswith(answer_pattern_begin):
-                inside_answer = True
+                if force_ans_docend:
+                    inside_ans_docend = True
+                else:
+                    inside_answer = True
             elif line.startswith(answer_pattern_end):
-                inside_answer = False
-
+                if force_ans_docend:
+                    #Same as in the ansdocend_pattern_end case
+                    instruction_line = True
+                    inside_ans_docend = False
+                else:
+                    inside_answer = False
             elif line.startswith(solution_pattern_begin):
-                inside_solution = True
+                if force_sol_docend:
+                    inside_sol_docend = True
+                else:
+                    inside_solution = True
             elif line.startswith(solution_pattern_end):
-                inside_solution = False
-
+                if force_sol_docend:
+                    # Same as in the soldocend_pattern_end case
+                    instruction_line = True
+                    inside_sol_docend = False
+                else:
+                    inside_solution = False
             elif line.startswith(hint_pattern_begin):
                 inside_hint = True
                 if inside_subex:
@@ -1859,18 +1901,28 @@ def exercises(filestr, format, code_blocks, tex_blocks):
                     exer['hints'].append([])
             elif line.startswith(hint_pattern_end):
                 inside_hint = False
-
             elif line.startswith(closing_remarks_pattern_begin):
                 inside_closing_remarks = True
             elif line.startswith(closing_remarks_pattern_end):
                 inside_closing_remarks = False
-
             else:
-                instruction_line = False
+                if inside_answer and force_ans_hide:
+                    pass
+                elif inside_solution and force_sol_hide:
+                    pass
+                else:
+                    instruction_line = False
 
+            # Store ordinary text lines
             if inside_subex and not instruction_line:
                 if inside_answer:
                     subex['answer'].append(lines[line_no])
+                elif inside_ans_docend:
+                    subex['ans_docend'].append(lines[line_no])
+                    has_ans_docend = True
+                elif inside_sol_docend:
+                    subex['sol_docend'].append(lines[line_no])
+                    has_sol_docend = True
                 elif inside_solution:
                     subex['solution'].append(lines[line_no])
                 elif inside_hint:
@@ -1881,6 +1933,12 @@ def exercises(filestr, format, code_blocks, tex_blocks):
             elif not inside_subex and not instruction_line:
                 if inside_answer:
                     exer['answer'].append(lines[line_no])
+                elif inside_ans_docend:
+                    exer['ans_docend'].append(lines[line_no])
+                    has_ans_docend = True
+                elif inside_sol_docend:
+                    exer['sol_docend'].append(lines[line_no])
+                    has_sol_docend = True
                 elif inside_solution:
                     exer['solution'].append(lines[line_no])
                 elif inside_hint:
@@ -1894,7 +1952,6 @@ def exercises(filestr, format, code_blocks, tex_blocks):
                         subex['aftertext'].append(lines[line_no])
                     else:
                         exer['text'].append(lines[line_no])
-
         else:  # outside exercise
             newlines.append(lines[line_no])
 
@@ -1912,6 +1969,8 @@ def exercises(filestr, format, code_blocks, tex_blocks):
         if exer and exer_end:
             exer['text'] = '\n'.join(exer['text']).strip()
             exer['answer'] = '\n'.join(exer['answer']).strip()
+            exer['ans_docend'] = '\n'.join(exer['ans_docend']).strip()
+            exer['sol_docend'] = '\n'.join(exer['sol_docend']).strip()
             exer['solution'] = '\n'.join(exer['solution']).strip()
             exer['closing_remarks'] = '\n'.join(exer['closing_remarks']).strip()
             for i_ in range(len(exer['hints'])):
@@ -1947,8 +2006,7 @@ def exercises(filestr, format, code_blocks, tex_blocks):
                     if not option('allow_refs_to_external_docs'):
                         _abort()  # will cause abort for split_html anyway
 
-            # Check if Exercise could be Problem: no refs to labels
-            # outside the Exercise
+            # Check if Exercise could be Problem: no refs to labels outside the Exercise
             if 1:
                 _label_pattern = r'label\{(.+?)\}'
                 _ref_pattern = r'ref\{(.+?)\}'
@@ -1989,38 +2047,35 @@ def exercises(filestr, format, code_blocks, tex_blocks):
         filestr = '\n'.join([n for n in newlines if isinstance(n, basestring)])
         solutions = '\n'.join([n for n in solutions if isinstance(n, basestring)])
 
-
-    if option('solutions_at_end') or option('answers_at_end'):
+    # Append solutions and answer to filestr (in the end of the doconce string)
+    if option('solutions_at_end') or option('answers_at_end') or has_sol_docend or has_ans_docend:
         from .common import chapter_pattern
+        has_chapters = False
         if re.search(chapter_pattern, filestr, flags=re.MULTILINE):
             has_chapters = True
-        else:
-            has_chapters = False
-
         # Is writing to file a good idea? <<<!!CODE_BLOCK will not be
         # substituted. Better to grab the solution chapter/section
         # at the end of substitutions and write this to file!
         solfilename = dofile_basename + '_exersol.do.txt'
         f = open(solfilename, 'w')
-
         # Header for answer and/or solutions at end of book
         header_at_end = '======= '
-        if option('solutions_at_end') and option('answers_at_end'):
-            header_at_end += 'Answers and Solutions'
-        elif option('answers_at_end'):
-            header_at_end += 'Answers'
-        elif option('solutions_at_end'):
-            header_at_end += 'Solutions'
+        header_flag = 0
+        if has_ans_docend or option('answers_at_end'):
+            header_flag += 1
+        if has_sol_docend or option('solutions_at_end'):
+            header_flag += 2
+        header_at_end += ['','Answers', 'Solutions', 'Answers and Solutions'][header_flag]
         header_at_end += ' ======='
         if has_chapters:
             header_at_end = '==' + header_at_end + '=='
-        header_at_end += '\nlabel{ch:solutions}\n\n'
-
+        header_at_end += '\nlabel{ch:answerssolutions}\n\n'
+        #Write to file
         f.write(header_at_end)
         f.write(solutions)
         f.close()
         #errwarn('solutions to exercises in', dofile_basename)
-
+        #Add solution/answers section
         pattern = '(^={5,7} +(References|Bibliography) +={5,7})'
         sol_sec = header_at_end + solutions
         if re.search(pattern, filestr, flags=re.MULTILINE):
@@ -2028,7 +2083,6 @@ def exercises(filestr, format, code_blocks, tex_blocks):
                              sol_sec + '\n\n\\g<1>',
                              filestr, flags=re.MULTILINE)
         else:
-            # Just add solutions/answers at the end
             filestr += '\n\n\n' + sol_sec
 
     if option('exercises_in_zip'):
@@ -2115,7 +2169,7 @@ def exercises(filestr, format, code_blocks, tex_blocks):
         debugpr('No exercises found.')
 
     # Syntax check: must be no more exercise-specific environments left
-    envirs = ['ans', 'sol', 'subex', 'hint', 'remarks']
+    envirs = ['ans', 'sol', 'subex', 'hint', 'remarks', 'ans_docend', 'sol_docend']
     for envir in envirs:
         begin = '!b' + envir
         end = '!e' + envir
@@ -2220,9 +2274,7 @@ def process_envir(filestr, envir, format, action='remove', reason=''):
 
 def extract_individual_standalone_exercises(
     filestr, format, all_exer, code_blocks, tex_blocks):
-
     text = filestr
-
     # Grab all exercises
     exers = process_envir(text, 'exercise', 'plain', action='grep')
     if len(exers) != len(all_exer):
@@ -2605,7 +2657,9 @@ def typeset_tables(filestr, format):
                     errwarn('1. Not a table, just an opening pipe symbol at the beginning of the line?')
                     errwarn('2. Something wrong with the syntax in a preceding table?')
                     if format not in ('latex', 'pdflatex', 'html', 'sphinx', 'mwiki'):
-                        errwarn('3. In simple formats without math support, like %s, a formula like $|x|$ at the beginning of the line will have stripped off $ and hence line starts with |, which indicates a table. Move the formula so that it is not at the beginning of a line.' % format)
+                        errwarn('3. In simple formats without math support, like %s, a formula like $|x|$ at the beginning\
+                         of the line will have stripped off $ and hence line starts with |, which indicates a table. \
+                         Move the formula so that it is not at the beginning of a line.' % format)
                     _abort()
 
                 result.write(TABLE[format](table))   # typeset table
@@ -4623,7 +4677,6 @@ def doconce2format(filestr, format):
         debugpr('The file after inserting user-defined environments:', filestr)
 
     # Next step: remove all verbatim and math blocks
-
     filestr, code_blocks, code_block_types, tex_blocks = \
              remove_code_and_tex(filestr, format)
 
@@ -4773,7 +4826,6 @@ def doconce2format(filestr, format):
     filestr = typeset_lists(filestr, format,
                             debug_info=[code_blocks, tex_blocks])
     debugpr('The file after typesetting of lists:', filestr)
-
     report_progress('handled lists')
 
     # Next step: add space around | in tables for substitutions to get right
@@ -4879,7 +4931,7 @@ def doconce2format(filestr, format):
             # and hence not necessarily an error
             envir = m.group(1)
             errwarn('*** error: could not translate environment: %s' % envir)
-            if m.group(1)[2:] in ('sol', 'ans', 'hint', 'subex'):
+            if m.group(1)[2:] in ('sol', 'ans', 'hint', 'subex', 'sol_docend', 'ans_docend',):
                 errwarn("""
     This is an environment in an exercise. Check if the
     heading is correct so the subsection was recognized
@@ -4954,7 +5006,7 @@ def doconce2format(filestr, format):
     # (Note: must be done after code and tex blocks are inserted!
     # Otherwise there is a mismatch between all original blocks
     # and those present after solutions, answers, etc. are removed)
-    envir2option = dict(sol='solutions', ans='answers', hint='hints', sol_at_end='solutions_at_end', ans_at_end='answers_at_end')
+    envir2option = dict(sol='solutions', ans='answers', hint='hints')
     # Recall that the comment syntax is now dependent on the format
     for envir in 'sol', 'ans', 'hint':
         option_name = 'without_' + envir2option[envir]
@@ -4962,20 +5014,19 @@ def doconce2format(filestr, format):
             filestr = process_envir(
                 filestr, envir, format, action='remove',
                 reason='(because of the command-line option --%s)\n' % option_name)
-    # Do the same but for answers and solutions in the end of the document (--answers_at_end and --solutions_at_end)
+    # Remove exercise answers and solution written by --answers_at_end and/or --solutions_at_end
+    # in the end of the document unless --solutions_at_end and/or --answers_at_end are used
+    cmd2option = dict(sol_at_end = 'solutions_at_end', ans_at_end = 'answers_at_end')
     for envir in 'ans_at_end', 'sol_at_end':
-        option_name = envir2option[envir]
+        option_name = cmd2option[envir]
         if not option(option_name):
-            filestr = process_envir(
-                filestr, envir, format, action='remove',
-                reason='(because of the command-line option --%s)\n' % option_name)
+            filestr = process_envir(filestr, envir, format, action='remove',
+                    reason='(because the command-line option --%s was not used)' % option_name)
     debugpr('The file after potential removal of solutions, answers, hints, etc.:', filestr)
-
     cpu = time.time() - _t0
     if cpu > 15:
         errwarn('\n\n...doconce format used %.1f s to translate the document (%d lines)\n' % (cpu, filestr.count('\n')))
         time.sleep(1)
-
     return filestr, bg_session
 
 

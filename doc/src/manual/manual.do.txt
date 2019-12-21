@@ -2589,6 +2589,14 @@ lines are inserted so that the beginning and end of answers and
 solutions can be identified and removed if desired. It seems that
 DocOnce authors prefer `!bsol` and `!esol` over a separate solution file.
 
+The command line options `--without_answers` and `--without_solutions`
+turn off output of answers and solutions, respectively, except for
+examples.
+The command line options `--answers_at_end` and `--solutions_at_end`
+write all answers and solutions to exercises to a separate section in the end of the document, respectively. Combine with `--without_answers` and `--without_solutions` to remove answers and solutions from the main text. 
+
+The commands `!anshide` and `!solhide` can be used to hide from the main text answers and solutions, respectively, until the `!ansoff` and `!soloff` commands are encountered. Similarly, the `!ansdocend` and `!soldocend` commands move answers and solutions to the end of the book. 
+
 !bwarning Avoid headings in solutions
 Headings in solutions in exercises will
 appear in table of contents, but if
@@ -2607,9 +2615,6 @@ solutions, the equation numbering may differ between the versions and may
 cause confusion among readers.
 !ewarning
 
-The command line options `--without_answers` and `--without_solutions`
-turn off output of answers and solutions, respectively, except for
-examples.
 
 
 === Example ===
@@ -2791,7 +2796,7 @@ Try it out and compare with other methods for listing the exercises.
 label{manual:exercises:sol:no}
 
 A potential problem arises if you produce two versions of your document,
-one with solutions and one without solutions (`--without_solutions`),
+one with answers or solutions and one without answers or solutions (`--without_answers`, `--without_solutions`),
 and there are numbered equations in the solutions. Equations in the
 text of the document *after* these exercises sections might then be
 numbered differently in the different versions you produce of the text.
