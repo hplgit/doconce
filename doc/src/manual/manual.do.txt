@@ -517,7 +517,7 @@ inserting several lines with `<linebreak>`.
 
 FIGURE:[fig/wave1D, width=400] A wave. label{fig:viz}
 
-idx{`--fig_prefix=`}
+idx{`--figure_prefix=`}
 idx{FIGPREFIX}
 
 === Choosing the Figure Format ===
@@ -558,11 +558,11 @@ that section. The path to a common directory for figures may then be
 like `../fig/myfig.png`, while for the master document in the parent
 directory, the corresponding path is `fig/myfig.png`.
 
-The simplest way out of this problem is to use the `--fig_prefix=`
+The simplest way out of this problem is to use the `--figure_prefix=`
 command-line option to set a path prefix for the figure filename.
 When compiling a section in a subdirectory one sets
-`--fig_prefix=../fig` while in the parent directory one needs
-`--fig_prefix=fig` to compile the master document.
+`--figure_prefix=../fig` while in the parent directory one needs
+`--figure_prefix=fig` to compile the master document.
 In the DocOnce source file one has `FIGURE: [myfig, width=...]`.
 
 A more manual method is to introduce a Mako variable `FIGPREFIX`
