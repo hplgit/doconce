@@ -3,6 +3,7 @@ from builtins import range
 from past.utils import old_div
 import numpy as np
 
+
 def solver(I, V, m, b, s, F, t, damping='linear'):
     """
     Solve m*u'' + f(u') + s(u) = F for time points in t.
@@ -16,12 +17,13 @@ def solver(I, V, m, b, s, F, t, damping='linear'):
     N = t.size - 1              # No of time intervals
     dt = t[1] - t[0]            # Time step
     u = np.zeros(N+1)           # Result array
-    b = float(b); m = float(m)  # Avoid integer division
+    b = float(b)                # Avoid integer division
+    m = float(m)                # Avoid integer division
 
     # Convert F to array
     if callable(F):
         F = F(t)
-    elif isinstance(F, (list,tuple,np.ndarray)):
+    elif isinstance(F, (list, tuple, np.ndarray)):
         F = np.asarray(F)
     else:
         raise TypeError(
@@ -36,18 +38,19 @@ def solver(I, V, m, b, s, F, t, damping='linear'):
     else:
         raise ValueError('Wrong value: damping="%s"' % damping)
 
-    for n in range(1,N):
+    for n in range(1, N):
         if damping == 'linear':
-            u[n+1] = old_div((2*m*u[n] + (b*dt/2 - m)*u[n-1] +
-                      dt**2*(F[n] - s(u[n]))),(m + b*dt/2))
+            u[n+1] = old_div((2*m*u[n] + (b*dt/2 - m)*u[n-1] + 
+                              dt**2*(F[n] - s(u[n]))), (m + b*dt/2))
         elif damping == 'quadratic':
-            u[n+1] = old_div((2*m*u[n] - m*u[n-1] + b*u[n]*abs(u[n] - u[n-1])
-                      - dt**2*(s(u[n]) - F[n])),\
-                      (m + b*abs(u[n] - u[n-1])))
+            u[n+1] = old_div((2*m*u[n] - m*u[n-1] + b*u[n]*abs(u[n] - u[n-1]) 
+                              - dt**2*(s(u[n]) - F[n])), 
+                             (m + b*abs(u[n] - u[n-1])))
     return u, t
 
 # Simplified implementation
 from numpy import *
+
 
 def solver_linear_damping(I, V, m, b, s, F, t):
     N = t.size - 1              # No of time intervals
@@ -56,7 +59,7 @@ def solver_linear_damping(I, V, m, b, s, F, t):
     u[0] = I
     u[1] = u[0] + dt*V + dt**2/(2*m)*(-b*V - s(u[0]) + F[0])
 
-    for n in range(1,N):
-        u[n+1] = 1./(m + b*dt/2)*(2*m*u[n] + \
-                 (b*dt/2 - m)*u[n-1] + dt**2*(F[n] - s(u[n])))
+    for n in range(1, N):
+        u[n+1] = 1./(m + b*dt/2)*(2*m*u[n] + 
+                                  (b*dt/2 - m)*u[n-1] + dt**2*(F[n] - s(u[n])))
     return u
