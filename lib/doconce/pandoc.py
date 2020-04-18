@@ -207,8 +207,8 @@ def pandoc_code(filestr, code_blocks, code_block_types,
     # \eqref and labels will not work, but labels do no harm
     filestr = filestr.replace(' label{', ' \\label{')
     pattern = r'^label\{'
-    filestr = re.sub(pattern, '\\label{', filestr, flags=re.MULTILINE)
-    filestr = re.sub(r'\(ref\{(.+?)\}\)', r'\eqref{\g<1>}', filestr)
+    filestr = re.sub(pattern, '\\\\label{', filestr, flags=re.MULTILINE)
+    filestr = re.sub(r'\\(ref\\{(.+?)\\}\\)', r'\\eqref{\g<1>}', filestr)
 
     # Final fixes
 
@@ -220,7 +220,7 @@ def pandoc_code(filestr, code_blocks, code_block_types,
     #   - [ ] task 2 not yet done
     if github_md:
         pattern = '^(\s+)\*\s+(\[[x ]\])\s+'
-        filestr = re.sub(pattern, '\g<1>- \g<2> ', filestr, flags=re.MULTILINE)
+        filestr = re.sub(pattern, '\\g<1>- \\g<2> ', filestr, flags=re.MULTILINE)
 
     return filestr
 
@@ -230,7 +230,7 @@ def pandoc_table(table):
         # Fix the problem that `verbatim` inside the table is not
         # typeset as verbatim (according to the pandoc translator rules)
         # in the GitHub Issue Tracker
-        text = re.sub(r'`([^`]+?)`', '<code>\g<1></code>', text)
+        text = re.sub(r'`([^`]+?)`', '<code>\\g<1></code>', text)
         return text
 
     # else: Pandoc-extended Markdown syntax
