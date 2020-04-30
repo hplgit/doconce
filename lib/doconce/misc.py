@@ -8152,7 +8152,7 @@ def _latex2doconce(filestr):
     filestr = re.sub(r'&(\s*)\\approx(\s*)&', '&\g<1>\\\\approx\g<2>', filestr)
 
     # \item alone on line: join with next line (indentation is fixed later)
-    filestr = re.sub(r'\\item\s+(\w)', r'\item \g<1>', filestr)
+    filestr = re.sub(r'\\item\s+(\w)', r'\\item \g<1>', filestr)
 
     # Make sure all items in lists are on one line so we do not run
     # into indentation problems (lookahead pattern makes this easy)
@@ -8290,7 +8290,7 @@ def _latex2doconce(filestr):
 
     # Exercises of the following particular format
     pattern = re.compile(r'\\begin\{exercise\}\s*\\label\{(.*?)\}\s*\\exerentry\{(.*?)\}\s*$\s*(.+?)\\hfill\s*\$\\diamond\$\s*\\end\{exercise\}', re.DOTALL|re.MULTILINE)
-    filestr = pattern.sub(r'===== Exercise: \g<2> =====\n\label{\g<1>}\nfile=\n\n\g<3>\n', filestr)
+    filestr = pattern.sub(r'===== Exercise: \g<2> =====\n\\label{\g<1>}\nfile=\n\n\g<3>\n', filestr)
 
     # Fix "Name of program file:" construction in exercises
     lines = filestr.splitlines()
